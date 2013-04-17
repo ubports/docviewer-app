@@ -1,1 +1,12 @@
-this is an example README file.
+HOW TO BUILD THE LAUNCHER :
+
+1. Be sure to have the last version of QtCreator. If not, install it with
+	apt-get install qtcreator
+2. Open the .pro file located in launcher/src
+3. Build it by using the "build" button
+
+USAGE :
+
+./ubuntu-docviewer-app [filename]
+
+filename : The path where the file you want to open is located.
