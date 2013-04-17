@@ -1,71 +1,133 @@
 import QtQuick 2.0
 import Ubuntu.Components 0.1
-
-/*!
-    \brief MainView with Tabs element.
-           First Tab has a single Label and
-           second Tab has a single ToolbarAction.
-*/
+import Ubuntu.Components.ListItems 0.1 as ListItem
 
 MainView {
     // objectName for functional testing purposes (autopilot-qt5)
     objectName: "docviewer"
+
+    applicationName: "ubuntu-docviewer-app"
     
     width: units.gu(50)
     height: units.gu(75)
+
+    Component.onCompleted: {
+
+    }
+
+    Component.onDestruction: {
+
+    }
     
     Tabs {
         id: tabs
         anchors.fill: parent
-        
-        // First tab begins here
+
         Tab {
-            objectName: "Tab1"
+            objectName: "tabViewer"
+            id: tabViewer;
             
-            title: i18n.tr("Document Viewer")
+            title: getNameOfFile(file);
             
-            // Tab content begins here
             page: Page {
-                Column {
-                    anchors.centerIn: parent
-                    Label {
-                        text: i18n.tr("Swipe from right to left to change tab.")
+
+                tools: ToolbarActions {
+                    back {
+                        visible: true
                     }
                 }
-            }
-        }
-        
-        // Second tab begins here
-        Tab {
-            objectName: "Tab2"
-            
-            title: i18n.tr("Optional Screen")
-            page: Page {
-                anchors.margins: units.gu(2)
-                
-                tools: ToolbarActions {
-                    Action {
-                        objectName: "action"
-                        
-                        iconSource: Qt.resolvedUrl("avatar.png")
-                        text: i18n.tr("Tap me!")
-                        
-                        onTriggered: {
-                            label.text = i18n.tr("Toolbar tapped")
+
+                Column {
+                    id: columnMain;
+                    width: parent.width;
+                    height: childrenRect.height;
+
+                    TextArea {
+
+                        id: textAreaMain;
+
+                        width: parent.width;
+                        height: units.gu(66);
+
+                        activeFocusOnPress: false;
+                        highlighted: true;
+
+                        signal loadCompleted()
+
+                        Component.onCompleted: {
+                            var xhr = new XMLHttpRequest;
+
+                            xhr.open("GET", file);
+                            xhr.onreadystatechange = function() {
+                                if (xhr.readyState === XMLHttpRequest.DONE) {
+                                    textAreaMain.text = xhr.responseText;
+                                    textAreaMain.loadCompleted();
+                                }
+                            }
+
+                            xhr.send();
                         }
                     }
                 }
-                
+            }
+        }
+
+        Tab {
+            objectName: "TabDetails"
+            id: tabDetails;
+
+            title: i18n.tr("Details")
+            page: Page {
                 Column {
-                    anchors.centerIn: parent
-                    Label {
-                        id: label
-                        objectName: "label"
-                        
-                        text: i18n.tr("Swipe from bottom to up to reveal the toolbar.")
+                    width: units.gu(50)
+                    ListItem.SingleValue {
+                        text: i18n.tr("Location")
+                        value: file
+                    }
+                    ListItem.SingleValue {
+                        text: i18n.tr("Size")
+                        value: printSize(textAreaMain.text.length);
+                    }
+
+                    ListItem.SingleValue {
+                        text: i18n.tr("Created")
+                        value: "01/01/2001";
+                    }
+
+                    ListItem.SingleValue {
+                        text: i18n.tr("Modified")
+                        value: "01/01/2001";
                     }
                 }
             }
         }
+    }
+
+    function printSize(size)
+    {
+        if (size >= 1073741824)
+        {
+            return parseInt(size/1073741824) + "," + size%1073741824 + " Gio";
+        }
+
+        if (size >= 1048576)
+        {
+            return parseInt(size/1048576) + "," + size%1048576 + " Mio";
+        }
+
+        if (size >= 1024)
+        {
+            return parseInt(size/1024) + "," + size%1024 + " Kio";
+        }
+
+        return size + " o";
+    }
+
+    function getNameOfFile(path)
+    {
+        var name = String(path);
+
+        return name.substring(name.lastIndexOf('/')+1);
+
     }
 }
