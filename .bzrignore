@@ -1,4 +1,5 @@
+ubuntu-docviewer-app
 docviewer.qmlproject.user
-launcher/debug
-launcher/release
+launcher/build-docviewer-launcher-Desktop-Debug/
+launcher/build-docviewer-launcher-Desktop-Release/
 launcher/src/docviewer-launcher.pro.user
