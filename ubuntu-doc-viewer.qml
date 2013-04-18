@@ -10,6 +10,7 @@ import Ubuntu.Components 0.1
 MainView {
     // objectName for functional testing purposes (autopilot-qt5)
     objectName: "docviewer"
+    applicationName: "ubuntu-docviewer-app"
     
     width: units.gu(50)
     height: units.gu(75)
