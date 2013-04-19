@@ -6,9 +6,9 @@
 
 QT       += gui qml quick
 
-TARGET = ../../ubuntu-docviewer-app
+TARGET = ubuntu-docviewer-app
 
 TEMPLATE = app
 
 
-SOURCES += main.cpp
+SOURCES += launcher/src/main.cpp

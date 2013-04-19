@@ -2,8 +2,8 @@ HOW TO BUILD THE LAUNCHER :
 
 1. Be sure to have the last version of QtCreator. If not, install it with
 	apt-get install qtcreator
-2. Open the .pro file located in launcher/src
-3. Build it by using the "build" button
+2. Generate the Makefile with : "qmake main.pro"
+3. Then compile the project with : "make"
 
 USAGE :
 
