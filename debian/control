@@ -2,6 +2,8 @@ Source: ubuntu-docviewer-app
 Priority: extra
 Maintainer: Ubuntu App Cats <ubuntu-touch-coreapps@lists.launchpad.net>
 Build-Depends: debhelper (>= 9), 
+		 qt5-qmake,
+		 qtchooser
 Standards-Version: 3.9.4
 Section: misc
 Homepage: https://launchpad.net/ubuntu-docviewer-app
@@ -14,7 +16,5 @@ Depends: ${misc:Depends},
          qmlscene,
          qtdeclarative5-ubuntu-ui-toolkit-plugin | qt-components-ubuntu,
          qtdeclarative5-qtquick2-plugin,
-		 qt5-qmake,
-		 qtchooser
 Description: Document Viewer application
  Core Document Viewer application
