@@ -3,3 +3,8 @@ docviewer.qmlproject.user
 launcher/build-docviewer-launcher-Desktop-Debug/
 launcher/build-docviewer-launcher-Desktop-Release/
 launcher/src/docviewer-launcher.pro.user
+
+debian/files
+debian/app-template/
+debian/*.debhelper.log
+debian/*.substvars
