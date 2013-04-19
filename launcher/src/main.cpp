@@ -28,10 +28,10 @@ int main(int argc, char *argv[])
         //engine.rootContext()->setContextProperty("fileName", launcher.arguments().at(1));
         engine.rootContext()->setContextProperty("file", QVariant::fromValue(argument));
 
-        if ( !component->isReady() ) {
+        /*if ( !component->isReady() ) {
             qFatal(qPrintable(component->errorString()));
             return -1;
-        }
+        } FIXME */
 
         QObject *topLevel = component->create();
         QQuickWindow *window = qobject_cast<QQuickWindow *>(topLevel);
