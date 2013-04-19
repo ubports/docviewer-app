@@ -13,7 +13,8 @@ Architecture: all
 Depends: ${misc:Depends},
          qmlscene,
          qtdeclarative5-ubuntu-ui-toolkit-plugin | qt-components-ubuntu,
-         qtdeclarative5-qtquick2-plugin
-		 qt5-qmake
+         qtdeclarative5-qtquick2-plugin,
+		 qt5-qmake,
+		 qtchooser
 Description: Document Viewer application
  Core Document Viewer application
