@@ -2,7 +2,8 @@ Source: ubuntu-docviewer-app
 Priority: extra
 Maintainer: Ubuntu App Cats <ubuntu-touch-coreapps@lists.launchpad.net>
 Build-Depends: debhelper (>= 9), 
-		 qt5-default
+		 qt5-default,
+		 qtdeclarative5-dev
 Standards-Version: 3.9.4
 Section: misc
 Homepage: https://launchpad.net/ubuntu-docviewer-app
