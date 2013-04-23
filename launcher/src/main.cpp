@@ -14,46 +14,51 @@ int main(int argc, char *argv[])
 {
     QGuiApplication launcher(argc, argv);
 
-        QQmlEngine engine;
+    QQmlEngine engine;
+    QQmlComponent *component = new QQmlComponent(&engine);
+    QString qmlPath;
 
-        QQmlComponent *component = new QQmlComponent(&engine);
+#ifdef QT_DEBUG
+    qmlPath = "ubuntu-docviewer-app.qml";
+#else
+    qmlPath = "/usr/share/ubuntu-docviewer-app/ubuntu-docviewer-app.qml";
+#endif
 
-        component->loadUrl(QString("docviewer.qml"));
+    component->loadUrl(qmlPath);
 
-        QString argument = "";
-        if (launcher.arguments().size() >= 2)
-            argument = launcher.arguments().at(1);
+    QString argument = "";
+    if (launcher.arguments().size() >= 2)
+        argument = launcher.arguments().at(1);
 
-        /**SEND ARGUMENT**/
-        //engine.rootContext()->setContextProperty("fileName", launcher.arguments().at(1));
-        engine.rootContext()->setContextProperty("file", QVariant::fromValue(argument));
+    /**SEND ARGUMENT**/
+    engine.rootContext()->setContextProperty("file", QVariant::fromValue(argument));
 
-        /*if ( !component->isReady() ) {
-            qFatal(qPrintable(component->errorString()));
-            return -1;
-        } FIXME */
+    if ( !component->isReady() ) {
+        qFatal("%s", qPrintable(component->errorString()));
+        return -1;
+    }
 
-        QObject *topLevel = component->create();
-        QQuickWindow *window = qobject_cast<QQuickWindow *>(topLevel);
-        QQuickView* qxView = 0;
+    QObject *topLevel = component->create();
+    QQuickWindow *window = qobject_cast<QQuickWindow *>(topLevel);
+    QQuickView* qxView = 0;
 
-        if (!window) {
+    if (!window) {
 
-            QQuickItem *contentItem = qobject_cast<QQuickItem *>(topLevel);
+        QQuickItem *contentItem = qobject_cast<QQuickItem *>(topLevel);
 
-            if (contentItem) {
+        if (contentItem) {
 
-                qxView = new QQuickView(&engine, NULL);
-                window = qxView;
-                window->setFlags(Qt::Window | Qt::WindowSystemMenuHint | Qt::WindowTitleHint | Qt::WindowMinMaxButtonsHint | Qt::WindowCloseButtonHint);
+            qxView = new QQuickView(&engine, NULL);
+            window = qxView;
+            window->setFlags(Qt::Window | Qt::WindowSystemMenuHint | Qt::WindowTitleHint | Qt::WindowMinMaxButtonsHint | Qt::WindowCloseButtonHint);
 
-                qxView->setResizeMode(QQuickView::SizeRootObjectToView);
-                qxView->setContent(QString("docviewer.qml"), component, contentItem);
-            }
+            qxView->setResizeMode(QQuickView::SizeRootObjectToView);
+            qxView->setContent(QString("docviewer.qml"), component, contentItem);
         }
+    }
 
-        if (window)
-            window->show();
+    if (window)
+        window->show();
 
     return launcher.exec();
 }
