@@ -8,7 +8,10 @@
 #include <QtQuick/qquickview.h>
 
 #include <QStringList>
+#include <QProcess>
 #include <qdebug.h>
+
+#include "file.h"
 
 int main(int argc, char *argv[])
 {
@@ -30,8 +33,9 @@ int main(int argc, char *argv[])
     if (launcher.arguments().size() >= 2)
         argument = launcher.arguments().at(1);
 
-    /**SEND ARGUMENT**/
-    engine.rootContext()->setContextProperty("file", QVariant::fromValue(argument));
+    File *file = new File(&argument);
+
+    engine.rootContext()->setContextProperty("file", file);
 
     if ( !component->isReady() ) {
         qFatal("%s", qPrintable(component->errorString()));

@@ -11,4 +11,8 @@ TARGET = ubuntu-docviewer-app
 TEMPLATE = app
 
 
-SOURCES += launcher/src/main.cpp
+SOURCES += launcher/src/main.cpp \
+    launcher/src/file.cpp
+
+HEADERS += \
+    launcher/src/file.h
