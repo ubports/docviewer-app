@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include <QGuiApplication>
 
 #include <QtQml/qqmlengine.h>
@@ -11,6 +13,7 @@
 #include <QProcess>
 #include <qdebug.h>
 
+#include "main.h"
 #include "file.h"
 
 int main(int argc, char *argv[])
@@ -31,7 +34,15 @@ int main(int argc, char *argv[])
 
     QString argument = "";
     if (launcher.arguments().size() >= 2)
+	{
         argument = launcher.arguments().at(1);
+	}
+	else
+	{
+		displayUsage();
+		return 0;
+	}
+
 
     File *file = new File(&argument);
 
@@ -65,4 +76,11 @@ int main(int argc, char *argv[])
         window->show();
 
     return launcher.exec();
+}
+
+void displayUsage()
+{
+	std::cout << "Usage :" << std::endl;
+	std::cout << "ubuntu-docviewer-app <file>" << std::endl;
+	return;
 }
