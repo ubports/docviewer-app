@@ -1,6 +1,7 @@
 Makefile
 ubuntu-docviewer-app
 *.user
+moc_file.cpp
 launcher/build-docviewer-launcher-Desktop-Debug/
 launcher/build-docviewer-launcher-Desktop-Release/
 launcher/src/docviewer-launcher.pro.user
