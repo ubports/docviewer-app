@@ -18,3 +18,11 @@ Depends: ${misc:Depends},
          qtdeclarative5-qtquick2-plugin,
 Description: Document Viewer application
  Core Document Viewer application
+
+Package: ubuntu-docviewer-app-autopilot
+Architecture: all
+Depends: libautopilot-qt,
+         libqt5test5,
+         ubuntu-docviewer-app (= ${source:Version})
+Description: Autopilot tests for Document Viewer Application
+ This package contains the autopilot tests for the Document Viewer
