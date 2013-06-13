@@ -19,20 +19,21 @@ class TestMainWindow(DocviewerTestCase):
 
     def setUp(self):
         super(TestMainWindow, self).setUp()
-        self.assertThat(
-            self.main_window.get_qml_view().visible, Eventually(Equals(True)))
+        #self.assertThat(
+        #    self.main_window.get_qml_view().visible, Eventually(Equals(True)))
 
     def tearDown(self):
         super(TestMainWindow, self).tearDown()
 
-    def test_toolbar_shows(self):
-        """Make sure that dragging from the bottom reveals the hidden
-        toolbar."""
-        toolbar = self.main_window.get_toolbar()
+    def test_open_text_file(self):
+        #launch app with file argument (absolute path)
+        #hack for the moment
+        filePath = '/tmp/docviewer'
 
-        x, y, w, h = toolbar.globalRect
-        tx = x + (w / 2)
-        ty = y + (h - 2)
+        self.launch_test_local(filePath)
 
-        self.pointing_device.drag(tx, ty, tx, ty - h)
-        self.assertThat(toolbar.state, Eventually(Equals("spread")))
+        #add launch function to init :-)
+
+        #verify textbox is no longer empty
+        # or
+        #verify the file size displayed is not 0 (maybe easier ?)

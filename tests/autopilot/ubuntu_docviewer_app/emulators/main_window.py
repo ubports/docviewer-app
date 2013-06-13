@@ -16,9 +16,5 @@ class MainWindow(object):
     def __init__(self, app):
         self.app = app
 
-    def get_qml_view(self):
-        """Get the main QML view"""
-        return self.app.select_single("QQuickView")
-
     def get_toolbar(self):
         return self.app.select_single("Toolbar")
