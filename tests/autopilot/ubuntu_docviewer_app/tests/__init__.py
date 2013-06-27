@@ -9,6 +9,8 @@
 
 import os.path
 
+from pprint import pprint
+
 from autopilot.input import Mouse, Touch, Pointer
 from autopilot.platform import model
 from autopilot.testcase import AutopilotTestCase
@@ -22,6 +24,7 @@ class DocviewerTestCase(AutopilotTestCase):
     docviewer-app tests.
 
     """
+
     if model() == 'Desktop':
         scenarios = [('with mouse', dict(input_device_class=Mouse))]
     else:
@@ -32,7 +35,7 @@ class DocviewerTestCase(AutopilotTestCase):
     def setUp(self):
         self.pointing_device = Pointer(self.input_device_class.create())
         super(DocviewerTestCase, self).setUp()
-
+    
     def launch_test_local(self, arg):
         self.app = self.launch_test_application(
             self.local_location,

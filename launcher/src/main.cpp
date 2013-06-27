@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include <QGuiApplication>
+#include <QDir>
 
 #include <QtQml/qqmlengine.h>
 #include <QtQml/qqmlcomponent.h>
@@ -35,7 +36,22 @@ int main(int argc, char *argv[])
     QString argument = "";
     if (launcher.arguments().size() >= 2)
 	{
-        argument = launcher.arguments().at(1);
+        int i = 0;
+        for (i = 1; i < launcher.arguments().size(); i++)
+		{
+			qDebug() << launcher.arguments().at(i);
+            if (launcher.arguments().at(i).at(0) != '-')
+            {
+                argument = launcher.arguments().at(i);
+                break;
+            }
+        }
+
+        if (i == launcher.arguments().size())
+        {
+            displayUsage();
+            return 0;
+        }
 	}
 	else
 	{
@@ -43,8 +59,8 @@ int main(int argc, char *argv[])
 		return 0;
 	}
 
-
-    File *file = new File(&argument);
+	QString absolutePath = QDir(argument).absolutePath();
+    File *file = new File(&absolutePath);
 
     engine.rootContext()->setContextProperty("file", file);
 

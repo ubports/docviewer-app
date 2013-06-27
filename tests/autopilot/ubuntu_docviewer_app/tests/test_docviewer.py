@@ -19,18 +19,20 @@ class TestMainWindow(DocviewerTestCase):
 
     def setUp(self):
         super(TestMainWindow, self).setUp()
-        #self.assertThat(
-        #    self.main_window.get_qml_view().visible, Eventually(Equals(True)))
 
     def tearDown(self):
         super(TestMainWindow, self).tearDown()
 
     def test_open_text_file(self):
-        #launch app with file argument (absolute path)
-        #hack for the moment
-        filePath = '/tmp/docviewer'
+        
+		filePath = 'ubuntu_docviewer_app/files/plaintext.txt'
 
         self.launch_test_local(filePath)
+
+		print "Hey !"
+	
+		self.assertThat(
+            self.ubuntusdk.get_qml_view().visible, Eventually(Equals(True)))
 
         #add launch function to init :-)
 
