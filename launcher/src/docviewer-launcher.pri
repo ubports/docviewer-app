@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += gui qml quick
+QT       += gui qml quick widgets
 
 TARGET = ubuntu-docviewer-app
 

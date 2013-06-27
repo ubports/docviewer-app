@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include <QGuiApplication>
+#include <QApplication>
 #include <QDir>
 
 #include <QtQml/qqmlengine.h>
@@ -19,7 +19,7 @@
 
 int main(int argc, char *argv[])
 {
-    QGuiApplication launcher(argc, argv);
+    QApplication launcher(argc, argv); //Testability work only with QApplication and not with QGuiApplication
 
     QQmlEngine engine;
     QQmlComponent *component = new QQmlComponent(&engine);
@@ -39,7 +39,6 @@ int main(int argc, char *argv[])
         int i = 0;
         for (i = 1; i < launcher.arguments().size(); i++)
 		{
-			qDebug() << launcher.arguments().at(i);
             if (launcher.arguments().at(i).at(0) != '-')
             {
                 argument = launcher.arguments().at(i);

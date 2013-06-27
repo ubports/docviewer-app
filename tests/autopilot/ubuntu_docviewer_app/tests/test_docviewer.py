@@ -28,13 +28,9 @@ class TestMainWindow(DocviewerTestCase):
 		filePath = 'ubuntu_docviewer_app/files/plaintext.txt'
 
         self.launch_test_local(filePath)
-
-		print "Hey !"
 	
 		self.assertThat(
             self.ubuntusdk.get_qml_view().visible, Eventually(Equals(True)))
-
-        #add launch function to init :-)
 
         #verify textbox is no longer empty
         # or
