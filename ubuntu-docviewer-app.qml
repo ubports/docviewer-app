@@ -69,6 +69,7 @@ MainView {
 
                     ListItem.SingleValue {
                         id: mimetypeItem
+						objectName: "mimetypeItem"
                         text: i18n.tr("Mimetype")
                         value: file.getMimetype()
                     }

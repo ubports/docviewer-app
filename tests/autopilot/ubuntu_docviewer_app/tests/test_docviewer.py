@@ -40,3 +40,17 @@ class TestMainWindow(DocviewerTestCase):
 		#Check if textarea is no longer empty
 		self.assertThat(
 			textArea.text, Eventually(NotEquals(False)))
+
+	def test_read_text_file_mimeType(self):
+		filePath = 'ubuntu_docviewer_app/files/plaintext.txt'
+
+        self.launch_test_local(filePath)
+
+		mimetypeItem = self.ubuntusdk.get_object("SingleValue", "mimetypeItem")
+		
+		self.assertThat(
+			mimetypeItem.value, Eventually(NotEquals(False)))
+
+
+
+
