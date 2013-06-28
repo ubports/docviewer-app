@@ -9,8 +9,10 @@
 
 from __future__ import absolute_import
 
+from pprint import pprint
+
 from autopilot.matchers import Eventually
-from testtools.matchers import Equals
+from testtools.matchers import Equals, NotEquals
 
 from ubuntu_docviewer_app.tests import DocviewerTestCase
 
@@ -29,9 +31,12 @@ class TestMainWindow(DocviewerTestCase):
 
         self.launch_test_local(filePath)
 	
+		#Check if the app is correclty launched
 		self.assertThat(
             self.ubuntusdk.get_qml_view().visible, Eventually(Equals(True)))
 
-        #verify textbox is no longer empty
-        # or
-        #verify the file size displayed is not 0 (maybe easier ?)
+		textArea = self.ubuntusdk.get_object("TextArea", "textAreaMain")
+
+		#Check if textarea is no longer empty
+		self.assertThat(
+			textArea.text, Eventually(NotEquals(False)))

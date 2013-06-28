@@ -10,21 +10,22 @@ Flickable {
 
 
     Column {
-        id: columnMain;
-        width: parent.width;
+        id: columnMain
+		objectName: "columnMain"
+        width: parent.width
         spacing: 10
 
         TextArea {
+            id: textAreaMain
+			objectName: "textAreaMain"
 
-            id: textAreaMain;
+            width: parent.width
 
-            width: parent.width;
-
-            autoSize: true;
+            autoSize: true
             maximumLineCount: 0
             readOnly: true
             //activeFocusOnPress: false;
-            highlighted: true;
+            highlighted: true
 
             text: "Loading..."
 
