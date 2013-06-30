@@ -9,6 +9,7 @@ Flickable {
 
     Image{
         id: image
+		objectName: "imageItem"
 
         source: file.getPath()
         smooth: true

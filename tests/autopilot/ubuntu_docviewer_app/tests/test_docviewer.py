@@ -46,10 +46,38 @@ class TestMainWindow(DocviewerTestCase):
 
         self.launch_test_local(filePath)
 
+		self.check_mimeType()
+		
+	def test_open_image_file(self):
+        
+		filePath = 'ubuntu_docviewer_app/files/ubuntu-touch.jpg'
+
+        self.launch_test_local(filePath)
+	
+		#Check if the app is correclty launched
+		self.assertThat(
+            self.ubuntusdk.get_qml_view().visible, Eventually(Equals(True)))
+
+		imageItem = self.ubuntusdk.get_object("QQuickImage", "imageItem")
+
+		#Check if status of Image is "Ready"
+		self.assertThat(
+			imageItem.status, Eventually(Equals(1)))
+
+	def test_read_image_file_mimeType(self):
+		filePath = 'ubuntu_docviewer_app/files/ubuntu-touch.jpg'
+
+        self.launch_test_local(filePath)
+		self.check_mimeType()
+
+
+	def check_mimeType(self):
 		mimetypeItem = self.ubuntusdk.get_object("SingleValue", "mimetypeItem")
 		
 		self.assertThat(
 			mimetypeItem.value, Eventually(NotEquals(False)))
+
+
 
 
 
