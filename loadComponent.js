@@ -24,6 +24,10 @@ function load(longMimetype) {
     {
         qmlToLoad = "ImageView";
     }
+    else if (mimetype === "application/pdf")
+    {
+        qmlToLoad = "PdfView";
+    }
 
     if (qmlToLoad != "")
     {
@@ -31,6 +35,10 @@ function load(longMimetype) {
         if (component.status === Component.Ready)
         {
             component.createObject(pageMain);
+        }
+        else
+        {
+            console.debug(component.errorString());
         }
 
     }
