@@ -1,9 +1,11 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: ubuntu-docviewer-app
-Source:
+Source: https://launchpad.net/ubuntu-docviewer-app
 
 Files: *
 Copyright: 2013 Canonical Ltd.
+           2013 Granger Anthony <grangeranthony@gmail.com>
+           2013 Omer Akram <om26er@ubuntu.com>
 License: GPL-3
 
 Files: debian/*
