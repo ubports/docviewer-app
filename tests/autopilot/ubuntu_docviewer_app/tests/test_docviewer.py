@@ -76,9 +76,11 @@ class TestMainWindow(DocviewerTestCase):
 		
 		self.assertThat(
 			mimetypeItem.value, Eventually(NotEquals(False)))
+    
+    def test_unknown_file_type(self):
+        filePath = 'ubuntu_docviewer_app/files/unknown.type'
+        
+        self.launch_test_local(filePath)
 
-
-
-
-
-
+        self.assertThat(
+            self.app.select_single("Dialog", title="Unknow type").visible, Eventually(Equals(True)))
