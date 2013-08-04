@@ -5,9 +5,10 @@ function getSimpleMimetype(longMimetype)
     return str;
 }
 
-function load(longMimetype) {
+function load(mimetype) {
+    if (mimetype.indexOf(";") !== -1)
+        mimetype = getSimpleMimetype(mimetype);
 
-    var mimetype = getSimpleMimetype(longMimetype);
     var qmlToLoad = "";
 
     if (mimetype === "text/plain")
