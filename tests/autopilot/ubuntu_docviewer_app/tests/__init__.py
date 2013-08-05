@@ -31,6 +31,7 @@ class DocviewerTestCase(AutopilotTestCase):
         scenarios = [('with touch', dict(input_device_class=Touch))]
 
     local_location = "../../ubuntu-docviewer-app"
+    sample_dir = "/usr/lib/python2.7/dist-packages/"
 
     def setUp(self):
         self.pointing_device = Pointer(self.input_device_class.create())
@@ -44,10 +45,9 @@ class DocviewerTestCase(AutopilotTestCase):
 
     def launch_test_installed(self, arg):
         self.app = self.launch_test_application(
-            "qmlscene",
-            "/usr/share/ubuntu-docviewer-app/ubuntu-docviewer-app.qml",
-            "--desktop_file_hint=/usr/share/applications/ubuntu-docviewer-app.desktop",
+            "ubuntu-docviewer-app",
             arg,
+            "--desktop_file_hint=/usr/share/applications/ubuntu-docviewer-app.desktop",
             app_type='qt')
 
     @property
