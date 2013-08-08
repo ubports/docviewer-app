@@ -16,6 +16,7 @@ Depends: ${misc:Depends},
          qmlscene,
          qtdeclarative5-ubuntu-ui-toolkit-plugin | qt-components-ubuntu,
          qtdeclarative5-qtquick2-plugin,
+         qtdeclarative5-poppler-qml-plugin
 Description: Document Viewer application
  Core Document Viewer application
 
