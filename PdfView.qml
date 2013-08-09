@@ -27,7 +27,7 @@ Flickable {
     Component.onCompleted : {
 
         var i=0;
-        for(i=1; i < popplerProp.numPages; i++)
+        for(i=1; i <= popplerProp.numPages; i++)
         {
             var component = Qt.createComponent("PdfPage.qml");
 
