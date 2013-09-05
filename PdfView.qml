@@ -11,7 +11,7 @@ Flickable {
 
     Poppler {
         id: popplerProp
-        path: file.getPath()
+        path: file.path
     }
 
     Column {

@@ -34,7 +34,7 @@ Flickable {
             Component.onCompleted: {
                 var xhr = new XMLHttpRequest;
 
-                xhr.open("GET", file.getPath());
+                xhr.open("GET", file.path);
                 xhr.onreadystatechange = function() {
                     if (xhr.readyState === XMLHttpRequest.DONE) {
                         textAreaMain.text = xhr.responseText;

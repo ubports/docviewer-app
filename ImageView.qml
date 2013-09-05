@@ -11,7 +11,7 @@ Flickable {
         id: image
 		objectName: "imageItem"
 
-        source: file.getPath()
+        source: file.path
         smooth: true
         fillMode: Image.PreserveAspectFit
         width: parent.width
