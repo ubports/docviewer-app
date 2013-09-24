@@ -1,2 +1,2 @@
 #!/bin/bash
-qmlscene $1 ../../ubuntu-docviewer-app.qml
+qmlscene $1 /usr/share/ubuntu-docviewer-app/ubuntu-docviewer-app.qml
