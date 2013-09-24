@@ -54,7 +54,7 @@ MainView {
             page: Page {
                 id: pageMain
 
-                tools: ToolbarActions {
+                tools: ToolbarItems {
                     back {
                         visible: true
                     }

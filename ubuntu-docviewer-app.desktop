@@ -7,6 +7,6 @@ TryExec=ubuntu-docviewer-app
 Exec=ubuntu-docviewer-app %f
 Icon=/usr/share/ubuntu-docviewer-app/docviewer64.png
 Name=Document Viewer
-MimeType=text/plain;image/png;image/jpeg;image/svg+xml
+MimeType=text/plain;image/png;image/jpeg;image/svg+xml;application/pdf
 X-Ubuntu-Touch=true
 X-Ubuntu-StageHint=SideStage
