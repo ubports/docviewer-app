@@ -33,7 +33,7 @@ MainView {
 
     File {
         id: file
-        path: args.defaultArgument.at(0)
+        path: Utils.relToAbs(args.defaultArgument.at(0))
 
         onMimetypeChanged: {
             mimetypeItem.value = file.mimetype;
