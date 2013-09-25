@@ -1,12 +1,5 @@
-HOW TO BUILD THE LAUNCHER :
-
-1. Be sure to have the last version of QtCreator. If not, install it with
-	apt-get install qtcreator
-2. Generate the Makefile with : "qmake main.pro"
-3. Then compile the project with : "make"
-
-USAGE :
-
-./ubuntu-docviewer-app [filename]
+Usage
+=====
+qmlscene [filename] ubuntu-docviewer-app.qml
 
 filename : The path where the file you want to open is located.

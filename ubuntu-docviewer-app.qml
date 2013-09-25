@@ -3,6 +3,8 @@ import Ubuntu.Components 0.1
 import Ubuntu.Components.Popups 0.1
 import Ubuntu.Components.ListItems 0.1 as ListItem
 
+import org.docviewer.file 1.0
+
 import "utils.js" as Utils
 import "loadComponent.js" as LoadComponent
 
@@ -21,6 +23,23 @@ MainView {
     Component.onDestruction: {
 
     }
+
+    Arguments {
+        id: args
+
+        defaultArgument.help: "Path of the document"
+        defaultArgument.valueNames: ["path"]
+    }
+
+    File {
+        id: file
+        path: Utils.relToAbs(args.defaultArgument.at(0))
+
+        onMimetypeChanged: {
+            mimetypeItem.value = file.mimetype;
+            LoadComponent.load(file.mimetype);
+        }
+    }
     
     Tabs {
         id: tabs
@@ -30,12 +49,12 @@ MainView {
             objectName: "tabViewer"
             id: tabViewer;
             
-            title: Utils.getNameOfFile(file.getPath());
+            title: Utils.getNameOfFile(file.path);
             
             page: Page {
                 id: pageMain
 
-                tools: ToolbarActions {
+                tools: ToolbarItems {
                     back {
                         visible: true
                     }
@@ -55,31 +74,23 @@ MainView {
                     width: units.gu(50)
                     ListItem.SingleValue {
                         text: i18n.tr("Location")
-                        value: file.getPath()
+                        value: file.path
                     }
                     ListItem.SingleValue {
                         text: i18n.tr("Size")
-                        value: Utils.printSize(file.getSize())
+                        value: Utils.printSize(file.size)
                     }
 
                     ListItem.SingleValue {
                         text: i18n.tr("Last modified")
-                        value: qsTr("%1").arg(file.getLastModified().toLocaleString(Qt.locale()))
+                        value: qsTr("%1").arg(file.lastModified.toLocaleString(Qt.locale()))
                     }
 
                     ListItem.SingleValue {
                         id: mimetypeItem
 						objectName: "mimetypeItem"
                         text: i18n.tr("Mimetype")
-                        value: file.getMimetype()
-                    }
-
-                    Connections {
-                        target: file
-                        onMimetypeChanged: {
-                            mimetypeItem.value = file.getMimetype();
-                            LoadComponent.load(file.getMimetype());
-                        }
+                        value: "none"
                     }
                 }
             }
