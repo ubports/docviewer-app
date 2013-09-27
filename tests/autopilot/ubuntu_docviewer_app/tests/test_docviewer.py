@@ -27,19 +27,19 @@ class TestMainWindow(DocviewerTestCase):
         super(TestMainWindow, self).tearDown()
 
     def test_open_text_file(self):
-        
+
         filePath = 'ubuntu_docviewer_app/files/plaintext.txt'
 
         if os.path.exists(self.local_location):
             self.launch_test_local(filePath)
         else:
             self.launch_test_installed(self.sample_dir + filePath)
-    
+
         #Check if the app is correclty launched
         self.assertThat(
-            self.ubuntusdk.get_qml_view().visible, Eventually(Equals(True)))
+            self.main_view.visible, Eventually(Equals(True)))
 
-        textArea = self.ubuntusdk.get_object("TextArea", "textAreaMain")
+        textArea = self.main_view.get_object("TextArea", "textAreaMain")
 
         #Check if textarea is no longer empty
         self.assertThat(
@@ -54,16 +54,16 @@ class TestMainWindow(DocviewerTestCase):
             self.launch_test_installed(self.sample_dir + filePath)
 
         self.check_mimeType()
-        
+
     def test_open_image_file(self):
-        
+
         filePath = 'ubuntu_docviewer_app/files/ubuntu-touch.jpg'
 
         if os.path.exists(self.local_location):
             self.launch_test_local(filePath)
         else:
             self.launch_test_installed(self.sample_dir + filePath)
-    
+
         #Check if the app is correclty launched
         self.assertThat(
             self.ubuntusdk.get_qml_view().visible, Eventually(Equals(True)))
@@ -85,14 +85,14 @@ class TestMainWindow(DocviewerTestCase):
 
 
     def check_mimeType(self):
-        mimetypeItem = self.ubuntusdk.get_object("SingleValue", "mimetypeItem")
-        
+        mimetypeItem = self.main_view.get_object("SingleValue", "mimetypeItem")
+
         self.assertThat(
             mimetypeItem.value, Eventually(NotEquals(False)))
-    
+
     def test_unknown_file_type(self):
         filePath = 'ubuntu_docviewer_app/files/unknown.type'
-        
+
         if os.path.exists(self.local_location):
             self.launch_test_local(filePath)
         else:
