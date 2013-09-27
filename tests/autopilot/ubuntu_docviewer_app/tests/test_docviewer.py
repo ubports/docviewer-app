@@ -39,7 +39,8 @@ class TestMainWindow(DocviewerTestCase):
         self.assertThat(
             self.main_view.visible, Eventually(Equals(True)))
 
-        textArea = self.main_view.get_object("TextArea", "textAreaMain")
+        textArea = self.main_view.select_single(
+            "TextArea", objectName="textAreaMain")
 
         #Check if textarea is no longer empty
         self.assertThat(
@@ -66,9 +67,10 @@ class TestMainWindow(DocviewerTestCase):
 
         #Check if the app is correclty launched
         self.assertThat(
-            self.ubuntusdk.get_qml_view().visible, Eventually(Equals(True)))
+            self.main_view.visible, Eventually(Equals(True)))
 
-        imageItem = self.ubuntusdk.get_object("QQuickImage", "imageItem")
+        imageItem = self.main_view.select_single(
+            "QQuickImage", objectName="imageItem")
 
         #Check if status of Image is "Ready"
         self.assertThat(
@@ -83,9 +85,9 @@ class TestMainWindow(DocviewerTestCase):
             self.launch_test_installed(self.sample_dir + filePath)
         self.check_mimeType()
 
-
     def check_mimeType(self):
-        mimetypeItem = self.main_view.get_object("SingleValue", "mimetypeItem")
+        mimetypeItem = self.main_view.select_single(
+            "SingleValue", objectName="mimetypeItem")
 
         self.assertThat(
             mimetypeItem.value, Eventually(NotEquals(False)))
@@ -99,4 +101,5 @@ class TestMainWindow(DocviewerTestCase):
             self.launch_test_installed(self.sample_dir + filePath)
 
         self.assertThat(
-            self.app.select_single("Dialog", title="Unknow type").visible, Eventually(Equals(True)))
+            self.app.select_single("Dialog", title="Unknow type").visible,
+            Eventually(Equals(True)))

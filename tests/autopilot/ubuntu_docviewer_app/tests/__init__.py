@@ -18,6 +18,7 @@ from autopilot.testcase import AutopilotTestCase
 from ubuntuuitoolkit import emulators as toolkit_emulators
 from ubuntu_docviewer_app import emulators
 
+
 class DocviewerTestCase(AutopilotTestCase):
 
     """A common test case class that provides several useful methods for
