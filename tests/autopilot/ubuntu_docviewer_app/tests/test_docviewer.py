@@ -46,15 +46,6 @@ class TestMainWindow(DocviewerTestCase):
         self.assertThat(
             textArea.text, Eventually(NotEquals(False)))
 
-    def test_read_text_file_mimeType(self):
-        filePath = 'ubuntu_docviewer_app/files/plaintext.txt'
-
-        if os.path.exists(self.local_location):
-            self.launch_test_local(filePath)
-        else:
-            self.launch_test_installed(self.sample_dir + filePath)
-
-        self.check_mimeType()
 
     def test_open_image_file(self):
 
@@ -115,3 +106,14 @@ class TestMainWindow(DocviewerTestCase):
         self.assertThat(
             self.app.select_many("Label", text="UbuntuPhone.pdf")[0].visible,
             Eventually(Equals(True)))
+
+    def test_open_pdf_file_mimeType(self):
+        filePath = 'ubuntu_docviewer_app/files/UbuntuPhone.pdf'
+
+        if os.path.exists(self.local_location):
+            self.launch_test_local(filePath)
+        else:
+            self.launch_test_installed(self.sample_dir + filePath)
+
+        self.check_mimeType()
+
