@@ -103,3 +103,15 @@ class TestMainWindow(DocviewerTestCase):
         self.assertThat(
             self.app.select_single("Dialog", title="Unknow type").visible,
             Eventually(Equals(True)))
+
+    def test_open_pdf_file_type(self):
+        filePath = 'ubuntu_docviewer_app/files/UbuntuPhone.pdf'
+
+        if os.path.exists(self.local_location):
+            self.launch_test_local(filePath)
+        else:
+            self.launch_test_installed(self.sample_dir + filePath)
+
+        self.assertThat(
+            self.app.select_many("Label", text="UbuntuPhone.pdf")[0].visible,
+            Eventually(Equals(True)))
