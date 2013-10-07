@@ -15,8 +15,9 @@ from autopilot.input import Mouse, Touch, Pointer
 from autopilot.platform import model
 from autopilot.testcase import AutopilotTestCase
 
-from ubuntu_docviewer_app.emulators.main_window import MainWindow
-from ubuntu_docviewer_app.emulators.ubuntusdk import ubuntusdk
+from ubuntuuitoolkit import emulators as toolkit_emulators
+from ubuntu_docviewer_app import emulators
+
 
 class DocviewerTestCase(AutopilotTestCase):
 
@@ -36,7 +37,7 @@ class DocviewerTestCase(AutopilotTestCase):
     def setUp(self):
         self.pointing_device = Pointer(self.input_device_class.create())
         super(DocviewerTestCase, self).setUp()
-    
+
     def launch_test_local(self, arg):
         self.app = self.launch_test_application(
             "qmlscene",
@@ -53,10 +54,5 @@ class DocviewerTestCase(AutopilotTestCase):
             app_type='qt')
 
     @property
-    def main_window(self):
-        return MainWindow(self.app)
-
-    @property
-    def ubuntusdk(self):
-        return ubuntusdk(self, self.app)
-
+    def main_view(self):
+        return self.app.select_single(emulators.MainView)
