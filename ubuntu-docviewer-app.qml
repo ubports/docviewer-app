@@ -17,7 +17,6 @@ MainView {
     height: units.gu(75)
 
     Component.onCompleted: {
-
     }
 
     Component.onDestruction: {
@@ -43,16 +42,19 @@ MainView {
     
     Tabs {
         id: tabs
-        anchors.fill: parent
 
         Tab {
             objectName: "tabViewer"
             id: tabViewer;
+            anchors.fill: parent
+
             
             title: Utils.getNameOfFile(file.path);
             
             page: Page {
                 id: pageMain
+
+                anchors.fill: parent
 
                 tools: ToolbarItems {
                     back {
