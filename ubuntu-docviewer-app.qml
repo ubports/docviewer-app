@@ -35,8 +35,8 @@ MainView {
         path: Utils.relToAbs(args.defaultArgument.at(0))
 
         onMimetypeChanged: {
-            mimetypeItem.value = file.mimetype;
-            LoadComponent.load(file.mimetype);
+            var mimetypeValue = file.mimetype;
+            mimetypeItem.value = LoadComponent.load(mimetypeValue);
         }
     }
     
@@ -50,7 +50,7 @@ MainView {
 
             
             title: Utils.getNameOfFile(file.path);
-            
+
             page: Page {
                 id: pageMain
 
@@ -73,7 +73,8 @@ MainView {
             title: i18n.tr("Details")
             page: Page {
                 Column {
-                    width: units.gu(50)
+                    width: parent.width
+
                     ListItem.SingleValue {
                         text: i18n.tr("Location")
                         value: file.path
@@ -84,6 +85,11 @@ MainView {
                     }
 
                     ListItem.SingleValue {
+                        text: i18n.tr("Created")
+                        value: qsTr("%1").arg(file.creationTime.toLocaleString(Qt.locale()))
+                    }
+
+                    ListItem.SingleValue {
                         text: i18n.tr("Last modified")
                         value: qsTr("%1").arg(file.lastModified.toLocaleString(Qt.locale()))
                     }
@@ -91,7 +97,7 @@ MainView {
                     ListItem.SingleValue {
                         id: mimetypeItem
 						objectName: "mimetypeItem"
-                        text: i18n.tr("Mimetype")
+                        text: i18n.tr("MIME type")
                         value: "none"
                     }
                 }
@@ -100,14 +106,14 @@ MainView {
     }
 
     Component {
-        id: unknowTypeDialog
+        id: unknownTypeDialog
         UnknowTypeDialog {
 
         }
     }
 
-    function runUnknowTypeDialog()
+    function runUnknownTypeDialog()
     {
-        PopupUtils.open(unknowTypeDialog, pageMain);
+        PopupUtils.open(unknownTypeDialog, pageMain);
     }
 }
