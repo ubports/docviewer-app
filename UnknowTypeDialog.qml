@@ -6,6 +6,7 @@ import "loadComponent.js" as LoadComponent
 
 Dialog {
     id: unknownDialog
+    objectName: "unknownDialog"
     title: i18n.tr("Unknown file type")
     text: i18n.tr("Sorry but we can't find a way to display this file. Do you want to open it as a plain text?")
     Button {
