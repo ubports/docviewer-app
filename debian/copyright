@@ -6,6 +6,7 @@ Files: *
 Copyright: 2013 Canonical Ltd.
            2013 Granger Anthony <grangeranthony@gmail.com>
            2013 Omer Akram <om26er@ubuntu.com>
+           2014 Bartosz Kosiorek <bartosz.kosiorek@gmail.com>
 License: GPL-3
 
 Files: debian/*

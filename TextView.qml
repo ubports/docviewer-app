@@ -24,7 +24,7 @@ Flickable {
             autoSize: true
             maximumLineCount: 0
             readOnly: true
-            //activeFocusOnPress: false;
+            //activeFocusOnPress: true;
             highlighted: true
 
             text: "Loading..."
@@ -47,5 +47,28 @@ Flickable {
         }
     }
 
+    Keys.onPressed: {
+        if (event.key === Qt.Key_PageDown) {
+            if (!flickable.atYEnd)
+                flickable.contentY = flickable.contentY + height / 2;
+            event.accepted = true;
+        } else if (event.key === Qt.Key_PageUp) {
+            if (!flickable.atYBeginning)
+                flickable.contentY = flickable.contentY - height / 2;
+            event.accepted = true;
+        }
+    }
+    Keys.onLeftPressed: {
+        flickable.flick( -width / 2, 0)
+    }
+    Keys.onRightPressed: {
+        flickable.flick( width / 2, 0)
+    }
+    Keys.onUpPressed: {
+        flickable.flick( 0, height / 2)
+    }
+    Keys.onDownPressed: {
+        flickable.flick( 0, -height / 2)
+    }
 }
 

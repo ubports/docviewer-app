@@ -46,26 +46,26 @@ Flickable {
         }
     }
 
-        Image{
+    Image {
 
-            property real startWidth
+        property real startWidth
 
-            id: image
-            objectName: "imageItem"
+        id: image
+        objectName: "imageItem"
 
-            source: file.path
-            smooth: true
-            fillMode: Image.PreserveAspectFit
-            width: parent.width
+        source: file.path
+        smooth: true
+        fillMode: Image.PreserveAspectFit
+        width: parent.width
 
-            Component.onCompleted: {
-                if (width > sourceSize.width)
-                    startWidth = sourceSize.width
-                else
-                    startWidth = width
+        Component.onCompleted: {
+            if (width > sourceSize.width)
+                startWidth = sourceSize.width
+            else
+                startWidth = width
 
 
-            }
         }
+    }
 
 }

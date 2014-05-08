@@ -11,7 +11,10 @@ function load(mimetype) {
 
     var qmlToLoad = "";
 
-    if (mimetype === "text/plain")
+    // Open all text files in text editor
+    // With that fix it is possible to open LICENSE file
+    // which was recognised as text/x-pascal
+    if (mimetype.substring(0, 5) === "text/")
     {
         qmlToLoad = "TextView";
     }
@@ -45,6 +48,8 @@ function load(mimetype) {
     }
     else
     {
-        runUnknowTypeDialog();
+        console.debug("Unknown MIME type: "+ mimetype);
+        runUnknownTypeDialog();
     }
+    return mimetype;
 }

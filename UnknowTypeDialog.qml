@@ -5,24 +5,25 @@ import Ubuntu.Components.Popups 0.1
 import "loadComponent.js" as LoadComponent
 
 Dialog {
-    id: unknowDialog
-    title: "Unknow type"
-    text: "Sorry but we can't find a way to display this file. Do you want to open it as a plain text ?"
+    id: unknownDialog
+    objectName: "unknownDialog"
+    title: i18n.tr("Unknown file type")
+    text: i18n.tr("Sorry but we can't find a way to display this file. Do you want to open it as a plain text?")
     Button {
-        text: "Yes"
+        text: i18n.tr("Yes")
         color: "green"
 
         onClicked: {
             LoadComponent.load("text/plain");
-            unknowDialog.destroy();
+            unknownDialog.destroy();
         }
     }
     Button {
-        text: "No"
+        text: i18n.tr("No")
         color: "red"
 
         onClicked: {
-            unknowDialog.destroy();
+            unknownDialog.destroy();
         }
     }
 }

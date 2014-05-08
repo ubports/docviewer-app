@@ -1,3 +1,5 @@
 {
-    "policy_version": 1.0
+    "policy_groups": [
+    ],
+    "policy_version": 1
 }

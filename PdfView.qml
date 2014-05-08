@@ -80,7 +80,7 @@ Flickable {
 
     }
 
-    Component.onCompleted : {
+    Component.onCompleted: {
 
         var i=0;
         for(i=1; i <= popplerProp.numPages; i++)
