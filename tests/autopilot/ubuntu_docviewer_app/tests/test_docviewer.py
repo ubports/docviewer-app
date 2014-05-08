@@ -92,7 +92,7 @@ class TestMainWindow(DocviewerTestCase):
             self.launch_test_installed(self.sample_dir + filePath)
 
         self.assertThat(
-            self.app.select_single("Dialog", title="Unknow type").visible,
+            self.app.select_single("Dialog", title="Unknown type").visible,
             Eventually(Equals(True)))
 
     def test_open_pdf_file_type(self):
