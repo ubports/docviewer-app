@@ -9,8 +9,6 @@
 
 from __future__ import absolute_import
 
-from pprint import pprint
-
 from autopilot.matchers import Eventually
 from testtools.matchers import Equals, NotEquals
 
@@ -45,7 +43,6 @@ class TestMainWindow(DocviewerTestCase):
         #Check if textarea is no longer empty
         self.assertThat(
             textArea.text, Eventually(NotEquals(False)))
-
 
     def test_open_image_file(self):
 
@@ -92,7 +89,8 @@ class TestMainWindow(DocviewerTestCase):
             self.launch_test_installed(self.sample_dir + filePath)
 
         self.assertThat(
-            self.app.select_single("Dialog", objectName="unknownDialog").visible,
+            self.app.select_single("Dialog",
+                                   objectName="unknownDialog").visible,
             Eventually(Equals(True)))
 
     def test_open_pdf_file_type(self):
@@ -116,4 +114,3 @@ class TestMainWindow(DocviewerTestCase):
             self.launch_test_installed(self.sample_dir + filePath)
 
         self.check_mimeType()
-
