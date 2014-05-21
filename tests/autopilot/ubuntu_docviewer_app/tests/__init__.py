@@ -7,17 +7,11 @@
 
 """Docviewer app autopilot tests."""
 
-import os.path
-
-from pprint import pprint
-
 from autopilot.input import Mouse, Touch, Pointer
 from autopilot.platform import model
 from autopilot.testcase import AutopilotTestCase
 
-from ubuntuuitoolkit import emulators as toolkit_emulators
 from ubuntu_docviewer_app import emulators
-
 
 class DocviewerTestCase(AutopilotTestCase):
 
@@ -50,7 +44,8 @@ class DocviewerTestCase(AutopilotTestCase):
             "qmlscene",
             arg,
             "/usr/share/ubuntu-docviewer-app/ubuntu-docviewer-app.qml",
-            "--desktop_file_hint=/usr/share/applications/ubuntu-docviewer-app.desktop",
+            "--desktop_file_hint"
+            "=/usr/share/applications/ubuntu-docviewer-app.desktop",
             app_type='qt')
 
     @property
