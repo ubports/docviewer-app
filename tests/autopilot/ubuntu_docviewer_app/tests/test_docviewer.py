@@ -33,14 +33,14 @@ class TestMainWindow(DocviewerTestCase):
         else:
             self.launch_test_installed(self.sample_dir + filePath)
 
-        #Check if the app is correclty launched
+        # Check if the app is correclty launched
         self.assertThat(
             self.main_view.visible, Eventually(Equals(True)))
 
         textArea = self.main_view.select_single(
             "TextArea", objectName="textAreaMain")
 
-        #Check if textarea is no longer empty
+        # Check if textarea is no longer empty
         self.assertThat(
             textArea.text, Eventually(NotEquals(False)))
 
@@ -53,14 +53,14 @@ class TestMainWindow(DocviewerTestCase):
         else:
             self.launch_test_installed(self.sample_dir + filePath)
 
-        #Check if the app is correclty launched
+        # Check if the app is correclty launched
         self.assertThat(
             self.main_view.visible, Eventually(Equals(True)))
 
         imageItem = self.main_view.select_single(
             "QQuickImage", objectName="imageItem")
 
-        #Check if status of Image is "Ready"
+        # Check if status of Image is "Ready"
         self.assertThat(
             imageItem.status, Eventually(Equals(1)))
 
