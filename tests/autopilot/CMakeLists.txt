@@ -1,0 +1,1 @@
+add_subdirectory(ubuntu_docviewer_app)

@@ -9,14 +9,14 @@ include(GNUInstallDirs)
 option(INSTALL_TESTS "Install the tests on make install" on)
 option(CLICK_MODE "Installs to a contained location" on)
 
-set(APP_NAME calendar)
-set(DESKTOP_FILE "${PROJECT_NAME}_${APP_NAME}.desktop")
+set(APP_NAME docviewer)
+set(DESKTOP_FILE "ubuntu-docviewer-app.desktop")
 set(URLS_FILE "${PROJECT_NAME}_${APP_NAME}.url-dispatcher")
-set(MAIN_QML calendar.qml)
-set(ICON_FILE calendar-app@30.png)
-set(AUTOPILOT_DIR calendar_app)
-set(APP_HARDCODE calendar-app)
-set(UBUNTU_MANIFEST_PATH "click/manifest.json.in" CACHE INTERNAL "Relative path to the manifest file")
+set(MAIN_QML ubuntu-docviewer-app.qml)
+set(ICON_FILE docviewer64.png)
+set(AUTOPILOT_DIR ubuntu-docviewer-app)
+set(APP_HARDCODE docviewer-app)
+set(UBUNTU_MANIFEST_PATH "manifest.json" CACHE INTERNAL "Relative path to the manifest file")
 
 if(CLICK_MODE)
     if(NOT DEFINED BZR_SOURCE)
@@ -52,7 +52,7 @@ message("Found ${I18N_SRC_FILES}")
 file(GLOB SRC_FILES
      RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
      *.qml *.js)
-add_custom_target(ubuntu-calendar-app_QMlFiles ALL SOURCES ${SRC_FILES})
+add_custom_target(ubuntu-docviewer-app_QMlFiles ALL SOURCES ${SRC_FILES})
 
 file(GLOB RESOURCE_FILES
      RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
@@ -73,6 +73,5 @@ install(FILES ${URLS_FILE} DESTINATION ${URLS_DIR})
 # Tests
 enable_testing()
 
-add_subdirectory(click)
-add_subdirectory(po)
+
 add_subdirectory(tests)
