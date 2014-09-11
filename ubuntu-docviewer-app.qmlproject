@@ -19,6 +19,10 @@ Project {
     Files {
         filter: "README*"
     }
+    /* Shows the autopilot files in the project view */
+    Files {
+        filter: "*.py"
+    }
     /* Shows the translation files and the .pro file used to generate the .pot template */
     Files {
         filter: "*.po*"
