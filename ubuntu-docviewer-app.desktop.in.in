@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Terminal=false
+Exec=@EXEC@
+Icon=@ICON@
+Name=Document Viewer
+MimeType=text/plain;image/png;image/jpeg;image/svg+xml;application/pdf
+Path=/usr/share/ubuntu-docviewer-app
+X-Ubuntu-Touch=true
+X-Ubuntu-StageHint=SideStage
