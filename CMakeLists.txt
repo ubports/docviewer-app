@@ -11,7 +11,7 @@ option(CLICK_MODE "Installs to a contained location" on)
 
 set(APP_NAME docviewer)
 set(DESKTOP_FILE "ubuntu-docviewer-app.desktop")
-set(URLS_FILE "${PROJECT_NAME}_${APP_NAME}.url-dispatcher")
+#set(URLS_FILE "${PROJECT_NAME}_${APP_NAME}.url-dispatcher")
 set(MAIN_QML ubuntu-docviewer-app.qml)
 set(ICON_FILE docviewer64.png)
 set(AUTOPILOT_DIR ubuntu-docviewer-app)
@@ -68,7 +68,7 @@ add_custom_target(${DESKTOP_FILE} ALL
 
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE} DESTINATION ${DESKTOP_DIR})
  
-install(FILES ${URLS_FILE} DESTINATION ${URLS_DIR})
+#install(FILES ${URLS_FILE} DESTINATION ${URLS_DIR})
 
 # Tests
 enable_testing()
