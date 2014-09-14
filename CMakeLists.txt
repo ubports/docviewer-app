@@ -14,7 +14,7 @@ set(DESKTOP_FILE "ubuntu-docviewer-app.desktop")
 #set(URLS_FILE "${PROJECT_NAME}_${APP_NAME}.url-dispatcher")
 set(MAIN_QML ubuntu-docviewer-app.qml)
 set(ICON_FILE docviewer@30.png)
-set(AUTOPILOT_DIR ubuntu-docviewer-app)
+set(AUTOPILOT_DIR ubuntu_docviewer_app)
 set(APP_HARDCODE docviewer-app)
 set(UBUNTU_MANIFEST_PATH "manifest.json" CACHE INTERNAL "Relative path to the manifest file")
 
