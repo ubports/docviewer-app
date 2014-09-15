@@ -1,4 +1,2 @@
-ubuntu-docviewer-app.desktop usr/share/applications/
-*.qml usr/share/ubuntu-docviewer-app/
-*.png usr/share/ubuntu-docviewer-app/
-*.js usr/share/ubuntu-docviewer-app/
+usr/bin/*
+usr/share/*
