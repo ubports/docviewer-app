@@ -1,4 +1,5 @@
 add_subdirectory(tests)
+#add_subdirectory(files)
 
 # make the emulator files visible on qtcreator
 file(GLOB PYTHON_EMULATOR_FILES
