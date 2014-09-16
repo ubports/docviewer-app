@@ -7,22 +7,24 @@
 
 """Docviewer app autopilot tests."""
 
-from __future__ import absolute_import
-
 from autopilot.matchers import Eventually
 from testtools.matchers import Equals, NotEquals
 
-from ubuntu_docviewer_app.tests import DocviewerTestCase
+from ubuntu_docviewer_app.tests import DocviewerAppTestCase
 import os
 
 
-class TestMainWindow(DocviewerTestCase):
+class TestMainWindow(DocviewerAppTestCase):
 
     def setUp(self):
         super(TestMainWindow, self).setUp()
 
-    def tearDown(self):
-        super(TestMainWindow, self).tearDown()
+    def _check_mimeType(self):
+        mimetypeItem = self.app.main_view.select_single(
+            "SingleValue", objectName="mimetypeItem")
+
+        self.assertThat(
+            mimetypeItem.value, Eventually(NotEquals(False)))
 
     def test_open_text_file(self):
 
@@ -37,7 +39,7 @@ class TestMainWindow(DocviewerTestCase):
         self.assertThat(
             self.main_view.visible, Eventually(Equals(True)))
 
-        textArea = self.main_view.select_single(
+        textArea = self.app.main_view.select_single(
             "TextArea", objectName="textAreaMain")
 
         # Check if textarea is no longer empty
@@ -57,7 +59,8 @@ class TestMainWindow(DocviewerTestCase):
         self.assertThat(
             self.main_view.visible, Eventually(Equals(True)))
 
-        imageItem = self.main_view.select_single(
+
+        imageItem = self.app.main_view.select_single(
             "QQuickImage", objectName="imageItem")
 
         # Check if status of Image is "Ready"
@@ -71,14 +74,7 @@ class TestMainWindow(DocviewerTestCase):
             self.launch_test_local(filePath)
         else:
             self.launch_test_installed(self.sample_dir + filePath)
-        self.check_mimeType()
-
-    def check_mimeType(self):
-        mimetypeItem = self.main_view.select_single(
-            "SingleValue", objectName="mimetypeItem")
-
-        self.assertThat(
-            mimetypeItem.value, Eventually(NotEquals(False)))
+        self._check_mimeType()
 
     def test_unknown_file_type(self):
         filePath = 'ubuntu_docviewer_app/files/unknown.type'
@@ -113,4 +109,4 @@ class TestMainWindow(DocviewerTestCase):
         else:
             self.launch_test_installed(self.sample_dir + filePath)
 
-        self.check_mimeType()
+        self._check_mimeType()
