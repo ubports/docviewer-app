@@ -15,7 +15,6 @@ Homepage: https://launchpad.net/ubuntu-docviewer-app
 Vcs-Bzr: https://code.launchpad.net/~ubuntu-docviewer-dev/ubuntu-docviewer-app/trunk
 
 Package: ubuntu-docviewer-app
-Section: misc
 Architecture: any
 Depends: file-qml-plugin,
          qmlscene,
