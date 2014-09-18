@@ -27,7 +27,7 @@ class DocviewerTestCase(AutopilotTestCase):
         scenarios = [('with touch', dict(input_device_class=Touch))]
 
     local_location = "../../ubuntu-docviewer-app.qml"
-    sample_dir = "/usr/lib/python3/dist-packages/"
+    sample_dir = "@PYTHON_PACKAGE_DIR@"
 
     def setUp(self):
         self.pointing_device = Pointer(self.input_device_class.create())
