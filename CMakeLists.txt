@@ -30,6 +30,9 @@ if(CLICK_MODE)
     set(EXEC "qmlscene %u ${MAIN_QML}")
     set(DESKTOP_DIR ${DATA_DIR})
     set(URLS_DIR ${DATA_DIR})
+    configure_file(manifest.json.in ${CMAKE_CURRENT_BINARY_DIR}/manifest.json)
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/manifest.json docviewer.apparmor
+            DESTINATION ${CMAKE_INSTALL_PREFIX})
     # Make the click files visible in Qt Creator
     file(GLOB CLICK_FILES
          RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
