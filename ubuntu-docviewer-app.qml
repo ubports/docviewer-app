@@ -75,23 +75,23 @@ MainView {
                 Column {
                     width: parent.width
 
-                    ListItem.SingleValue {
+                    ListItem.Subtitled {
                         text: i18n.tr("Location")
-                        value: file.path
+                        subText: file.path
                     }
                     ListItem.SingleValue {
                         text: i18n.tr("Size")
                         value: Utils.printSize(file.size)
                     }
 
-                    ListItem.SingleValue {
+                    ListItem.Subtitled {
                         text: i18n.tr("Created")
-                        value: qsTr("%1").arg(file.creationTime.toLocaleString(Qt.locale()))
+                        subText: qsTr("%1").arg(file.creationTime.toLocaleString(Qt.locale()))
                     }
 
-                    ListItem.SingleValue {
+                    ListItem.Subtitled {
                         text: i18n.tr("Last modified")
-                        value: qsTr("%1").arg(file.lastModified.toLocaleString(Qt.locale()))
+                        subText: qsTr("%1").arg(file.lastModified.toLocaleString(Qt.locale()))
                     }
 
                     ListItem.SingleValue {
