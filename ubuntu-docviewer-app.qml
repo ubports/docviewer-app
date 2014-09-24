@@ -11,7 +11,7 @@ import "loadComponent.js" as LoadComponent
 MainView {
     objectName: "docviewer"
 
-    applicationName: "ubuntu-docviewer-app"
+    applicationName: "com.ubuntu.docviewer"
     
     width: units.gu(50)
     height: units.gu(75)
