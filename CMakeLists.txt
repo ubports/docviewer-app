@@ -19,6 +19,8 @@ set(APP_HARDCODE docviewer-app)
 set(UBUNTU_MANIFEST_PATH "manifest.json.in" CACHE INTERNAL "Relative path to the manifest file")
 
 if(CLICK_MODE)
+    #adds the plugins dir only if building a click package
+    add_subdirectory(plugins)
     if(NOT DEFINED BZR_SOURCE)
         set(BZR_SOURCE "lp:ubuntu-${APP_HARDCODE}")
         message("-- Setting BZR_SOURCE to ${BZR_SOURCE}")
