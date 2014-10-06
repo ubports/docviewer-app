@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.3
 import Ubuntu.Components 1.1
 import Ubuntu.Components.Popups 1.0
 import Ubuntu.Components.ListItems 1.0 as ListItem
@@ -11,7 +11,7 @@ import "loadComponent.js" as LoadComponent
 MainView {
     objectName: "docviewer"
 
-    applicationName: "ubuntu-docviewer-app"
+    applicationName: "com.ubuntu.docviewer"
     
     width: units.gu(50)
     height: units.gu(75)
@@ -75,23 +75,23 @@ MainView {
                 Column {
                     width: parent.width
 
-                    ListItem.SingleValue {
+                    ListItem.Subtitled {
                         text: i18n.tr("Location")
-                        value: file.path
+                        subText: file.path
                     }
                     ListItem.SingleValue {
                         text: i18n.tr("Size")
                         value: Utils.printSize(file.size)
                     }
 
-                    ListItem.SingleValue {
+                    ListItem.Subtitled {
                         text: i18n.tr("Created")
-                        value: qsTr("%1").arg(file.creationTime.toLocaleString(Qt.locale()))
+                        subText: qsTr("%1").arg(file.creationTime.toLocaleString(Qt.locale()))
                     }
 
-                    ListItem.SingleValue {
+                    ListItem.Subtitled {
                         text: i18n.tr("Last modified")
-                        value: qsTr("%1").arg(file.lastModified.toLocaleString(Qt.locale()))
+                        subText: qsTr("%1").arg(file.lastModified.toLocaleString(Qt.locale()))
                     }
 
                     ListItem.SingleValue {
