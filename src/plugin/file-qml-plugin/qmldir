@@ -1,1 +1,2 @@
+module org.ubuntu.fileqmlplugin
 plugin filePlugin

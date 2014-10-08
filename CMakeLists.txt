@@ -87,5 +87,5 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE} DESTINATION ${DESKTOP_
 # Tests
 enable_testing()
 
-
+add_subdirectory(src)
 add_subdirectory(tests)
