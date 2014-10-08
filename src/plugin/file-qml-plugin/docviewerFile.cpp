@@ -100,6 +100,6 @@ void DocviewerFile::s_readMimeType()
 void DocviewerFile::s_finished(int exitCode)
 {
     if (exitCode != 0)
-        mimetype = "Unknow";
+        mimetype = "Unknown";
     emit mimetypeChanged();
 }
