@@ -18,21 +18,32 @@ set(AUTOPILOT_DIR ubuntu_docviewer_app)
 set(APP_HARDCODE docviewer-app)
 set(UBUNTU_MANIFEST_PATH "manifest.json.in" CACHE INTERNAL "Relative path to the manifest file")
 
+# Sets BZR_REVNO
+execute_process(
+    COMMAND bzr revno ${CMAKE_SOURCE_DIR}
+    OUTPUT_VARIABLE BZR_REVNO
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+
 if(CLICK_MODE)
-    #adds the plugins dir only if building a click package
-    add_subdirectory(plugins)
     if(NOT DEFINED BZR_SOURCE)
         set(BZR_SOURCE "lp:ubuntu-${APP_HARDCODE}")
         message("-- Setting BZR_SOURCE to ${BZR_SOURCE}")
     endif(NOT DEFINED BZR_SOURCE)
+
     if(NOT BZR_REVNO)
         set(BZR_REVNO "latest")
     endif(NOT BZR_REVNO)
+    execute_process(
+        COMMAND dpkg-architecture -qDEB_HOST_MULTIARCH
+            OUTPUT_VARIABLE ARCH_TRIPLET
+            OUTPUT_STRIP_TRAILING_WHITESPACE
+    )
     set(CMAKE_INSTALL_PREFIX /)
-    set(CMAKE_INSTALL_BINDIR /)
+    set(QT_IMPORTS_DIR "/lib/${ARCH_TRIPLET}")
+    set(BIN_DIR /lib/${ARCH_TRIPLET}/bin)
     set(DATA_DIR /)
     set (ICON ${ICON_FILE})
-    set(EXEC "qmlscene %u ${MAIN_QML}")
     set(DESKTOP_DIR ${DATA_DIR})
     set(URLS_DIR ${DATA_DIR})
     configure_file(manifest.json.in ${CMAKE_CURRENT_BINARY_DIR}/manifest.json)
@@ -43,7 +54,7 @@ if(CLICK_MODE)
          RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
          *.json *.json.in *.apparmor)
 
-    add_custom_target(com_ubuntu_shorts_CLICKFiles ALL SOURCES ${CLICK_FILES})
+    add_custom_target(com_ubuntu_docviewer_CLICKFiles ALL SOURCES ${CLICK_FILES})
 else(CLICK_MODE)
     set(DATA_DIR ${CMAKE_INSTALL_DATADIR}/ubuntu-${APP_HARDCODE})
     set(EXEC ${APP_HARDCODE})
