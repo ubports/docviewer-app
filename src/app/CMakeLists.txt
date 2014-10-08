@@ -7,7 +7,7 @@ set(docviewer_SRCS
 
 add_executable(docviewer ${docviewer_SRCS})
 
-#qt5_use_modules(docviewer Gui Qml Quick)
+qt5_use_modules(docviewer Gui Qml Quick)
 
 if(NOT "${CMAKE_CURRENT_SOURCE_DIR}" STREQUAL "${CMAKE_CURRENT_BINARY_DIR}")
 add_custom_target(docviewer-qmlfiles ALL

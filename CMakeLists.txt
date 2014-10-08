@@ -1,7 +1,10 @@
-project(com.ubuntu.docviewer)
+project(com.ubuntu.docviewer C CXX)
 cmake_minimum_required(VERSION 2.8.9)
 find_program(INTLTOOL_MERGE intltool-merge)
 find_program(INTLTOOL_EXTRACT intltool-extract)
+
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -fno-permissive -pedantic -Wall -Wextra -fPIC")
 
 # Standard install paths
 include(GNUInstallDirs)
@@ -12,10 +15,10 @@ option(CLICK_MODE "Installs to a contained location" on)
 set(APP_NAME docviewer)
 set(DESKTOP_FILE "${PROJECT_NAME}.desktop")
 #set(URLS_FILE "${PROJECT_NAME}_${APP_NAME}.url-dispatcher")
-set(MAIN_QML ubuntu-docviewer-app.qml)
+set(LP_PROJECT ubuntu-docviewer-app)
 set(ICON_FILE docviewer@30.png)
 set(AUTOPILOT_DIR ubuntu_docviewer_app)
-set(APP_HARDCODE docviewer-app)
+set(EXEC "${APP_NAME}")
 set(UBUNTU_MANIFEST_PATH "manifest.json.in" CACHE INTERNAL "Relative path to the manifest file")
 
 # Sets BZR_REVNO
@@ -27,17 +30,25 @@ execute_process(
 
 if(CLICK_MODE)
     if(NOT DEFINED BZR_SOURCE)
-        set(BZR_SOURCE "lp:ubuntu-${APP_HARDCODE}")
+        set(BZR_SOURCE "lp:${LP_PROJECT}")
         message("-- Setting BZR_SOURCE to ${BZR_SOURCE}")
     endif(NOT DEFINED BZR_SOURCE)
 
     if(NOT BZR_REVNO)
         set(BZR_REVNO "latest")
     endif(NOT BZR_REVNO)
+
+    # Find out the architecture for package building
+    # to determine the plugin's installation path
     execute_process(
         COMMAND dpkg-architecture -qDEB_HOST_MULTIARCH
             OUTPUT_VARIABLE ARCH_TRIPLET
             OUTPUT_STRIP_TRAILING_WHITESPACE
+    )
+    execute_process(
+      COMMAND dpkg-architecture -qDEB_HOST_ARCH
+      OUTPUT_VARIABLE CLICK_ARCH
+      OUTPUT_STRIP_TRAILING_WHITESPACE
     )
     set(CMAKE_INSTALL_PREFIX /)
     set(QT_IMPORTS_DIR "/lib/${ARCH_TRIPLET}")
@@ -56,15 +67,18 @@ if(CLICK_MODE)
 
     add_custom_target(com_ubuntu_docviewer_CLICKFiles ALL SOURCES ${CLICK_FILES})
 else(CLICK_MODE)
-    set(DATA_DIR ${CMAKE_INSTALL_DATADIR}/ubuntu-${APP_HARDCODE})
-    set(EXEC ${APP_HARDCODE})
-    set(ICON ${CMAKE_INSTALL_PREFIX}/${DATA_DIR}/${ICON_FILE})
-    configure_file(${APP_HARDCODE}.in
-        ${CMAKE_CURRENT_BINARY_DIR}/${APP_HARDCODE})
-    install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/${APP_HARDCODE}
-        DESTINATION ${CMAKE_INSTALL_BINDIR})
+    # components PATH
+    execute_process(
+        COMMAND qmake -query QT_INSTALL_QML
+            OUTPUT_VARIABLE QT_IMPORTS_DIR
+            OUTPUT_STRIP_TRAILING_WHITESPACE
+    )
+    set(DATA_DIR ${CMAKE_INSTALL_DATADIR}/${APP_NAME})
+    set(ICON "${CMAKE_INSTALL_PREFIX}/${DATA_DIR}/${ICON}")
     set(DESKTOP_DIR ${CMAKE_INSTALL_DATADIR}/applications)
-    set(URLS_DIR ${CMAKE_INSTALL_DATADIR}/url-dispatcher/urls)
+    set(APPLICATION_DIR ${CMAKE_INSTALL_DATADIR}/accounts/applications)
+    #install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/${APP_HARDCODE}
+    #    DESTINATION ${CMAKE_INSTALL_BINDIR})
 endif(CLICK_MODE)
 
 file(GLOB_RECURSE I18N_SRC_FILES
@@ -84,7 +98,7 @@ file(GLOB RESOURCE_FILES
      *.png *.svg)
 install(FILES ${SRC_FILES} ${RESOURCE_FILES} ${ICON_FILE} DESTINATION ${DATA_DIR})
 
-configure_file(${DESKTOP_FILE}.in.in ${DESKTOP_FILE}.in)
+configure_file(${DESKTOP_FILE}.in.in ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE}.in)
 
 add_custom_target(${DESKTOP_FILE} ALL
   COMMENT "Merging translations into ${DESKTOP_FILE}"
