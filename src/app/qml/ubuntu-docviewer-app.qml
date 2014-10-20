@@ -2,28 +2,23 @@ import QtQuick 2.3
 import Ubuntu.Components 1.1
 import Ubuntu.Components.Popups 1.0
 import Ubuntu.Components.ListItems 1.0 as ListItem
-
 import org.ubuntu.fileqmlplugin 1.0
 
-import "utils.js" as Utils
 import "loadComponent.js" as LoadComponent
 
 MainView {
+    id: mainView
     objectName: "docviewer"
 
     applicationName: "com.ubuntu.docviewer"
+    useDeprecatedToolbar: false
     
     width: units.gu(50)
     height: units.gu(75)
 
-    Component.onCompleted: {
-    }
+    property string minetype: "none"
 
-    Component.onDestruction: {
-
-    }
-
-    Arguments {
+   Arguments {
         id: args
 
         defaultArgument.help: "Path of the document"
@@ -31,87 +26,32 @@ MainView {
     }
 
     File {
+        objectName: "fileObject"
         id: file
         path: args.defaultArgument.at(0)
 
-        onMimetypeChanged: {
-            var mimetypeValue = file.mimetype;
-            mimetypeItem.value = LoadComponent.load(mimetypeValue);
-        }
+        onMimetypeChanged: mainView.minetype = LoadComponent.load(file.mimetype);
     }
-    
-    Tabs {
-        id: tabs
 
-        Tab {
-            objectName: "tabViewer"
-            id: tabViewer;
-            anchors.fill: parent
+    PageStack {
+        id: pageStack
 
-            
-            title: Utils.getNameOfFile(file.path);
+        Component {
+            DetailsPage {
+                objectName: "TabDetails"
+                id: tabDetails;
 
-            page: Page {
-                id: pageMain
-
-                anchors.fill: parent
-
-                tools: ToolbarItems {
-                    back {
-                        visible: true
-                    }
-                }
-            }
-        }
-
-        Tab {
-            objectName: "TabDetails"
-            id: tabDetails;
-
-            title: i18n.tr("Details")
-            page: Page {
-                Column {
-                    width: parent.width
-
-                    ListItem.Subtitled {
-                        text: i18n.tr("Location")
-                        subText: file.path
-                    }
-                    ListItem.SingleValue {
-                        text: i18n.tr("Size")
-                        value: Utils.printSize(file.size)
-                    }
-
-                    ListItem.Subtitled {
-                        text: i18n.tr("Created")
-                        subText: i18n.tr("%1").arg(file.creationTime.toLocaleString(Qt.locale()))
-                    }
-
-                    ListItem.Subtitled {
-                        text: i18n.tr("Last modified")
-                        subText: i18n.tr("%1").arg(file.lastModified.toLocaleString(Qt.locale()))
-                    }
-
-                    ListItem.SingleValue {
-                        id: mimetypeItem
-						objectName: "mimetypeItem"
-                        text: i18n.tr("MIME type")
-                        value: "none"
-                    }
-                }
             }
         }
     }
 
     Component {
         id: unknownTypeDialog
-        UnknownTypeDialog {
-
-        }
+        UnknownTypeDialog {}
     }
 
     function runUnknownTypeDialog()
     {
-        PopupUtils.open(unknownTypeDialog, pageMain);
+        PopupUtils.open(unknownTypeDialog);
     }
 }
