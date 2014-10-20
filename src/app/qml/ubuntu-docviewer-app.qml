@@ -3,7 +3,7 @@ import Ubuntu.Components 1.1
 import Ubuntu.Components.Popups 1.0
 import Ubuntu.Components.ListItems 1.0 as ListItem
 
-import org.docviewer.file 1.0
+import org.ubuntu.fileqmlplugin 1.0
 
 import "utils.js" as Utils
 import "loadComponent.js" as LoadComponent
@@ -32,7 +32,7 @@ MainView {
 
     File {
         id: file
-        path: Utils.relToAbs(args.defaultArgument.at(0))
+        path: args.defaultArgument.at(0)
 
         onMimetypeChanged: {
             var mimetypeValue = file.mimetype;
