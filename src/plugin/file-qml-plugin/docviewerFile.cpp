@@ -2,6 +2,7 @@
 #include <QObject>
 #include <QDebug>
 #include <QFileInfo>
+#include <QDir>
 
 #include "docviewerFile.h"
 
@@ -46,7 +47,7 @@ void DocviewerFile::setPath(QString p) {
         this->path = "";
     }
     else {
-        this->path = p;
+        this->path = QFileInfo(QDir::currentPath(), p).absoluteFilePath();
     }
 
     this->open();
