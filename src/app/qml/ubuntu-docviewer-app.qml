@@ -40,7 +40,6 @@ MainView {
             DetailsPage {
                 objectName: "TabDetails"
                 id: tabDetails;
-
             }
         }
     }
