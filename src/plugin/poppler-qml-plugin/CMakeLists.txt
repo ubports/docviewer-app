@@ -30,6 +30,8 @@ add_library(popplerqmlplugin MODULE
     ${popplerqmlplugin_SRCS}
 )
 
+target_link_libraries(popplerqmlplugin poppler-qt5)
+
 qt5_use_modules(popplerqmlplugin Gui Qml Quick)
 
 # Copy the plugin, the qmldir file and other assets to the build dir for running in QtCreator

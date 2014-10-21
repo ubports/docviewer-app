@@ -12,7 +12,7 @@ void PopplerPlugin::registerTypes(const char *uri)
     qmlRegisterType<PdfModel>(uri, 1, 0, "Poppler");
 }
 
-void BackendPlugin::initializeEngine(QQmlEngine *engine, const char *uri)
+void PopplerPlugin::initializeEngine(QQmlEngine *engine, const char *uri)
 {
     QQmlExtensionPlugin::initializeEngine(engine, uri);
 }
