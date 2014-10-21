@@ -22,6 +22,7 @@ Depends: file-qml-plugin,
          qtdeclarative5-poppler-qml-plugin,
          qtdeclarative5-qtquick2-plugin,
          qtdeclarative5-ubuntu-ui-toolkit-plugin | qt-components-ubuntu,
+         ${shlibs:Depends},
          ${misc:Depends}
 Description: Document Viewer application
  Core Document Viewer application
