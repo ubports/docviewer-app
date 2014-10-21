@@ -14,6 +14,7 @@ from autopilot.platform import model
 from autopilot.testcase import AutopilotTestCase
 import ubuntuuitoolkit
 
+import CMakePluginParser
 from ubuntu_docviewer_app import emulators
 
 
