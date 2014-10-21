@@ -32,7 +32,7 @@ class DocviewerTestCase(AutopilotTestCase):
     sample_dir = "/usr/lib/python3/dist-packages/"
 
     def setUp(self):
-        self.binary = 'docviewer'
+        self.binary = 'ubuntu-docviewer-app'
         self.source_dir = os.path.dirname(
                    os.path.dirname(os.path.abspath('.')))
         self.build_dir = self._get_build_dir()
