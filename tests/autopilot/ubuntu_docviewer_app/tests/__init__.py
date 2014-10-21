@@ -34,13 +34,14 @@ class DocviewerTestCase(AutopilotTestCase):
     def setUp(self):
         self.binary = 'ubuntu-docviewer-app'
         self.source_dir = os.path.dirname(
-                   os.path.dirname(os.path.abspath('.')))
+            os.path.dirname(os.path.abspath('.')))
         self.build_dir = self._get_build_dir()
 
         self.local_location = self.build_dir
         self.local_location_qml = os.path.join(self.build_dir,
                                                'src', 'app',
-                                               'qml', 'ubuntu_docviewer_app.qml')
+                                               'qml',
+                                               'ubuntu_docviewer_app.qml')
         self.local_location_binary = os.path.join(self.build_dir,
                                                   'src', 'app', self.binary)
         self.installed_location_binary = os.path.join('/usr/bin/', self.binary)
