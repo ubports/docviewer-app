@@ -4,6 +4,7 @@ Maintainer: Ubuntu App Cats <ubuntu-touch-coreapps@lists.launchpad.net>
 Build-Depends: cmake,
                debhelper (>= 9),
                intltool,
+               pep8,
                pkg-config,
                pkg-kde-tools,
                python3-all,
