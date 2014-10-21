@@ -123,12 +123,15 @@ Page {
             actions: [
                 Action {
                     iconName: "search"
-                    onTriggered: pageMain.state = "search"
+                   // onTriggered: pageMain.state = "search"
+                    //Disable it until we provide search in Poppler plugin.
+                    enabled: false
                 },
 
                 Action {
                     iconName: "browser-tabs"
                     text: "Go to page..."
+                    enabled: false
                 },
 
                 Action {
@@ -137,9 +140,9 @@ Page {
                     onTriggered: pageStack.push(Qt.resolvedUrl("DetailsPage.qml"))
                 }
             ]
-        },
+        }
 
-        PageHeadState {
+       /* PageHeadState {
             id: headerState
             name: "search"
             head: pageMain.head
@@ -159,6 +162,6 @@ Page {
                 iconName: "back"
                 onTriggered: pageMain.state = "default"
             }
-        }
+        }*/
     ]
 }
