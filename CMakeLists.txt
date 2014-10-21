@@ -12,7 +12,7 @@ include(GNUInstallDirs)
 option(INSTALL_TESTS "Install the tests on make install" on)
 option(CLICK_MODE "Installs to a contained location" on)
 
-set(APP_NAME docviewer)
+set(APP_NAME ubuntu-docviewer-app)
 set(DESKTOP_FILE "${PROJECT_NAME}.desktop")
 #set(URLS_FILE "${PROJECT_NAME}_${APP_NAME}.url-dispatcher")
 set(LP_PROJECT ubuntu-docviewer-app)

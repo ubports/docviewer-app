@@ -5,9 +5,9 @@ set(docviewer_SRCS
     ${QML_SRCS}
 )
 
-add_executable(docviewer ${docviewer_SRCS})
+add_executable(ubuntu-docviewer-app ${docviewer_SRCS})
 
-qt5_use_modules(docviewer Gui Qml Quick)
+qt5_use_modules(ubuntu-docviewer-app Gui Qml Quick)
 
 if(NOT "${CMAKE_CURRENT_SOURCE_DIR}" STREQUAL "${CMAKE_CURRENT_BINARY_DIR}")
 add_custom_target(docviewer-qmlfiles ALL
@@ -18,7 +18,7 @@ endif(NOT "${CMAKE_CURRENT_SOURCE_DIR}" STREQUAL "${CMAKE_CURRENT_BINARY_DIR}")
 
 install(DIRECTORY qml DESTINATION ${DATA_DIR})
 if(CLICK_MODE)
-  install(TARGETS docviewer DESTINATION ${BIN_DIR})
+  install(TARGETS ubuntu-docviewer-app DESTINATION ${BIN_DIR})
 else()
-  install(TARGETS docviewer RUNTIME DESTINATION bin)
+  install(TARGETS ubuntu-docviewer-app RUNTIME DESTINATION bin)
 endif()
