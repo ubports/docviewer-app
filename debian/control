@@ -6,6 +6,7 @@ Build-Depends: cmake,
                intltool,
                python3,
                qt5-default,
+               qtdeclarative5-dev,
                qtdeclarative5-dev-tools,
                qtdeclarative5-qtquick2-plugin,
                qtdeclarative5-test-plugin
