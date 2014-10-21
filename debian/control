@@ -4,8 +4,13 @@ Maintainer: Ubuntu App Cats <ubuntu-touch-coreapps@lists.launchpad.net>
 Build-Depends: cmake,
                debhelper (>= 9),
                intltool,
-               python3,
+               pkg-config,
+               pkg-kde-tools,
+               python3-all,
+               qt5-default,
+               qt5-qmake,
                qtbase5-dev,
+               qtchooser,
                qtdeclarative5-dev,
                qtdeclarative5-dev-tools,
                qtdeclarative5-qtquick2-plugin,
@@ -22,8 +27,8 @@ Depends: file-qml-plugin,
          qtdeclarative5-poppler-qml-plugin,
          qtdeclarative5-qtquick2-plugin,
          qtdeclarative5-ubuntu-ui-toolkit-plugin | qt-components-ubuntu,
-         ${shlibs:Depends},
-         ${misc:Depends}
+         ${misc:Depends},
+         ${shlibs:Depends}
 Description: Document Viewer application
  Core Document Viewer application
 

@@ -1,4 +1,4 @@
 usr/bin/ubuntu-docviewer-app
+usr/lib/*/qt5
 usr/share/applications
 usr/share/ubuntu-docviewer-app
-usr/lib/*/qt5
