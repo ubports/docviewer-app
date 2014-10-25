@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.9)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
-set(PLUGIN_DIR org/ubuntu/fileqmlplugin)
+set(PLUGIN_DIR com/ubuntu/fileqmlplugin)
 
 #set cpp flags
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -fno-permissive -pedantic -Wall -Wextra -fPIC")
@@ -41,5 +41,5 @@ if(NOT "${CMAKE_CURRENT_SOURCE_DIR}" STREQUAL "${CMAKE_CURRENT_BINARY_DIR}")
 endif(NOT "${CMAKE_CURRENT_SOURCE_DIR}" STREQUAL "${CMAKE_CURRENT_BINARY_DIR}")
 
 # Install plugin file
-install(TARGETS fileqmlplugin DESTINATION ${QT_IMPORTS_DIR}/com/ubuntu/fileqmlplugin/)
-install(FILES qmldir DESTINATION ${QT_IMPORTS_DIR}/com/ubuntu/fileqmlplugin/)
+install(TARGETS fileqmlplugin DESTINATION ${QT_IMPORTS_DIR}/${PLUGIN_DIR})
+install(FILES qmldir DESTINATION ${QT_IMPORTS_DIR}/${PLUGIN_DIR})
