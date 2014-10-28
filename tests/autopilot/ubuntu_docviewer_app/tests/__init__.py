@@ -9,7 +9,6 @@
 """Docviewer app autopilot tests."""
 
 import os
-import glob
 from autopilot.input import Mouse, Touch, Pointer
 from autopilot.platform import model
 from autopilot.testcase import AutopilotTestCase
