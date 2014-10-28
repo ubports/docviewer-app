@@ -5,8 +5,13 @@ moc_file.cpp
 launcher/build-docviewer-launcher-Desktop-Debug/
 launcher/build-docviewer-launcher-Desktop-Release/
 launcher/src/docviewer-launcher.pro.user
-
+*.cmake
+CMakeFiles
+*_automoc.cpp
 debian/files
 debian/app-template/
 debian/*.debhelper.log
 debian/*.substvars
+com.ubuntu.docviewer.desktop
+com.ubuntu.docviewer.desktop.in
+manifest.json
