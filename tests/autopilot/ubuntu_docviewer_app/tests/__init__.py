@@ -43,8 +43,7 @@ class DocviewerTestCase(AutopilotTestCase):
         self.local_location_qml = os.path.join(self.build_dir,
                                                'src', 'app', 'qml',
                                                'ubuntu_docviewer_app.qml')
-        self.arch_dir = glob.glob('%s/obj-*' % self.build_dir)[0]
-        self.local_location_binary = os.path.join(self.arch_dir,
+        self.local_location_binary = os.path.join(self.build_dir,
                                                   'src', 'app', self.binary)
         self.installed_location_binary = os.path.join('/usr/bin/', self.binary)
         self.installed_location_qml = \
