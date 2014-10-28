@@ -6,9 +6,9 @@
 
 void PopplerPlugin::registerTypes(const char *uri)
 {
-    Q_ASSERT(uri == QLatin1String("org.ubuntu.popplerqmlplugin"));
+    Q_ASSERT(uri == QLatin1String("com.ubuntu.popplerqmlplugin"));
     
-    //@uri org.ubuntu.popplerqmlplugin
+    //@uri com.ubuntu.popplerqmlplugin
     qmlRegisterType<PdfModel>(uri, 1, 0, "Poppler");
 }
 

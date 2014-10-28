@@ -1,2 +1,2 @@
-module org.ubuntu.popplerqmlplugin
+module com.ubuntu.popplerqmlplugin
 plugin popplerqmlplugin

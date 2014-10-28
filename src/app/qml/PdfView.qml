@@ -1,6 +1,6 @@
 import QtQuick 2.3
 import Ubuntu.Components 1.1
-import org.ubuntu.popplerqmlplugin 1.0
+import com.ubuntu.popplerqmlplugin 1.0
 
 import "utils.js" as Utils
 
