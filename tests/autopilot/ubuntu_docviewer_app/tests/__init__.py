@@ -51,6 +51,7 @@ class DocviewerTestCase(AutopilotTestCase):
         self.pointing_device = Pointer(self.input_device_class.create())
         super(DocviewerTestCase, self).setUp()
 
+    @autopilot_logging.log_action(logger.info)
     def launch_test_local(self, arg):
         self.app = self.launch_test_application(
             self.local_location_binary,
@@ -58,6 +59,7 @@ class DocviewerTestCase(AutopilotTestCase):
             app_type='qt',
             emulator_base=ubuntuuitoolkit.UbuntuUIToolkitCustomProxyObjectBase)
 
+    @autopilot_logging.log_action(logger.info)
     def launch_test_installed(self, arg):
         self.app = self.launch_test_application(
             self.installed_location_binary,
