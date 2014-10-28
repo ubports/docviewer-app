@@ -7,9 +7,9 @@
 
 void BackendPlugin::registerTypes(const char *uri)
 {
-    Q_ASSERT(uri == QLatin1String("org.ubuntu.fileqmlplugin"));
+    Q_ASSERT(uri == QLatin1String("com.ubuntu.fileqmlplugin"));
     
-    //@uri org.ubuntu.fileqmlplugin
+    //@uri com.ubuntu.fileqmlplugin
 
     qmlRegisterType<DocviewerFile>(uri, 1, 0, "File");
     qmlRegisterType<FileReader>(uri, 1, 0, "FileReader");    

@@ -1,2 +1,2 @@
-module org.ubuntu.fileqmlplugin
+module com.ubuntu.fileqmlplugin
 plugin fileqmlplugin
