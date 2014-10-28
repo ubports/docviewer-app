@@ -22,12 +22,13 @@ Page {
 
         ListItem.Subtitled {
             text: i18n.tr("Created")
-            subText: i18n.tr("%1").arg(file.creationTime.toLocaleString(Qt.locale()))
+            // FIXME: the creationTime property is not yet available
+            subText: file.creationTime.toLocaleString(Qt.locale())
         }
 
         ListItem.Subtitled {
             text: i18n.tr("Last modified")
-            subText: i18n.tr("%1").arg(file.lastModified.toLocaleString(Qt.locale()))
+            subText: file.lastModified.toLocaleString(Qt.locale())
         }
 
         ListItem.Subtitled {

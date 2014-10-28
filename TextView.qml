@@ -26,7 +26,7 @@ Flickable {
             //activeFocusOnPress: true;
             highlighted: true
 
-            text: "Loading..."
+            text: i18n.tr("Loading...")
 
             signal loadCompleted()
 
