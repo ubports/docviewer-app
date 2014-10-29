@@ -1,5 +1,6 @@
 import QtQuick 2.3
 import Ubuntu.Components 1.1
+import Ubuntu.Components.Themes.Ambiance 0.1
 
 import "utils.js" as Utils
 
@@ -15,17 +16,28 @@ Page {
         }
     ]
 
+    Scrollbar {
+        flickableItem: flickable
+    }
+
     Flickable {
         id: flickable
         anchors.fill: parent
         contentHeight: columnMain.height
         contentWidth: parent.width
 
+        boundsBehavior: Flickable.StopAtBounds
 
         Column {
             id: columnMain
             objectName: "columnMain"
-            width: parent.width
+
+            anchors {
+                left: parent.left
+                right: parent.right
+                top: parent.top
+            }
+
             spacing: 10
 
             TextArea {
@@ -42,6 +54,12 @@ Page {
 
                 text: "Loading..."
 
+                // Use Ubuntu Mono font so we can know how many chars are placed in a single line.
+                font.family: "UbuntuMono"
+
+                property int maxCharsPerLine: contentWidth / (font.pixelSize * 0.5)
+                // Ubuntu Mono font ratio is 1:2 (width:height)
+
                 signal loadCompleted()
 
                 Component.onCompleted: {
@@ -56,6 +74,14 @@ Page {
                     }
 
                     xhr.send();
+                    flickable.forceActiveFocus()
+                }
+
+                style: TextAreaStyle {
+                    background: Item {
+                        id: bgItem
+                        anchors.fill: parent
+                    }
                 }
             }
         }
@@ -84,5 +110,4 @@ Page {
             flickable.flick( 0, -height / 2)
         }
     }
-
 }
