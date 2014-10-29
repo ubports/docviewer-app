@@ -27,9 +27,3 @@ function getNameOfFile(path)
     return name.substring(name.lastIndexOf('/')+1);
 
 }
-
-function relToAbs(rel)
-{
-    var abs = Qt.resolvedUrl(rel)
-    return abs.substring(7); //remove "file://"
-}

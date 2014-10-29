@@ -35,16 +35,7 @@ function load(mimetype) {
 
     if (qmlToLoad != "")
     {
-        var component = Qt.createComponent(qmlToLoad + ".qml");
-        if (component.status === Component.Ready)
-        {
-            component.createObject(pageMain);
-        }
-        else
-        {
-            console.debug(component.errorString());
-        }
-
+       pageStack.push(Qt.resolvedUrl(qmlToLoad + ".qml"))
     }
     else
     {

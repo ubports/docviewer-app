@@ -28,7 +28,7 @@ class TestMainWindow(DocviewerTestCase):
 
         filePath = 'ubuntu_docviewer_app/files/plaintext.txt'
 
-        if os.path.exists(self.local_location):
+        if os.path.exists(self.local_location_binary):
             self.launch_test_local(filePath)
         else:
             self.launch_test_installed(self.sample_dir + filePath)
@@ -48,7 +48,7 @@ class TestMainWindow(DocviewerTestCase):
 
         filePath = 'ubuntu_docviewer_app/files/ubuntu-touch.jpg'
 
-        if os.path.exists(self.local_location):
+        if os.path.exists(self.local_location_binary):
             self.launch_test_local(filePath)
         else:
             self.launch_test_installed(self.sample_dir + filePath)
@@ -67,23 +67,22 @@ class TestMainWindow(DocviewerTestCase):
     def test_read_image_file_mimeType(self):
         filePath = 'ubuntu_docviewer_app/files/ubuntu-touch.jpg'
 
-        if os.path.exists(self.local_location):
+        if os.path.exists(self.local_location_binary):
             self.launch_test_local(filePath)
         else:
             self.launch_test_installed(self.sample_dir + filePath)
         self.check_mimeType()
 
     def check_mimeType(self):
-        mimetypeItem = self.main_view.select_single(
-            "SingleValue", objectName="mimetypeItem")
-
         self.assertThat(
-            mimetypeItem.value, Eventually(NotEquals(False)))
+            self.app.select_single("MainView",
+                                   objectName="docviewer").minetype,
+            Eventually(NotEquals(False)))
 
     def test_unknown_file_type(self):
         filePath = 'ubuntu_docviewer_app/files/unknown.type'
 
-        if os.path.exists(self.local_location):
+        if os.path.exists(self.local_location_binary):
             self.launch_test_local(filePath)
         else:
             self.launch_test_installed(self.sample_dir + filePath)
@@ -96,7 +95,7 @@ class TestMainWindow(DocviewerTestCase):
     def test_open_pdf_file_type(self):
         filePath = 'ubuntu_docviewer_app/files/UbuntuPhone.pdf'
 
-        if os.path.exists(self.local_location):
+        if os.path.exists(self.local_location_binary):
             self.launch_test_local(filePath)
         else:
             self.launch_test_installed(self.sample_dir + filePath)
@@ -108,7 +107,7 @@ class TestMainWindow(DocviewerTestCase):
     def test_open_pdf_file_mimeType(self):
         filePath = 'ubuntu_docviewer_app/files/UbuntuPhone.pdf'
 
-        if os.path.exists(self.local_location):
+        if os.path.exists(self.local_location_binary):
             self.launch_test_local(filePath)
         else:
             self.launch_test_installed(self.sample_dir + filePath)
