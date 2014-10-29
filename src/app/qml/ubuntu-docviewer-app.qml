@@ -16,7 +16,7 @@ MainView {
     width: units.gu(50)
     height: units.gu(75)
 
-    property string minetype: "none"
+    property string mimetype: "none"
 
    Arguments {
         id: args
@@ -30,7 +30,7 @@ MainView {
         id: file
         path: args.defaultArgument.at(0)
 
-        onMimetypeChanged: mainView.minetype = LoadComponent.load(file.mimetype);
+        onMimetypeChanged: mainView.mimetype = LoadComponent.load(file.mimetype);
     }
 
     PageStack {
@@ -40,7 +40,6 @@ MainView {
             DetailsPage {
                 objectName: "TabDetails"
                 id: tabDetails;
-
             }
         }
     }

@@ -8,6 +8,7 @@ launcher/src/docviewer-launcher.pro.user
 *.cmake
 CMakeFiles
 *_automoc.cpp
+moc_*
 debian/files
 debian/app-template/
 debian/*.debhelper.log

@@ -76,7 +76,7 @@ class TestMainWindow(DocviewerTestCase):
     def check_mimeType(self):
         self.assertThat(
             self.app.select_single("MainView",
-                                   objectName="docviewer").minetype,
+                                   objectName="docviewer").mimetype,
             Eventually(NotEquals(False)))
 
     def test_unknown_file_type(self):

@@ -1,6 +1,6 @@
 import QtQuick 2.3
 import Ubuntu.Components 1.1
-import org.docviewer.poppler 1.0
+import com.ubuntu.popplerqmlplugin 1.0
 
 import "utils.js" as Utils
 
@@ -8,110 +8,160 @@ Page {
     id: pageMain
     title: Utils.getNameOfFile(file.path);
 
-    head.actions: [
-        Action {
-            text: i18n.tr("Details")
-            iconName: "info"
-            onTriggered: pageStack.push(Qt.resolvedUrl("DetailsPage.qml"))
+    // Disable header auto-hide
+    flickable: null
+
+    // TODO: Restore zooming
+    ListView {
+        id: pdfView
+        anchors {
+            fill: parent
+            leftMargin: units.gu(2)
+            rightMargin: units.gu(2)
         }
-    ]
+        spacing: units.gu(4)
 
-    Flickable {
-        id: flickable
-        anchors.fill: parent
+        clip: true
+        focus: false
+        boundsBehavior: Flickable.StopAtBounds
 
-        contentHeight: columnPages.height + 10
-        contentWidth: parent.width
+        cacheBuffer: height
 
-        PinchArea {
-            id: pinchy
-            anchors.fill: columnPages
-            enabled: true
-            pinch.target: flickable
+        highlightFollowsCurrentItem: false
+        keyNavigationWraps: false
 
-            property real lastWidth
-            /*property real lastHeight
-        property double p1toC_X
-        property double p1toC_Y
-        property double contentInitX
-        property double contentInitY*/
-
-            onPinchStarted: {
-                lastWidth = flickable.width
-
-                /*contentInitX = flickImg.contentX
-            contentInitY = flickImg.contentY*/
-
-            }
-
-            onPinchUpdated: {
-
-                var newWidth = 0;
-
-                newWidth = lastWidth*pinch.scale;
-
-                /*if (newWidth < image.startWidth)
-                newWidth = image.startWidth;
-            else if (newWidth > image.sourceSize.width)
-                newWidth = image.sourceSize.width;*/
-
-                flickable.contentWidth = newWidth;
-
-                /*flickImg.contentX = contentInitX-(lastWidth-newWidth)/2
-            flickImg.contentY = contentInitY-(lastHeight-image.height)/2*/
-
-            }
-
-            onPinchFinished: {
-
-                columnPages.shouldReloadImg = true;
-                console.log("FINISHED");
-            }
+        // TODO: Not a good way to have spacing
+        header: Item {
+            width: parent.width
+            height: units.gu(2)
         }
 
+        footer: Item {
+            width: parent.width
+            height: units.gu(2)
+        }
 
-        Poppler {
-            id: popplerProp
+        model: Poppler {
+            id: poppler
             path: file.path
+
+            onPagesLoaded: {
+                activity.running = false;
+
+                pdfView.currentIndex = 0
+
+                var title = getDocumentInfo("Title")
+                if (title !== "")
+                    titleLabel.text = title
+            }
         }
 
-        Column {
-            id: columnPages
+        delegate: PdfPage {}
 
-            property bool shouldReloadImg : false
+        onWidthChanged: {
+            /* On resizing window, pages size changes but contentY is still the same.
+               For that reason, it shows the wrong page (which is settled at the same contentY).
+               We need to force flickable to show the current page. */
+            //pdfView.positionViewAtIndex(currentIndex, ListView.Contain)
+        }
 
-            width: parent.width - 10
-            x: 5
-            y: 5
-            spacing: 10
+        onContentYChanged: {
+            // FIXME: On wheeling up, ListView automatically center currentItem to the view.
+            //        This causes some strange "jump" of ~200px in contentY
+            var i = pdfView.indexAt(pdfView.width * 0.5, contentY + (pdfView.height * 0.5))
 
-            onWidthChanged: {
-                if (!pinchy.pinch.active)
-                    shouldReloadImg=true
-                else
-                    shouldReloadImg=false
+            if (i < 0) {
+                // returned index could be -1 when the delegate spacing is shown at the center of the view (e.g. while scrolling pages)
+                i = pdfView.indexAt(pdfView.width * 0.5, contentY + (pdfView.height * 0.5) + units.gu(4))
             }
 
-        }
+            if (i !== -1) {
+                currentPageLabel.text = i18n.tr("Page %1 of %2").arg(i + 1).arg(pdfView.count)
 
-        Component.onCompleted: {
-
-            var i=0;
-            for(i=1; i <= popplerProp.numPages; i++)
-            {
-                var component = Qt.createComponent("PdfPage.qml");
-
-                if (component.status === Component.Error)
-                {
-                    console.debug("Error creating component");
-                }
-                else
-                {
-                    var page = component.createObject(columnPages);
-
-                    page.source = "image://poppler/page/"+i;
+                if (!pdfView.flickingVertically) {
+                    pdfView.currentIndex = i
                 }
             }
         }
     }
+
+    ActivityIndicator {
+        id: activity
+        anchors.centerIn: parent
+
+        running: true
+    }
+
+    // *** HEADER ***
+    state: "default"
+    states: [
+        PageHeadState {
+            name: "default"
+            head: pageMain.head
+
+            contents: Column {
+                anchors.centerIn: parent
+
+                Label {
+                    id: titleLabel
+                    text: Utils.getNameOfFile(file.path)
+                    font.weight: Font.DemiBold
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
+                Label {
+                    id: currentPageLabel
+                    text: i18n.tr("Page %1 of %2").arg(pdfView.currentIndex + 1).arg(pdfView.count)
+                    fontSize: "small"
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
+            }
+
+            backAction: Action {
+                iconName: "back"
+            }
+
+            actions: [
+                Action {
+                    iconName: "search"
+                   // onTriggered: pageMain.state = "search"
+                    //Disable it until we provide search in Poppler plugin.
+                    enabled: false
+                },
+
+                Action {
+                    iconName: "browser-tabs"
+                    text: "Go to page..."
+                    enabled: false
+                },
+
+                Action {
+                    text: i18n.tr("Details")
+                    iconName: "info"
+                    onTriggered: pageStack.push(Qt.resolvedUrl("DetailsPage.qml"))
+                }
+            ]
+        }
+
+       /* PageHeadState {
+            id: headerState
+            name: "search"
+            head: pageMain.head
+            actions: [
+                Action {
+                    iconName: "go-up"
+                },
+
+                Action {
+                    iconName: "go-down"
+                }
+            ]
+
+            backAction: Action {
+                id: leaveSearchAction
+                text: "back"
+                iconName: "back"
+                onTriggered: pageMain.state = "default"
+            }
+        }*/
+    ]
 }
