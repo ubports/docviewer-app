@@ -154,6 +154,7 @@ Page {
                 },
 
                 Action {
+                    objectName: "detailsAction"
                     text: i18n.tr("Details")
                     iconName: "info"
                     onTriggered: pageStack.push(Qt.resolvedUrl("DetailsPage.qml"))

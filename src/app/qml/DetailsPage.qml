@@ -6,7 +6,7 @@ import "utils.js" as Utils
 
 Page {
     id: detailsPage
-    objectName: "TabDetails"
+    objectName: "detailsPage"
 
     title: i18n.tr("Details")
 
