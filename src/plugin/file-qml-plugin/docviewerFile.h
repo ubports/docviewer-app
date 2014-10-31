@@ -13,6 +13,7 @@ class DocviewerFile : public QObject
     Q_PROPERTY( QString mimetype READ getMimetype NOTIFY mimetypeChanged )
     Q_PROPERTY( qint64 size READ getSize NOTIFY sizeChanged )
     Q_PROPERTY( QDateTime lastModified READ getLastmodified NOTIFY lastmodifiedChanged )
+    Q_PROPERTY( QDateTime creationTime READ getCreationTime NOTIFY creationTimeChanged )
     Q_PROPERTY( int error READ getError NOTIFY errorChanged )
     
 public:
@@ -29,27 +30,27 @@ protected:
 
     QDateTime getLastmodified() { return lastmodified; }
 
+    QDateTime getCreationTime() { return creationTime; }
+
     int getError() { return error; }
     
     QString path;
     QString mimetype;
     qint64 size;
     QDateTime lastmodified;
+    QDateTime creationTime;
     int error;
 
 private:
     void open();
-    QProcess *mimeTypeProcess;
-
-public slots:
-    void s_readMimeType();
-    void s_finished(int exitCode);
+    void readMimeType();
 
 Q_SIGNALS:
     void pathChanged();
     void mimetypeChanged();
     void sizeChanged();
     void lastmodifiedChanged();
+    void creationTimeChanged();
     void errorChanged();
 };
 

@@ -1,8 +1,8 @@
-#include <QProcess>
 #include <QObject>
 #include <QDebug>
 #include <QFileInfo>
 #include <QDir>
+#include <QMimeDatabase>
 
 #include "docviewerFile.h"
 
@@ -50,6 +50,8 @@ void DocviewerFile::setPath(QString p) {
         this->path = QFileInfo(QDir::currentPath(), p).absoluteFilePath();
     }
 
+    qDebug() << "[FILE] Path parsed as:" << this->path;
+
     this->open();
 
     emit pathChanged();
@@ -61,6 +63,7 @@ void DocviewerFile::open() {
         QFileInfo file(path);
 
         if (file.exists()) {
+            qDebug() << "[FILE] Extracting informations from the file...";
 
             /**Get info of the file**/
             size = file.size();
@@ -69,38 +72,30 @@ void DocviewerFile::open() {
             lastmodified = file.lastModified();
             emit lastmodifiedChanged();
 
+            creationTime = file.created();
+            emit creationTimeChanged();
+
             /**Get mimetype**/
-            QStringList mimeTypeCommand;
-            mimeTypeCommand << "-ib" << path;
-
-            mimeTypeProcess = new QProcess();
-
-            this->connect(mimeTypeProcess, SIGNAL(readyReadStandardOutput()), SLOT(s_readMimeType()));
-            this->connect(mimeTypeProcess, SIGNAL(finished(int)), SLOT(s_finished(int)));
-
-            mimeTypeProcess->start("file", mimeTypeCommand);
-
+            this->readMimeType();
         }
         else {
+            qDebug() << "[FILE] ERROR: Requested file does not exist!";
             error = -1;
             emit errorChanged();
         }
     }
-
-
 }
 
-/****SLOT****/
-
-void DocviewerFile::s_readMimeType()
+void DocviewerFile::readMimeType()
 {
-    mimetype = mimeTypeProcess->readAllStandardOutput();
-    mimetype = mimetype.left(mimetype.size()-1);
-}
+    QMimeDatabase db;
+    mimetype = db.mimeTypeForFile(this->path).name();
 
-void DocviewerFile::s_finished(int exitCode)
-{
-    if (exitCode != 0)
+    if (mimetype == "application/octet-stream") {
+        // Returned by Qt when it cannot determinate the mime type
         mimetype = "Unknown";
+    }
+
+    qDebug() << "[FILE] Mime type for the requested file is" << mimetype;
     emit mimetypeChanged();
 }

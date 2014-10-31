@@ -1,14 +1,4 @@
-function getSimpleMimetype(longMimetype)
-{
-    var str = longMimetype;
-    str = str.substring(0, str.indexOf(";"));
-    return str;
-}
-
 function load(mimetype) {
-    if (mimetype.indexOf(";") !== -1)
-        mimetype = getSimpleMimetype(mimetype);
-
     var qmlToLoad = "";
 
     // Open all text files in text editor
