@@ -1,7 +1,7 @@
 {
     "description": "Document Viewer application for Ubuntu devices",
     "framework": "ubuntu-sdk-14.10-qml-dev3",
-    "architecture": "all",
+    "architecture": "@CLICK_ARCH@",
     "hooks": {
         "docviewer": {
             "apparmor": "docviewer.apparmor",
