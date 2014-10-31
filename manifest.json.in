@@ -8,7 +8,7 @@
             "desktop": "com.ubuntu.docviewer.desktop"
         }
     },
-    "maintainer": "Stefano Verzegnassi <stefano92.100@gmail.com>",
+    "maintainer": "Ubuntu App Cats <ubuntu-touch-coreapps@lists.launchpad.net>",
     "name": "com.ubuntu.docviewer",
     "title": "Document viewer",
     "version": "0.1.@BZR_REVNO@"
