@@ -122,6 +122,9 @@ int main(int argc, char *argv[])
         cacheDir.mkpath(cacheDir.absolutePath());
     }
 
+    // Expose quit() signal to QML
+    QObject::connect(view.engine(), SIGNAL(quit()), &a, SLOT(quit()));
+
     qDebug() << "using main qml file from:" << qmlfile;
     view.setSource(QUrl::fromLocalFile(qmlfile));
     view.show();

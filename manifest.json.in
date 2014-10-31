@@ -1,14 +1,15 @@
 {
     "description": "Document Viewer application for Ubuntu devices",
     "framework": "ubuntu-sdk-14.10-qml-dev3",
-    "architecture": "all",
+    "architecture": "@CLICK_ARCH@",
     "hooks": {
         "docviewer": {
             "apparmor": "docviewer.apparmor",
-            "desktop": "com.ubuntu.docviewer.desktop"
+            "desktop": "com.ubuntu.docviewer.desktop",
+	    "content-hub": "docviewer-content.json"
         }
     },
-    "maintainer": "Stefano Verzegnassi <stefano92.100@gmail.com>",
+    "maintainer": "Ubuntu App Cats <ubuntu-touch-coreapps@lists.launchpad.net>",
     "name": "com.ubuntu.docviewer",
     "title": "Document viewer",
     "version": "0.1.@BZR_REVNO@"

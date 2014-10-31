@@ -54,11 +54,11 @@ if(CLICK_MODE)
     set(QT_IMPORTS_DIR "/lib/${ARCH_TRIPLET}")
     set(BIN_DIR /lib/${ARCH_TRIPLET}/bin)
     set(DATA_DIR /)
-    set (ICON ${ICON_FILE})
+    set(ICON ${ICON_FILE})
     set(DESKTOP_DIR ${DATA_DIR})
     set(URLS_DIR ${DATA_DIR})
     configure_file(manifest.json.in ${CMAKE_CURRENT_BINARY_DIR}/manifest.json)
-    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/manifest.json docviewer.apparmor
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/manifest.json docviewer.apparmor docviewer-content.json
             DESTINATION ${CMAKE_INSTALL_PREFIX})
     # Make the click files visible in Qt Creator
     file(GLOB CLICK_FILES

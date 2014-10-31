@@ -6,6 +6,8 @@ import "utils.js" as Utils
 
 Page {
     id: detailsPage
+    objectName: "TabDetails"
+
     title: i18n.tr("Details")
 
     Column {
@@ -22,7 +24,6 @@ Page {
 
         ListItem.Subtitled {
             text: i18n.tr("Created")
-            // FIXME: the creationTime property is not yet available
             subText: file.creationTime.toLocaleString(Qt.locale())
         }
 
@@ -35,7 +36,7 @@ Page {
             id: mimetypeItem
             objectName: "mimetypeItem"
             text: i18n.tr("MIME type")
-            subText: mainView.mimetype
+            subText: file.mimetype
         }
     }
 }
