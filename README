@@ -3,3 +3,15 @@ Usage
 qmlscene [filename] ubuntu-docviewer-app.qml
 
 filename : The path where the file you want to open is located.
+
+Compiling
+=========
+
+Install poppler's development files:
+sudo apt-get install libpoppler-qt5-dev
+
+If you want to compile an arm click package, you need to install that package to the arm compilation environment. For example when using QtCreator for Ubuntu Touch, open Options -> Ubuntu -> Maintain, and then enter:
+
+apt-get install libpoppler-qt5-dev:armhf
+
+
