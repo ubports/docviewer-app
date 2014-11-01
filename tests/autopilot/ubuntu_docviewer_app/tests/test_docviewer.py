@@ -84,7 +84,6 @@ class TestMainWindow(DocviewerTestCase):
         self.assertThat(
             mimetypeItem.subText, Eventually(NotEquals(False)))
 
-
     def test_unknown_file_type(self):
         filePath = 'ubuntu_docviewer_app/files/unknown.type'
 
