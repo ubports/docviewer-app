@@ -1,6 +1,6 @@
 Usage
 =====
-qmlscene [filename] ubuntu-docviewer-app.qml
+ubuntu-docviewer-app [filename]
 
 filename : The path where the file you want to open is located.
 
