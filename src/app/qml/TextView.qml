@@ -8,7 +8,7 @@ Page {
     id: pageMain
     title: Utils.getNameOfFile(file.path);
 
-    backAction: Action {
+    head.backAction: Action {
         iconName: "back"
         text: (pageStack.depth > 1) ? i18n.tr("Back") : i18n.tr("Close")
         onTriggered: {
