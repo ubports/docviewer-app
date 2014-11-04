@@ -1,6 +1,5 @@
 import QtQuick 2.3
 import Ubuntu.Components 1.1
-import Ubuntu.Content 1.1
 import Ubuntu.Components.Popups 1.0
 import com.ubuntu.fileqmlplugin 1.0
 
@@ -46,17 +45,14 @@ MainView {
     }
 
     // Content Importer
-    Connections {
-        target: ContentHub
+    Loader {
+        id: contentHubLoader
 
-        onImportRequested: {
-            // We have no signals to know if an import was requested before Component.completed signal
-            //  is emitted. So clear the stack when this occurs.
-            pageStack.clear()
-
-            if (transfer.state === ContentTransfer.Charged) {
-                console.log("[CONTENT-HUB] Incoming Import Request")
-                file.path = transfer.items[0].url.toString().replace("file://", "");
+        asynchronous: true
+        source: Qt.resolvedUrl("ContentHubProxy.qml")
+        onStatusChanged: {
+            if (status === Loader.Ready) {
+                item.pageStack = pageStack
             }
         }
     }
