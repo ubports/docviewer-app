@@ -55,7 +55,7 @@ Page {
 
                 var title = getDocumentInfo("Title")
                 if (title !== "")
-                    pdfPage.text = title
+                    pdfPage.title = title
             }
         }
 
@@ -103,4 +103,8 @@ Page {
             targetPage: pdfPage
         }
     ]
+
+    // *** DIALOGS ***
+    property alias goToPageDialog: goToPageDialog
+    Component { id: goToPageDialog; PdfViewGotoDialog { view: pdfView } }
 }

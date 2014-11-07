@@ -1,5 +1,6 @@
 import QtQuick 2.3
 import Ubuntu.Components 1.1
+import Ubuntu.Components.Popups 1.0
 
 PageHeadState {
     id: rootItem
@@ -51,7 +52,7 @@ PageHeadState {
         Action {
             iconName: "browser-tabs"
             text: "Go to page..."
-            enabled: false
+            onTriggered: PopupUtils.open(targetPage.goToPageDialog)
         },
 
         Action {
