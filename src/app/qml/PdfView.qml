@@ -47,7 +47,7 @@ Page {
             /* FIXME: Don't set 'path' property directly, but set it through onCompleted signal.
                By doing otherwise, PDF pages are loaded two times, but only
                the first delegates are working. Asking to the image provider
-               to get the second ones makes the app instable.
+               to get the second ones, makes the app instable.
                (e.g. We have a PDF document with 10 pages. The plugin loads
                them twice - 2x10 = 20 pages - but only the first 10 are shown.
                While trying to get the 11th, the app crashes). */
@@ -126,6 +126,17 @@ Page {
 
             backAction: Action {
                 iconName: "back"
+                text: (pageStack.depth > 1) ? i18n.tr("Back") : i18n.tr("Close")
+                onTriggered: {
+                    if (pageStack.depth > 1) {
+                        // Go back to Welcome page
+                        pageStack.pop();
+                    } else {
+                        // File has been imported through Content Hub (or was not chosen through WelcomePage)
+                        // Close the application and show our source app (e.g. ubuntu-filemanager-app if used to open a document)
+                        Qt.quit()
+                    }
+                }
             }
 
             actions: [
@@ -143,6 +154,7 @@ Page {
                 },
 
                 Action {
+                    objectName: "detailsAction"
                     text: i18n.tr("Details")
                     iconName: "info"
                     onTriggered: pageStack.push(Qt.resolvedUrl("DetailsPage.qml"))

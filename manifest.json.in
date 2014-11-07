@@ -5,7 +5,8 @@
     "hooks": {
         "docviewer": {
             "apparmor": "docviewer.apparmor",
-            "desktop": "com.ubuntu.docviewer.desktop"
+            "desktop": "com.ubuntu.docviewer.desktop",
+	    "content-hub": "docviewer-content.json"
         }
     },
     "maintainer": "Ubuntu App Cats <ubuntu-touch-coreapps@lists.launchpad.net>",

@@ -74,10 +74,15 @@ class TestMainWindow(DocviewerTestCase):
         self.check_mimeType()
 
     def check_mimeType(self):
+        # Click "Details" action in the header
+        header = self.main_view.get_header()
+        header.click_action_button('detailsAction')
+
+        mimetypeItem = self.main_view.select_single(
+            "Subtitled", objectName="mimetypeItem")
+
         self.assertThat(
-            self.app.select_single("MainView",
-                                   objectName="docviewer").mimetype,
-            Eventually(NotEquals(False)))
+            mimetypeItem.subText, Eventually(NotEquals(False)))
 
     def test_unknown_file_type(self):
         filePath = 'ubuntu_docviewer_app/files/unknown.type'
