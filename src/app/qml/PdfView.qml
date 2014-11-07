@@ -16,10 +16,10 @@ Page {
         id: pdfView
         anchors {
             fill: parent
-            leftMargin: units.gu(2)
-            rightMargin: units.gu(2)
+            leftMargin: units.gu(1)
+            rightMargin: units.gu(1)
         }
-        spacing: units.gu(4)
+        spacing: units.gu(2)
 
         clip: true
         focus: false
@@ -43,7 +43,15 @@ Page {
 
         model: Poppler {
             id: poppler
-            path: file.path
+
+            /* FIXME: Don't set 'path' property directly, but set it through onCompleted signal.
+               By doing otherwise, PDF pages are loaded two times, but only
+               the first delegates are working. Asking to the image provider
+               to get the second ones makes the app instable.
+               (e.g. We have a PDF document with 10 pages. The plugin loads
+               them twice - 2x10 = 20 pages - but only the first 10 are shown.
+               While trying to get the 11th, the app crashes). */
+            Component.onCompleted: path = file.path
 
             onPagesLoaded: {
                 activity.running = false;

@@ -30,7 +30,7 @@
 PdfModel::PdfModel(QAbstractListModel *parent):
     QAbstractListModel(parent)
 {
-    int metatype_id = qRegisterMetaType<PdfPagesList>("PdfPagesList");
+    qRegisterMetaType<PdfPagesList>("PdfPagesList");
 }
 
 QHash<int, QByteArray> PdfModel::roleNames() const
@@ -65,8 +65,7 @@ QVariant PdfModel::data(const QModelIndex & index, int role) const
 
 void PdfModel::setPath(QString &pathName)
 {
-    if (pathName.isEmpty())
-    {
+    if (pathName.isEmpty()) {
         return;
     }
 
