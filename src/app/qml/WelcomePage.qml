@@ -14,7 +14,7 @@ Page {
     }
 
     title: i18n.tr("Open with...")
-    head.sections.model: [i18n.tr("Pictures"), i18n.tr("Documents"), i18n.tr("Unknown")]
+    head.sections.model: [i18n.tr("Documents"), i18n.tr("Pictures"), i18n.tr("Other")]
     head.backAction: Action {
         iconName: "close"
         text: i18n.tr("Close")
@@ -27,9 +27,9 @@ Page {
         contentType: {
             switch (picker.head.sections.selectedIndex) {
             case 0:
-                return ContentType.Pictures
-            case 1:
                 return ContentType.Documents
+            case 1:
+                return ContentType.Pictures
             case 2:
                 return ContentType.Unknown
             }
