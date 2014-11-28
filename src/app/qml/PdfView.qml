@@ -5,15 +5,18 @@ import com.ubuntu.popplerqmlplugin 1.0
 import "utils.js" as Utils
 
 Page {
-    id: pageMain
+    id: pdfPage
     title: Utils.getNameOfFile(file.path);
 
     // Disable header auto-hide
     flickable: null
 
+    property string currentPage: i18n.tr("Page %1 of %2").arg(pdfView.currentIndex + 1).arg(pdfView.count)
+
     // TODO: Restore zooming
     ListView {
         id: pdfView
+
         anchors {
             fill: parent
             leftMargin: units.gu(1)
@@ -30,16 +33,8 @@ Page {
         highlightFollowsCurrentItem: false
         keyNavigationWraps: false
 
-        // TODO: Not a good way to have spacing
-        header: Item {
-            width: parent.width
-            height: units.gu(2)
-        }
-
-        footer: Item {
-            width: parent.width
-            height: units.gu(2)
-        }
+        header: Item { width: parent.width; height: units.gu(2) }
+        footer: Item { width: parent.width; height: units.gu(2) }
 
         model: Poppler {
             id: poppler
@@ -60,11 +55,11 @@ Page {
 
                 var title = getDocumentInfo("Title")
                 if (title !== "")
-                    titleLabel.text = title
+                    pdfPage.title = title
             }
         }
 
-        delegate: PdfPage {}
+        delegate: PdfViewDelegate {}
 
         onWidthChanged: {
             /* On resizing window, pages size changes but contentY is still the same.
@@ -84,7 +79,7 @@ Page {
             }
 
             if (i !== -1) {
-                currentPageLabel.text = i18n.tr("Page %1 of %2").arg(i + 1).arg(pdfView.count)
+                currentPage = i18n.tr("Page %1 of %2").arg(i + 1).arg(pdfView.count)
 
                 if (!pdfView.flickingVertically) {
                     pdfView.currentIndex = i
@@ -103,85 +98,13 @@ Page {
     // *** HEADER ***
     state: "default"
     states: [
-        PageHeadState {
+        PdfViewDefaultHeader {
             name: "default"
-            head: pageMain.head
-
-            contents: Column {
-                anchors.centerIn: parent
-
-                Label {
-                    id: titleLabel
-                    text: Utils.getNameOfFile(file.path)
-                    font.weight: Font.DemiBold
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
-                Label {
-                    id: currentPageLabel
-                    text: i18n.tr("Page %1 of %2").arg(pdfView.currentIndex + 1).arg(pdfView.count)
-                    fontSize: "small"
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
-            }
-
-            backAction: Action {
-                iconName: "back"
-                text: (pageStack.depth > 1) ? i18n.tr("Back") : i18n.tr("Close")
-                onTriggered: {
-                    if (pageStack.depth > 1) {
-                        // Go back to Welcome page
-                        pageStack.pop();
-                    } else {
-                        // File has been imported through Content Hub (or was not chosen through WelcomePage)
-                        // Close the application and show our source app (e.g. ubuntu-filemanager-app if used to open a document)
-                        Qt.quit()
-                    }
-                }
-            }
-
-            actions: [
-                Action {
-                    iconName: "search"
-                   // onTriggered: pageMain.state = "search"
-                    //Disable it until we provide search in Poppler plugin.
-                    enabled: false
-                },
-
-                Action {
-                    iconName: "browser-tabs"
-                    text: "Go to page..."
-                    enabled: false
-                },
-
-                Action {
-                    objectName: "detailsAction"
-                    text: i18n.tr("Details")
-                    iconName: "info"
-                    onTriggered: pageStack.push(Qt.resolvedUrl("DetailsPage.qml"))
-                }
-            ]
+            targetPage: pdfPage
         }
-
-       /* PageHeadState {
-            id: headerState
-            name: "search"
-            head: pageMain.head
-            actions: [
-                Action {
-                    iconName: "go-up"
-                },
-
-                Action {
-                    iconName: "go-down"
-                }
-            ]
-
-            backAction: Action {
-                id: leaveSearchAction
-                text: "back"
-                iconName: "back"
-                onTriggered: pageMain.state = "default"
-            }
-        }*/
     ]
+
+    // *** DIALOGS ***
+    property alias goToPageDialog: goToPageDialog
+    Component { id: goToPageDialog; PdfViewGotoDialog { view: pdfView } }
 }
