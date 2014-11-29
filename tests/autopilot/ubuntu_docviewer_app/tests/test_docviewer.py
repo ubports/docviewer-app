@@ -58,7 +58,7 @@ class TestMainWindow(DocviewerTestCase):
             self.main_view.visible, Eventually(Equals(True)))
 
         imageItem = self.main_view.select_single(
-            "QQuickImage", objectName="imageItem")
+            "QQuickImage", objectName="imageRenderer")
 
         # Check if status of Image is "Ready"
         self.assertThat(
