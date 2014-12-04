@@ -11,18 +11,27 @@ PageHeadState {
 
     contents: Column {
         anchors.centerIn: parent
+        width: parent.width
 
         Label {
             id: titleLabel
-            text: targetPage.title
+
+            width: parent.width
+            horizontalAlignment: Text.AlignHCenter
+            elide: Text.ElideMiddle
+
             font.weight: Font.DemiBold
-            anchors.horizontalCenter: parent.horizontalCenter
+            text: targetPage.title
         }
         Label {
             id: currentPageLabel
-            text: targetPage.currentPage
+
+            width: parent.width
+            horizontalAlignment: Text.AlignHCenter
+            elide: Text.ElideMiddle
+
             fontSize: "small"
-            anchors.horizontalCenter: parent.horizontalCenter
+            text: targetPage.currentPage
         }
     }
 
