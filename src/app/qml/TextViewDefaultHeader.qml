@@ -9,13 +9,18 @@ PageHeadState {
 
     head: targetPage.head
 
-    contents: Label {
+    contents: Column {
+        anchors.centerIn: parent
         width: parent.width
-        horizontalAlignment: Text.AlignHCenter
-        elide: Text.ElideMiddle
 
-        font.weight: Font.DemiBold
-        text: targetPage.title
+        Label {
+            width: parent.width
+            horizontalAlignment: Text.AlignHCenter
+            elide: Text.ElideMiddle
+
+            font.weight: Font.DemiBold
+            text: targetPage.title
+        }
     }
 
     backAction: Action {
