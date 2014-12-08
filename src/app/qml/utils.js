@@ -4,26 +4,23 @@ function printSize(size)
 {
     if (size >= 1073741824)
     {
-        return parseInt(size/1073741824) + "," + size%1073741824 + " Gio";
+        return (size / 1073741824).toFixed(2) + " GiB";
     }
 
     if (size >= 1048576)
     {
-        return parseInt(size/1048576) + "," + size%1048576 + " Mio";
+        return (size / 1048576).toFixed(2) + " MiB";
     }
 
     if (size >= 1024)
     {
-        return parseInt(size/1024) + "," + size%1024 + " Kio";
+        return parseInt(size / 1024) + " KiB";
     }
 
-    return size + " o";
+    return size + " byte";
 }
 
 function getNameOfFile(path)
 {
-    var name = String(path);
-
-    return name.substring(name.lastIndexOf('/')+1);
-
+    return path.toString().substring(path.lastIndexOf('/') + 1);
 }
