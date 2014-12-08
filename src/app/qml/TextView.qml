@@ -38,11 +38,11 @@ Page {
 
         anchors.fill: parent
 
-        // FIXME: If set to true, some of the keyboard hooks are disable
+        // FIXME: If set to true, some of the keyboard hooks are disabled
         // And it's not possible to move the cursor with arrow keys.
         readOnly: true
 
-        text: "Loading..."
+        text: i18n.tr("Loading...")
         font.family: "UbuntuMono"
 
         Component.onCompleted: {
