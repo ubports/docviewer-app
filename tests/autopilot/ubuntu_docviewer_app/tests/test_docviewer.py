@@ -7,28 +7,30 @@
 
 """Docviewer app autopilot tests."""
 
-from __future__ import absolute_import
-
 from autopilot.matchers import Eventually
 from testtools.matchers import Equals, NotEquals
 
-from ubuntu_docviewer_app.tests import DocviewerTestCase
+from ubuntu_docviewer_app.tests import DocviewerAppTestCase
 import os
 
 
-class TestMainWindow(DocviewerTestCase):
+class TestMainWindow(DocviewerAppTestCase):
 
     def setUp(self):
         super(TestMainWindow, self).setUp()
 
-    def tearDown(self):
-        super(TestMainWindow, self).tearDown()
+    def _check_mimeType(self):
+        mimetypeItem = self.app.main_view.select_single(
+            "SingleValue", objectName="mimetypeItem")
+
+        self.assertThat(
+            mimetypeItem.value, Eventually(NotEquals(False)))
 
     def test_open_text_file(self):
 
         filePath = 'ubuntu_docviewer_app/files/plaintext.txt'
 
-        if os.path.exists(self.local_location_binary):
+        if os.path.exists(self.local_location):
             self.launch_test_local(filePath)
         else:
             self.launch_test_installed(self.sample_dir + filePath)
@@ -37,7 +39,7 @@ class TestMainWindow(DocviewerTestCase):
         self.assertThat(
             self.main_view.visible, Eventually(Equals(True)))
 
-        textArea = self.main_view.select_single(
+        textArea = self.app.main_view.select_single(
             "TextArea", objectName="textAreaMain")
 
         # Check if textarea is no longer empty
@@ -48,7 +50,7 @@ class TestMainWindow(DocviewerTestCase):
 
         filePath = 'ubuntu_docviewer_app/files/ubuntu-touch.jpg'
 
-        if os.path.exists(self.local_location_binary):
+        if os.path.exists(self.local_location):
             self.launch_test_local(filePath)
         else:
             self.launch_test_installed(self.sample_dir + filePath)
@@ -57,8 +59,9 @@ class TestMainWindow(DocviewerTestCase):
         self.assertThat(
             self.main_view.visible, Eventually(Equals(True)))
 
-        imageItem = self.main_view.select_single(
-            "QQuickImage", objectName="imageRenderer")
+
+        imageItem = self.app.main_view.select_single(
+            "QQuickImage", objectName="imageItem")
 
         # Check if status of Image is "Ready"
         self.assertThat(
@@ -67,27 +70,16 @@ class TestMainWindow(DocviewerTestCase):
     def test_read_image_file_mimeType(self):
         filePath = 'ubuntu_docviewer_app/files/ubuntu-touch.jpg'
 
-        if os.path.exists(self.local_location_binary):
+        if os.path.exists(self.local_location):
             self.launch_test_local(filePath)
         else:
             self.launch_test_installed(self.sample_dir + filePath)
-        self.check_mimeType()
-
-    def check_mimeType(self):
-        # Click "Details" action in the header
-        header = self.main_view.get_header()
-        header.click_action_button('detailsAction')
-
-        mimetypeItem = self.main_view.select_single(
-            "Subtitled", objectName="mimetypeItem")
-
-        self.assertThat(
-            mimetypeItem.subText, Eventually(NotEquals(False)))
+        self._check_mimeType()
 
     def test_unknown_file_type(self):
         filePath = 'ubuntu_docviewer_app/files/unknown.type'
 
-        if os.path.exists(self.local_location_binary):
+        if os.path.exists(self.local_location):
             self.launch_test_local(filePath)
         else:
             self.launch_test_installed(self.sample_dir + filePath)
@@ -100,7 +92,7 @@ class TestMainWindow(DocviewerTestCase):
     def test_open_pdf_file_type(self):
         filePath = 'ubuntu_docviewer_app/files/UbuntuPhone.pdf'
 
-        if os.path.exists(self.local_location_binary):
+        if os.path.exists(self.local_location):
             self.launch_test_local(filePath)
         else:
             self.launch_test_installed(self.sample_dir + filePath)
@@ -112,9 +104,9 @@ class TestMainWindow(DocviewerTestCase):
     def test_open_pdf_file_mimeType(self):
         filePath = 'ubuntu_docviewer_app/files/UbuntuPhone.pdf'
 
-        if os.path.exists(self.local_location_binary):
+        if os.path.exists(self.local_location):
             self.launch_test_local(filePath)
         else:
             self.launch_test_installed(self.sample_dir + filePath)
 
-        self.check_mimeType()
+        self._check_mimeType()
