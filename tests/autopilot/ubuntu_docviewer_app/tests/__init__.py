@@ -113,57 +113,12 @@ class BaseTestCaseWithPatchedHome(AutopilotTestCase):
     def _patch_home(self):
         """ mock /home for testing purposes to preserve user data
         """
-        # click requires apparmor profile, and writing to special dir
-        # but the desktop can write to a traditional /tmp directory
-        if self.test_type == 'click':
-            env_dir = os.path.join(os.environ.get('HOME'), 'autopilot',
-                                   'fakeenv')
 
-            if not os.path.exists(env_dir):
-                os.makedirs(env_dir)
-
-            temp_dir_fixture = fixtures.TempDir(env_dir)
-            self.useFixture(temp_dir_fixture)
-
-            # apparmor doesn't allow the app to create needed directories,
-            # so we create them now
-            temp_dir = temp_dir_fixture.path
-            temp_dir_cache = os.path.join(temp_dir, '.cache')
-            temp_dir_cache_font = os.path.join(temp_dir_cache, 'fontconfig')
-            temp_dir_cache_media = os.path.join(temp_dir_cache, 'media-art')
-            temp_dir_cache_write = os.path.join(temp_dir_cache,
-                                                'tncache-write-text.null')
-            temp_dir_config = os.path.join(temp_dir, '.config')
-            temp_dir_toolkit = os.path.join(temp_dir_config,
-                                            'ubuntu-ui-toolkit')
-            temp_dir_font = os.path.join(temp_dir_cache, '.fontconfig')
-            temp_dir_local = os.path.join(temp_dir, '.local', 'share')
-            temp_dir_confined = os.path.join(temp_dir, 'confined')
-
-            if not os.path.exists(temp_dir_cache):
-                os.makedirs(temp_dir_cache)
-            if not os.path.exists(temp_dir_cache_font):
-                os.makedirs(temp_dir_cache_font)
-            if not os.path.exists(temp_dir_cache_media):
-                os.makedirs(temp_dir_cache_media)
-            if not os.path.exists(temp_dir_cache_write):
-                os.makedirs(temp_dir_cache_write)
-            if not os.path.exists(temp_dir_config):
-                os.makedirs(temp_dir_config)
-            if not os.path.exists(temp_dir_toolkit):
-                os.makedirs(temp_dir_toolkit)
-            if not os.path.exists(temp_dir_font):
-                os.makedirs(temp_dir_font)
-            if not os.path.exists(temp_dir_local):
-                os.makedirs(temp_dir_local)
-            if not os.path.exists(temp_dir_confined):
-                os.makedirs(temp_dir_confined)
-
-            # before we set fixture, copy xauthority if needed
-            self._copy_xauthority_file(temp_dir)
-            self.useFixture(toolkit_fixtures.InitctlEnvironmentVariable(
-                            HOME=temp_dir))
-        else:
+        # if running on non-phablet device,
+        # run in temp folder to avoid mucking up home
+        # bug 1316746
+        # bug 1376423
+        if self.test_type is not 'click':
             temp_dir_fixture = fixtures.TempDir()
             self.useFixture(temp_dir_fixture)
             temp_dir = temp_dir_fixture.path
@@ -173,8 +128,7 @@ class BaseTestCaseWithPatchedHome(AutopilotTestCase):
             self.useFixture(fixtures.EnvironmentVariable('HOME',
                                                          newvalue=temp_dir))
 
-        logger.debug("Patched home to fake home directory %s" % temp_dir)
-        return temp_dir
+            logger.debug("Patched home to fake home directory %s" % temp_dir)
 
 
 class DocviewerAppTestCase(BaseTestCaseWithPatchedHome):
