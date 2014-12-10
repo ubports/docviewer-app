@@ -71,11 +71,6 @@ class BaseTestCaseWithPatchedHome(AutopilotTestCase):
         self.installed_location_qml = os.path.join('usr', 'share',
                                                'ubuntu-docviewer-app',
                                                'qml', self.qml)
-        logger.debug(self.local_location)
-        logger.debug(self.local_location_qml)
-        logger.debug(self.local_location_binary)
-        logger.debug(self.installed_location_binary)
-        logger.debug(self.installed_location_qml)
         super(BaseTestCaseWithPatchedHome, self).setUp()
         self.launcher, self.test_type = self.get_launcher_and_type()
         self.real_home_dir = os.getenv('HOME')
@@ -158,8 +153,6 @@ class BaseTestCaseWithPatchedHome(AutopilotTestCase):
             build_dir = cmake_config.active_build_dir
         except:
             logger.debug("Failed to get build dir, assuming in source build")
-            import sys
-            sys.exit()
             build_dir = self.source_dir
 
         return build_dir
