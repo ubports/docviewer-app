@@ -59,7 +59,6 @@ class TestMainWindow(DocviewerAppTestCase):
         self.assertThat(
             self.main_view.visible, Eventually(Equals(True)))
 
-
         imageItem = self.app.main_view.select_single(
             "QQuickImage", objectName="imageItem")
 

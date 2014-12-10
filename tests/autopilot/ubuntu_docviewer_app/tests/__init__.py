@@ -22,15 +22,12 @@ import logging
 
 import fixtures
 import ubuntu_docviewer_app
+from ubuntu_docviewer_app import CMakePluginParser
 
 from autopilot.testcase import AutopilotTestCase
 from autopilot import logging as autopilot_logging
 
 import ubuntuuitoolkit
-from ubuntuuitoolkit import (
-    base,
-    fixture_setup as toolkit_fixtures
-)
 
 logger = logging.getLogger(__name__)
 
@@ -69,8 +66,9 @@ class BaseTestCaseWithPatchedHome(AutopilotTestCase):
                                                   'src', 'app', self.binary)
         self.installed_location_binary = os.path.join('/usr/bin/', self.binary)
         self.installed_location_qml = os.path.join('usr', 'share',
-                                               'ubuntu-docviewer-app',
-                                               'qml', self.qml)
+                                                   'ubuntu-docviewer-app',
+                                                   'qml', self.qml)
+
         super(BaseTestCaseWithPatchedHome, self).setUp()
         self.launcher, self.test_type = self.get_launcher_and_type()
         self.real_home_dir = os.getenv('HOME')
