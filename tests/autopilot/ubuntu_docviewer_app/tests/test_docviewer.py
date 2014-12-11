@@ -8,10 +8,9 @@
 """Docviewer app autopilot tests."""
 
 from autopilot.matchers import Eventually
-from testtools.matchers import Equals, NotEquals, Contains
+from testtools.matchers import Equals, Contains
 
 from ubuntu_docviewer_app.tests import DocviewerAppTestCase
-import os
 
 
 class TestMainWindow(DocviewerAppTestCase):
