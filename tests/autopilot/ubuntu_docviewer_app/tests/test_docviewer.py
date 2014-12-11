@@ -8,7 +8,7 @@
 """Docviewer app autopilot tests."""
 
 from autopilot.matchers import Eventually
-from testtools.matchers import Equals, NotEquals
+from testtools.matchers import Equals, NotEquals, Contains
 
 from ubuntu_docviewer_app.tests import DocviewerAppTestCase
 import os
@@ -19,68 +19,46 @@ class TestMainWindow(DocviewerAppTestCase):
     def setUp(self):
         super(TestMainWindow, self).setUp()
 
-    def _check_mimeType(self):
-        mimetypeItem = self.app.main_view.select_single(
-            "SingleValue", objectName="mimetypeItem")
-
-        self.assertThat(
-            mimetypeItem.value, Eventually(NotEquals(False)))
-
     def test_open_text_file(self):
 
-        filePath = 'ubuntu_docviewer_app/files/plaintext.txt'
+        self.filepath = 'ubuntu_docviewer_app/files/plaintext.txt'
 
-        self.launchApp(filePath)
+        self.launch_app()
 
-        textArea = self.app.main_view.select_single(
+        text_area = self.app.main_view.select_single(
             "TextArea", objectName="textAreaMain")
 
-        # Check if textarea is no longer empty
         self.assertThat(
-            textArea.text, Eventually(NotEquals(False)))
+            text_area.text, Eventually(Equals('TEST\n')))
 
     def test_open_image_file(self):
 
-        filePath = 'ubuntu_docviewer_app/files/ubuntu-touch.jpg'
+        self.filepath = 'ubuntu_docviewer_app/files/ubuntu-touch.jpg'
 
-        self.launchApp(filePath)
+        self.launch_app()
 
-        imageItem = self.app.main_view.select_single(
-            "QQuickImage", objectName="imageItem")
+        image_item = self.app.main_view.select_single(
+            "QQuickImage", objectName="imageRenderer")
 
-        # Check if status of Image is "Ready"
         self.assertThat(
-            imageItem.status, Eventually(Equals(1)))
-
-    def test_read_image_file_mimeType(self):
-        filePath = 'ubuntu_docviewer_app/files/ubuntu-touch.jpg'
-
-        self.launchApp(filePath)
-
-        self._check_mimeType()
+            image_item.status, Eventually(Equals(1)))
+        self.assertThat(
+            image_item.source, Contains(self.filepath))
 
     def test_unknown_file_type(self):
-        filePath = 'ubuntu_docviewer_app/files/unknown.type'
+        self.filepath = 'ubuntu_docviewer_app/files/unknown.type'
 
-        self.launchApp(filePath)
+        self.launch_app()
+        dialog = self.app.main_view.select_single("Dialog",
+                                                  objectName="unknownDialog")
+        self.assertThat(dialog.visible,
+                        Eventually(Equals(True)))
 
-        self.assertThat(
-            self.app.select_single("Dialog",
-                                   objectName="unknownDialog").visible,
-            Eventually(Equals(True)))
+    def test_open_pdf_file(self):
+        self.filepath = 'ubuntu_docviewer_app/files/UbuntuPhone.pdf'
 
-    def test_open_pdf_file_type(self):
-        filePath = 'ubuntu_docviewer_app/files/UbuntuPhone.pdf'
+        self.launch_app()
 
-        self.launchApp(filePath)
-
-        self.assertThat(
-            self.app.select_many("Label", text="UbuntuPhone.pdf")[0].visible,
-            Eventually(Equals(True)))
-
-    def test_open_pdf_file_mimeType(self):
-        filePath = 'ubuntu_docviewer_app/files/UbuntuPhone.pdf'
-
-        self.launchApp(filePath)
-
-        self._check_mimeType()
+        pdf = self.app.main_view.select_single("PdfView")
+        self.assertThat(pdf.title,
+                        Eventually(Equals("UbuntuPhone.pdf")))
