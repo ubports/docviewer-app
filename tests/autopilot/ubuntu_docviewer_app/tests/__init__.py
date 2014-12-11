@@ -54,6 +54,7 @@ class BaseTestCaseWithPatchedHome(AutopilotTestCase):
     def setUp(self):
         self.binary = 'ubuntu-docviewer-app'
         self.qml = 'ubuntu_docviewer_app.qml'
+        self.sample_dir = "/usr/lib/python3/dist-packages/"
         self.source_dir = os.path.dirname(
             os.path.dirname(os.path.abspath('.')))
         self.build_dir = self._get_build_dir()
