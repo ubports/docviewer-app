@@ -80,19 +80,18 @@ class BaseTestCaseWithPatchedHome(AutopilotTestCase):
         self.useFixture(fixtures.EnvironmentVariable('LC_ALL', newvalue='C'))
 
     @autopilot_logging.log_action(logger.info)
-    def launch_test_local(self):
+    def launch_test_local(self, document):
         return self.launch_test_application(
             self.local_location_binary,
-            '-p',
-            '-q', self.local_location_qml,
+            document,
             app_type='qt',
             emulator_base=ubuntuuitoolkit.UbuntuUIToolkitCustomProxyObjectBase)
 
     @autopilot_logging.log_action(logger.info)
-    def launch_test_installed(self):
+    def launch_test_installed(self, document):
         return self.launch_test_application(
             self.installed_location_binary,
-            '-q', self.installed_location_qml,
+            os.path.join(self.sample_dir, document),
             app_type='qt',
             emulator_base=ubuntuuitoolkit.UbuntuUIToolkitCustomProxyObjectBase)
 
@@ -162,4 +161,6 @@ class DocviewerAppTestCase(BaseTestCaseWithPatchedHome):
 
     def setUp(self):
         super(DocviewerAppTestCase, self).setUp()
-        self.app = ubuntu_docviewer_app.DocviewerApp(self.launcher())
+
+    def launchApp(self, document):
+        self.app = ubuntu_docviewer_app.DocviewerApp(self.launcher(document))

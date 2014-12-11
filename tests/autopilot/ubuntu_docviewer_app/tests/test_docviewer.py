@@ -30,14 +30,7 @@ class TestMainWindow(DocviewerAppTestCase):
 
         filePath = 'ubuntu_docviewer_app/files/plaintext.txt'
 
-        if os.path.exists(self.local_location_binary):
-            self.launch_test_local(filePath)
-        else:
-            self.launch_test_installed(self.sample_dir + filePath)
-
-        # Check if the app is correclty launched
-        self.assertThat(
-            self.main_view.visible, Eventually(Equals(True)))
+        self.launchApp(filePath)
 
         textArea = self.app.main_view.select_single(
             "TextArea", objectName="textAreaMain")
@@ -50,14 +43,7 @@ class TestMainWindow(DocviewerAppTestCase):
 
         filePath = 'ubuntu_docviewer_app/files/ubuntu-touch.jpg'
 
-        if os.path.exists(self.local_location_binary):
-            self.launch_test_local(filePath)
-        else:
-            self.launch_test_installed(self.sample_dir + filePath)
-
-        # Check if the app is correclty launched
-        self.assertThat(
-            self.main_view.visible, Eventually(Equals(True)))
+        self.launchApp(filePath)
 
         imageItem = self.app.main_view.select_single(
             "QQuickImage", objectName="imageItem")
@@ -69,19 +55,14 @@ class TestMainWindow(DocviewerAppTestCase):
     def test_read_image_file_mimeType(self):
         filePath = 'ubuntu_docviewer_app/files/ubuntu-touch.jpg'
 
-        if os.path.exists(self.local_location_binary):
-            self.launch_test_local(filePath)
-        else:
-            self.launch_test_installed(self.sample_dir + filePath)
+        self.launchApp(filePath)
+
         self._check_mimeType()
 
     def test_unknown_file_type(self):
         filePath = 'ubuntu_docviewer_app/files/unknown.type'
 
-        if os.path.exists(self.local_location_binary):
-            self.launch_test_local(filePath)
-        else:
-            self.launch_test_installed(self.sample_dir + filePath)
+        self.launchApp(filePath)
 
         self.assertThat(
             self.app.select_single("Dialog",
@@ -91,10 +72,7 @@ class TestMainWindow(DocviewerAppTestCase):
     def test_open_pdf_file_type(self):
         filePath = 'ubuntu_docviewer_app/files/UbuntuPhone.pdf'
 
-        if os.path.exists(self.local_location_binary):
-            self.launch_test_local(filePath)
-        else:
-            self.launch_test_installed(self.sample_dir + filePath)
+        self.launchApp(filePath)
 
         self.assertThat(
             self.app.select_many("Label", text="UbuntuPhone.pdf")[0].visible,
@@ -103,9 +81,6 @@ class TestMainWindow(DocviewerAppTestCase):
     def test_open_pdf_file_mimeType(self):
         filePath = 'ubuntu_docviewer_app/files/UbuntuPhone.pdf'
 
-        if os.path.exists(self.local_location_binary):
-            self.launch_test_local(filePath)
-        else:
-            self.launch_test_installed(self.sample_dir + filePath)
+        self.launchApp(filePath)
 
         self._check_mimeType()
