@@ -16,6 +16,7 @@ Page {
     // TODO: Restore zooming
     ListView {
         id: pdfView
+        objectName:"pdfView"
 
         anchors {
             fill: parent

@@ -8,7 +8,7 @@
 """Docviewer app autopilot tests."""
 
 from autopilot.matchers import Eventually
-from testtools.matchers import Equals, Contains
+from testtools.matchers import Equals, Contains, GreaterThan
 
 from ubuntu_docviewer_app.tests import DocviewerAppTestCase
 
@@ -58,6 +58,7 @@ class TestMainWindow(DocviewerAppTestCase):
 
         self.launch_app()
 
-        pdf = self.app.main_view.select_single("PdfView")
-        self.assertThat(pdf.title,
-                        Eventually(Equals("UbuntuPhone.pdf")))
+        pdf = self.app.main_view.select_single(
+            "QQuickListView", objectName="pdfView")
+        self.assertThat(pdf.contentHeight,
+                        Eventually(GreaterThan(0)))
