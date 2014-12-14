@@ -50,6 +50,7 @@ PageHeadState {
         },
 
         Action {
+            objectName:"gotopage"
             iconName: "browser-tabs"
             text: "Go to page..."
             onTriggered: PopupUtils.open(targetPage.goToPageDialog)
