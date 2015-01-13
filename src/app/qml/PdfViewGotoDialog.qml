@@ -4,6 +4,7 @@ import Ubuntu.Components.Popups 1.0
 
 Dialog {
     id: goToPageDialogue
+    objectName:"PdfViewGotoDialog"
 
     property ListView view
 
@@ -12,6 +13,7 @@ Dialog {
 
     TextField {
         id: goToPageTextField
+        objectName:"goToPageTextField"
 
         width: parent.width
 
@@ -24,6 +26,7 @@ Dialog {
     }
 
     Button {
+        objectName:"GOButton"
         text: i18n.tr("GO!")
         color: UbuntuColors.orange
 

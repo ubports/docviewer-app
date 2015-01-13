@@ -18,6 +18,10 @@ class TestMainWindow(DocviewerAppTestCase):
     def setUp(self):
         super(TestMainWindow, self).setUp()
 
+    def go_to_page_no(self, page_no):
+        self.app.main_view.get_PdfViewGotoDialog()
+        self.app.main_view.go_to_page_from_dialog(page_no)
+
     def test_open_text_file(self):
 
         self.filepath = 'ubuntu_docviewer_app/files/plaintext.txt'
@@ -62,3 +66,17 @@ class TestMainWindow(DocviewerAppTestCase):
             "QQuickListView", objectName="pdfView")
         self.assertThat(pdf.contentHeight,
                         Eventually(GreaterThan(0)))
+
+    def test_go_to_page_pdf_file(self):
+        self.filepath = 'ubuntu_docviewer_app/files/FCM-91.pdf'
+        page_no = "3"
+
+        self.launch_app()
+        pdf = self.app.main_view.open_PdfView()
+        pdf.click_go_to_page_button()
+        self.go_to_page_no(page_no)
+
+        self.assertThat(
+            self.app.main_view.select_single(
+                "QQuickListView", objectName="pdfView").currentIndex,
+            Eventually(Equals(int(page_no) - 1)))
