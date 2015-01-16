@@ -12,94 +12,34 @@ Page {
         flickableItem: flickable
     }
 
-    Flickable {
-        id: flickable
+    TextArea {
+        id: textAreaMain
+        objectName: "textAreaMain"
+
         anchors.fill: parent
-        contentHeight: columnMain.height
-        contentWidth: parent.width
 
-        boundsBehavior: Flickable.StopAtBounds
+        // FIXME: If set to true, some of the keyboard hooks are disabled
+        // And it's not possible to move the cursor with arrow keys.
+        readOnly: true
 
-        Column {
-            id: columnMain
-            objectName: "columnMain"
+        text: i18n.tr("Loading...")
+        font.family: "UbuntuMono"
 
-            anchors {
-                left: parent.left
-                right: parent.right
-                top: parent.top
-            }
+        Component.onCompleted: {
+            var xhr = new XMLHttpRequest;
 
-            spacing: 10
-
-            TextArea {
-                id: textAreaMain
-                objectName: "textAreaMain"
-
-                width: parent.width
-
-                autoSize: true
-                maximumLineCount: 0
-                readOnly: true
-                //activeFocusOnPress: true;
-                highlighted: true
-
-                text: "Loading..."
-
-                // Use Ubuntu Mono font so we can know how many chars are placed in a single line.
-                font.family: "UbuntuMono"
-
-                property int maxCharsPerLine: contentWidth / (font.pixelSize * 0.5)
-                // Ubuntu Mono font ratio is 1:2 (width:height)
-
-                signal loadCompleted()
-
-                Component.onCompleted: {
-                    var xhr = new XMLHttpRequest;
-
-                    xhr.open("GET", file.path);
-                    xhr.onreadystatechange = function() {
-                        if (xhr.readyState === XMLHttpRequest.DONE) {
-                            textAreaMain.text = xhr.responseText;
-                            textAreaMain.loadCompleted();
-                        }
-                    }
-
-                    xhr.send();
-                    flickable.forceActiveFocus()
-                }
-
-                style: TextAreaStyle {
-                    background: Item {
-                        id: bgItem
-                        anchors.fill: parent
-                    }
+            xhr.open("GET", file.path);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    textAreaMain.text = xhr.responseText;
                 }
             }
+
+            xhr.send();
         }
 
-        Keys.onPressed: {
-            if (event.key === Qt.Key_PageDown) {
-                if (!flickable.atYEnd)
-                    flickable.contentY = flickable.contentY + height / 2;
-                event.accepted = true;
-            } else if (event.key === Qt.Key_PageUp) {
-                if (!flickable.atYBeginning)
-                    flickable.contentY = flickable.contentY - height / 2;
-                event.accepted = true;
-            }
-        }
-        Keys.onLeftPressed: {
-            flickable.flick( -width / 2, 0)
-        }
-        Keys.onRightPressed: {
-            flickable.flick( width / 2, 0)
-        }
-        Keys.onUpPressed: {
-            flickable.flick( 0, height / 2)
-        }
-        Keys.onDownPressed: {
-            flickable.flick( 0, -height / 2)
+        style: TextAreaStyle {
+            background: Rectangle { color: "white" }
         }
     }
 

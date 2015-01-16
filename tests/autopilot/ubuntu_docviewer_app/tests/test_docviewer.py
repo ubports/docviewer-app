@@ -7,114 +7,76 @@
 
 """Docviewer app autopilot tests."""
 
-from __future__ import absolute_import
-
 from autopilot.matchers import Eventually
-from testtools.matchers import Equals, NotEquals
+from testtools.matchers import Equals, Contains, GreaterThan
 
-from ubuntu_docviewer_app.tests import DocviewerTestCase
-import os
+from ubuntu_docviewer_app.tests import DocviewerAppTestCase
 
 
-class TestMainWindow(DocviewerTestCase):
+class TestMainWindow(DocviewerAppTestCase):
 
     def setUp(self):
         super(TestMainWindow, self).setUp()
 
-    def tearDown(self):
-        super(TestMainWindow, self).tearDown()
+    def go_to_page_no(self, page_no):
+        self.app.main_view.get_PdfViewGotoDialog()
+        self.app.main_view.go_to_page_from_dialog(page_no)
 
     def test_open_text_file(self):
 
-        filePath = 'ubuntu_docviewer_app/files/plaintext.txt'
+        self.filepath = 'ubuntu_docviewer_app/files/plaintext.txt'
 
-        if os.path.exists(self.local_location_binary):
-            self.launch_test_local(filePath)
-        else:
-            self.launch_test_installed(self.sample_dir + filePath)
+        self.launch_app()
 
-        # Check if the app is correclty launched
-        self.assertThat(
-            self.main_view.visible, Eventually(Equals(True)))
-
-        textArea = self.main_view.select_single(
+        text_area = self.app.main_view.select_single(
             "TextArea", objectName="textAreaMain")
 
-        # Check if textarea is no longer empty
         self.assertThat(
-            textArea.text, Eventually(NotEquals(False)))
+            text_area.text, Eventually(Equals('TEST\n')))
 
     def test_open_image_file(self):
 
-        filePath = 'ubuntu_docviewer_app/files/ubuntu-touch.jpg'
+        self.filepath = 'ubuntu_docviewer_app/files/ubuntu-touch.jpg'
 
-        if os.path.exists(self.local_location_binary):
-            self.launch_test_local(filePath)
-        else:
-            self.launch_test_installed(self.sample_dir + filePath)
+        self.launch_app()
 
-        # Check if the app is correclty launched
-        self.assertThat(
-            self.main_view.visible, Eventually(Equals(True)))
-
-        imageItem = self.main_view.select_single(
+        image_item = self.app.main_view.select_single(
             "QQuickImage", objectName="imageRenderer")
 
-        # Check if status of Image is "Ready"
         self.assertThat(
-            imageItem.status, Eventually(Equals(1)))
-
-    def test_read_image_file_mimeType(self):
-        filePath = 'ubuntu_docviewer_app/files/ubuntu-touch.jpg'
-
-        if os.path.exists(self.local_location_binary):
-            self.launch_test_local(filePath)
-        else:
-            self.launch_test_installed(self.sample_dir + filePath)
-        self.check_mimeType()
-
-    def check_mimeType(self):
-        # Click "Details" action in the header
-        header = self.main_view.get_header()
-        header.click_action_button('detailsAction')
-
-        mimetypeItem = self.main_view.select_single(
-            "Subtitled", objectName="mimetypeItem")
-
+            image_item.status, Eventually(Equals(1)))
         self.assertThat(
-            mimetypeItem.subText, Eventually(NotEquals(False)))
+            image_item.source, Contains(self.filepath))
 
     def test_unknown_file_type(self):
-        filePath = 'ubuntu_docviewer_app/files/unknown.type'
+        self.filepath = 'ubuntu_docviewer_app/files/unknown.type'
 
-        if os.path.exists(self.local_location_binary):
-            self.launch_test_local(filePath)
-        else:
-            self.launch_test_installed(self.sample_dir + filePath)
+        self.launch_app()
+        dialog = self.app.main_view.select_single("Dialog",
+                                                  objectName="unknownDialog")
+        self.assertThat(dialog.visible,
+                        Eventually(Equals(True)))
+
+    def test_open_pdf_file(self):
+        self.filepath = 'ubuntu_docviewer_app/files/UbuntuPhone.pdf'
+
+        self.launch_app()
+
+        pdf = self.app.main_view.select_single(
+            "QQuickListView", objectName="pdfView")
+        self.assertThat(pdf.contentHeight,
+                        Eventually(GreaterThan(0)))
+
+    def test_go_to_page_pdf_file(self):
+        self.filepath = 'ubuntu_docviewer_app/files/FCM-91.pdf'
+        page_no = "3"
+
+        self.launch_app()
+        pdf = self.app.main_view.open_PdfView()
+        pdf.click_go_to_page_button()
+        self.go_to_page_no(page_no)
 
         self.assertThat(
-            self.app.select_single("Dialog",
-                                   objectName="unknownDialog").visible,
-            Eventually(Equals(True)))
-
-    def test_open_pdf_file_type(self):
-        filePath = 'ubuntu_docviewer_app/files/UbuntuPhone.pdf'
-
-        if os.path.exists(self.local_location_binary):
-            self.launch_test_local(filePath)
-        else:
-            self.launch_test_installed(self.sample_dir + filePath)
-
-        self.assertThat(
-            self.app.select_many("Label", text="UbuntuPhone.pdf")[0].visible,
-            Eventually(Equals(True)))
-
-    def test_open_pdf_file_mimeType(self):
-        filePath = 'ubuntu_docviewer_app/files/UbuntuPhone.pdf'
-
-        if os.path.exists(self.local_location_binary):
-            self.launch_test_local(filePath)
-        else:
-            self.launch_test_installed(self.sample_dir + filePath)
-
-        self.check_mimeType()
+            self.app.main_view.select_single(
+                "QQuickListView", objectName="pdfView").currentIndex,
+            Eventually(Equals(int(page_no) - 1)))
