@@ -15,15 +15,6 @@ MainView {
     width: units.gu(50)
     height: units.gu(75)
 
-    Arguments {
-        id: args
-
-        // It returns "expected argument" message when not specified a path.
-        // It works anyway, but it may be worth to use Argument{} in future
-        defaultArgument.help: "Path of the document"
-        defaultArgument.valueNames: ["path"]
-    }
-
     File {
         objectName: "fileObject"
         id: file
@@ -33,18 +24,21 @@ MainView {
     }
 
     Component.onCompleted: {
-        // Check if a value has been specified for "path" argument
-        if (args.defaultArgument.at(0)) {
-            // If so, send the path to the File plugin
-            console.log("Path argument is:", args.defaultArgument.at(0))      
-            file.path = args.defaultArgument.at(0)
+        // Check if a value has been specified for "documentPath" argument.
+        // The value for the argument is parsed in main.cpp.
+
+        if (documentPath) {
+            // If so, send the path to the File plugin and load the document.
+            console.log("Path argument is:", documentPath);
+            file.path = documentPath;
         } else {
-            // Otherwise, push a welcome screen in the stack
-            pageStack.push(Qt.resolvedUrl("WelcomePage.qml"))
+            // Otherwise, push a welcome screen in the stack.
+            pageStack.push(Qt.resolvedUrl("WelcomePage.qml"));
         }
     }
 
     // Content Importer
+    // Used when user asks to open a document from ContentHub.
     Loader {
         id: contentHubLoader
 
