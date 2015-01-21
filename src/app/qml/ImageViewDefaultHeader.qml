@@ -23,16 +23,6 @@ PageHeadState {
             font.weight: Font.DemiBold
             text: targetPage.title
         }
-        Label {
-            id: currentPageLabel
-
-            width: parent.width
-            horizontalAlignment: Text.AlignHCenter
-            elide: Text.ElideMiddle
-
-            fontSize: "small"
-            text: targetPage.currentPage
-        }
     }
 
     backAction: Action {
@@ -51,20 +41,6 @@ PageHeadState {
     }
 
     actions: [
-        Action {
-            iconName: "search"
-            // onTriggered: pageMain.state = "search"
-            //Disable it until we provide search in Poppler plugin.
-            enabled: false
-        },
-
-        Action {
-            objectName:"gotopage"
-            iconName: "browser-tabs"
-            text: "Go to page..."
-            onTriggered: PopupUtils.open(targetPage.goToPageDialog)
-        },
-
         Action {
             objectName: "detailsAction"
             text: i18n.tr("Details")
