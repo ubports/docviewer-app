@@ -1,51 +1,26 @@
 import QtQuick 2.0
 import Ubuntu.Components 1.1
-import Ubuntu.Content 1.1
 
 Page {
-    id: picker
+    id: welcomePage
 
-    property var activeTransfer
+    title: i18n.tr("Document Viewer")
+    head.actions: [ openAction ]
 
-    ContentTransferHint {
-        id: transferHint
-        anchors.fill: parent
-        activeTransfer: picker.activeTransfer
+    EmptyState {
+        title: i18n.tr("No opened documents")
+        subTitle: i18n.tr("Tap the + icon to open a document")
+
+        iconName: "edit-copy"
+
+        anchors.centerIn: parent
     }
 
-    title: i18n.tr("Open with...")
-    head.sections.model: [i18n.tr("Documents"), i18n.tr("Pictures"), i18n.tr("Other")]
-    head.backAction: Action {
-        iconName: "close"
-        text: i18n.tr("Close")
-        onTriggered: Qt.quit()
-    }
+    Action {
+        id: openAction
+        text: i18n.tr("Open a file...")
+        iconName: "add"
 
-    ContentPeerPicker {
-        showTitle: false
-
-        contentType: {
-            switch (picker.head.sections.selectedIndex) {
-            case 0:
-                return ContentType.Documents
-            case 1:
-                return ContentType.Pictures
-            case 2:
-                return ContentType.Unknown
-            }
-        }
-        handler: ContentHandler.Source
-
-        onPeerSelected: picker.activeTransfer = peer.request();
-    }
-
-    Connections {
-        target: picker.activeTransfer ? picker.activeTransfer : null
-        onStateChanged: {
-            if (picker.activeTransfer.state === ContentTransfer.Charged) {
-                file.path = picker.activeTransfer.items[0].url.toString().replace("file://", "")
-                console.log("[CONTENT-HUB] Content imported!")
-            }
-        }
+        onTriggered: pageStack.push(Qt.resolvedUrl("ContentHubPicker.qml"))
     }
 }

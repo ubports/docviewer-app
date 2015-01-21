@@ -1,5 +1,5 @@
 /*
- * Copyright: 2013 - 2014 Canonical, Ltd
+ * Copyright: 2013 - 2015 Canonical, Ltd
  *
  * This file is part of docviewer
  *
@@ -19,6 +19,7 @@
  * Authors: Michael Zanetti <michael.zanetti@canonical.com>
  *          Riccardo Padovani <rpadovani@ubuntu.com>
  *          David Planella <david.planella@ubuntu.com>
+ *          Stefano Verzegnassi <stefano92.100@gmail.com>
  */
 
 #include <QtGui/QGuiApplication>
@@ -44,24 +45,20 @@ int main(int argc, char *argv[])
 
     QStringList args = a.arguments();
     if (args.contains("-h") || args.contains("--help")) {
-        qDebug() << "usage: " + args.at(0) + " [-p|--phone] [-t|--tablet] [-h|--help] [-I <path>]";
-        qDebug() << "    -p|--phone    If running on Desktop, start in a phone sized window.";
-        qDebug() << "    -t|--tablet   If running on Desktop, start in a tablet sized window.";
+        qDebug() << "usage: " + args.at(0) + " [-h|--help] <path>";
         qDebug() << "    -h|--help     Print this help.";
-        qDebug() << "    -I <path>     Give a path for an additional QML import directory. May be used multiple times.";
+        qDebug() << "    <path>        Path of the document to load.";
         return 0;
     }
 
-    for (int i = 0; i < args.count(); i++) {
-        if (args.at(i) == "-I" && args.count() > i + 1) {
-            QString addedPath = args.at(i+1);
-            if (addedPath.startsWith('.')) {
-                addedPath = addedPath.right(addedPath.length() - 1);
-                addedPath.prepend(QDir::currentPath());
-            }
-            importPathList.append(addedPath);
+    // Check if the path of the document has been specified.
+    QString docPath;
+    for (int i = 1; i < args.count(); i++) {
+        if (args.at(i) != "-h" && args.at(i) != "--h") {
+            docPath = args.at(i);
         }
     }
+    view.engine()->rootContext()->setContextProperty("documentPath", docPath);
 
     if (args.contains(QLatin1String("-testability")) || getenv("QT_LOAD_TESTABILITY")) {
         QLibrary testLib(QLatin1String("qttestability"));
@@ -76,19 +73,6 @@ int main(int argc, char *argv[])
         } else {
             qCritical("Library qttestability load failed!");
         }
-    }
-
-    view.engine()->rootContext()->setContextProperty("tablet", QVariant(false));
-    view.engine()->rootContext()->setContextProperty("phone", QVariant(false));
-    if (args.contains("-t") || args.contains("--tablet")) {
-        qDebug() << "running in tablet mode";
-        view.engine()->rootContext()->setContextProperty("tablet", QVariant(true));
-    } else if (args.contains("-p") || args.contains("--phone")){
-        qDebug() << "running in phone mode";
-        view.engine()->rootContext()->setContextProperty("phone", QVariant(true));
-    } else if (qgetenv("QT_QPA_PLATFORM") != "ubuntumirclient") {
-        // Default to tablet size on X11
-        view.engine()->rootContext()->setContextProperty("tablet", QVariant(true));
     }
 
     view.engine()->setImportPathList(importPathList);
