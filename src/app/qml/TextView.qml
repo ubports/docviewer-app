@@ -8,10 +8,6 @@ Page {
     id: textPage
     title: Utils.getNameOfFile(file.path);
 
-    Scrollbar {
-        flickableItem: flickable
-    }
-
     TextArea {
         id: textAreaMain
         objectName: "textAreaMain"
