@@ -42,7 +42,7 @@ Page {
     // *** HEADER ***
     state: "default"
     states: [
-        ImageViewDefaultHeader {
+        TextViewDefaultHeader {
             name: "default"
             targetPage: textPage
         }
