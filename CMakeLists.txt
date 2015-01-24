@@ -1,7 +1,15 @@
 project(com.ubuntu.docviewer C CXX)
 cmake_minimum_required(VERSION 2.8.9)
+
 find_program(INTLTOOL_MERGE intltool-merge)
+if(NOT INTLTOOL_MERGE)
+  message(FATAL_ERROR "Could not find intltool-merge, please install the intltool package")
+endif(NOT INTLTOOL_MERGE)
+
 find_program(INTLTOOL_EXTRACT intltool-extract)
+if(NOT INTLTOOL_EXTRACT)
+  message(FATAL_ERROR "Could not find intltool-extract, please install the intltool package")
+endif(NOT INTLTOOL_EXTRACT)
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -fno-permissive -pedantic -Wall -Wextra -fPIC")
@@ -77,14 +85,12 @@ else(CLICK_MODE)
     set(ICON "${CMAKE_INSTALL_PREFIX}/${DATA_DIR}/${ICON}")
     set(DESKTOP_DIR ${CMAKE_INSTALL_DATADIR}/applications)
     set(APPLICATION_DIR ${CMAKE_INSTALL_DATADIR}/accounts/applications)
-    #install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/${APP_HARDCODE}
-    #    DESTINATION ${CMAKE_INSTALL_BINDIR})
 endif(CLICK_MODE)
 
 file(GLOB_RECURSE I18N_SRC_FILES
      RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}/po
      *.qml *.js)
-list(APPEND I18N_SRC_FILES ${DESKTOP_FILE}.in.in.h)
+list(APPEND I18N_SRC_FILES ${CMAKE_CURRENT_BINARY_DIR}/po/${DESKTOP_FILE}.in.in.h)
 list(SORT I18N_SRC_FILES)
 message("Found ${I18N_SRC_FILES}")
 
@@ -98,19 +104,19 @@ file(GLOB RESOURCE_FILES
      *.png *.svg)
 install(FILES ${SRC_FILES} ${RESOURCE_FILES} ${ICON_FILE} DESTINATION ${DATA_DIR})
 
-configure_file(${DESKTOP_FILE}.in.in ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE}.in)
+configure_file(${DESKTOP_FILE}.in.in ${DESKTOP_FILE}.in)
 
 add_custom_target(${DESKTOP_FILE} ALL
   COMMENT "Merging translations into ${DESKTOP_FILE}"
-  COMMAND LC_ALL=C ${INTLTOOL_MERGE} -d -u ${CMAKE_SOURCE_DIR}/po ${DESKTOP_FILE}.in ${DESKTOP_FILE} >/dev/null
+  COMMAND LC_ALL=C ${INTLTOOL_MERGE} -d -u ${CMAKE_SOURCE_DIR}/po ${DESKTOP_FILE}.in ${DESKTOP_FILE}
 )
 
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE} DESTINATION ${DESKTOP_DIR})
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE} 
+        DESTINATION ${DESKTOP_DIR})
  
-#install(FILES ${URLS_FILE} DESTINATION ${URLS_DIR})
-
 # Tests
 enable_testing()
 
 add_subdirectory(src)
 add_subdirectory(tests)
+add_subdirectory(po)
