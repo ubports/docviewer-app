@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-28 18:38+0100\n"
+"POT-Creation-Date: 2015-01-29 19:08+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -87,20 +87,20 @@ msgstr ""
 msgid "Page %1 of %2"
 msgstr ""
 
-#: ../src/app/qml/PdfViewGotoDialog.qml:27
+#: ../src/app/qml/PdfViewGotoDialog.qml:25
 msgid "Go to page"
 msgstr ""
 
-#: ../src/app/qml/PdfViewGotoDialog.qml:28
+#: ../src/app/qml/PdfViewGotoDialog.qml:26
 #, qt-format
 msgid "Choose a page between 1 and %1"
 msgstr ""
 
-#: ../src/app/qml/PdfViewGotoDialog.qml:46
+#: ../src/app/qml/PdfViewGotoDialog.qml:44
 msgid "GO!"
 msgstr ""
 
-#: ../src/app/qml/PdfViewGotoDialog.qml:54
+#: ../src/app/qml/PdfViewGotoDialog.qml:52
 msgid "Cancel"
 msgstr ""
 

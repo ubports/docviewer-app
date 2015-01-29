@@ -22,8 +22,6 @@ Dialog {
     id: goToPageDialogue
     objectName:"PdfViewGotoDialog"
 
-    property ListView view
-
     title: i18n.tr("Go to page")
     text: i18n.tr("Choose a page between 1 and %1").arg(pdfView.count)
 
@@ -35,7 +33,7 @@ Dialog {
 
         hasClearButton: true
         inputMethodHints: Qt.ImhFormattedNumbersOnly
-        validator: IntValidator{ bottom: 1; top: view.count }
+        validator: IntValidator{ bottom: 1; top: pdfView.count }
 
         Keys.onReturnPressed: goToPage()
         Component.onCompleted: forceActiveFocus()
@@ -56,7 +54,7 @@ Dialog {
     }
 
     function goToPage() {
-        view.positionViewAtIndex((goToPageTextField.text - 1), ListView.Beginning)
+        pdfView.positionViewAtIndex((goToPageTextField.text - 1), ListView.Beginning)
         PopupUtils.close(goToPageDialogue)
     }
 }

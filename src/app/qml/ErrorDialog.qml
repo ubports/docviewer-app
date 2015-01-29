@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 Canonical, Ltd.
+ * Copyright (C) 2014-2015 Canonical, Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@ Dialog {
 
     Button {
         text: i18n.tr("Close")
-        color: "red"
+        color: UbuntuColors.red
 
         onClicked: Qt.quit();
     }

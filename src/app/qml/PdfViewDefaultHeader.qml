@@ -78,7 +78,7 @@ PageHeadState {
             objectName:"gotopage"
             iconName: "browser-tabs"
             text: "Go to page..."
-            onTriggered: PopupUtils.open(targetPage.goToPageDialog)
+            onTriggered: PopupUtils.open(Qt.resolvedUrl("PdfViewGotoDialog.qml"), targetPage)
         },
 
         Action {

@@ -120,8 +120,4 @@ Page {
             targetPage: pdfPage
         }
     ]
-
-    // *** DIALOGS ***
-    property alias goToPageDialog: goToPageDialog
-    Component { id: goToPageDialog; PdfViewGotoDialog { view: pdfView } }
 }
