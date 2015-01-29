@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013-2014 Canonical, Ltd.
+ * Copyright (C) 2013-2015 Canonical, Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,27 +16,19 @@
 
 .pragma library
 
-function printSize(size)
-{
+function printSize(size) {
     if (size >= 1073741824)
-    {
         return (size / 1073741824).toFixed(2) + " GiB";
-    }
 
     if (size >= 1048576)
-    {
         return (size / 1048576).toFixed(2) + " MiB";
-    }
 
     if (size >= 1024)
-    {
         return parseInt(size / 1024) + " KiB";
-    }
 
     return size + " byte";
-}
+};
 
-function getNameOfFile(path)
-{
+function getNameOfFile(path) {
     return path.toString().substring(path.lastIndexOf('/') + 1);
 }
