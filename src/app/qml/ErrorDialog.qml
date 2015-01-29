@@ -19,7 +19,7 @@ import Ubuntu.Components 1.1
 import Ubuntu.Components.Popups 1.0
 
 Dialog {
-    id: errorDialogue
+    id: errorDialog
     title: i18n.tr("Error")
     text: i18n.tr("File does not exist")
 

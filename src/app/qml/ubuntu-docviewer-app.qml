@@ -23,7 +23,7 @@ import "loadComponent.js" as LoadComponent
 
 MainView {
     id: mainView
-    objectName: "docviewer"
+    objectName: "mainView"
 
     applicationName: "com.ubuntu.docviewer"
     useDeprecatedToolbar: false
@@ -32,8 +32,8 @@ MainView {
     height: units.gu(75)
 
     File {
-        objectName: "fileObject"
         id: file
+        objectName: "file"
 
         onMimetypeChanged: LoadComponent.load(mimetype)
         onErrorChanged: { if (error == -1); PopupUtils.open(Qt.resolvedUrl("ErrorDialog.qml"), mainView, { parent: mainView }) }

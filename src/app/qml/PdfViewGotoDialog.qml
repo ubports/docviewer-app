@@ -19,7 +19,7 @@ import Ubuntu.Components 1.1
 import Ubuntu.Components.Popups 1.0
 
 Dialog {
-    id: goToPageDialogue
+    id: goToPageDialog
     objectName:"PdfViewGotoDialog"
 
     title: i18n.tr("Go to page")
@@ -50,11 +50,11 @@ Dialog {
 
     Button {
         text: i18n.tr("Cancel")
-        onClicked: PopupUtils.close(goToPageDialogue)
+        onClicked: PopupUtils.close(goToPageDialog)
     }
 
     function goToPage() {
         pdfView.positionViewAtIndex((goToPageTextField.text - 1), ListView.Beginning)
-        PopupUtils.close(goToPageDialogue)
+        PopupUtils.close(goToPageDialog)
     }
 }
