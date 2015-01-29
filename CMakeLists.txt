@@ -14,6 +14,7 @@ endif(NOT INTLTOOL_EXTRACT)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -fno-permissive -pedantic -Wall -Wextra -fPIC")
 
+include(FindPkgConfig)
 # Standard install paths
 include(GNUInstallDirs)
 
