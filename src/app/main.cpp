@@ -22,6 +22,9 @@
  *          Stefano Verzegnassi <stefano92.100@gmail.com>
  */
 
+// Uncomment if you need to use QML analyzer
+// #define QT_QML_DEBUG
+
 #include <QtGui/QGuiApplication>
 #include <QtQuick/QQuickView>
 #include <QtQml/QtQml>
@@ -35,6 +38,10 @@ int main(int argc, char *argv[])
     QGuiApplication a(argc, argv);
     QQuickView view;
     view.setResizeMode(QQuickView::SizeRootObjectToView);
+
+    view.setPersistentOpenGLContext(false);
+    view.setPersistentSceneGraph(false);
+    view.engine()->rootContext()->setContextProperty("QQuickView", &view);
 
     // Set up import paths
     QStringList importPathList = view.engine()->importPathList();
