@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 Canonical, Ltd.
+ * Copyright (C) 2013-2015 Canonical, Ltd.
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License version 3, as published
@@ -17,7 +17,7 @@
  *          Stefano Verzegnassi <stefano92.100@gmail.com>
  */
 
-#include <pdfModel.h>
+#include <pdfdocument.h>
 #include <pdfPage.h>
 #include <pageImageProvider.h>
 #include <pagesWorkerThread.h>
@@ -27,13 +27,13 @@
 #include <QQmlEngine>
 #include <QQmlContext>
 
-PdfModel::PdfModel(QAbstractListModel *parent):
+PdfDocument::PdfDocument(QAbstractListModel *parent):
     QAbstractListModel(parent)
 {
     qRegisterMetaType<PdfPagesList>("PdfPagesList");
 }
 
-QHash<int, QByteArray> PdfModel::roleNames() const
+QHash<int, QByteArray> PdfDocument::roleNames() const
 {
     QHash<int, QByteArray> roles;
     roles[WidthRole] = "width";
@@ -41,12 +41,12 @@ QHash<int, QByteArray> PdfModel::roleNames() const
     return roles;
 }
 
-int PdfModel::rowCount(const QModelIndex & parent) const
+int PdfDocument::rowCount(const QModelIndex & parent) const
 {
     return m_pages.count();
 }
 
-QVariant PdfModel::data(const QModelIndex & index, int role) const
+QVariant PdfDocument::data(const QModelIndex & index, int role) const
 {
     if (index.row() < 0 || index.row() > m_pages.count())
         return QVariant();
@@ -63,7 +63,7 @@ QVariant PdfModel::data(const QModelIndex & index, int role) const
     }
 }
 
-void PdfModel::setPath(QString &pathName)
+void PdfDocument::setPath(QString &pathName)
 {
     if (pathName.isEmpty()) {
         return;
@@ -81,7 +81,7 @@ void PdfModel::setPath(QString &pathName)
     loadProvider();
 }
 
-int PdfModel::loadDocument(QString &pathName)
+int PdfDocument::loadDocument(QString &pathName)
 {
     qDebug() << "Loading document...";
 
@@ -108,7 +108,7 @@ int PdfModel::loadDocument(QString &pathName)
     return 1;
 }
 
-QDateTime PdfModel::getDocumentDate(QString data)
+QDateTime PdfDocument::getDocumentDate(QString data)
 {
     if (!document) {
         return QDateTime();
@@ -121,7 +121,7 @@ QDateTime PdfModel::getDocumentDate(QString data)
     }
 }
 
-QString PdfModel::getDocumentInfo(QString data)
+QString PdfDocument::getDocumentInfo(QString data)
 {
     if (!document) {
         return QString("");
@@ -134,7 +134,7 @@ QString PdfModel::getDocumentInfo(QString data)
     }
 }
 
-int PdfModel::loadPages()
+int PdfDocument::loadPages()
 {
     qDebug() << "Populating model...";
 
@@ -154,7 +154,7 @@ int PdfModel::loadPages()
     return 1;
 }
 
-void PdfModel::populate(PdfPagesList pagesList)
+void PdfDocument::populate(PdfPagesList pagesList)
 {
     qDebug() << "Number of pages:" << pagesList.length();
 
@@ -168,7 +168,7 @@ void PdfModel::populate(PdfPagesList pagesList)
     emit pagesLoaded();
 }
 
-int PdfModel::loadProvider()
+int PdfDocument::loadProvider()
 {
     qDebug() << "Loading image provider...";
     QQmlEngine *engine = QQmlEngine::contextForObject(this)->engine();
@@ -180,6 +180,6 @@ int PdfModel::loadProvider()
     return 1;
 }
 
-PdfModel::~PdfModel()
+PdfDocument::~PdfDocument()
 {
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 Canonical, Ltd.
+ * Copyright (C) 2013-2015 Canonical, Ltd.
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License version 3, as published
@@ -17,8 +17,8 @@
  *         Stefano Verzegnassi <stefano92.100@gmail.com>
  */
 
-#ifndef PDFMODEL_H
-#define PDFMODEL_H
+#ifndef PDFDOCUMENT_H
+#define PDFDOCUMENT_H
 
 #include <QAbstractListModel>
 #include <poppler/qt5/poppler-qt5.h>
@@ -26,10 +26,10 @@
 
 typedef QList<Poppler::Page*> PdfPagesList;
 
-class PdfModel : public QAbstractListModel
+class PdfDocument : public QAbstractListModel
 {
     Q_OBJECT
-    Q_DISABLE_COPY(PdfModel)
+    Q_DISABLE_COPY(PdfDocument)
 
 public:
     enum Roles {
@@ -37,8 +37,8 @@ public:
         HeightRole
     };
 
-    explicit PdfModel(QAbstractListModel *parent = 0);
-    virtual ~PdfModel();
+    explicit PdfDocument(QAbstractListModel *parent = 0);
+    virtual ~PdfDocument();
 
     QHash<int, QByteArray> roleNames() const;
 
@@ -71,6 +71,4 @@ signals:
     void pagesLoaded();
 };
 
-//QML_DECLARE_TYPE(PdfModel)
-
-#endif // PDFMODEL_H
+#endif // PDFDOCUMENT_H
