@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 Canonical, Ltd.
+ * Copyright (C) 2014-2015 Canonical, Ltd.
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License version 3, as published
@@ -16,27 +16,27 @@
  * Author: Stefano Verzegnassi <stefano92.100@gmail.com>
  */
 
-#ifndef PAGESWORKERTHREAD_H
-#define PAGESWORKERTHREAD_H
+#ifndef PDFTHREAD_H
+#define PDFTHREAD_H
 
 #include <QThread>
 #include <poppler/qt5/poppler-qt5.h>
 
 typedef QList<Poppler::Page*> PdfPagesList;
 
-class PDFPagesWorkerThread : public QThread
+class PdfThread : public QThread
 {
     Q_OBJECT
-    void run();
 
 public:
+    void run();
     void setDocument(Poppler::Document *document);
+
+Q_SIGNALS:
+    void resultReady(PdfPagesList pages);
 
 private:
     Poppler::Document *m_document;
-
-signals:
-    void resultReady(PdfPagesList pages);
 };
 
-#endif // PAGESWORKERTHREAD_H
+#endif // PDFTHREAD_H

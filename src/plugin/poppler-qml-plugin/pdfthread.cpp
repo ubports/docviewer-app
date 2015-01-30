@@ -16,21 +16,20 @@
  * Author: Stefano Verzegnassi <stefano92.100@gmail.com>
  */
 
-#include <pagesWorkerThread.h>
+#include "pdfthread.h"
 #include <QDebug>
 
-void PDFPagesWorkerThread::run()
+void PdfThread::run()
 {
     PdfPagesList pages;
 
-    for( int i=0; i<m_document->numPages(); i++ ){
+    for( int i=0; i<m_document->numPages(); i++ )
         pages.append(m_document->page(i));
-    }
 
-    emit resultReady(pages);
+    Q_EMIT resultReady(pages);
 }
 
-void PDFPagesWorkerThread::setDocument(Poppler::Document *document)
+void PdfThread::setDocument(Poppler::Document *document)
 {
     m_document = document;
 }

@@ -6,7 +6,7 @@ set(popplerqmlplugin_SRCS
 	plugin.cpp
         pdfdocument.cpp
 	pdfimageprovider.cpp
-	pagesWorkerThread.cpp
+	pdfthread.cpp
 	pdfitem.cpp
 )
 

@@ -19,7 +19,7 @@
 
 #include "pdfdocument.h"
 #include "pdfimageprovider.h"
-#include "pagesWorkerThread.h"
+#include "pdfthread.h"
 
 #include <poppler/qt5/poppler-qt5.h>
 #include <QDebug>
@@ -137,12 +137,12 @@ bool PdfDocument::loadPages()
     if (!m_document)
         return false;
 
-    PDFPagesWorkerThread *workerThread = new PDFPagesWorkerThread();
-    workerThread->setDocument(m_document);
+    PdfThread *pdfThread = new PdfThread();
+    pdfThread->setDocument(m_document);
 
-    connect(workerThread, SIGNAL(resultReady(PdfPagesList)), this, SLOT(_q_populate(PdfPagesList)));
-    connect(workerThread, SIGNAL(finished()), workerThread, SLOT(deleteLater()));
-    workerThread->start();
+    connect(pdfThread, SIGNAL(resultReady(PdfPagesList)), this, SLOT(_q_populate(PdfPagesList)));
+    connect(pdfThread, SIGNAL(finished()), pdfThread, SLOT(deleteLater()));
+    pdfThread->start();
 
     return true;
 }
