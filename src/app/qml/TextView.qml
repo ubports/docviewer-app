@@ -33,7 +33,7 @@ Page {
                 if (xhr.readyState === XMLHttpRequest.DONE) {
                     textAreaMain.text = xhr.responseText;
                 }
-            }
+            };
 
             xhr.send();
         }
