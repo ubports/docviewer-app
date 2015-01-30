@@ -29,6 +29,7 @@
 
 PdfDocument::PdfDocument(QAbstractListModel *parent):
     QAbstractListModel(parent)
+  , m_path("")
 {
     qRegisterMetaType<PdfPagesList>("PdfPagesList");
 }
@@ -43,6 +44,7 @@ QHash<int, QByteArray> PdfDocument::roleNames() const
 
 int PdfDocument::rowCount(const QModelIndex & parent) const
 {
+    Q_UNUSED(parent)
     return m_pages.count();
 }
 
@@ -65,119 +67,109 @@ QVariant PdfDocument::data(const QModelIndex & index, int role) const
 
 void PdfDocument::setPath(QString &pathName)
 {
-    if (pathName.isEmpty()) {
+    if (pathName.isEmpty())
         return;
-    }
 
-    this->path = pathName;
+    m_path = pathName;
+    Q_EMIT pathChanged();
 
-    emit pathChanged(pathName);
-
-    if ( !loadDocument(pathName) ) {
+    if (!loadDocument(m_path))
         return;
-    }
 
     loadPages();
     loadProvider();
 }
 
-int PdfDocument::loadDocument(QString &pathName)
+bool PdfDocument::loadDocument(QString &pathName)
 {
     qDebug() << "Loading document...";
 
     if (pathName.isEmpty()) {
         qDebug() << "Can't load the document, path is empty.";
-        return 0;
+        return false;
     }
 
-    this->document = Poppler::Document::load(pathName);
+    m_document = Poppler::Document::load(pathName);
 
-    if (!document || document->isLocked()) {
+    if (!m_document || m_document->isLocked()) {
         qDebug() << "ERROR : Can't open the document located at " + pathName;
-        emit error("Can't open the document located at " + pathName);
+        Q_EMIT error("Can't open the document located at " + pathName);
 
-        delete document;
-        return 0;
+        delete m_document;
+        return false;
     }
 
     qDebug() << "Document loaded successfully !";
 
-    document->setRenderHint(Poppler::Document::Antialiasing, true);
-    document->setRenderHint(Poppler::Document::TextAntialiasing, true);
+    m_document->setRenderHint(Poppler::Document::Antialiasing, true);
+    m_document->setRenderHint(Poppler::Document::TextAntialiasing, true);
 
-    return 1;
+    return true;
 }
 
 QDateTime PdfDocument::getDocumentDate(QString data)
 {
-    if (!document) {
+    if (!m_document)
         return QDateTime();
-    }
 
-    if (data == "CreationDate" || data == "ModDate") {
-        return document->date(data);
-    } else {
+    if (data == "CreationDate" || data == "ModDate")
+        return m_document->date(data);
+    else
         return QDateTime();
-    }
 }
 
 QString PdfDocument::getDocumentInfo(QString data)
 {
-    if (!document) {
+    if (!m_document)
         return QString("");
-    }
 
-    if (data == "Title" || data == "Subject" || data == "Author" || data == "Creator" || data == "Producer") {
-        return document->info(data);
-    } else {
+    if (data == "Title" || data == "Subject" || data == "Author" || data == "Creator" || data == "Producer")
+        return m_document->info(data);
+    else
         return QString("");
-    }
 }
 
-int PdfDocument::loadPages()
+bool PdfDocument::loadPages()
 {
     qDebug() << "Populating model...";
 
     m_pages.clear();
 
-    if (!document) {
-        return 0;
-    }
+    if (!m_document)
+        return false;
 
     PDFPagesWorkerThread *workerThread = new PDFPagesWorkerThread();
-    workerThread->setDocument(this->document);
+    workerThread->setDocument(m_document);
 
-    connect(workerThread, SIGNAL(resultReady(PdfPagesList)), this, SLOT(populate(PdfPagesList)));
+    connect(workerThread, SIGNAL(resultReady(PdfPagesList)), this, SLOT(_q_populate(PdfPagesList)));
     connect(workerThread, SIGNAL(finished()), workerThread, SLOT(deleteLater()));
     workerThread->start();
 
-    return 1;
+    return true;
 }
 
-void PdfDocument::populate(PdfPagesList pagesList)
+void PdfDocument::_q_populate(PdfPagesList pagesList)
 {
-    qDebug() << "Number of pages:" << pagesList.length();
+    qDebug() << "Number of pages:" << pagesList.count();
 
-    foreach (Poppler::Page *page, pagesList) {
+    Q_FOREACH (Poppler::Page *page, pagesList) {
         beginInsertRows(QModelIndex(), rowCount(), rowCount());
         m_pages << page;
         endInsertRows();
     }
 
     qDebug() << "Model has been successfully populated!";
-    emit pagesLoaded();
+    Q_EMIT pagesLoaded();
 }
 
-int PdfDocument::loadProvider()
+void PdfDocument::loadProvider()
 {
     qDebug() << "Loading image provider...";
     QQmlEngine *engine = QQmlEngine::contextForObject(this)->engine();
 
-    engine->addImageProvider(QLatin1String("poppler"), new PageImageProvider(document));
+    engine->addImageProvider(QLatin1String("poppler"), new PageImageProvider(m_document));
 
     qDebug() << "Image provider loaded successfully !";
-
-    return 1;
 }
 
 PdfDocument::~PdfDocument()

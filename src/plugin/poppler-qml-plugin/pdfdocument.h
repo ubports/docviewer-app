@@ -30,6 +30,7 @@ class PdfDocument : public QAbstractListModel
 {
     Q_OBJECT
     Q_DISABLE_COPY(PdfDocument)
+    Q_PROPERTY(QString path READ path WRITE setPath NOTIFY pathChanged)
 
 public:
     enum Roles {
@@ -40,35 +41,34 @@ public:
     explicit PdfDocument(QAbstractListModel *parent = 0);
     virtual ~PdfDocument();
 
+    QString path() const { return m_path; }
+    void setPath(QString &pathName);
+
     QHash<int, QByteArray> roleNames() const;
 
     int rowCount(const QModelIndex & parent = QModelIndex()) const;
     QVariant data(const QModelIndex & index, int role = Qt::DisplayRole) const;
 
-    Q_PROPERTY(QString path READ getPath WRITE setPath NOTIFY pathChanged)
-    void setPath(QString &pathName);
-    QString getPath() const { return path; }
-
-    QString path;
-
     Q_INVOKABLE QDateTime getDocumentDate(QString data);
     Q_INVOKABLE QString getDocumentInfo(QString data);
 
-private:
-    int loadDocument(QString &pathNAme);
-    int loadProvider();
-    int loadPages();
-
-    Poppler::Document *document;
-    QList<PdfPage> m_pages;
-
-private slots:
-    void populate(PdfPagesList pagesList);
-
-signals:
-    void pathChanged(const QString& newPath);
+Q_SIGNALS:
+    void pathChanged();
     void error(const QString& errorMessage);
     void pagesLoaded();
+
+private slots:
+    void _q_populate(PdfPagesList pagesList);
+
+private:
+    QString m_path;
+
+    bool loadDocument(QString &pathNAme);
+    void loadProvider();
+    bool loadPages();
+
+    Poppler::Document *m_document;
+    QList<PdfPage> m_pages;
 };
 
 #endif // PDFDOCUMENT_H
