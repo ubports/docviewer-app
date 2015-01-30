@@ -28,6 +28,7 @@ class DocviewerFile : public QObject
     Q_OBJECT
     Q_PROPERTY( QString path READ getPath WRITE setPath NOTIFY pathChanged )
     Q_PROPERTY( QString mimetype READ getMimetype NOTIFY mimetypeChanged )
+    Q_PROPERTY( QString description READ getDescription NOTIFY descriptionChanged )
     Q_PROPERTY( qint64 size READ getSize NOTIFY sizeChanged )
     Q_PROPERTY( QDateTime lastModified READ getLastmodified NOTIFY lastmodifiedChanged )
     Q_PROPERTY( QDateTime creationTime READ getCreationTime NOTIFY creationTimeChanged )
@@ -43,6 +44,8 @@ protected:
 
     QString getMimetype() { return mimetype; }
 
+    QString getDescription() { return description; }
+
     qint64 getSize() { return size; }
 
     QDateTime getLastmodified() { return lastmodified; }
@@ -53,6 +56,7 @@ protected:
     
     QString path;
     QString mimetype;
+    QString description;
     qint64 size;
     QDateTime lastmodified;
     QDateTime creationTime;
@@ -65,6 +69,7 @@ private:
 Q_SIGNALS:
     void pathChanged();
     void mimetypeChanged();
+    void descriptionChanged();
     void sizeChanged();
     void lastmodifiedChanged();
     void creationTimeChanged();

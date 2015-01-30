@@ -107,12 +107,15 @@ void DocviewerFile::readMimeType()
 {
     QMimeDatabase db;
     mimetype = db.mimeTypeForFile(this->path).name();
+    description = db.mimeTypeForFile(this->path).comment();
 
     if (mimetype == "application/octet-stream") {
         // Returned by Qt when it cannot determinate the mime type
         mimetype = "Unknown";
     }
 
-    qDebug() << "[FILE] Mime type for the requested file is" << mimetype;
+    qDebug() << "[FILE] Requested file mime type:" << mimetype;
+    qDebug() << "[FILE] Requested file description:" << description;
     emit mimetypeChanged();
+    emit descriptionChanged();
 }

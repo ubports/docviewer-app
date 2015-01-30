@@ -37,6 +37,14 @@ PageHeadState {
             font.weight: Font.DemiBold
             text: targetPage.title
         }
+        Label {
+            width: parent.width
+            horizontalAlignment: Text.AlignHCenter
+            elide: Text.ElideMiddle
+
+            fontSize: "small"
+            text: file.description
+        }
     }
 
     backAction: Action {
