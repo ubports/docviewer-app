@@ -39,7 +39,8 @@ Rectangle {
         sourceSize.width: parent.width - 2
         fillMode: Image.PreserveAspectCrop
 
-        Component.onCompleted: source = "image://poppler/page/" + (model.index + 1)
+        // Just temporary, to make Jenkins work.
+        Component.onCompleted: source = "image://poppler0/page/" + (model.index + 1)
     }
 
     Rectangle {
