@@ -16,38 +16,47 @@
 
 import QtQuick 2.3
 import Ubuntu.Components 1.1
+import QtQuick.Layouts 1.0
 import Ubuntu.Components.Popups 1.0
 
 PageHeadState {
     id: rootItem
 
     property Page targetPage
+    property alias activityRunning: activity.running
 
     head: targetPage.head
 
-    contents: Column {
-        anchors.centerIn: parent
-        width: parent.width
+    contents: RowLayout {
+        anchors.fill: parent
+        spacing: units.gu(1)
 
-        Label {
-            id: titleLabel
-
-            width: parent.width
-            horizontalAlignment: Text.AlignHCenter
-            elide: Text.ElideMiddle
-
-            font.weight: Font.DemiBold
-            text: targetPage.title
+        ActivityIndicator {
+            id: activity
+            anchors.verticalCenter: parent.verticalCenter
         }
-        Label {
-            id: currentPageLabel
 
-            width: parent.width
-            horizontalAlignment: Text.AlignHCenter
-            elide: Text.ElideMiddle
+        Column {
+            id: layout
+            anchors.verticalCenter: parent.verticalCenter
+            Layout.fillWidth: true
 
-            fontSize: "small"
-            text: targetPage.currentPage
+            Label {
+                width: parent.width
+                //horizontalAlignment: Text.AlignHCenter
+                elide: Text.ElideMiddle
+
+                font.weight: Font.DemiBold
+                text: targetPage.title
+            }
+            Label {
+                width: parent.width
+                //horizontalAlignment: Text.AlignHCenter
+                elide: Text.ElideMiddle
+
+                fontSize: "small"
+                text: targetPage.currentPage
+            }
         }
     }
 
@@ -78,7 +87,7 @@ PageHeadState {
             objectName:"gotopage"
             iconName: "browser-tabs"
             text: "Go to page..."
-            onTriggered: PopupUtils.open(Qt.resolvedUrl("PdfViewGotoDialog.qml"), targetPage)
+            onTriggered: PopupUtils.open(targetPage.goToPageDialog)
         },
 
         Action {

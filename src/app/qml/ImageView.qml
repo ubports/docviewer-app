@@ -24,6 +24,7 @@ Page {
     title: Utils.getNameOfFile(file.path);
 
     ZoomableImage {
+        id: zoomableImage
         anchors.fill: parent
 
         zoomable: true
@@ -36,6 +37,7 @@ Page {
         ImageViewDefaultHeader {
             name: "default"
             targetPage: imagePage
+            activityRunning: zoomableImage.imageStatus == Image.Loading
         }
     ]
 }

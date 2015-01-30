@@ -98,6 +98,7 @@ Page {
         PdfViewDefaultHeader {
             name: "default"
             targetPage: pdfPage
+            activityRunning: pdfView.currentPageItem.status == Image.Loading || poppler.isLoading
         }
     ]
 }
