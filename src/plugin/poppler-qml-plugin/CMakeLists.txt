@@ -5,7 +5,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 set(popplerqmlplugin_SRCS
 	plugin.cpp
         pdfdocument.cpp
-	pageImageProvider.cpp
+	pdfimageprovider.cpp
 	pagesWorkerThread.cpp
 	pdfPage.cpp
 )

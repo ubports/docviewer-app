@@ -21,15 +21,15 @@
 #include <QQuickImageProvider>
 #include <QDebug>
 
-#include "pageImageProvider.h"
+#include "pdfimageprovider.h"
 
-PageImageProvider::PageImageProvider(Poppler::Document *pdfDocument)
+PdfImageProvider::PdfImageProvider(Poppler::Document *pdfDocument)
     : QQuickImageProvider(QQuickImageProvider::Image, QQuickImageProvider::ForceAsynchronousImageLoading)
 {
     this->document = pdfDocument;
 }
 
-QImage PageImageProvider::requestImage(const QString & id, QSize * size, const QSize & requestedSize)
+QImage PdfImageProvider::requestImage(const QString & id, QSize * size, const QSize & requestedSize)
 {
     Q_UNUSED(size)
 
@@ -49,7 +49,7 @@ QImage PageImageProvider::requestImage(const QString & id, QSize * size, const Q
         {
             int numPage = id.section("/", 1, 1).toInt();
 
-            // Useful for debugging, keep commented in production use.
+            // Useful for debugging, keep commented unless you need it.
             //  qDebug() << "Page" << numPage + 1 << "requested";
 
             page = document->page(numPage);
@@ -58,7 +58,7 @@ QImage PageImageProvider::requestImage(const QString & id, QSize * size, const Q
             pageSizePhys.setWidth(pageSize.width() / 72);
             res = requestedSize.width() / pageSizePhys.width();
 
-            // Useful for debugging, keep commented in production use.
+            // Useful for debugging, keep commented unless you need it.
             /*
             qDebug() << "Requested size :" << requestedSize.width() << ";" << requestedSize.height();
             qDebug() << "Size :" << pageSizePhys.width() << ";" << pageSizePhys.height();

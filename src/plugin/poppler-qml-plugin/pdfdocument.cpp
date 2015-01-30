@@ -17,10 +17,10 @@
  *          Stefano Verzegnassi <stefano92.100@gmail.com>
  */
 
-#include <pdfdocument.h>
-#include <pdfPage.h>
-#include <pageImageProvider.h>
-#include <pagesWorkerThread.h>
+#include "pdfdocument.h"
+#include "pdfPage.h"
+#include "pdfimageprovider.h"
+#include "pagesWorkerThread.h"
 
 #include <poppler/qt5/poppler-qt5.h>
 #include <QDebug>
@@ -167,7 +167,7 @@ void PdfDocument::loadProvider()
     qDebug() << "Loading image provider...";
     QQmlEngine *engine = QQmlEngine::contextForObject(this)->engine();
 
-    engine->addImageProvider(QLatin1String("poppler"), new PageImageProvider(m_document));
+    engine->addImageProvider(QLatin1String("poppler"), new PdfImageProvider(m_document));
 
     qDebug() << "Image provider loaded successfully !";
 }
