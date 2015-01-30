@@ -7,7 +7,7 @@ set(popplerqmlplugin_SRCS
         pdfdocument.cpp
 	pdfimageprovider.cpp
 	pagesWorkerThread.cpp
-	pdfPage.cpp
+	pdfitem.cpp
 )
 
 add_library(popplerqmlplugin MODULE

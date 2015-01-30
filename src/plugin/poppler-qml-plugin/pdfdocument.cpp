@@ -18,7 +18,6 @@
  */
 
 #include "pdfdocument.h"
-#include "pdfPage.h"
 #include "pdfimageprovider.h"
 #include "pagesWorkerThread.h"
 
@@ -53,13 +52,13 @@ QVariant PdfDocument::data(const QModelIndex & index, int role) const
     if (index.row() < 0 || index.row() > m_pages.count())
         return QVariant();
 
-    const PdfPage &pdfPage = m_pages.at(index.row());
+    const PdfItem &pdfItem = m_pages.at(index.row());
 
     switch (role) {
     case WidthRole:
-        return pdfPage.width();
+        return pdfItem.width();
     case HeightRole:
-        return pdfPage.height();
+        return pdfItem.height();
     default:
         return 0;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 Canonical, Ltd.
+ * Copyright (C) 2014-2015 Canonical, Ltd.
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License version 3, as published
@@ -16,15 +16,15 @@
  * Author: Stefano Verzegnassi <stefano92.100@gmail.com>
  */
 
-#ifndef PDFPAGE_H
-#define PDFPAGE_H
+#ifndef PDFITEM_H
+#define PDFITEM_H
 
 #include <poppler/qt5/poppler-qt5.h>
 
-class PdfPage
+class PdfItem
 {
 public:
-    PdfPage(Poppler::Page *page);
+    PdfItem(Poppler::Page *page);
     int width() const;
     int height() const;
 
@@ -33,4 +33,4 @@ private:
     int m_height;
 };
 
-#endif // PDFPAGE_H
+#endif // PDFITEM_H

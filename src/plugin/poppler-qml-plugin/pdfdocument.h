@@ -22,7 +22,7 @@
 
 #include <QAbstractListModel>
 #include <poppler/qt5/poppler-qt5.h>
-#include <pdfPage.h>
+#include "pdfitem.h"
 
 typedef QList<Poppler::Page*> PdfPagesList;
 
@@ -68,7 +68,7 @@ private:
     bool loadPages();
 
     Poppler::Document *m_document;
-    QList<PdfPage> m_pages;
+    QList<PdfItem> m_pages;
 };
 
 #endif // PDFDOCUMENT_H
