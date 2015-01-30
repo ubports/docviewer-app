@@ -28,7 +28,7 @@ Page {
     // TODO: Show/hide header if a user taps the page
     flickable: null
 
-    property string currentPage: i18n.tr("Page %1 of %2").arg(pdfView.currentIndex + 1).arg(pdfView.count)
+    property string currentPage: i18n.tr("Page %1 of %2").arg(pdfView.currentPageIndex + 1).arg(pdfView.count)
 
     PDF.VerticalView {
         id: pdfView
