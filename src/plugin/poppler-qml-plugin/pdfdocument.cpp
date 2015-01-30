@@ -30,6 +30,7 @@
 PdfDocument::PdfDocument(QAbstractListModel *parent):
     QAbstractListModel(parent)
   , m_path("")
+  , m_providersNumber(-1)
 {
     qRegisterMetaType<PdfPagesList>("PdfPagesList");
 }
