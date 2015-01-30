@@ -13,57 +13,83 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 import QtQuick 2.3
 import Ubuntu.Components 1.1
-import QtGraphicalEffects 1.0
 
 Rectangle {
     id: pdfPage
+
+    property int index: model.index
+    property bool _previewFetched: false
+
+    property alias status: pageImg.status
+
     width: parent.width
-
     height: width * (model.height / model.width)
+    color: "#E6E6E6"
 
-    border {
-        width: 1
-        color: "#808080"
+    // Preview page rendering. Used as placeholder while zooming the page.
+    // We generate the low resolution preview from the texture of the PDF page,
+    // so that we can keep page rendering as fast as possible.
+    ShaderEffectSource {
+        id: previewImg
+        anchors.fill: parent
+
+        // We cannot change its opacity or visibility, otherwise the texture will be refreshed,
+        // even if live is false.
+        live: false
+        textureSize: Qt.size(256, 256 * (model.height / model.width))
     }
 
     Image {
-        id: imagePage
-        anchors {
-            fill: parent
-            margins: 1
-        }
-        asynchronous: true
-        sourceSize.width: parent.width - 2
-        fillMode: Image.PreserveAspectCrop
+        id: pageImg
+        anchors.fill: parent
 
-        // Just temporary, to make Jenkins work.
-        Component.onCompleted: source = "image://poppler0/page/" + (model.index + 1)
+        source: "image://poppler" + (index % poppler.providersNumber) + "/page/" + index;
+        sourceSize.width: pdfPage.width
+
+        onStatusChanged: {
+            // This is supposed to run the first time PdfViewDelegate gets the page rendering.
+            if (!_previewFetched) {
+                if (status == Image.Ready) {
+                    previewImg.sourceItem = pageImg
+                    // Re-assign sourceItem property, so the texture is not updated when Image status changes.
+                    previewImg.sourceItem = pdfPage
+                }
+            }
+        }
+
+        // Request a new page rendering. The order, which pages are requested with, depends on the distance from the currentPage
+        Timer {
+            id: _zoomTimer
+            interval: {
+                var diff = Math.abs(pdfView.currentPageIndex - model.index)
+                var prov = poppler.providersNumber * 0.5
+
+                if (diff < prov)
+                    return 0
+                else
+                    return (diff - prov) * 10
+            }
+
+            onTriggered: {
+                pageImg.sourceSize.width = pdfPage.width;
+            }
+        }
     }
 
-    Rectangle {
-        anchors.fill: parent
-        color: "white"
-        visible: imagePage.status === Image.Loading
+    // Page rendering depends on the width of PdfViewDelegate.
+    // Because of this, we have multiple callings to ImageProvider while zooming.
+    // Just avoid it.
+    Connections {
+        target: pinchy
 
-        ActivityIndicator {
-            anchors.centerIn: parent
-            running: parent.visible
+        onPinchStarted: _zoomTimer.stop();
+        onPinchUpdated: {
+            // This ensures that page image is not reloaded when the maximumScale or minimumScale has already been reached.
+            if ( !(_zoomHelper.scale >= 2.5 && pinch.scale > 1.0) && !(_zoomHelper.scale <= 1.0 && pinch.scale < 1.0) )
+                pageImg.sourceSize.width = 0;
         }
-    }
-
-    DropShadow {
-        anchors.fill: parent
-        cached: true;
-        horizontalOffset: 0;
-        verticalOffset: 2;
-        radius: 8.0;
-        samples: 16;
-        color: "#80000000";
-        smooth: true;
-        source: parent;
-        z: -10
+        onPinchFinished: _zoomTimer.restart();
     }
 }
