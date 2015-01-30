@@ -24,10 +24,6 @@ Page {
     id: textPage
     title: Utils.getNameOfFile(file.path);
 
-    Scrollbar {
-        flickableItem: flickable
-    }
-
     TextArea {
         id: textAreaMain
         objectName: "textAreaMain"
@@ -62,7 +58,7 @@ Page {
     // *** HEADER ***
     state: "default"
     states: [
-        ImageViewDefaultHeader {
+        TextViewDefaultHeader {
             name: "default"
             targetPage: textPage
         }
