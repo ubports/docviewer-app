@@ -19,10 +19,8 @@ import Ubuntu.Components 1.1
 import Ubuntu.Components.Popups 1.0
 
 Dialog {
-    id: goToPageDialogue
+    id: goToPageDialog
     objectName:"PdfViewGotoDialog"
-
-    property ListView view
 
     title: i18n.tr("Go to page")
     text: i18n.tr("Choose a page between 1 and %1").arg(pdfView.count)
@@ -35,7 +33,7 @@ Dialog {
 
         hasClearButton: true
         inputMethodHints: Qt.ImhFormattedNumbersOnly
-        validator: IntValidator{ bottom: 1; top: view.count }
+        validator: IntValidator{ bottom: 1; top: pdfView.count }
 
         Keys.onReturnPressed: goToPage()
         Component.onCompleted: forceActiveFocus()
@@ -52,11 +50,11 @@ Dialog {
 
     Button {
         text: i18n.tr("Cancel")
-        onClicked: PopupUtils.close(goToPageDialogue)
+        onClicked: PopupUtils.close(goToPageDialog)
     }
 
     function goToPage() {
-        view.positionViewAtIndex((goToPageTextField.text - 1), ListView.Beginning)
-        PopupUtils.close(goToPageDialogue)
+        pdfView.positionViewAtIndex((goToPageTextField.text - 1), ListView.Beginning)
+        PopupUtils.close(goToPageDialog)
     }
 }

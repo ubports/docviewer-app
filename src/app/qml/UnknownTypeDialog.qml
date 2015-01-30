@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 Canonical, Ltd.
+ * Copyright (C) 2013-2015 Canonical, Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,20 +27,17 @@ Dialog {
     text: i18n.tr("Sorry but we can't find a way to display this file. Do you want to open it as a plain text?")
     Button {
         text: i18n.tr("Yes")
-        color: "green"
+        color: UbuntuColors.green
 
         onClicked: {
             LoadComponent.load("text/plain");
-            unknownDialog.destroy();
+            PopupUtils.close(unknownDialog)
         }
     }
     Button {
         text: i18n.tr("No")
-        color: "red"
-
-        onClicked: {
-            unknownDialog.destroy();
-        }
+        color: UbuntuColors.red
+        onClicked: PopupUtils.close(unknownDialog)
     }
 }
 

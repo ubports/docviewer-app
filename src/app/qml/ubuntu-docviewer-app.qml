@@ -23,7 +23,7 @@ import "loadComponent.js" as LoadComponent
 
 MainView {
     id: mainView
-    objectName: "docviewer"
+    objectName: "mainView"
 
     applicationName: "com.ubuntu.docviewer"
     useDeprecatedToolbar: false
@@ -32,11 +32,11 @@ MainView {
     height: units.gu(75)
 
     File {
-        objectName: "fileObject"
         id: file
+        objectName: "file"
 
         onMimetypeChanged: LoadComponent.load(mimetype)
-        onErrorChanged: { if (error == -1); PopupUtils.open(errorDialog) }
+        onErrorChanged: { if (error == -1); PopupUtils.open(Qt.resolvedUrl("ErrorDialog.qml"), mainView, { parent: mainView }) }
     }
 
     Component.onCompleted: {
@@ -68,11 +68,8 @@ MainView {
     }
 
     function runUnknownTypeDialog() {
-        PopupUtils.open(unknownTypeDialog);
+        PopupUtils.open(Qt.resolvedUrl("UnknownTypeDialog.qml"), mainView, { parent: mainView });
     }
 
     PageStack { id: pageStack }
-
-    Component { id: errorDialog; ErrorDialog {} }
-    Component { id: unknownTypeDialog; UnknownTypeDialog {} }
 }
