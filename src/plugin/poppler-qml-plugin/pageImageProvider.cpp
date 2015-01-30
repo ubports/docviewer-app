@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 Canonical, Ltd.
+ * Copyright (C) 2013-2015 Canonical, Ltd.
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License version 3, as published
@@ -14,56 +14,64 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * Author: Anthony Granger <grangeranthony@gmail.com>
+ *         Stefano Verzegnassi <stefano92.100@gmail.com
  */
-
 
 #include <poppler/qt5/poppler-qt5.h>
 #include <QQuickImageProvider>
 #include <QDebug>
-#include <QPaintDevice>
 
 #include "pageImageProvider.h"
 
-PageImageProvider::PageImageProvider(Poppler::Document *pdfDocument):QQuickImageProvider(QQuickImageProvider::Image)
+PageImageProvider::PageImageProvider(Poppler::Document *pdfDocument)
+    : QQuickImageProvider(QQuickImageProvider::Image, QQuickImageProvider::ForceAsynchronousImageLoading)
 {
     this->document = pdfDocument;
 }
 
 QImage PageImageProvider::requestImage(const QString & id, QSize * size, const QSize & requestedSize)
 {
-    float scale = 1.0;
-    QString type = id.section("/", 0, 0);
-    QImage result;
-    QSizeF pageSize;
-    QSizeF pageSizePhys;
-    float res = 0;
-    Poppler::Page *page;
+    Q_UNUSED(size)
 
-    if (type == "page")
-    {
-        int numPage = id.section("/", 1, 1).toInt();
+    // If the requestedSize.width is 0, avoid Poppler rendering
+    // FIXME: Actually it works correctly, but an error is anyway shown in the application output.
+    if (requestedSize.width() > 0) {
+        float scale = 1.0;
 
-        qDebug() << "Page" << numPage << "requested";
+        QString type = id.section("/", 0, 0);
+        QImage result;
+        QSizeF pageSize;
+        QSizeF pageSizePhys;
+        float res = 0;
+        Poppler::Page *page;
 
-        page = document->page(numPage -1);
+        if (type == "page")
+        {
+            int numPage = id.section("/", 1, 1).toInt();
 
-        pageSize = page->pageSizeF();
+            // Useful for debugging, keep commented in production use.
+            //  qDebug() << "Page" << numPage + 1 << "requested";
 
-        pageSizePhys.setWidth(pageSize.width() / 72);
-        //pageSizePhys.setHeight(pageSize.height() / 72);
+            page = document->page(numPage);
 
-        qDebug() << "Requested size :" << requestedSize.width() << ";" << requestedSize.height();
-
-        //if (pageSizePhys.height() >= pageSizePhys.width())
+            pageSize = page->pageSizeF();
+            pageSizePhys.setWidth(pageSize.width() / 72);
             res = requestedSize.width() / pageSizePhys.width();
-        /*else
-            res = requestedSize.height() / pageSizePhys.height();*/
 
-        qDebug() << "Size :" << pageSizePhys.width() << ";" << pageSizePhys.height();
-        qDebug() << "Resolution :" << res;
+            // Useful for debugging, keep commented in production use.
+            /*
+            qDebug() << "Requested size :" << requestedSize.width() << ";" << requestedSize.height();
+            qDebug() << "Size :" << pageSizePhys.width() << ";" << pageSizePhys.height();
+            qDebug() << "Resolution :" << res;
+            */
 
-        result = page->renderToImage(scale * res, scale * res); //For poppler the first page have the id 0
+            // Render the page to QImage
+            result = page->renderToImage(scale * res, scale * res);
+        }
+
+        return result;
     }
 
-    return result;
+    // Requested size is 0, so return a null image.
+    return QImage();
 }
