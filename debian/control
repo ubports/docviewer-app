@@ -13,7 +13,6 @@ Build-Depends: cmake,
                qt5-qmake,
                qtbase5-dev,
                qtchooser,
-               libqt5qml5,
                qtdeclarative5-dev,
                qtdeclarative5-dev-tools,
                qtdeclarative5-qtquick2-plugin,
@@ -28,7 +27,7 @@ Vcs-Bzr: https://code.launchpad.net/~ubuntu-docviewer-dev/ubuntu-docviewer-app/t
 Package: ubuntu-docviewer-app
 Architecture: any
 Depends: qtdeclarative5-qtquick2-plugin,
-         qtdeclarative5-ubuntu-ui-toolkit-plugin | qt-components-ubuntu,
+         qtdeclarative5-ubuntu-ui-toolkit-plugin,
          ${misc:Depends},
          ${shlibs:Depends}
 Description: Document Viewer application
