@@ -39,7 +39,7 @@ Rectangle {
         sourceSize.width: parent.width - 2
         fillMode: Image.PreserveAspectCrop
 
-        Component.onCompleted: source = "image://poppler/page/" + (model.index + 1)
+        Component.onCompleted: source = "image://poppler/page/" + model.index
     }
 
     Rectangle {
