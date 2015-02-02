@@ -40,7 +40,7 @@ Page {
         clip: true
         boundsBehavior: Flickable.StopAtBounds
 
-        cacheBuffer: height * poppler.providersNumber * _zoomHelper.scale
+        cacheBuffer: height * poppler.providersNumber * _zoomHelper.scale * 0.5
 
         flickDeceleration: 1500 * units.gridUnit / 8
         maximumFlickVelocity: 2500 * units.gridUnit / 8
