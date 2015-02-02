@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-29 19:41+0100\n"
+"POT-Creation-Date: 2015-02-02 15:13+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,14 +36,14 @@ msgstr ""
 #: ../src/app/qml/ContentHubPicker.qml:30
 #: ../src/app/qml/ImageViewDefaultHeader.qml:46
 #: ../src/app/qml/PdfViewDefaultHeader.qml:56
-#: ../src/app/qml/TextViewDefaultHeader.qml:44
+#: ../src/app/qml/TextViewDefaultHeader.qml:52
 msgid "Back"
 msgstr ""
 
 #: ../src/app/qml/DetailsPage.qml:27
 #: ../src/app/qml/ImageViewDefaultHeader.qml:62
 #: ../src/app/qml/PdfViewDefaultHeader.qml:86
-#: ../src/app/qml/TextViewDefaultHeader.qml:60
+#: ../src/app/qml/TextViewDefaultHeader.qml:68
 msgid "Details"
 msgstr ""
 
@@ -78,7 +78,7 @@ msgstr ""
 #: ../src/app/qml/ErrorDialog.qml:27
 #: ../src/app/qml/ImageViewDefaultHeader.qml:46
 #: ../src/app/qml/PdfViewDefaultHeader.qml:56
-#: ../src/app/qml/TextViewDefaultHeader.qml:44
+#: ../src/app/qml/TextViewDefaultHeader.qml:52
 msgid "Close"
 msgstr ""
 
@@ -104,7 +104,7 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: ../src/app/qml/TextView.qml:41
+#: ../src/app/qml/TextView.qml:37
 msgid "Loading..."
 msgstr ""
 
