@@ -12,7 +12,7 @@
         "content-hub": "docviewer-content.json"
         }
     },
-    "version": "0.1.@BZR_REVNO@",
+    "version": "0.2.@BZR_REVNO@",
     "maintainer": "Ubuntu App Cats <ubuntu-touch-coreapps@lists.launchpad.net>",
     "x-source": {
         "vcs-bzr": "@BZR_SOURCE@",

@@ -27,7 +27,7 @@ Vcs-Bzr: https://code.launchpad.net/~ubuntu-docviewer-dev/ubuntu-docviewer-app/t
 Package: ubuntu-docviewer-app
 Architecture: any
 Depends: qtdeclarative5-qtquick2-plugin,
-         qtdeclarative5-ubuntu-ui-toolkit-plugin | qt-components-ubuntu,
+         qtdeclarative5-ubuntu-ui-toolkit-plugin,
          ${misc:Depends},
          ${shlibs:Depends}
 Description: Document Viewer application

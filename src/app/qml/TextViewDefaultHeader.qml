@@ -16,7 +16,7 @@
 
 import QtQuick 2.3
 import Ubuntu.Components 1.1
-import QtQuick.Layouts 1.0
+import QtQuick.Layouts 1.1
 import Ubuntu.Components.Popups 1.0
 
 PageHeadState {
@@ -31,14 +31,10 @@ PageHeadState {
         anchors.fill: parent
         spacing: units.gu(1)
 
-        ActivityIndicator {
-            id: activity
-            anchors.verticalCenter: parent.verticalCenter
-        }
+        ActivityIndicator { id: activity }
 
         Column {
             id: layout
-            anchors.verticalCenter: parent.verticalCenter
             Layout.fillWidth: true
 
             Label {
