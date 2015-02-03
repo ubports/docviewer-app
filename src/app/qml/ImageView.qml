@@ -23,6 +23,11 @@ Page {
     id: imagePage
     title: Utils.getNameOfFile(file.path);
 
+    Rectangle {
+        anchors.fill: parent
+        color: "#221E1C"    // SuruDark.Palette.Normal.Background
+    }
+
     ZoomableImage {
         anchors.fill: parent
 
