@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 Canonical, Ltd.
+ * Copyright (C) 2014-2015 Canonical, Ltd.
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License version 3, as published
@@ -13,23 +13,24 @@
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- * Author: Anthony Granger <grangeranthony@gmail.com>
+ * Author: Stefano Verzegnassi <stefano92.100@gmail.com>
  */
 
-#ifndef PAGEIMAGEPROVIDER_H
-#define PAGEIMAGEPROVIDER_H
-
-#include <QQuickImageProvider>
+#include "pdfitem.h"
 #include <poppler/qt5/poppler-qt5.h>
 
-class PageImageProvider : public QQuickImageProvider
+PdfItem::PdfItem(Poppler::Page *page)
 {
-public:
-    PageImageProvider(Poppler::Document *pdfDocument);
-    QImage requestImage(const QString & id, QSize * size, const QSize & requestedSize);
+    m_width = page->pageSize().width();
+    m_height = page->pageSize().height();
+}
 
-private:
-    Poppler::Document *document;
-};
+int PdfItem::width() const
+{
+    return m_width;
+}
 
-#endif // PAGEIMAGEPROVIDER_H
+int PdfItem::height() const
+{
+    return m_height;
+}

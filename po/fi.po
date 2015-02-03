@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-01-29 19:41+0100\n"
+"POT-Creation-Date: 2015-01-28 18:38+0100\n"
 "PO-Revision-Date: 2015-01-28 07:22+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-01-31 06:17+0000\n"
+"X-Launchpad-Export-Date: 2015-01-30 07:05+0000\n"
 "X-Generator: Launchpad (build 17306)\n"
 
 #: ../src/app/qml/ContentHubPicker.qml:23
@@ -87,20 +87,20 @@ msgstr "Sulje"
 msgid "Page %1 of %2"
 msgstr "Sivu %1/%2"
 
-#: ../src/app/qml/PdfViewGotoDialog.qml:25
+#: ../src/app/qml/PdfViewGotoDialog.qml:27
 msgid "Go to page"
 msgstr "Siirry sivulle"
 
-#: ../src/app/qml/PdfViewGotoDialog.qml:26
+#: ../src/app/qml/PdfViewGotoDialog.qml:28
 #, qt-format
 msgid "Choose a page between 1 and %1"
 msgstr "Valitse sivu väliltä 1 ja %1"
 
-#: ../src/app/qml/PdfViewGotoDialog.qml:44
+#: ../src/app/qml/PdfViewGotoDialog.qml:46
 msgid "GO!"
 msgstr "Siirry!"
 
-#: ../src/app/qml/PdfViewGotoDialog.qml:52
+#: ../src/app/qml/PdfViewGotoDialog.qml:54
 msgid "Cancel"
 msgstr "Peru"
 

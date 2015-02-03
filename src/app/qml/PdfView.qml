@@ -16,7 +16,7 @@
 
 import QtQuick 2.3
 import Ubuntu.Components 1.1
-import com.ubuntu.popplerqmlplugin 1.0
+import com.ubuntu.popplerqmlplugin 1.0 as PDF
 
 import "utils.js" as Utils
 
@@ -53,7 +53,7 @@ Page {
         header: Item { width: parent.width; height: units.gu(2) }
         footer: Item { width: parent.width; height: units.gu(2) }
 
-        model: Poppler {
+        model: PDF.Document {
             id: poppler
 
             /* FIXME: Don't set 'path' property directly, but set it through onCompleted signal.

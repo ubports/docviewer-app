@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 Canonical, Ltd.
+ * Copyright (C) 2013-2015 Canonical, Ltd.
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License version 3, as published
@@ -13,30 +13,24 @@
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- * Author: Stefano Verzegnassi <stefano92.100@gmail.com>
+ * Author: Anthony Granger <grangeranthony@gmail.com>
+ *         Stefano Verzegnassi <stefano92.100@gmail.com>
  */
 
-#ifndef PAGESWORKERTHREAD_H
-#define PAGESWORKERTHREAD_H
+#ifndef PDFIMAGEPROVIDER_H
+#define PDFIMAGEPROVIDER_H
 
-#include <QThread>
+#include <QQuickImageProvider>
 #include <poppler/qt5/poppler-qt5.h>
 
-typedef QList<Poppler::Page*> PdfPagesList;
-
-class PDFPagesWorkerThread : public QThread
+class PdfImageProvider : public QQuickImageProvider
 {
-    Q_OBJECT
-    void run();
-
 public:
-    void setDocument(Poppler::Document *document);
+    PdfImageProvider(Poppler::Document *pdfDocument);
+    QImage requestImage(const QString & id, QSize * size, const QSize & requestedSize);
 
 private:
-    Poppler::Document *m_document;
-
-signals:
-    void resultReady(PdfPagesList pages);
+    Poppler::Document *document;
 };
 
-#endif // PAGESWORKERTHREAD_H
+#endif // PDFIMAGEPROVIDER_H

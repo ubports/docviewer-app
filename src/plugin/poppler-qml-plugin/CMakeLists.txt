@@ -3,11 +3,11 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 #add the sources to compile
 set(popplerqmlplugin_SRCS
-	plugin.cpp
-	pdfModel.cpp
-	pageImageProvider.cpp
-	pagesWorkerThread.cpp
-	pdfPage.cpp
+    plugin.cpp
+    pdfdocument.cpp
+    pdfimageprovider.cpp
+    pdfthread.cpp
+    pdfitem.cpp
 )
 
 add_library(popplerqmlplugin MODULE
@@ -20,11 +20,11 @@ qt5_use_modules(popplerqmlplugin Gui Qml Quick)
 
 # Copy the plugin, the qmldir file and other assets to the build dir for running in QtCreator
 if(NOT "${CMAKE_CURRENT_SOURCE_DIR}" STREQUAL "${CMAKE_CURRENT_BINARY_DIR}")
-    add_custom_command(TARGET popplerqmlplugin POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/../${PLUGIN_DIR}
-        COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/qmldir ${CMAKE_CURRENT_BINARY_DIR}/../${PLUGIN_DIR}
-        COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:popplerqmlplugin> ${CMAKE_CURRENT_BINARY_DIR}/../${PLUGIN_DIR}
-    )
+add_custom_command(TARGET popplerqmlplugin POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/../${PLUGIN_DIR}
+    COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/qmldir ${CMAKE_CURRENT_BINARY_DIR}/../${PLUGIN_DIR}
+    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:popplerqmlplugin> ${CMAKE_CURRENT_BINARY_DIR}/../${PLUGIN_DIR}
+)
 endif(NOT "${CMAKE_CURRENT_SOURCE_DIR}" STREQUAL "${CMAKE_CURRENT_BINARY_DIR}")
 
 # Install plugin file

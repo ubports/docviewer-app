@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 Canonical, Ltd.
+ * Copyright (C) 2014-2015 Canonical, Ltd.
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License version 3, as published
@@ -16,21 +16,27 @@
  * Author: Stefano Verzegnassi <stefano92.100@gmail.com>
  */
 
-#include <pdfPage.h>
+#ifndef PDFTHREAD_H
+#define PDFTHREAD_H
+
+#include <QThread>
 #include <poppler/qt5/poppler-qt5.h>
 
-PdfPage::PdfPage(Poppler::Page *page)
-{
-    m_width = page->pageSize().width();
-    m_height = page->pageSize().height();
-}
+typedef QList<Poppler::Page*> PdfPagesList;
 
-int PdfPage::width() const
+class PdfThread : public QThread
 {
-    return m_width;
-}
+    Q_OBJECT
 
-int PdfPage::height() const
-{
-    return m_height;
-}
+public:
+    void run();
+    void setDocument(Poppler::Document *document);
+
+Q_SIGNALS:
+    void resultReady(PdfPagesList pages);
+
+private:
+    Poppler::Document *m_document;
+};
+
+#endif // PDFTHREAD_H

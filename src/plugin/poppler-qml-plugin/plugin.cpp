@@ -19,14 +19,14 @@
 #include <QtQml/QQmlContext>
 
 #include "plugin.h"
-#include "pdfModel.h"
+#include "pdfdocument.h"
 
 void PopplerPlugin::registerTypes(const char *uri)
 {
     Q_ASSERT(uri == QLatin1String("com.ubuntu.popplerqmlplugin"));
     
     //@uri com.ubuntu.popplerqmlplugin
-    qmlRegisterType<PdfModel>(uri, 1, 0, "Poppler");
+    qmlRegisterType<PdfDocument>(uri, 1, 0, "Document");
 }
 
 void PopplerPlugin::initializeEngine(QQmlEngine *engine, const char *uri)

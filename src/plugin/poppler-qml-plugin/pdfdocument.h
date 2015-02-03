@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 Canonical, Ltd.
+ * Copyright (C) 2013-2015 Canonical, Ltd.
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License version 3, as published
@@ -17,19 +17,20 @@
  *         Stefano Verzegnassi <stefano92.100@gmail.com>
  */
 
-#ifndef PDFMODEL_H
-#define PDFMODEL_H
+#ifndef PDFDOCUMENT_H
+#define PDFDOCUMENT_H
 
 #include <QAbstractListModel>
 #include <poppler/qt5/poppler-qt5.h>
-#include <pdfPage.h>
+#include "pdfitem.h"
 
 typedef QList<Poppler::Page*> PdfPagesList;
 
-class PdfModel : public QAbstractListModel
+class PdfDocument : public QAbstractListModel
 {
     Q_OBJECT
-    Q_DISABLE_COPY(PdfModel)
+    Q_DISABLE_COPY(PdfDocument)
+    Q_PROPERTY(QString path READ path WRITE setPath NOTIFY pathChanged)
 
 public:
     enum Roles {
@@ -37,40 +38,37 @@ public:
         HeightRole
     };
 
-    explicit PdfModel(QAbstractListModel *parent = 0);
-    virtual ~PdfModel();
+    explicit PdfDocument(QAbstractListModel *parent = 0);
+    virtual ~PdfDocument();
+
+    QString path() const { return m_path; }
+    void setPath(QString &pathName);
 
     QHash<int, QByteArray> roleNames() const;
 
     int rowCount(const QModelIndex & parent = QModelIndex()) const;
     QVariant data(const QModelIndex & index, int role = Qt::DisplayRole) const;
 
-    Q_PROPERTY(QString path READ getPath WRITE setPath NOTIFY pathChanged)
-    void setPath(QString &pathName);
-    QString getPath() const { return path; }
-
-    QString path;
-
     Q_INVOKABLE QDateTime getDocumentDate(QString data);
     Q_INVOKABLE QString getDocumentInfo(QString data);
 
-private:
-    int loadDocument(QString &pathNAme);
-    int loadProvider();
-    int loadPages();
-
-    Poppler::Document *document;
-    QList<PdfPage> m_pages;
-
-private slots:
-    void populate(PdfPagesList pagesList);
-
-signals:
-    void pathChanged(const QString& newPath);
+Q_SIGNALS:
+    void pathChanged();
     void error(const QString& errorMessage);
     void pagesLoaded();
+
+private slots:
+    void _q_populate(PdfPagesList pagesList);
+
+private:
+    QString m_path;
+
+    bool loadDocument(QString &pathNAme);
+    void loadProvider();
+    bool loadPages();
+
+    Poppler::Document *m_document;
+    QList<PdfItem> m_pages;
 };
 
-//QML_DECLARE_TYPE(PdfModel)
-
-#endif // PDFMODEL_H
+#endif // PDFDOCUMENT_H
