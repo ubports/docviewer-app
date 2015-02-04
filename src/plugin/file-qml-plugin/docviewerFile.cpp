@@ -80,7 +80,7 @@ void DocviewerFile::open() {
         QFileInfo file(path);
 
         if (file.exists()) {
-            qDebug() << "[FILE] Extracting informations from the file...";
+            qDebug() << "[FILE] Extracting information from the file...";
 
             /**Get info of the file**/
             size = file.size();
