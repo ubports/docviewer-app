@@ -16,38 +16,43 @@
 
 import QtQuick 2.3
 import Ubuntu.Components 1.1
+import QtQuick.Layouts 1.1
 import Ubuntu.Components.Popups 1.0
 
 PageHeadState {
     id: rootItem
 
     property Page targetPage
+    property alias activityRunning: activity.running
 
     head: targetPage.head
 
-    contents: Column {
-        anchors.centerIn: parent
-        width: parent.width
+    contents: RowLayout {
+        anchors.fill: parent
+        spacing: units.gu(1)
 
-        Label {
-            id: titleLabel
+        ActivityIndicator { id: activity }
 
-            width: parent.width
-            horizontalAlignment: Text.AlignHCenter
-            elide: Text.ElideMiddle
+        Column {
+            id: layout
+            Layout.fillWidth: true
 
-            font.weight: Font.DemiBold
-            text: targetPage.title
-        }
-        Label {
-            id: currentPageLabel
+            Label {
+                width: parent.width
+                //horizontalAlignment: Text.AlignHCenter
+                elide: Text.ElideMiddle
 
-            width: parent.width
-            horizontalAlignment: Text.AlignHCenter
-            elide: Text.ElideMiddle
+                font.weight: Font.DemiBold
+                text: targetPage.title
+            }
+            Label {
+                width: parent.width
+                //horizontalAlignment: Text.AlignHCenter
+                elide: Text.ElideMiddle
 
-            fontSize: "small"
-            text: targetPage.currentPage
+                fontSize: "small"
+                text: targetPage.currentPage
+            }
         }
     }
 

@@ -28,6 +28,8 @@ Page {
         id: textAreaMain
         objectName: "textAreaMain"
 
+        property bool isLoading: true
+
         anchors.fill: parent
 
         // FIXME: If set to true, some of the keyboard hooks are disabled
@@ -44,6 +46,7 @@ Page {
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === XMLHttpRequest.DONE) {
                     textAreaMain.text = xhr.responseText;
+                    textAreaMain.isLoading = false
                 }
             };
 
@@ -61,6 +64,7 @@ Page {
         TextViewDefaultHeader {
             name: "default"
             targetPage: textPage
+            activityRunning: textAreaMain.isLoading
         }
     ]
 }
