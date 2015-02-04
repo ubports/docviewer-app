@@ -63,7 +63,7 @@ class TestMainWindow(DocviewerAppTestCase):
         self.launch_app()
 
         pdf = self.app.main_view.select_single(
-            "QQuickListView", objectName="pdfView")
+            "VerticalView", objectName="pdfView")
         self.assertThat(pdf.contentHeight,
                         Eventually(GreaterThan(0)))
 
@@ -78,5 +78,5 @@ class TestMainWindow(DocviewerAppTestCase):
 
         self.assertThat(
             self.app.main_view.select_single(
-                "QQuickListView", objectName="pdfView").currentIndex,
+                "VerticalView", objectName="pdfView").currentIndex,
             Eventually(Equals(int(page_no) - 1)))
