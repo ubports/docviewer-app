@@ -78,5 +78,5 @@ class TestMainWindow(DocviewerAppTestCase):
 
         self.assertThat(
             self.app.main_view.select_single(
-                "VerticalView", objectName="pdfView").currentIndex,
+                "VerticalView", objectName="pdfView").currentPageIndex,
             Eventually(Equals(int(page_no) - 1)))
