@@ -15,6 +15,8 @@ Build-Depends: cmake,
                qtdeclarative5-dev,
                qtdeclarative5-dev-tools,
                qtdeclarative5-qtquick2-plugin,
+               qtdeclarative5-private-dev,
+               qtbase5-private-dev,
                qtdeclarative5-test-plugin
 Standards-Version: 3.9.6
 Section: misc
@@ -24,9 +26,9 @@ Vcs-Bzr: https://code.launchpad.net/~ubuntu-docviewer-dev/ubuntu-docviewer-app/t
 Package: ubuntu-docviewer-app
 Architecture: any
 Depends: qtdeclarative5-qtquick2-plugin,
-         qtdeclarative5-ubuntu-ui-toolkit-plugin | qt-components-ubuntu,
-         ${misc:Depends},
-         ${shlibs:Depends}
+         qtdeclarative5-ubuntu-ui-toolkit-plugin,
+         qtdeclarative5-ubuntu-content1,
+         ${misc:Depends}
 Description: Document Viewer application
  Core Document Viewer application
 

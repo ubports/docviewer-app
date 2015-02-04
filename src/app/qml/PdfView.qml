@@ -24,93 +24,73 @@ Page {
     id: pdfPage
     title: Utils.getNameOfFile(file.path);
 
-    // Disable header auto-hide
+    // Disable header auto-hide.
+    // TODO: Show/hide header if a user taps the page
     flickable: null
 
-    property string currentPage: i18n.tr("Page %1 of %2").arg(pdfView.currentIndex + 1).arg(pdfView.count)
+    property string currentPage: i18n.tr("Page %1 of %2").arg(pdfView.currentPageIndex + 1).arg(pdfView.count)
 
-    // TODO: Restore zooming
-    ListView {
+    PDF.VerticalView {
         id: pdfView
         objectName:"pdfView"
 
-        anchors {
-            fill: parent
-            leftMargin: units.gu(1)
-            rightMargin: units.gu(1)
-        }
+        anchors.fill: parent
         spacing: units.gu(2)
 
         clip: true
-        focus: false
         boundsBehavior: Flickable.StopAtBounds
 
-        cacheBuffer: height
+        cacheBuffer: height * poppler.providersNumber * _zoomHelper.scale * 0.5
 
-        highlightFollowsCurrentItem: false
-        keyNavigationWraps: false
+        flickDeceleration: 1500 * units.gridUnit / 8
+        maximumFlickVelocity: 2500 * units.gridUnit / 8
 
-        header: Item { width: parent.width; height: units.gu(2) }
-        footer: Item { width: parent.width; height: units.gu(2) }
+        model: poppler
+        delegate: PdfViewDelegate {
+            onWidthChanged: QQuickView.releaseResources()
+            Component.onDestruction: QQuickView.releaseResources()
+        }
 
-        model: PDF.Document {
-            id: poppler
+        contentWidth: parent.width * _zoomHelper.scale
+        PinchArea {
+            id: pinchy
+            anchors.fill: parent
 
-            /* FIXME: Don't set 'path' property directly, but set it through onCompleted signal.
-               By doing otherwise, PDF pages are loaded two times, but only
-               the first delegates are working. Asking to the image provider
-               to get the second ones, makes the app instable.
-               (e.g. We have a PDF document with 10 pages. The plugin loads
-               them twice - 2x10 = 20 pages - but only the first 10 are shown.
-               While trying to get the 11th, the app crashes). */
-            Component.onCompleted: path = file.path
+            pinch {
+                target: _zoomHelper
+                minimumScale: 1.0
+                maximumScale: 2.5
+            }
 
-            onPagesLoaded: {
-                activity.running = false;
+            onPinchStarted: pdfView.interactive = false;
 
-                pdfView.currentIndex = 0
+            // FIXME: On zooming, keep the same content position.
+            // onPinchUpdated: {}
 
-                var title = getDocumentInfo("Title")
-                if (title !== "")
-                    pdfPage.title = title
+            onPinchFinished: {
+                pdfView.interactive = true;
+                pdfView.returnToBounds();
             }
         }
 
-        delegate: PdfViewDelegate {}
+        Item { id: _zoomHelper }
+    }
 
-        onWidthChanged: {
-            /* On resizing window, pages size changes but contentY is still the same.
-               For that reason, it shows the wrong page (which is settled at the same contentY).
-               We need to force flickable to show the current page. */
-            //pdfView.positionViewAtIndex(currentIndex, ListView.Contain)
-        }
+    PDF.Document {
+        id: poppler
 
-        onContentYChanged: {
-            // FIXME: On wheeling up, ListView automatically center currentItem to the view.
-            //        This causes some strange "jump" of ~200px in contentY
-            var i = pdfView.indexAt(pdfView.width * 0.5, contentY + (pdfView.height * 0.5))
+        property bool isLoading: true
 
-            if (i < 0) {
-                // returned index could be -1 when the delegate spacing is shown at the center of the view (e.g. while scrolling pages)
-                i = pdfView.indexAt(pdfView.width * 0.5, contentY + (pdfView.height * 0.5) + units.gu(4))
-            }
+        Component.onCompleted: path = file.path
+        onPagesLoaded: {
+            isLoading = false;
 
-            if (i !== -1) {
-                currentPage = i18n.tr("Page %1 of %2").arg(i + 1).arg(pdfView.count)
-
-                if (!pdfView.flickingVertically) {
-                    pdfView.currentIndex = i
-                }
-            }
+            var title = getDocumentInfo("Title")
+            if (title !== "")
+                pdfPage.title = title
         }
     }
 
-    ActivityIndicator {
-        id: activity
-        anchors.centerIn: parent
-
-        running: true
-    }
 
     // *** HEADER ***
     state: "default"

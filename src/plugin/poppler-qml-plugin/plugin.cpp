@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 Canonical, Ltd.
+ * Copyright (C) 2013-2015 Canonical, Ltd.
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License version 3, as published
@@ -20,6 +20,7 @@
 
 #include "plugin.h"
 #include "pdfdocument.h"
+#include "verticalview.h"
 
 void PopplerPlugin::registerTypes(const char *uri)
 {
@@ -27,6 +28,7 @@ void PopplerPlugin::registerTypes(const char *uri)
     
     //@uri com.ubuntu.popplerqmlplugin
     qmlRegisterType<PdfDocument>(uri, 1, 0, "Document");
+    qmlRegisterType<VerticalView>(uri, 1, 0, "VerticalView");
 }
 
 void PopplerPlugin::initializeEngine(QQmlEngine *engine, const char *uri)

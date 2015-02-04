@@ -54,7 +54,7 @@ Dialog {
     }
 
     function goToPage() {
-        pdfView.positionViewAtIndex((goToPageTextField.text - 1), ListView.Beginning)
+        pdfView.positionAtIndex((goToPageTextField.text - 1))
         PopupUtils.close(goToPageDialog)
     }
 }

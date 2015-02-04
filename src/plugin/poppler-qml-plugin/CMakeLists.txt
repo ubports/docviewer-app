@@ -1,5 +1,10 @@
 set(PLUGIN_DIR com/ubuntu/popplerqmlplugin)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+include_directories(
+	${CMAKE_CURRENT_SOURCE_DIR}
+	${CMAKE_CURRENT_BINARY_DIR}
+	${Qt5Quick_PRIVATE_INCLUDE_DIRS}
+	${Qt5Qml_PRIVATE_INCLUDE_DIRS}
+)
 
 #add the sources to compile
 set(popplerqmlplugin_SRCS
@@ -8,6 +13,7 @@ set(popplerqmlplugin_SRCS
     pdfimageprovider.cpp
     pdfthread.cpp
     pdfitem.cpp
+    verticalview.cpp
 )
 
 add_library(popplerqmlplugin MODULE

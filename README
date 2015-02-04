@@ -10,8 +10,11 @@ Compiling
 Install poppler's development files:
 sudo apt-get install libpoppler-qt5-dev
 
+Install Qt5 private development files:
+sudo apt-get install qtdeclarative5-private-dev qtbase5-private-dev
+
 If you want to compile an arm click package, you need to install that package to the arm compilation environment. For example when using QtCreator for Ubuntu Touch, open Options -> Ubuntu -> Maintain, and then enter:
 
-apt-get install libpoppler-qt5-dev:armhf
+apt-get install libpoppler-qt5-dev:armhf qtdeclarative5-private-dev:armhf qtbase5-private-dev:armhf
 
 

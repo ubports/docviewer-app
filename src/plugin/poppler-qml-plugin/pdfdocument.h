@@ -31,6 +31,7 @@ class PdfDocument : public QAbstractListModel
     Q_OBJECT
     Q_DISABLE_COPY(PdfDocument)
     Q_PROPERTY(QString path READ path WRITE setPath NOTIFY pathChanged)
+    Q_PROPERTY(int providersNumber READ providersNumber NOTIFY providersNumberChanged)
 
 public:
     enum Roles {
@@ -44,6 +45,8 @@ public:
     QString path() const { return m_path; }
     void setPath(QString &pathName);
 
+    int providersNumber() const { return m_providersNumber; }
+
     QHash<int, QByteArray> roleNames() const;
 
     int rowCount(const QModelIndex & parent = QModelIndex()) const;
@@ -56,12 +59,14 @@ Q_SIGNALS:
     void pathChanged();
     void error(const QString& errorMessage);
     void pagesLoaded();
+    void providersNumberChanged();
 
 private slots:
     void _q_populate(PdfPagesList pagesList);
 
 private:
     QString m_path;
+    int m_providersNumber;
 
     bool loadDocument(QString &pathNAme);
     void loadProvider();

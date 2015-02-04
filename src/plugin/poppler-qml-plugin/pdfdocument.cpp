@@ -25,10 +25,12 @@
 #include <QDebug>
 #include <QQmlEngine>
 #include <QQmlContext>
+#include <QThread>
 
 PdfDocument::PdfDocument(QAbstractListModel *parent):
     QAbstractListModel(parent)
   , m_path("")
+  , m_providersNumber(-1)
 {
     qRegisterMetaType<PdfPagesList>("PdfPagesList");
 }
@@ -163,12 +165,24 @@ void PdfDocument::_q_populate(PdfPagesList pagesList)
 
 void PdfDocument::loadProvider()
 {
-    qDebug() << "Loading image provider...";
+    // WORKAROUND: QQuickImageProvider should create multiple threads to load more images at the same time.
+    // [QTBUG-37998] QQuickImageProvider can block its separate thread with ForceAsynchronousImageLoading
+    // Link: https://bugreports.qt.io/browse/QTBUG-37988
+    int newProvidersNumber = QThread::idealThreadCount();
+    if (newProvidersNumber != m_providersNumber) {
+        m_providersNumber = newProvidersNumber;
+        Q_EMIT providersNumberChanged();
+    }
+
+    qDebug() << "Ideal number of image providers is:" << m_providersNumber;
+
+    qDebug() << "Loading image provider(s)...";
     QQmlEngine *engine = QQmlEngine::contextForObject(this)->engine();
 
-    engine->addImageProvider(QLatin1String("poppler"), new PdfImageProvider(m_document));
+    for (int i=0; i<m_providersNumber; i++)
+        engine->addImageProvider(QLatin1String("poppler" + QByteArray::number(i)), new PdfImageProvider(m_document));
 
-    qDebug() << "Image provider loaded successfully !";
+    qDebug() << "Image provider(s) loaded successfully !";
 }
 
 PdfDocument::~PdfDocument()
