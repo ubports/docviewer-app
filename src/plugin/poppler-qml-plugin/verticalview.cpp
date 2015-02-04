@@ -298,6 +298,9 @@ void VerticalView::positionAtBeginning()
         m_previousContentY = m_visibleItems.first()->y();
     }
     setContentY(m_visibleItems.first()->y());
+
+    // Force update of currentPageIndex
+    _q_updateCurrentPageIndex();
 }
 
 void VerticalView::positionAtIndex(int index)
@@ -322,6 +325,9 @@ void VerticalView::positionAtIndex(int index)
     }
 
     setContentY(itemAt(index)->y());
+
+    // Force update of currentPageIndex
+    _q_updateCurrentPageIndex();
 }
 
 void VerticalView::positionAtEnd()
@@ -354,6 +360,9 @@ void VerticalView::positionAtEnd()
         m_previousContentY = m_visibleItems.first()->y();
     }
     setContentY(m_visibleItems.first()->y());
+
+    // Force update of currentPageIndex
+    _q_updateCurrentPageIndex();
 }
 
 static inline bool uFuzzyCompare(qreal r1, qreal r2)

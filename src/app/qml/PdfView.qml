@@ -20,7 +20,7 @@ import com.ubuntu.popplerqmlplugin 1.0 as PDF
 
 import "utils.js" as Utils
 
-Page {
+PageWithBottomEdge {
     id: pdfPage
     title: Utils.getNameOfFile(file.path);
 
@@ -29,6 +29,9 @@ Page {
     flickable: null
 
     property string currentPage: i18n.tr("Page %1 of %2").arg(pdfView.currentPageIndex + 1).arg(pdfView.count)
+
+    bottomEdgeTitle: i18n.tr("Contents")
+    bottomEdgePageComponent: PdfContentsPage {}
 
     PDF.VerticalView {
         id: pdfView
@@ -94,11 +97,9 @@ Page {
 
     // *** HEADER ***
     state: "default"
-    states: [
-        PdfViewDefaultHeader {
-            name: "default"
-            targetPage: pdfPage
-            activityRunning: pdfView.currentPageItem.status == Image.Loading || poppler.isLoading
-        }
-    ]
+    states: PdfViewDefaultHeader {
+        name: "default"
+        targetPage: pdfPage
+        activityRunning: pdfView.currentPageItem.status == Image.Loading || poppler.isLoading
+    }
 }

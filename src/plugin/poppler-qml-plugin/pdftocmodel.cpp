@@ -1,0 +1,110 @@
+/*
+ * Copyright (C) 2015
+ *          Stefano Verzegnassi <verzegnassi.stefano@gmail.com>
+ *
+ * This program is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License version 3, as published
+ * by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranties of
+ * MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
+ * PURPOSE.  See the GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+
+#include "pdftocmodel.h"
+#include <QDomDocument>
+#include <QDomElement>
+
+#include <QDebug>
+#include <QDomNamedNodeMap>
+#include <QDomNode>
+
+PdfTocModel::PdfTocModel(QAbstractListModel *parent):
+    QAbstractListModel(parent)
+{
+    connect(this, SIGNAL(documentChanged()), this, SLOT(fillModel()));
+}
+
+void PdfTocModel::setDocument(Poppler::Document *document)
+{
+    if (document != m_document) {
+        m_document = document;
+        Q_EMIT documentChanged();
+    }
+}
+
+QHash<int, QByteArray> PdfTocModel::roleNames() const
+{
+    QHash<int, QByteArray> roles;
+    roles[TitleRole] = "title";
+    roles[PageIndexRole] = "pageIndex";
+    roles[LevelRole] = "level";
+    return roles;
+}
+
+int PdfTocModel::rowCount(const QModelIndex & parent) const
+{
+    Q_UNUSED(parent)
+    return m_entries.count();
+}
+
+QVariant PdfTocModel::data(const QModelIndex & index, int role) const
+{
+    if (index.row() < 0 || index.row() > m_entries.count())
+        return QVariant();
+
+    const TocEntry &tocEntry = m_entries.at(index.row());
+
+    switch (role) {
+    case TitleRole:
+        return tocEntry.title;
+    case PageIndexRole:
+        return tocEntry.pageIndex;
+    case LevelRole:
+        return tocEntry.level;
+    default:
+        return 0;
+    }
+}
+
+void PdfTocModel::fillModel() {
+    m_entries.clear();
+
+    qDebug() << "[PDF] Parsing toc model";
+    QDomDocument* toc = m_document->toc();
+
+    QDomNode child = toc->firstChild();
+    recursiveGetEntries(child, 0);
+}
+
+void PdfTocModel::recursiveGetEntries(QDomNode node, int nodeLevel)
+{
+    while(!node.isNull()) {
+        QDomNode child = node.firstChild();
+
+        TocEntry entry;
+        entry.title = node.toElement().tagName();
+        entry.level = nodeLevel;
+
+        QString link = node.toElement().attribute("DestinationName");
+        Poppler::LinkDestination* l = m_document->linkDestination(link);
+        entry.pageIndex = l->pageNumber() - 1;
+
+        m_entries.append(entry);
+
+        // Look for children entries
+        recursiveGetEntries(child, nodeLevel + 1);
+
+        // Go to the next entry at the same level.
+        node = node.nextSibling();
+    }
+}
+
+PdfTocModel::~PdfTocModel()
+{
+}
