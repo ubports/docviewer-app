@@ -16,7 +16,7 @@ Build-Depends: cmake,
                qtdeclarative5-dev-tools,
                qtdeclarative5-qtquick2-plugin,
                qtdeclarative5-test-plugin
-Standards-Version: 3.9.4
+Standards-Version: 3.9.6
 Section: misc
 Homepage: https://launchpad.net/ubuntu-docviewer-app
 Vcs-Bzr: https://code.launchpad.net/~ubuntu-docviewer-dev/ubuntu-docviewer-app/trunk
