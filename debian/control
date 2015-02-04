@@ -27,8 +27,8 @@ Package: ubuntu-docviewer-app
 Architecture: any
 Depends: qtdeclarative5-qtquick2-plugin,
          qtdeclarative5-ubuntu-ui-toolkit-plugin,
-         ${misc:Depends},
-         ${shlibs:Depends}
+         qtdeclarative5-ubuntu-content1,
+         ${misc:Depends}
 Description: Document Viewer application
  Core Document Viewer application
 
