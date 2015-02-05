@@ -23,8 +23,6 @@ import Ubuntu.Components.ListItems 1.0 as ListItem
 Page {
     title: i18n.tr("Contents")
 
-    signal pageRequested(var index)
-
     ListView {
         anchors.fill: parent
 
