@@ -27,8 +27,8 @@ class TocEntry
 {
 public:
     QString title;
-    int pageIndex;
-    int level;
+    int pageIndex = 0;
+    int level = 0;
 };
 
 class PdfTocModel : public QAbstractListModel

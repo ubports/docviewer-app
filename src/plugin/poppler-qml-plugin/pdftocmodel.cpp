@@ -102,7 +102,7 @@ void PdfTocModel::recursiveGetEntries(QDomNode node, int nodeLevel)
             entry.pageIndex = dl.pageNumber() - 1;
         } else {
             QString destName = node.toElement().attribute("DestinationName");
-            if (!dest.isEmpty()) {
+            if (!destName.isEmpty()) {
                 Poppler::LinkDestination* l = m_document->linkDestination(destName);
                 entry.pageIndex = l->pageNumber() - 1;
             }
