@@ -30,7 +30,8 @@
 PdfDocument::PdfDocument(QAbstractListModel *parent):
     QAbstractListModel(parent)
   , m_path("")
-  , m_providersNumber(-1)
+  , m_providersNumber(1)
+  , m_tocModel(nullptr)
 {
     qRegisterMetaType<PdfPagesList>("PdfPagesList");
 }
@@ -76,6 +77,11 @@ void PdfDocument::setPath(QString &pathName)
 
     if (!loadDocument(m_path))
         return;
+
+    // Init toc model
+    m_tocModel = new PdfTocModel;
+    m_tocModel->setDocument(m_document);
+    Q_EMIT tocModelChanged();
 
     loadPages();
     loadProvider();

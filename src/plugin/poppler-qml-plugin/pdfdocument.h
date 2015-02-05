@@ -23,6 +23,7 @@
 #include <QAbstractListModel>
 #include <poppler/qt5/poppler-qt5.h>
 #include "pdfitem.h"
+#include "pdftocmodel.h"
 
 typedef QList<Poppler::Page*> PdfPagesList;
 
@@ -32,6 +33,7 @@ class PdfDocument : public QAbstractListModel
     Q_DISABLE_COPY(PdfDocument)
     Q_PROPERTY(QString path READ path WRITE setPath NOTIFY pathChanged)
     Q_PROPERTY(int providersNumber READ providersNumber NOTIFY providersNumberChanged)
+    Q_PROPERTY(QObject* tocModel READ tocModel NOTIFY tocModelChanged)
 
 public:
     enum Roles {
@@ -55,11 +57,14 @@ public:
     Q_INVOKABLE QDateTime getDocumentDate(QString data);
     Q_INVOKABLE QString getDocumentInfo(QString data);
 
+    QObject *tocModel() const { return m_tocModel; }
+
 Q_SIGNALS:
     void pathChanged();
     void error(const QString& errorMessage);
     void pagesLoaded();
     void providersNumberChanged();
+    void tocModelChanged();
 
 private slots:
     void _q_populate(PdfPagesList pagesList);
@@ -74,6 +79,7 @@ private:
 
     Poppler::Document *m_document;
     QList<PdfItem> m_pages;
+    PdfTocModel* m_tocModel;
 };
 
 #endif // PDFDOCUMENT_H
