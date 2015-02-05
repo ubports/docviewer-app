@@ -80,6 +80,9 @@ PageWithBottomEdge {
         Item { id: _zoomHelper }
     }
 
+    Scrollbar { flickableItem: pdfView }
+    Scrollbar { flickableItem: pdfView; align: Qt.AlignBottom }
+
     PDF.Document {
         id: poppler
 
