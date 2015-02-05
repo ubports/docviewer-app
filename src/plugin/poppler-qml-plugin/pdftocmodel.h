@@ -35,6 +35,7 @@ class PdfTocModel : public QAbstractListModel
 {
     Q_OBJECT
     Q_DISABLE_COPY(PdfTocModel)
+    Q_PROPERTY(int count READ rowCount NOTIFY countChanged)
 
 public:
     enum Roles {
@@ -55,6 +56,7 @@ public:
 
 Q_SIGNALS:
     void documentChanged();
+    void countChanged();
 
 private slots:
     void fillModel();

@@ -32,10 +32,11 @@ PageWithBottomEdge {
 
     bottomEdgeTitle: i18n.tr("Contents")
     bottomEdgePageComponent: PdfContentsPage {}
+    bottomEdgeEnabled: poppler.tocModel.count > 0
 
     PDF.VerticalView {
         id: pdfView
-        objectName:"pdfView"
+        objectName: "pdfView"
 
         anchors.fill: parent
         spacing: units.gu(2)
