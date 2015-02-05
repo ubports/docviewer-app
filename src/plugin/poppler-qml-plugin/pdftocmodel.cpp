@@ -75,11 +75,13 @@ QVariant PdfTocModel::data(const QModelIndex & index, int role) const
 void PdfTocModel::fillModel() {
     m_entries.clear();
 
-    qDebug() << "[PDF] Parsing toc model";
-    QDomDocument* toc = m_document->toc();
+    if (m_document->toc()) {
+        qDebug() << "[PDF] Parsing toc model";
+        QDomDocument* toc = m_document->toc();
 
-    QDomNode child = toc->firstChild();
-    recursiveGetEntries(child, 0);
+        QDomNode child = toc->firstChild();
+        recursiveGetEntries(child, 0);
+    }
 }
 
 void PdfTocModel::recursiveGetEntries(QDomNode node, int nodeLevel)
@@ -91,9 +93,18 @@ void PdfTocModel::recursiveGetEntries(QDomNode node, int nodeLevel)
         entry.title = node.toElement().tagName();
         entry.level = nodeLevel;
 
-        QString link = node.toElement().attribute("DestinationName");
-        Poppler::LinkDestination* l = m_document->linkDestination(link);
-        entry.pageIndex = l->pageNumber() - 1;
+        QString dest = node.toElement().attribute("Destination");
+        if (!dest.isEmpty()) {
+            Poppler::LinkDestination dl(dest);
+            qDebug() << dl.toString();
+            entry.pageIndex = dl.pageNumber() - 1;
+        } else {
+            QString destName = node.toElement().attribute("DestinationName");
+            if (!dest.isEmpty()) {
+                Poppler::LinkDestination* l = m_document->linkDestination(destName);
+                entry.pageIndex = l->pageNumber() - 1;
+            }
+        }
 
         m_entries.append(entry);
 
