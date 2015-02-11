@@ -23,13 +23,6 @@ function load(mimetype) {
     if (mimetype.substring(0, 5) === "text/")
         qmlToLoad = "TextView";
 
-    // Check if image
-    if (mimetype === "image/jpeg" || mimetype === "image/png" ||
-            mimetype === "image/gif" || mimetype === "image/tiff" ||
-            mimetype === "image/x-icon" || mimetype === "image/x-ms-bmp" ||
-            mimetype === "image/svg+xml")
-        qmlToLoad = "ImageView";
-
     // Check if PDF document
     if (mimetype === "application/pdf")
         qmlToLoad = "PdfView";

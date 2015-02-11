@@ -24,27 +24,8 @@ Page {
 
     property var activeTransfer
 
-    head.sections.model: [i18n.tr("Documents"), i18n.tr("Pictures"), i18n.tr("Other")]
-    head.backAction: Action {
-        iconName: "back"
-        text: i18n.tr("Back")
-        onTriggered: pageStack.pop()
-    }
-
     ContentPeerPicker {
-        // Do not show ContentPeerPicker header, since we need head.sections.
-        showTitle: false
-
-        contentType: {
-            switch (picker.head.sections.selectedIndex) {
-            case 0:
-                return ContentType.Documents
-            case 1:
-                return ContentType.Pictures
-            case 2:
-                return ContentType.Unknown
-            }
-        }
+        contentType: ContentType.Documents
         handler: ContentHandler.Source
 
         onPeerSelected: picker.activeTransfer = peer.request();

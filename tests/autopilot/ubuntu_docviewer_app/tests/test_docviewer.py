@@ -34,20 +34,6 @@ class TestMainWindow(DocviewerAppTestCase):
         self.assertThat(
             text_area.text, Eventually(Equals('TEST\n')))
 
-    def test_open_image_file(self):
-
-        self.filepath = 'ubuntu_docviewer_app/files/ubuntu-touch.jpg'
-
-        self.launch_app()
-
-        image_item = self.app.main_view.select_single(
-            "QQuickImage", objectName="imageRenderer")
-
-        self.assertThat(
-            image_item.status, Eventually(Equals(1)))
-        self.assertThat(
-            image_item.source, Contains(self.filepath))
-
     def test_unknown_file_type(self):
         self.filepath = 'ubuntu_docviewer_app/files/unknown.type'
 

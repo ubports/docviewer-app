@@ -6,6 +6,6 @@ Exec=@EXEC@
 Icon=@ICON@
 _Name=Document Viewer
 _Keywords=documents;viewer;pdf;reader;
-MimeType=text/plain;image/png;image/jpeg;image/svg+xml;application/pdf
+MimeType=text/plain;application/pdf
 X-Ubuntu-Touch=true
 X-Ubuntu-StageHint=SideStage
