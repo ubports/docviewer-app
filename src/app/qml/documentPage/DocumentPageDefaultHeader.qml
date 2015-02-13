@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 Canonical, Ltd.
+ * Copyright (C) 2014-2015 Canonical, Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,29 +14,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.0
+import QtQuick 2.3
 import Ubuntu.Components 1.1
+import QtQuick.Layouts 1.1
+import Ubuntu.Components.Popups 1.0
 
-Page {
-    id: welcomePage
+PageHeadState {
+    id: rootItem
 
-    title: i18n.tr("Document Viewer")
-    head.actions: [ openAction ]
+    property Page targetPage
+    head: targetPage.head
 
-    EmptyState {
-        title: i18n.tr("No opened documents")
-        subTitle: i18n.tr("Tap the + icon to open a document")
+    actions:  Action {
+        id: switchView
+        text: targetPage.useGridView ? i18n.tr("Switch to single column list") : i18n.tr("Switch to grid")
+        iconName: targetPage.useGridView ? "view-list-symbolic" : "view-grid-symbolic"
+        onTriggered: targetPage.useGridView = !targetPage.useGridView
 
-        iconName: "edit-copy"
-
-        anchors.centerIn: parent
-    }
-
-    Action {
-        id: openAction
-        text: i18n.tr("Open a file...")
-        iconName: "add"
-
-        onTriggered: pageStack.push(Qt.resolvedUrl("ContentHubPicker.qml"))
+        visible: folderModel.count !== 0
     }
 }

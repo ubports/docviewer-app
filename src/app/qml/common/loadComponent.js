@@ -21,14 +21,14 @@ function load(mimetype) {
     // With that fix it is possible to open LICENSE file
     // which was recognised as text/x-pascal
     if (mimetype.substring(0, 5) === "text/")
-        qmlToLoad = "TextView";
+        qmlToLoad = Qt.resolvedUrl("../textView/TextView.qml");
 
     // Check if PDF document
     if (mimetype === "application/pdf")
-        qmlToLoad = "PdfView";
+        qmlToLoad = Qt.resolvedUrl("../pdfView/PdfView.qml");
 
     if (qmlToLoad != "") {
-       pageStack.push(Qt.resolvedUrl(qmlToLoad + ".qml"));
+       pageStack.push(qmlToLoad);
     } else {
         console.debug("Unknown MIME type: "+ mimetype);
         runUnknownTypeDialog();

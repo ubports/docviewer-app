@@ -1,5 +1,8 @@
 {
     "destination": [
         "documents"
+    ],
+    "source": [
+        "documents"
     ]
 }

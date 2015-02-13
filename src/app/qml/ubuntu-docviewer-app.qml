@@ -18,8 +18,9 @@ import QtQuick 2.3
 import Ubuntu.Components 1.1
 import Ubuntu.Components.Popups 1.0
 import com.ubuntu.fileqmlplugin 1.0
+import DocumentViewer 1.0
 
-import "loadComponent.js" as LoadComponent
+import "common/loadComponent.js" as LoadComponent
 
 MainView {
     id: mainView
@@ -27,49 +28,74 @@ MainView {
 
     applicationName: "com.ubuntu.docviewer"
     useDeprecatedToolbar: false
-    
+
+    property bool pickMode: DOC_VIEWER.pickModeEnabled
+
     width: units.gu(50)
     height: units.gu(75)
+
+    function openDocument(path)  {
+        if (path !== "") {
+            console.log("Path of the document:", path)
+
+            // If a document is already shown, pop() its page.
+            while (pageStack.depth > 1)
+                pageStack.pop();
+
+            path = path.replace("file://", "")
+                       .replace("document://", "");
+
+            file.path = path;
+        }
+    }
+
+    function runUnknownTypeDialog() {
+        PopupUtils.open(Qt.resolvedUrl("common/UnknownTypeDialog.qml"), mainView, { parent: mainView });
+    }
+
+    Component.onCompleted: {
+        pageStack.push(Qt.resolvedUrl("documentPage/DocumentPage.qml"));
+
+        // Open the document, if one has been specified.
+        openDocument(DOC_VIEWER.documentFile);
+    }
 
     File {
         id: file
         objectName: "file"
 
         onMimetypeChanged: LoadComponent.load(mimetype)
-        onErrorChanged: { if (error == -1); PopupUtils.open(Qt.resolvedUrl("ErrorDialog.qml"), mainView, { parent: mainView }) }
+        onErrorChanged: { if (error == -1); PopupUtils.open(Qt.resolvedUrl("common/ErrorDialog.qml"), mainView, { parent: mainView }) }
     }
 
-    Component.onCompleted: {
-        // Check if a value has been specified for "documentPath" argument.
-        // The value for the argument is parsed in main.cpp.
+    DocumentsModel { id: folderModel }
+    PageStack { id: pageStack }
 
-        if (documentPath) {
-            // If so, send the path to the File plugin and load the document.
-            console.log("Path argument is:", documentPath);
-            file.path = documentPath;
-        } else {
-            // Otherwise, push a welcome screen in the stack.
-            pageStack.push(Qt.resolvedUrl("WelcomePage.qml"));
-        }
-    }
-
-    // Content Importer
-    // Used when user asks to open a document from ContentHub.
-    Loader {
-        id: contentHubLoader
-
-        asynchronous: true
-        source: Qt.resolvedUrl("ContentHubProxy.qml")
-        onStatusChanged: {
-            if (status === Loader.Ready) {
-                item.pageStack = pageStack
+    Connections {
+        target: UriHandler
+        onOpened: {
+            for (var i = 0; i < uris.length; ++i) {
+                DOC_VIEWER.parseUri(uris[i])
             }
         }
     }
 
-    function runUnknownTypeDialog() {
-        PopupUtils.open(Qt.resolvedUrl("UnknownTypeDialog.qml"), mainView, { parent: mainView });
-    }
+    Connections {
+        target: DOC_VIEWER
 
-    PageStack { id: pageStack }
+        onDocumentFileChanged: {
+            openDocument(DOC_VIEWER.documentFile);
+        }
+
+        onPickModeEnabledChanged: {
+            mainView.pickMode = DOC_VIEWER.pickModeEnabled
+
+            if (mainView.pickMode) {
+                // If a document is loaded, pop() its page.
+                while (pageStack.depth > 1) {
+                    pageStack.pop()
+                }
+            }
+        }
+    }
 }

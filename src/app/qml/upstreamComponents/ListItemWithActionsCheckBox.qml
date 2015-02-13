@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014-2015 Canonical, Ltd.
+ * Copyright (C) 2012-2014 Canonical, Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,17 +16,10 @@
 
 import QtQuick 2.3
 import Ubuntu.Components 1.1
-import Ubuntu.Components.Popups 1.0
 
-Dialog {
-    id: errorDialog
-    title: i18n.tr("Error")
-    text: i18n.tr("File does not exist")
-
-    Button {
-        text: i18n.tr("Close")
-        color: UbuntuColors.red
-
-        onClicked: Qt.quit();
-    }
+CheckBox {
+    checked: root.selected
+    width: implicitWidth
+    // disable item mouse area to avoid conflicts with parent mouse area
+    __mouseArea.enabled: false
 }
