@@ -9,3 +9,5 @@ _Keywords=documents;viewer;pdf;reader;
 MimeType=text/plain;application/pdf
 X-Ubuntu-Touch=true
 X-Ubuntu-StageHint=SideStage
+X-Ubuntu-Splash-Show-Header=true
+_X-Ubuntu-Splash-Title=Document Viewer
