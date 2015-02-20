@@ -41,13 +41,17 @@ DocumentModel::DocumentModel(QObject *parent)
 void DocumentModel::_q_directoryChanged(QString path)
 {
     QMutableListIterator<DocumentItem> i(m_docs);
+    int n = 0;
+    int m = 0;
 
     while (i.hasNext()) {
         if (i.next().path.startsWith(path)) {
-            beginRemoveRows(QModelIndex(), rowCount(), rowCount());
+            beginRemoveRows(QModelIndex(), n-m, n-m);
             i.remove();
             endRemoveRows();
+            m++;
         }
+        n++;
     }
 
     parseDirectoryContent(path);
@@ -71,12 +75,6 @@ void DocumentModel::parseDirectoryContent(QString path)
             QFileInfo file(dir.filePath());
             DocumentItem item;
 
-            // FIXME: We'd like to track the date-time of the last access.
-            // This seems not to be possible to do with QFileInfo,
-            // since it return the date-time of the last time we watched
-            // for file infos using this class.
-            // We could track instead the last time doc-viewer has opened
-            // the file, but we need to use a database.
             QDateTime lastAccess = file.lastRead();
 
             item.name = file.fileName();
