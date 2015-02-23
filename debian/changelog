@@ -1,14 +1,24 @@
+ubuntu-docviewer-app (0.3.0) utopic; urgency=medium
+
+  * Improved content-hub support
+  * Added uri handler support
+  * Use the Unity 8 splash screen
+  * In-app browser for files stored in XDG Documents folder
+  * Support for images has been dropped
+
+ -- Stefano Verzegnassi <verzegnassi.stefano@gmail.com>  Mon, 23 Feb 2015 13:41:47 +0100
+
 ubuntu-docviewer-app (0.2.1) utopic; urgency=medium
 
   * Added Table of Content in the PDF viewer
 
- -- Stefano <verzegnassi.stefano@gmail.com>  Wed, 04 Feb 2015 20:26:58 +0100
+ -- Stefano Verzegnassi <verzegnassi.stefano@gmail.com>  Wed, 04 Feb 2015 20:26:58 +0100
 
 ubuntu-docviewer-app (0.2.0) utopic; urgency=medium
 
   * Enabled zoom in the PDF viewer
 
- -- Stefano <verzegnassi.stefano@gmail.com>  Wed, 04 Feb 2015 14:37:54 +0100
+ -- Stefano Verzegnassi <verzegnassi.stefano@gmail.com>  Wed, 04 Feb 2015 14:37:54 +0100
 
 ubuntu-docviewer-app (0.1.2) UNRELEASED; urgency=medium
 
