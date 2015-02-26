@@ -70,12 +70,17 @@ private:
 class SortFilterDocumentModel : public QSortFilterProxyModel
 {
     Q_OBJECT
+    Q_PROPERTY(int count READ rowCount NOTIFY countChanged)
+
 public:        
     SortFilterDocumentModel(QObject *parent = 0);
     ~SortFilterDocumentModel();
 
-    Q_INVOKABLE int rowCount();
+    int rowCount();
     Q_INVOKABLE bool rm(QString path);
+
+Q_SIGNALS:
+    void countChanged();
 
 private:
     DocumentModel *m_model;

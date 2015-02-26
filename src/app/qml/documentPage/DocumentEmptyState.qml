@@ -21,7 +21,7 @@ Item {
     anchors.fill: parent
 
     EmptyState {
-        title: i18n.tr("Documents not found")
+        title: i18n.tr("No document found")
 
         // TODO: Add "or insert removable media with documents." to subTitle when
         // the support for SD card will be implemented.
@@ -29,5 +29,6 @@ Item {
         iconName: "edit-copy"
 
         anchors.centerIn: parent
+        width: parent.width
     }
 }

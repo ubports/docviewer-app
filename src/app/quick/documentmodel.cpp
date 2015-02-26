@@ -175,6 +175,8 @@ SortFilterDocumentModel::SortFilterDocumentModel(QObject *parent)
 {
     m_model = new DocumentModel();
     setSourceModel(m_model);
+    connect(m_model, SIGNAL(rowsInserted(QModelIndex,int,int)), this, SIGNAL(countChanged()));
+    connect(m_model, SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SIGNAL(countChanged()));
 
     setSortRole(DocumentModel::DateRole);
     setSortCaseSensitivity(Qt::CaseInsensitive);
