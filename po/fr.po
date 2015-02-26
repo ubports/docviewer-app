@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-02-05 20:29+0100\n"
-"PO-Revision-Date: 2015-02-04 21:39+0000\n"
-"Last-Translator: Anne <anneonyme017@gmail.com>\n"
+"PO-Revision-Date: 2015-02-10 17:47+0000\n"
+"Last-Translator: Charlotte <cha022015@gmx.fr>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-02-07 07:28+0000\n"
-"X-Generator: Launchpad (build 17331)\n"
+"X-Launchpad-Export-Date: 2015-02-11 06:23+0000\n"
+"X-Generator: Launchpad (build 17336)\n"
 
 #: ../src/app/qml/ContentHubPicker.qml:23
 msgid "Open with..."
@@ -84,7 +84,7 @@ msgstr "Fermer"
 
 #: ../src/app/qml/PdfContentsPage.qml:24 ../src/app/qml/PdfView.qml:33
 msgid "Contents"
-msgstr ""
+msgstr "Contenus"
 
 #: ../src/app/qml/PdfView.qml:31
 #, qt-format
