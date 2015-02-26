@@ -37,25 +37,24 @@ PageWithBottomEdge {
     PDF.VerticalView {
         id: pdfView
         objectName: "pdfView"
-
         anchors.fill: parent
         spacing: units.gu(2)
 
         clip: true
         boundsBehavior: Flickable.StopAtBounds
-
-        cacheBuffer: height * poppler.providersNumber * _zoomHelper.scale * 0.5
-
         flickDeceleration: 1500 * units.gridUnit / 8
         maximumFlickVelocity: 2500 * units.gridUnit / 8
 
+        contentWidth: parent.width * _zoomHelper.scale
+        cacheBuffer: height * poppler.providersNumber * _zoomHelper.scale * 0.5
+        interactive: !pinchy.pinch.active
+
         model: poppler
         delegate: PdfViewDelegate {
-            onWidthChanged: QQuickView.releaseResources()
             Component.onDestruction: QQuickView.releaseResources()
         }
 
-        contentWidth: parent.width * _zoomHelper.scale
+        // FIXME: On zooming, keep the same content position.
         PinchArea {
             id: pinchy
             anchors.fill: parent
@@ -66,14 +65,13 @@ PageWithBottomEdge {
                 maximumScale: 2.5
             }
 
-            onPinchStarted: pdfView.interactive = false;
-
-            // FIXME: On zooming, keep the same content position.
-            // onPinchUpdated: {}
-
             onPinchFinished: {
-                pdfView.interactive = true;
                 pdfView.returnToBounds();
+
+                // This is a bit expensive, so it's safer to put it here.
+                // It won't be called on desktop (where PinchArea is not used),
+                // but it's not a problem at the moment (our target is phone).
+                QQuickView.releaseResources();
             }
         }
 
