@@ -152,6 +152,14 @@ void DocViewerApplication::createView()
     paths.prepend(QCoreApplication::applicationDirPath());
     Q_FOREACH (const QString &path, paths) {
         QString myPath = path + QLatin1Char('/') + filePath;
+
+        // WORKAROUND: We need to set the APP_ID so that content-hub and uri-handler can work
+        // as expected. That breaks the code, since QStandardPaths::DataLocation
+        // returns the default folders with that APP_ID (com.ubuntu.docviewer).
+        // But we need to check files for "ubuntu-docviewer-app", so we just replace it.
+        // Sounds hackish, but it's just temporary.
+        myPath.replace(QCoreApplication::applicationName(), "ubuntu-docviewer-app");
+
         if (QFile::exists(myPath)) {
             qmlfile = myPath;
             break;
