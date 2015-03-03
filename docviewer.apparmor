@@ -1,8 +1,7 @@
 {
     "policy_groups": [
         "content_exchange_source",
-        "content_exchange",
-        "debug"
+        "content_exchange"
     ],
     "read_path": [
         "@{HOME}/Documents/"
