@@ -51,8 +51,8 @@ DocViewerApplication::DocViewerApplication(int& argc, char** argv)
 bool DocViewerApplication::init()
 {
     m_cmdLineParser = new CommandLineParser();
-    bool ok = m_cmdLineParser->processArguments(arguments());
-    if (!ok)
+
+    if (!m_cmdLineParser->processArguments(arguments()))
         return false;
 
     if (qgetenv("QT_LOAD_TESTABILITY") == "1" || m_cmdLineParser->testability()) {
@@ -137,7 +137,7 @@ const QString& DocViewerApplication::getDocumentFile() const
  */
 void DocViewerApplication::createView()
 {
-    m_view->setTitle("Document Viewer");
+    m_view->setTitle(tr("Document Viewer"));
 
     // Set ourselves up to expose functionality to run external commands from QML...
     m_view->engine()->rootContext()->setContextProperty("DOC_VIEWER", this);

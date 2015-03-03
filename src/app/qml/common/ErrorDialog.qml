@@ -18,6 +18,7 @@ import QtQuick 2.3
 import Ubuntu.Components 1.1
 import Ubuntu.Components.Popups 1.0
 
+// TODO: We may want to make it more generic and useful.
 Dialog {
     id: errorDialog
     title: i18n.tr("Error")

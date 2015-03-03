@@ -48,10 +48,9 @@ Dialog {
                     console.log("Removing:", items.get(i).model.path);
                     folderModel.rm(items.get(i).model.path);
                 }
-
-                viewLoader.item.endSelection();
             }
 
+            viewLoader.item.endSelection();
             PopupUtils.close(deleteFileDialog)
         }
     }

@@ -18,16 +18,16 @@
 
 function printSize(size) {
     if (size >= 1073741824)
-        return (size / 1073741824).toFixed(2) + " GiB";
+        return (size / 1073741824).toFixed(2) + qsTr(" GiB");
 
     if (size >= 1048576)
-        return (size / 1048576).toFixed(2) + " MiB";
+        return (size / 1048576).toFixed(2) + qsTr(" MiB");
 
     if (size >= 1024)
-        return parseInt(size / 1024) + " KiB";
+        return parseInt(size / 1024) + qsTr(" KiB");
 
-    return size + " byte";
-};
+    return size + qsTr(" byte");
+}
 
 function getNameOfFile(path) {
     return path.toString().substring(path.lastIndexOf('/') + 1);

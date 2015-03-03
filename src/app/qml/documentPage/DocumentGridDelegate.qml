@@ -30,15 +30,19 @@ AbstractButton {
         var diff = model.dateDiff
 
         if (diff < 1)
-            return i18n.tr("Today, ") + Qt.formatDateTime(date, "hh:mm")
+            return i18n.tr("Today, ") + Qt.formatTime(date, Qt.locale().timeFormat(Locale.ShortFormat))
 
         if (diff < 2)
-            return i18n.tr("Yesterday, ") + Qt.formatDateTime(date, "hh:mm")
+            return i18n.tr("Yesterday, ") + Qt.formatDateTime(date, Qt.locale().timeFormat(Locale.ShortFormat))
 
         if (diff < 7)
-            return Qt.formatDateTime(date, "dddd, hh:mm")
+            // TRANSLATORS: this is a datetime formatting string,
+            // see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
+            return Qt.formatDateTime(date, i18n.tr("dddd, hh:mm"))
 
-        return Qt.formatDateTime(date, "dd-MM-yyyy hh:mm")
+        // TRANSLATORS: this is a datetime formatting string,
+        // see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
+        return Qt.formatDateTime(date, i18n.tr("dd-MM-yyyy hh:mm"))
     }
 
     Rectangle {
@@ -129,24 +133,19 @@ AbstractButton {
         Column {
             anchors { fill: overlay; margins: units.gu(0.5) }
 
-            RowLayout {
-                width: parent.width
-                spacing: units.gu(1)
+            Label {
+                text: model.name
+                color: "white"
 
-                Label {
-                    text: model.name
-                    color: "white"
+                elide: Text.ElideRight
+                font.weight: Font.DemiBold
+                fontSize: "small"
 
-                    elide: Text.ElideRight
-                    font.weight: Font.DemiBold
-                    fontSize: "small"
-
-                    Layout.fillWidth: true
-                }
+                anchors { left: parent.left; right: parent.right }
             }
 
             RowLayout {
-                width: parent.width
+                anchors { left: parent.left; right: parent.right }
 
                 Label {
                     text: formattedDateTime()

@@ -26,7 +26,7 @@
 int main(int argc, char *argv[])
 {
     QCoreApplication::setApplicationName("com.ubuntu.docviewer");
-    QCoreApplication::setOrganizationDomain("com.ubuntu.docviewer");
+    QCoreApplication::setOrganizationName("com.ubuntu.docviewer");
 
     DocViewerApplication app(argc, argv);
     if (!app.init())

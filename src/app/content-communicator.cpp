@@ -56,8 +56,7 @@ void ContentCommunicator::registerWithHub()
 void ContentCommunicator::handle_import(content::Transfer *transfer)
 {
     // FIXME: If a file is imported from $HOME/Documents, a new copy of the file is created.
-    //   Sadly, we can't check for the source of the file, since we just get the path
-    //   of the cache copy.
+    //   Could be use md5? http://doc.qt.io/qt-5/qml-qtqml-qt.html#md5-method
     // FIXME: If there already a file called "filename.1.ext", the imported file won't be renamed as "filename.2.ext", but "filename.1.1.ext".
     //  (This issue is in gallery-app too.)
 
@@ -69,6 +68,7 @@ void ContentCommunicator::handle_import(content::Transfer *transfer)
         QMimeDatabase mdb;
         QMimeType mt = mdb.mimeTypeForFile(hubItem.url().toLocalFile());
         QString suffix = fi.completeSuffix();
+        // FIXME: Should we use fi.baseName()?
         QString filenameWithoutSuffix = filename.left(filename.size() - suffix.size());
         if(suffix.isEmpty()) {
             // If the filename doesn't have an extension add one from the
@@ -92,7 +92,6 @@ void ContentCommunicator::handle_import(content::Transfer *transfer)
         }
         QFile::copy(hubItem.url().toLocalFile(), destination);
     }
-
 
     // Allow content-hub to clean up temporary files in .cache/ once we've
     // moved them
@@ -141,7 +140,7 @@ void ContentCommunicator::cancelTransfer()
 }
 
 /*!
- * \brief ContentCommunicator::returnPhoto returns the given photos
+ * \brief ContentCommunicator::returnSocuments returns the given documents
  * via content hub to the requester
  * \param urls
  */
@@ -184,5 +183,6 @@ bool ContentCommunicator::singleContentPickMode() const
     if (!m_transfer)
         return true;
 
+    // FIXME: Shouldn't be Transfer::SelectionType::SingleSelect?
     return m_transfer->selectionType() == Transfer::SelectionType::single;
 }

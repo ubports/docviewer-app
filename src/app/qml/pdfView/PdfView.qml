@@ -29,6 +29,8 @@ PageWithBottomEdge {
     // TODO: Show/hide header if a user taps the page
     flickable: null
 
+    // TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
+    // while the second one (%2) refers to the total pages count.
     property string currentPage: i18n.tr("Page %1 of %2").arg(pdfView.currentPageIndex + 1).arg(pdfView.count)
 
     bottomEdgeTitle: i18n.tr("Contents")

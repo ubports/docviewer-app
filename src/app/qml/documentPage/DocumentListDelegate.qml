@@ -27,17 +27,20 @@ ListItemWithActions {
         var diff = model.dateDiff
 
         if (diff < 2)
-            return Qt.formatDateTime(date, "hh:mm")
+            return Qt.formatDateTime(date, Qt.locale().timeFormat(Locale.ShortFormat))
 
         if (diff < 7)
-            return Qt.formatDateTime(date, "dddd, hh:mm")
+            // TRANSLATORS: this is a datetime formatting string,
+            // see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
+            return Qt.formatDateTime(date, i18n.tr("dddd, hh:mm"))
 
-        return Qt.formatDateTime(date, "dd-MM-yyyy hh:mm")
+        // TRANSLATORS: this is a datetime formatting string,
+        // see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
+        return Qt.formatDateTime(date, i18n.tr("dd-MM-yyyy hh:mm"))
     }
 
-    width: parent.width
+    anchors { left: parent.left; right: parent.right }
     height: units.gu(8)
-
 
     locked: documentPage.state == "pickMode"
 
