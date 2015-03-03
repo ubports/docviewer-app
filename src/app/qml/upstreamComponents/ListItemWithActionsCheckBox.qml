@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 Canonical, Ltd.
+ * Copyright (C) 2012-2014 Canonical, Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,29 +14,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.0
+import QtQuick 2.3
 import Ubuntu.Components 1.1
 
-Page {
-    id: welcomePage
-
-    title: i18n.tr("Document Viewer")
-    head.actions: [ openAction ]
-
-    EmptyState {
-        title: i18n.tr("No opened documents")
-        subTitle: i18n.tr("Tap the + icon to open a document")
-
-        iconName: "edit-copy"
-
-        anchors.centerIn: parent
-    }
-
-    Action {
-        id: openAction
-        text: i18n.tr("Open a file...")
-        iconName: "add"
-
-        onTriggered: pageStack.push(Qt.resolvedUrl("ContentHubPicker.qml"))
-    }
+CheckBox {
+    checked: root.selected
+    width: implicitWidth
+    // disable item mouse area to avoid conflicts with parent mouse area
+    __mouseArea.enabled: false
 }

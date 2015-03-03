@@ -1,6 +1,13 @@
 {
     "policy_groups": [
+        "content_exchange_source",
         "content_exchange"
+    ],
+    "read_path": [
+        "@{HOME}/Documents/"
+    ],
+    "write_path": [
+        "@{HOME}/Documents/"
     ],
     "policy_version": 1.2
 }

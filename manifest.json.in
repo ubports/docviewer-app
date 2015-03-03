@@ -9,10 +9,11 @@
         "docviewer": {
             "apparmor": "docviewer.apparmor",
             "desktop": "com.ubuntu.docviewer.desktop",
-        "content-hub": "docviewer-content.json"
+            "content-hub": "docviewer-content.json",
+            "urls": "@URLS_FILE@"
         }
     },
-    "version": "0.2.1.@BZR_REVNO@",
+    "version": "0.3.@BZR_REVNO@",
     "maintainer": "Ubuntu App Cats <ubuntu-touch-coreapps@lists.launchpad.net>",
     "x-source": {
         "vcs-bzr": "@BZR_SOURCE@",

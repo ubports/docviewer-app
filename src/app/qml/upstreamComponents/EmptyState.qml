@@ -54,6 +54,9 @@ Item {
     Label {
         id: emptySublabel
         anchors.top: emptyLabel.bottom
-        anchors.horizontalCenter: parent.horizontalCenter
+
+        width: parent.width
+        wrapMode: Text.Wrap
+        horizontalAlignment: Text.AlignHCenter
     }
 }

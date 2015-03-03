@@ -18,7 +18,8 @@ import QtQuick 2.3
 import Ubuntu.Components 1.1
 import com.ubuntu.popplerqmlplugin 1.0 as PDF
 
-import "utils.js" as Utils
+import "../common/utils.js" as Utils
+import "../upstreamComponents"
 
 PageWithBottomEdge {
     id: pdfPage
@@ -28,6 +29,8 @@ PageWithBottomEdge {
     // TODO: Show/hide header if a user taps the page
     flickable: null
 
+    // TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
+    // while the second one (%2) refers to the total pages count.
     property string currentPage: i18n.tr("Page %1 of %2").arg(pdfView.currentPageIndex + 1).arg(pdfView.count)
 
     bottomEdgeTitle: i18n.tr("Contents")
@@ -51,7 +54,7 @@ PageWithBottomEdge {
 
         model: poppler
         delegate: PdfViewDelegate {
-            Component.onDestruction: QQuickView.releaseResources()
+            Component.onDestruction: DOC_VIEWER.releaseResources()
         }
 
         // FIXME: On zooming, keep the same content position.
@@ -71,7 +74,7 @@ PageWithBottomEdge {
                 // This is a bit expensive, so it's safer to put it here.
                 // It won't be called on desktop (where PinchArea is not used),
                 // but it's not a problem at the moment (our target is phone).
-                QQuickView.releaseResources();
+                DOC_VIEWER.releaseResources();
             }
         }
 
@@ -95,7 +98,6 @@ PageWithBottomEdge {
                 pdfPage.title = title
         }
     }
-
 
     // *** HEADER ***
     state: "default"

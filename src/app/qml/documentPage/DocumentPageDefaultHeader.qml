@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013-2015 Canonical, Ltd.
+ * Copyright (C) 2014-2015 Canonical, Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,32 +17,18 @@
 import QtQuick 2.3
 import Ubuntu.Components 1.1
 
-import "utils.js" as Utils
+PageHeadState {
+    id: rootItem
 
-Page {
-    id: imagePage
-    title: Utils.getNameOfFile(file.path);
+    property Page targetPage
+    head: targetPage.head
 
-    Rectangle {
-        anchors.fill: parent
-        color: "#221E1C"    // SuruDark.Palette.Normal.Background
+    actions:  Action {
+        id: switchView
+        text: targetPage.useGridView ? i18n.tr("Switch to single column list") : i18n.tr("Switch to grid")
+        iconName: targetPage.useGridView ? "view-list-symbolic" : "view-grid-symbolic"
+        onTriggered: targetPage.useGridView = !targetPage.useGridView
+
+        visible: folderModel.count !== 0
     }
-
-    ZoomableImage {
-        id: zoomableImage
-        anchors.fill: parent
-
-        zoomable: true
-        source: file.path
-    }
-
-    // *** HEADER ***
-    state: "default"
-    states: [
-        ImageViewDefaultHeader {
-            name: "default"
-            targetPage: imagePage
-            activityRunning: zoomableImage.imageStatus == Image.Loading
-        }
-    ]
 }

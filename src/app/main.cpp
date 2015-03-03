@@ -1,5 +1,5 @@
 /*
- * Copyright: 2013 - 2015 Canonical, Ltd
+ * Copyright: 2015 Canonical Ltd.
  *
  * This file is part of docviewer
  *
@@ -14,111 +14,23 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
- * Authors: Michael Zanetti <michael.zanetti@canonical.com>
- *          Riccardo Padovani <rpadovani@ubuntu.com>
- *          David Planella <david.planella@ubuntu.com>
- *          Stefano Verzegnassi <stefano92.100@gmail.com>
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>. 
  */
 
 // Uncomment if you need to use QML analyzer
 // #define QT_QML_DEBUG
 
-#include <QtGui/QGuiApplication>
-#include <QtQuick/QQuickView>
-#include <QtQml/QtQml>
-#include <QLibrary>
-#include <QDir>
-
+#include "docviewer-application.h"
 #include <QDebug>
 
 int main(int argc, char *argv[])
 {
-    QGuiApplication a(argc, argv);
-    QQuickView view;
-    view.setResizeMode(QQuickView::SizeRootObjectToView);
-
-    view.setPersistentOpenGLContext(false);
-    view.setPersistentSceneGraph(false);
-    view.engine()->rootContext()->setContextProperty("QQuickView", &view);
-
-    // Set up import paths
-    QStringList importPathList = view.engine()->importPathList();
-    // Prepend the location of the plugin in the build dir,
-    // so that Qt Creator finds it there, thus overriding the one installed
-    // in the sistem if there is one
-    importPathList.prepend(QCoreApplication::applicationDirPath() + "/../plugin/");
-
-    QStringList args = a.arguments();
-    if (args.contains("-h") || args.contains("--help")) {
-        qDebug() << "usage: " + args.at(0) + " [-h|--help] <path>";
-        qDebug() << "    -h|--help     Print this help.";
-        qDebug() << "    <path>        Path of the document to load.";
-        return 0;
-    }
-
-    // Check if the path of the document has been specified.
-    QString docPath;
-    for (int i = 1; i < args.count(); i++) {
-        if (args.at(i) != "-h" && args.at(i) != "--h") {
-            docPath = args.at(i);
-        }
-    }
-    view.engine()->rootContext()->setContextProperty("documentPath", docPath);
-
-    if (args.contains(QLatin1String("-testability")) || getenv("QT_LOAD_TESTABILITY")) {
-        QLibrary testLib(QLatin1String("qttestability"));
-        if (testLib.load()) {
-            typedef void (*TasInitialize)(void);
-            TasInitialize initFunction = (TasInitialize)testLib.resolve("qt_testability_init");
-            if (initFunction) {
-                initFunction();
-            } else {
-                qCritical("Library qttestability resolve failed!");
-            }
-        } else {
-            qCritical("Library qttestability load failed!");
-        }
-    }
-
-    view.engine()->setImportPathList(importPathList);
-
-    QString qmlfile;
-    const QString filePath = QLatin1String("qml/ubuntu-docviewer-app.qml");
-    QStringList paths = QStandardPaths::standardLocations(QStandardPaths::DataLocation);
-    paths.prepend(QDir::currentPath());
-    paths.prepend(QCoreApplication::applicationDirPath());
-    Q_FOREACH (const QString &path, paths) {
-        QString myPath = path + QLatin1Char('/') + filePath;
-        if (QFile::exists(myPath)) {
-            qmlfile = myPath;
-            break;
-        }
-    }
-    // sanity check
-    if (qmlfile.isEmpty()) {
-        qFatal("File: %s does not exist at any of the standard paths!", qPrintable(filePath));
-    }
-
-    // Make sure our cache dir exists. It'll be used all over in this app.
-    // We need to set the applicationName for that.
-    // It'll be overwritten again when qml loads but we need it already now.
-    // So if you want to change it, make sure to find all the places where it is set, not just here :D
     QCoreApplication::setApplicationName("com.ubuntu.docviewer");
+    QCoreApplication::setOrganizationDomain("com.ubuntu.docviewer");
 
-    QDir cacheDir(QStandardPaths::standardLocations(QStandardPaths::CacheLocation).first());
-    if (!cacheDir.exists()) {
-        qDebug() << "creating cacheDir:" << cacheDir.absolutePath();
-        cacheDir.mkpath(cacheDir.absolutePath());
-    }
+    DocViewerApplication app(argc, argv);
+    if (!app.init())
+        return 0;
 
-    // Expose quit() signal to QML
-    QObject::connect(view.engine(), SIGNAL(quit()), &a, SLOT(quit()));
-
-    qDebug() << "using main qml file from:" << qmlfile;
-    view.setSource(QUrl::fromLocalFile(qmlfile));
-    view.show();
-
-    return a.exec();
+    app.exec();
 }

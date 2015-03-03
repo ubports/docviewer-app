@@ -1,7 +1,8 @@
 {
     "destination": [
-        "pictures",
-        "documents",
-        "unknown"
+        "documents"
+    ],
+    "source": [
+        "documents"
     ]
 }

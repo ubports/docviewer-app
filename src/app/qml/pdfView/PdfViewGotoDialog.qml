@@ -42,7 +42,7 @@ Dialog {
     Button {
         objectName:"GOButton"
         text: i18n.tr("GO!")
-        color: UbuntuColors.orange
+        color: UbuntuColors.green
 
         enabled: goToPageTextField.acceptableInput
         onClicked: goToPage()

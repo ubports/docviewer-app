@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014-2015 Canonical, Ltd.
+ * Copyright (C) 2013-2015 Canonical, Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,19 +14,21 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.3
-import Ubuntu.Components 1.1
-import Ubuntu.Components.Popups 1.0
+.pragma library
 
-Dialog {
-    id: errorDialog
-    title: i18n.tr("Error")
-    text: i18n.tr("File does not exist")
+function printSize(size) {
+    if (size >= 1073741824)
+        return (size / 1073741824).toFixed(2) + qsTr(" GiB");
 
-    Button {
-        text: i18n.tr("Close")
-        color: UbuntuColors.red
+    if (size >= 1048576)
+        return (size / 1048576).toFixed(2) + qsTr(" MiB");
 
-        onClicked: Qt.quit();
-    }
+    if (size >= 1024)
+        return parseInt(size / 1024) + qsTr(" KiB");
+
+    return size + qsTr(" byte");
+}
+
+function getNameOfFile(path) {
+    return path.toString().substring(path.lastIndexOf('/') + 1);
 }
