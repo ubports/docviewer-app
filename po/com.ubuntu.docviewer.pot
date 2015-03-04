@@ -153,7 +153,7 @@ msgid "Earlier this month"
 msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:146
-msgid "Even more earlier..."
+msgid "Even earlier..."
 msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:25

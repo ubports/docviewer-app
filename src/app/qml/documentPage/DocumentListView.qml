@@ -143,7 +143,7 @@ MultipleSelectionListView {
             if (section == 3)
                 return i18n.tr("Earlier this month")
 
-            return i18n.tr("Even more earlier...")
+            return i18n.tr("Even earlier...")
         }
     }
 
