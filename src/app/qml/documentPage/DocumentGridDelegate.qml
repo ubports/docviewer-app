@@ -73,7 +73,7 @@ AbstractButton {
         // Document mimetype icon
         Icon {
             anchors.centerIn: parent
-            anchors.verticalCenterOffset: - units.gu(2)
+            anchors.verticalCenterOffset: - units.gu(3)
 
             width: units.gu(8); height: width
 
@@ -123,7 +123,7 @@ AbstractButton {
                 bottom: parent.bottom
             }
 
-            height: units.gu(6)
+            height: units.gu(8)
 
             color: UbuntuColors.darkGrey
             opacity: 0.75
@@ -144,22 +144,20 @@ AbstractButton {
                 anchors { left: parent.left; right: parent.right }
             }
 
-            RowLayout {
+            Label {
+                text: formattedDateTime()
+                color: "white"
+                fontSize: "small"
+
                 anchors { left: parent.left; right: parent.right }
+            }
 
-                Label {
-                    text: formattedDateTime()
-                    color: "white"                  
-                    fontSize: "x-small"
+            Label {
+                text: Utils.printSize(model.size)
+                color: "white"
+                fontSize: "small"
 
-                    Layout.fillWidth: true
-                }
-
-                Label {
-                    text: Utils.printSize(model.size)
-                    color: "white"
-                    fontSize: "x-small"
-                }
+                anchors { left: parent.left; right: parent.right }
             }
         }   // Document info end
 
