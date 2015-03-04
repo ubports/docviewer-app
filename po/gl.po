@@ -7,116 +7,62 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-02-05 20:29+0100\n"
-"PO-Revision-Date: 2015-02-11 10:55+0000\n"
+"POT-Creation-Date: 2015-03-03 17:49+0100\n"
+"PO-Revision-Date: 2015-03-03 22:58+0000\n"
 "Last-Translator: Marcos Lans <Unknown>\n"
 "Language-Team: Galician <gl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-02-12 07:03+0000\n"
-"X-Generator: Launchpad (build 17336)\n"
+"X-Launchpad-Export-Date: 2015-03-04 05:50+0000\n"
+"X-Generator: Launchpad (build 17361)\n"
 
-#: ../src/app/qml/ContentHubPicker.qml:23
-msgid "Open with..."
-msgstr "Abrir con..."
-
-#: ../src/app/qml/ContentHubPicker.qml:27
-msgid "Documents"
-msgstr "Documentos"
-
-#: ../src/app/qml/ContentHubPicker.qml:27
-msgid "Pictures"
-msgstr "Imaxes"
-
-#: ../src/app/qml/ContentHubPicker.qml:27
-msgid "Other"
-msgstr "Outro"
-
-#: ../src/app/qml/ContentHubPicker.qml:30
-#: ../src/app/qml/ImageViewDefaultHeader.qml:53
-#: ../src/app/qml/PdfViewDefaultHeader.qml:61
-#: ../src/app/qml/TextViewDefaultHeader.qml:61
-msgid "Back"
-msgstr "Volver"
-
-#: ../src/app/qml/DetailsPage.qml:27
-#: ../src/app/qml/ImageViewDefaultHeader.qml:69
-#: ../src/app/qml/PdfViewDefaultHeader.qml:91
-#: ../src/app/qml/TextViewDefaultHeader.qml:77
+#: ../src/app/qml/common/DetailsPage.qml:27
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Details"
 msgstr "Información"
 
-#: ../src/app/qml/DetailsPage.qml:33
+#: ../src/app/qml/common/DetailsPage.qml:33
 msgid "Location"
 msgstr "Localización"
 
-#: ../src/app/qml/DetailsPage.qml:37
+#: ../src/app/qml/common/DetailsPage.qml:37
 msgid "Size"
 msgstr "Tamaño"
 
-#: ../src/app/qml/DetailsPage.qml:42
+#: ../src/app/qml/common/DetailsPage.qml:42
 msgid "Created"
 msgstr "Creado"
 
-#: ../src/app/qml/DetailsPage.qml:47
+#: ../src/app/qml/common/DetailsPage.qml:47
 msgid "Last modified"
 msgstr "Última modificación"
 
-#: ../src/app/qml/DetailsPage.qml:54
+#: ../src/app/qml/common/DetailsPage.qml:54
 msgid "MIME type"
 msgstr "Tipo MIME"
 
-#: ../src/app/qml/ErrorDialog.qml:23
+#: ../src/app/qml/common/ErrorDialog.qml:24
 msgid "Error"
 msgstr "Erro"
 
-#: ../src/app/qml/ErrorDialog.qml:24
+#: ../src/app/qml/common/ErrorDialog.qml:25
 msgid "File does not exist"
 msgstr "O ficheiro non existe"
 
-#: ../src/app/qml/ErrorDialog.qml:27
-#: ../src/app/qml/ImageViewDefaultHeader.qml:53
-#: ../src/app/qml/PdfViewDefaultHeader.qml:61
-#: ../src/app/qml/TextViewDefaultHeader.qml:61
+#: ../src/app/qml/common/ErrorDialog.qml:28
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:31
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Close"
 msgstr "Pechar"
 
-#: ../src/app/qml/PdfContentsPage.qml:24 ../src/app/qml/PdfView.qml:33
-msgid "Contents"
-msgstr "Contidos"
-
-#: ../src/app/qml/PdfView.qml:31
-#, qt-format
-msgid "Page %1 of %2"
-msgstr "Páxina %1 de %2"
-
-#: ../src/app/qml/PdfViewGotoDialog.qml:25
-msgid "Go to page"
-msgstr "Ir á páxina"
-
-#: ../src/app/qml/PdfViewGotoDialog.qml:26
-#, qt-format
-msgid "Choose a page between 1 and %1"
-msgstr "Seleccionar unha páxina entre 1 e %1"
-
-#: ../src/app/qml/PdfViewGotoDialog.qml:44
-msgid "GO!"
-msgstr "IR!"
-
-#: ../src/app/qml/PdfViewGotoDialog.qml:52
-msgid "Cancel"
-msgstr "Cancelar"
-
-#: ../src/app/qml/TextView.qml:39
-msgid "Loading..."
-msgstr "Cargando..."
-
-#: ../src/app/qml/UnknownTypeDialog.qml:26
+#: ../src/app/qml/common/UnknownTypeDialog.qml:26
 msgid "Unknown file type"
 msgstr "Tipo de ficheiro descoñecido"
 
-#: ../src/app/qml/UnknownTypeDialog.qml:27
+#: ../src/app/qml/common/UnknownTypeDialog.qml:27
 msgid ""
 "Sorry but we can't find a way to display this file. Do you want to open it "
 "as a plain text?"
@@ -124,31 +70,157 @@ msgstr ""
 "Sentímolo pero non atopamos xeito de abrir o ficheiro. Desexa abrilo como "
 "texto plano?"
 
-#: ../src/app/qml/UnknownTypeDialog.qml:29
+#: ../src/app/qml/common/UnknownTypeDialog.qml:29
 msgid "Yes"
 msgstr "Si"
 
-#: ../src/app/qml/UnknownTypeDialog.qml:38
+#: ../src/app/qml/common/UnknownTypeDialog.qml:38
 msgid "No"
 msgstr "Non"
 
-#: ../src/app/qml/WelcomePage.qml:23
-#: /home/stefano/Progetti/doc-viewer/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:27
+msgid "Delete file"
+msgstr "Eliminar ficheiro"
+
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:28
+#, qt-format
+msgid "Delete %1 files"
+msgstr "Eliminar %1 ficheiros"
+
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:29
+msgid "Are you sure you want to permanently delete this file?"
+msgstr "Confirma a eliminación permanente deste ficheiro?"
+
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:30
+msgid "Are you sure you want to permanently delete these files?"
+msgstr "Confirma a eliminación permanente destes ficheiros?"
+
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:33
+#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:27
+#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:52
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:38
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:81
+msgid "Delete"
+msgstr "Eliminar"
+
+#: ../src/app/qml/documentPage/DocumentEmptyState.qml:24
+msgid "No document found"
+msgstr "Non se atopou ningún documento"
+
+#: ../src/app/qml/documentPage/DocumentEmptyState.qml:28
+msgid ""
+"Connect your device to any computer and simply drag files to the Documents "
+"folder."
+msgstr ""
+"Conecte o dispositivo a un computador e arrastre os ficheiros ao cartafol de "
+"Documentos."
+
+#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:33
+msgid "Today, "
+msgstr "Hoxe, "
+
+#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:36
+msgid "Yesterday, "
+msgstr "Onte, "
+
+#. TRANSLATORS: this is a datetime formatting string,
+#. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
+#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:41
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:35
+msgid "dddd, hh:mm"
+msgstr "dddd, hh:mm"
+
+#. TRANSLATORS: this is a datetime formatting string,
+#. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
+#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:45
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:39
+msgid "dd-MM-yyyy hh:mm"
+msgstr "dd-MM-yyyy hh:mm"
+
+#: ../src/app/qml/documentPage/DocumentListView.qml:135
+msgid "Today"
+msgstr "Hoxe"
+
+#: ../src/app/qml/documentPage/DocumentListView.qml:138
+msgid "Yesterday"
+msgstr "Onte"
+
+#: ../src/app/qml/documentPage/DocumentListView.qml:141
+msgid "Earlier this week"
+msgstr "A comezo de semana"
+
+#: ../src/app/qml/documentPage/DocumentListView.qml:144
+msgid "Earlier this month"
+msgstr "A comezo de mes"
+
+#: ../src/app/qml/documentPage/DocumentListView.qml:146
+msgid "Even more earlier..."
+msgstr "Aínda máis cedo..."
+
+#: ../src/app/qml/documentPage/DocumentPage.qml:25
+#: /home/stefano/Progetti/doc-viewer/build-document-hub2-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Visualizador de documentos"
 
-#: ../src/app/qml/WelcomePage.qml:27
-msgid "No opened documents"
-msgstr "Non hai documentos abertos"
+#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:28
+#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
+msgid "Switch to single column list"
+msgstr "Cambiar a lista dunha columna"
 
-#: ../src/app/qml/WelcomePage.qml:28
-msgid "Tap the + icon to open a document"
-msgstr "Toque a icona + para abrir un documento"
+#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:28
+#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
+msgid "Switch to grid"
+msgstr "Cambiar a grella"
 
-#: ../src/app/qml/WelcomePage.qml:37
-msgid "Open a file..."
-msgstr "Abrir un ficheiro..."
+#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:43
+msgid "Pick"
+msgstr "Seleccionar"
 
-#: /home/stefano/Progetti/doc-viewer/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:51
+msgid "Select None"
+msgstr "Non seleccionar nada"
+
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:53
+msgid "Select All"
+msgstr "Seleccionar todo"
+
+#: ../src/app/qml/pdfView/PdfContentsPage.qml:24
+#: ../src/app/qml/pdfView/PdfView.qml:36
+msgid "Contents"
+msgstr "Contidos"
+
+#. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
+#. while the second one (%2) refers to the total pages count.
+#: ../src/app/qml/pdfView/PdfView.qml:34
+#, qt-format
+msgid "Page %1 of %2"
+msgstr "Páxina %1 de %2"
+
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
+msgid "Back"
+msgstr "Volver"
+
+#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:25
+msgid "Go to page"
+msgstr "Ir á páxina"
+
+#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
+#, qt-format
+msgid "Choose a page between 1 and %1"
+msgstr "Seleccionar unha páxina entre 1 e %1"
+
+#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:44
+msgid "GO!"
+msgstr "IR!"
+
+#: ../src/app/qml/textView/TextView.qml:39
+msgid "Loading..."
+msgstr "Cargando..."
+
+#: /home/stefano/Progetti/doc-viewer/build-document-hub2-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "documentos;visualizador;pdf;lector;"
