@@ -99,7 +99,7 @@ ListItemWithActions {
                 }
 
                 Label {
-                    text: Utils.printSize(model.size)
+                    text: Utils.printSize(i18n, model.size)
                     fontSize: "small"
                 }
             }

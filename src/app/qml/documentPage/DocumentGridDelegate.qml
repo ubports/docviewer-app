@@ -30,10 +30,14 @@ AbstractButton {
         var diff = model.dateDiff
 
         if (diff < 1)
-            return i18n.tr("Today, ") + Qt.formatTime(date, Qt.locale().timeFormat(Locale.ShortFormat))
+            // TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
+            // http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
+            return i18n.tr("Today, %1").arg(Qt.formatTime(date, Qt.locale().timeFormat(Locale.ShortFormat)))
 
         if (diff < 2)
-            return i18n.tr("Yesterday, ") + Qt.formatDateTime(date, Qt.locale().timeFormat(Locale.ShortFormat))
+            // TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
+            // http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
+            return i18n.tr("Yesterday, %1").arg(Qt.formatTime(date, Qt.locale().timeFormat(Locale.ShortFormat)))
 
         if (diff < 7)
             // TRANSLATORS: this is a datetime formatting string,
@@ -159,7 +163,7 @@ AbstractButton {
                 }
 
                 Label {
-                    text: Utils.printSize(model.size)
+                    text: Utils.printSize(i18n, model.size)
                     color: "white"
                     fontSize: "small"
 
