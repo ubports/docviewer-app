@@ -73,7 +73,7 @@ AbstractButton {
         // Document mimetype icon
         Icon {
             anchors.centerIn: parent
-            anchors.verticalCenterOffset: - units.gu(3)
+            anchors.verticalCenterOffset: - infoColumn.height * 0.3
 
             width: units.gu(8); height: width
 
@@ -123,43 +123,50 @@ AbstractButton {
                 bottom: parent.bottom
             }
 
-            height: units.gu(8)
+            height: infoColumn.height + units.gu(1)
 
             color: UbuntuColors.darkGrey
             opacity: 0.75
+            layer.enabled: true
+
+            // Document info
+            Column {
+                id: infoColumn
+                anchors {
+                    left: parent.left;
+                    right: parent.right
+                    verticalCenter: parent.verticalCenter
+                    margins: units.gu(0.5)
+                }
+
+                Label {
+                    text: model.name
+                    color: "white"
+
+                    elide: Text.ElideRight
+                    font.weight: Font.DemiBold
+                    fontSize: "small"
+
+                    anchors { left: parent.left; right: parent.right }
+                }
+
+                Label {
+                    text: formattedDateTime()
+                    color: "white"
+                    fontSize: "small"
+
+                    anchors { left: parent.left; right: parent.right }
+                }
+
+                Label {
+                    text: Utils.printSize(model.size)
+                    color: "white"
+                    fontSize: "small"
+
+                    anchors { left: parent.left; right: parent.right }
+                }
+            }   // Document info end
         }
-
-        // Document info
-        Column {
-            anchors { fill: overlay; margins: units.gu(0.5) }
-
-            Label {
-                text: model.name
-                color: "white"
-
-                elide: Text.ElideRight
-                font.weight: Font.DemiBold
-                fontSize: "small"
-
-                anchors { left: parent.left; right: parent.right }
-            }
-
-            Label {
-                text: formattedDateTime()
-                color: "white"
-                fontSize: "small"
-
-                anchors { left: parent.left; right: parent.right }
-            }
-
-            Label {
-                text: Utils.printSize(model.size)
-                color: "white"
-                fontSize: "small"
-
-                anchors { left: parent.left; right: parent.right }
-            }
-        }   // Document info end
 
         states: [
             State {
