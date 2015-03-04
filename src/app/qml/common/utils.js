@@ -16,17 +16,21 @@
 
 .pragma library
 
-function printSize(size) {
+function printSize(i18n, size) {
     if (size >= 1073741824)
-        return (size / 1073741824).toFixed(2) + qsTr(" GiB");
+        // TRANSLATORS: %1 is the size of a file, expressed in GiB
+        return i18n.tr("%1 GiB").arg((size / 1073741824).toFixed(2));
 
     if (size >= 1048576)
-        return (size / 1048576).toFixed(2) + qsTr(" MiB");
+        // TRANSLATORS: %1 is the size of a file, expressed in MiB
+        return i18n.tr("%1 MiB").arg((size / 1048576).toFixed(2));
 
     if (size >= 1024)
-        return parseInt(size / 1024) + qsTr(" KiB");
+        // TRANSLATORS: %1 is the size of a file, expressed in KiB
+        return i18n.tr("%1 KiB").arg(parseInt(size / 1024));
 
-    return size + qsTr(" byte");
+    // TRANSLATORS: %1 is the size of a file, expressed in byte
+    return i18n.tr("%1 byte").arg(size);
 }
 
 function getNameOfFile(path) {

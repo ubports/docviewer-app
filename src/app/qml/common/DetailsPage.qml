@@ -35,7 +35,7 @@ Page {
         }
         ListItem.Subtitled {
             text: i18n.tr("Size")
-            subText: Utils.printSize(file.size)
+            subText: Utils.printSize(i18n, file.size)
         }
 
         ListItem.Subtitled {
