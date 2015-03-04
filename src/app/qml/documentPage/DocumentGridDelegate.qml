@@ -150,7 +150,7 @@ AbstractButton {
                 Label {
                     text: formattedDateTime()
                     color: "white"                  
-                    fontSize: "small"
+                    fontSize: "x-small"
 
                     Layout.fillWidth: true
                 }
@@ -158,7 +158,7 @@ AbstractButton {
                 Label {
                     text: Utils.printSize(model.size)
                     color: "white"
-                    fontSize: "small"
+                    fontSize: "x-small"
                 }
             }
         }   // Document info end
