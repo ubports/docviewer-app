@@ -77,7 +77,7 @@ AbstractButton {
         // Document mimetype icon
         Icon {
             anchors.centerIn: parent
-            anchors.verticalCenterOffset: - units.gu(2)
+            anchors.verticalCenterOffset: - infoColumn.height * 0.3
 
             width: units.gu(8); height: width
 
@@ -127,45 +127,50 @@ AbstractButton {
                 bottom: parent.bottom
             }
 
-            height: units.gu(6)
+            height: infoColumn.height + units.gu(1)
 
             color: UbuntuColors.darkGrey
             opacity: 0.75
-        }
+            layer.enabled: true
 
-        // Document info
-        Column {
-            anchors { fill: overlay; margins: units.gu(0.5) }
+            // Document info
+            Column {
+                id: infoColumn
+                anchors {
+                    left: parent.left;
+                    right: parent.right
+                    verticalCenter: parent.verticalCenter
+                    margins: units.gu(0.5)
+                }
 
-            Label {
-                text: model.name
-                color: "white"
+                Label {
+                    text: model.name
+                    color: "white"
 
-                elide: Text.ElideRight
-                font.weight: Font.DemiBold
-                fontSize: "small"
+                    elide: Text.ElideRight
+                    font.weight: Font.DemiBold
+                    fontSize: "small"
 
-                anchors { left: parent.left; right: parent.right }
-            }
-
-            RowLayout {
-                anchors { left: parent.left; right: parent.right }
+                    anchors { left: parent.left; right: parent.right }
+                }
 
                 Label {
                     text: formattedDateTime()
-                    color: "white"                  
+                    color: "white"
                     fontSize: "small"
 
-                    Layout.fillWidth: true
+                    anchors { left: parent.left; right: parent.right }
                 }
 
                 Label {
                     text: Utils.printSize(i18n, model.size)
                     color: "white"
                     fontSize: "small"
+
+                    anchors { left: parent.left; right: parent.right }
                 }
-            }
-        }   // Document info end
+            }   // Document info end
+        }
 
         states: [
             State {
