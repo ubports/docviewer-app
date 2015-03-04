@@ -23,11 +23,14 @@ Dialog {
     id: deleteFileDialog
 
     property string path
+    property int __deleteCount: documentPage.view.item.selectedItems.count
 
     title: path ? i18n.tr("Delete file") :
-                  i18n.tr("Delete %1 files").arg(documentPage.view.item.selectedItems.count)
+                  i18n.tr("Delete %1 file", "Delete %1 files", __deleteCount).arg(__deleteCount)
     text: path ? i18n.tr("Are you sure you want to permanently delete this file?") :
-                 i18n.tr("Are you sure you want to permanently delete these files?")
+                 i18n.tr("Are you sure you want to permanently delete this file?",
+                            "Are you sure you want to permanently delete these files?",
+                            __deleteCount)
 
     Button {
         text: i18n.tr("Cancel")
