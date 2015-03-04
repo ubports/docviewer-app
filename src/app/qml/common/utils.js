@@ -18,16 +18,16 @@
 
 function printSize(i18n, size) {
     if (size >= 1073741824)
-        // TRANSLATORS: %1 is the size of a file, expressed in GiB
-        return i18n.tr("%1 GiB").arg((size / 1073741824).toFixed(2));
+        // TRANSLATORS: %1 is the size of a file, expressed in GB
+        return i18n.tr("%1 GB").arg((size / 1073741824).toFixed(2));
 
     if (size >= 1048576)
-        // TRANSLATORS: %1 is the size of a file, expressed in MiB
-        return i18n.tr("%1 MiB").arg((size / 1048576).toFixed(2));
+        // TRANSLATORS: %1 is the size of a file, expressed in MB
+        return i18n.tr("%1 MB").arg((size / 1048576).toFixed(2));
 
     if (size >= 1024)
-        // TRANSLATORS: %1 is the size of a file, expressed in KiB
-        return i18n.tr("%1 KiB").arg(parseInt(size / 1024));
+        // TRANSLATORS: %1 is the size of a file, expressed in kB
+        return i18n.tr("%1 kB").arg(parseInt(size / 1024));
 
     // TRANSLATORS: %1 is the size of a file, expressed in byte
     return i18n.tr("%1 byte").arg(size);

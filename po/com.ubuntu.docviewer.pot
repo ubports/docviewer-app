@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-04 18:42+0100\n"
+"POT-Creation-Date: 2015-03-04 18:46+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,22 +77,22 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#. TRANSLATORS: %1 is the size of a file, expressed in GiB
+#. TRANSLATORS: %1 is the size of a file, expressed in GB
 #: ../src/app/qml/common/utils.js:22
 #, qt-format
-msgid "%1 GiB"
+msgid "%1 GB"
 msgstr ""
 
-#. TRANSLATORS: %1 is the size of a file, expressed in MiB
+#. TRANSLATORS: %1 is the size of a file, expressed in MB
 #: ../src/app/qml/common/utils.js:26
 #, qt-format
-msgid "%1 MiB"
+msgid "%1 MB"
 msgstr ""
 
-#. TRANSLATORS: %1 is the size of a file, expressed in KiB
+#. TRANSLATORS: %1 is the size of a file, expressed in kB
 #: ../src/app/qml/common/utils.js:30
 #, qt-format
-msgid "%1 KiB"
+msgid "%1 kB"
 msgstr ""
 
 #. TRANSLATORS: %1 is the size of a file, expressed in byte
