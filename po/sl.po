@@ -1,4 +1,4 @@
-# Amharic translation for ubuntu-docviewer-app
+# Slovenian translation for ubuntu-docviewer-app
 # Copyright (c) 2015 Rosetta Contributors and Canonical Ltd 2015
 # This file is distributed under the same license as the ubuntu-docviewer-app package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
@@ -8,74 +8,77 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-03-04 20:36+0100\n"
-"PO-Revision-Date: 2015-02-07 23:22+0000\n"
-"Last-Translator: samson <Unknown>\n"
-"Language-Team: Amharic <am@li.org>\n"
+"PO-Revision-Date: 2015-03-04 18:08+0000\n"
+"Last-Translator: Damir Jerovšek <Unknown>\n"
+"Language-Team: Slovenian <sl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2015-03-05 05:59+0000\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
+"n%100==4 ? 3 : 0);\n"
+"X-Launchpad-Export-Date: 2015-03-05 06:00+0000\n"
 "X-Generator: Launchpad (build 17374)\n"
 
 #: ../src/app/qml/common/DetailsPage.qml:27
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Details"
-msgstr "ዝርዝሮች"
+msgstr "Podrobnosti"
 
 #: ../src/app/qml/common/DetailsPage.qml:33
 msgid "Location"
-msgstr "አካባቢ"
+msgstr "Položaj"
 
 #: ../src/app/qml/common/DetailsPage.qml:37
 msgid "Size"
-msgstr "መጠን"
+msgstr "Velikost"
 
 #: ../src/app/qml/common/DetailsPage.qml:42
 msgid "Created"
-msgstr "የተፈጠረው"
+msgstr "Ustvarjeno"
 
 #: ../src/app/qml/common/DetailsPage.qml:47
 msgid "Last modified"
-msgstr "መጨረሻ የተሻሻለው"
+msgstr "Nazadnje spremenjeno"
 
 #: ../src/app/qml/common/DetailsPage.qml:54
 msgid "MIME type"
-msgstr "MIME አይነት"
+msgstr "Vrsta MIME"
 
 #: ../src/app/qml/common/ErrorDialog.qml:24
 msgid "Error"
-msgstr "ስህተት"
+msgstr "Napaka"
 
 #: ../src/app/qml/common/ErrorDialog.qml:25
 msgid "File does not exist"
-msgstr "ፋይሉ አልተገኘም"
+msgstr "Datoteka ne obstaja"
 
 #: ../src/app/qml/common/ErrorDialog.qml:28
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:32
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Close"
-msgstr "መዝጊያ"
+msgstr "Zapri"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:26
 msgid "Unknown file type"
-msgstr "ያልታወቀ የፋይል አይነት"
+msgstr "Neznana vrsta datoteke"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:27
 msgid ""
 "Sorry but we can't find a way to display this file. Do you want to open it "
 "as a plain text?"
-msgstr "አዝናለሁ ይህን ፋይል ለማሳየት አልተቻለም: እንደ መደበኛ ጽሁፍ መክፈት ይፈልጋሉ?"
+msgstr ""
+"Na žalost ni mogoče najti načina za prikaz te datoteke. Ali jo želite "
+"odpreti kot navadno besedilo?"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:29
 msgid "Yes"
-msgstr "አዎ"
+msgstr "Da"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:38
 msgid "No"
-msgstr "አይ"
+msgstr "Ne"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in GB
 #: ../src/app/qml/common/utils.js:22
@@ -103,7 +106,7 @@ msgstr ""
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:28
 msgid "Delete file"
-msgstr ""
+msgstr "Izbriši datoteko"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:29
 #, qt-format
@@ -123,22 +126,24 @@ msgstr[1] ""
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:27
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:52
 msgid "Cancel"
-msgstr "መሰረዣ"
+msgstr "Prekliči"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:41
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:82
 msgid "Delete"
-msgstr ""
+msgstr "Izbriši"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:24
 msgid "No document found"
-msgstr ""
+msgstr "Ni najdenih dokumentov"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:28
 msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
 "folder."
 msgstr ""
+"Povežite napravo s katerimkoli računalnikom ter preprosto povlecite datoteke "
+"v mapo Dokumenti."
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
@@ -159,100 +164,100 @@ msgstr ""
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:45
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:35
 msgid "dddd, hh:mm"
-msgstr ""
+msgstr "dddd, hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:49
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:39
 msgid "dd-MM-yyyy hh:mm"
-msgstr ""
+msgstr "dd-MM-yyyy hh:mm"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:135
 msgid "Today"
-msgstr ""
+msgstr "Danes"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:138
 msgid "Yesterday"
-msgstr ""
+msgstr "Včeraj"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:141
 msgid "Earlier this week"
-msgstr ""
+msgstr "V začetku tega tedna"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:144
 msgid "Earlier this month"
-msgstr ""
+msgstr "V začetku tega meseca"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:146
 msgid "Even earlier..."
-msgstr ""
+msgstr "Še prej ..."
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:25
 #: /home/stefano/Progetti/doc-viewer/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
-msgstr "ሰነድ መመልከቻ"
+msgstr "Pregledovalnik dokumentov"
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:28
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
 msgid "Switch to single column list"
-msgstr ""
+msgstr "preklopi na seznam z enim stolpcem"
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:28
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
 msgid "Switch to grid"
-msgstr ""
+msgstr "Preklopi na mrežo"
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:43
 msgid "Pick"
-msgstr ""
+msgstr "Izberi"
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:52
 msgid "Select None"
-msgstr ""
+msgstr "Odznači vse"
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:54
 msgid "Select All"
-msgstr ""
+msgstr "Izberi vse"
 
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:24
 #: ../src/app/qml/pdfView/PdfView.qml:36
 msgid "Contents"
-msgstr "ይዞታዎች"
+msgstr "Vsebina"
 
 #. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
 #. while the second one (%2) refers to the total pages count.
 #: ../src/app/qml/pdfView/PdfView.qml:34
 #, qt-format
 msgid "Page %1 of %2"
-msgstr "ገጽ %1 ከ %2"
+msgstr "Stran %1 od %2"
 
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Back"
-msgstr "ወደ ኋላ"
+msgstr "Nazaj"
 
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:85
 msgid "Go to page..."
-msgstr ""
+msgstr "Pojdi na stran ..."
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:25
 msgid "Go to page"
-msgstr "መሄጃ ወደ ገጽ"
+msgstr "Pojdi na stran"
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
 #, qt-format
 msgid "Choose a page between 1 and %1"
-msgstr "ይምረጡ ገጽ በ 1 እና %1 መካከል"
+msgstr "Izberite stran med 1 in %1"
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:44
 msgid "GO!"
-msgstr "እንሂድ!"
+msgstr "POJDI!"
 
 #: ../src/app/qml/textView/TextView.qml:39
 msgid "Loading..."
-msgstr "በመጫን ላይ..."
+msgstr "Nalaganje …"
 
 #: /home/stefano/Progetti/doc-viewer/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
-msgstr "ሰነዶች: መመልከቻ: pdf: ማንበቢያ:"
+msgstr "dokumenti;pregledovalnik;pdf;bralnik;"

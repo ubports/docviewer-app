@@ -1,4 +1,4 @@
-# Amharic translation for ubuntu-docviewer-app
+# German translation for ubuntu-docviewer-app
 # Copyright (c) 2015 Rosetta Contributors and Canonical Ltd 2015
 # This file is distributed under the same license as the ubuntu-docviewer-app package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-03-04 20:36+0100\n"
-"PO-Revision-Date: 2015-02-07 23:22+0000\n"
-"Last-Translator: samson <Unknown>\n"
-"Language-Team: Amharic <am@li.org>\n"
+"PO-Revision-Date: 2015-03-04 06:14+0000\n"
+"Last-Translator: Phillip Sz <Unknown>\n"
+"Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2015-03-05 05:59+0000\n"
 "X-Generator: Launchpad (build 17374)\n"
 
@@ -22,60 +22,60 @@ msgstr ""
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Details"
-msgstr "ዝርዝሮች"
+msgstr "Details"
 
 #: ../src/app/qml/common/DetailsPage.qml:33
 msgid "Location"
-msgstr "አካባቢ"
+msgstr ""
 
 #: ../src/app/qml/common/DetailsPage.qml:37
 msgid "Size"
-msgstr "መጠን"
+msgstr "Größe"
 
 #: ../src/app/qml/common/DetailsPage.qml:42
 msgid "Created"
-msgstr "የተፈጠረው"
+msgstr "Erstellt"
 
 #: ../src/app/qml/common/DetailsPage.qml:47
 msgid "Last modified"
-msgstr "መጨረሻ የተሻሻለው"
+msgstr "Zuletzt geändert"
 
 #: ../src/app/qml/common/DetailsPage.qml:54
 msgid "MIME type"
-msgstr "MIME አይነት"
+msgstr "MIME-Typ"
 
 #: ../src/app/qml/common/ErrorDialog.qml:24
 msgid "Error"
-msgstr "ስህተት"
+msgstr "Fehler"
 
 #: ../src/app/qml/common/ErrorDialog.qml:25
 msgid "File does not exist"
-msgstr "ፋይሉ አልተገኘም"
+msgstr "Datei existiert nicht"
 
 #: ../src/app/qml/common/ErrorDialog.qml:28
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:32
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Close"
-msgstr "መዝጊያ"
+msgstr "Schließen"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:26
 msgid "Unknown file type"
-msgstr "ያልታወቀ የፋይል አይነት"
+msgstr "Unbekannter Dateityp"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:27
 msgid ""
 "Sorry but we can't find a way to display this file. Do you want to open it "
 "as a plain text?"
-msgstr "አዝናለሁ ይህን ፋይል ለማሳየት አልተቻለም: እንደ መደበኛ ጽሁፍ መክፈት ይፈልጋሉ?"
+msgstr ""
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:29
 msgid "Yes"
-msgstr "አዎ"
+msgstr "Ja"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:38
 msgid "No"
-msgstr "አይ"
+msgstr "Nein"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in GB
 #: ../src/app/qml/common/utils.js:22
@@ -103,7 +103,7 @@ msgstr ""
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:28
 msgid "Delete file"
-msgstr ""
+msgstr "Datei löschen"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:29
 #, qt-format
@@ -123,12 +123,12 @@ msgstr[1] ""
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:27
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:52
 msgid "Cancel"
-msgstr "መሰረዣ"
+msgstr "Abbrechen"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:41
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:82
 msgid "Delete"
-msgstr ""
+msgstr "Löschen"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:24
 msgid "No document found"
@@ -170,11 +170,11 @@ msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:135
 msgid "Today"
-msgstr ""
+msgstr "Heute"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:138
 msgid "Yesterday"
-msgstr ""
+msgstr "Gestern"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:141
 msgid "Earlier this week"
@@ -191,7 +191,7 @@ msgstr ""
 #: ../src/app/qml/documentPage/DocumentPage.qml:25
 #: /home/stefano/Progetti/doc-viewer/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
-msgstr "ሰነድ መመልከቻ"
+msgstr "Dokumentenbetrachter"
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:28
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
@@ -205,32 +205,32 @@ msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:43
 msgid "Pick"
-msgstr ""
+msgstr "Auswählen"
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:52
 msgid "Select None"
-msgstr ""
+msgstr "Nichts auswählen"
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:54
 msgid "Select All"
-msgstr ""
+msgstr "Alle auswählen"
 
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:24
 #: ../src/app/qml/pdfView/PdfView.qml:36
 msgid "Contents"
-msgstr "ይዞታዎች"
+msgstr "Inhalte"
 
 #. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
 #. while the second one (%2) refers to the total pages count.
 #: ../src/app/qml/pdfView/PdfView.qml:34
 #, qt-format
 msgid "Page %1 of %2"
-msgstr "ገጽ %1 ከ %2"
+msgstr "Seite %1 von %2"
 
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Back"
-msgstr "ወደ ኋላ"
+msgstr "Zurück"
 
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:85
 msgid "Go to page..."
@@ -238,21 +238,21 @@ msgstr ""
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:25
 msgid "Go to page"
-msgstr "መሄጃ ወደ ገጽ"
+msgstr "Gehe zu Seite"
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
 #, qt-format
 msgid "Choose a page between 1 and %1"
-msgstr "ይምረጡ ገጽ በ 1 እና %1 መካከል"
+msgstr ""
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:44
 msgid "GO!"
-msgstr "እንሂድ!"
+msgstr ""
 
 #: ../src/app/qml/textView/TextView.qml:39
 msgid "Loading..."
-msgstr "በመጫን ላይ..."
+msgstr ""
 
 #: /home/stefano/Progetti/doc-viewer/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
-msgstr "ሰነዶች: መመልከቻ: pdf: ማንበቢያ:"
+msgstr ""

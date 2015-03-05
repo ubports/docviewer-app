@@ -7,15 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-03-03 17:49+0100\n"
-"PO-Revision-Date: 2015-02-15 21:03+0000\n"
+"POT-Creation-Date: 2015-03-04 20:36+0100\n"
+"PO-Revision-Date: 2015-03-04 07:30+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-03-04 05:50+0000\n"
-"X-Generator: Launchpad (build 17361)\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Launchpad-Export-Date: 2015-03-05 05:59+0000\n"
+"X-Generator: Launchpad (build 17374)\n"
 
 #: ../src/app/qml/common/DetailsPage.qml:27
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
@@ -52,7 +53,7 @@ msgid "File does not exist"
 msgstr "Tiedostoa ei ole olemassa"
 
 #: ../src/app/qml/common/ErrorDialog.qml:28
-#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:31
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:32
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Close"
@@ -78,112 +79,145 @@ msgstr "Kyllä"
 msgid "No"
 msgstr "Ei"
 
-#: ../src/app/qml/documentPage/DeleteFileDialog.qml:27
-msgid "Delete file"
+#. TRANSLATORS: %1 is the size of a file, expressed in GB
+#: ../src/app/qml/common/utils.js:22
+#, qt-format
+msgid "%1 GB"
+msgstr ""
+
+#. TRANSLATORS: %1 is the size of a file, expressed in MB
+#: ../src/app/qml/common/utils.js:26
+#, qt-format
+msgid "%1 MB"
+msgstr ""
+
+#. TRANSLATORS: %1 is the size of a file, expressed in kB
+#: ../src/app/qml/common/utils.js:30
+#, qt-format
+msgid "%1 kB"
+msgstr ""
+
+#. TRANSLATORS: %1 is the size of a file, expressed in byte
+#: ../src/app/qml/common/utils.js:33
+#, qt-format
+msgid "%1 byte"
 msgstr ""
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:28
-#, qt-format
-msgid "Delete %1 files"
-msgstr ""
+msgid "Delete file"
+msgstr "Poista tiedosto"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:29
-msgid "Are you sure you want to permanently delete this file?"
-msgstr ""
+#, qt-format
+msgid "Delete %1 file"
+msgid_plural "Delete %1 files"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:30
-msgid "Are you sure you want to permanently delete these files?"
-msgstr ""
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:31
+msgid "Are you sure you want to permanently delete this file?"
+msgid_plural "Are you sure you want to permanently delete these files?"
+msgstr[0] ""
+msgstr[1] ""
 
-#: ../src/app/qml/documentPage/DeleteFileDialog.qml:33
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:36
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:27
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:52
 msgid "Cancel"
 msgstr "Peru"
 
-#: ../src/app/qml/documentPage/DeleteFileDialog.qml:38
-#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:81
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:41
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:82
 msgid "Delete"
-msgstr ""
+msgstr "Poista"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:24
 msgid "No document found"
-msgstr ""
+msgstr "Asiakirjaa ei löytynyt"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:28
 msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
 "folder."
 msgstr ""
+"Yhdistä laitteesi mihin tahansa tietokoneeseen ja vedä tiedostoja Asiakirjat-"
+"kansioon."
 
-#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:33
-msgid "Today, "
+#. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
+#. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
+#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:35
+#, qt-format
+msgid "Today, %1"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:36
-msgid "Yesterday, "
+#. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
+#. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
+#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:40
+#, qt-format
+msgid "Yesterday, %1"
 msgstr ""
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:41
+#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:45
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:35
 msgid "dddd, hh:mm"
 msgstr ""
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:45
+#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:49
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:39
 msgid "dd-MM-yyyy hh:mm"
 msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:135
 msgid "Today"
-msgstr ""
+msgstr "Tänään"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:138
 msgid "Yesterday"
-msgstr ""
+msgstr "Eilen"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:141
 msgid "Earlier this week"
-msgstr ""
+msgstr "Aiemmin tällä viikolla"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:144
 msgid "Earlier this month"
-msgstr ""
+msgstr "Aiemmin tässä kuussa"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:146
-msgid "Even more earlier..."
+msgid "Even earlier..."
 msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:25
-#: /home/stefano/Progetti/doc-viewer/build-document-hub2-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/stefano/Progetti/doc-viewer/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Asiakirjakatselin"
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:28
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
 msgid "Switch to single column list"
-msgstr ""
+msgstr "Vaihda yhden sarakkeen luetteloon"
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:28
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
 msgid "Switch to grid"
-msgstr ""
+msgstr "Vaihda ruudukkoon"
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:43
 msgid "Pick"
-msgstr ""
+msgstr "Valitse"
 
-#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:51
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:52
 msgid "Select None"
-msgstr ""
+msgstr "Älä valitse mitään"
 
-#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:53
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:54
 msgid "Select All"
-msgstr ""
+msgstr "Valitse kaikki"
 
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:24
 #: ../src/app/qml/pdfView/PdfView.qml:36
@@ -202,6 +236,10 @@ msgstr "Sivu %1/%2"
 msgid "Back"
 msgstr "Takaisin"
 
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:85
+msgid "Go to page..."
+msgstr ""
+
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:25
 msgid "Go to page"
 msgstr "Siirry sivulle"
@@ -219,6 +257,6 @@ msgstr "Siirry!"
 msgid "Loading..."
 msgstr "Ladataan..."
 
-#: /home/stefano/Progetti/doc-viewer/build-document-hub2-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/stefano/Progetti/doc-viewer/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "documents;viewer;pdf;reader;asiakirjat;dokumentit;katselin;lukija;"
