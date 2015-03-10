@@ -1,0 +1,262 @@
+# Chewa; Chichewa; Nyanja translation for ubuntu-docviewer-app
+# Copyright (c) 2015 Rosetta Contributors and Canonical Ltd 2015
+# This file is distributed under the same license as the ubuntu-docviewer-app package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ubuntu-docviewer-app\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2015-03-04 20:36+0100\n"
+"PO-Revision-Date: 2015-03-09 08:42+0000\n"
+"Last-Translator: Herald Luwizghie <luwizghieherald@gmail.com>\n"
+"Language-Team: Chewa; Chichewa; Nyanja <ny@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Launchpad-Export-Date: 2015-03-10 05:38+0000\n"
+"X-Generator: Launchpad (build 17389)\n"
+
+#: ../src/app/qml/common/DetailsPage.qml:27
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
+msgid "Details"
+msgstr "Tsatanetsatane"
+
+#: ../src/app/qml/common/DetailsPage.qml:33
+msgid "Location"
+msgstr "Dela"
+
+#: ../src/app/qml/common/DetailsPage.qml:37
+msgid "Size"
+msgstr "Mulingo"
+
+#: ../src/app/qml/common/DetailsPage.qml:42
+msgid "Created"
+msgstr "Pangidwa"
+
+#: ../src/app/qml/common/DetailsPage.qml:47
+msgid "Last modified"
+msgstr "Malizila kusinthidwa"
+
+#: ../src/app/qml/common/DetailsPage.qml:54
+msgid "MIME type"
+msgstr "mtundu wa MIME"
+
+#: ../src/app/qml/common/ErrorDialog.qml:24
+msgid "Error"
+msgstr "Vuto"
+
+#: ../src/app/qml/common/ErrorDialog.qml:25
+msgid "File does not exist"
+msgstr "Failo siinapangidwepo"
+
+#: ../src/app/qml/common/ErrorDialog.qml:28
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:32
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
+msgid "Close"
+msgstr "Tseka"
+
+#: ../src/app/qml/common/UnknownTypeDialog.qml:26
+msgid "Unknown file type"
+msgstr "Ntundu wafailo siukudziwika"
+
+#: ../src/app/qml/common/UnknownTypeDialog.qml:27
+msgid ""
+"Sorry but we can't find a way to display this file. Do you want to open it "
+"as a plain text?"
+msgstr ""
+"Pepani sitikupeza njira yo onetsa failo imeneyi. Mufuna tiitsegule "
+"mwamalemba chabe?"
+
+#: ../src/app/qml/common/UnknownTypeDialog.qml:29
+msgid "Yes"
+msgstr "Inde"
+
+#: ../src/app/qml/common/UnknownTypeDialog.qml:38
+msgid "No"
+msgstr "Ayi"
+
+#. TRANSLATORS: %1 is the size of a file, expressed in GB
+#: ../src/app/qml/common/utils.js:22
+#, qt-format
+msgid "%1 GB"
+msgstr "%1 GB"
+
+#. TRANSLATORS: %1 is the size of a file, expressed in MB
+#: ../src/app/qml/common/utils.js:26
+#, qt-format
+msgid "%1 MB"
+msgstr "%1 MB"
+
+#. TRANSLATORS: %1 is the size of a file, expressed in kB
+#: ../src/app/qml/common/utils.js:30
+#, qt-format
+msgid "%1 kB"
+msgstr "%1 kB"
+
+#. TRANSLATORS: %1 is the size of a file, expressed in byte
+#: ../src/app/qml/common/utils.js:33
+#, qt-format
+msgid "%1 byte"
+msgstr "%1 byte"
+
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:28
+msgid "Delete file"
+msgstr "Fufuta failo"
+
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:29
+#, qt-format
+msgid "Delete %1 file"
+msgid_plural "Delete %1 files"
+msgstr[0] "Kufufuta %1 failo"
+msgstr[1] "Kufufuta %1 mafailo"
+
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:30
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:31
+msgid "Are you sure you want to permanently delete this file?"
+msgid_plural "Are you sure you want to permanently delete these files?"
+msgstr[0] "Zoonadi mukufuna mufufutiletu failoyi?"
+msgstr[1] "Zoonadi mukufiuna mufufutiletu mafailowa?"
+
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:36
+#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:27
+#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:52
+msgid "Cancel"
+msgstr "Lepheletsa"
+
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:41
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:82
+msgid "Delete"
+msgstr "Fufuta"
+
+#: ../src/app/qml/documentPage/DocumentEmptyState.qml:24
+msgid "No document found"
+msgstr "Dokumenti mukufuna sizinapezeke."
+
+#: ../src/app/qml/documentPage/DocumentEmptyState.qml:28
+msgid ""
+"Connect your device to any computer and simply drag files to the Documents "
+"folder."
+msgstr ""
+"Zikani makina anuwo pa kompyuta iliyonse ndipo mugwile ndikukwakwaza mafailo "
+"anu mu choikilamo madokumenti."
+
+#. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
+#. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
+#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:35
+#, qt-format
+msgid "Today, %1"
+msgstr "Lero, %1"
+
+#. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
+#. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
+#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:40
+#, qt-format
+msgid "Yesterday, %1"
+msgstr "Dzulo, %1"
+
+#. TRANSLATORS: this is a datetime formatting string,
+#. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
+#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:45
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:35
+msgid "dddd, hh:mm"
+msgstr "ddd, hh:mm"
+
+#. TRANSLATORS: this is a datetime formatting string,
+#. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
+#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:49
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:39
+msgid "dd-MM-yyyy hh:mm"
+msgstr "dd-MM-yyyy hh:mm"
+
+#: ../src/app/qml/documentPage/DocumentListView.qml:135
+msgid "Today"
+msgstr "Lero"
+
+#: ../src/app/qml/documentPage/DocumentListView.qml:138
+msgid "Yesterday"
+msgstr "Dzulo"
+
+#: ../src/app/qml/documentPage/DocumentListView.qml:141
+msgid "Earlier this week"
+msgstr "Kumayambiliro a sabata ino"
+
+#: ../src/app/qml/documentPage/DocumentListView.qml:144
+msgid "Earlier this month"
+msgstr "Kumayambiliro a mwezi uno"
+
+#: ../src/app/qml/documentPage/DocumentListView.qml:146
+msgid "Even earlier..."
+msgstr "Ngakhale m'mbuyomo"
+
+#: ../src/app/qml/documentPage/DocumentPage.qml:25
+#: /home/stefano/Progetti/doc-viewer/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+msgid "Document Viewer"
+msgstr "Chonela ma dokumenti"
+
+#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:28
+#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
+msgid "Switch to single column list"
+msgstr "Sinthani koonela gawo limodzi"
+
+#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:28
+#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
+msgid "Switch to grid"
+msgstr "Sinthani koonela muzigawo zigawo"
+
+#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:43
+msgid "Pick"
+msgstr "Tolani"
+
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:52
+msgid "Select None"
+msgstr "Sankhani chimodzi"
+
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:54
+msgid "Select All"
+msgstr "Sankhani zonse"
+
+#: ../src/app/qml/pdfView/PdfContentsPage.qml:24
+#: ../src/app/qml/pdfView/PdfView.qml:36
+msgid "Contents"
+msgstr "Zamkatimu"
+
+#. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
+#. while the second one (%2) refers to the total pages count.
+#: ../src/app/qml/pdfView/PdfView.qml:34
+#, qt-format
+msgid "Page %1 of %2"
+msgstr "Tsamba %1 of %2"
+
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
+msgid "Back"
+msgstr "M'buyo"
+
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:85
+msgid "Go to page..."
+msgstr "Pitani ku tsamba..."
+
+#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:25
+msgid "Go to page"
+msgstr "Pitani kutsamba"
+
+#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
+#, qt-format
+msgid "Choose a page between 1 and %1"
+msgstr "Sankhani tsamba pakati pa 1 ndi %1"
+
+#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:44
+msgid "GO!"
+msgstr "Pita!"
+
+#: ../src/app/qml/textView/TextView.qml:39
+msgid "Loading..."
+msgstr "Kusanthula..."
+
+#: /home/stefano/Progetti/doc-viewer/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+msgid "documents;viewer;pdf;reader;"
+msgstr "dokumenti;choonela;pdf;chowelengela;"
