@@ -33,6 +33,7 @@ PageWithBottomEdge {
     // while the second one (%2) refers to the total pages count.
     property string currentPage: i18n.tr("Page %1 of %2").arg(pdfView.currentPageIndex + 1).arg(pdfView.count)
 
+    // TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
     bottomEdgeTitle: i18n.tr("Contents")
     bottomEdgePageComponent: PdfContentsPage {}
     bottomEdgeEnabled: poppler.tocModel.count > 0

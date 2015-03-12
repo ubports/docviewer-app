@@ -21,6 +21,7 @@ import QtQuick.Layouts 1.1
 import Ubuntu.Components.ListItems 1.0 as ListItem
 
 Page {
+    // TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
     title: i18n.tr("Contents")
 
     ListView {
