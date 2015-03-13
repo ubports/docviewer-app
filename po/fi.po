@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-03-04 20:36+0100\n"
+"POT-Creation-Date: 2015-03-12 19:59+0100\n"
 "PO-Revision-Date: 2015-03-06 06:29+0000\n"
 "Last-Translator: Timo Jyrinki <timo.jyrinki@canonical.com>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-03-07 05:42+0000\n"
-"X-Generator: Launchpad (build 17383)\n"
+"X-Launchpad-Export-Date: 2015-03-13 05:29+0000\n"
+"X-Generator: Launchpad (build 17389)\n"
 
 #: ../src/app/qml/common/DetailsPage.qml:27
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
@@ -193,7 +193,7 @@ msgid "Even earlier..."
 msgstr "Vielä aiemmin..."
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:25
-#: /home/stefano/Progetti/doc-viewer/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/stefano/tmp/translations/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Asiakirjakatselin"
 
@@ -219,8 +219,9 @@ msgstr "Älä valitse mitään"
 msgid "Select All"
 msgstr "Valitse kaikki"
 
-#: ../src/app/qml/pdfView/PdfContentsPage.qml:24
-#: ../src/app/qml/pdfView/PdfView.qml:36
+#. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
+#: ../src/app/qml/pdfView/PdfContentsPage.qml:25
+#: ../src/app/qml/pdfView/PdfView.qml:37
 msgid "Contents"
 msgstr "Sisältö"
 
@@ -257,6 +258,6 @@ msgstr "Siirry!"
 msgid "Loading..."
 msgstr "Ladataan..."
 
-#: /home/stefano/Progetti/doc-viewer/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/stefano/tmp/translations/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "documents;viewer;pdf;reader;asiakirjat;dokumentit;katselin;lukija;"
