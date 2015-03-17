@@ -1,4 +1,4 @@
-# Punjabi translation for ubuntu-docviewer-app
+# Portuguese translation for ubuntu-docviewer-app
 # Copyright (c) 2015 Rosetta Contributors and Canonical Ltd 2015
 # This file is distributed under the same license as the ubuntu-docviewer-app package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-03-12 19:59+0100\n"
-"PO-Revision-Date: 2015-03-16 13:12+0000\n"
-"Last-Translator: Gursharnjit_Singh <ubuntuser13@gmail.com>\n"
-"Language-Team: Punjabi <pa@li.org>\n"
+"PO-Revision-Date: 2015-03-17 00:46+0000\n"
+"Last-Translator: António Miranda <Unknown>\n"
+"Language-Team: Portuguese <pt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,141 +22,141 @@ msgstr ""
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Details"
-msgstr "ਵੇਰਵਾ"
+msgstr "Detalhes"
 
 #: ../src/app/qml/common/DetailsPage.qml:33
 msgid "Location"
-msgstr "ਟਿਕਾਣਾ"
+msgstr "Localização"
 
 #: ../src/app/qml/common/DetailsPage.qml:37
 msgid "Size"
-msgstr "ਅਕਾਰ"
+msgstr "Tamanho"
 
 #: ../src/app/qml/common/DetailsPage.qml:42
 msgid "Created"
-msgstr "ਬਣਾਇਆ"
+msgstr "Criado"
 
 #: ../src/app/qml/common/DetailsPage.qml:47
 msgid "Last modified"
-msgstr "ਆਖਰੀ ਸੋਧ"
+msgstr "Última modificação"
 
 #: ../src/app/qml/common/DetailsPage.qml:54
 msgid "MIME type"
-msgstr "MIME ਕਿਸਮ"
+msgstr "Tipo MIME"
 
 #: ../src/app/qml/common/ErrorDialog.qml:24
 msgid "Error"
-msgstr "ਖਾਮੀ"
+msgstr "Erro"
 
 #: ../src/app/qml/common/ErrorDialog.qml:25
 msgid "File does not exist"
-msgstr "ਫਾਇਲ ਮੌਜੂਦ ਨਹੀਂ"
+msgstr "O ficheiro não existe"
 
 #: ../src/app/qml/common/ErrorDialog.qml:28
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:32
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Close"
-msgstr "ਬੰਦ"
+msgstr "Fechar"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:26
 msgid "Unknown file type"
-msgstr "ਅਣਜਾਣ ਫ਼ਾਈਲ ਕਿਸਮ"
+msgstr "Tipo de ficheiro desconhecido"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:27
 msgid ""
 "Sorry but we can't find a way to display this file. Do you want to open it "
 "as a plain text?"
 msgstr ""
-"ਮੁਆਫ਼ੀ ਅਸੀਂ ਇਹ ਫ਼ਾਈਲ ਵਿਖਾਉਣ ਦਾ ਕੋਈ ਢੰਗ ਨਹੀਂ ਲੱਭ ਸਕੇ। ਕੀ ਤੁਸੀਂ ਇਸ ਨੂੰ ਸਧਾਰਨ "
-"ਟੈਕਸਟ ਦੇ ਤੌਰ ਤੇ ਖੋਲ੍ਹਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
+"Desculpe, mas não conseguimos encontrar um modo de apresentar este ficheiro. "
+"Pretende abrir em texto simples?"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:29
 msgid "Yes"
-msgstr "ਹਾਂ"
+msgstr "Sim"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:38
 msgid "No"
-msgstr "ਨਹੀਂ"
+msgstr "Não"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in GB
 #: ../src/app/qml/common/utils.js:22
 #, qt-format
 msgid "%1 GB"
-msgstr "%1 ਜੀਬੀ"
+msgstr "%1 GB"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in MB
 #: ../src/app/qml/common/utils.js:26
 #, qt-format
 msgid "%1 MB"
-msgstr "%1 ਐਮਬੀ"
+msgstr "%1 MB"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in kB
 #: ../src/app/qml/common/utils.js:30
 #, qt-format
 msgid "%1 kB"
-msgstr "%1 ਕੇਬੀ"
+msgstr "%1 kB"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in byte
 #: ../src/app/qml/common/utils.js:33
 #, qt-format
 msgid "%1 byte"
-msgstr "%1 ਬਾਈਟ"
+msgstr "%1 byte"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:28
 msgid "Delete file"
-msgstr "ਫ਼ਾਈਲ ਹਟਾਓ"
+msgstr "Apagar o ficheiro"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:29
 #, qt-format
 msgid "Delete %1 file"
 msgid_plural "Delete %1 files"
-msgstr[0] "%1 ਫ਼ਾਈਲ ਹਟਾਓ"
-msgstr[1] "%1 ਫ਼ਾਈਲਾਂ ਹਟਾਓ"
+msgstr[0] "Apagar %1 ficheiro"
+msgstr[1] "Apagar %1 ficheiros"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:30
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:31
 msgid "Are you sure you want to permanently delete this file?"
 msgid_plural "Are you sure you want to permanently delete these files?"
-msgstr[0] "ਕੀ ਤੁਸੀਂ ਇਸ ਫ਼ਾਈਲ ਨੂੰ ਪੱਕੇ ਤੌਰ ਤੇ ਹਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
-msgstr[1] "ਕੀ ਤੁਸੀਂ ਇਹਨਾਂ ਫ਼ਾਈਲਾਂ ਨੂੰ ਪੱਕੇ ਤੌਰ ਤੇ ਹਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
+msgstr[0] "Tem a certeza que quer eliminar este ficheiro?"
+msgstr[1] "Tem a certeza que quer eliminar estes ficheiros?"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:36
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:27
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:52
 msgid "Cancel"
-msgstr "ਰੱਦ"
+msgstr "Cancelar"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:41
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:82
 msgid "Delete"
-msgstr "ਹਟਾਓ"
+msgstr "Apagar"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:24
 msgid "No document found"
-msgstr "ਕੋਈ ਦਸਤਾਵੇਜ ਨਹੀਂ ਮਿਲਿਆ"
+msgstr "Nenhum documento encontrado"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:28
 msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
 "folder."
 msgstr ""
-"ਆਪਣੇ ਜੰਤਰ ਨੂੰ ਕਿਸੇ ਕੰਪਿਊਟਰ ਨਾਲ ਜੋੜੋ ਅਤੇ ਫ਼ਾਈਲਾਂ ਨੂੰ ਅਸਾਨੀ ਨਾਲ ਦਸਤਾਵੇਜ ਫ਼ੋਲਡਰ "
-"ਵਿੱਚ ਖਿੱਚੋ।"
+"Ligue o seu dispositivo a qualquer computador e simplesmente arraste os "
+"ficheiros para a pasta Documentos"
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:35
 #, qt-format
 msgid "Today, %1"
-msgstr "ਅੱਜ, %1"
+msgstr "Hoje, %1"
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:40
 #, qt-format
 msgid "Yesterday, %1"
-msgstr "ਕੱਲ੍ਹ, %1"
+msgstr "Ontem, %1"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
@@ -174,90 +174,90 @@ msgstr "dd-MM-yyyy hh:mm"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:135
 msgid "Today"
-msgstr "ਅੱਜ"
+msgstr "Hoje"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:138
 msgid "Yesterday"
-msgstr "ਕੱਲ੍ਹ"
+msgstr "Ontem"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:141
 msgid "Earlier this week"
-msgstr "ਇਸ ਹਫ਼ਤੇ ਪਹਿਲੋਂ"
+msgstr "Anteriormente nesta semana"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:144
 msgid "Earlier this month"
-msgstr "ਇਸ ਮਹੀਨੇ ਪਹਿਲੋਂ"
+msgstr "Anteriormente neste mês"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:146
 msgid "Even earlier..."
-msgstr "ਇਸ ਤੋਂ ਪਹਿਲਾਂ..."
+msgstr "Anteriormente"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:25
 #: /home/stefano/tmp/translations/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
-msgstr "ਦਸਤਾਵੇਜ ਦਰਸ਼ਕ"
+msgstr "Visualizador de documento"
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:28
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
 msgid "Switch to single column list"
-msgstr "ਇੱਕਲੀ ਕਾਲਮ ਸੂਚੀ ਤੇ ਸਵਿੱਚ ਕਰੋ"
+msgstr "Mudar para lista de coluna única"
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:28
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
 msgid "Switch to grid"
-msgstr "ਗਰਿੱਡ ਤੇ ਸਵਿੱਚ ਕਰੋ"
+msgstr "Mudar para grelha"
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:43
 msgid "Pick"
-msgstr "ਚੁਣੋ"
+msgstr "Escolher"
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:52
 msgid "Select None"
-msgstr "ਕੁੱਝ ਨਾ ਚੁਣੋ"
+msgstr "Não selecionar nenhum"
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:54
 msgid "Select All"
-msgstr "ਸੱਭ ਚੁਣੋ"
+msgstr "Selecionar todos"
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:25
 #: ../src/app/qml/pdfView/PdfView.qml:37
 msgid "Contents"
-msgstr "ਸਮੱਗਰੀ"
+msgstr "Conteúdos"
 
 #. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
 #. while the second one (%2) refers to the total pages count.
 #: ../src/app/qml/pdfView/PdfView.qml:34
 #, qt-format
 msgid "Page %1 of %2"
-msgstr "%2 ਵਿੱਚੋਂ %1 ਸਫ਼ਾ"
+msgstr "Página %1 de %2"
 
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Back"
-msgstr "ਪਿੱਛੇ"
+msgstr "Retroceder"
 
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:85
 msgid "Go to page..."
-msgstr "ਸਫ਼ੇ ਤੇ ਜਾਓ..."
+msgstr "Ir para a página..."
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:25
 msgid "Go to page"
-msgstr "ਸਫ਼ੇ ਤੇ ਜਾਓ"
+msgstr "Ir para a página"
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
 #, qt-format
 msgid "Choose a page between 1 and %1"
-msgstr "1 ਅਤੇ %1 ਵਿੱਚੋਂ ਇੱਕ ਸਫ਼ਾ ਚੁਣੋ"
+msgstr "Escolha uma página entre 1 e %1"
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:44
 msgid "GO!"
-msgstr "ਜਾਓ!"
+msgstr "IR!"
 
 #: ../src/app/qml/textView/TextView.qml:39
 msgid "Loading..."
-msgstr "ਲੋਡ ਕਰ ਰਿਹਾ"
+msgstr "A carregar..."
 
 #: /home/stefano/tmp/translations/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
-msgstr "ਦਸਤਾਵੇਜ;ਦਰਸਕ;pdf;ਰੀਡਰ;"
+msgstr "visualizador;documentos;leitor;pdf"
