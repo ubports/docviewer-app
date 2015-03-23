@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-03-12 19:59+0100\n"
-"PO-Revision-Date: 2015-02-09 22:31+0000\n"
-"Last-Translator: Volkan Gezer <Unknown>\n"
+"PO-Revision-Date: 2015-03-22 15:24+0000\n"
+"Last-Translator: Arda Ünlü <aarda.uunlu@gmail.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-03-13 05:29+0000\n"
-"X-Generator: Launchpad (build 17389)\n"
+"X-Launchpad-Export-Date: 2015-03-23 05:28+0000\n"
+"X-Generator: Launchpad (build 17405)\n"
 
 #: ../src/app/qml/common/DetailsPage.qml:27
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
@@ -83,43 +83,43 @@ msgstr "Hayır"
 #: ../src/app/qml/common/utils.js:22
 #, qt-format
 msgid "%1 GB"
-msgstr ""
+msgstr "%1 GB"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in MB
 #: ../src/app/qml/common/utils.js:26
 #, qt-format
 msgid "%1 MB"
-msgstr ""
+msgstr "%1 MB"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in kB
 #: ../src/app/qml/common/utils.js:30
 #, qt-format
 msgid "%1 kB"
-msgstr ""
+msgstr "%1 kB"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in byte
 #: ../src/app/qml/common/utils.js:33
 #, qt-format
 msgid "%1 byte"
-msgstr ""
+msgstr "%1 bayt"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:28
 msgid "Delete file"
-msgstr ""
+msgstr "Dosyayı sil"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:29
 #, qt-format
 msgid "Delete %1 file"
 msgid_plural "Delete %1 files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1 dosyayı sil"
+msgstr[1] "%1 dosyayı sil"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:30
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:31
 msgid "Are you sure you want to permanently delete this file?"
 msgid_plural "Are you sure you want to permanently delete these files?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Bu dosyayı kalıcı olarak silmek istediğinizden emin misiniz?"
+msgstr[1] "Bu dosyaları kalıcı olarak silmek istediğinizden emin misiniz?"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:36
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:27
@@ -130,53 +130,55 @@ msgstr "İptal"
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:41
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:82
 msgid "Delete"
-msgstr ""
+msgstr "Sil"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:24
 msgid "No document found"
-msgstr ""
+msgstr "Dosya bulunamadı"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:28
 msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
 "folder."
 msgstr ""
+"Cİhazınızı herhangi bir bilgisayara bağlayın ve dosyaları basitçe Dosyalar "
+"klasörüne sürükleyin."
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:35
 #, qt-format
 msgid "Today, %1"
-msgstr ""
+msgstr "Bugün, %1"
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:40
 #, qt-format
 msgid "Yesterday, %1"
-msgstr ""
+msgstr "Dün, %1"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:45
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:35
 msgid "dddd, hh:mm"
-msgstr ""
+msgstr "hh:mm dddd"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:49
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:39
 msgid "dd-MM-yyyy hh:mm"
-msgstr ""
+msgstr "dd/MM/yyyy hh.mm"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:135
 msgid "Today"
-msgstr ""
+msgstr "Bugün"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:138
 msgid "Yesterday"
-msgstr ""
+msgstr "Dün"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:141
 msgid "Earlier this week"
@@ -188,7 +190,7 @@ msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:146
 msgid "Even earlier..."
-msgstr ""
+msgstr "Daha da eski..."
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:25
 #: /home/stefano/tmp/translations/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
@@ -198,24 +200,24 @@ msgstr "Belge Görüntüleyici"
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:28
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
 msgid "Switch to single column list"
-msgstr ""
+msgstr "Tek sütunlu listeye geç"
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:28
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
 msgid "Switch to grid"
-msgstr ""
+msgstr "Izgaraya geç"
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:43
 msgid "Pick"
-msgstr ""
+msgstr "Seç"
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:52
 msgid "Select None"
-msgstr ""
+msgstr "Hiçbirini Seçme"
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:54
 msgid "Select All"
-msgstr ""
+msgstr "Tümünü Seç"
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:25
