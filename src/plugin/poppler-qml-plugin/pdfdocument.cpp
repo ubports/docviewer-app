@@ -174,7 +174,13 @@ void PdfDocument::loadProvider()
     // WORKAROUND: QQuickImageProvider should create multiple threads to load more images at the same time.
     // [QTBUG-37998] QQuickImageProvider can block its separate thread with ForceAsynchronousImageLoading
     // Link: https://bugreports.qt.io/browse/QTBUG-37988
-    int newProvidersNumber = QThread::idealThreadCount();
+
+    // WORKAROUND: ARM SoCs can disable some of their cores when the load is not particulary high.
+    // This causes a wrong value for the "newProvidersNumber" variable.
+    // We hard-code its value to 4 (which is the number of available core on all the supported devices).
+//    int newProvidersNumber = QThread::idealThreadCount();
+    int newProvidersNumber = 4;
+
     if (newProvidersNumber != m_providersNumber) {
         m_providersNumber = newProvidersNumber;
         Q_EMIT providersNumberChanged();
