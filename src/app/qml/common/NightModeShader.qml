@@ -16,13 +16,6 @@
 
 import QtQuick 2.3
 
-// FIXME: Not working on device
-/*
-QQuickCustomMaterialShader: Shader compilation failed:
-"Fragment shader compilation failed.
-ERROR: 0:10: 'lowp' : Syntax error:  syntax error
-*/
-
 ShaderEffect {
     fragmentShader: "
         uniform lowp sampler2D source;
