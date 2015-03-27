@@ -22,6 +22,7 @@
 #include "command-line-parser.h"
 #include "urlhandler.h"
 #include "quick/documentmodel.h"
+#include "quick/docviewerFile.h"
 
 #include <QQuickItem>
 #include <QStandardPaths>
@@ -120,6 +121,7 @@ void DocViewerApplication::registerQML()
     m_view->engine()->setImportPathList(importPathList);
 
     qmlRegisterType<SortFilterDocumentModel>("DocumentViewer", 1, 0, "DocumentsModel");
+    qmlRegisterType<DocviewerFile>("DocumentViewer", 1, 0, "File");
 }
 
 /*!
