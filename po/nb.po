@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-03-25 17:51+0100\n"
-"PO-Revision-Date: 2015-03-04 07:16+0000\n"
-"Last-Translator: Åka Sikrom <Unknown>\n"
+"PO-Revision-Date: 2015-03-31 14:53+0000\n"
+"Last-Translator: Mathias Bynke <Unknown>\n"
 "Language-Team: Norwegian Bokmal <nb@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-03-27 05:33+0000\n"
+"X-Launchpad-Export-Date: 2015-04-01 05:28+0000\n"
 "X-Generator: Launchpad (build 17413)\n"
 
 #: ../src/app/qml/common/DetailsPage.qml:27
@@ -81,25 +81,25 @@ msgstr "Nei"
 #: ../src/app/qml/common/utils.js:22
 #, qt-format
 msgid "%1 GB"
-msgstr ""
+msgstr "%1 GiB"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in MB
 #: ../src/app/qml/common/utils.js:26
 #, qt-format
 msgid "%1 MB"
-msgstr ""
+msgstr "%1 MiB"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in kB
 #: ../src/app/qml/common/utils.js:30
 #, qt-format
 msgid "%1 kB"
-msgstr ""
+msgstr "%1 KiB"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in byte
 #: ../src/app/qml/common/utils.js:33
 #, qt-format
 msgid "%1 byte"
-msgstr ""
+msgstr "%1 byte"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:28
 msgid "Delete file"
@@ -109,15 +109,15 @@ msgstr "Slett fil"
 #, qt-format
 msgid "Delete %1 file"
 msgid_plural "Delete %1 files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Slett %1 fil"
+msgstr[1] "Slett %1 filer"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:30
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:31
 msgid "Are you sure you want to permanently delete this file?"
 msgid_plural "Are you sure you want to permanently delete these files?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Er du sikker på at du vil slette denne filen permanent?"
+msgstr[1] "Er du sikker på at du vil slette disse filene permanent?"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:36
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:27
@@ -145,21 +145,21 @@ msgstr "Koble enheten til en datamaskin og dra filer til Dokumenter-mappa."
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:35
 #, qt-format
 msgid "Today, %1"
-msgstr ""
+msgstr "I dag %1"
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:40
 #, qt-format
 msgid "Yesterday, %1"
-msgstr ""
+msgstr "I går %1"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:45
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:35
 msgid "dddd, hh:mm"
-msgstr "dddd, hh:mm"
+msgstr "dddd hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
@@ -186,7 +186,7 @@ msgstr "Tidligere denne måneden"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:146
 msgid "Even earlier..."
-msgstr ""
+msgstr "Enda tidligere"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:25
 #: /home/stefano/Progetti/doc-viewer/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
@@ -235,7 +235,7 @@ msgstr "Tilbake"
 
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:85
 msgid "Go to page..."
-msgstr ""
+msgstr "Gå til side …"
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:25
 msgid "Go to page"
