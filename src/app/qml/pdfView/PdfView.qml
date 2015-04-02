@@ -79,6 +79,8 @@ PageWithBottomEdge {
             }
 
             MouseArea {
+                objectName: "mouseArea"
+
                 anchors.fill: parent
                 onClicked: pdfPage.header.visible = !pdfPage.header.visible
             }
