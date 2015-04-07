@@ -54,6 +54,20 @@ MainView {
                         mainView, { parent: mainView });
     }
 
+    function showNotification(args) {
+        var component = Qt.createComponent("common/Toast.qml")
+        var toast = component.createObject(mainView, args);
+
+        return toast;
+    }
+
+    function showNotificationWithAction(args) {
+        var component = Qt.createComponent("common/ToastWithAction.qml")
+        var toast = component.createObject(mainView, args);
+
+        return toast;
+    }
+
     Component.onCompleted: {
         pageStack.push(Qt.resolvedUrl("documentPage/DocumentPage.qml"));
 

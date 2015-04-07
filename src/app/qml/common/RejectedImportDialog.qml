@@ -24,7 +24,7 @@ Dialog {
     property alias model: repeater.model
 
     title: i18n.tr("Files not supported")
-    text: i18n.tr("Following documents has not been imported:")
+    text: i18n.tr("Following documents have not been imported:")
 
     Repeater {
         id: repeater
