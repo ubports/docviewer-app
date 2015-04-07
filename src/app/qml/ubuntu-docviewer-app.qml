@@ -50,7 +50,8 @@ MainView {
     }
 
     function runUnknownTypeDialog() {
-        PopupUtils.open(Qt.resolvedUrl("common/UnknownTypeDialog.qml"), mainView, { parent: mainView });
+        PopupUtils.open(Qt.resolvedUrl("common/UnknownTypeDialog.qml"),
+                        mainView, { parent: mainView });
     }
 
     Component.onCompleted: {
@@ -65,7 +66,11 @@ MainView {
         objectName: "file"
 
         onMimetypeChanged: LoadComponent.load(mimetype)
-        onErrorChanged: { if (error == -1); PopupUtils.open(Qt.resolvedUrl("common/ErrorDialog.qml"), mainView, { parent: mainView }) }
+        onErrorChanged: {
+            if (error == -1)
+                PopupUtils.open(Qt.resolvedUrl("common/FileNotFoundDialog.qml"),
+                                mainView, { parent: mainView });
+        }
     }
 
     DocumentsModel { id: folderModel }
@@ -103,11 +108,34 @@ MainView {
         target: PICKER_HUB
 
         onDocumentImported: {
-            console.log(documents)
+            // Create two arrays: one for rejected documents, and the other
+            // for imported documents.
+            var importedDocuments = [];
+            var rejectedDocuments = [];
+            var entry;
 
-            /*
-                TODO: Show dialog with rejected documents.
-            */
+            // Fill the arrays.
+            for (var i=0; i<documents.length; i++) {
+                entry = documents[i];
+
+                if (entry.rejected) {
+                    rejectedDocuments.push(entry.fileName);
+                    break;
+                }
+
+                importedDocuments.push(entry.fileName);
+            }
+
+            // Check if there's any rejected document in the last transfer.
+            // If so, show an error dialog.
+            if (rejectedDocuments.length > 0) {
+                PopupUtils.open(Qt.resolvedUrl("common/RejectedImportDialog.qml"),
+                                mainView,
+                                {
+                                    parent: mainView,
+                                    model: rejectedDocuments
+                                });
+            }
 
             /*
                 TODO: Show notification w/ action:

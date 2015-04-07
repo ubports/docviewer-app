@@ -60,7 +60,7 @@ void ContentCommunicator::handle_import(content::Transfer *transfer)
     // FIXME: If there already a file called "filename.1.ext", the imported file won't be renamed as "filename.2.ext", but "filename.1.1.ext".
     //  (This issue is in gallery-app too.)
 
-    QList<QVariantMap> importedDocuments;
+    QVariantList importedDocuments;
     QVector<Item> transferedItems = transfer->collect();
     foreach (const Item &hubItem, transferedItems) {
         QFileInfo fi(hubItem.url().toLocalFile());

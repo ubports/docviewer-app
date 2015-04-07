@@ -58,7 +58,7 @@ public:
 
 signals:
     void documentRequested();
-    void documentImported(QList<QVariantMap> documents);
+    void documentImported(QVariantList documents);
     void selectionTypeChanged();
     void singleContentPickModeChanged();
 

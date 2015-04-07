@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-07 19:35+0200\n"
+"POT-Creation-Date: 2015-04-07 23:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,19 +44,28 @@ msgstr ""
 msgid "MIME type"
 msgstr ""
 
-#: ../src/app/qml/common/ErrorDialog.qml:24
+#: ../src/app/qml/common/FileNotFoundDialog.qml:24
 msgid "Error"
 msgstr ""
 
-#: ../src/app/qml/common/ErrorDialog.qml:25
+#: ../src/app/qml/common/FileNotFoundDialog.qml:25
 msgid "File does not exist"
 msgstr ""
 
-#: ../src/app/qml/common/ErrorDialog.qml:28
+#: ../src/app/qml/common/FileNotFoundDialog.qml:28
+#: ../src/app/qml/common/RejectedImportDialog.qml:35
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:32
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Close"
+msgstr ""
+
+#: ../src/app/qml/common/RejectedImportDialog.qml:26
+msgid "Files not supported"
+msgstr ""
+
+#: ../src/app/qml/common/RejectedImportDialog.qml:27
+msgid "Following documents has not been imported:"
 msgstr ""
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:26
