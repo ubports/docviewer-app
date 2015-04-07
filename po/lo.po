@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-03-25 17:51+0100\n"
+"POT-Creation-Date: 2015-03-12 19:59+0100\n"
 "PO-Revision-Date: 2015-03-04 07:27+0000\n"
 "Last-Translator: Anousak <anousak@gmail.com>\n"
 "Language-Team: Lao <lo@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2015-03-27 05:33+0000\n"
-"X-Generator: Launchpad (build 17413)\n"
+"X-Launchpad-Export-Date: 2015-03-13 05:29+0000\n"
+"X-Generator: Launchpad (build 17389)\n"
 
 #: ../src/app/qml/common/DetailsPage.qml:27
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
@@ -189,7 +189,7 @@ msgid "Even earlier..."
 msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:25
-#: /home/stefano/Progetti/doc-viewer/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/stefano/tmp/translations/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "ຕົວເບີ່ງເອກະສານ"
 
@@ -254,6 +254,6 @@ msgstr "ໄປ!"
 msgid "Loading..."
 msgstr "ກໍາລັງໂຫຼດ...."
 
-#: /home/stefano/Progetti/doc-viewer/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/stefano/tmp/translations/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "ເກະສານ;ຕົວເບີ່ງ;ພີດີເເຟບ;ຕົວອ່ານ;"

@@ -38,6 +38,9 @@ PageWithBottomEdge {
     bottomEdgePageComponent: PdfContentsPage {}
     bottomEdgeEnabled: poppler.tocModel.count > 0
 
+    // Reset night mode shader settings when closing the page
+    // Component.onDestruction: mainView.nightModeEnabled = false
+
     PDF.VerticalView {
         id: pdfView
         objectName: "pdfView"
