@@ -68,6 +68,7 @@ void ContentCommunicator::handle_import(content::Transfer *transfer)
         QString dir;
         QMimeDatabase mdb;
         QMimeType mt = mdb.mimeTypeForFile(hubItem.url().toLocalFile());
+        QString destination;
         bool rejected = false;
 
         // Check if the item is supported by Ubuntu Document Viewer
@@ -85,7 +86,7 @@ void ContentCommunicator::handle_import(content::Transfer *transfer)
             }
             dir = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + QDir::separator();
 
-            QString destination = QString("%1%2").arg(dir + filenameWithoutSuffix, suffix);
+            destination = QString("%1%2").arg(dir + filenameWithoutSuffix, suffix);
             // If we already have a file of this name reformat to "filename.x.png"
             // (where x is a number, incremented until we find an available filename)
             if(QFile::exists(destination)) {
@@ -104,7 +105,11 @@ void ContentCommunicator::handle_import(content::Transfer *transfer)
         // Append an entry for the imported document in the list that will be
         // emitted with the 'documentImported' signal.
         QVariantMap entry;
-        entry["fileName"] = filename;
+        if (rejected) {
+            entry["fileName"] = filename;
+        } else {
+            entry["fileName"] = destination;
+        }
         entry["rejected"] = rejected;
 
         importedDocuments.append(entry);

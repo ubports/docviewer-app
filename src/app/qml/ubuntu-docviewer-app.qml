@@ -140,27 +140,58 @@ MainView {
                 importedDocuments.push(entry.fileName);
             }
 
-            // Check if there's any rejected document in the last transfer.
-            // If so, show an error dialog.
-            if (rejectedDocuments.length > 0) {
-                PopupUtils.open(Qt.resolvedUrl("common/RejectedImportDialog.qml"),
+            // Prepare import notification
+            var showImportNotification = function() {
+                if (importedDocuments.length > 0) {
+                    var importDialog = showNotificationWithAction({
+                        "text": i18n.tr("Documents successfully imported!"),
+                        "action.text": i18n.tr("Open")
+                    })
+
+                    if (importedDocuments.length > 1) {
+                        // If it has been imported more than a document, show
+                        // a file picker when user taps the "open" action.
+                        // TODO: Needs testing
+                        importDialog.action.triggered.connect(function() {
+                            PopupUtils.open(
+                                Qt.resolvedUrl("common/PickImportedDialog.qml"),
                                 mainView,
                                 {
                                     parent: mainView,
-                                    model: rejectedDocuments
-                                });
+                                    model: importedDocuments
+                                }
+                            );
+                        });
+                    } else {
+                        // It has been imported just a document, open it when
+                        // user taps the action button.
+                        importDialog.action.triggered.connect(function() {
+                            openDocument(importedDocuments[0]);
+                        });
+                    }
+                }
             }
 
-            /*
-                TODO: Show notification w/ action:
-                "Document(s) successfully imported. Open?"
 
-                If more than one document has been imported, then
-                show a dialog to pick the wanted file and open it.
+            // Check if there's any rejected document in the last transfer.
+            // If so, show an error dialog.
+            if (rejectedDocuments.length > 0) {
+                var rejectedDialog = PopupUtils.open(
+                    Qt.resolvedUrl("common/RejectedImportDialog.qml"),
+                    mainView,
+                    {
+                        parent: mainView,
+                        model: rejectedDocuments
+                    }
+                );
 
-                If there was some rejected document, show the notification
-                after the error dialog has been dismissed.
-            */
+                // Show import notification after the dialog has been closed.
+                // TODO: Needs testing
+                rejectedDialog.closed.connect(showImportNotification)
+            } else {
+                // No dialog has been shown. Show the notification.
+                showImportNotification.call();
+            }
         }
     }
 }

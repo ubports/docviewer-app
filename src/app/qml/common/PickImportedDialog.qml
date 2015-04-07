@@ -17,28 +17,31 @@
 import QtQuick 2.3
 import Ubuntu.Components 1.1
 import Ubuntu.Components.Popups 1.0
+import Ubuntu.Components.ListItems 1.0 as ListItem
+
+import "utils.js" as Utils
 
 Dialog {
-    id: errorDialog
+    id: multipleImportDialog
 
     property alias model: repeater.model
 
-    signal closed
-
-    title: i18n.tr("Files not supported")
-    text: i18n.tr("Following documents have not been imported:")
+    title: i18n.tr("Multiple documents imported")
+    text: i18n.tr("Choose which one to open:")
 
     Repeater {
         id: repeater
-        delegate: Label { text: modelData }
+        delegate: ListItem.Standard {
+            text: Utils.getNameOfFile(modelData)
+            onClicked: {
+                PopupUtils.close(multipleImportDialog);
+                mainView.openDocument(modelData);
+            }
+        }
     }
 
     Button {
         text: i18n.tr("Close")
-        color: UbuntuColors.red
-        onClicked: {
-            PopupUtils.close(errorDialog)
-            errorDialog.closed()
-        }
+        onClicked: PopupUtils.close(multipleImportDialog)
     }
 }

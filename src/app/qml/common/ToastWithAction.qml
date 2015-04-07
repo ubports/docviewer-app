@@ -36,6 +36,15 @@ Rectangle {
         bottom: parent.bottom; bottomMargin: - height
     }
 
+    MouseArea {
+        anchors.fill: parent
+
+        onClicked: {
+            showAnimation.stop()
+            destroyAnimation.restart()
+        }
+    }
+
     RowLayout {
         anchors {
             fill: parent
@@ -54,7 +63,9 @@ Rectangle {
             width: actionLabel.paintedWidth
             height: parent.height
 
-            onClicked: action.triggered()
+            onClicked: {
+                action.triggered("[Toast] Action %1 clicked!".arg(action.text))
+            }
 
             Label {
                 id: actionLabel
@@ -66,15 +77,6 @@ Rectangle {
 
                 anchors.centerIn: parent
             }
-        }
-    }
-
-    MouseArea {
-        anchors.fill: parent
-
-        onClicked: {
-            showAnimation.stop()
-            destroyAnimation.restart()
         }
     }
 
