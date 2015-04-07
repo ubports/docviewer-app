@@ -98,4 +98,27 @@ MainView {
             }
         }
     }
+
+    Connections {
+        target: PICKER_HUB
+
+        onDocumentImported: {
+            console.log(documents)
+
+            /*
+                TODO: Show dialog with rejected documents.
+            */
+
+            /*
+                TODO: Show notification w/ action:
+                "Document(s) successfully imported. Open?"
+
+                If more than one document has been imported, then
+                show a dialog to pick the wanted file and open it.
+
+                If there was some rejected document, show the notification
+                after the error dialog has been dismissed.
+            */
+        }
+    }
 }

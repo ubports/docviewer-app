@@ -58,12 +58,14 @@ public:
 
 signals:
     void documentRequested();
-    void documentImported();
+    void documentImported(QList<QVariantMap> documents);
     void selectionTypeChanged();
     void singleContentPickModeChanged();
 
 private:
     content::Transfer *m_transfer;
+
+    bool isSupportedMimetype(QString mimetype);
 };
 
 #endif // CONTENTCOMMUNICATOR_H
