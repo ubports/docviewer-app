@@ -80,6 +80,13 @@ PageWithBottomEdge {
                 // but it's not a problem at the moment (our target is phone).
                 DOC_VIEWER.releaseResources();
             }
+
+            MouseArea {
+                objectName: "mouseArea"
+
+                anchors.fill: parent
+                onClicked: pdfPage.header.visible = !pdfPage.header.visible
+            }
         }
 
         Item { id: _zoomHelper }
@@ -99,7 +106,10 @@ PageWithBottomEdge {
 
             var title = getDocumentInfo("Title")
             if (title !== "")
-                pdfPage.title = title
+                pdfPage.title = title;
+
+            // Hide header when the document is ready
+            pdfPage.header.visible = false;
         }
     }
 

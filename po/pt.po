@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-03-12 19:59+0100\n"
+"POT-Creation-Date: 2015-03-25 17:51+0100\n"
 "PO-Revision-Date: 2015-03-17 00:46+0000\n"
 "Last-Translator: António Miranda <Unknown>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-03-18 06:08+0000\n"
-"X-Generator: Launchpad (build 17403)\n"
+"X-Launchpad-Export-Date: 2015-03-27 05:33+0000\n"
+"X-Generator: Launchpad (build 17413)\n"
 
 #: ../src/app/qml/common/DetailsPage.qml:27
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
@@ -193,7 +193,7 @@ msgid "Even earlier..."
 msgstr "Anteriormente"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:25
-#: /home/stefano/tmp/translations/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/stefano/Progetti/doc-viewer/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Visualizador de documento"
 
@@ -258,6 +258,6 @@ msgstr "IR!"
 msgid "Loading..."
 msgstr "A carregar..."
 
-#: /home/stefano/tmp/translations/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/stefano/Progetti/doc-viewer/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "visualizador;documentos;leitor;pdf"

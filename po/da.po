@@ -1,4 +1,4 @@
-# Czech translation for ubuntu-docviewer-app
+# Danish translation for ubuntu-docviewer-app
 # Copyright (c) 2015 Rosetta Contributors and Canonical Ltd 2015
 # This file is distributed under the same license as the ubuntu-docviewer-app package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-03-25 17:51+0100\n"
-"PO-Revision-Date: 2015-03-04 13:53+0000\n"
-"Last-Translator: Vojtěch Daněk <vdanek@outlook.com>\n"
-"Language-Team: Czech <cs@li.org>\n"
+"PO-Revision-Date: 2015-03-26 14:46+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Danish <da@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2015-03-27 05:33+0000\n"
 "X-Generator: Launchpad (build 17413)\n"
 
@@ -22,46 +22,46 @@ msgstr ""
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Details"
-msgstr "Podrobnosti"
+msgstr ""
 
 #: ../src/app/qml/common/DetailsPage.qml:33
 msgid "Location"
-msgstr "Umístění"
+msgstr ""
 
 #: ../src/app/qml/common/DetailsPage.qml:37
 msgid "Size"
-msgstr "Velikost"
+msgstr ""
 
 #: ../src/app/qml/common/DetailsPage.qml:42
 msgid "Created"
-msgstr "Vytvořeno"
+msgstr ""
 
 #: ../src/app/qml/common/DetailsPage.qml:47
 msgid "Last modified"
-msgstr "Naposledy upraveno"
+msgstr ""
 
 #: ../src/app/qml/common/DetailsPage.qml:54
 msgid "MIME type"
-msgstr "MIME typ"
+msgstr ""
 
 #: ../src/app/qml/common/ErrorDialog.qml:24
 msgid "Error"
-msgstr "Chyba"
+msgstr ""
 
 #: ../src/app/qml/common/ErrorDialog.qml:25
 msgid "File does not exist"
-msgstr "Soubor neexistuje"
+msgstr ""
 
 #: ../src/app/qml/common/ErrorDialog.qml:28
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:32
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Close"
-msgstr "Zavřít"
+msgstr ""
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:26
 msgid "Unknown file type"
-msgstr "Neznámý typ souboru"
+msgstr ""
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:27
 msgid ""
@@ -71,11 +71,11 @@ msgstr ""
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:29
 msgid "Yes"
-msgstr "Ano"
+msgstr ""
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:38
 msgid "No"
-msgstr "Ne"
+msgstr ""
 
 #. TRANSLATORS: %1 is the size of a file, expressed in GB
 #: ../src/app/qml/common/utils.js:22
@@ -103,7 +103,7 @@ msgstr ""
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:28
 msgid "Delete file"
-msgstr "Smazat soubor"
+msgstr ""
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:29
 #, qt-format
@@ -123,16 +123,16 @@ msgstr[1] ""
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:27
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:52
 msgid "Cancel"
-msgstr "Zrušit"
+msgstr ""
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:41
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:82
 msgid "Delete"
-msgstr "Smazat"
+msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:24
 msgid "No document found"
-msgstr "Nebyl nalezen žádný dokument"
+msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:28
 msgid ""
@@ -159,22 +159,22 @@ msgstr ""
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:45
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:35
 msgid "dddd, hh:mm"
-msgstr "dddd, hh:mm"
+msgstr ""
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:49
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:39
 msgid "dd-MM-yyyy hh:mm"
-msgstr "dd-MM-yyyy hh:mm"
+msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:135
 msgid "Today"
-msgstr "Dnes"
+msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:138
 msgid "Yesterday"
-msgstr "včera"
+msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:141
 msgid "Earlier this week"
