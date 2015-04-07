@@ -24,6 +24,9 @@ Page {
     id: textPage
     title: Utils.getNameOfFile(file.path);
 
+    // Reset night mode shader settings when closing the page
+    // Component.onDestruction: mainView.nightModeEnabled = false
+
     TextArea {
         id: textAreaMain
         objectName: "textAreaMain"

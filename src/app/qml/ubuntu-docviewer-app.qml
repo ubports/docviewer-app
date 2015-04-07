@@ -20,6 +20,7 @@ import Ubuntu.Components.Popups 1.0
 import com.ubuntu.fileqmlplugin 1.0
 import DocumentViewer 1.0
 
+import "common"
 import "common/loadComponent.js" as LoadComponent
 
 MainView {
@@ -98,4 +99,8 @@ MainView {
             }
         }
     }
+
+    property bool nightModeEnabled: false
+    layer.effect: NightModeShader {}
+    layer.enabled: nightModeEnabled && (pageStack.depth > 1)
 }
