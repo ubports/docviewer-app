@@ -29,6 +29,10 @@ Page {
     flickable: null
 
     onActiveChanged: {
+        // If the header was hidden in the PdfPage, make it visible.
+        if (!pdfPage.header.visible)
+            pdfPage.header.visible = true;
+
         // Find out the current page position in the ToC index
         var i=0
         while(!(pdfView.currentPageIndex >= poppler.tocModel.get(i).pageIndex &&
