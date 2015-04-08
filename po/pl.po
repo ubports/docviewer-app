@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-03-25 17:51+0100\n"
+"POT-Creation-Date: 2015-04-07 16:14+0200\n"
 "PO-Revision-Date: 2015-01-26 13:29+0000\n"
 "Last-Translator: Bartosz Kosiorek <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -16,12 +16,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-03-27 05:33+0000\n"
+"X-Launchpad-Export-Date: 2015-04-08 05:37+0000\n"
 "X-Generator: Launchpad (build 17413)\n"
 
 #: ../src/app/qml/common/DetailsPage.qml:27
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
-#: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:97
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:83
 msgid "Details"
 msgstr "Szczegóły"
 
@@ -192,7 +192,7 @@ msgid "Even earlier..."
 msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:25
-#: /home/stefano/Progetti/doc-viewer/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/stefano/Progetti/doc-viewer/build-pdfview-show-hide-header-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Przeglądarka dokumentów"
 
@@ -240,6 +240,16 @@ msgstr "Wstecz"
 msgid "Go to page..."
 msgstr ""
 
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
+msgid "Disable night mode"
+msgstr ""
+
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
+msgid "Enable night mode"
+msgstr ""
+
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:25
 msgid "Go to page"
 msgstr "Przejdź do strony"
@@ -253,10 +263,10 @@ msgstr "Wybór strony pomiędzy 1 a %1"
 msgid "GO!"
 msgstr "IDŹ!"
 
-#: ../src/app/qml/textView/TextView.qml:39
+#: ../src/app/qml/textView/TextView.qml:42
 msgid "Loading..."
 msgstr "Wczytywanie..."
 
-#: /home/stefano/Progetti/doc-viewer/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/stefano/Progetti/doc-viewer/build-pdfview-show-hide-header-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "dokumenty;przeglądarka;pdf;czytnik"
