@@ -54,6 +54,8 @@ public:
     int rowCount(const QModelIndex & parent = QModelIndex()) const;
     QVariant data(const QModelIndex & index, int role = Qt::DisplayRole) const;
 
+    Q_INVOKABLE QVariantMap get(int index) const;
+
 Q_SIGNALS:
     void documentChanged();
     void countChanged();

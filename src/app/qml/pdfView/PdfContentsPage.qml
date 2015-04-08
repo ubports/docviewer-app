@@ -18,43 +18,96 @@
 import QtQuick 2.0
 import Ubuntu.Components 1.1
 import QtQuick.Layouts 1.1
-import Ubuntu.Components.ListItems 1.0 as ListItem
+
+import "../upstreamComponents"
 
 Page {
     // TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
     title: i18n.tr("Contents")
 
+    // Avoid a binding loop when using ListView.positionViewAtIndex()
+    flickable: null
+
+    onActiveChanged: {
+        // Find out the current page position in the ToC index
+        var i=0
+        while(!(pdfView.currentPageIndex >= poppler.tocModel.get(i).pageIndex &&
+              pdfView.currentPageIndex < poppler.tocModel.get(i+1).pageIndex)) {
+            i++
+        }
+
+        // Set highlighted index
+        view.currentIndex = i;
+
+        // Position view at the highlighted index
+        view.positionViewAtIndex(i, ListView.Center);
+    }
+
     ListView {
+        id: view
         anchors.fill: parent
+        clip: true
 
         model: poppler.tocModel
 
-        delegate: ListItem.Base {
-            showDivider: model.level == 0
+        delegate: ListItemWithActions {
+            id: delegate
 
-            onClicked: {
-                pdfView.positionAtIndex(model.pageIndex);
-                pageStack.pop();
+            width: parent.width
+            height: (model.level === 0) ? units.gu(7) : units.gu(6)
+
+            // Don't use 'selected' property here, since it shows a CheckBox
+            color: (view.currentIndex == model.index) ? Qt.lighter(UbuntuColors.lightGrey)
+                                                      : Theme.palette.normal.background
+
+            AbstractButton {
+                anchors.fill: parent
+
+                onClicked: {
+                    pdfView.positionAtIndex(model.pageIndex);
+                    pageStack.pop();
+                }
             }
 
             RowLayout {
-                anchors.fill: parent
-                anchors.leftMargin: units.gu(2) * model.level
+                anchors {
+                    fill: parent
+                    leftMargin: units.gu(1) + (units.gu(2) * model.level)
+                    rightMargin: units.gu(1)
+                }
 
                 spacing: units.gu(1)
 
                 Label {
                     Layout.fillWidth: true
 
-                    text: (typeof model.title === "undefined") ? "" : model.title;
+                    text: model.title
                     elide: Text.ElideRight
-                    Component.onCompleted: { if (model.level === 0); font.weight = Font.DemiBold; }
+
+                    font.weight: model.level == 0 ? Font.DemiBold : Font.Normal
+                    color: (model.level === 0) ? UbuntuColors.midAubergine
+                                               : Theme.palette.selected.backgroundText
                 }
 
                 Label {
-                    text: (typeof model.pageIndex === "undefined") ? "" : model.pageIndex + 1;
-                    Component.onCompleted: { if (model.level === 0); font.weight = Font.DemiBold; }
+                    text: model.pageIndex + 1
+                    font.weight: model.level == 0 ? Font.DemiBold : Font.Normal
+                    color: (model.level === 0) ? UbuntuColors.midAubergine
+                                               : Theme.palette.selected.backgroundText
                 }
+            }
+
+            Rectangle {
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    bottom: parent.bottom
+                }
+
+                height: units.gu(0.1)
+                visible: model.level == 0
+                color: (view.currentIndex === model.index) ? "transparent"
+                                                           : UbuntuColors.midAubergine
             }
         }
     }
