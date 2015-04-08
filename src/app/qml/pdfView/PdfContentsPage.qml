@@ -28,6 +28,12 @@ Page {
     // Avoid a binding loop when using ListView.positionViewAtIndex()
     flickable: null
 
+    head.backAction: Action {
+        text: i18n.tr("Hide table of contents")
+        iconName: "down"
+        onTriggered: pageStack.pop()
+    }
+
     onActiveChanged: {
         // If the header was hidden in the PdfPage, make it visible.
         if (!pdfPage.header.visible)

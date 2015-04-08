@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-08 16:11+0200\n"
+"POT-Creation-Date: 2015-04-08 16:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -219,6 +219,10 @@ msgstr ""
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:26
 #: ../src/app/qml/pdfView/PdfView.qml:37
 msgid "Contents"
+msgstr ""
+
+#: ../src/app/qml/pdfView/PdfContentsPage.qml:32
+msgid "Hide table of contents"
 msgstr ""
 
 #. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
