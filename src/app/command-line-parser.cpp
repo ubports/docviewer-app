@@ -31,6 +31,7 @@
 CommandLineParser::CommandLineParser()
     : m_pickMode(false),
       m_testability(false),
+      m_isFullscreen(false),
       m_documentFile("")
 {
     m_urlHandler = new UrlHandler();
@@ -50,6 +51,9 @@ bool CommandLineParser::processArguments(const QStringList& args)
         if (args[i] == "--help" || args[i] == "-h") {
             usage();
             return false;
+        }
+        else if (args[i] == "--fullscreen") {
+            m_isFullscreen = true;
         }
         else if (args[i] == "--pick-mode") {
             m_pickMode = true;
@@ -88,6 +92,7 @@ void CommandLineParser::usage()
     QTextStream out(stdout);
     out << "Usage: ubuntu-docviewer-app [options] [file_path]" << endl;
     out << "Options:" << endl;
+    out << "  --fullscreen\trun fullscreen" << endl;
     out << "  --pick-mode\t\tEnable mode to pick photos" << endl;
     out << "  file_path\t\tOpens ubuntu-docviewer-app displaying the selected file" << endl;
 }

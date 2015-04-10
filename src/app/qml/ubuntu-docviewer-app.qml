@@ -54,6 +54,25 @@ MainView {
         PopupUtils.open(Qt.resolvedUrl("common/UnknownTypeDialog.qml"), mainView, { parent: mainView });
     }
 
+    function setFullScreen(fullScreen) {
+        DOC_VIEWER.fullScreen = fullScreen;
+    }
+
+    function toggleFullScreen() {
+        DOC_VIEWER.fullScreen = !APP.fullScreen;
+    }
+
+    function setHeaderVisibility(visible, toggleFullscreen) {
+        toggleFullscreen = typeof toggleFullscreen !== 'undefined' ? toggleFullscreen : true
+        header.visible = visible;
+        if (!DOC_VIEWER.desktopMode && toggleFullscreen)
+            setFullScreen(!visible);
+    }
+
+    function toggleHeaderVisibility() {
+        setHeaderVisibility(!header.visible);
+    }
+
     Component.onCompleted: {
         pageStack.push(Qt.resolvedUrl("documentPage/DocumentPage.qml"));
 

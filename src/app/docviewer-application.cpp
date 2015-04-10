@@ -113,6 +113,7 @@ void DocViewerApplication::registerQML()
 {
     // Set up import paths
     QStringList importPathList = m_view->engine()->importPathList();
+
     // Prepend the location of the plugin in the build dir,
     // so that Qt Creator finds it there, thus overriding the one installed
     // in the sistem if there is one
@@ -120,6 +121,29 @@ void DocViewerApplication::registerQML()
     m_view->engine()->setImportPathList(importPathList);
 
     qmlRegisterType<SortFilterDocumentModel>("DocumentViewer", 1, 0, "DocumentsModel");
+}
+
+/*!
+ * \brief DocViewerApplication::isDesktopMode
+ * Returns true if the DESKTOP_MODE env var is set
+ */
+bool DocViewerApplication::isDesktopMode() const
+{
+
+  // Assume that platformName (QtUbuntu) with ubuntu
+  // in name means it's running on device
+  // TODO: replace this check with SDK call for formfactor
+  QString platform = QGuiApplication::platformName();
+  return !((platform == "ubuntu") || (platform == "ubuntumirclient"));
+}
+
+/*!
+ * \brief DocViewerApplication::isFullScreen
+ * Returns true if window is on FullScreen mode
+ */
+bool DocViewerApplication::isFullScreen() const
+{
+    return m_view->windowState() == Qt::WindowFullScreen;
 }
 
 /*!
@@ -175,7 +199,14 @@ void DocViewerApplication::createView()
     setDocumentFile(m_cmdLineParser->documentFile());
 
     m_view->setResizeMode(QQuickView::SizeRootObjectToView);
-    m_view->show();
+
+    //run fullscreen if specified at command line
+    if (m_cmdLineParser->isFullscreen()) {
+        setFullScreen(true);
+        m_view->showFullScreen();
+    } else {
+        m_view->show();
+    }
 }
 
 /*!
@@ -227,6 +258,21 @@ void DocViewerApplication::switchToPickMode()
 void DocViewerApplication::switchToBrowseMode()
 {
     Q_EMIT browseModeRequested();
+}
+
+/*!
+ * \brief DocViewerApplication::setFullScreen
+ * Change window state to fullScreen or no state
+ */
+void DocViewerApplication::setFullScreen(bool fullScreen)
+{
+    if(fullScreen) {
+        m_view->setWindowState(Qt::WindowFullScreen);
+    } else {
+        m_view->setWindowState(Qt::WindowNoState);
+    }
+
+    Q_EMIT fullScreenChanged();
 }
 
 void DocViewerApplication::setDocumentFile(const QString &documentFile)
