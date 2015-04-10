@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-04-07 16:14+0200\n"
-"PO-Revision-Date: 2015-03-19 20:27+0000\n"
+"PO-Revision-Date: 2015-04-10 00:23+0000\n"
 "Last-Translator: Anne <anneonyme017@gmail.com>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2015-04-08 05:37+0000\n"
+"X-Launchpad-Export-Date: 2015-04-10 05:12+0000\n"
 "X-Generator: Launchpad (build 17413)\n"
 
 #: ../src/app/qml/common/DetailsPage.qml:27
@@ -244,12 +244,12 @@ msgstr "Aller à la page..."
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Disable night mode"
-msgstr ""
+msgstr "Désactiver le mode nuit"
 
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Enable night mode"
-msgstr ""
+msgstr "Activer le mode nuit"
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:25
 msgid "Go to page"
