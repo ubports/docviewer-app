@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014-2015 Canonical, Ltd.
+ * Copyright (C) 2015 Canonical, Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,6 +29,7 @@ Dialog {
     title: i18n.tr("Multiple documents imported")
     text: i18n.tr("Choose which one to open:")
 
+    // We don't use a Flickable, since it already lives in the Dialog itself.
     Repeater {
         id: repeater
         delegate: ListItem.Standard {

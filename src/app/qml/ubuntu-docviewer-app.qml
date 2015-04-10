@@ -151,7 +151,6 @@ MainView {
                     if (importedDocuments.length > 1) {
                         // If it has been imported more than a document, show
                         // a file picker when user taps the "open" action.
-                        // TODO: Needs testing
                         importDialog.action.triggered.connect(function() {
                             PopupUtils.open(
                                 Qt.resolvedUrl("common/PickImportedDialog.qml"),
@@ -186,7 +185,6 @@ MainView {
                 );
 
                 // Show import notification after the dialog has been closed.
-                // TODO: Needs testing
                 rejectedDialog.closed.connect(showImportNotification)
             } else {
                 // No dialog has been shown. Show the notification.
