@@ -73,6 +73,12 @@ PageHeadState {
 
     actions: [
         Action {
+            iconName: "night-mode"
+            text: mainView.nightModeEnabled ? i18n.tr("Disable night mode") : i18n.tr("Enable night mode")
+            onTriggered: mainView.nightModeEnabled = !mainView.nightModeEnabled
+        },
+
+        Action {
             objectName: "detailsAction"
             text: i18n.tr("Details")
             iconName: "info"

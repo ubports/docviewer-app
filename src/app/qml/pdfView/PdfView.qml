@@ -38,6 +38,9 @@ PageWithBottomEdge {
     bottomEdgePageComponent: PdfContentsPage {}
     bottomEdgeEnabled: poppler.tocModel.count > 0
 
+    // Reset night mode shader settings when closing the page
+    // Component.onDestruction: mainView.nightModeEnabled = false
+
     PDF.VerticalView {
         id: pdfView
         objectName: "pdfView"
@@ -77,6 +80,13 @@ PageWithBottomEdge {
                 // but it's not a problem at the moment (our target is phone).
                 DOC_VIEWER.releaseResources();
             }
+
+            MouseArea {
+                objectName: "mouseArea"
+
+                anchors.fill: parent
+                onClicked: pdfPage.header.visible = !pdfPage.header.visible
+            }
         }
 
         Item { id: _zoomHelper }
@@ -96,7 +106,10 @@ PageWithBottomEdge {
 
             var title = getDocumentInfo("Title")
             if (title !== "")
-                pdfPage.title = title
+                pdfPage.title = title;
+
+            // Hide header when the document is ready
+            pdfPage.header.visible = false;
         }
     }
 
