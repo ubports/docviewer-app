@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-10 18:55+0200\n"
+"POT-Creation-Date: 2015-04-10 19:00+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,7 +53,7 @@ msgid "File does not exist"
 msgstr ""
 
 #: ../src/app/qml/common/FileNotFoundDialog.qml:28
-#: ../src/app/qml/common/PickImportedDialog.qml:45
+#: ../src/app/qml/common/PickImportedDialog.qml:47
 #: ../src/app/qml/common/RejectedImportDialog.qml:37
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:32
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61

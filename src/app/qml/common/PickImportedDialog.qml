@@ -34,6 +34,8 @@ Dialog {
         id: repeater
         delegate: ListItem.Standard {
             text: Utils.getNameOfFile(modelData)
+            __foregroundColor: Theme.palette.selected.backgroundText
+
             onClicked: {
                 PopupUtils.close(multipleImportDialog);
                 mainView.openDocument(modelData);
