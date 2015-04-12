@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-10 19:00+0200\n"
+"POT-Creation-Date: 2015-04-12 17:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,8 +19,8 @@ msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 #: ../src/app/qml/common/DetailsPage.qml:27
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
-#: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:97
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:83
 msgid "Details"
 msgstr ""
 
@@ -54,7 +54,7 @@ msgstr ""
 
 #: ../src/app/qml/common/FileNotFoundDialog.qml:28
 #: ../src/app/qml/common/PickImportedDialog.qml:47
-#: ../src/app/qml/common/RejectedImportDialog.qml:37
+#: ../src/app/qml/common/RejectedImportDialog.qml:38
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:32
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
@@ -70,12 +70,16 @@ msgid "Choose which one to open:"
 msgstr ""
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:28
-msgid "Files not supported"
-msgstr ""
+msgid "File not supported"
+msgid_plural "Files not supported"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:29
-msgid "Following documents have not been imported:"
-msgstr ""
+msgid "Following document has not been imported:"
+msgid_plural "Following documents have not been imported:"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../src/app/qml/common/ToastWithAction.qml:97
 msgid "Dismiss"
@@ -259,6 +263,16 @@ msgstr ""
 msgid "Go to page..."
 msgstr ""
 
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
+msgid "Disable night mode"
+msgstr ""
+
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
+msgid "Enable night mode"
+msgstr ""
+
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:25
 msgid "Go to page"
 msgstr ""
@@ -272,15 +286,17 @@ msgstr ""
 msgid "GO!"
 msgstr ""
 
-#: ../src/app/qml/textView/TextView.qml:39
+#: ../src/app/qml/textView/TextView.qml:42
 msgid "Loading..."
 msgstr ""
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:147
-msgid "Documents successfully imported!"
-msgstr ""
-
 #: ../src/app/qml/ubuntu-docviewer-app.qml:148
+msgid "Document successfully imported!"
+msgid_plural "Documents successfully imported!"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../src/app/qml/ubuntu-docviewer-app.qml:151
 msgid "Open"
 msgstr ""
 

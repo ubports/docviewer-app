@@ -145,7 +145,9 @@ MainView {
             var showImportNotification = function() {
                 if (importedDocuments.length > 0) {
                     var importDialog = showNotificationWithAction({
-                        "text": i18n.tr("Documents successfully imported!"),
+                        "text": i18n.tr("Document successfully imported!",
+                                        "Documents successfully imported!",
+                                        importedDocuments.length),
                         "action.text": i18n.tr("Open")
                     })
 

@@ -19,14 +19,15 @@ import Ubuntu.Components 1.1
 import Ubuntu.Components.Popups 1.0
 
 Dialog {
-    id: errorDialog
+    id: rejectedDialog
 
     property alias model: repeater.model
 
     signal closed
 
-    title: i18n.tr("Files not supported")
-    text: i18n.tr("Following documents have not been imported:")
+    title: i18n.tr("File not supported", "Files not supported", model.length)
+    text: i18n.tr("Following document has not been imported:",
+                  "Following documents have not been imported:", model.length)
 
     Repeater {
         id: repeater
@@ -37,8 +38,8 @@ Dialog {
         text: i18n.tr("Close")
         color: UbuntuColors.red
         onClicked: {
-            PopupUtils.close(errorDialog)
-            errorDialog.closed()
+            PopupUtils.close(rejectedDialog)
+            rejectedDialog.closed()
         }
     }
 }
