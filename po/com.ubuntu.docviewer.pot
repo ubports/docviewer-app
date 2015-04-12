@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-07 16:14+0200\n"
+"POT-Creation-Date: 2015-04-08 16:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -189,7 +189,7 @@ msgid "Even earlier..."
 msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:25
-#: /home/stefano/Progetti/doc-viewer/build-pdfview-show-hide-header-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/stefano/Progetti/doc-viewer/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr ""
 
@@ -216,9 +216,13 @@ msgid "Select All"
 msgstr ""
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
-#: ../src/app/qml/pdfView/PdfContentsPage.qml:25
+#: ../src/app/qml/pdfView/PdfContentsPage.qml:26
 #: ../src/app/qml/pdfView/PdfView.qml:37
 msgid "Contents"
+msgstr ""
+
+#: ../src/app/qml/pdfView/PdfContentsPage.qml:32
+msgid "Hide table of contents"
 msgstr ""
 
 #. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
@@ -264,6 +268,6 @@ msgstr ""
 msgid "Loading..."
 msgstr ""
 
-#: /home/stefano/Progetti/doc-viewer/build-pdfview-show-hide-header-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/stefano/Progetti/doc-viewer/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr ""
