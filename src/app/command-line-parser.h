@@ -38,6 +38,7 @@ public:
 
     bool processArguments(const QStringList& args);
 
+    bool isFullscreen() const { return m_isFullscreen; }
     bool pickModeEnabled() const { return m_pickMode; }
     bool testability() const { return m_testability; }
     const QString &documentFile() const { return m_documentFile; }
@@ -48,6 +49,7 @@ private:
 
     UrlHandler *m_urlHandler;
 
+    bool m_isFullscreen;
     bool m_pickMode;
     bool m_testability;
     QString m_documentFile;
