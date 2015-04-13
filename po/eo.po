@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-04-07 16:14+0200\n"
+"POT-Creation-Date: 2015-04-10 17:46+0200\n"
 "PO-Revision-Date: 2015-03-03 23:59+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-04-08 05:37+0000\n"
-"X-Generator: Launchpad (build 17413)\n"
+"X-Launchpad-Export-Date: 2015-04-13 05:39+0000\n"
+"X-Generator: Launchpad (build 17423)\n"
 
 #: ../src/app/qml/common/DetailsPage.qml:27
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:97
@@ -189,7 +189,7 @@ msgid "Even earlier..."
 msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:25
-#: /home/stefano/Progetti/doc-viewer/build-pdfview-show-hide-header-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/stefano/Progetti/doc-viewer/build-ubuntu-docviewer-app-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_14_10_utopic-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr ""
 
@@ -216,9 +216,13 @@ msgid "Select All"
 msgstr ""
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
-#: ../src/app/qml/pdfView/PdfContentsPage.qml:25
+#: ../src/app/qml/pdfView/PdfContentsPage.qml:26
 #: ../src/app/qml/pdfView/PdfView.qml:37
 msgid "Contents"
+msgstr ""
+
+#: ../src/app/qml/pdfView/PdfContentsPage.qml:32
+msgid "Hide table of contents"
 msgstr ""
 
 #. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
@@ -264,6 +268,6 @@ msgstr ""
 msgid "Loading..."
 msgstr ""
 
-#: /home/stefano/Progetti/doc-viewer/build-pdfview-show-hide-header-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/stefano/Progetti/doc-viewer/build-ubuntu-docviewer-app-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_14_10_utopic-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr ""
