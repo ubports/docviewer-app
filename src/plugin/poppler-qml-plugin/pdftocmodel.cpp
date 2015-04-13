@@ -72,6 +72,23 @@ QVariant PdfTocModel::data(const QModelIndex & index, int role) const
     }
 }
 
+QVariantMap PdfTocModel::get(int index) const
+{
+    if (index < 0 && index > m_entries.length()) {
+        qWarning() << Q_FUNC_INFO << "Index not valid, return undefined";
+        return QVariantMap();
+    }
+
+    const TocEntry &item = m_entries.at(index);
+
+    QVariantMap map;
+    map["title"] = item.title;
+    map["pageIndex"] = item.pageIndex;
+    map["level"] = item.level;
+
+    return map;
+}
+
 void PdfTocModel::fillModel() {
     if (m_entries.count() != 0) {
         m_entries.clear();

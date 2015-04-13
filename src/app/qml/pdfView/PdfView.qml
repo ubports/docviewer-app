@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013-2014 Canonical, Ltd.
+ * Copyright (C) 2013-2015 Canonical, Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -85,7 +85,7 @@ PageWithBottomEdge {
                 objectName: "mouseArea"
 
                 anchors.fill: parent
-                onClicked: pdfPage.header.visible = !pdfPage.header.visible
+                onClicked: mainView.toggleHeaderVisibility()
             }
         }
 
@@ -109,7 +109,7 @@ PageWithBottomEdge {
                 pdfPage.title = title;
 
             // Hide header when the document is ready
-            pdfPage.header.visible = false;
+            mainView.setHeaderVisibility(false);
         }
     }
 

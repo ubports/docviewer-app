@@ -38,6 +38,8 @@ class DocViewerApplication : public QApplication
 {
     Q_OBJECT
     Q_PROPERTY(bool pickModeEnabled READ pickModeEnabled NOTIFY pickModeEnabledChanged)
+    Q_PROPERTY(bool desktopMode READ isDesktopMode CONSTANT)
+    Q_PROPERTY(bool fullScreen READ isFullScreen WRITE setFullScreen NOTIFY fullScreenChanged)
     Q_PROPERTY(QString documentFile READ getDocumentFile WRITE setDocumentFile NOTIFY documentFileChanged)
 
 public:
@@ -56,6 +58,8 @@ public:
     UiMode defaultUiMode() const;
     void setUiMode(UiMode mode);
     bool pickModeEnabled() const;
+    bool isDesktopMode() const;
+    bool isFullScreen() const;
     const QString &getDocumentFile() const;
 
     Q_INVOKABLE void returnPickedContent(QList<QString> paths);
@@ -65,12 +69,14 @@ public:
 
 signals:
     void pickModeEnabledChanged();
+    void fullScreenChanged();
     void documentFileChanged();
     void browseModeRequested();
 
 private slots:
     void switchToPickMode();
     void switchToBrowseMode();
+    void setFullScreen(bool fullScreen);
     void setDocumentFile(const QString &documentFile);
 
 private:
