@@ -60,6 +60,7 @@ void ContentCommunicator::handle_import(content::Transfer *transfer)
     // FIXME: If there already a file called "filename.1.ext", the imported file won't be renamed as "filename.2.ext", but "filename.1.1.ext".
     //  (This issue is in gallery-app too.)
 
+    QVariantList importedDocuments;
     QVector<Item> transferedItems = transfer->collect();
     foreach (const Item &hubItem, transferedItems) {
         QFileInfo fi(hubItem.url().toLocalFile());
@@ -67,37 +68,58 @@ void ContentCommunicator::handle_import(content::Transfer *transfer)
         QString dir;
         QMimeDatabase mdb;
         QMimeType mt = mdb.mimeTypeForFile(hubItem.url().toLocalFile());
-        QString suffix = fi.completeSuffix();
-        // FIXME: Should we use fi.baseName()?
-        QString filenameWithoutSuffix = filename.left(filename.size() - suffix.size());
-        if(suffix.isEmpty()) {
-            // If the filename doesn't have an extension add one from the
-            // detected mimetype
-            if(!mt.preferredSuffix().isEmpty()) {
-                suffix = mt.preferredSuffix();
-                filenameWithoutSuffix += ".";
-            }
-        }
-        dir = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + QDir::separator();
+        QString destination;
+        bool rejected = false;
 
-        QString destination = QString("%1%2").arg(dir + filenameWithoutSuffix, suffix);
-        // If we already have a file of this name reformat to "filename.x.png"
-        // (where x is a number, incremented until we find an available filename)
-        if(QFile::exists(destination)) {
-            int append = 1;
-            do {
-                destination = QString("%1%2.%3").arg(dir + filenameWithoutSuffix, QString::number(append), suffix);
-                append++;
-            } while(QFile::exists(destination));
+        // Check if the item is supported by Ubuntu Document Viewer
+        if (isSupportedMimetype(mt.name())) {
+            QString suffix = fi.completeSuffix();
+            // FIXME: Should we use fi.baseName()?
+            QString filenameWithoutSuffix = filename.left(filename.size() - suffix.size());
+            if(suffix.isEmpty()) {
+                // If the filename doesn't have an extension add one from the
+                // detected mimetype
+                if(!mt.preferredSuffix().isEmpty()) {
+                    suffix = mt.preferredSuffix();
+                    filenameWithoutSuffix += ".";
+                }
+            }
+            dir = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + QDir::separator();
+
+            destination = QString("%1%2").arg(dir + filenameWithoutSuffix, suffix);
+            // If we already have a file of this name reformat to "filename.x.png"
+            // (where x is a number, incremented until we find an available filename)
+            if(QFile::exists(destination)) {
+                int append = 1;
+                do {
+                    destination = QString("%1%2.%3").arg(dir + filenameWithoutSuffix, QString::number(append), suffix);
+                    append++;
+                } while(QFile::exists(destination));
+            }
+
+            QFile::copy(hubItem.url().toLocalFile(), destination);           
+        } else {
+            rejected = true;
         }
-        QFile::copy(hubItem.url().toLocalFile(), destination);
+
+        // Append an entry for the imported document in the list that will be
+        // emitted with the 'documentImported' signal.
+        QVariantMap entry;
+        if (rejected) {
+            entry["fileName"] = filename;
+        } else {
+            entry["fileName"] = destination;
+        }
+        entry["rejected"] = rejected;
+
+        importedDocuments.append(entry);
     }
 
     // Allow content-hub to clean up temporary files in .cache/ once we've
     // moved them
     transfer->finalize();
 
-    emit documentImported();
+    emit documentImported(importedDocuments);
 }
 
 /*!
@@ -185,4 +207,20 @@ bool ContentCommunicator::singleContentPickMode() const
 
     // FIXME: Shouldn't be Transfer::SelectionType::SingleSelect?
     return m_transfer->selectionType() == Transfer::SelectionType::single;
+}
+
+/*!
+ * \brief ContentCommunicator::isSupportedMimetype returns true if the given
+ * mimetype is supported by Ubuntu Document Viewer
+ * \param mimetype
+ */
+bool ContentCommunicator::isSupportedMimetype(QString mimetype)
+{
+    if (mimetype.startsWith("text/"))
+        return true;
+
+    if (mimetype == "application/pdf")
+        return true;
+
+    return false;
 }

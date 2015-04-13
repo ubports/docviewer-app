@@ -6,16 +6,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-04-10 17:46+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-04-12 17:33+0200\n"
 "PO-Revision-Date: 2015-04-10 00:23+0000\n"
 "Last-Translator: Anne <anneonyme017@gmail.com>\n"
 "Language-Team: French <fr@li.org>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2015-04-13 05:39+0000\n"
+"X-Launchpad-Export-Date: 2015-04-11 05:47+0000\n"
 "X-Generator: Launchpad (build 17423)\n"
 
 #: ../src/app/qml/common/DetailsPage.qml:27
@@ -44,20 +45,46 @@ msgstr "Dernière modification le"
 msgid "MIME type"
 msgstr "Type MIME"
 
-#: ../src/app/qml/common/ErrorDialog.qml:24
+#: ../src/app/qml/common/FileNotFoundDialog.qml:24
 msgid "Error"
 msgstr "Erreur"
 
-#: ../src/app/qml/common/ErrorDialog.qml:25
+#: ../src/app/qml/common/FileNotFoundDialog.qml:25
 msgid "File does not exist"
 msgstr "Le fichier n'existe pas"
 
-#: ../src/app/qml/common/ErrorDialog.qml:28
+#: ../src/app/qml/common/FileNotFoundDialog.qml:28
+#: ../src/app/qml/common/PickImportedDialog.qml:47
+#: ../src/app/qml/common/RejectedImportDialog.qml:38
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:32
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Close"
 msgstr "Fermer"
+
+#: ../src/app/qml/common/PickImportedDialog.qml:29
+msgid "Multiple documents imported"
+msgstr ""
+
+#: ../src/app/qml/common/PickImportedDialog.qml:30
+msgid "Choose which one to open:"
+msgstr ""
+
+#: ../src/app/qml/common/RejectedImportDialog.qml:28
+msgid "File not supported"
+msgid_plural "Files not supported"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../src/app/qml/common/RejectedImportDialog.qml:29
+msgid "Following document has not been imported:"
+msgid_plural "Following documents have not been imported:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../src/app/qml/common/ToastWithAction.qml:97
+msgid "Dismiss"
+msgstr ""
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:26
 msgid "Unknown file type"
@@ -193,7 +220,7 @@ msgid "Even earlier..."
 msgstr "Encore plus tôt ..."
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:25
-#: /home/stefano/Progetti/doc-viewer/build-ubuntu-docviewer-app-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_14_10_utopic-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/stefano/Progetti/doc-viewer/build-adv-import-handler-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Visionneuse de document"
 
@@ -220,14 +247,10 @@ msgid "Select All"
 msgstr "Tout sélectionner"
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
-#: ../src/app/qml/pdfView/PdfContentsPage.qml:26
+#: ../src/app/qml/pdfView/PdfContentsPage.qml:25
 #: ../src/app/qml/pdfView/PdfView.qml:37
 msgid "Contents"
 msgstr "Contenus"
-
-#: ../src/app/qml/pdfView/PdfContentsPage.qml:32
-msgid "Hide table of contents"
-msgstr ""
 
 #. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
 #. while the second one (%2) refers to the total pages count.
@@ -272,6 +295,16 @@ msgstr "ALLEZ !"
 msgid "Loading..."
 msgstr "Chargement..."
 
-#: /home/stefano/Progetti/doc-viewer/build-ubuntu-docviewer-app-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_14_10_utopic-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: ../src/app/qml/ubuntu-docviewer-app.qml:148
+msgid "Document successfully imported!"
+msgid_plural "Documents successfully imported!"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../src/app/qml/ubuntu-docviewer-app.qml:151
+msgid "Open"
+msgstr ""
+
+#: /home/stefano/Progetti/doc-viewer/build-adv-import-handler-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "documents;visionneuse;pdf;lecteur;"

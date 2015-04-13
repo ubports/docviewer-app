@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-04-10 17:46+0200\n"
+"POT-Creation-Date: 2015-03-25 17:51+0100\n"
 "PO-Revision-Date: 2015-03-04 07:27+0000\n"
 "Last-Translator: Anousak <anousak@gmail.com>\n"
 "Language-Team: Lao <lo@li.org>\n"
@@ -15,12 +15,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2015-04-13 05:39+0000\n"
-"X-Generator: Launchpad (build 17423)\n"
+"X-Launchpad-Export-Date: 2015-03-27 05:33+0000\n"
+"X-Generator: Launchpad (build 17413)\n"
 
 #: ../src/app/qml/common/DetailsPage.qml:27
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:97
-#: ../src/app/qml/textView/TextViewDefaultHeader.qml:83
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Details"
 msgstr "ລາຍລະອຽດ"
 
@@ -189,7 +189,7 @@ msgid "Even earlier..."
 msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:25
-#: /home/stefano/Progetti/doc-viewer/build-ubuntu-docviewer-app-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_14_10_utopic-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/stefano/Progetti/doc-viewer/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "ຕົວເບີ່ງເອກະສານ"
 
@@ -216,14 +216,10 @@ msgid "Select All"
 msgstr "ເລີອກທັ້ງໝົດ"
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
-#: ../src/app/qml/pdfView/PdfContentsPage.qml:26
+#: ../src/app/qml/pdfView/PdfContentsPage.qml:25
 #: ../src/app/qml/pdfView/PdfView.qml:37
 msgid "Contents"
 msgstr "ເນື້ອຫາ"
-
-#: ../src/app/qml/pdfView/PdfContentsPage.qml:32
-msgid "Hide table of contents"
-msgstr ""
 
 #. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
 #. while the second one (%2) refers to the total pages count.
@@ -241,16 +237,6 @@ msgstr "ກັບ"
 msgid "Go to page..."
 msgstr ""
 
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
-#: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
-msgid "Disable night mode"
-msgstr ""
-
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
-#: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
-msgid "Enable night mode"
-msgstr ""
-
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:25
 msgid "Go to page"
 msgstr "ໄປຫາໜ້າ"
@@ -264,10 +250,10 @@ msgstr "ເລີອກໜ້າລະວ່າງ 1 ເເລະ %1"
 msgid "GO!"
 msgstr "ໄປ!"
 
-#: ../src/app/qml/textView/TextView.qml:42
+#: ../src/app/qml/textView/TextView.qml:39
 msgid "Loading..."
 msgstr "ກໍາລັງໂຫຼດ...."
 
-#: /home/stefano/Progetti/doc-viewer/build-ubuntu-docviewer-app-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_14_10_utopic-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/stefano/Progetti/doc-viewer/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "ເກະສານ;ຕົວເບີ່ງ;ພີດີເເຟບ;ຕົວອ່ານ;"

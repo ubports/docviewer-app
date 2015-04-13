@@ -51,7 +51,22 @@ MainView {
     }
 
     function runUnknownTypeDialog() {
-        PopupUtils.open(Qt.resolvedUrl("common/UnknownTypeDialog.qml"), mainView, { parent: mainView });
+        PopupUtils.open(Qt.resolvedUrl("common/UnknownTypeDialog.qml"),
+                        mainView, { parent: mainView });
+    }
+
+    function showNotification(args) {
+        var component = Qt.createComponent("common/Toast.qml")
+        var toast = component.createObject(mainView, args);
+
+        return toast;
+    }
+
+    function showNotificationWithAction(args) {
+        var component = Qt.createComponent("common/ToastWithAction.qml")
+        var toast = component.createObject(mainView, args);
+
+        return toast;
     }
 
     function setFullScreen(fullScreen) {
@@ -85,7 +100,11 @@ MainView {
         objectName: "file"
 
         onMimetypeChanged: LoadComponent.load(mimetype)
-        onErrorChanged: { if (error == -1); PopupUtils.open(Qt.resolvedUrl("common/ErrorDialog.qml"), mainView, { parent: mainView }) }
+        onErrorChanged: {
+            if (error == -1)
+                PopupUtils.open(Qt.resolvedUrl("common/FileNotFoundDialog.qml"),
+                                mainView, { parent: mainView });
+        }
     }
 
     DocumentsModel { id: folderModel }
@@ -115,6 +134,82 @@ MainView {
                 while (pageStack.depth > 1) {
                     pageStack.pop()
                 }
+            }
+        }
+    }
+
+    Connections {
+        target: PICKER_HUB
+
+        onDocumentImported: {
+            // Create two arrays: one for rejected documents, and the other
+            // for imported documents.
+            var importedDocuments = [];
+            var rejectedDocuments = [];
+            var entry;
+
+            // Fill the arrays.
+            for (var i=0; i<documents.length; i++) {
+                entry = documents[i];
+
+                if (entry.rejected) {
+                    rejectedDocuments.push(entry.fileName);
+                    break;
+                }
+
+                importedDocuments.push(entry.fileName);
+            }
+
+            // Prepare import notification
+            var showImportNotification = function() {
+                if (importedDocuments.length > 0) {
+                    var importDialog = showNotificationWithAction({
+                        "text": i18n.tr("Document successfully imported!",
+                                        "Documents successfully imported!",
+                                        importedDocuments.length),
+                        "action.text": i18n.tr("Open")
+                    })
+
+                    if (importedDocuments.length > 1) {
+                        // If it has been imported more than a document, show
+                        // a file picker when user taps the "open" action.
+                        importDialog.action.triggered.connect(function() {
+                            PopupUtils.open(
+                                Qt.resolvedUrl("common/PickImportedDialog.qml"),
+                                mainView,
+                                {
+                                    parent: mainView,
+                                    model: importedDocuments
+                                }
+                            );
+                        });
+                    } else {
+                        // It has been imported just a document, open it when
+                        // user taps the action button.
+                        importDialog.action.triggered.connect(function() {
+                            openDocument(importedDocuments[0]);
+                        });
+                    }
+                }
+            }
+
+            // Check if there's any rejected document in the last transfer.
+            // If so, show an error dialog.
+            if (rejectedDocuments.length > 0) {
+                var rejectedDialog = PopupUtils.open(
+                    Qt.resolvedUrl("common/RejectedImportDialog.qml"),
+                    mainView,
+                    {
+                        parent: mainView,
+                        model: rejectedDocuments
+                    }
+                );
+
+                // Show import notification after the dialog has been closed.
+                rejectedDialog.closed.connect(showImportNotification)
+            } else {
+                // No dialog has been shown. Show the notification.
+                showImportNotification.call();
             }
         }
     }
