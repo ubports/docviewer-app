@@ -27,10 +27,11 @@ MainView {
     id: mainView
     objectName: "mainView"
 
-    applicationName: "com.ubuntu.docviewer"
-    useDeprecatedToolbar: false
-
     property bool pickMode: DOC_VIEWER.pickModeEnabled
+
+    applicationName: "com.ubuntu.docviewer"
+    useDeprecatedToolbar: false   
+    automaticOrientation: true
 
     width: units.gu(50)
     height: units.gu(75)
