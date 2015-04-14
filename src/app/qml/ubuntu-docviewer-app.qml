@@ -19,6 +19,7 @@ import Ubuntu.Components 1.1
 import Ubuntu.Components.Popups 1.0
 import com.ubuntu.fileqmlplugin 1.0
 import DocumentViewer 1.0
+import QtQuick.Window 2.0
 
 import "common"
 import "common/loadComponent.js" as LoadComponent
@@ -28,6 +29,8 @@ MainView {
     objectName: "mainView"
 
     property bool pickMode: DOC_VIEWER.pickModeEnabled
+    readonly property bool isLandscape: Screen.orientation == Qt.LandscapeOrientation ||
+                                        Screen.orientation == Qt.InvertedLandscapeOrientation
 
     applicationName: "com.ubuntu.docviewer"
     useDeprecatedToolbar: false   
@@ -81,13 +84,25 @@ MainView {
     function setHeaderVisibility(visible, toggleFullscreen) {
         toggleFullscreen = typeof toggleFullscreen !== 'undefined' ? toggleFullscreen : true
         header.visible = visible;
-        if (!DOC_VIEWER.desktopMode && toggleFullscreen)
+
+        // If device orientation is landscape and screen width is limited,
+        // force hiding Unity 8 indicators bar.
+        if (!DOC_VIEWER.desktopMode && mainView.isLandscape &&
+                mainView.width < units.gu(51)) {
+            setFullScreen(true);
+            return;
+        }
+
+        if ((!DOC_VIEWER.desktopMode && toggleFullscreen))
             setFullScreen(!visible);
     }
 
     function toggleHeaderVisibility() {
         setHeaderVisibility(!header.visible);
     }
+
+    // On screen rotation, force updating of header/U8 indicators bar visibility
+    onIsLandscapeChanged: setHeaderVisibility(true);
 
     Component.onCompleted: {
         pageStack.push(Qt.resolvedUrl("documentPage/DocumentPage.qml"));
