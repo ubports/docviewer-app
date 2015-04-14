@@ -86,14 +86,14 @@ MainView {
         header.visible = visible;
 
         // If device orientation is landscape and screen width is limited,
-        // force hiding Unity 8 indicators bar.
+        // force hiding Unity 8 indicators panel.
         if (!DOC_VIEWER.desktopMode && mainView.isLandscape &&
                 mainView.width < units.gu(51)) {
             setFullScreen(true);
             return;
         }
 
-        if ((!DOC_VIEWER.desktopMode && toggleFullscreen))
+        if (!DOC_VIEWER.desktopMode && toggleFullscreen)
             setFullScreen(!visible);
     }
 
@@ -101,7 +101,7 @@ MainView {
         setHeaderVisibility(!header.visible);
     }
 
-    // On screen rotation, force updating of header/U8 indicators bar visibility
+    // On screen rotation, force updating of header/U8 indicators panel visibility
     onIsLandscapeChanged: setHeaderVisibility(true);
 
     Component.onCompleted: {

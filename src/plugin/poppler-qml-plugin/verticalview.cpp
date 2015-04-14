@@ -592,7 +592,7 @@ VerticalView::ListItem *VerticalView::createItem(int modelIndex, bool asynchrono
                 if (nextItem) {
                     listItem->setY(nextItem->y() - listItem->height() - m_spacing);
                 } else if (modelIndex == 0) {
-                    listItem->setY(560);
+                    listItem->setY(0);
                 } else if (!m_visibleItems.isEmpty()) {
                     lostItem = true;
                 }
