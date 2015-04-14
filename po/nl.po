@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-03-25 17:51+0100\n"
+"POT-Creation-Date: 2015-04-13 17:55+0200\n"
 "PO-Revision-Date: 2015-03-04 15:47+0000\n"
 "Last-Translator: Hannie Dumoleyn <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
@@ -15,12 +15,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-03-27 05:33+0000\n"
-"X-Generator: Launchpad (build 17413)\n"
+"X-Launchpad-Export-Date: 2015-04-14 05:30+0000\n"
+"X-Generator: Launchpad (build 17423)\n"
 
 #: ../src/app/qml/common/DetailsPage.qml:27
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
-#: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:97
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:83
 msgid "Details"
 msgstr "Bijzonderheden"
 
@@ -44,20 +44,46 @@ msgstr "Laatst gewijzigd"
 msgid "MIME type"
 msgstr "MIME type"
 
-#: ../src/app/qml/common/ErrorDialog.qml:24
+#: ../src/app/qml/common/FileNotFoundDialog.qml:24
 msgid "Error"
 msgstr "Fout"
 
-#: ../src/app/qml/common/ErrorDialog.qml:25
+#: ../src/app/qml/common/FileNotFoundDialog.qml:25
 msgid "File does not exist"
 msgstr "Bestand bestaat niet"
 
-#: ../src/app/qml/common/ErrorDialog.qml:28
+#: ../src/app/qml/common/FileNotFoundDialog.qml:28
+#: ../src/app/qml/common/PickImportedDialog.qml:47
+#: ../src/app/qml/common/RejectedImportDialog.qml:38
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:32
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Close"
 msgstr "Sluiten"
+
+#: ../src/app/qml/common/PickImportedDialog.qml:29
+msgid "Multiple documents imported"
+msgstr ""
+
+#: ../src/app/qml/common/PickImportedDialog.qml:30
+msgid "Choose which one to open:"
+msgstr ""
+
+#: ../src/app/qml/common/RejectedImportDialog.qml:28
+msgid "File not supported"
+msgid_plural "Files not supported"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../src/app/qml/common/RejectedImportDialog.qml:29
+msgid "Following document has not been imported:"
+msgid_plural "Following documents have not been imported:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../src/app/qml/common/ToastWithAction.qml:97
+msgid "Dismiss"
+msgstr ""
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:26
 msgid "Unknown file type"
@@ -193,7 +219,7 @@ msgid "Even earlier..."
 msgstr "Nog eerder…"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:25
-#: /home/stefano/Progetti/doc-viewer/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/stefano/Progetti/doc-viewer/build-adv-import-handler-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Documentenviewer"
 
@@ -220,10 +246,14 @@ msgid "Select All"
 msgstr "Alles selecteren"
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
-#: ../src/app/qml/pdfView/PdfContentsPage.qml:25
+#: ../src/app/qml/pdfView/PdfContentsPage.qml:26
 #: ../src/app/qml/pdfView/PdfView.qml:37
 msgid "Contents"
 msgstr "Inhoud"
+
+#: ../src/app/qml/pdfView/PdfContentsPage.qml:32
+msgid "Hide table of contents"
+msgstr ""
 
 #. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
 #. while the second one (%2) refers to the total pages count.
@@ -241,6 +271,16 @@ msgstr "Terug"
 msgid "Go to page..."
 msgstr "Ga naar pagina…"
 
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
+msgid "Disable night mode"
+msgstr ""
+
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
+msgid "Enable night mode"
+msgstr ""
+
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:25
 msgid "Go to page"
 msgstr "Ga naar pagina"
@@ -254,10 +294,20 @@ msgstr "Kies een pagina tussen 1 en %1"
 msgid "GO!"
 msgstr "GA!"
 
-#: ../src/app/qml/textView/TextView.qml:39
+#: ../src/app/qml/textView/TextView.qml:42
 msgid "Loading..."
 msgstr "Bezig met laden…"
 
-#: /home/stefano/Progetti/doc-viewer/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: ../src/app/qml/ubuntu-docviewer-app.qml:167
+msgid "Document successfully imported!"
+msgid_plural "Documents successfully imported!"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../src/app/qml/ubuntu-docviewer-app.qml:170
+msgid "Open"
+msgstr ""
+
+#: /home/stefano/Progetti/doc-viewer/build-adv-import-handler-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "documenten;viewer;pdf;lezer;"
