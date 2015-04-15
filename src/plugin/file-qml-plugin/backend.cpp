@@ -19,7 +19,6 @@
 #include <QtQml/QQmlContext>
 
 #include "backend.h"
-#include "docviewerFile.h"
 #include "fileReader.h"
 
 void BackendPlugin::registerTypes(const char *uri)
@@ -28,7 +27,6 @@ void BackendPlugin::registerTypes(const char *uri)
     
     //@uri com.ubuntu.fileqmlplugin
 
-    qmlRegisterType<DocviewerFile>(uri, 1, 0, "File");
     qmlRegisterType<FileReader>(uri, 1, 0, "FileReader");    
 
 }

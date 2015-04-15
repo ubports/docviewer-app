@@ -21,7 +21,7 @@
 #include <QDir>
 #include <QMimeDatabase>
 
-#include "docviewerFile.h"
+#include "docviewerfile.h"
 
 /*
  ----8<-----
