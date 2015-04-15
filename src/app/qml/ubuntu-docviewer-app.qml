@@ -98,7 +98,7 @@ MainView {
         id: file
         objectName: "file"
 
-        onMimetypeChanged: LoadComponent.load(mimetype)
+        onMimetypeChanged: LoadComponent.load(mimetype.name)
         onErrorChanged: {
             if (error == -1)
                 PopupUtils.open(Qt.resolvedUrl("common/FileNotFoundDialog.qml"),

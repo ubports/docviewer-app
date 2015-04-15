@@ -99,8 +99,8 @@ PageWithBottomEdge {
         id: poppler
 
         property bool isLoading: true
+        path: file.path
 
-        Component.onCompleted: path = file.path
         onPagesLoaded: {
             isLoading = false;
 

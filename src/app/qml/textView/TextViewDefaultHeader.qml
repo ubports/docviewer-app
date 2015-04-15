@@ -51,7 +51,7 @@ PageHeadState {
                 elide: Text.ElideMiddle
 
                 fontSize: "small"
-                text: file.description
+                text: file.mimetype.description
             }
         }
     }

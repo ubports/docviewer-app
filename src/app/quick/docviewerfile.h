@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013-2014 Canonical, Ltd.
+ * Copyright (C) 2013, 2015 Canonical, Ltd.
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License version 3, as published
@@ -27,11 +27,8 @@ class DocviewerFile : public QObject
 {
     Q_OBJECT
     Q_PROPERTY( QString path READ getPath WRITE setPath NOTIFY pathChanged )
-    Q_PROPERTY( QString mimetype READ getMimetype NOTIFY mimetypeChanged )
-    Q_PROPERTY( QString description READ getDescription NOTIFY descriptionChanged )
-    Q_PROPERTY( qint64 size READ getSize NOTIFY sizeChanged )
-    Q_PROPERTY( QDateTime lastModified READ getLastmodified NOTIFY lastmodifiedChanged )
-    Q_PROPERTY( QDateTime creationTime READ getCreationTime NOTIFY creationTimeChanged )
+    Q_PROPERTY( QVariantMap mimetype READ getMimetype NOTIFY mimetypeChanged)
+    Q_PROPERTY( QVariantMap info READ getInfo NOTIFY infoChanged)
     Q_PROPERTY( int error READ getError NOTIFY errorChanged )
     
 public:
@@ -39,41 +36,29 @@ public:
     ~DocviewerFile();
     
 protected:
-    QString getPath() { return path; }
-    void setPath(QString p);
+    QString getPath() { return m_path; }
+    void setPath(const QString &path);
 
-    QString getMimetype() { return mimetype; }
-
-    QString getDescription() { return description; }
-
-    qint64 getSize() { return size; }
-
-    QDateTime getLastmodified() { return lastmodified; }
-
-    QDateTime getCreationTime() { return creationTime; }
-
-    int getError() { return error; }
+    QVariantMap getMimetype() { return m_mimetype; }
+    QVariantMap getInfo() { return m_info; }
+    int getError() { return m_error; }
     
-    QString path;
-    QString mimetype;
-    QString description;
-    qint64 size;
-    QDateTime lastmodified;
-    QDateTime creationTime;
-    int error;
-
-private:
-    void open();
-    void readMimeType();
-
 Q_SIGNALS:
     void pathChanged();
     void mimetypeChanged();
-    void descriptionChanged();
-    void sizeChanged();
-    void lastmodifiedChanged();
-    void creationTimeChanged();
     void errorChanged();
+    void infoChanged();
+
+private slots:
+    void open();
+
+private:
+    void setMimetype();
+
+    QString m_path;
+    QVariantMap m_mimetype;
+    QVariantMap m_info;
+    int m_error;
 };
 
 #endif // DOCVIEWERFILE_H

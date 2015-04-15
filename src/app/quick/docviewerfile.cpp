@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013-2014 Canonical, Ltd.
+ * Copyright (C) 2013, 2015 Canonical, Ltd.
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License version 3, as published
@@ -26,7 +26,7 @@
 /*
  ----8<-----
 
- import org.docviewer.file 1.0
+ import DocumentViewer 1.0
 
  Rectangle {
    width: 200
@@ -37,13 +37,13 @@
       path: "the/path/of/file"
 
       onMimetypeChanged: {
-        do.something(mimetype);
+        do.something(mimetype.name);
       }
    }
 
    Text {
      anchors.centerIn: parent
-     text: helloType.helloworld
+     text: mimetype.description
    }
  }
 
@@ -52,70 +52,68 @@
 
 DocviewerFile::DocviewerFile(QObject *parent) :
     QObject(parent),
-    path("")
+    m_path("")
 {
-}
-DocviewerFile::~DocviewerFile() {
-    
+    connect(this, SIGNAL(pathChanged()), this, SLOT(open()));
 }
 
-void DocviewerFile::setPath(QString p) {
-    if (p.isEmpty()) {
-        this->path = "";
+DocviewerFile::~DocviewerFile()
+{
+    //
+}
+
+void DocviewerFile::setPath(const QString &path)
+{
+    if (m_path == path)
+        return;
+
+    QFileInfo file(QDir::currentPath(), path);
+
+    m_path = file.absoluteFilePath();
+    Q_EMIT pathChanged();
+
+    qDebug() << "[FILE] Path parsed as:" << m_path;
+}
+
+void DocviewerFile::open()
+{
+    if (m_path.isEmpty())
+        return;
+
+    QFileInfo file(m_path);
+
+    if (file.exists()) {
+        qDebug() << "[FILE] Extracting information from the file...";
+
+        /** Get info of the file **/
+        m_info["size"] = file.size();
+        m_info["lastModified"] = file.lastModified();
+        m_info["creationTime"] = file.created();
+        Q_EMIT infoChanged();
+
+        /** Get mimetype **/
+        this->setMimetype();
     }
+
     else {
-        this->path = QFileInfo(QDir::currentPath(), p).absoluteFilePath();
-    }
-
-    qDebug() << "[FILE] Path parsed as:" << this->path;
-
-    this->open();
-
-    emit pathChanged();
-}
-
-void DocviewerFile::open() {
-    if (!path.isEmpty())
-    {
-        QFileInfo file(path);
-
-        if (file.exists()) {
-            qDebug() << "[FILE] Extracting information from the file...";
-
-            /**Get info of the file**/
-            size = file.size();
-            emit sizeChanged();
-
-            lastmodified = file.lastModified();
-            emit lastmodifiedChanged();
-
-            creationTime = file.created();
-            emit creationTimeChanged();
-
-            /**Get mimetype**/
-            this->readMimeType();
-        }
-        else {
-            qDebug() << "[FILE] ERROR: Requested file does not exist!";
-            error = -1;
-            emit errorChanged();
-        }
+        qDebug() << "[FILE] ERROR: Requested file does not exist!";
+        m_error = -1;
+        Q_EMIT errorChanged();
     }
 }
 
-void DocviewerFile::readMimeType()
+void DocviewerFile::setMimetype()
 {
-    QMimeDatabase db;
-    mimetype = db.mimeTypeForFile(this->path).name();
-    description = db.mimeTypeForFile(this->path).comment();
+    QMimeType mime = QMimeDatabase().mimeTypeForFile(m_path);
 
-    if (mimetype == "application/octet-stream") {
-        // Returned by Qt when it cannot determinate the mime type
-        mimetype = "Unknown";
-    }
+    m_mimetype["name"] = mime.name();
+    m_mimetype["description"] = mime.comment();
 
-    qDebug() << "[FILE] Requested file mime type:" << mimetype;
-    qDebug() << "[FILE] Requested file description:" << description;
-    emit mimetypeChanged();
-    emit descriptionChanged();
+    // Use a more user-friendly value for 'name' when Qt can not determinate the
+    // mime type.
+    if (m_mimetype.value("name") == "application/octet-stream")
+        m_mimetype["name"] = "Unknown";
+
+    qDebug() << "[FILE] Requested file mime type:" << m_mimetype.value("name");
+    Q_EMIT mimetypeChanged();
 }
