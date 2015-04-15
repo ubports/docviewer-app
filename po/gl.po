@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-04-13 17:55+0200\n"
-"PO-Revision-Date: 2015-04-07 13:08+0000\n"
+"PO-Revision-Date: 2015-04-14 14:01+0000\n"
 "Last-Translator: Marcos Lans <Unknown>\n"
 "Language-Team: Galician <gl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-04-14 05:30+0000\n"
-"X-Generator: Launchpad (build 17423)\n"
+"X-Launchpad-Export-Date: 2015-04-15 05:28+0000\n"
+"X-Generator: Launchpad (build 17428)\n"
 
 #: ../src/app/qml/common/DetailsPage.qml:27
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:97
@@ -63,27 +63,27 @@ msgstr "Pechar"
 
 #: ../src/app/qml/common/PickImportedDialog.qml:29
 msgid "Multiple documents imported"
-msgstr ""
+msgstr "Importáronse varios documentos"
 
 #: ../src/app/qml/common/PickImportedDialog.qml:30
 msgid "Choose which one to open:"
-msgstr ""
+msgstr "Seleccione cal abrir:"
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:28
 msgid "File not supported"
 msgid_plural "Files not supported"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ficheiro non compatíbel"
+msgstr[1] "Ficheiros non compatíbeis"
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:29
 msgid "Following document has not been imported:"
 msgid_plural "Following documents have not been imported:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "O seguinte documento non se importou:"
+msgstr[1] "Os seguintes documentos non se importaron:"
 
 #: ../src/app/qml/common/ToastWithAction.qml:97
 msgid "Dismiss"
-msgstr ""
+msgstr "Desbotar"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:26
 msgid "Unknown file type"
@@ -253,7 +253,7 @@ msgstr "Contidos"
 
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:32
 msgid "Hide table of contents"
-msgstr ""
+msgstr "Ocultar táboa de contidos"
 
 #. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
 #. while the second one (%2) refers to the total pages count.
@@ -274,7 +274,7 @@ msgstr "Ir á páxina..."
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Disable night mode"
-msgstr "Desactivar modo noite"
+msgstr "Desact. modo noite"
 
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
@@ -301,12 +301,12 @@ msgstr "Cargando..."
 #: ../src/app/qml/ubuntu-docviewer-app.qml:167
 msgid "Document successfully imported!"
 msgid_plural "Documents successfully imported!"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Documento importado correctamente."
+msgstr[1] "Documentos importados correctamente."
 
 #: ../src/app/qml/ubuntu-docviewer-app.qml:170
 msgid "Open"
-msgstr ""
+msgstr "Abrir"
 
 #: /home/stefano/Progetti/doc-viewer/build-adv-import-handler-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
