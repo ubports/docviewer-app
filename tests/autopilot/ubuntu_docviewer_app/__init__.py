@@ -86,11 +86,9 @@ class PdfView(Page):
     """Autopilot helper for PdfView page."""
 
     @autopilot_logging.log_action(logger.info)
-    def show_header(self):
-        """Show page header by clicking on the pdf canvas"""
-        mouse_area = self.select_single('QQuickMouseArea',
-                                        objectName='mouseArea')
-        self.pointing_device.click_object(mouse_area)
+    def toggle_header_visibility(self):
+        """Show/hide page header by clicking on the center of main view"""
+        self.pointing_device.click_object(self.main_view)
 
     def click_go_to_page_button(self):
         """Click the go_to_page header button."""
