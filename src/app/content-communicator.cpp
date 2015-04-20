@@ -81,18 +81,17 @@ void ContentCommunicator::handle_import(content::Transfer *transfer)
                 // detected mimetype
                 if(!mt.preferredSuffix().isEmpty()) {
                     suffix = mt.preferredSuffix();
-                    filenameWithoutSuffix += ".";
                 }
             }
             dir = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + QDir::separator();
 
-            destination = QString("%1%2").arg(dir + filenameWithoutSuffix, suffix);
-            // If we already have a file of this name reformat to "filename.x.png"
+            destination = QString("%1.%2").arg(dir + filenameWithoutSuffix, suffix);
+            // If we already have a file of this name reformat to "filename (x).png"
             // (where x is a number, incremented until we find an available filename)
             if(QFile::exists(destination)) {
                 int append = 1;
                 do {
-                    destination = QString("%1%2.%3").arg(dir + filenameWithoutSuffix, QString::number(append), suffix);
+                    destination = QString("%1 (%2).%3").arg(dir + filenameWithoutSuffix, QString::number(append), suffix);
                     append++;
                 } while(QFile::exists(destination));
             }
