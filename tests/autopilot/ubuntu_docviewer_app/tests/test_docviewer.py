@@ -67,3 +67,15 @@ class TestMainWindow(DocviewerAppTestCase):
             self.app.main_view.select_single(
                 "VerticalView", objectName="pdfView").currentPageIndex,
             Eventually(Equals(int(page_no) - 1)))
+
+    def test_pdf_toc(self):
+        """" Testing pdf Table Of Contents """
+        self.filepath = 'ubuntu_docviewer_app/files/serverguide.pdf'
+
+        self.launch_app()
+        pdf = self.app.main_view.open_PdfView()
+
+        pdf.reveal_bottom_edge_page()
+
+
+
