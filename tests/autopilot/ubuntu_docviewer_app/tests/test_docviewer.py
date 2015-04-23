@@ -76,6 +76,3 @@ class TestMainWindow(DocviewerAppTestCase):
         pdf = self.app.main_view.open_PdfView()
 
         pdf.reveal_bottom_edge_page()
-
-
-
