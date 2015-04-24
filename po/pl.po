@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-04-14 17:34+0200\n"
-"PO-Revision-Date: 2015-01-26 13:29+0000\n"
+"PO-Revision-Date: 2015-04-20 14:34+0000\n"
 "Last-Translator: Bartosz Kosiorek <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-04-17 05:33+0000\n"
+"X-Launchpad-Export-Date: 2015-04-21 05:35+0000\n"
 "X-Generator: Launchpad (build 17430)\n"
 
 #: ../src/app/qml/common/DetailsPage.qml:27
@@ -84,7 +84,7 @@ msgstr[1] ""
 
 #: ../src/app/qml/common/ToastWithAction.qml:97
 msgid "Dismiss"
-msgstr ""
+msgstr "Odrzuć"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:26
 msgid "Unknown file type"
@@ -110,29 +110,29 @@ msgstr "Nie"
 #: ../src/app/qml/common/utils.js:22
 #, qt-format
 msgid "%1 GB"
-msgstr ""
+msgstr "%1 GB"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in MB
 #: ../src/app/qml/common/utils.js:26
 #, qt-format
 msgid "%1 MB"
-msgstr ""
+msgstr "%1 MB"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in kB
 #: ../src/app/qml/common/utils.js:30
 #, qt-format
 msgid "%1 kB"
-msgstr ""
+msgstr "%1 kB"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in byte
 #: ../src/app/qml/common/utils.js:33
 #, qt-format
 msgid "%1 byte"
-msgstr ""
+msgstr "%1 bajtów"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:28
 msgid "Delete file"
-msgstr ""
+msgstr "Usuń plik"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:29
 #, qt-format
@@ -157,7 +157,7 @@ msgstr "Anuluj"
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:41
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:82
 msgid "Delete"
-msgstr ""
+msgstr "Usuń"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:24
 msgid "No document found"
@@ -199,11 +199,11 @@ msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:135
 msgid "Today"
-msgstr ""
+msgstr "Dzisiaj"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:138
 msgid "Yesterday"
-msgstr ""
+msgstr "Wczoraj"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:141
 msgid "Earlier this week"
@@ -234,15 +234,15 @@ msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:43
 msgid "Pick"
-msgstr ""
+msgstr "Wybierz"
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:52
 msgid "Select None"
-msgstr ""
+msgstr "Odznacz wszystko"
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:54
 msgid "Select All"
-msgstr ""
+msgstr "Zaznacz wszystko"
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:26
