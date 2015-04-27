@@ -74,7 +74,7 @@ QVariant PdfTocModel::data(const QModelIndex & index, int role) const
 
 QVariantMap PdfTocModel::get(int index) const
 {
-    if (index < 0 && index > m_entries.length()) {
+    if (index < 0 || index > m_entries.length() - 1) {
         qWarning() << Q_FUNC_INFO << "Index not valid, return undefined";
         return QVariantMap();
     }
