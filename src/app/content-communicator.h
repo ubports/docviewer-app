@@ -23,6 +23,9 @@
 
 #include <QUrl>
 #include <QVector>
+#include <libintl.h>
+
+#define _(value) dgettext(GETTEXT_PACKAGE, value)
 
 using namespace com::ubuntu;
 

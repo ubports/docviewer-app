@@ -3,6 +3,11 @@ file(GLOB_RECURSE IMAGE_FILES *.qml *.js)
 
 pkg_check_modules(CONTENTHUB REQUIRED libcontent-hub)
 
+add_definitions(
+  -DGETTEXT_PACKAGE=\"${PROJECT_NAME}\"
+  -DGETTEXT_LOCALEDIR=\"${CMAKE_INSTALL_LOCALEDIR}\"
+)
+
 set(docviewer_SRCS
     main.cpp
     content-communicator.cpp

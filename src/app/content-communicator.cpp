@@ -57,47 +57,72 @@ void ContentCommunicator::handle_import(content::Transfer *transfer)
 {
     // FIXME: If a file is imported from $HOME/Documents, a new copy of the file is created.
     //   Could be use md5? http://doc.qt.io/qt-5/qml-qtqml-qt.html#md5-method
-    // FIXME: If there already a file called "filename.1.ext", the imported file won't be renamed as "filename.2.ext", but "filename.1.1.ext".
-    //  (This issue is in gallery-app too.)
-
     QVariantList importedDocuments;
     QVector<Item> transferedItems = transfer->collect();
     foreach (const Item &hubItem, transferedItems) {
         QFileInfo fi(hubItem.url().toLocalFile());
-        QString filename = fi.fileName();
+
         QString dir;
-        QMimeDatabase mdb;
-        QMimeType mt = mdb.mimeTypeForFile(hubItem.url().toLocalFile());
         QString destination;
         bool rejected = false;
 
+        QMimeDatabase mdb;
+        QMimeType mt = mdb.mimeTypeForFile(hubItem.url().toLocalFile());
+
         // Check if the item is supported by Ubuntu Document Viewer
         if (isSupportedMimetype(mt.name())) {
-            QString suffix = fi.completeSuffix();
-            // FIXME: Should we use fi.baseName()?
-            QString filenameWithoutSuffix = filename.left(filename.size() - suffix.size());
+            /* We don't support formats that use a double extension
+               (e.g. tar.gz), so we can safely use completeBaseName() and
+               suffix() functions, in order to properly detect the name of
+               the document even when there's a dot in the middle of the name.*/
+            QString suffix = fi.suffix();
+            QString filenameWithoutSuffix = fi.completeBaseName();
+
             if(suffix.isEmpty()) {
                 // If the filename doesn't have an extension add one from the
                 // detected mimetype
                 if(!mt.preferredSuffix().isEmpty()) {
                     suffix = mt.preferredSuffix();
-                    filenameWithoutSuffix += ".";
                 }
             }
-            dir = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + QDir::separator();
 
-            destination = QString("%1%2").arg(dir + filenameWithoutSuffix, suffix);
-            // If we already have a file of this name reformat to "filename.x.png"
+            dir = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + QDir::separator();
+            destination = QString("%1.%2").arg(dir + filenameWithoutSuffix, suffix);
+
+            // If we already have a file of this name reformat to "filename (copy x).png"
             // (where x is a number, incremented until we find an available filename)
             if(QFile::exists(destination)) {
+                /*
+                 TRANSLATORS: This string is used for renaming a copied file,
+                 when a file with the same name already exists in user's
+                 Documents folder.
+
+                 e.g. "Manual_Aquaris_E4.5_ubuntu_EN.pdf" will become
+                      "Manual_Aquaris_E4.5_ubuntu_EN (copy 2).pdf"
+
+                      where "2" is given by the argument "%1"
+                */
+                QString reformattedSuffix = QString(_("copy %1"));
+
+                QRegExp rx(" \\(" + reformattedSuffix.arg(QString("\\d+")) + "\\)");
+                int reformattedSuffixPos = filenameWithoutSuffix.lastIndexOf(rx);
+
+                // Check if the file has already a "copy" suffix
+                if(reformattedSuffixPos != -1) {
+                    // Remove the "copy" suffix. We will re-put it later.
+                    filenameWithoutSuffix.truncate(reformattedSuffixPos);
+                }
+
                 int append = 1;
                 do {
-                    destination = QString("%1%2.%3").arg(dir + filenameWithoutSuffix, QString::number(append), suffix);
+                    destination = QString("%1 (%2).%3").arg(dir + filenameWithoutSuffix,
+                                                            reformattedSuffix.arg(QString::number(append)),
+                                                            suffix);
                     append++;
                 } while(QFile::exists(destination));
             }
 
-            QFile::copy(hubItem.url().toLocalFile(), destination);           
+            QFile::copy(hubItem.url().toLocalFile(), destination);
         } else {
             rejected = true;
         }
@@ -106,7 +131,7 @@ void ContentCommunicator::handle_import(content::Transfer *transfer)
         // emitted with the 'documentImported' signal.
         QVariantMap entry;
         if (rejected) {
-            entry["fileName"] = filename;
+            entry["fileName"] = fi.fileName();
         } else {
             entry["fileName"] = destination;
         }
