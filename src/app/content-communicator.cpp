@@ -71,9 +71,13 @@ void ContentCommunicator::handle_import(content::Transfer *transfer)
 
         // Check if the item is supported by Ubuntu Document Viewer
         if (isSupportedMimetype(mt.name())) {
-            QString suffix = fi.completeSuffix();
+            /* We don't support formats that use a double extension
+               (e.g. tar.gz), so we can safely use completeBaseName() and
+               suffix() functions, in order to properly detect the name of
+               the document even when there's a dot in the middle of the name.*/
+            QString suffix = fi.suffix();
+            QString filenameWithoutSuffix = fi.completeBaseName();
 
-            QString filenameWithoutSuffix = fi.baseName();
             if(suffix.isEmpty()) {
                 // If the filename doesn't have an extension add one from the
                 // detected mimetype

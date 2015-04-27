@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-20 18:19+0200\n"
+"POT-Creation-Date: 2015-04-27 17:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,14 +27,14 @@ msgstr ""
 #.
 #. where "2" is given by the argument "%1"
 #.
-#: ../src/app/content-communicator.cpp:101
+#: ../src/app/content-communicator.cpp:105
 #, qt-format
 msgid "copy %1"
 msgstr ""
 
 #: ../src/app/docviewer-application.cpp:164
 #: ../src/app/qml/documentPage/DocumentPage.qml:25
-#: /home/stefano/Progetti/doc-viewer/branches/build-ch-imported-file-format-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_14_10_utopic-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/stefano/tmp/build-ch-imported-documents-name-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_14_10_utopic-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr ""
 
@@ -319,6 +319,6 @@ msgstr[1] ""
 msgid "Open"
 msgstr ""
 
-#: /home/stefano/Progetti/doc-viewer/branches/build-ch-imported-file-format-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_14_10_utopic-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/stefano/tmp/build-ch-imported-documents-name-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_14_10_utopic-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr ""
