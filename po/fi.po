@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-04-14 17:34+0200\n"
+"POT-Creation-Date: 2015-04-27 18:02+0200\n"
 "PO-Revision-Date: 2015-03-06 06:29+0000\n"
 "Last-Translator: Timo Jyrinki <timo.jyrinki@canonical.com>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -15,8 +15,28 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-04-17 05:33+0000\n"
-"X-Generator: Launchpad (build 17430)\n"
+"X-Launchpad-Export-Date: 2015-04-28 05:30+0000\n"
+"X-Generator: Launchpad (build 17453)\n"
+
+#. TRANSLATORS: This string is used for renaming a copied file,
+#. when a file with the same name already exists in user's
+#. Documents folder.
+#. 
+#. e.g. "Manual_Aquaris_E4.5_ubuntu_EN.pdf" will become
+#. "Manual_Aquaris_E4.5_ubuntu_EN (copy 2).pdf"
+#. 
+#. where "2" is given by the argument "%1"
+#. 
+#: ../src/app/content-communicator.cpp:105
+#, qt-format
+msgid "copy %1"
+msgstr ""
+
+#: ../src/app/docviewer-application.cpp:164
+#: ../src/app/qml/documentPage/DocumentPage.qml:25
+#: /home/stefano/tmp/build-ch-imported-documents-name-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+msgid "Document Viewer"
+msgstr "Asiakirjakatselin"
 
 #: ../src/app/qml/common/DetailsPage.qml:27
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:97
@@ -218,11 +238,6 @@ msgstr "Aiemmin tässä kuussa"
 msgid "Even earlier..."
 msgstr "Vielä aiemmin..."
 
-#: ../src/app/qml/documentPage/DocumentPage.qml:25
-#: /home/stefano/Progetti/doc-viewer/build-landscape-support-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
-msgid "Document Viewer"
-msgstr "Asiakirjakatselin"
-
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:28
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
 msgid "Switch to single column list"
@@ -308,6 +323,6 @@ msgstr[1] ""
 msgid "Open"
 msgstr ""
 
-#: /home/stefano/Progetti/doc-viewer/build-landscape-support-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/stefano/tmp/build-ch-imported-documents-name-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "documents;viewer;pdf;reader;asiakirjat;dokumentit;katselin;lukija;"
