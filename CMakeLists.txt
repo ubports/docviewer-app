@@ -90,7 +90,7 @@ endif(CLICK_MODE)
 
 file(GLOB_RECURSE I18N_SRC_FILES
      RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}/po
-     *.qml *.js)
+     *.qml *.js *.cpp)
 list(APPEND I18N_SRC_FILES ${CMAKE_CURRENT_BINARY_DIR}/po/${DESKTOP_FILE}.in.in.h)
 list(SORT I18N_SRC_FILES)
 message("Found ${I18N_SRC_FILES}")
