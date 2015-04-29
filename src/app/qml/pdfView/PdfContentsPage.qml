@@ -39,10 +39,13 @@ Page {
         mainView.setHeaderVisibility(true);
 
         // Find out the current page position in the ToC index
-        var i=0
-        while(!(pdfView.currentPageIndex >= poppler.tocModel.get(i).pageIndex &&
-              pdfView.currentPageIndex < poppler.tocModel.get(i+1).pageIndex)) {
-            i++
+        for (var i=0; i<poppler.tocModel.count; i++) {
+            if (i+1 < poppler.tocModel.count) {
+                if (pdfView.currentPageIndex >= poppler.tocModel.get(i).pageIndex &&
+                        pdfView.currentPageIndex < poppler.tocModel.get(i+1).pageIndex) {
+                    break;
+                }
+            }
         }
 
         // Set highlighted index

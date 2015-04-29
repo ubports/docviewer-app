@@ -308,7 +308,7 @@ void VerticalView::positionAtIndex(int index)
     if (m_delegateModel->count() <= 0)
         return;
 
-    if (index < m_firstVisibleIndex || index > m_firstVisibleIndex + m_visibleItems.length()) {
+    if (index < m_firstVisibleIndex || index > m_firstVisibleIndex + m_visibleItems.length() - 1) {
         // TODO This could be optimized by trying to reuse the interesection
         // of items that may end up intersecting between the existing
         // m_visibleItems and the items we are creating in the next loop
@@ -592,7 +592,7 @@ VerticalView::ListItem *VerticalView::createItem(int modelIndex, bool asynchrono
                 if (nextItem) {
                     listItem->setY(nextItem->y() - listItem->height() - m_spacing);
                 } else if (modelIndex == 0) {
-                    listItem->setY(560);
+                    listItem->setY(0);
                 } else if (!m_visibleItems.isEmpty()) {
                     lostItem = true;
                 }

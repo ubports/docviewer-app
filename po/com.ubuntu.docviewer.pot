@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-29 18:00+0200\n"
+"POT-Creation-Date: 2015-04-29 18:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,12 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: ../src/app/docviewer-application.cpp:171
+#: ../src/app/qml/documentPage/DocumentPage.qml:25
+#: /home/stefano/Progetti/doc-viewer/build-plugins-renaming-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+msgid "Document Viewer"
+msgstr ""
 
 #: ../src/app/qml/common/DetailsPage.qml:27
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:97
@@ -214,11 +220,6 @@ msgstr ""
 msgid "Even earlier..."
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentPage.qml:25
-#: /home/stefano/Progetti/doc-viewer/build-plugins-renaming-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
-msgid "Document Viewer"
-msgstr ""
-
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:28
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
 msgid "Switch to single column list"
@@ -294,13 +295,13 @@ msgstr ""
 msgid "Loading..."
 msgstr ""
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:186
+#: ../src/app/qml/ubuntu-docviewer-app.qml:202
 msgid "Document successfully imported!"
 msgid_plural "Documents successfully imported!"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:189
+#: ../src/app/qml/ubuntu-docviewer-app.qml:205
 msgid "Open"
 msgstr ""
 
