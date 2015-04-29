@@ -59,6 +59,15 @@ class MainView(ubuntuuitoolkit.MainView):
         return self.wait_select_single(PdfView)
 
     @autopilot_logging.log_action(logger.info)
+    def open_PdfContentsPage(self):
+        """Open the PdfContents Page.
+
+        :return the PdfContents Page
+
+        """
+        return self.wait_select_single(PdfContentsPage)
+
+    @autopilot_logging.log_action(logger.info)
     def get_PdfViewGotoDialog(self):
         """Return a dialog emulator"""
         return self.wait_select_single(objectName="PdfViewGotoDialog")
@@ -122,3 +131,21 @@ class PdfView(PageWithBottomEdge):
         """Click the go_to_page header button."""
         header = self.main_view.get_header()
         header.click_action_button('gotopage')
+
+
+class PdfContentsPage(Page):
+    """Autopilot helper for PdfContents page."""
+
+    @autopilot_logging.log_action(logger.info)
+    def click_content_line(self, labelText):
+        content_line = self._get_listitem(labelText)
+        self.pointing_device.click_object(content_line)
+
+    def _get_listitem(self, labelText):
+        list_items = self.select_many(
+            "ListItemWithActions", objectName="delegate")
+
+        for list_item in list_items:
+            label = list_item.wait_select_single("Label", objectName="content")
+            if label.text == labelText:
+                return label

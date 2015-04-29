@@ -76,3 +76,8 @@ class TestMainWindow(DocviewerAppTestCase):
         pdf = self.app.main_view.open_PdfView()
 
         pdf.reveal_bottom_edge_page()
+
+        contents_page = self.app.main_view.open_PdfContentsPage()
+
+        # Go to "Chapter one" in pdf document
+        tocItem = contents_page.click_content_line("Chapter 1. Introduction")
