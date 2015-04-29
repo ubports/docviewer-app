@@ -43,13 +43,13 @@ Dialog {
 
         onClicked: {
             if (deleteFileDialog.path) {
-                folderModel.rm(path)
+                docModel.rm(path)
             } else {
                 var items = documentPage.view.item.selectedItems;
 
                 for (var i=0; i < items.count; i++) {
                     console.log("Removing:", items.get(i).model.path);
-                    folderModel.rm(items.get(i).model.path);
+                    docModel.rm(items.get(i).model.path);
                 }
             }
 

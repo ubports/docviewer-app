@@ -153,6 +153,16 @@ const QString& DocViewerApplication::getDocumentFile() const
 }
 
 /*!
+ * \brief DocViewerApplication::getDocumentsDir
+ * Returns the documents dir passed as a parameter
+ */
+const QString& DocViewerApplication::getDocumentsDir() const
+{
+    return m_cmdLineParser->documentsDir();
+}
+
+
+/*!
  * \brief DocViewerApplication::createView
  * Create the master QDeclarativeView that all the pages will operate within
  */

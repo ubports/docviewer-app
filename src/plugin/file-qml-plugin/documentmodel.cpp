@@ -31,11 +31,7 @@ DocumentModel::DocumentModel(QObject *parent)
     connect(m_docsMonitor, SIGNAL(directoryChanged(QString)), this,
             SLOT(_q_directoryChanged(QString)));
 
-    m_docsMonitor->addPath(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation));
-
-    Q_FOREACH (const QString dir, m_docsMonitor->directories()) {
-        parseDirectoryContent(dir);
-    }
+    setWatchedDirs();
 }
 
 void DocumentModel::_q_directoryChanged(QString path)
@@ -165,38 +161,7 @@ QVariant DocumentModel::data(const QModelIndex & index, int role) const
     }
 }
 
-DocumentModel::~DocumentModel()
-{
-    delete m_docsMonitor;
-}
-
-SortFilterDocumentModel::SortFilterDocumentModel(QObject *parent)
-    : QSortFilterProxyModel(parent)
-{
-    m_model = new DocumentModel();
-    setSourceModel(m_model);
-    connect(m_model, SIGNAL(rowsInserted(QModelIndex,int,int)), this, SIGNAL(countChanged()));
-    connect(m_model, SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SIGNAL(countChanged()));
-
-    setSortRole(DocumentModel::DateRole);
-    setSortCaseSensitivity(Qt::CaseInsensitive);
-    setSortLocaleAware(true);
-
-    sort(0, Qt::DescendingOrder);
-    setDynamicSortFilter(true);
-}
-
-SortFilterDocumentModel::~SortFilterDocumentModel()
-{
-    delete m_model;
-}
-
-int SortFilterDocumentModel::rowCount()
-{
-    return m_model->rowCount();
-}
-
-bool SortFilterDocumentModel::rm(QString path)
+bool DocumentModel::rm(QString path)
 {
     bool result = false;
     QDir dir(path);
@@ -209,4 +174,36 @@ bool SortFilterDocumentModel::rm(QString path)
     }
 
     return result;
+}
+
+void DocumentModel::setCustomDir(QString path)
+{
+    if (m_customDir != path) {
+        m_customDir = path;
+
+        setWatchedDirs();
+        Q_EMIT customDirChanged();
+    }
+}
+
+void DocumentModel::setWatchedDirs()
+{
+    // Clean old watched paths
+    m_docsMonitor->removePaths(m_docsMonitor->directories());
+    m_docsMonitor->removePaths(m_docsMonitor->files());
+    m_docs.clear();
+
+    if (!m_customDir.isEmpty())
+        m_docsMonitor->addPath(m_customDir);
+    else
+        m_docsMonitor->addPath(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation));
+
+    Q_FOREACH (const QString dir, m_docsMonitor->directories()) {
+        parseDirectoryContent(dir);
+    }
+}
+
+DocumentModel::~DocumentModel()
+{
+    delete m_docsMonitor;
 }

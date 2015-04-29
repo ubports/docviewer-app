@@ -45,6 +45,13 @@ MainView {
             path = path.replace("file://", "")
                        .replace("document://", "");
 
+            if (file.path === path) {
+                // File has been already initialized, so just open the viewer
+                LoadComponent.load(file.mimetype.name);
+
+                return
+            }
+
             file.path = path;
         }
     }
@@ -106,7 +113,20 @@ MainView {
         }
     }
 
-    DocumentsModel { id: folderModel }
+    SortFilterModel {
+        id: folderModel
+        model: DocumentsModel {
+            id: docModel
+
+            // Used for autopilot tests! If customDir is empty, this property is not used.
+            customDir: DOC_VIEWER.documentsDir
+        }
+
+        sort.property: "date"
+        sort.order: Qt.DescendingOrder
+        sortCaseSensitivity: Qt.CaseInsensitive
+    }
+
     PageStack { id: pageStack }
 
     Connections {

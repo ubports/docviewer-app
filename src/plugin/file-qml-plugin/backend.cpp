@@ -28,7 +28,7 @@ void BackendPlugin::registerTypes(const char *uri)
     
     //@uri DocumentViewer
 
-    qmlRegisterType<SortFilterDocumentModel>(uri, 1, 0, "DocumentsModel");
+    qmlRegisterType<DocumentModel>(uri, 1, 0, "DocumentsModel");
     qmlRegisterType<DocviewerFile>(uri, 1, 0, "File");
 }
 

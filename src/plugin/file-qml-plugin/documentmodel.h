@@ -36,6 +36,8 @@ struct DocumentItem {
 class DocumentModel : public QAbstractListModel
 {
     Q_OBJECT
+    Q_PROPERTY(QString customDir READ getCustomDir WRITE setCustomDir NOTIFY customDirChanged)
+
 public:
     enum Roles {
         NameRole = Qt::UserRole + 1,
@@ -54,36 +56,29 @@ public:
     int rowCount(const QModelIndex & parent = QModelIndex()) const;
     QVariant data(const QModelIndex & index, int role = Qt::DisplayRole) const;
 
+    QString getCustomDir() const { return m_customDir; }
+
+    Q_INVOKABLE bool rm(QString path);
+
     void parseDirectoryContent(QString path);
+
+signals:
+    void customDirChanged();
+
+public Q_SLOTS:
+    void setCustomDir(QString path);
 
 private Q_SLOTS:
     void _q_directoryChanged(QString path);
 
 private:   
+    void setWatchedDirs();
     void addDocumentEntry(DocumentItem item);
     void removeDocumentEntry(int index);
 
     QList<DocumentItem> m_docs;
     QFileSystemWatcher *m_docsMonitor;
-};
-
-class SortFilterDocumentModel : public QSortFilterProxyModel
-{
-    Q_OBJECT
-    Q_PROPERTY(int count READ rowCount NOTIFY countChanged)
-
-public:        
-    SortFilterDocumentModel(QObject *parent = 0);
-    ~SortFilterDocumentModel();
-
-    int rowCount();
-    Q_INVOKABLE bool rm(QString path);
-
-Q_SIGNALS:
-    void countChanged();
-
-private:
-    DocumentModel *m_model;
+    QString m_customDir;
 };
 
 #endif // DOCUMENTMODEL_H

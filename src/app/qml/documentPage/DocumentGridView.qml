@@ -53,7 +53,7 @@ MultipleSelectionGridView {
                 return
             }
             else {
-                file.path = model.path
+                mainView.openDocument(model.path)
             }
         }
 
