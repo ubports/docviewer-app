@@ -205,9 +205,13 @@ void DocumentModel::setCustomDir(QString path)
 
 void DocumentModel::setWatchedDirs()
 {
-    // Clear old watched paths and document list
+    // Clear old watched paths
     m_docsMonitor->clear();
+
+    // Clear document list
+    beginRemoveRows(QModelIndex(), 0, rowCount());
     m_docs.clear();
+    endRemoveRows();
 
     if (!m_customDir.isEmpty())
         m_docsMonitor->addDirectory(m_customDir);
