@@ -38,7 +38,7 @@ class DocumentModel : public QAbstractListModel
 
 public:
     enum Roles {
-        NameRole = Qt::UserRole + 1,
+        NameRole,
         PathRole,
         MimetypeRole,
         DateRole,
