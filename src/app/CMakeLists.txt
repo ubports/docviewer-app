@@ -9,8 +9,6 @@ set(docviewer_SRCS
     command-line-parser.cpp
     docviewer-application.cpp
     urlhandler.cpp
-    quick/documentmodel.cpp
-    quick/docviewerfile.cpp
     ${QML_SRCS}
 )
 
