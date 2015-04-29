@@ -15,13 +15,14 @@
  *
  */
 
-#include <QObject>
-#include <QDebug>
-#include <QFileInfo>
-#include <QDir>
-#include <QMimeDatabase>
-
 #include "docviewerfile.h"
+
+#include <QDir>
+#include <QFileInfo>
+#include <QMimeDatabase>
+#include <QDateTime>
+
+#include <QDebug>
 
 /*
  ----8<-----

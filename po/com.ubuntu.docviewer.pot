@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-29 23:27+0200\n"
+"POT-Creation-Date: 2015-04-29 23:35+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -309,13 +309,13 @@ msgstr ""
 msgid "Loading..."
 msgstr ""
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:203
+#: ../src/app/qml/ubuntu-docviewer-app.qml:202
 msgid "Document successfully imported!"
 msgid_plural "Documents successfully imported!"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:206
+#: ../src/app/qml/ubuntu-docviewer-app.qml:205
 msgid "Open"
 msgstr ""
 

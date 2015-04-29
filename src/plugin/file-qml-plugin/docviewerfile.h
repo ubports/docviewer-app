@@ -18,10 +18,8 @@
 #ifndef DOCVIEWERFILE_H
 #define DOCVIEWERFILE_H
 
-#include <QString>
 #include <QObject>
-#include <QProcess>
-#include <QDateTime>
+#include <QVariantMap>
 
 class DocviewerFile : public QObject
 {
