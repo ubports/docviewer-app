@@ -18,11 +18,6 @@
 #define DOCUMENTMODEL_H
 
 #include <QAbstractListModel>
-#include <QSortFilterProxyModel>
-
-#include <QStandardPaths>
-#include <QFileSystemWatcher>
-#include <QDirIterator>
 
 struct DocumentItem {
     QString name;
@@ -33,10 +28,13 @@ struct DocumentItem {
     qint64 size;
 };
 
+class QFileSystemWatcher;
+
 class DocumentModel : public QAbstractListModel
 {
     Q_OBJECT
     Q_PROPERTY(QString customDir READ getCustomDir WRITE setCustomDir NOTIFY customDirChanged)
+    Q_ENUMS(DateDiffEnums)
 
 public:
     enum Roles {
@@ -46,6 +44,14 @@ public:
         DateRole,
         DateDiffRole,
         SizeRole
+    };
+
+    enum DateDiffEnums {
+        Today = 0,
+        Yesterday = 1,
+        LastWeek = 2,
+        LastMonth = 3,
+        Earlier = 4
     };
 
     DocumentModel(QObject *parent = 0);

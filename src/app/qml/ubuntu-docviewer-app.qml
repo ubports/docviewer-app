@@ -124,7 +124,7 @@ MainView {
 
         sort.property: "date"
         sort.order: Qt.DescendingOrder
-        sortCaseSensitivity: Qt.CaseInsensitive
+        sortCaseSensitivity: Qt.CaseSensitive
     }
 
     PageStack { id: pageStack }

@@ -17,10 +17,16 @@
 
 #include "documentmodel.h"
 
+#include <QFileSystemWatcher>
+#include <QStandardPaths>
+#include <QDirIterator>
+
+#include <QDir>
+#include <QFileInfo>
+
 #include <QMimeDatabase>
 #include <QDateTime>
-#include <QFileInfo>
-#include <QDir>
+
 #include <QDebug>
 
 DocumentModel::DocumentModel(QObject *parent)
@@ -81,19 +87,19 @@ void DocumentModel::parseDirectoryContent(QString path)
 
             qint64 dateDiff = lastAccess.daysTo(now);
             if (dateDiff == 0) {
-                item.dateDiff = 0;
+                item.dateDiff = DateDiffEnums::Today;
             }
             else if (dateDiff == 1) {
-                item.dateDiff = 1;
+                item.dateDiff = DateDiffEnums::Yesterday;
             }
             else if (dateDiff < 7) {
-                item.dateDiff = 2;
+                item.dateDiff = DateDiffEnums::LastWeek;
             }
             else if (dateDiff < 30) {
-                item.dateDiff = 3;
+                item.dateDiff = DateDiffEnums::LastMonth;
             }
             else {
-                item.dateDiff = 4;
+                item.dateDiff = DateDiffEnums::Earlier;
             }
             //qDebug() << "Item" << item.name << "Date:" << item.date;
             //qDebug() << "Item" << item.name << "Item date is:" << lastAccess.toString("dd-MM-yyyy") << "diff is" << dateDiff << "DateDiff is:" << item.dateDiff;

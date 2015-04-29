@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-29 17:22+0200\n"
+"POT-Creation-Date: 2015-04-29 17:57+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -194,23 +194,23 @@ msgstr ""
 msgid "dd-MM-yyyy hh:mm"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:135
+#: ../src/app/qml/documentPage/DocumentListView.qml:136
 msgid "Today"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:138
+#: ../src/app/qml/documentPage/DocumentListView.qml:139
 msgid "Yesterday"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:141
+#: ../src/app/qml/documentPage/DocumentListView.qml:142
 msgid "Earlier this week"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:144
+#: ../src/app/qml/documentPage/DocumentListView.qml:145
 msgid "Earlier this month"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:146
+#: ../src/app/qml/documentPage/DocumentListView.qml:147
 msgid "Even earlier..."
 msgstr ""
 
