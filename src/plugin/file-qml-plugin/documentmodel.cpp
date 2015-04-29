@@ -194,9 +194,14 @@ void DocumentModel::setCustomDir(QString path)
 
 void DocumentModel::setWatchedDirs()
 {
-    // Clean old watched paths
-    m_docsMonitor->removePaths(m_docsMonitor->directories());
-    m_docsMonitor->removePaths(m_docsMonitor->files());
+    // Clear old watched paths
+    if (!m_docsMonitor->directories().isEmpty())
+        m_docsMonitor->removePaths(m_docsMonitor->directories());
+
+    if (!m_docsMonitor->files().isEmpty())
+        m_docsMonitor->removePaths(m_docsMonitor->files());
+
+    // Clear document list
     m_docs.clear();
 
     if (!m_customDir.isEmpty())
