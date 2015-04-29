@@ -5,6 +5,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 set(fileqmlplugin_SRCS
 	backend.cpp
 	documentmodel.cpp
+        fswatcher.cpp
 	docviewerfile.cpp
 )
 

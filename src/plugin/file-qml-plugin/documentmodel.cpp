@@ -16,8 +16,8 @@
  */
 
 #include "documentmodel.h"
+#include "fswatcher.h"
 
-#include <QFileSystemWatcher>
 #include <QStandardPaths>
 #include <QDirIterator>
 
@@ -32,81 +32,92 @@
 DocumentModel::DocumentModel(QObject *parent)
     : QAbstractListModel(parent)
 {
-    m_docsMonitor = new QFileSystemWatcher;
+    m_docsMonitor = new FSWatcher;
 
-    connect(m_docsMonitor, SIGNAL(directoryChanged(QString)), this,
-            SLOT(_q_directoryChanged(QString)));
+    connect(m_docsMonitor, SIGNAL(fileAdded(QString)), this,
+            SLOT(q_fileAdded(QString)));
+    connect(m_docsMonitor, SIGNAL(fileRemoved(QString)), this,
+            SLOT(q_fileRemoved(QString)));
+    connect(m_docsMonitor, SIGNAL(fileModified(QString)), this,
+            SLOT(q_fileModified(QString)));
 
     setWatchedDirs();
 }
 
-void DocumentModel::_q_directoryChanged(QString path)
+void DocumentModel::q_fileRemoved(const QString & path)
 {
-    QMutableListIterator<DocumentItem> i(m_docs);
-    int n = 0;
-    int m = 0;
-
-    while (i.hasNext()) {
-        if (i.next().path.startsWith(path)) {
-            beginRemoveRows(QModelIndex(), n-m, n-m);
-            i.remove();
-            endRemoveRows();
-            m++;
+    for (int i=0; i<m_docs.length(); i++) {
+        if (m_docs.at(i).path == path) {
+            removeDocumentEntry(i);
+            break;
         }
-        n++;
     }
-
-    parseDirectoryContent(path);
 }
 
-void DocumentModel::parseDirectoryContent(QString path)
+void DocumentModel::q_fileAdded(const QString & path)
 {
-    QDirIterator dir(path, QDir::Files | QDir::NoDotAndDotDot | QDir::Readable,
-                     QDirIterator::Subdirectories);
+    if (isFileSupported(path)) {
+        addDocumentEntry(createEntry(path));
+    }
+}
 
-    while (dir.hasNext()) {
-        dir.next();
+void DocumentModel::q_fileModified(const QString & path)
+{
+    for (int i=0; i<m_docs.length(); i++) {
+        if (m_docs.at(i).path == path) {
+            m_docs[i] = createEntry(path);
 
-        QDateTime now = QDateTime::currentDateTime();
-        //qDebug() << "Current date is:" << now.toString("dd-MM-yyyy");
-
-        QMimeDatabase db;
-        QString mimetype = db.mimeTypeForFile(dir.filePath()).name();
-
-        if (mimetype.startsWith("text/") || mimetype == "application/pdf") {
-            QFileInfo file(dir.filePath());
-            DocumentItem item;
-
-            QDateTime lastAccess = file.lastRead();
-
-            item.name = file.fileName();
-            item.path = file.absoluteFilePath();
-            item.mimetype = mimetype;
-            item.date = lastAccess.toMSecsSinceEpoch();
-            item.size = file.size();
-
-            qint64 dateDiff = lastAccess.daysTo(now);
-            if (dateDiff == 0) {
-                item.dateDiff = DateDiffEnums::Today;
-            }
-            else if (dateDiff == 1) {
-                item.dateDiff = DateDiffEnums::Yesterday;
-            }
-            else if (dateDiff < 7) {
-                item.dateDiff = DateDiffEnums::LastWeek;
-            }
-            else if (dateDiff < 30) {
-                item.dateDiff = DateDiffEnums::LastMonth;
-            }
-            else {
-                item.dateDiff = DateDiffEnums::Earlier;
-            }
-            //qDebug() << "Item" << item.name << "Date:" << item.date;
-            //qDebug() << "Item" << item.name << "Item date is:" << lastAccess.toString("dd-MM-yyyy") << "diff is" << dateDiff << "DateDiff is:" << item.dateDiff;
-
-            addDocumentEntry(item);
+            break;
         }
     }
+}
+
+DocumentItem DocumentModel::createEntry(const QString &path)
+{
+    DocumentItem item;
+
+    QDateTime now = QDateTime::currentDateTime();
+    //qDebug() << "Current date is:" << now.toString("dd-MM-yyyy");
+
+    QFileInfo file(path);
+    QMimeDatabase db;
+
+    QDateTime lastAccess = file.lastRead();
+
+    item.name = file.fileName();
+    item.path = file.absoluteFilePath();
+    item.mimetype = db.mimeTypeForFile(path).name();
+    item.date = lastAccess.toMSecsSinceEpoch();
+    item.size = file.size();
+
+    qint64 dateDiff = lastAccess.daysTo(now);
+    if (dateDiff == 0)
+        item.dateDiff = DateDiffEnums::Today;
+
+    else if (dateDiff == 1)
+        item.dateDiff = DateDiffEnums::Yesterday;
+
+    else if (dateDiff < 7)
+        item.dateDiff = DateDiffEnums::LastWeek;
+
+    else if (dateDiff < 30)
+        item.dateDiff = DateDiffEnums::LastMonth;
+
+    else
+        item.dateDiff = DateDiffEnums::Earlier;
+
+    //qDebug() << "Item" << item.name << "Date:" << item.date;
+    //qDebug() << "Item" << item.name << "Item date is:" << lastAccess.toString("dd-MM-yyyy") << "diff is" << dateDiff << "DateDiff is:" << item.dateDiff;
+
+    return item;
+}
+
+bool DocumentModel::isFileSupported(const QString &path)
+{
+    QMimeDatabase db;
+    QString mimetype = db.mimeTypeForFile(path).name();
+
+    return (mimetype.startsWith("text/") || mimetype == "application/pdf");
 }
 
 QHash<int, QByteArray> DocumentModel::roleNames() const
@@ -131,7 +142,7 @@ void DocumentModel::addDocumentEntry(DocumentItem item)
 
 void DocumentModel::removeDocumentEntry(int index)
 {
-    beginRemoveRows(QModelIndex(), rowCount(), rowCount());
+    beginRemoveRows(QModelIndex(), index, index);
     m_docs.removeAt(index);
     endRemoveRows();
 }
@@ -194,24 +205,14 @@ void DocumentModel::setCustomDir(QString path)
 
 void DocumentModel::setWatchedDirs()
 {
-    // Clear old watched paths
-    if (!m_docsMonitor->directories().isEmpty())
-        m_docsMonitor->removePaths(m_docsMonitor->directories());
-
-    if (!m_docsMonitor->files().isEmpty())
-        m_docsMonitor->removePaths(m_docsMonitor->files());
-
-    // Clear document list
+    // Clear old watched paths and document list
+    m_docsMonitor->clear();
     m_docs.clear();
 
     if (!m_customDir.isEmpty())
-        m_docsMonitor->addPath(m_customDir);
+        m_docsMonitor->addDirectory(m_customDir);
     else
-        m_docsMonitor->addPath(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation));
-
-    Q_FOREACH (const QString dir, m_docsMonitor->directories()) {
-        parseDirectoryContent(dir);
-    }
+        m_docsMonitor->addDirectory(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation));
 }
 
 DocumentModel::~DocumentModel()

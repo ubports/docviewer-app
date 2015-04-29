@@ -28,7 +28,7 @@ struct DocumentItem {
     qint64 size;
 };
 
-class QFileSystemWatcher;
+class FSWatcher;
 
 class DocumentModel : public QAbstractListModel
 {
@@ -66,8 +66,6 @@ public:
 
     Q_INVOKABLE bool rm(QString path);
 
-    void parseDirectoryContent(QString path);
-
 signals:
     void customDirChanged();
 
@@ -75,15 +73,20 @@ public Q_SLOTS:
     void setCustomDir(QString path);
 
 private Q_SLOTS:
-    void _q_directoryChanged(QString path);
+    void q_fileRemoved(const QString & path);
+    void q_fileAdded(const QString & path);
+    void q_fileModified(const QString & path);
 
 private:   
     void setWatchedDirs();
     void addDocumentEntry(DocumentItem item);
     void removeDocumentEntry(int index);
 
+    DocumentItem createEntry(const QString & path);
+    bool isFileSupported(const QString & path);
+
     QList<DocumentItem> m_docs;
-    QFileSystemWatcher *m_docsMonitor;
+    FSWatcher *m_docsMonitor;
     QString m_customDir;
 };
 

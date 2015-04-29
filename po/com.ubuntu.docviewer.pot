@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-29 18:06+0200\n"
+"POT-Creation-Date: 2015-04-29 19:42+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,20 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#. TRANSLATORS: This string is used for renaming a copied file,
+#. when a file with the same name already exists in user's
+#. Documents folder.
+#.
+#. e.g. "Manual_Aquaris_E4.5_ubuntu_EN.pdf" will become
+#. "Manual_Aquaris_E4.5_ubuntu_EN (copy 2).pdf"
+#.
+#. where "2" is given by the argument "%1"
+#.
+#: ../src/app/content-communicator.cpp:105
+#, qt-format
+msgid "copy %1"
+msgstr ""
 
 #: ../src/app/docviewer-application.cpp:171
 #: ../src/app/qml/documentPage/DocumentPage.qml:25
