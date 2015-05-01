@@ -132,6 +132,11 @@ class PdfView(PageWithBottomEdge):
         header = self.main_view.get_header()
         header.click_action_button('gotopage')
 
+    def get_currentpage_number(self):
+        """return the value of the currentPage property"""
+        logger.warn(self.currentPage)
+        return self.currentPage
+
 
 class PdfContentsPage(Page):
     """Autopilot helper for PdfContents page."""
@@ -155,6 +160,7 @@ class PdfContentsPage(Page):
                     "Label", objectName="pageindex").text
                 return label, page_no
                 break
+
     @autopilot_logging.log_action(logger.info)
     def click_content_line(self, content_line):
         self.pointing_device.click_object(content_line)
