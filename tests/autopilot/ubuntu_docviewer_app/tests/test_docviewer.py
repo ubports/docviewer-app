@@ -80,4 +80,5 @@ class TestMainWindow(DocviewerAppTestCase):
         contents_page = self.app.main_view.open_PdfContentsPage()
 
         # Go to "Chapter one" in pdf document
-        tocItem = contents_page.click_content_line("Chapter 1. Introduction")
+        page_no = contents_page.get_page_number("Chapter 1. Introduction")
+        contents_page.click_content_line("Chapter 1. Introduction")

@@ -137,15 +137,24 @@ class PdfContentsPage(Page):
     """Autopilot helper for PdfContents page."""
 
     @autopilot_logging.log_action(logger.info)
-    def click_content_line(self, labelText):
-        content_line = self._get_listitem(labelText)
-        self.pointing_device.click_object(content_line)
+    def get_content_and_line_pageindex(self, labelText):
+        content_line, page_no = self._get_listitem(labelText)
+        return content_line, page_no
 
     def _get_listitem(self, labelText):
-        list_items = self.select_many(
-            "ListItemWithActions", objectName="delegate")
+        list_items_count = self.select_single(
+            "QQuickListView", objectName="view").count
 
-        for list_item in list_items:
-            label = list_item.wait_select_single("Label", objectName="content")
+        index = 0
+        for index in range(list_items_count):
+            list_item = self.select_single(
+                "ListItemWithActions", objectName="delegate{}".format(index))
+            label = list_item.select_single("Label", objectName="content")
             if label.text == labelText:
-                return label
+                page_no = list_item.select_single(
+                    "Label", objectName="pageindex").text
+                return label, page_no
+                break
+    @autopilot_logging.log_action(logger.info)
+    def click_content_line(self, content_line):
+        self.pointing_device.click_object(content_line)

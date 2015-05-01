@@ -70,7 +70,7 @@ Page {
 
         delegate: ListItemWithActions {
             id: delegate
-            objectName: "delegate"
+            objectName: "delegate" + index
 
             width: parent.width
             height: (model.level === 0) ? units.gu(7) : units.gu(6)
