@@ -25,6 +25,7 @@ Page {
     id: pdfContents
     objectName: "pdfcontents"
 
+    // this property will have to be removed when bug #1341671 will be fixed.
     property string testProperty: "for page name issue"
 
     // TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
