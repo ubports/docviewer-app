@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-04-27 18:02+0200\n"
-"PO-Revision-Date: 2015-04-20 14:34+0000\n"
-"Last-Translator: Bartosz Kosiorek <Unknown>\n"
+"PO-Revision-Date: 2015-04-29 08:23+0000\n"
+"Last-Translator: Krzysztof <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-04-28 05:30+0000\n"
+"X-Launchpad-Export-Date: 2015-04-30 05:28+0000\n"
 "X-Generator: Launchpad (build 17453)\n"
 
 #. TRANSLATORS: This string is used for renaming a copied file,
@@ -31,7 +31,7 @@ msgstr ""
 #: ../src/app/content-communicator.cpp:105
 #, qt-format
 msgid "copy %1"
-msgstr ""
+msgstr "kopiowanie %1"
 
 #: ../src/app/docviewer-application.cpp:164
 #: ../src/app/qml/documentPage/DocumentPage.qml:25
@@ -84,23 +84,25 @@ msgstr "Zamknij"
 
 #: ../src/app/qml/common/PickImportedDialog.qml:29
 msgid "Multiple documents imported"
-msgstr ""
+msgstr "Zaimportowano wiele dokumentów"
 
 #: ../src/app/qml/common/PickImportedDialog.qml:30
 msgid "Choose which one to open:"
-msgstr ""
+msgstr "Wybierz, który chcesz otworzyć:"
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:28
 msgid "File not supported"
 msgid_plural "Files not supported"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Plik nieobsługiwany"
+msgstr[1] "Pliki nieobsługiwane"
+msgstr[2] "Pliki nieobsługiwane"
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:29
 msgid "Following document has not been imported:"
 msgid_plural "Following documents have not been imported:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Nie zaimportowano następującego dokumentu:"
+msgstr[1] "Nie zaimportowano następujących dokumentów:"
+msgstr[2] "Nie zaimportowano następujących dokumentów:"
 
 #: ../src/app/qml/common/ToastWithAction.qml:97
 msgid "Dismiss"
@@ -201,21 +203,21 @@ msgstr ""
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:40
 #, qt-format
 msgid "Yesterday, %1"
-msgstr ""
+msgstr "Wczoraj, %1"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:45
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:35
 msgid "dddd, hh:mm"
-msgstr ""
+msgstr "dddd, hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:49
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:39
 msgid "dd-MM-yyyy hh:mm"
-msgstr ""
+msgstr "dd-MM-yyyy hh:mm"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:135
 msgid "Today"
@@ -227,15 +229,15 @@ msgstr "Wczoraj"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:141
 msgid "Earlier this week"
-msgstr ""
+msgstr "Na początku tego tygodnia"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:144
 msgid "Earlier this month"
-msgstr ""
+msgstr "Na początku tego miesiąca"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:146
 msgid "Even earlier..."
-msgstr ""
+msgstr "Jeszcze wcześniej..."
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:28
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
@@ -245,7 +247,7 @@ msgstr ""
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:28
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
 msgid "Switch to grid"
-msgstr ""
+msgstr "Przełącz do widoku siatki"
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:43
 msgid "Pick"
@@ -267,7 +269,7 @@ msgstr ""
 
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:32
 msgid "Hide table of contents"
-msgstr ""
+msgstr "Ukryj spis treści"
 
 #. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
 #. while the second one (%2) refers to the total pages count.

@@ -170,16 +170,15 @@ class PdfContentsPage(Page):
     @autopilot_logging.log_action(logger.info)
     def click_content_line(self, content_line):
         self.pointing_device.click_object(content_line)
-        self.visible.wait_for(True)
 
     @autopilot_logging.log_action(logger.info)
     def scroll_pdfcontentspage(self):
         action_item = self.select_single("QQuickListView")
-        start_x = (action_item.globalRect.x +
-                   (action_item.globalRect.width * 0.5))
-        start_y = (action_item.globalRect.y +
-                   (action_item.height * 0.5))
-        stop_y = start_y - (self.height * 0.7)
+        start_x = (self.globalRect.x +
+                   (self.globalRect.width * 0.5))
+        start_y = (self.globalRect.y +
+                   (self.height * 0.7))
+        stop_y = start_y - (self.height * 0.8)
         self.pointing_device.drag(start_x, start_y,
                                   start_x, stop_y, rate=2)
         action_item.moving.wait_for(False)
