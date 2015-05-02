@@ -60,7 +60,7 @@ class TestMainWindow(DocviewerAppTestCase):
         self.launch_app()
         pdf = self.app.main_view.open_PdfView()
         pdf.toggle_header_visibility()
-        pdf.click_go_to_page_button()
+        self.app.main_view.click_go_to_page_button()
         self.go_to_page_no(page_no)
 
         self.assertThat(

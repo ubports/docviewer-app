@@ -72,6 +72,7 @@ class MainView(ubuntuuitoolkit.MainView):
         """Return a dialog emulator"""
         return self.wait_select_single(objectName="PdfViewGotoDialog")
 
+    @autopilot_logging.log_action(logger.info)
     def go_to_page_from_dialog(self, page_no):
         """ Go to page from get_PfdViewGotoDialog """
         textfield = self.wait_select_single(
@@ -79,6 +80,12 @@ class MainView(ubuntuuitoolkit.MainView):
         textfield.write(page_no)
         go_button = self.wait_select_single("Button", objectName="GOButton")
         self.pointing_device.click_object(go_button)
+
+    @autopilot_logging.log_action(logger.info)
+    def click_go_to_page_button(self):
+        """Click the go_to_page header button."""
+        header = self.get_header()
+        header.click_action_button('gotopage')
 
 
 class Page(ubuntuuitoolkit.UbuntuUIToolkitCustomProxyObjectBase):
@@ -125,12 +132,7 @@ class PdfView(PageWithBottomEdge):
     @autopilot_logging.log_action(logger.info)
     def toggle_header_visibility(self):
         """Show/hide page header by clicking on the center of main view"""
-        self.pointing_device.click_object(self.main_view)
-
-    def click_go_to_page_button(self):
-        """Click the go_to_page header button."""
-        header = self.main_view.get_header()
-        header.click_action_button('gotopage')
+        self.pointing_device.click_object(self)
 
     def get_currentpage_number(self):
         """return the value of the currentPage property"""
