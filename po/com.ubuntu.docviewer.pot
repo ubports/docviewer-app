@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-01 16:54+0200\n"
+"POT-Creation-Date: 2015-05-04 21:48+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,7 +34,7 @@ msgstr ""
 
 #: ../src/app/docviewer-application.cpp:164
 #: ../src/app/qml/documentPage/DocumentPage.qml:25
-#: /home/letozaf/autopilot-tests/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/letozaf/autopilot-tests/build-test-toc-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr ""
 
@@ -257,12 +257,12 @@ msgid "Select All"
 msgstr ""
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
-#: ../src/app/qml/pdfView/PdfContentsPage.qml:31
+#: ../src/app/qml/pdfView/PdfContentsPage.qml:32
 #: ../src/app/qml/pdfView/PdfView.qml:37
 msgid "Contents"
 msgstr ""
 
-#: ../src/app/qml/pdfView/PdfContentsPage.qml:37
+#: ../src/app/qml/pdfView/PdfContentsPage.qml:38
 msgid "Hide table of contents"
 msgstr ""
 
@@ -319,6 +319,6 @@ msgstr[1] ""
 msgid "Open"
 msgstr ""
 
-#: /home/letozaf/autopilot-tests/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/letozaf/autopilot-tests/build-test-toc-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr ""

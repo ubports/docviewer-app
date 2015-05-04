@@ -116,8 +116,7 @@ class PageWithBottomEdge(MainView):
             action_item.stretched.wait_for(True)
             start_x = (action_item.globalRect.x +
                        (action_item.globalRect.width * 0.5))
-            start_y = (action_item.globalRect.y +
-                       (action_item.height * 0.3))
+            start_y = (action_item.globalRect.y + 1)
             stop_y = start_y - (self.height * 0.5)
             self.pointing_device.drag(start_x, start_y,
                                       start_x, stop_y, rate=2)
@@ -150,8 +149,9 @@ class PdfContentsPage(Page):
         return content_line, page_no
 
     def _get_listitem(self, labelText):
-        list_items_count = self.select_single(
-            "QQuickListView", objectName="view").count
+        view_item = self.select_single(
+            "QQuickListView", objectName="view")
+        list_items_count = view_item.count
 
         index = 0
         for index in range(list_items_count):
@@ -160,6 +160,9 @@ class PdfContentsPage(Page):
                     list_item = self.select_single(
                         "ListItemWithActions", objectName="delegate{}".
                         format(index))
+                    while list_item.y > (view_item.contentY +
+                                         view_item.globalRect.height):
+                            self.scroll_pdfcontentspage()
                     break
                 except dbus.StateNotFoundError:
                     self.scroll_pdfcontentspage()
