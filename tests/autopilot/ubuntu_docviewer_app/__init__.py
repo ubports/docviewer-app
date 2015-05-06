@@ -155,7 +155,7 @@ class PdfContentsPage(Page):
 
         index = 0
         for index in range(list_items_count):
-            while True:
+            while (index <= list_items_count):
                 try:
                     list_item = self.select_single(
                         "ListItemWithActions", objectName="delegate{}".
@@ -165,6 +165,8 @@ class PdfContentsPage(Page):
                             self.scroll_pdfcontentspage()
                     break
                 except dbus.StateNotFoundError:
+                    print("+++++++++++")
+                    print("except")
                     self.scroll_pdfcontentspage()
             label = list_item.select_single("Label", objectName="content")
             if label.text == labelText:

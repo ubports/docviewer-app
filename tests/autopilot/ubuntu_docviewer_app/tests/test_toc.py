@@ -28,10 +28,10 @@ class TestMainWindow(DocviewerAppTestCase):
 
     def setUp(self):
         super(TestMainWindow, self).setUp()
+        self.filepath = 'ubuntu_docviewer_app/files/serverguide.pdf'
 
     def test_go_to_chapters_in_toc(self):
         """" Testing going to chapters from Table Of Contents     """
-        self.filepath = 'ubuntu_docviewer_app/files/serverguide.pdf'
 
         self.launch_app()
         pdf = self.app.main_view.open_PdfView()
@@ -39,11 +39,9 @@ class TestMainWindow(DocviewerAppTestCase):
         contents_page = self.app.main_view.open_PdfContentsPage()
         content_line, page_no = contents_page.\
             get_content_and_line_pageindex(self.content_label)
-        logger.warn(page_no)
         contents_page.click_content_line(content_line)
 
         word_in_currentpage = pdf.get_currentpage_number().split()
         pdfview_currentpage = word_in_currentpage[1]
-        logger.warn(pdfview_currentpage)
 
         self.assertEquals(pdfview_currentpage, page_no)
