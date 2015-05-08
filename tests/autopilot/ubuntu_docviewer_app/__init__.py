@@ -136,7 +136,6 @@ class PdfView(PageWithBottomEdge):
 
     def get_currentpage_number(self):
         """return the value of the currentPage property"""
-        logger.warn(self.currentPage)
         return self.currentPage
 
 
