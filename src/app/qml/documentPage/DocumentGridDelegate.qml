@@ -74,6 +74,21 @@ AbstractButton {
             }
         }
 
+        Icon {
+            id: extStorageIcon
+
+            width: units.gu(4)
+            height: units.gu(4)
+            anchors {
+                left: parent.left
+                top: parent.top
+                margins: units.gu(0.5)
+            }
+
+            visible: model.isFromExternalStorage
+            source: Qt.resolvedUrl("../../graphics/sd-card-symbolic.png")
+        }
+
         // Document mimetype icon
         Icon {
             anchors.centerIn: parent

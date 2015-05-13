@@ -79,7 +79,7 @@ void FSWatcher::q_dirChanged(const QString &path)
             if (!this->files().contains(file))
             {
                 Q_EMIT fileRemoved(file);
-                qDebug() << "file removed" << file;
+              //  qDebug() << "file removed" << file;
             }
         }
 

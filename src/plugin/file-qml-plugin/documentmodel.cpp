@@ -17,10 +17,9 @@
 
 #include "documentmodel.h"
 #include "fswatcher.h"
+#include "qstorageinfo.h"
 
 #include <QStandardPaths>
-#include <QDirIterator>
-
 #include <QDir>
 #include <QFileInfo>
 
@@ -83,12 +82,14 @@ DocumentItem DocumentModel::createEntry(const QString &path)
     QMimeDatabase db;
 
     QDateTime lastAccess = file.lastRead();
+    QString absolutePath = file.absoluteFilePath();
 
     item.name = file.fileName();
-    item.path = file.absoluteFilePath();
+    item.path = absolutePath;
     item.mimetype = db.mimeTypeForFile(path).name();
     item.date = lastAccess.toMSecsSinceEpoch();
     item.size = file.size();
+    item.isFromExternalStorage = absolutePath.startsWith("/media/");
 
     qint64 dateDiff = lastAccess.daysTo(now);
     if (dateDiff == 0)
@@ -129,6 +130,7 @@ QHash<int, QByteArray> DocumentModel::roleNames() const
     roles[DateRole] = "date";
     roles[DateDiffRole] = "dateDiff";
     roles[SizeRole] = "size";
+    roles[IsFromExternalStorage] = "isFromExternalStorage";
 
     return roles;
 }
@@ -173,6 +175,8 @@ QVariant DocumentModel::data(const QModelIndex & index, int role) const
         return item.dateDiff;
     case SizeRole:
         return item.size;
+    case IsFromExternalStorage:
+        return item.isFromExternalStorage;
     default:
         return 0;
     }
@@ -216,7 +220,31 @@ void DocumentModel::setWatchedDirs()
     if (!m_customDir.isEmpty())
         m_docsMonitor->addDirectory(m_customDir);
     else
+        this->checkDefaultDirectories();
+}
+
+void DocumentModel::checkDefaultDirectories() {
+    if (m_customDir.isEmpty()) {
         m_docsMonitor->addDirectory(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation));
+
+        Q_FOREACH(const QStorageInfo &volume, QStorageInfo::mountedVolumes()) {
+            QString rootPath = volume.rootPath();
+
+            if (rootPath.startsWith("/media/")) {
+                // In a Unix filesystem, names are case sentitive.
+                // For that reason we need to check twice.
+                QDir dir;
+
+                dir.setPath(rootPath + "/Documents");
+                if (dir.exists())
+                    m_docsMonitor->addDirectory(dir.canonicalPath());
+
+                dir.setPath(rootPath + "/documents");
+                if (dir.exists())
+                    m_docsMonitor->addDirectory(dir.canonicalPath());
+            }
+        }
+    }
 }
 
 DocumentModel::~DocumentModel()

@@ -26,12 +26,19 @@ Page {
     flickable: null
 
     property bool useGridView: false
+    property alias view: viewLoader
+
+    onActiveChanged: {
+        // When the page become visible, check if any new volume has been
+        // mounted in the file system.
+        if (active)
+            docModel.checkDefaultDirectories();
+    }
 
     Settings {
         property alias useGridView: documentPage.useGridView
     }
 
-    property alias view: viewLoader
     Loader {
         id: viewLoader
         anchors.fill: parent

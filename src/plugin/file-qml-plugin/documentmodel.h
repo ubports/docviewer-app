@@ -26,6 +26,7 @@ struct DocumentItem {
     qint64 date;
     int dateDiff;
     qint64 size;
+    bool isFromExternalStorage;
 };
 
 class FSWatcher;
@@ -43,7 +44,8 @@ public:
         MimetypeRole,
         DateRole,
         DateDiffRole,
-        SizeRole
+        SizeRole,
+        IsFromExternalStorage
     };
 
     enum DateDiffEnums {
@@ -65,6 +67,7 @@ public:
     QString getCustomDir() const { return m_customDir; }
 
     Q_INVOKABLE bool rm(QString path);
+    Q_INVOKABLE void checkDefaultDirectories();
 
 signals:
     void customDirChanged();
@@ -79,6 +82,7 @@ private Q_SLOTS:
 
 private:   
     void setWatchedDirs();
+
     void addDocumentEntry(DocumentItem item);
     void removeDocumentEntry(int index);
 
