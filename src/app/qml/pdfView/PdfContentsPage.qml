@@ -22,6 +22,12 @@ import QtQuick.Layouts 1.1
 import "../upstreamComponents"
 
 Page {
+    id: pdfContents
+    objectName: "pdfcontents"
+
+    // this property will have to be removed when bug #1341671 will be fixed.
+    property string testProperty: "for page name issue"
+
     // TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
     title: i18n.tr("Contents")
 
@@ -57,6 +63,7 @@ Page {
 
     ListView {
         id: view
+        objectName: "view"
         anchors.fill: parent
         clip: true
 
@@ -64,6 +71,7 @@ Page {
 
         delegate: ListItemWithActions {
             id: delegate
+            objectName: "delegate" + index
 
             width: parent.width
             height: (model.level === 0) ? units.gu(7) : units.gu(6)
@@ -73,6 +81,7 @@ Page {
                                                       : Theme.palette.normal.background
 
             AbstractButton {
+                objectName: "abstractbutton"
                 anchors.fill: parent
 
                 onClicked: {
@@ -91,6 +100,7 @@ Page {
                 spacing: units.gu(1)
 
                 Label {
+                    objectName: "content"
                     Layout.fillWidth: true
 
                     text: model.title
@@ -102,6 +112,7 @@ Page {
                 }
 
                 Label {
+                    objectName: "pageindex"
                     text: model.pageIndex + 1
                     font.weight: model.level == 0 ? Font.DemiBold : Font.Normal
                     color: (model.level === 0) ? UbuntuColors.midAubergine
