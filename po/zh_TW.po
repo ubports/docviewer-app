@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-04-27 18:02+0200\n"
+"POT-Creation-Date: 2015-05-04 21:48+0200\n"
 "PO-Revision-Date: 2015-03-01 07:42+0000\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2015-04-28 05:30+0000\n"
-"X-Generator: Launchpad (build 17453)\n"
+"X-Launchpad-Export-Date: 2015-05-16 05:39+0000\n"
+"X-Generator: Launchpad (build 17493)\n"
 
 #. TRANSLATORS: This string is used for renaming a copied file,
 #. when a file with the same name already exists in user's
@@ -34,7 +34,7 @@ msgstr ""
 
 #: ../src/app/docviewer-application.cpp:164
 #: ../src/app/qml/documentPage/DocumentPage.qml:25
-#: /home/stefano/tmp/build-ch-imported-documents-name-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/letozaf/autopilot-tests/build-test-toc-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "文件檢視器"
 
@@ -257,12 +257,12 @@ msgid "Select All"
 msgstr ""
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
-#: ../src/app/qml/pdfView/PdfContentsPage.qml:26
+#: ../src/app/qml/pdfView/PdfContentsPage.qml:32
 #: ../src/app/qml/pdfView/PdfView.qml:37
 msgid "Contents"
 msgstr "目錄"
 
-#: ../src/app/qml/pdfView/PdfContentsPage.qml:32
+#: ../src/app/qml/pdfView/PdfContentsPage.qml:38
 msgid "Hide table of contents"
 msgstr ""
 
@@ -319,6 +319,6 @@ msgstr[1] ""
 msgid "Open"
 msgstr ""
 
-#: /home/stefano/tmp/build-ch-imported-documents-name-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/letozaf/autopilot-tests/build-test-toc-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "documents;viewer;pdf;reader;文件;檢視器;閱讀器;"

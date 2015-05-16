@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-04-27 18:02+0200\n"
+"POT-Creation-Date: 2015-05-04 21:48+0200\n"
 "PO-Revision-Date: 2015-03-04 18:08+0000\n"
 "Last-Translator: Damir Jerovšek <Unknown>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
 "n%100==4 ? 3 : 0);\n"
-"X-Launchpad-Export-Date: 2015-04-28 05:30+0000\n"
-"X-Generator: Launchpad (build 17453)\n"
+"X-Launchpad-Export-Date: 2015-05-16 05:39+0000\n"
+"X-Generator: Launchpad (build 17493)\n"
 
 #. TRANSLATORS: This string is used for renaming a copied file,
 #. when a file with the same name already exists in user's
@@ -35,7 +35,7 @@ msgstr ""
 
 #: ../src/app/docviewer-application.cpp:164
 #: ../src/app/qml/documentPage/DocumentPage.qml:25
-#: /home/stefano/tmp/build-ch-imported-documents-name-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/letozaf/autopilot-tests/build-test-toc-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Pregledovalnik dokumentov"
 
@@ -262,12 +262,12 @@ msgid "Select All"
 msgstr "Izberi vse"
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
-#: ../src/app/qml/pdfView/PdfContentsPage.qml:26
+#: ../src/app/qml/pdfView/PdfContentsPage.qml:32
 #: ../src/app/qml/pdfView/PdfView.qml:37
 msgid "Contents"
 msgstr "Vsebina"
 
-#: ../src/app/qml/pdfView/PdfContentsPage.qml:32
+#: ../src/app/qml/pdfView/PdfContentsPage.qml:38
 msgid "Hide table of contents"
 msgstr ""
 
@@ -324,6 +324,6 @@ msgstr[1] ""
 msgid "Open"
 msgstr ""
 
-#: /home/stefano/tmp/build-ch-imported-documents-name-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/letozaf/autopilot-tests/build-test-toc-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "dokumenti;pregledovalnik;pdf;bralnik;"
