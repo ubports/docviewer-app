@@ -24,9 +24,9 @@
 
 void PopplerPlugin::registerTypes(const char *uri)
 {
-    Q_ASSERT(uri == QLatin1String("com.ubuntu.popplerqmlplugin"));
+    Q_ASSERT(uri == QLatin1String("DocumentViewer.PDF"));
     
-    //@uri com.ubuntu.popplerqmlplugin
+    //@uri DocumentViewer.PDF
     qmlRegisterType<PdfDocument>(uri, 1, 0, "Document");
     qmlRegisterType<VerticalView>(uri, 1, 0, "VerticalView");
 }

@@ -1,4 +1,4 @@
-set(PLUGIN_DIR com/ubuntu/popplerqmlplugin)
+set(PLUGIN_DIR DocumentViewer/PDF)
 include_directories(
 	${CMAKE_CURRENT_SOURCE_DIR}
 	${CMAKE_CURRENT_BINARY_DIR}

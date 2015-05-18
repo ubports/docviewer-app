@@ -21,7 +21,6 @@
 #include "content-communicator.h"
 #include "command-line-parser.h"
 #include "urlhandler.h"
-#include "quick/documentmodel.h"
 
 #include <QQuickItem>
 #include <QStandardPaths>
@@ -119,8 +118,6 @@ void DocViewerApplication::registerQML()
     // in the sistem if there is one
     importPathList.prepend(QCoreApplication::applicationDirPath() + "/../plugin/");
     m_view->engine()->setImportPathList(importPathList);
-
-    qmlRegisterType<SortFilterDocumentModel>("DocumentViewer", 1, 0, "DocumentsModel");
 }
 
 /*!
@@ -154,6 +151,16 @@ const QString& DocViewerApplication::getDocumentFile() const
 {
     return m_documentFile;
 }
+
+/*!
+ * \brief DocViewerApplication::getDocumentsDir
+ * Returns the documents dir passed as a parameter
+ */
+const QString& DocViewerApplication::getDocumentsDir() const
+{
+    return m_cmdLineParser->documentsDir();
+}
+
 
 /*!
  * \brief DocViewerApplication::createView

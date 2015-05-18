@@ -39,6 +39,7 @@ public:
     bool processArguments(const QStringList& args);
 
     bool isFullscreen() const { return m_isFullscreen; }
+    const QString &documentsDir() const { return m_documentsDir; }
     bool pickModeEnabled() const { return m_pickMode; }
     bool testability() const { return m_testability; }
     const QString &documentFile() const { return m_documentFile; }
@@ -53,6 +54,7 @@ private:
     bool m_pickMode;
     bool m_testability;
     QString m_documentFile;
+    QString m_documentsDir;
 };
 
 #endif // COMMANDLINEPARSER_H

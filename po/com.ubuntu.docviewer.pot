@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-04 21:48+0200\n"
+"POT-Creation-Date: 2015-05-18 15:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,9 +32,9 @@ msgstr ""
 msgid "copy %1"
 msgstr ""
 
-#: ../src/app/docviewer-application.cpp:164
+#: ../src/app/docviewer-application.cpp:171
 #: ../src/app/qml/documentPage/DocumentPage.qml:25
-#: /home/letozaf/autopilot-tests/build-test-toc-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/stefano/tmp/build-plugins-renaming-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr ""
 
@@ -214,23 +214,23 @@ msgstr ""
 msgid "dd-MM-yyyy hh:mm"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:135
+#: ../src/app/qml/documentPage/DocumentListView.qml:136
 msgid "Today"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:138
+#: ../src/app/qml/documentPage/DocumentListView.qml:139
 msgid "Yesterday"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:141
+#: ../src/app/qml/documentPage/DocumentListView.qml:142
 msgid "Earlier this week"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:144
+#: ../src/app/qml/documentPage/DocumentListView.qml:145
 msgid "Earlier this month"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:146
+#: ../src/app/qml/documentPage/DocumentListView.qml:147
 msgid "Even earlier..."
 msgstr ""
 
@@ -309,16 +309,16 @@ msgstr ""
 msgid "Loading..."
 msgstr ""
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:183
+#: ../src/app/qml/ubuntu-docviewer-app.qml:202
 msgid "Document successfully imported!"
 msgid_plural "Documents successfully imported!"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:186
+#: ../src/app/qml/ubuntu-docviewer-app.qml:205
 msgid "Open"
 msgstr ""
 
-#: /home/letozaf/autopilot-tests/build-test-toc-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/stefano/tmp/build-plugins-renaming-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr ""

@@ -1,2 +1,2 @@
-module com.ubuntu.popplerqmlplugin
+module DocumentViewer.PDF
 plugin popplerqmlplugin

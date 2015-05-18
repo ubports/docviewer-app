@@ -35,24 +35,24 @@ Page {
         }
         ListItem.Subtitled {
             text: i18n.tr("Size")
-            subText: Utils.printSize(i18n, file.size)
+            subText: Utils.printSize(i18n, file.info.size)
         }
 
         ListItem.Subtitled {
             text: i18n.tr("Created")
-            subText: file.creationTime.toLocaleString(Qt.locale())
+            subText: file.info.creationTime.toLocaleString(Qt.locale())
         }
 
         ListItem.Subtitled {
             text: i18n.tr("Last modified")
-            subText: file.lastModified.toLocaleString(Qt.locale())
+            subText: file.info.lastModified.toLocaleString(Qt.locale())
         }
 
         ListItem.Subtitled {
             id: mimetypeItem
             objectName: "mimetypeItem"
             text: i18n.tr("MIME type")
-            subText: file.mimetype
+            subText: file.mimetype.name
         }
     }
 }

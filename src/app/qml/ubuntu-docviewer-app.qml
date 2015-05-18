@@ -17,7 +17,6 @@
 import QtQuick 2.3
 import Ubuntu.Components 1.1
 import Ubuntu.Components.Popups 1.0
-import com.ubuntu.fileqmlplugin 1.0
 import DocumentViewer 1.0
 import QtQuick.Window 2.0
 
@@ -49,6 +48,13 @@ MainView {
 
             path = path.replace("file://", "")
                        .replace("document://", "");
+
+            if (file.path === path) {
+                // File has been already initialized, so just open the viewer
+                LoadComponent.load(file.mimetype.name);
+
+                return
+            }
 
             file.path = path;
         }
@@ -115,7 +121,7 @@ MainView {
         id: file
         objectName: "file"
 
-        onMimetypeChanged: LoadComponent.load(mimetype)
+        onMimetypeChanged: LoadComponent.load(mimetype.name)
         onErrorChanged: {
             if (error == -1)
                 PopupUtils.open(Qt.resolvedUrl("common/FileNotFoundDialog.qml"),
@@ -123,7 +129,20 @@ MainView {
         }
     }
 
-    DocumentsModel { id: folderModel }
+    SortFilterModel {
+        id: folderModel
+        model: DocumentsModel {
+            id: docModel
+
+            // Used for autopilot tests! If customDir is empty, this property is not used.
+            customDir: DOC_VIEWER.documentsDir
+        }
+
+        sort.property: "date"
+        sort.order: Qt.DescendingOrder
+        sortCaseSensitivity: Qt.CaseSensitive
+    }
+
     PageStack { id: pageStack }
 
     Connections {

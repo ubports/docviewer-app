@@ -41,6 +41,7 @@ class DocViewerApplication : public QApplication
     Q_PROPERTY(bool desktopMode READ isDesktopMode CONSTANT)
     Q_PROPERTY(bool fullScreen READ isFullScreen WRITE setFullScreen NOTIFY fullScreenChanged)
     Q_PROPERTY(QString documentFile READ getDocumentFile WRITE setDocumentFile NOTIFY documentFileChanged)
+    Q_PROPERTY(QString documentsDir READ getDocumentsDir CONSTANT)
 
 public:
     enum UiMode{
@@ -61,6 +62,7 @@ public:
     bool isDesktopMode() const;
     bool isFullScreen() const;
     const QString &getDocumentFile() const;
+    const QString &getDocumentsDir() const;
 
     Q_INVOKABLE void returnPickedContent(QList<QString> paths);
     Q_INVOKABLE void contentPickingCanceled();

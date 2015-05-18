@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-05-04 21:48+0200\n"
+"POT-Creation-Date: 2015-04-13 17:55+0200\n"
 "PO-Revision-Date: 2015-03-04 01:02+0000\n"
 "Last-Translator: Luo Lei <luolei@ubuntukylin.com>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
@@ -15,28 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2015-05-16 05:39+0000\n"
-"X-Generator: Launchpad (build 17493)\n"
-
-#. TRANSLATORS: This string is used for renaming a copied file,
-#. when a file with the same name already exists in user's
-#. Documents folder.
-#. 
-#. e.g. "Manual_Aquaris_E4.5_ubuntu_EN.pdf" will become
-#. "Manual_Aquaris_E4.5_ubuntu_EN (copy 2).pdf"
-#. 
-#. where "2" is given by the argument "%1"
-#. 
-#: ../src/app/content-communicator.cpp:105
-#, qt-format
-msgid "copy %1"
-msgstr ""
-
-#: ../src/app/docviewer-application.cpp:164
-#: ../src/app/qml/documentPage/DocumentPage.qml:25
-#: /home/letozaf/autopilot-tests/build-test-toc-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
-msgid "Document Viewer"
-msgstr ""
+"X-Launchpad-Export-Date: 2015-04-14 05:30+0000\n"
+"X-Generator: Launchpad (build 17423)\n"
 
 #: ../src/app/qml/common/DetailsPage.qml:27
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:97
@@ -234,6 +214,11 @@ msgstr ""
 msgid "Even earlier..."
 msgstr ""
 
+#: ../src/app/qml/documentPage/DocumentPage.qml:25
+#: /home/stefano/Progetti/doc-viewer/build-adv-import-handler-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+msgid "Document Viewer"
+msgstr ""
+
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:28
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
 msgid "Switch to single column list"
@@ -257,12 +242,12 @@ msgid "Select All"
 msgstr ""
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
-#: ../src/app/qml/pdfView/PdfContentsPage.qml:32
+#: ../src/app/qml/pdfView/PdfContentsPage.qml:26
 #: ../src/app/qml/pdfView/PdfView.qml:37
 msgid "Contents"
 msgstr ""
 
-#: ../src/app/qml/pdfView/PdfContentsPage.qml:38
+#: ../src/app/qml/pdfView/PdfContentsPage.qml:32
 msgid "Hide table of contents"
 msgstr ""
 
@@ -309,16 +294,16 @@ msgstr ""
 msgid "Loading..."
 msgstr ""
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:183
+#: ../src/app/qml/ubuntu-docviewer-app.qml:167
 msgid "Document successfully imported!"
 msgid_plural "Documents successfully imported!"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:186
+#: ../src/app/qml/ubuntu-docviewer-app.qml:170
 msgid "Open"
 msgstr ""
 
-#: /home/letozaf/autopilot-tests/build-test-toc-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/stefano/Progetti/doc-viewer/build-adv-import-handler-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr ""

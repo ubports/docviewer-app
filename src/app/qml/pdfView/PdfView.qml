@@ -16,7 +16,7 @@
 
 import QtQuick 2.3
 import Ubuntu.Components 1.1
-import com.ubuntu.popplerqmlplugin 1.0 as PDF
+import DocumentViewer.PDF 1.0 as PDF
 
 import "../common/utils.js" as Utils
 import "../upstreamComponents"
@@ -99,8 +99,8 @@ PageWithBottomEdge {
         id: poppler
 
         property bool isLoading: true
+        path: file.path
 
-        Component.onCompleted: path = file.path
         onPagesLoaded: {
             isLoading = false;
 

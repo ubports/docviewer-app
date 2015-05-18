@@ -32,7 +32,8 @@ CommandLineParser::CommandLineParser()
     : m_pickMode(false),
       m_testability(false),
       m_isFullscreen(false),
-      m_documentFile("")
+      m_documentFile(""),
+      m_documentsDir("")
 {
     m_urlHandler = new UrlHandler();
 }
@@ -60,6 +61,28 @@ bool CommandLineParser::processArguments(const QStringList& args)
         }
         else if (args[i] == "--testability") {
             m_testability = true;
+        }
+        else if (args[i].contains("--documents-dir")) {
+            // Extract the given path
+            QString dirPath = args[i].split("--documents-dir=").last();
+
+            if (!dirPath.isEmpty()) {
+                QDir di(dirPath);
+
+                if (di.exists())
+                    m_documentsDir = di.absolutePath();
+                else {
+                    QTextStream(stderr) << m_documentsDir << ": Not found" << endl;
+                    valid_args = false;
+                }
+
+                i++;
+            }
+            else {
+                QTextStream(stderr) << "Missing PATH argument for --documents-dir'" << endl;
+                usage();
+                valid_args = false;
+            }
         }
         else {
             if (args[i].startsWith("--desktop_file_hint")) {
@@ -95,6 +118,7 @@ void CommandLineParser::usage()
     out << "  --fullscreen\trun fullscreen" << endl;
     out << "  --pick-mode\t\tEnable mode to pick photos" << endl;
     out << "  file_path\t\tOpens ubuntu-docviewer-app displaying the selected file" << endl;
+    out << "  --documents-dir=PATH\n\t\tLoad the list of documents from the given folder, instead of default ~/Documents.\nThe path must exist prior to running ubuntu-docviewer-app" << endl;
 }
 
 /*!

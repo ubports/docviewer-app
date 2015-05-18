@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 Canonical, Ltd.
+ * Copyright (C) 2013-2015 Canonical, Ltd.
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License version 3, as published
@@ -19,18 +19,17 @@
 #include <QtQml/QQmlContext>
 
 #include "backend.h"
-#include "docviewerFile.h"
-#include "fileReader.h"
+#include "documentmodel.h"
+#include "docviewerfile.h"
 
 void BackendPlugin::registerTypes(const char *uri)
 {
-    Q_ASSERT(uri == QLatin1String("com.ubuntu.fileqmlplugin"));
+    Q_ASSERT(uri == QLatin1String("DocumentViewer"));
     
-    //@uri com.ubuntu.fileqmlplugin
+    //@uri DocumentViewer
 
+    qmlRegisterType<DocumentModel>(uri, 1, 0, "DocumentsModel");
     qmlRegisterType<DocviewerFile>(uri, 1, 0, "File");
-    qmlRegisterType<FileReader>(uri, 1, 0, "FileReader");    
-
 }
 
 void BackendPlugin::initializeEngine(QQmlEngine *engine, const char *uri)

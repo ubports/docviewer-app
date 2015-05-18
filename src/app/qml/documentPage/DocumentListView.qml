@@ -17,6 +17,7 @@
 import QtQuick 2.0
 import Ubuntu.Components 1.1
 import Ubuntu.Components.ListItems 1.0 as ListItem
+import DocumentViewer 1.0
 
 import "../upstreamComponents"
 
@@ -114,7 +115,7 @@ MultipleSelectionListView {
             }
 
             else {
-                file.path = model.path
+                mainView.openDocument(model.path)
             }
         }
 
@@ -131,16 +132,16 @@ MultipleSelectionListView {
     section.property: "dateDiff"
     section.delegate: ListItem.Header {
         text: {
-            if (section == 0)
+            if (section == DocumentsModel.Today)
                 return i18n.tr("Today")
 
-            if (section == 1)
+            if (section == DocumentsModel.Yesterday)
                 return i18n.tr("Yesterday")
 
-            if (section == 2)
+            if (section == DocumentsModel.LastWeek)
                 return i18n.tr("Earlier this week")
 
-            if (section == 3)
+            if (section == DocumentsModel.LastMonth)
                 return i18n.tr("Earlier this month")
 
             return i18n.tr("Even earlier...")

@@ -1,11 +1,12 @@
-set(PLUGIN_DIR com/ubuntu/fileqmlplugin)
+set(PLUGIN_DIR DocumentViewer)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 #add the sources to compile
 set(fileqmlplugin_SRCS
 	backend.cpp
-	docviewerFile.cpp
-	fileReader.cpp
+	documentmodel.cpp
+        fswatcher.cpp
+	docviewerfile.cpp
 )
 
 add_library(fileqmlplugin MODULE
