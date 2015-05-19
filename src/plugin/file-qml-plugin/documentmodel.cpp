@@ -229,7 +229,6 @@ void DocumentModel::checkDefaultDirectories() {
 
         Q_FOREACH(const QStorageInfo &volume, QStorageInfo::mountedVolumes()) {
             QString rootPath = volume.rootPath();
-            qDebug() << rootPath;
 
             if (rootPath.startsWith("/media/")) {
                 // In a Unix filesystem, names are case sentitive.
