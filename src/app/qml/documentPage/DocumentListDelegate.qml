@@ -17,6 +17,7 @@
 import QtQuick 2.0
 import Ubuntu.Components 1.1
 import QtQuick.Layouts 1.1
+import QtGraphicalEffects 1.0
 
 import "../common/utils.js" as Utils
 import "../upstreamComponents"
@@ -74,6 +75,24 @@ ListItemWithActions {
                     return "application-pdf-symbolic"
 
                 return "package-x-generic-symbolic"
+            }
+
+            Rectangle {
+                anchors {
+                    right: parent.right
+                    bottom: parent.bottom
+                }
+
+                width: units.gu(2.5)
+                height: units.gu(2.5)
+
+                visible: model.isFromExternalStorage
+                color: mainView.backgroundColor
+
+                Icon {
+                    anchors.fill: parent
+                    source: Qt.resolvedUrl("../../graphics/sd-card-symbolic.png")
+                }
             }
         }
 

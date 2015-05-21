@@ -7,36 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-05-18 15:59+0200\n"
-"PO-Revision-Date: 2015-05-06 14:37+0000\n"
-"Last-Translator: August Geyler <post@august-geyler.de>\n"
+"POT-Creation-Date: 2015-04-13 17:55+0200\n"
+"PO-Revision-Date: 2015-03-07 13:50+0000\n"
+"Last-Translator: Phillip Sz <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-05-19 05:36+0000\n"
-"X-Generator: Launchpad (build 17508)\n"
-
-#. TRANSLATORS: This string is used for renaming a copied file,
-#. when a file with the same name already exists in user's
-#. Documents folder.
-#. 
-#. e.g. "Manual_Aquaris_E4.5_ubuntu_EN.pdf" will become
-#. "Manual_Aquaris_E4.5_ubuntu_EN (copy 2).pdf"
-#. 
-#. where "2" is given by the argument "%1"
-#. 
-#: ../src/app/content-communicator.cpp:105
-#, qt-format
-msgid "copy %1"
-msgstr "Kopie %1"
-
-#: ../src/app/docviewer-application.cpp:171
-#: ../src/app/qml/documentPage/DocumentPage.qml:25
-#: /home/stefano/tmp/build-plugins-renaming-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
-msgid "Document Viewer"
-msgstr "Dokumentenbetrachter"
+"X-Launchpad-Export-Date: 2015-04-14 05:30+0000\n"
+"X-Generator: Launchpad (build 17423)\n"
 
 #: ../src/app/qml/common/DetailsPage.qml:27
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:97
@@ -83,27 +63,27 @@ msgstr "Schließen"
 
 #: ../src/app/qml/common/PickImportedDialog.qml:29
 msgid "Multiple documents imported"
-msgstr "Mehrere Dokumente importiert"
+msgstr ""
 
 #: ../src/app/qml/common/PickImportedDialog.qml:30
 msgid "Choose which one to open:"
-msgstr "Ein zu öffnendes Dokument auswählen:"
+msgstr ""
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:28
 msgid "File not supported"
 msgid_plural "Files not supported"
-msgstr[0] "Datei wird nicht unterstützt"
-msgstr[1] "Dateien werden nicht unterstützt"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:29
 msgid "Following document has not been imported:"
 msgid_plural "Following documents have not been imported:"
-msgstr[0] "Das folgende Dokument ist nicht importiert worden:"
-msgstr[1] "Die folgenden Dokumente sind nicht importiert worden:"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../src/app/qml/common/ToastWithAction.qml:97
 msgid "Dismiss"
-msgstr "Verwerfen"
+msgstr ""
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:26
 msgid "Unknown file type"
@@ -114,8 +94,6 @@ msgid ""
 "Sorry but we can't find a way to display this file. Do you want to open it "
 "as a plain text?"
 msgstr ""
-"Leider kann diese Datei nicht angezeigt werden. Möchten Sie sie als "
-"einfachen Text öffnen?"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:29
 msgid "Yes"
@@ -147,7 +125,7 @@ msgstr "%1 kB"
 #: ../src/app/qml/common/utils.js:33
 #, qt-format
 msgid "%1 byte"
-msgstr "%1 Byte"
+msgstr "%1 byte"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:28
 msgid "Delete file"
@@ -157,16 +135,14 @@ msgstr "Datei löschen"
 #, qt-format
 msgid "Delete %1 file"
 msgid_plural "Delete %1 files"
-msgstr[0] "%1 Datei löschen"
-msgstr[1] "%1 Dateien löschen"
+msgstr[0] "Datei %1 löschen"
+msgstr[1] "Dateien %1 löschen"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:30
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:31
 msgid "Are you sure you want to permanently delete this file?"
 msgid_plural "Are you sure you want to permanently delete these files?"
-msgstr[0] "Sind Sie sicher, dass Sie diese Datei dauerhaft löschen möchten?"
-msgstr[1] ""
-"Sind Sie sicher, dass Sie diese Dateien dauerhaft löschen möchten?"
+msgstr[0] "Sind Sie sicher, dass Sie diese Datei permanent löschen möchten?"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:36
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:27
@@ -188,8 +164,6 @@ msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
 "folder."
 msgstr ""
-"Verbinden Sie Ihr Gerät mit einem Rechner und ziehen Sie die Dateien ganz "
-"einfach in den Dokumentenordner."
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
@@ -210,44 +184,49 @@ msgstr "Gestern, %1"
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:45
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:35
 msgid "dddd, hh:mm"
-msgstr "dddd, hh:mm"
+msgstr ""
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:49
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:39
 msgid "dd-MM-yyyy hh:mm"
-msgstr "dd.MM.yyyy hh:mm"
+msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:136
+#: ../src/app/qml/documentPage/DocumentListView.qml:135
 msgid "Today"
 msgstr "Heute"
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:139
+#: ../src/app/qml/documentPage/DocumentListView.qml:138
 msgid "Yesterday"
 msgstr "Gestern"
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:142
+#: ../src/app/qml/documentPage/DocumentListView.qml:141
 msgid "Earlier this week"
-msgstr "Anfang der  Woche"
+msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:145
+#: ../src/app/qml/documentPage/DocumentListView.qml:144
 msgid "Earlier this month"
-msgstr "Anfang des Monats"
+msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:147
+#: ../src/app/qml/documentPage/DocumentListView.qml:146
 msgid "Even earlier..."
-msgstr "Noch früher …"
+msgstr ""
+
+#: ../src/app/qml/documentPage/DocumentPage.qml:25
+#: /home/stefano/Progetti/doc-viewer/build-adv-import-handler-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+msgid "Document Viewer"
+msgstr "Dokumentenbetrachter"
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:28
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
 msgid "Switch to single column list"
-msgstr "Zur Listenansicht wechseln"
+msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:28
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
 msgid "Switch to grid"
-msgstr "Zur Rasteransicht wechseln"
+msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:43
 msgid "Pick"
@@ -262,14 +241,14 @@ msgid "Select All"
 msgstr "Alle auswählen"
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
-#: ../src/app/qml/pdfView/PdfContentsPage.qml:32
+#: ../src/app/qml/pdfView/PdfContentsPage.qml:26
 #: ../src/app/qml/pdfView/PdfView.qml:37
 msgid "Contents"
 msgstr "Inhalte"
 
-#: ../src/app/qml/pdfView/PdfContentsPage.qml:38
+#: ../src/app/qml/pdfView/PdfContentsPage.qml:32
 msgid "Hide table of contents"
-msgstr "Inhaltsverzeichnis ausblenden"
+msgstr ""
 
 #. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
 #. while the second one (%2) refers to the total pages count.
@@ -285,26 +264,26 @@ msgstr "Zurück"
 
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:85
 msgid "Go to page..."
-msgstr "Zu Seite gehen …"
+msgstr ""
 
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Disable night mode"
-msgstr "Nachtmodus deaktivieren"
+msgstr ""
 
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Enable night mode"
-msgstr "Nachtmodus aktivieren"
+msgstr ""
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:25
 msgid "Go to page"
-msgstr "Zu Seite gehen"
+msgstr "Gehe zu Seite"
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
 #, qt-format
 msgid "Choose a page between 1 and %1"
-msgstr "Bitte eine Seite zwischen 1 und %1 auswählen"
+msgstr ""
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:44
 msgid "GO!"
@@ -312,18 +291,18 @@ msgstr "Los!"
 
 #: ../src/app/qml/textView/TextView.qml:42
 msgid "Loading..."
-msgstr "Wird geladen …"
+msgstr "Laden …"
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:202
+#: ../src/app/qml/ubuntu-docviewer-app.qml:167
 msgid "Document successfully imported!"
 msgid_plural "Documents successfully imported!"
-msgstr[0] "Dokument erfolgreich importiert!"
-msgstr[1] "Dokumente erfolgreich importiert!"
+msgstr[0] ""
+msgstr[1] ""
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:205
+#: ../src/app/qml/ubuntu-docviewer-app.qml:170
 msgid "Open"
-msgstr "Öffnen"
+msgstr ""
 
-#: /home/stefano/tmp/build-plugins-renaming-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/stefano/Progetti/doc-viewer/build-adv-import-handler-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
-msgstr "Dokumente;Betrachter;PDF;Leser;Dokumentenbetrachter;PDF-Betrachter"
+msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-18 15:59+0200\n"
+"POT-Creation-Date: 2015-05-19 14:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,7 +34,7 @@ msgstr ""
 
 #: ../src/app/docviewer-application.cpp:171
 #: ../src/app/qml/documentPage/DocumentPage.qml:25
-#: /home/stefano/tmp/build-plugins-renaming-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/stefano/tmp/build-sdcard-read-support-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr ""
 
@@ -203,14 +203,14 @@ msgstr ""
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:45
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:35
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:36
 msgid "dddd, hh:mm"
 msgstr ""
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:49
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:39
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:40
 msgid "dd-MM-yyyy hh:mm"
 msgstr ""
 
@@ -319,6 +319,6 @@ msgstr[1] ""
 msgid "Open"
 msgstr ""
 
-#: /home/stefano/tmp/build-plugins-renaming-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/stefano/tmp/build-sdcard-read-support-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr ""
