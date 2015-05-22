@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-04-13 17:55+0200\n"
+"POT-Creation-Date: 2015-05-19 14:05+0200\n"
 "PO-Revision-Date: 2015-03-05 17:59+0000\n"
 "Last-Translator: Adolfo Jayme <fitoschido@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -15,8 +15,28 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-04-14 05:30+0000\n"
-"X-Generator: Launchpad (build 17423)\n"
+"X-Launchpad-Export-Date: 2015-05-22 05:01+0000\n"
+"X-Generator: Launchpad (build 17514)\n"
+
+#. TRANSLATORS: This string is used for renaming a copied file,
+#. when a file with the same name already exists in user's
+#. Documents folder.
+#. 
+#. e.g. "Manual_Aquaris_E4.5_ubuntu_EN.pdf" will become
+#. "Manual_Aquaris_E4.5_ubuntu_EN (copy 2).pdf"
+#. 
+#. where "2" is given by the argument "%1"
+#. 
+#: ../src/app/content-communicator.cpp:105
+#, qt-format
+msgid "copy %1"
+msgstr ""
+
+#: ../src/app/docviewer-application.cpp:171
+#: ../src/app/qml/documentPage/DocumentPage.qml:25
+#: /home/stefano/tmp/build-sdcard-read-support-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+msgid "Document Viewer"
+msgstr "Visor de documentos"
 
 #: ../src/app/qml/common/DetailsPage.qml:27
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:97
@@ -186,41 +206,36 @@ msgstr "Ayer, %1"
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:45
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:35
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:36
 msgid "dddd, hh:mm"
 msgstr "dddd, hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:49
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:39
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:40
 msgid "dd-MM-yyyy hh:mm"
 msgstr "dd/MM/yyyy hh:mm"
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:135
+#: ../src/app/qml/documentPage/DocumentListView.qml:136
 msgid "Today"
 msgstr "Hoy"
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:138
+#: ../src/app/qml/documentPage/DocumentListView.qml:139
 msgid "Yesterday"
 msgstr "Ayer"
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:141
+#: ../src/app/qml/documentPage/DocumentListView.qml:142
 msgid "Earlier this week"
 msgstr "Esta semana"
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:144
+#: ../src/app/qml/documentPage/DocumentListView.qml:145
 msgid "Earlier this month"
 msgstr "Este mes"
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:146
+#: ../src/app/qml/documentPage/DocumentListView.qml:147
 msgid "Even earlier..."
 msgstr "Aún antes…"
-
-#: ../src/app/qml/documentPage/DocumentPage.qml:25
-#: /home/stefano/Progetti/doc-viewer/build-adv-import-handler-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
-msgid "Document Viewer"
-msgstr "Visor de documentos"
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:28
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
@@ -245,12 +260,12 @@ msgid "Select All"
 msgstr "Selecccionar todo"
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
-#: ../src/app/qml/pdfView/PdfContentsPage.qml:26
+#: ../src/app/qml/pdfView/PdfContentsPage.qml:32
 #: ../src/app/qml/pdfView/PdfView.qml:37
 msgid "Contents"
 msgstr "Contenido"
 
-#: ../src/app/qml/pdfView/PdfContentsPage.qml:32
+#: ../src/app/qml/pdfView/PdfContentsPage.qml:38
 msgid "Hide table of contents"
 msgstr ""
 
@@ -297,16 +312,16 @@ msgstr "Ir"
 msgid "Loading..."
 msgstr "Cargando…"
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:167
+#: ../src/app/qml/ubuntu-docviewer-app.qml:202
 msgid "Document successfully imported!"
 msgid_plural "Documents successfully imported!"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:170
+#: ../src/app/qml/ubuntu-docviewer-app.qml:205
 msgid "Open"
 msgstr ""
 
-#: /home/stefano/Progetti/doc-viewer/build-adv-import-handler-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/stefano/tmp/build-sdcard-read-support-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "documentos;visor;pdf;lector;"
