@@ -1,0 +1,323 @@
+# Persian translation for ubuntu-docviewer-app
+# Copyright (c) 2015 Rosetta Contributors and Canonical Ltd 2015
+# This file is distributed under the same license as the ubuntu-docviewer-app package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ubuntu-docviewer-app\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2015-05-19 14:05+0200\n"
+"PO-Revision-Date: 2015-05-30 22:19+0000\n"
+"Last-Translator: Danial Behzadi <dani.behzi@gmail.com>\n"
+"Language-Team: Persian <fa@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Launchpad-Export-Date: 2015-05-31 05:29+0000\n"
+"X-Generator: Launchpad (build 17532)\n"
+
+#. TRANSLATORS: This string is used for renaming a copied file,
+#. when a file with the same name already exists in user's
+#. Documents folder.
+#. 
+#. e.g. "Manual_Aquaris_E4.5_ubuntu_EN.pdf" will become
+#. "Manual_Aquaris_E4.5_ubuntu_EN (copy 2).pdf"
+#. 
+#. where "2" is given by the argument "%1"
+#. 
+#: ../src/app/content-communicator.cpp:105
+#, qt-format
+msgid "copy %1"
+msgstr "رونوشت %1"
+
+#: ../src/app/docviewer-application.cpp:171
+#: ../src/app/qml/documentPage/DocumentPage.qml:25
+#: /home/stefano/tmp/build-sdcard-read-support-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+msgid "Document Viewer"
+msgstr "نمایشگر سند"
+
+#: ../src/app/qml/common/DetailsPage.qml:27
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:97
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:83
+msgid "Details"
+msgstr "جزئیات ‌"
+
+#: ../src/app/qml/common/DetailsPage.qml:33
+msgid "Location"
+msgstr "موقعیّت"
+
+#: ../src/app/qml/common/DetailsPage.qml:37
+msgid "Size"
+msgstr "اندازه"
+
+#: ../src/app/qml/common/DetailsPage.qml:42
+msgid "Created"
+msgstr "ایجاد شده"
+
+#: ../src/app/qml/common/DetailsPage.qml:47
+msgid "Last modified"
+msgstr "آخرین تغییر"
+
+#: ../src/app/qml/common/DetailsPage.qml:54
+msgid "MIME type"
+msgstr "نوع MIME"
+
+#: ../src/app/qml/common/FileNotFoundDialog.qml:24
+msgid "Error"
+msgstr "خطا"
+
+#: ../src/app/qml/common/FileNotFoundDialog.qml:25
+msgid "File does not exist"
+msgstr "پرونده وجود ندارد"
+
+#: ../src/app/qml/common/FileNotFoundDialog.qml:28
+#: ../src/app/qml/common/PickImportedDialog.qml:47
+#: ../src/app/qml/common/RejectedImportDialog.qml:38
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:32
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
+msgid "Close"
+msgstr "بستن"
+
+#: ../src/app/qml/common/PickImportedDialog.qml:29
+msgid "Multiple documents imported"
+msgstr "جندین سند وارد شدند"
+
+#: ../src/app/qml/common/PickImportedDialog.qml:30
+msgid "Choose which one to open:"
+msgstr "انتخاب کنید کدام‌یک گشوده شود:"
+
+#: ../src/app/qml/common/RejectedImportDialog.qml:28
+msgid "File not supported"
+msgid_plural "Files not supported"
+msgstr[0] "پرونده پشتیبانی نمی‌شود"
+
+#: ../src/app/qml/common/RejectedImportDialog.qml:29
+msgid "Following document has not been imported:"
+msgid_plural "Following documents have not been imported:"
+msgstr[0] "پرونده‌های زیر وارد نشدند:"
+
+#: ../src/app/qml/common/ToastWithAction.qml:97
+msgid "Dismiss"
+msgstr "رد کردن"
+
+#: ../src/app/qml/common/UnknownTypeDialog.qml:26
+msgid "Unknown file type"
+msgstr "نوع پرونده‌ی نامعلوم"
+
+#: ../src/app/qml/common/UnknownTypeDialog.qml:27
+msgid ""
+"Sorry but we can't find a way to display this file. Do you want to open it "
+"as a plain text?"
+msgstr ""
+"متأسّفیم، ولی نتوانستیم راهی برای نمایش این پرونده بیابیم. می‌خواهید آن را "
+"به عنوان متن خام بگشاییم؟"
+
+#: ../src/app/qml/common/UnknownTypeDialog.qml:29
+msgid "Yes"
+msgstr "بله"
+
+#: ../src/app/qml/common/UnknownTypeDialog.qml:38
+msgid "No"
+msgstr "نه"
+
+#. TRANSLATORS: %1 is the size of a file, expressed in GB
+#: ../src/app/qml/common/utils.js:22
+#, qt-format
+msgid "%1 GB"
+msgstr "%1 گیگابایت"
+
+#. TRANSLATORS: %1 is the size of a file, expressed in MB
+#: ../src/app/qml/common/utils.js:26
+#, qt-format
+msgid "%1 MB"
+msgstr "%1 مگابایت"
+
+#. TRANSLATORS: %1 is the size of a file, expressed in kB
+#: ../src/app/qml/common/utils.js:30
+#, qt-format
+msgid "%1 kB"
+msgstr "%1 کیلو بایت"
+
+#. TRANSLATORS: %1 is the size of a file, expressed in byte
+#: ../src/app/qml/common/utils.js:33
+#, qt-format
+msgid "%1 byte"
+msgstr "%1 بایت"
+
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:28
+msgid "Delete file"
+msgstr "حذف پرونده"
+
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:29
+#, qt-format
+msgid "Delete %1 file"
+msgid_plural "Delete %1 files"
+msgstr[0] "حذف %1 پرونده"
+
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:30
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:31
+msgid "Are you sure you want to permanently delete this file?"
+msgid_plural "Are you sure you want to permanently delete these files?"
+msgstr[0] "مطمئنید که می‌خواهید این پرونده‌ها را برای همیشه حذف کنید؟"
+
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:36
+#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:27
+#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:52
+msgid "Cancel"
+msgstr "لغو"
+
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:41
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:82
+msgid "Delete"
+msgstr "حذف"
+
+#: ../src/app/qml/documentPage/DocumentEmptyState.qml:24
+msgid "No document found"
+msgstr "هیچ سندی یافت نشد"
+
+#: ../src/app/qml/documentPage/DocumentEmptyState.qml:28
+msgid ""
+"Connect your device to any computer and simply drag files to the Documents "
+"folder."
+msgstr ""
+"دستگاهتان را به هر رایانه‌ای وصل کرده و به سادگی پرونده‌ها را به پوشه‌ی "
+"سندها بکشید."
+
+#. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
+#. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
+#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:35
+#, qt-format
+msgid "Today, %1"
+msgstr "امروز، %1"
+
+#. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
+#. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
+#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:40
+#, qt-format
+msgid "Yesterday, %1"
+msgstr "دیروز، %1"
+
+#. TRANSLATORS: this is a datetime formatting string,
+#. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
+#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:45
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:36
+msgid "dddd, hh:mm"
+msgstr "‫dddd، hh:mm"
+
+#. TRANSLATORS: this is a datetime formatting string,
+#. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
+#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:49
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:40
+msgid "dd-MM-yyyy hh:mm"
+msgstr "dd/MM/yyyy hh:mm"
+
+#: ../src/app/qml/documentPage/DocumentListView.qml:136
+msgid "Today"
+msgstr "امروز"
+
+#: ../src/app/qml/documentPage/DocumentListView.qml:139
+msgid "Yesterday"
+msgstr "دیروز"
+
+#: ../src/app/qml/documentPage/DocumentListView.qml:142
+msgid "Earlier this week"
+msgstr "پیش‌تر در این هفته"
+
+#: ../src/app/qml/documentPage/DocumentListView.qml:145
+msgid "Earlier this month"
+msgstr "پیش‌تر در این ماه"
+
+#: ../src/app/qml/documentPage/DocumentListView.qml:147
+msgid "Even earlier..."
+msgstr "حتا قبل‌تر…"
+
+#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:28
+#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
+msgid "Switch to single column list"
+msgstr "تعویض به فهرست تک ستونی"
+
+#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:28
+#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
+msgid "Switch to grid"
+msgstr "تعویض به جدول"
+
+#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:43
+msgid "Pick"
+msgstr "برداشتن"
+
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:52
+msgid "Select None"
+msgstr "گزینش هیچ‌کدام"
+
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:54
+msgid "Select All"
+msgstr "گزینش همه"
+
+#. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
+#: ../src/app/qml/pdfView/PdfContentsPage.qml:32
+#: ../src/app/qml/pdfView/PdfView.qml:37
+msgid "Contents"
+msgstr "فهرست"
+
+#: ../src/app/qml/pdfView/PdfContentsPage.qml:38
+msgid "Hide table of contents"
+msgstr "پنهان کردن فهرست مطالب"
+
+#. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
+#. while the second one (%2) refers to the total pages count.
+#: ../src/app/qml/pdfView/PdfView.qml:34
+#, qt-format
+msgid "Page %1 of %2"
+msgstr "صفحه‌ی %1 از %2"
+
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
+msgid "Back"
+msgstr "بازگشت"
+
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:85
+msgid "Go to page..."
+msgstr "رفتن به صفحه‌ی …"
+
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
+msgid "Disable night mode"
+msgstr "غیرفعّال کردن حالت شب"
+
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
+msgid "Enable night mode"
+msgstr "فعّال کردن حالت شب"
+
+#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:25
+msgid "Go to page"
+msgstr "رفتن به صفحه"
+
+#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
+#, qt-format
+msgid "Choose a page between 1 and %1"
+msgstr "صفحه‌ای بین ۱ و %1 برگزینید"
+
+#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:44
+msgid "GO!"
+msgstr "برو!"
+
+#: ../src/app/qml/textView/TextView.qml:42
+msgid "Loading..."
+msgstr "در حال بار کردن…"
+
+#: ../src/app/qml/ubuntu-docviewer-app.qml:202
+msgid "Document successfully imported!"
+msgid_plural "Documents successfully imported!"
+msgstr[0] "سندها با موفقیّت وارد شدند!"
+
+#: ../src/app/qml/ubuntu-docviewer-app.qml:205
+msgid "Open"
+msgstr "گشودن"
+
+#: /home/stefano/tmp/build-sdcard-read-support-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+msgid "documents;viewer;pdf;reader;"
+msgstr "documents;viewer;pdf;reader;"
