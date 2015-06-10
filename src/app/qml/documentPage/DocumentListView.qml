@@ -129,22 +129,46 @@ MultipleSelectionListView {
 
     listModel: folderModel
 
-    section.property: "dateDiff"
+    section.property: {
+        switch (sortSettings.sortMode) {
+        case 0:     // sort by date
+            return "dateDiff"
+        case 1:     // sort by name
+            return "name"
+        default:    // sort by size -> do not show section header
+            return ""
+        }
+    }
+
+    section.criteria: {
+        if (sortSettings.sortMode === 1)    // sort by name
+            return ViewSection.FirstCharacter
+
+        return ViewSection.FullString
+    }
+
     section.delegate: ListItem.Header {
         text: {
-            if (section == DocumentsModel.Today)
-                return i18n.tr("Today")
+            if (sortSettings.sortMode === 1)    // sort by name
+                return section
 
-            if (section == DocumentsModel.Yesterday)
-                return i18n.tr("Yesterday")
+            if (sortSettings.sortMode === 0) {    // sort by date
+                if (section == DocumentsModel.Today)
+                    return i18n.tr("Today")
 
-            if (section == DocumentsModel.LastWeek)
-                return i18n.tr("Earlier this week")
+                if (section == DocumentsModel.Yesterday)
+                    return i18n.tr("Yesterday")
 
-            if (section == DocumentsModel.LastMonth)
-                return i18n.tr("Earlier this month")
+                if (section == DocumentsModel.LastWeek)
+                    return i18n.tr("Earlier this week")
 
-            return i18n.tr("Even earlier...")
+                if (section == DocumentsModel.LastMonth)
+                    return i18n.tr("Earlier this month")
+
+                return i18n.tr("Even earlier...")
+            }
+
+            return ""
         }
     }
 

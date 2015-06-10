@@ -19,6 +19,7 @@ import Ubuntu.Components 1.1
 import Ubuntu.Components.Popups 1.0
 import DocumentViewer 1.0
 import QtQuick.Window 2.0
+import Qt.labs.settings 1.0
 
 import "common"
 import "common/loadComponent.js" as LoadComponent
@@ -131,6 +132,12 @@ MainView {
 
     SortFilterModel {
         id: folderModel
+
+        function search(pattern) {
+            // Search the given pattern, case insensitive
+            filter.pattern = new RegExp(pattern, 'i')
+        }
+
         model: DocumentsModel {
             id: docModel
 
@@ -138,12 +145,43 @@ MainView {
             customDir: DOC_VIEWER.documentsDir
         }
 
-        sort.property: "date"
-        sort.order: Qt.DescendingOrder
+        sort.property: {
+            switch (sortSettings.sortMode) {
+            case 0:
+                return "date"
+            case 1:
+                return "name"
+            case 2:
+                return "size"
+            default:
+                return "date"
+            }
+        }
+        sort.order: {
+            switch (sortSettings.sortMode) {
+            case 0:     // sort by date
+                return sortSettings.reverseOrder ? Qt.AscendingOrder : Qt.DescendingOrder
+            case 1:     // sort by name
+                return sortSettings.reverseOrder ? Qt.DescendingOrder : Qt.AscendingOrder
+            case 2:     // sort by size
+                return sortSettings.reverseOrder ? Qt.DescendingOrder : Qt.AscendingOrder
+            default:
+                return sortSettings.reverseOrder ? Qt.AscendingOrder : Qt.DescendingOrder
+            }
+        }
         sortCaseSensitivity: Qt.CaseSensitive
+
+        filter.property: "name"
     }
 
     PageStack { id: pageStack }
+
+    Settings {
+        id: sortSettings
+
+        property int sortMode: 0    // 0 = by date, 1 = by name, 2 = by size
+        property bool reverseOrder: false
+    }
 
     Connections {
         target: UriHandler

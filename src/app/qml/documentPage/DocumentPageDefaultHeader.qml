@@ -16,6 +16,7 @@
 
 import QtQuick 2.3
 import Ubuntu.Components 1.1
+import Ubuntu.Components.Popups 1.0
 
 PageHeadState {
     id: rootItem
@@ -23,12 +24,30 @@ PageHeadState {
     property Page targetPage
     head: targetPage.head
 
-    actions:  Action {
-        id: switchView
-        text: targetPage.useGridView ? i18n.tr("Switch to single column list") : i18n.tr("Switch to grid")
-        iconName: targetPage.useGridView ? "view-list-symbolic" : "view-grid-symbolic"
-        onTriggered: targetPage.useGridView = !targetPage.useGridView
+    actions: [
+        Action {
+            text: i18n.tr("Search...")
+            iconName: "search"
+            onTriggered: targetPage.searchMode = true
 
-        visible: folderModel.count !== 0
-    }
+            visible: folderModel.count !== 0
+        },
+
+        Action {
+            text: i18n.tr("Filters settings...")
+            iconSource: Qt.resolvedUrl("../../graphics/settings_alt.svg")
+            onTriggered: PopupUtils.open(Qt.resolvedUrl("SortSettingsDialog.qml"))
+
+            visible: folderModel.count !== 0
+        },
+
+        Action {
+            id: switchView
+            text: targetPage.useGridView ? i18n.tr("Switch to single column list") : i18n.tr("Switch to grid")
+            iconName: targetPage.useGridView ? "view-list-symbolic" : "view-grid-symbolic"
+            onTriggered: targetPage.useGridView = !targetPage.useGridView
+
+            visible: folderModel.count !== 0
+        }
+    ]
 }
