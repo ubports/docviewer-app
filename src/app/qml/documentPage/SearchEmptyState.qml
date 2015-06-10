@@ -23,7 +23,7 @@ Item {
     EmptyState {
         title: i18n.tr("No matching document found")
 
-        subTitle: i18n.tr("Please ensure that your query is not mispelled and/or try a different query.")
+        subTitle: i18n.tr("Please ensure that your query is not misspelled and/or try a different query.")
         iconName: "search"
 
         anchors.centerIn: parent
