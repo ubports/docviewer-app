@@ -47,6 +47,9 @@ PageHeadState {
         placeholderText: i18n.tr("search in documents...")
         onTextChanged: folderModel.search(text)
 
+        // Disable predictive text
+        inputMethodHints: Qt.ImhNoPredictiveText
+
         // Force active focus when this becomes the current PageHead state and
         // show OSK if appropriate.
         onVisibleChanged: forceActiveFocus()
