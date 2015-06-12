@@ -34,7 +34,7 @@ PageHeadState {
         },
 
         Action {
-            text: i18n.tr("Filters settings...")
+            text: i18n.tr("Sorting settings...")
             iconSource: Qt.resolvedUrl("../../graphics/settings_alt.svg")
             onTriggered: PopupUtils.open(Qt.resolvedUrl("SortSettingsDialog.qml"))
 
