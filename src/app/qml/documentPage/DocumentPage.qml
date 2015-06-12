@@ -85,6 +85,10 @@ Page {
             } else {
                 viewLoader.item.cancelSelection()
             }
+
+            // Reset any previous search
+            documentPage.searchMode = false
+            folderModel.search("")  // Empty search, reset filter.
         }
     }
 }
