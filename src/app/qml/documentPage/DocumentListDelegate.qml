@@ -45,15 +45,14 @@ ListItemWithActions {
 
     locked: documentPage.state == "pickMode"
 
-    // TODO: NEEDS-DESIGN: Enable left action. Still need to find an equivalent for GridDelegate.
-   /* leftSideAction: Action {
+    leftSideAction: Action {
         iconName: "delete"
         text: i18n.tr("Delete")
         onTriggered: {
             PopupUtils.open(Qt.resolvedUrl("DeleteFileDialog.qml"),
                             documentPage, { path: model.filePath })
         }
-    }*/
+    }
 
     contents: RowLayout {
         anchors.fill: parent
