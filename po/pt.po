@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-05-19 14:05+0200\n"
-"PO-Revision-Date: 2015-04-02 16:24+0000\n"
-"Last-Translator: António Miranda <Unknown>\n"
+"PO-Revision-Date: 2015-06-15 12:27+0000\n"
+"Last-Translator: Ivo Xavier <ivofernandes12@gmail.com>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-05-22 05:01+0000\n"
-"X-Generator: Launchpad (build 17514)\n"
+"X-Launchpad-Export-Date: 2015-06-16 11:10+0000\n"
+"X-Generator: Launchpad (build 17557)\n"
 
 #. TRANSLATORS: This string is used for renaming a copied file,
 #. when a file with the same name already exists in user's
@@ -30,7 +30,7 @@ msgstr ""
 #: ../src/app/content-communicator.cpp:105
 #, qt-format
 msgid "copy %1"
-msgstr ""
+msgstr "cópia %1"
 
 #: ../src/app/docviewer-application.cpp:171
 #: ../src/app/qml/documentPage/DocumentPage.qml:25
@@ -83,27 +83,27 @@ msgstr "Fechar"
 
 #: ../src/app/qml/common/PickImportedDialog.qml:29
 msgid "Multiple documents imported"
-msgstr ""
+msgstr "Múltiplos documentos importados"
 
 #: ../src/app/qml/common/PickImportedDialog.qml:30
 msgid "Choose which one to open:"
-msgstr ""
+msgstr "Escolha qual para abrir:"
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:28
 msgid "File not supported"
 msgid_plural "Files not supported"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ficheiro não suportado"
+msgstr[1] "Ficheiros não suportados"
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:29
 msgid "Following document has not been imported:"
 msgid_plural "Following documents have not been imported:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "O seguinte documento não foi importado:"
+msgstr[1] "Os seguintes documentos não foram importados:"
 
 #: ../src/app/qml/common/ToastWithAction.qml:97
 msgid "Dismiss"
-msgstr ""
+msgstr "Descartar"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:26
 msgid "Unknown file type"
@@ -268,7 +268,7 @@ msgstr "Conteúdos"
 
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:38
 msgid "Hide table of contents"
-msgstr ""
+msgstr "Esconder tabela de conteúdos"
 
 #. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
 #. while the second one (%2) refers to the total pages count.
@@ -289,12 +289,12 @@ msgstr "Ir para a página..."
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Disable night mode"
-msgstr ""
+msgstr "Desativar modo noturno"
 
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Enable night mode"
-msgstr ""
+msgstr "Ativar modo noturno"
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:25
 msgid "Go to page"
@@ -316,12 +316,12 @@ msgstr "A carregar..."
 #: ../src/app/qml/ubuntu-docviewer-app.qml:202
 msgid "Document successfully imported!"
 msgid_plural "Documents successfully imported!"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Documento importado com sucesso!"
+msgstr[1] "Documentos importados com sucesso!"
 
 #: ../src/app/qml/ubuntu-docviewer-app.qml:205
 msgid "Open"
-msgstr ""
+msgstr "Abrir"
 
 #: /home/stefano/tmp/build-sdcard-read-support-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
