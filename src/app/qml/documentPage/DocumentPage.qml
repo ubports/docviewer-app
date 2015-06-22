@@ -21,7 +21,7 @@ import Qt.labs.settings 1.0
 Page {
     id: documentPage
 
-    title: i18n.tr("Document Viewer")
+    title: i18n.tr("Documents")
     flickable: null
 
     property bool useGridView: false

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-12 16:46+0200\n"
+"POT-Creation-Date: 2015-06-22 18:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,8 +33,7 @@ msgid "copy %1"
 msgstr ""
 
 #: ../src/app/docviewer-application.cpp:171
-#: ../src/app/qml/documentPage/DocumentPage.qml:24
-#: /home/stefano/Progetti/docviewer/build-document-page-filters-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_14_10_utopic-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/stefano/Progetti/docviewer/build-document-page-filters-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr ""
 
@@ -235,6 +234,10 @@ msgstr ""
 msgid "Even earlier..."
 msgstr ""
 
+#: ../src/app/qml/documentPage/DocumentPage.qml:24
+msgid "Documents"
+msgstr ""
+
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:29
 msgid "Search..."
 msgstr ""
@@ -362,6 +365,6 @@ msgstr[1] ""
 msgid "Open"
 msgstr ""
 
-#: /home/stefano/Progetti/docviewer/build-document-page-filters-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_14_10_utopic-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/stefano/Progetti/docviewer/build-document-page-filters-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr ""
