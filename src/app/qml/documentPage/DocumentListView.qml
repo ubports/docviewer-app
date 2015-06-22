@@ -177,5 +177,13 @@ MultipleSelectionListView {
         parent: documentListView.parent
     }
 
+    Connections {
+        target: sortSettings
+
+        onSortModeChanged: {
+            documentListView.positionViewAtBeginning()
+        }
+    }
+
     Component.onCompleted: { if (DOC_VIEWER.pickModeEnabled) documentListView.startSelection(); }
 }
