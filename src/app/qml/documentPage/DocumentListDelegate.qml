@@ -27,14 +27,15 @@ ListItemWithActions {
         var date = new Date(model.date)
         var diff = model.dateDiff
 
-        if (diff < 2)
+        if (diff < 2)   // Last access is today or yesterday.
             return Qt.formatDateTime(date, Qt.locale().timeFormat(Locale.ShortFormat))
 
-        if (diff < 7)
+        if (diff === 2) // Last access has been during the last week
             // TRANSLATORS: this is a datetime formatting string,
             // see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
             return Qt.formatDateTime(date, i18n.tr("dddd, hh:mm"))
 
+        // Last access has been during the last month or earlier.
         // TRANSLATORS: this is a datetime formatting string,
         // see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
         return Qt.formatDateTime(date, i18n.tr("dd-MM-yyyy hh:mm"))
