@@ -169,7 +169,7 @@ MainView {
                 return sortSettings.reverseOrder ? Qt.AscendingOrder : Qt.DescendingOrder
             }
         }
-        sortCaseSensitivity: Qt.CaseSensitive
+        sortCaseSensitivity: Qt.CaseInsensitive
 
         filter.property: "name"
     }

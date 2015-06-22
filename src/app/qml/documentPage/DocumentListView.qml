@@ -150,7 +150,7 @@ MultipleSelectionListView {
     section.delegate: ListItem.Header {
         text: {
             if (sortSettings.sortMode === 1)    // sort by name
-                return section
+                return section.toUpperCase()
 
             if (sortSettings.sortMode === 0) {    // sort by date
                 if (section == DocumentsModel.Today)
