@@ -27,18 +27,42 @@ ListItemWithActions {
         var date = new Date(model.date)
         var diff = model.dateDiff
 
-        if (diff < 2)   // Last access is today or yesterday.
-            return Qt.formatDateTime(date, Qt.locale().timeFormat(Locale.ShortFormat))
+        if (sortSettings.sortMode !== 0) {  // The sort rule is not "by date"
+            switch(diff) {
+            case 0:     // DocumentsModel.Today
+                // TRANSLATORS: this is a datetime formatting string, and the
+                // singlequote is an escape character.
+                // See http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
+                return Qt.formatDateTime(date, i18n.tr("'Today', hh:mm"))
 
-        if (diff === 2) // Last access has been during the last week
-            // TRANSLATORS: this is a datetime formatting string,
-            // see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-            return Qt.formatDateTime(date, i18n.tr("dddd, hh:mm"))
+            case 1:     // DocumentsModel.Yesterday
+                // TRANSLATORS: this is a datetime formatting string, and the
+                // singlequote is an escape character.
+                // See http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
+                return Qt.formatDateTime(date, i18n.tr("'Yesterday', hh:mm"))
 
-        // Last access has been during the last month or earlier.
-        // TRANSLATORS: this is a datetime formatting string,
-        // see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-        return Qt.formatDateTime(date, i18n.tr("dd-MM-yyyy hh:mm"))
+            default:    // DocumentsModel.LastWeek || DocumentsModel.LastMonth || DocumentsModel.Earlier
+                // TRANSLATORS: this is a datetime formatting string,
+                // see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
+                return Qt.formatDateTime(date, i18n.tr("dd-MM-yyyy hh:mm"))
+            }
+        } else {
+            switch(diff) {
+            case 0:     // DocumentsModel.Today, or
+            case 1:     // DocumentsModel.Yesterday
+                return Qt.formatDateTime(date, Qt.locale().timeFormat(Locale.ShortFormat))
+
+            case 2:     // DocumentsModel.LastWeek
+                // TRANSLATORS: this is a datetime formatting string,
+                // see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
+                return Qt.formatDateTime(date, i18n.tr("dddd, hh:mm"))
+
+            default:    // DocumentsModel.LastMonth || DocumentsModel.Earlier
+                // TRANSLATORS: this is a datetime formatting string,
+                // see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
+                return Qt.formatDateTime(date, i18n.tr("dd-MM-yyyy hh:mm"))
+            }
+        }
     }
 
     anchors { left: parent.left; right: parent.right }
