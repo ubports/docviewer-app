@@ -72,5 +72,13 @@ MultipleSelectionGridView {
         parent: documentGridView.parent
     }
 
+    Connections {
+        target: sortSettings
+
+        onSortModeChanged: {
+            documentGridView.positionViewAtBeginning()
+        }
+    }
+
     Component.onCompleted: { if (DOC_VIEWER.pickModeEnabled) documentGridView.startSelection(); }
 }
