@@ -27,6 +27,10 @@ function load(mimetype) {
     if (mimetype === "application/pdf")
         qmlToLoad = Qt.resolvedUrl("../pdfView/PdfView.qml");
 
+    // Check if LibreOffice document
+    if (mimetype.indexOf("application/vnd.oasis.opendocument") > -1)
+        qmlToLoad = Qt.resolvedUrl("../loView/LOView.qml")
+
     if (qmlToLoad != "") {
        pageStack.push(qmlToLoad);
     } else {

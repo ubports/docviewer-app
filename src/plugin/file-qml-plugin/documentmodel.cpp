@@ -118,7 +118,7 @@ bool DocumentModel::isFileSupported(const QString &path)
     QMimeDatabase db;
     QString mimetype = db.mimeTypeForFile(path).name();
 
-    return (mimetype.startsWith("text/") || mimetype == "application/pdf");
+    return (mimetype.startsWith("text/") || mimetype == "application/pdf" || mimetype.startsWith("application/vnd.oasis.opendocument"));
 }
 
 QHash<int, QByteArray> DocumentModel::roleNames() const

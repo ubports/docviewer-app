@@ -1,0 +1,2 @@
+module DocumentViewer.LibreOffice
+plugin libreofficetoolkitqmlplugin
