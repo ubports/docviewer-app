@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-05-19 14:05+0200\n"
+"POT-Creation-Date: 2015-06-22 19:03+0200\n"
 "PO-Revision-Date: 2015-04-28 08:02+0000\n"
 "Last-Translator: Fohanno Thierry <thierry.fohanno@ofis-bzh.org>\n"
 "Language-Team: Breton <br@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2015-05-22 05:01+0000\n"
-"X-Generator: Launchpad (build 17514)\n"
+"X-Launchpad-Export-Date: 2015-06-24 05:31+0000\n"
+"X-Generator: Launchpad (build 17572)\n"
 
 #. TRANSLATORS: This string is used for renaming a copied file,
 #. when a file with the same name already exists in user's
@@ -33,8 +33,7 @@ msgid "copy %1"
 msgstr "eilañ %1"
 
 #: ../src/app/docviewer-application.cpp:171
-#: ../src/app/qml/documentPage/DocumentPage.qml:25
-#: /home/stefano/tmp/build-sdcard-read-support-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/stefano/Progetti/docviewer/build-document-page-filters-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Lenner teulioù"
 
@@ -76,6 +75,7 @@ msgstr "Ar restr n'eus ket anezhi"
 #: ../src/app/qml/common/PickImportedDialog.qml:47
 #: ../src/app/qml/common/RejectedImportDialog.qml:38
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:32
+#: ../src/app/qml/documentPage/SortSettingsDialog.qml:53
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Close"
@@ -207,43 +207,70 @@ msgstr "Dec'h, da %1"
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:45
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:36
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:58
 msgid "dddd, hh:mm"
 msgstr "dddd, hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:49
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:40
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:47
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:63
 msgid "dd-MM-yyyy hh:mm"
 msgstr "dd-MM-yyyy hh:mm"
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:136
+#. TRANSLATORS: this is a datetime formatting string, and the
+#. singlequote is an escape character.
+#. See http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:36
+msgid "'Today', hh:mm"
+msgstr ""
+
+#. TRANSLATORS: this is a datetime formatting string, and the
+#. singlequote is an escape character.
+#. See http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:42
+msgid "'Yesterday', hh:mm"
+msgstr ""
+
+#: ../src/app/qml/documentPage/DocumentListView.qml:157
 msgid "Today"
 msgstr "Hiziv"
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:139
+#: ../src/app/qml/documentPage/DocumentListView.qml:160
 msgid "Yesterday"
 msgstr "Dec'h"
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:142
+#: ../src/app/qml/documentPage/DocumentListView.qml:163
 msgid "Earlier this week"
 msgstr "Abretoc'h er sizhun-mañ"
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:145
+#: ../src/app/qml/documentPage/DocumentListView.qml:166
 msgid "Earlier this month"
 msgstr "Abretoc'h er miz-mañ"
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:147
+#: ../src/app/qml/documentPage/DocumentListView.qml:168
 msgid "Even earlier..."
 msgstr "Abretoc'h c'hoazh..."
 
-#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:28
+#: ../src/app/qml/documentPage/DocumentPage.qml:24
+msgid "Documents"
+msgstr ""
+
+#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:29
+msgid "Search..."
+msgstr ""
+
+#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:37
+msgid "Sorting settings..."
+msgstr ""
+
+#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:46
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
 msgid "Switch to single column list"
 msgstr "Ober gant ur roll war ur bann hepken"
 
-#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:28
+#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:46
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
 msgid "Switch to grid"
 msgstr "Ober gant ur gael"
@@ -252,6 +279,16 @@ msgstr "Ober gant ur gael"
 msgid "Pick"
 msgstr "Tapout"
 
+#: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:27
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
+msgid "Back"
+msgstr "Distreiñ"
+
+#: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:47
+msgid "search in documents..."
+msgstr ""
+
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:52
 msgid "Select None"
 msgstr "Chom hep diuzañ netra"
@@ -259,6 +296,35 @@ msgstr "Chom hep diuzañ netra"
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:54
 msgid "Select All"
 msgstr "Diuzañ pep tra"
+
+#: ../src/app/qml/documentPage/SearchEmptyState.qml:24
+msgid "No matching document found"
+msgstr ""
+
+#: ../src/app/qml/documentPage/SearchEmptyState.qml:26
+msgid ""
+"Please ensure that your query is not misspelled and/or try a different query."
+msgstr ""
+
+#: ../src/app/qml/documentPage/SortSettingsDialog.qml:26
+msgid "Sorting settings"
+msgstr ""
+
+#: ../src/app/qml/documentPage/SortSettingsDialog.qml:31
+msgid "Sort by date (Latest first)"
+msgstr ""
+
+#: ../src/app/qml/documentPage/SortSettingsDialog.qml:32
+msgid "Sort by name (A-Z)"
+msgstr ""
+
+#: ../src/app/qml/documentPage/SortSettingsDialog.qml:33
+msgid "Sort by size (Smaller first)"
+msgstr ""
+
+#: ../src/app/qml/documentPage/SortSettingsDialog.qml:47
+msgid "Reverse order"
+msgstr ""
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:32
@@ -276,11 +342,6 @@ msgstr "Kuzhat an daolenn"
 #, qt-format
 msgid "Page %1 of %2"
 msgstr "Pajenn %1 diwar %2"
-
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
-#: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
-msgid "Back"
-msgstr "Distreiñ"
 
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:85
 msgid "Go to page..."
@@ -313,16 +374,16 @@ msgstr "DEOMP !"
 msgid "Loading..."
 msgstr "O kargañ..."
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:202
+#: ../src/app/qml/ubuntu-docviewer-app.qml:240
 msgid "Document successfully imported!"
 msgid_plural "Documents successfully imported!"
 msgstr[0] "Teul enporzhiet evel ma oa dleet !"
 msgstr[1] "Teulioù enporzhiet evel ma oa dleet !"
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:205
+#: ../src/app/qml/ubuntu-docviewer-app.qml:243
 msgid "Open"
 msgstr "Digeriñ"
 
-#: /home/stefano/tmp/build-sdcard-read-support-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/stefano/Progetti/docviewer/build-document-page-filters-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "teulioù;diskouezer;pdf;lenner"
