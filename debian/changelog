@@ -1,3 +1,12 @@
+ubuntu-docviewer-app (0.3.154) vivid; urgency=medium
+
+  * Fix missing icon for desktop: #1468418  
+  * Add SD Card support
+  * Code re-factoring. http://pad.lv/1445011
+  * Added tests. http://pad.lv/1418652
+
+ -- Bartosz Kosiorek <gang65@poczta.onet.pl>  Wed, 24 Jun 2015 22:51:47 +0100
+
 ubuntu-docviewer-app (0.3.0) utopic; urgency=medium
 
   * Improved content-hub support
