@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-24 14:01+0200\n"
+"POT-Creation-Date: 2015-06-26 16:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,7 +39,7 @@ msgid "Document Viewer"
 msgstr ""
 
 #: ../src/app/qml/common/DetailsPage.qml:27
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:97
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:112
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:97
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:83
 msgid "Details"
@@ -77,7 +77,7 @@ msgstr ""
 #: ../src/app/qml/common/PickImportedDialog.qml:47
 #: ../src/app/qml/common/RejectedImportDialog.qml:38
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:32
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:61
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:76
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Close"
@@ -266,24 +266,48 @@ msgstr ""
 msgid "Page %1 of %2"
 msgstr ""
 
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:57
+msgid "LibreOffice text document"
+msgstr ""
+
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:59
+msgid "LibreOffice spread sheet"
+msgstr ""
+
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:61
+msgid "LibreOffice presentation"
+msgstr ""
+
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:63
+msgid "LibreOffice Draw document"
+msgstr ""
+
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:65
+msgid "Unknown LibreOffice document"
+msgstr ""
+
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:67
+msgid "Unknown type document"
+msgstr ""
+
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:76
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Back"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:85
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:85
 msgid "Go to page..."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:91
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:106
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Disable night mode"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:91
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:106
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Enable night mode"

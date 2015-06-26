@@ -37,6 +37,8 @@ class LODocument : public QAbstractListModel
     Q_OBJECT
     Q_DISABLE_COPY(LODocument)
     Q_PROPERTY(QString path READ path WRITE setPath NOTIFY pathChanged)
+    Q_PROPERTY(DocumentType documentType READ documentType NOTIFY documentTypeChanged)
+    Q_ENUMS(DocumentType)
 
 public:
     enum Roles {
@@ -44,11 +46,21 @@ public:
         HeightRole
     };
 
+    enum DocumentType {
+        TextDocument = 0,
+        SpreadsheetDocument = 1,
+        PresentationDocument = 2,
+        DrawingDocument = 3,
+        OtherDocument = 4
+    };
+
     explicit LODocument(QAbstractListModel *parent = 0);
     virtual ~LODocument();
 
     QString path() const { return m_path; }
     void setPath(QString &pathName);
+
+    DocumentType documentType() const { return m_docType; }
 
     QHash<int, QByteArray> roleNames() const;
 
@@ -65,9 +77,11 @@ Q_SIGNALS:
     void pathChanged();
     void error(const QString& errorMessage);
     void pagesLoaded();
+    void documentTypeChanged();
 
 private:
     QString m_path;
+    DocumentType m_docType;
 
     bool loadDocument(QString &pathNAme);
     void loadProvider();

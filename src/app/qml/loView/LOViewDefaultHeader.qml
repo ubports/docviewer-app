@@ -51,7 +51,22 @@ PageHeadState {
                 elide: Text.ElideMiddle
 
                 fontSize: "small"
-                text: targetPage.currentPage
+                text: {
+                    switch(loDocument.documentType) {
+                    case 0:
+                        return i18n.tr("LibreOffice text document")
+                    case 1:
+                        return i18n.tr("LibreOffice spread sheet")
+                    case 2:
+                        return i18n.tr("LibreOffice presentation")
+                    case 3:
+                        return i18n.tr("LibreOffice Draw document")
+                    case 4:
+                        return i18n.tr("Unknown LibreOffice document")
+                    default:
+                        return i18n.tr("Unknown type document")
+                    }
+                }
             }
         }
     }

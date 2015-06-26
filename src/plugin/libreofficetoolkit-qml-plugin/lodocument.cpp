@@ -99,6 +99,9 @@ bool LODocument::loadDocument(QString &pathName)
     m_office = lok::lok_cpp_init(LO_PATH);
     m_document = m_office->documentLoad(m_path.toUtf8().constData());
 
+    m_docType = LODocument::DocumentType(m_document->getDocumentType());
+    Q_EMIT documentTypeChanged();
+
     qDebug() << "Document loaded successfully !";
 
     return true;
