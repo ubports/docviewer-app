@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-19 14:05+0200\n"
+"POT-Creation-Date: 2015-06-26 16:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,11 +34,12 @@ msgstr ""
 
 #: ../src/app/docviewer-application.cpp:171
 #: ../src/app/qml/documentPage/DocumentPage.qml:25
-#: /home/stefano/tmp/build-sdcard-read-support-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/stefano/tmp/build-lo-viewer-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr ""
 
 #: ../src/app/qml/common/DetailsPage.qml:27
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:112
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:97
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:83
 msgid "Details"
@@ -76,6 +77,7 @@ msgstr ""
 #: ../src/app/qml/common/PickImportedDialog.qml:47
 #: ../src/app/qml/common/RejectedImportDialog.qml:38
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:32
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:76
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Close"
@@ -167,6 +169,7 @@ msgstr[1] ""
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:36
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:27
+#: ../src/app/qml/loView/LOViewGotoDialog.qml:52
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:52
 msgid "Cancel"
 msgstr ""
@@ -256,6 +259,76 @@ msgstr ""
 msgid "Select All"
 msgstr ""
 
+#. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
+#. while the second one (%2) refers to the total pages count.
+#: ../src/app/qml/loView/LOView.qml:34 ../src/app/qml/pdfView/PdfView.qml:34
+#, qt-format
+msgid "Page %1 of %2"
+msgstr ""
+
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:57
+msgid "LibreOffice text document"
+msgstr ""
+
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:59
+msgid "LibreOffice spread sheet"
+msgstr ""
+
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:61
+msgid "LibreOffice presentation"
+msgstr ""
+
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:63
+msgid "LibreOffice Draw document"
+msgstr ""
+
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:65
+msgid "Unknown LibreOffice document"
+msgstr ""
+
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:67
+msgid "Unknown type document"
+msgstr ""
+
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:76
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
+msgid "Back"
+msgstr ""
+
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:85
+msgid "Go to page..."
+msgstr ""
+
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:106
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
+msgid "Disable night mode"
+msgstr ""
+
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:106
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
+msgid "Enable night mode"
+msgstr ""
+
+#: ../src/app/qml/loView/LOViewGotoDialog.qml:25
+#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:25
+msgid "Go to page"
+msgstr ""
+
+#: ../src/app/qml/loView/LOViewGotoDialog.qml:26
+#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
+#, qt-format
+msgid "Choose a page between 1 and %1"
+msgstr ""
+
+#: ../src/app/qml/loView/LOViewGotoDialog.qml:44
+#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:44
+msgid "GO!"
+msgstr ""
+
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:32
 #: ../src/app/qml/pdfView/PdfView.qml:37
@@ -264,45 +337,6 @@ msgstr ""
 
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:38
 msgid "Hide table of contents"
-msgstr ""
-
-#. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
-#. while the second one (%2) refers to the total pages count.
-#: ../src/app/qml/pdfView/PdfView.qml:34
-#, qt-format
-msgid "Page %1 of %2"
-msgstr ""
-
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
-#: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
-msgid "Back"
-msgstr ""
-
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:85
-msgid "Go to page..."
-msgstr ""
-
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
-#: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
-msgid "Disable night mode"
-msgstr ""
-
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
-#: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
-msgid "Enable night mode"
-msgstr ""
-
-#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:25
-msgid "Go to page"
-msgstr ""
-
-#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
-#, qt-format
-msgid "Choose a page between 1 and %1"
-msgstr ""
-
-#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:44
-msgid "GO!"
 msgstr ""
 
 #: ../src/app/qml/textView/TextView.qml:42
@@ -319,6 +353,6 @@ msgstr[1] ""
 msgid "Open"
 msgstr ""
 
-#: /home/stefano/tmp/build-sdcard-read-support-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/stefano/tmp/build-lo-viewer-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr ""

@@ -247,5 +247,8 @@ bool ContentCommunicator::isSupportedMimetype(QString mimetype)
     if (mimetype == "application/pdf")
         return true;
 
+    if (mimetype.startsWith("application/vnd.oasis.opendocument"))
+        return true;
+
     return false;
 }
