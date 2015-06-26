@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-06-22 19:03+0200\n"
+"POT-Creation-Date: 2015-06-24 22:48+0200\n"
 "PO-Revision-Date: 2015-04-08 09:51+0000\n"
 "Last-Translator: GunChleoc <Unknown>\n"
 "Language-Team: Fòram na Gàidhlig\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : "
 "(n > 2 && n < 20) ? 2 : 3;\n"
-"X-Launchpad-Export-Date: 2015-06-24 05:31+0000\n"
-"X-Generator: Launchpad (build 17572)\n"
+"X-Launchpad-Export-Date: 2015-06-26 04:58+0000\n"
+"X-Generator: Launchpad (build 17578)\n"
 "Language: gd\n"
 
 #. TRANSLATORS: This string is used for renaming a copied file,
@@ -35,7 +35,7 @@ msgid "copy %1"
 msgstr ""
 
 #: ../src/app/docviewer-application.cpp:171
-#: /home/stefano/Progetti/docviewer/build-document-page-filters-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/m/dev/core/ubuntu-docviewer-app-icon-fix/obj-x86_64-linux-gnu/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Sealladair sgrìobhainnean"
 
@@ -398,7 +398,7 @@ msgstr[1] ""
 msgid "Open"
 msgstr ""
 
-#: /home/stefano/Progetti/docviewer/build-document-page-filters-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/m/dev/core/ubuntu-docviewer-app-icon-fix/obj-x86_64-linux-gnu/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr ""
 "documents;viewer;pdf;reader;sgrìobhainnean;sealladair;leughadair;inneal-"
