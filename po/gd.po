@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-06-24 22:48+0200\n"
-"PO-Revision-Date: 2015-04-08 09:51+0000\n"
+"PO-Revision-Date: 2015-06-26 11:18+0000\n"
 "Last-Translator: GunChleoc <Unknown>\n"
 "Language-Team: Fòram na Gàidhlig\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : "
 "(n > 2 && n < 20) ? 2 : 3;\n"
-"X-Launchpad-Export-Date: 2015-06-26 04:58+0000\n"
+"X-Launchpad-Export-Date: 2015-06-27 05:35+0000\n"
 "X-Generator: Launchpad (build 17578)\n"
 "Language: gd\n"
 
@@ -109,7 +109,7 @@ msgstr ""
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:26
 msgid "Unknown file type"
-msgstr "Seòrsa faidhle neo-aithnichte"
+msgstr "Seòrsa faidhle nach aithne dhuinn"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:27
 msgid ""
