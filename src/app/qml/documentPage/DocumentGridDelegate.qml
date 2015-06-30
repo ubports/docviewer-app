@@ -94,7 +94,8 @@ AbstractButton {
             anchors.centerIn: parent
             anchors.verticalCenterOffset: - infoColumn.height * 0.3
 
-            width: units.gu(8); height: width
+            Layout.preferredWidth: units.gu(8);
+            Layout.preferredHeight: width
 
             // At the moment the suru icon theme doesn't have much icons.
             // Just some note for the future:
