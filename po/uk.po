@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-05-19 14:05+0200\n"
-"PO-Revision-Date: 2015-03-04 17:35+0000\n"
+"POT-Creation-Date: 2015-06-24 22:48+0200\n"
+"PO-Revision-Date: 2015-06-26 14:13+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@gmail.com>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-05-22 05:01+0000\n"
-"X-Generator: Launchpad (build 17514)\n"
+"X-Launchpad-Export-Date: 2015-06-27 05:35+0000\n"
+"X-Generator: Launchpad (build 17578)\n"
 
 #. TRANSLATORS: This string is used for renaming a copied file,
 #. when a file with the same name already exists in user's
@@ -31,11 +31,10 @@ msgstr ""
 #: ../src/app/content-communicator.cpp:105
 #, qt-format
 msgid "copy %1"
-msgstr ""
+msgstr "копія %1"
 
 #: ../src/app/docviewer-application.cpp:171
-#: ../src/app/qml/documentPage/DocumentPage.qml:25
-#: /home/stefano/tmp/build-sdcard-read-support-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/m/dev/core/ubuntu-docviewer-app-icon-fix/obj-x86_64-linux-gnu/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Перегляд документів"
 
@@ -77,6 +76,7 @@ msgstr "Файла не існує"
 #: ../src/app/qml/common/PickImportedDialog.qml:47
 #: ../src/app/qml/common/RejectedImportDialog.qml:38
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:32
+#: ../src/app/qml/documentPage/SortSettingsDialog.qml:53
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Close"
@@ -84,27 +84,29 @@ msgstr "Закрити"
 
 #: ../src/app/qml/common/PickImportedDialog.qml:29
 msgid "Multiple documents imported"
-msgstr ""
+msgstr "Імпортовано декілька документів"
 
 #: ../src/app/qml/common/PickImportedDialog.qml:30
 msgid "Choose which one to open:"
-msgstr ""
+msgstr "Виберіть той, який слід відкрити:"
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:28
 msgid "File not supported"
 msgid_plural "Files not supported"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Підтримки файла не передбачено"
+msgstr[1] "Підтримки файлів не передбачено"
+msgstr[2] "Підтримки файлів не передбачено"
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:29
 msgid "Following document has not been imported:"
 msgid_plural "Following documents have not been imported:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Цей документ не було імпортовано:"
+msgstr[1] "Ці документи не було імпортовано:"
+msgstr[2] "Ці документи не було імпортовано:"
 
 #: ../src/app/qml/common/ToastWithAction.qml:97
 msgid "Dismiss"
-msgstr ""
+msgstr "Відкинути"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:26
 msgid "Unknown file type"
@@ -130,25 +132,25 @@ msgstr "Ні"
 #: ../src/app/qml/common/utils.js:22
 #, qt-format
 msgid "%1 GB"
-msgstr ""
+msgstr "%1 ГБ"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in MB
 #: ../src/app/qml/common/utils.js:26
 #, qt-format
 msgid "%1 MB"
-msgstr ""
+msgstr "%1 МБ"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in kB
 #: ../src/app/qml/common/utils.js:30
 #, qt-format
 msgid "%1 kB"
-msgstr ""
+msgstr "%1 кБ"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in byte
 #: ../src/app/qml/common/utils.js:33
 #, qt-format
 msgid "%1 byte"
-msgstr ""
+msgstr "%1 байт"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:28
 msgid "Delete file"
@@ -158,15 +160,17 @@ msgstr "Вилучити файл"
 #, qt-format
 msgid "Delete %1 file"
 msgid_plural "Delete %1 files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Вилучити %1 файл"
+msgstr[1] "Вилучити %1 файли"
+msgstr[2] "Вилучити %1 файлів"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:30
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:31
 msgid "Are you sure you want to permanently delete this file?"
 msgid_plural "Are you sure you want to permanently delete these files?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ви впевнені, що хочете остаточно видалити цей файл?"
+msgstr[1] "Ви впевнені, що хочете остаточно видалити ці файли?"
+msgstr[2] "Ви впевнені, що хочете остаточно видалити ці файли?"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:36
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:27
@@ -196,55 +200,82 @@ msgstr ""
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:35
 #, qt-format
 msgid "Today, %1"
-msgstr ""
+msgstr "Сьогодні, %1"
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:40
 #, qt-format
 msgid "Yesterday, %1"
-msgstr ""
+msgstr "Вчора, %1"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:45
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:36
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:58
 msgid "dddd, hh:mm"
 msgstr "dddd, hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:49
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:40
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:47
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:63
 msgid "dd-MM-yyyy hh:mm"
 msgstr "dd-MM-yyyy hh:mm"
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:136
+#. TRANSLATORS: this is a datetime formatting string, and the
+#. singlequote is an escape character.
+#. See http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:36
+msgid "'Today', hh:mm"
+msgstr "'Today', hh:mm"
+
+#. TRANSLATORS: this is a datetime formatting string, and the
+#. singlequote is an escape character.
+#. See http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:42
+msgid "'Yesterday', hh:mm"
+msgstr "'Yesterday', hh:mm"
+
+#: ../src/app/qml/documentPage/DocumentListView.qml:157
 msgid "Today"
 msgstr "Сьогодні"
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:139
+#: ../src/app/qml/documentPage/DocumentListView.qml:160
 msgid "Yesterday"
 msgstr "Вчора"
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:142
+#: ../src/app/qml/documentPage/DocumentListView.qml:163
 msgid "Earlier this week"
 msgstr "Раніше цього тижня"
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:145
+#: ../src/app/qml/documentPage/DocumentListView.qml:166
 msgid "Earlier this month"
 msgstr "Раніше цього місяця"
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:147
+#: ../src/app/qml/documentPage/DocumentListView.qml:168
 msgid "Even earlier..."
 msgstr "Раніше…"
 
-#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:28
+#: ../src/app/qml/documentPage/DocumentPage.qml:24
+msgid "Documents"
+msgstr "Документи"
+
+#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:29
+msgid "Search..."
+msgstr "Шукати…"
+
+#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:37
+msgid "Sorting settings..."
+msgstr "Параметри упорядковування…"
+
+#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:46
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
 msgid "Switch to single column list"
 msgstr "Перемкнутися на список у один стовпчик"
 
-#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:28
+#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:46
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
 msgid "Switch to grid"
 msgstr "Перемкнутися на таблицю"
@@ -252,6 +283,16 @@ msgstr "Перемкнутися на таблицю"
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:43
 msgid "Pick"
 msgstr "Вибрати"
+
+#: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:27
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
+msgid "Back"
+msgstr "Назад"
+
+#: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:47
+msgid "search in documents..."
+msgstr "шукати у документах…"
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:52
 msgid "Select None"
@@ -261,6 +302,37 @@ msgstr "Скасувати вибір"
 msgid "Select All"
 msgstr "Вибрати все"
 
+#: ../src/app/qml/documentPage/SearchEmptyState.qml:24
+msgid "No matching document found"
+msgstr "Відповідних документів не знайдено"
+
+#: ../src/app/qml/documentPage/SearchEmptyState.qml:26
+msgid ""
+"Please ensure that your query is not misspelled and/or try a different query."
+msgstr ""
+"Будь ласка, переконайтеся, що ключ пошуку вказано правильно, або спробуйте "
+"інший запит."
+
+#: ../src/app/qml/documentPage/SortSettingsDialog.qml:26
+msgid "Sorting settings"
+msgstr "Параметри упорядковування"
+
+#: ../src/app/qml/documentPage/SortSettingsDialog.qml:31
+msgid "Sort by date (Latest first)"
+msgstr "Упорядкувати за датою (найсвіжіші першими)"
+
+#: ../src/app/qml/documentPage/SortSettingsDialog.qml:32
+msgid "Sort by name (A-Z)"
+msgstr "Упорядкувати за абеткою (А-Я)"
+
+#: ../src/app/qml/documentPage/SortSettingsDialog.qml:33
+msgid "Sort by size (Smaller first)"
+msgstr "Упорядкувати за розміром (найменші спочатку)"
+
+#: ../src/app/qml/documentPage/SortSettingsDialog.qml:47
+msgid "Reverse order"
+msgstr "Зворотний порядок"
+
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:32
 #: ../src/app/qml/pdfView/PdfView.qml:37
@@ -269,7 +341,7 @@ msgstr "Зміст"
 
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:38
 msgid "Hide table of contents"
-msgstr ""
+msgstr "Приховати «Зміст»"
 
 #. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
 #. while the second one (%2) refers to the total pages count.
@@ -278,11 +350,6 @@ msgstr ""
 msgid "Page %1 of %2"
 msgstr "Сторінка %1 з %2"
 
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
-#: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
-msgid "Back"
-msgstr "Назад"
-
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:85
 msgid "Go to page..."
 msgstr "Перейти до сторінки…"
@@ -290,12 +357,12 @@ msgstr "Перейти до сторінки…"
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Disable night mode"
-msgstr ""
+msgstr "Вимкнути нічний режим"
 
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Enable night mode"
-msgstr ""
+msgstr "Увімкнути нічний режим"
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:25
 msgid "Go to page"
@@ -314,16 +381,17 @@ msgstr "ВПЕРЕД!"
 msgid "Loading..."
 msgstr "Завантаження…"
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:202
+#: ../src/app/qml/ubuntu-docviewer-app.qml:240
 msgid "Document successfully imported!"
 msgid_plural "Documents successfully imported!"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Документ успішно імпортовано!"
+msgstr[1] "Документи успішно імпортовано!"
+msgstr[2] "Документи успішно імпортовано!"
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:205
+#: ../src/app/qml/ubuntu-docviewer-app.qml:243
 msgid "Open"
-msgstr ""
+msgstr "Відкрити"
 
-#: /home/stefano/tmp/build-sdcard-read-support-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/m/dev/core/ubuntu-docviewer-app-icon-fix/obj-x86_64-linux-gnu/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "documents;viewer;pdf;reader;документи;перегляд;пдф;читання;"

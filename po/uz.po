@@ -1,4 +1,4 @@
-# Punjabi translation for ubuntu-docviewer-app
+# Uzbek translation for ubuntu-docviewer-app
 # Copyright (c) 2015 Rosetta Contributors and Canonical Ltd 2015
 # This file is distributed under the same license as the ubuntu-docviewer-app package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-06-24 22:48+0200\n"
-"PO-Revision-Date: 2015-06-30 04:21+0000\n"
-"Last-Translator: Gursharnjit_Singh <ubuntuser13@gmail.com>\n"
-"Language-Team: Punjabi <pa@li.org>\n"
+"PO-Revision-Date: 2015-06-26 14:48+0000\n"
+"Last-Translator: Learner <muzaffar.habibullayev@yandex.ru>\n"
+"Language-Team: Uzbek <uz@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-07-01 05:51+0000\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Launchpad-Export-Date: 2015-06-27 05:35+0000\n"
 "X-Generator: Launchpad (build 17578)\n"
 
 #. TRANSLATORS: This string is used for renaming a copied file,
@@ -30,46 +30,46 @@ msgstr ""
 #: ../src/app/content-communicator.cpp:105
 #, qt-format
 msgid "copy %1"
-msgstr "ਕਾਪੀ %1"
+msgstr "nusxasi %1"
 
 #: ../src/app/docviewer-application.cpp:171
 #: /home/m/dev/core/ubuntu-docviewer-app-icon-fix/obj-x86_64-linux-gnu/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
-msgstr "ਦਸਤਾਵੇਜ ਦਰਸ਼ਕ"
+msgstr "Hujjat ko'ruvchi"
 
 #: ../src/app/qml/common/DetailsPage.qml:27
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:97
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:83
 msgid "Details"
-msgstr "ਵੇਰਵਾ"
+msgstr "Tafsilotlar"
 
 #: ../src/app/qml/common/DetailsPage.qml:33
 msgid "Location"
-msgstr "ਟਿਕਾਣਾ"
+msgstr "Manzili"
 
 #: ../src/app/qml/common/DetailsPage.qml:37
 msgid "Size"
-msgstr "ਅਕਾਰ"
+msgstr "Hajmi"
 
 #: ../src/app/qml/common/DetailsPage.qml:42
 msgid "Created"
-msgstr "ਬਣਾਇਆ"
+msgstr "Yaratilgan"
 
 #: ../src/app/qml/common/DetailsPage.qml:47
 msgid "Last modified"
-msgstr "ਆਖਰੀ ਸੋਧ"
+msgstr "So'ngi o'zgartirilgan"
 
 #: ../src/app/qml/common/DetailsPage.qml:54
 msgid "MIME type"
-msgstr "MIME ਕਿਸਮ"
+msgstr "MIME turi"
 
 #: ../src/app/qml/common/FileNotFoundDialog.qml:24
 msgid "Error"
-msgstr "ਖਾਮੀ"
+msgstr "Xato"
 
 #: ../src/app/qml/common/FileNotFoundDialog.qml:25
 msgid "File does not exist"
-msgstr "ਫਾਇਲ ਮੌਜੂਦ ਨਹੀਂ"
+msgstr "Fayl mavjud emas"
 
 #: ../src/app/qml/common/FileNotFoundDialog.qml:28
 #: ../src/app/qml/common/PickImportedDialog.qml:47
@@ -79,130 +79,133 @@ msgstr "ਫਾਇਲ ਮੌਜੂਦ ਨਹੀਂ"
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Close"
-msgstr "ਬੰਦ"
+msgstr "Yopish"
 
 #: ../src/app/qml/common/PickImportedDialog.qml:29
 msgid "Multiple documents imported"
-msgstr "ਬਹੁਤਾਂਤ ਦਸਤਾਵੇਜ਼ਾਂ ਦੀ ਆਮਦ ਹੋਈ"
+msgstr "Ko'p hujjatlar import qilindi"
 
 #: ../src/app/qml/common/PickImportedDialog.qml:30
 msgid "Choose which one to open:"
-msgstr "ਚੁਣੋ ਕਿਸ ਵਾਲੇ ਨੂੰ ਖੋਲ੍ਹਣਾ:"
+msgstr "Qaysi birini ochilsin:"
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:28
 msgid "File not supported"
 msgid_plural "Files not supported"
-msgstr[0] "ਫ਼ਾਈਲ ਸਹਿਯੋਗ ਨਹੀਂ ਕਰਦੀ"
-msgstr[1] "ਫ਼ਾਈਲਾਂ ਸਹਿਯੋਗ ਨਹੀਂ ਕਰਦੀਆਂ"
+msgstr[0] ""
+"Fayl qo'llab quvvatlanmaydi\r\n"
+"Fayllar qo'llab quvvatlanmaydi"
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:29
 msgid "Following document has not been imported:"
 msgid_plural "Following documents have not been imported:"
-msgstr[0] "ਅੱਗੇ ਦਿੱਤੇ ਦਸਤਾਵੇਜ਼ ਦੀ ਆਮਦ ਨਹੀਂ ਹੋ ਸਕੀ"
-msgstr[1] "ਅੱਗੇ ਦਿੱਤੇ ਦਸਤਾਵੇਜ਼ਾਂ ਦੀ ਆਮਦ ਨਹੀਂ ਹੋ ਸਕੀ"
+msgstr[0] ""
+"Ushbu hujjat import qilindi: \r\n"
+"Ushbu hujjatlar import qilindi:"
 
 #: ../src/app/qml/common/ToastWithAction.qml:97
 msgid "Dismiss"
-msgstr "ਅਣਡਿੱਠ ਕਰੋ"
+msgstr "Bekor qilish"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:26
 msgid "Unknown file type"
-msgstr "ਅਣਜਾਣ ਫ਼ਾਈਲ ਕਿਸਮ"
+msgstr "Noma'lum fayl turi"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:27
 msgid ""
 "Sorry but we can't find a way to display this file. Do you want to open it "
 "as a plain text?"
 msgstr ""
-"ਮੁਆਫ਼ੀ ਅਸੀਂ ਇਹ ਫ਼ਾਈਲ ਵਿਖਾਉਣ ਦਾ ਕੋਈ ਢੰਗ ਨਹੀਂ ਲੱਭ ਸਕੇ। ਕੀ ਤੁਸੀਂ ਇਸ ਨੂੰ ਸਧਾਰਨ "
-"ਟੈਕਸਟ ਦੇ ਤੌਰ ਤੇ ਖੋਲ੍ਹਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
+"Uzr lekin ushbu faylni qanday ochishni bilmayapmiz. Oddiy matn holida "
+"ochilsinmi?"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:29
 msgid "Yes"
-msgstr "ਹਾਂ"
+msgstr "Ha"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:38
 msgid "No"
-msgstr "ਨਹੀਂ"
+msgstr "Yo‘q"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in GB
 #: ../src/app/qml/common/utils.js:22
 #, qt-format
 msgid "%1 GB"
-msgstr "%1 ਜੀਬੀ"
+msgstr "%1 GB"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in MB
 #: ../src/app/qml/common/utils.js:26
 #, qt-format
 msgid "%1 MB"
-msgstr "%1 ਐਮਬੀ"
+msgstr "%1 MB"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in kB
 #: ../src/app/qml/common/utils.js:30
 #, qt-format
 msgid "%1 kB"
-msgstr "%1 ਕੇਬੀ"
+msgstr "%1 kB"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in byte
 #: ../src/app/qml/common/utils.js:33
 #, qt-format
 msgid "%1 byte"
-msgstr "%1 ਬਾਈਟ"
+msgstr "%1 bayt"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:28
 msgid "Delete file"
-msgstr "ਫ਼ਾਈਲ ਹਟਾਓ"
+msgstr "Fayli o'chirish"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:29
 #, qt-format
 msgid "Delete %1 file"
 msgid_plural "Delete %1 files"
-msgstr[0] "%1 ਫ਼ਾਈਲ ਹਟਾਓ"
-msgstr[1] "%1 ਫ਼ਾਈਲਾਂ ਹਟਾਓ"
+msgstr[0] ""
+"%1 faylni o'chirish\r\n"
+"%1 fayllarni o'chirish"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:30
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:31
 msgid "Are you sure you want to permanently delete this file?"
 msgid_plural "Are you sure you want to permanently delete these files?"
-msgstr[0] "ਕੀ ਤੁਸੀਂ ਇਸ ਫ਼ਾਈਲ ਨੂੰ ਪੱਕੇ ਤੌਰ ਤੇ ਹਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
-msgstr[1] "ਕੀ ਤੁਸੀਂ ਇਹਨਾਂ ਫ਼ਾਈਲਾਂ ਨੂੰ ਪੱਕੇ ਤੌਰ ਤੇ ਹਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
+msgstr[0] ""
+"Ushbu faylni butunlay o'chirmoqchimisiz?\r\n"
+"Ushbu fayllarni butunlay o'chirmoqchimisiz?"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:36
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:27
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:52
 msgid "Cancel"
-msgstr "ਰੱਦ"
+msgstr "Bekor qilish"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:41
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:82
 msgid "Delete"
-msgstr "ਹਟਾਓ"
+msgstr "O‘chirish"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:24
 msgid "No document found"
-msgstr "ਕੋਈ ਦਸਤਾਵੇਜ ਨਹੀਂ ਮਿਲਿਆ"
+msgstr "Hujjat topilmadi"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:28
 msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
 "folder."
 msgstr ""
-"ਆਪਣੇ ਜੰਤਰ ਨੂੰ ਕਿਸੇ ਕੰਪਿਊਟਰ ਨਾਲ ਜੋੜੋ ਅਤੇ ਫ਼ਾਈਲਾਂ ਨੂੰ ਅਸਾਨੀ ਨਾਲ ਦਸਤਾਵੇਜ ਫ਼ੋਲਡਰ "
-"ਵਿੱਚ ਖਿੱਚੋ।"
+"Uskunani kompyuterga ulang va shunchaki fayllarni Hujjatlar jildiga tashlang."
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:35
 #, qt-format
 msgid "Today, %1"
-msgstr "ਅੱਜ, %1"
+msgstr "Bugun, %1"
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:40
 #, qt-format
 msgid "Yesterday, %1"
-msgstr "ਕੱਲ੍ਹ, %1"
+msgstr "Kecha, %1"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
@@ -224,168 +227,169 @@ msgstr "dd-MM-yyyy hh:mm"
 #. See http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:36
 msgid "'Today', hh:mm"
-msgstr "'ਅੱਜ', hh:mm"
+msgstr "'Bugun', hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string, and the
 #. singlequote is an escape character.
 #. See http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:42
 msgid "'Yesterday', hh:mm"
-msgstr "'ਕੱਲ', hh:mm"
+msgstr "'Kecha', hh:mm"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:157
 msgid "Today"
-msgstr "ਅੱਜ"
+msgstr "Bugun"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:160
 msgid "Yesterday"
-msgstr "ਕੱਲ੍ਹ"
+msgstr "Kecha"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:163
 msgid "Earlier this week"
-msgstr "ਇਸ ਹਫ਼ਤੇ ਪਹਿਲੋਂ"
+msgstr "Shu hafta oldinroq"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:166
 msgid "Earlier this month"
-msgstr "ਇਸ ਮਹੀਨੇ ਪਹਿਲੋਂ"
+msgstr "Shu oy oldinroq"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:168
 msgid "Even earlier..."
-msgstr "ਇਸ ਤੋਂ ਪਹਿਲਾਂ..."
+msgstr "Yanada oldin ..."
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:24
 msgid "Documents"
-msgstr "ਦਸਤਾਵੇਜ਼"
+msgstr "Hujjatlar"
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:29
 msgid "Search..."
-msgstr "ਖੋਜ..."
+msgstr "Izlash..."
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:37
 msgid "Sorting settings..."
-msgstr "ਕਿਸਮ ਵੰਡ ਸੈਟਿੰਗ..."
+msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:46
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
 msgid "Switch to single column list"
-msgstr "ਇੱਕਲੀ ਕਾਲਮ ਸੂਚੀ ਤੇ ਸਵਿੱਚ ਕਰੋ"
+msgstr "Bir ustunli ro'yxatga o'tkazish"
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:46
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
 msgid "Switch to grid"
-msgstr "ਗਰਿੱਡ ਤੇ ਸਵਿੱਚ ਕਰੋ"
+msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:43
 msgid "Pick"
-msgstr "ਚੁਣੋ"
+msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:27
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Back"
-msgstr "ਪਿੱਛੇ"
+msgstr "Orqaga"
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:47
 msgid "search in documents..."
-msgstr "ਦਸਤਾਵੇਜ਼ਾਂ ਵਿੱਚ ਖੋਜੋ..."
+msgstr "hujjatlardan qidirish..."
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:52
 msgid "Select None"
-msgstr "ਕੁੱਝ ਨਾ ਚੁਣੋ"
+msgstr "Hech qaysini tanlamaslik"
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:54
 msgid "Select All"
-msgstr "ਸੱਭ ਚੁਣੋ"
+msgstr "Barchasini tanlash"
 
 #: ../src/app/qml/documentPage/SearchEmptyState.qml:24
 msgid "No matching document found"
-msgstr "ਕੋਈ ਢੁੱਕਵਾਂ ਦਸਤਾਵੇਜ਼ ਨਹੀਂ ਮਿਲਿਆ"
+msgstr "Mos hujjat topilmadi"
 
 #: ../src/app/qml/documentPage/SearchEmptyState.qml:26
 msgid ""
 "Please ensure that your query is not misspelled and/or try a different query."
 msgstr ""
-"ਕਿਰਪਾ ਕਰਕੇ ਯਕੀਨੀ ਬਣਾਓ ਕੀ ਪੁੱਛ-ਗਿੱਛ ਦੇ ਅੱਖਰ ਠੀਕ ਹਨ ਅਤੇ/ਜਾਂ ਇੱਕ ਵੱਖ ਪੁੱਛ-ਗਿ਼ੱਛ "
-"ਵਰਤੋਂ।"
+"Izlashingiz to'g'ri yozilganiga ichonch hosil qiling yoki boshqa qidiruv "
+"boshlang."
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:26
 msgid "Sorting settings"
-msgstr "ਕਿਸਮ ਵੰਡ ਸੈਟਿੰਗਾਂ"
+msgstr ""
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:31
 msgid "Sort by date (Latest first)"
-msgstr "ਮਿਤੀ ਅਨੁਸਾਰ ਵੰਡੋ (ਨਵੀਆਂ ਪਹਿਲਾਂ)"
+msgstr ""
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:32
 msgid "Sort by name (A-Z)"
-msgstr "ਨਾਂ ਅਨੁਸਾਰ ਵੰਡੋ (A-Z)"
+msgstr ""
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:33
 msgid "Sort by size (Smaller first)"
-msgstr "ਅਕਾਰ ਅਨੁਸਾਰ ਵੰਡੋ (ਛੋਟਾ ਪਹਿਲਾਂ)"
+msgstr ""
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:47
 msgid "Reverse order"
-msgstr "ਉਲਟ ਤਰਤੀਬ"
+msgstr ""
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:32
 #: ../src/app/qml/pdfView/PdfView.qml:37
 msgid "Contents"
-msgstr "ਸਮੱਗਰੀ"
+msgstr "Tarkibi"
 
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:38
 msgid "Hide table of contents"
-msgstr "ਸਮੱਗਰੀ ਦੇ ਟੇਬਲ ਹਟਾਓ"
+msgstr "Mundarijani yashirish"
 
 #. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
 #. while the second one (%2) refers to the total pages count.
 #: ../src/app/qml/pdfView/PdfView.qml:34
 #, qt-format
 msgid "Page %1 of %2"
-msgstr "%2 ਵਿੱਚੋਂ %1 ਸਫ਼ਾ"
+msgstr "%2  dan  %1 sahifa"
 
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:85
 msgid "Go to page..."
-msgstr "ਸਫ਼ੇ ਤੇ ਜਾਓ..."
+msgstr "Sahifaga o'tish ..."
 
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Disable night mode"
-msgstr "ਰਾਤ ਮੋਡ ਬੰਦ ਕਰੋ"
+msgstr "Tungi rejimni o'chirish"
 
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Enable night mode"
-msgstr "ਰਾਤ ਮੋਡ ਚਾਲੂ ਕਰੋ"
+msgstr "Tungi rejimni yoqish"
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:25
 msgid "Go to page"
-msgstr "ਸਫ਼ੇ ਤੇ ਜਾਓ"
+msgstr "Sahifaga o'tish"
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
 #, qt-format
 msgid "Choose a page between 1 and %1"
-msgstr "1 ਅਤੇ %1 ਵਿੱਚੋਂ ਇੱਕ ਸਫ਼ਾ ਚੁਣੋ"
+msgstr ""
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:44
 msgid "GO!"
-msgstr "ਜਾਓ!"
+msgstr "Ketdik!"
 
 #: ../src/app/qml/textView/TextView.qml:42
 msgid "Loading..."
-msgstr "ਲੋਡ ਕਰ ਰਿਹਾ"
+msgstr "Yuklanmoqda..."
 
 #: ../src/app/qml/ubuntu-docviewer-app.qml:240
 msgid "Document successfully imported!"
 msgid_plural "Documents successfully imported!"
-msgstr[0] "ਦਸਤਾਵੇਜ਼ ਦੀ ਸਫ਼ਲਤਾਪੂਰਨ ਆਮਦ ਹੋਈ!"
-msgstr[1] "ਦਸਤਾਵੇਜ਼ਾਂ ਦੀ ਸਫ਼ਲਤਾਪੂਰਨ ਆਮਦ ਹੋਈ!"
+msgstr[0] ""
+"Hujjat muvaffaqiyatli import qilindi!\r\n"
+"Hujjatlar muvaffaqiyatli import qilindi!"
 
 #: ../src/app/qml/ubuntu-docviewer-app.qml:243
 msgid "Open"
-msgstr "ਖੋਲ੍ਹੋ"
+msgstr "Ochish"
 
 #: /home/m/dev/core/ubuntu-docviewer-app-icon-fix/obj-x86_64-linux-gnu/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
-msgstr "ਦਸਤਾਵੇਜ;ਦਰਸਕ;pdf;ਰੀਡਰ;"
+msgstr "hujjatlar;ko'ruvchi;pdf;o'quvchi;"

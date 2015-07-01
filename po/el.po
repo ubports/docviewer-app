@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-05-19 14:05+0200\n"
-"PO-Revision-Date: 2015-03-08 18:24+0000\n"
-"Last-Translator: Aggelos Arnaoutis <angelosarn@hotmail.com>\n"
+"POT-Creation-Date: 2015-06-24 22:48+0200\n"
+"PO-Revision-Date: 2015-06-29 10:13+0000\n"
+"Last-Translator: Simos Xenitellis <Unknown>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-05-22 05:01+0000\n"
-"X-Generator: Launchpad (build 17514)\n"
+"X-Launchpad-Export-Date: 2015-06-30 05:42+0000\n"
+"X-Generator: Launchpad (build 17578)\n"
 
 #. TRANSLATORS: This string is used for renaming a copied file,
 #. when a file with the same name already exists in user's
@@ -30,11 +30,10 @@ msgstr ""
 #: ../src/app/content-communicator.cpp:105
 #, qt-format
 msgid "copy %1"
-msgstr ""
+msgstr "αντίγραφο %1"
 
 #: ../src/app/docviewer-application.cpp:171
-#: ../src/app/qml/documentPage/DocumentPage.qml:25
-#: /home/stefano/tmp/build-sdcard-read-support-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/m/dev/core/ubuntu-docviewer-app-icon-fix/obj-x86_64-linux-gnu/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Προβολέας εγγράφων"
 
@@ -76,6 +75,7 @@ msgstr "Το αρχείο δεν υπάρχει"
 #: ../src/app/qml/common/PickImportedDialog.qml:47
 #: ../src/app/qml/common/RejectedImportDialog.qml:38
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:32
+#: ../src/app/qml/documentPage/SortSettingsDialog.qml:53
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Close"
@@ -83,23 +83,23 @@ msgstr "Κλείσιμο"
 
 #: ../src/app/qml/common/PickImportedDialog.qml:29
 msgid "Multiple documents imported"
-msgstr ""
+msgstr "Εισήχθησαν πολλαπλά έγγραφα"
 
 #: ../src/app/qml/common/PickImportedDialog.qml:30
 msgid "Choose which one to open:"
-msgstr ""
+msgstr "Επιλέξτε ποιο να ανοίξετε:"
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:28
 msgid "File not supported"
 msgid_plural "Files not supported"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Δεν υποστηρίζεται το αρχείο"
+msgstr[1] "Δεν υποστηρίζονται τα αρχεία"
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:29
 msgid "Following document has not been imported:"
 msgid_plural "Following documents have not been imported:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Το παρακάτω έγγραφο δεν εισήχθη:"
+msgstr[1] "Τα παρακάτω έγγραφα δεν εισήχθησαν:"
 
 #: ../src/app/qml/common/ToastWithAction.qml:97
 msgid "Dismiss"
@@ -147,7 +147,7 @@ msgstr "%1 kB"
 #: ../src/app/qml/common/utils.js:33
 #, qt-format
 msgid "%1 byte"
-msgstr ""
+msgstr "%1 byte"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:28
 msgid "Delete file"
@@ -171,7 +171,7 @@ msgstr[1] "Είστε σίγουρος πως θέλετε να διαγράψε
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:27
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:52
 msgid "Cancel"
-msgstr ""
+msgstr "Ακύρωση"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:41
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:82
@@ -207,43 +207,70 @@ msgstr "Χθές, %1"
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:45
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:36
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:58
 msgid "dddd, hh:mm"
 msgstr "ηηηη, ωω:λλ"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:49
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:40
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:47
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:63
 msgid "dd-MM-yyyy hh:mm"
 msgstr "ηη-ΜΜ-εεε ωω:λλ"
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:136
+#. TRANSLATORS: this is a datetime formatting string, and the
+#. singlequote is an escape character.
+#. See http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:36
+msgid "'Today', hh:mm"
+msgstr "«Σήμερα», hh:mm"
+
+#. TRANSLATORS: this is a datetime formatting string, and the
+#. singlequote is an escape character.
+#. See http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:42
+msgid "'Yesterday', hh:mm"
+msgstr "«Χτες», hh:mm"
+
+#: ../src/app/qml/documentPage/DocumentListView.qml:157
 msgid "Today"
 msgstr "Σήμερα"
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:139
+#: ../src/app/qml/documentPage/DocumentListView.qml:160
 msgid "Yesterday"
 msgstr "Χθες"
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:142
+#: ../src/app/qml/documentPage/DocumentListView.qml:163
 msgid "Earlier this week"
 msgstr "Νωρίτερα αυτήν την εβδομάδα"
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:145
+#: ../src/app/qml/documentPage/DocumentListView.qml:166
 msgid "Earlier this month"
 msgstr "Νωρίτερα αυτόν τον μήνα"
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:147
+#: ../src/app/qml/documentPage/DocumentListView.qml:168
 msgid "Even earlier..."
 msgstr "Ακόμα νωρίτερα"
 
-#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:28
+#: ../src/app/qml/documentPage/DocumentPage.qml:24
+msgid "Documents"
+msgstr "Έγγραφα"
+
+#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:29
+msgid "Search..."
+msgstr "Αναζήτηση..."
+
+#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:37
+msgid "Sorting settings..."
+msgstr "Ρυθμίσεις ταξινόμησης..."
+
+#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:46
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
 msgid "Switch to single column list"
 msgstr "Αλλαγή σε λίστα μονής στήλης"
 
-#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:28
+#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:46
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
 msgid "Switch to grid"
 msgstr "Αλλαγή σε πλέγμα"
@@ -251,6 +278,16 @@ msgstr "Αλλαγή σε πλέγμα"
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:43
 msgid "Pick"
 msgstr "Επιλογή"
+
+#: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:27
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
+msgid "Back"
+msgstr "Πίσω"
+
+#: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:47
+msgid "search in documents..."
+msgstr "αναζήτηση στα έγγραφα..."
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:52
 msgid "Select None"
@@ -260,6 +297,37 @@ msgstr "Καμία επιλογή"
 msgid "Select All"
 msgstr "Επιλογή όλων"
 
+#: ../src/app/qml/documentPage/SearchEmptyState.qml:24
+msgid "No matching document found"
+msgstr "Δεν βρέθηκαν έγγραφα που ταιριάζουν"
+
+#: ../src/app/qml/documentPage/SearchEmptyState.qml:26
+msgid ""
+"Please ensure that your query is not misspelled and/or try a different query."
+msgstr ""
+"Παρακαλούμε επιβεβαιώστε ότι το λεκτικό αναζήτησης είναι σωστό και/ή "
+"δοκιμάστε με άλλο λεκτικό."
+
+#: ../src/app/qml/documentPage/SortSettingsDialog.qml:26
+msgid "Sorting settings"
+msgstr "Ρυθμίσεις ταξινόμησης"
+
+#: ../src/app/qml/documentPage/SortSettingsDialog.qml:31
+msgid "Sort by date (Latest first)"
+msgstr "Ταξινόμηση ανά ημερομηνία (Πιο πρόσφατα πρώτα)"
+
+#: ../src/app/qml/documentPage/SortSettingsDialog.qml:32
+msgid "Sort by name (A-Z)"
+msgstr "Ταξινόμηση ανά όνομα (Α-Ω)"
+
+#: ../src/app/qml/documentPage/SortSettingsDialog.qml:33
+msgid "Sort by size (Smaller first)"
+msgstr "Ταξινόμηση ανά μέγεθος (Πιο μικρά πρώτα)"
+
+#: ../src/app/qml/documentPage/SortSettingsDialog.qml:47
+msgid "Reverse order"
+msgstr "Αντίστροφη σειρά"
+
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:32
 #: ../src/app/qml/pdfView/PdfView.qml:37
@@ -268,7 +336,7 @@ msgstr "Περιεχόμενα"
 
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:38
 msgid "Hide table of contents"
-msgstr ""
+msgstr "Απόκρυψη του πίνακα περιεχομένων"
 
 #. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
 #. while the second one (%2) refers to the total pages count.
@@ -277,11 +345,6 @@ msgstr ""
 msgid "Page %1 of %2"
 msgstr "Σελίδα %1 από %2"
 
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
-#: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
-msgid "Back"
-msgstr "Πίσω"
-
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:85
 msgid "Go to page..."
 msgstr "Μετάβαση στην σελίδα..."
@@ -289,12 +352,12 @@ msgstr "Μετάβαση στην σελίδα..."
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Disable night mode"
-msgstr ""
+msgstr "Απενεργοποίηση της ρύθμισης νύχτας"
 
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Enable night mode"
-msgstr ""
+msgstr "Ενεργοποίηση της ρύθμισης νύχτας"
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:25
 msgid "Go to page"
@@ -307,22 +370,22 @@ msgstr "Επιλογή σελίδας μεταξύ 1 και %1"
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:44
 msgid "GO!"
-msgstr ""
+msgstr "ΠΑΜΕ!"
 
 #: ../src/app/qml/textView/TextView.qml:42
 msgid "Loading..."
 msgstr "Φόρτωση..."
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:202
+#: ../src/app/qml/ubuntu-docviewer-app.qml:240
 msgid "Document successfully imported!"
 msgid_plural "Documents successfully imported!"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Το έγγραφο εισήχθη επιτυχώς!"
+msgstr[1] "Τα έγγραφα εισήχθησαν επιτυχώς!"
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:205
+#: ../src/app/qml/ubuntu-docviewer-app.qml:243
 msgid "Open"
-msgstr ""
+msgstr "Άνοιγμα"
 
-#: /home/stefano/tmp/build-sdcard-read-support-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/m/dev/core/ubuntu-docviewer-app-icon-fix/obj-x86_64-linux-gnu/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
-msgstr ""
+msgstr "documents;viewer;pdf;reader;έγγραφα;προβολή;πδφ;αναγνώστης;διάβασμα;"

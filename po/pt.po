@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-05-19 14:05+0200\n"
-"PO-Revision-Date: 2015-04-02 16:24+0000\n"
+"POT-Creation-Date: 2015-06-24 22:48+0200\n"
+"PO-Revision-Date: 2015-06-27 21:08+0000\n"
 "Last-Translator: António Miranda <Unknown>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-05-22 05:01+0000\n"
-"X-Generator: Launchpad (build 17514)\n"
+"X-Launchpad-Export-Date: 2015-06-28 05:35+0000\n"
+"X-Generator: Launchpad (build 17578)\n"
 
 #. TRANSLATORS: This string is used for renaming a copied file,
 #. when a file with the same name already exists in user's
@@ -30,13 +30,12 @@ msgstr ""
 #: ../src/app/content-communicator.cpp:105
 #, qt-format
 msgid "copy %1"
-msgstr ""
+msgstr "cópia %1"
 
 #: ../src/app/docviewer-application.cpp:171
-#: ../src/app/qml/documentPage/DocumentPage.qml:25
-#: /home/stefano/tmp/build-sdcard-read-support-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/m/dev/core/ubuntu-docviewer-app-icon-fix/obj-x86_64-linux-gnu/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
-msgstr "Documentos"
+msgstr "Visualizador de Documentos"
 
 #: ../src/app/qml/common/DetailsPage.qml:27
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:97
@@ -76,6 +75,7 @@ msgstr "O ficheiro não existe"
 #: ../src/app/qml/common/PickImportedDialog.qml:47
 #: ../src/app/qml/common/RejectedImportDialog.qml:38
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:32
+#: ../src/app/qml/documentPage/SortSettingsDialog.qml:53
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Close"
@@ -83,27 +83,27 @@ msgstr "Fechar"
 
 #: ../src/app/qml/common/PickImportedDialog.qml:29
 msgid "Multiple documents imported"
-msgstr ""
+msgstr "Múltiplos documentos importados"
 
 #: ../src/app/qml/common/PickImportedDialog.qml:30
 msgid "Choose which one to open:"
-msgstr ""
+msgstr "Escolha qual quer abrir"
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:28
 msgid "File not supported"
 msgid_plural "Files not supported"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ficheiro não suportado"
+msgstr[1] "Ficheiros não suportados"
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:29
 msgid "Following document has not been imported:"
 msgid_plural "Following documents have not been imported:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "O seguinte documento não foi importado:"
+msgstr[1] "Os seguintes documentos não foram importados:"
 
 #: ../src/app/qml/common/ToastWithAction.qml:97
 msgid "Dismiss"
-msgstr ""
+msgstr "Descartar"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:26
 msgid "Unknown file type"
@@ -207,43 +207,70 @@ msgstr "Ontem, %1"
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:45
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:36
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:58
 msgid "dddd, hh:mm"
 msgstr "dddd, hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:49
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:40
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:47
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:63
 msgid "dd-MM-yyyy hh:mm"
 msgstr "dd-MM-yyyy hh:mm"
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:136
+#. TRANSLATORS: this is a datetime formatting string, and the
+#. singlequote is an escape character.
+#. See http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:36
+msgid "'Today', hh:mm"
+msgstr "'Hoje', hh:mm"
+
+#. TRANSLATORS: this is a datetime formatting string, and the
+#. singlequote is an escape character.
+#. See http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:42
+msgid "'Yesterday', hh:mm"
+msgstr "'Ontem', hh:mm"
+
+#: ../src/app/qml/documentPage/DocumentListView.qml:157
 msgid "Today"
 msgstr "Hoje"
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:139
+#: ../src/app/qml/documentPage/DocumentListView.qml:160
 msgid "Yesterday"
 msgstr "Ontem"
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:142
+#: ../src/app/qml/documentPage/DocumentListView.qml:163
 msgid "Earlier this week"
-msgstr "Anteriormente nesta semana"
+msgstr "No início desta semana"
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:145
+#: ../src/app/qml/documentPage/DocumentListView.qml:166
 msgid "Earlier this month"
-msgstr "Anteriormente neste mês"
+msgstr "No início deste mês"
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:147
+#: ../src/app/qml/documentPage/DocumentListView.qml:168
 msgid "Even earlier..."
-msgstr "Anteriormente"
+msgstr "Mesmo antes..."
 
-#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:28
+#: ../src/app/qml/documentPage/DocumentPage.qml:24
+msgid "Documents"
+msgstr "Documentos"
+
+#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:29
+msgid "Search..."
+msgstr "Procurar..."
+
+#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:37
+msgid "Sorting settings..."
+msgstr "Ordenar definições..."
+
+#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:46
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
 msgid "Switch to single column list"
 msgstr "Mudar para lista de coluna única"
 
-#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:28
+#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:46
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
 msgid "Switch to grid"
 msgstr "Mudar para grelha"
@@ -251,6 +278,16 @@ msgstr "Mudar para grelha"
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:43
 msgid "Pick"
 msgstr "Escolher"
+
+#: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:27
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
+msgid "Back"
+msgstr "Retroceder"
+
+#: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:47
+msgid "search in documents..."
+msgstr "procurar em documentos..."
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:52
 msgid "Select None"
@@ -260,6 +297,37 @@ msgstr "Não selecionar nenhum"
 msgid "Select All"
 msgstr "Selecionar todos"
 
+#: ../src/app/qml/documentPage/SearchEmptyState.qml:24
+msgid "No matching document found"
+msgstr "Sem correspondencias"
+
+#: ../src/app/qml/documentPage/SearchEmptyState.qml:26
+msgid ""
+"Please ensure that your query is not misspelled and/or try a different query."
+msgstr ""
+"Por favor, assegure que o que procura não contém erros ou procure por outro "
+"termo."
+
+#: ../src/app/qml/documentPage/SortSettingsDialog.qml:26
+msgid "Sorting settings"
+msgstr "Ordenar definições"
+
+#: ../src/app/qml/documentPage/SortSettingsDialog.qml:31
+msgid "Sort by date (Latest first)"
+msgstr "Ordenar por data (Última primeiro)"
+
+#: ../src/app/qml/documentPage/SortSettingsDialog.qml:32
+msgid "Sort by name (A-Z)"
+msgstr "Ordenar por nome (A-Z)"
+
+#: ../src/app/qml/documentPage/SortSettingsDialog.qml:33
+msgid "Sort by size (Smaller first)"
+msgstr "Ordenar por tamanho (Menor primeiro)"
+
+#: ../src/app/qml/documentPage/SortSettingsDialog.qml:47
+msgid "Reverse order"
+msgstr "Inverter ordem"
+
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:32
 #: ../src/app/qml/pdfView/PdfView.qml:37
@@ -268,7 +336,7 @@ msgstr "Conteúdos"
 
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:38
 msgid "Hide table of contents"
-msgstr ""
+msgstr "Esconder tabela de conteúdos"
 
 #. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
 #. while the second one (%2) refers to the total pages count.
@@ -277,11 +345,6 @@ msgstr ""
 msgid "Page %1 of %2"
 msgstr "Página %1 de %2"
 
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
-#: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
-msgid "Back"
-msgstr "Retroceder"
-
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:85
 msgid "Go to page..."
 msgstr "Ir para a página..."
@@ -289,12 +352,12 @@ msgstr "Ir para a página..."
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Disable night mode"
-msgstr ""
+msgstr "Desativar modo noturno"
 
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Enable night mode"
-msgstr ""
+msgstr "Ativar modo noturno"
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:25
 msgid "Go to page"
@@ -313,16 +376,16 @@ msgstr "IR!"
 msgid "Loading..."
 msgstr "A carregar..."
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:202
+#: ../src/app/qml/ubuntu-docviewer-app.qml:240
 msgid "Document successfully imported!"
 msgid_plural "Documents successfully imported!"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Documento importado com sucesso!"
+msgstr[1] "Documentos importados com sucesso!"
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:205
+#: ../src/app/qml/ubuntu-docviewer-app.qml:243
 msgid "Open"
-msgstr ""
+msgstr "Abrir"
 
-#: /home/stefano/tmp/build-sdcard-read-support-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/m/dev/core/ubuntu-docviewer-app-icon-fix/obj-x86_64-linux-gnu/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "visualizador;documentos;leitor;pdf"
