@@ -16,16 +16,16 @@
 
 import QtQuick 2.0
 import Ubuntu.Components 1.1
-import Ubuntu.Components.Popups 1.0
 import Qt.labs.settings 1.0
 
 Page {
     id: documentPage
 
-    title: i18n.tr("Document Viewer")
+    title: i18n.tr("Documents")
     flickable: null
 
     property bool useGridView: false
+    property bool searchMode: false
     property alias view: viewLoader
 
     onActiveChanged: {
@@ -43,9 +43,10 @@ Page {
         id: viewLoader
         anchors.fill: parent
 
-        source: (folderModel.count === 0) ? Qt.resolvedUrl("./DocumentEmptyState.qml")
-                                     : useGridView ? Qt.resolvedUrl("./DocumentGridView.qml")
-                                                   : Qt.resolvedUrl("./DocumentListView.qml")
+        source: (folderModel.count === 0) ? documentPage.state == "search" ? Qt.resolvedUrl("./SearchEmptyState.qml")
+                                                                           : Qt.resolvedUrl("./DocumentEmptyState.qml")
+                                          : useGridView ? Qt.resolvedUrl("./DocumentGridView.qml")
+                                                        : Qt.resolvedUrl("./DocumentListView.qml")
     }
 
     // *** HEADER ***
@@ -53,7 +54,7 @@ Page {
         DocumentPageDefaultHeader {
             name: "default"
             targetPage: documentPage
-            when: !mainView.pickMode && !viewLoader.item.isInSelectionMode
+            when: !mainView.pickMode && !viewLoader.item.isInSelectionMode && !documentPage.searchMode
         },
 
         DocumentPagePickModeHeader {
@@ -66,6 +67,12 @@ Page {
             name: "selection"
             targetPage: documentPage
             when: !mainView.pickMode && viewLoader.item.isInSelectionMode
+        },
+
+        DocumentPageSearchHeader {
+            name: "search"
+            targetPage: documentPage
+            when: !mainView.pickMode && !viewLoader.item.isInSelectionMode && documentPage.searchMode
         }
     ]
 
@@ -78,6 +85,10 @@ Page {
             } else {
                 viewLoader.item.cancelSelection()
             }
+
+            // Reset any previous search
+            documentPage.searchMode = false
+            folderModel.search("")  // Empty search, reset filter.
         }
     }
 }
