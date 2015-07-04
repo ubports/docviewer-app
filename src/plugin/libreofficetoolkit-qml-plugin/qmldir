@@ -1,2 +1,4 @@
 module DocumentViewer.LibreOffice
 plugin libreofficetoolkitqmlplugin
+
+Viewer 1.0 LOViewer.qml

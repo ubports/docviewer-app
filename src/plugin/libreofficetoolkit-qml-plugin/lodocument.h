@@ -13,38 +13,30 @@
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- * Author: Anthony Granger <grangeranthony@gmail.com>
- *         Stefano Verzegnassi <stefano92.100@gmail.com>
  */
 
 #ifndef LODOCUMENT_H
 #define LODOCUMENT_H
 
-#include <QAbstractListModel>
+#include <QObject>
 
 namespace lok {
 class Office;
 class Document;
 }
 
-struct LOItem {
-    int width;
-    int height;
-};
-
-class LODocument : public QAbstractListModel
+class LODocument : public QObject
 {
     Q_OBJECT
     Q_DISABLE_COPY(LODocument)
-    Q_PROPERTY(QString path READ path WRITE setPath NOTIFY pathChanged)
-    Q_PROPERTY(DocumentType documentType READ documentType NOTIFY documentTypeChanged)
+
+    Q_PROPERTY(QString      path         READ path         WRITE setPath        NOTIFY pathChanged)
+    Q_PROPERTY(DocumentType documentType READ documentType                      NOTIFY documentTypeChanged)
     Q_ENUMS(DocumentType)
 
 public:
-    enum Roles {
-        WidthRole = Qt::UserRole + 1,
-        HeightRole
-    };
+    explicit LODocument();
+    virtual ~LODocument();
 
     enum DocumentType {
         TextDocument = 0,
@@ -54,29 +46,16 @@ public:
         OtherDocument = 4
     };
 
-    explicit LODocument(QAbstractListModel *parent = 0);
-    virtual ~LODocument();
-
-    QString path() const { return m_path; }
+    QString path() const;
     void setPath(QString &pathName);
 
-    DocumentType documentType() const { return m_docType; }
+    DocumentType documentType() const;
 
-    QHash<int, QByteArray> roleNames() const;
-
-    int rowCount(const QModelIndex & parent = QModelIndex()) const;
-    QVariant data(const QModelIndex & index, int role = Qt::DisplayRole) const;
-
-    void getDocumentSize(long* pWidth, long* pHeight);
-    void paintTile(unsigned char* pBuffer,  const int nCanvasWidth,
-                   const int nCanvasHeight, const int nTilePosX,
-                   const int nTilePosY,     const int nTileWidth,
-                   const int nTileHeight);
+    QSize documentSize() const;
+    QImage paintTile(QSize canvasSize, QRect tileSize);
 
 Q_SIGNALS:
     void pathChanged();
-    void error(const QString& errorMessage);
-    void pagesLoaded();
     void documentTypeChanged();
 
 private:
@@ -84,14 +63,9 @@ private:
     DocumentType m_docType;
 
     bool loadDocument(QString &pathNAme);
-    void loadProvider();
-    bool loadPages();
-
-    void unloadProvider();
 
     lok::Office *m_office;
     lok::Document *m_document;
-    QList<LOItem> m_pages;
 };
 
 #endif // LODOCUMENT_H

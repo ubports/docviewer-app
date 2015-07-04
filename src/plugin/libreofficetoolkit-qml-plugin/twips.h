@@ -13,21 +13,30 @@
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
+ * Author: Stefano Verzegnassi <stefano92.100@gmail.com>
  */
 
-#ifndef LOPLUGIN_H
-#define LOPLUGIN_H
+#ifndef TWIPS_H
+#define TWIPS_H
 
-#include <QQmlExtensionPlugin>
+// FIXME: Should we check for the real DPI of the screen, since we'll have in
+// future to support HiDPI devices and Full/Ultra-HD smartphones/tablet?
+// FIXME: Not common, but DPI on the X axis, and DPI on the Y axis may be
+// different.
+#define VIRTUAL_DPI 96.0
 
-class LOPlugin : public QQmlExtensionPlugin
+#include <QtGlobal>
+
+class Twips
 {
-    Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QQmlExtensionInterface")
-
 public:
-    void registerTypes(const char *uri);
-    void initializeEngine(QQmlEngine *engine, const char *uri);
+    static int convertTwipsToPixels(int twips, qreal zoom = 1.0) {
+        return int(twips / 1440.0 * VIRTUAL_DPI * zoom);
+    }
+
+    static int convertPixelsToTwips(int pixels, qreal zoom = 1.0) {
+        return int(pixels * 1440.0 / VIRTUAL_DPI / zoom);
+    }
 };
 
-#endif // LO_H
+#endif // TWIPS_H

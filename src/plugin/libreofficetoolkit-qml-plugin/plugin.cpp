@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013-2015 Canonical, Ltd.
+ * Copyright (C) 2015 Canonical, Ltd.
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License version 3, as published
@@ -20,7 +20,7 @@
 
 #include "plugin.h"
 #include "lodocument.h"
-#include "verticalview.h"
+#include "loview.h"
 
 void LOPlugin::registerTypes(const char *uri)
 {
@@ -28,7 +28,7 @@ void LOPlugin::registerTypes(const char *uri)
     
     //@uri DocumentViewer.LibreOffice
     qmlRegisterType<LODocument>(uri, 1, 0, "Document");
-    qmlRegisterType<VerticalView>(uri, 1, 0, "VerticalView");
+    qmlRegisterType<LOView>(uri, 1, 0, "View");
 }
 
 void LOPlugin::initializeEngine(QQmlEngine *engine, const char *uri)

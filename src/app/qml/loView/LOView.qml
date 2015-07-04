@@ -36,55 +36,19 @@ Page {
     // Reset night mode shader settings when closing the page
     // Component.onDestruction: mainView.nightModeEnabled = false
 
-    LO.VerticalView {
+    LO.Viewer {
         id: loView
         objectName: "loView"
         anchors.fill: parent
-        spacing: units.gu(2)
 
         clip: true
-        boundsBehavior: Flickable.StopAtBounds
-        flickDeceleration: 1500 * units.gridUnit / 8
-        maximumFlickVelocity: 2500 * units.gridUnit / 8
+        document: loDocument
 
-        contentWidth: parent.width * _zoomHelper.scale
-        cacheBuffer: height * _zoomHelper.scale * 0.5
-        interactive: !pinchy.pinch.active
-
-        model: loDocument
-        delegate: LOViewDelegate {
-            Component.onDestruction: DOC_VIEWER.releaseResources()
+        Component.onCompleted: {
+            // WORKAROUND: Fix for wrong grid unit size
+            flickDeceleration = 1500 * units.gridUnit / 8
+            maximumFlickVelocity = 2500 * units.gridUnit / 8
         }
-
-        // FIXME: On zooming, keep the same content position.
-        PinchArea {
-            id: pinchy
-            anchors.fill: parent
-
-            pinch {
-                target: _zoomHelper
-                minimumScale: 1.0
-                maximumScale: 2.5
-            }
-
-            onPinchFinished: {
-                loView.returnToBounds();
-
-                // This is a bit expensive, so it's safer to put it here.
-                // It won't be called on desktop (where PinchArea is not used),
-                // but it's not a problem at the moment (our target is phone).
-                DOC_VIEWER.releaseResources();
-            }
-
-            MouseArea {
-                objectName: "mouseArea"
-
-                anchors.fill: parent
-                onClicked: mainView.toggleHeaderVisibility()
-            }
-        }
-
-        Item { id: _zoomHelper }
     }
 
     Scrollbar { flickableItem: loView }
@@ -96,7 +60,7 @@ Page {
         property bool isLoading: true
         path: file.path
 
-        onPagesLoaded: {
+       /* onPagesLoaded: {
             isLoading = false;
 
             var title = getDocumentInfo("Title")
@@ -105,7 +69,7 @@ Page {
 
             // Hide header when the document is ready
             mainView.setHeaderVisibility(false);
-        }
+        }*/
     }
 
     // *** HEADER ***
@@ -113,6 +77,6 @@ Page {
     states: LOViewDefaultHeader {
         name: "default"
         targetPage: loPage
-        activityRunning: loView.currentPageItem.status == Image.Loading || loDocument.isLoading
+        //activityRunning: loView.currentPageItem.status == Image.Loading || loDocument.isLoading
     }
 }

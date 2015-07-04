@@ -13,17 +13,13 @@
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- * Authors: Anthony Granger <grangeranthony@gmail.com>
- *          Stefano Verzegnassi <stefano92.100@gmail.com>
  */
 
 #include "lodocument.h"
-#include "loimageprovider.h"
+#include "twips.h"
 
+#include <QImage>
 #include <QDebug>
-#include <QQmlEngine>
-#include <QQmlContext>
-#include <QThread>
 
 #define LOK_USE_UNSTABLE_API
 #include <LibreOfficeKit/LibreOfficeKitInit.h>
@@ -34,44 +30,22 @@
 // in the following line.
 #define LO_PATH "/usr/lib/libreoffice/program/"
 
-LODocument::LODocument(QAbstractListModel *parent):
-    QAbstractListModel(parent)
-  , m_path("")
+// TODO: Error management
+
+LODocument::LODocument()
+  : m_path("")
   , m_document(nullptr)
 {
+    // This space is intentionally empty.
 }
 
-QHash<int, QByteArray> LODocument::roleNames() const
+// Return the path of the loaded document
+QString LODocument::path() const
 {
-    QHash<int, QByteArray> roles;
-    roles[WidthRole] = "width";
-    roles[HeightRole] = "height";
-    return roles;
+    return m_path;
 }
 
-int LODocument::rowCount(const QModelIndex & parent) const
-{
-    Q_UNUSED(parent)
-    return m_pages.count();
-}
-
-QVariant LODocument::data(const QModelIndex & index, int role) const
-{
-    if (index.row() < 0 || index.row() > m_pages.count())
-        return QVariant();
-
-    const LOItem &loItem = m_pages.at(index.row());
-
-    switch (role) {
-    case WidthRole:
-        return loItem.width;
-    case HeightRole:
-        return loItem.height;
-    default:
-        return 0;
-    }
-}
-
+// Set the path of the document, then it tries to load it.
 void LODocument::setPath(QString &pathName)
 {
     if (pathName.isEmpty())
@@ -80,13 +54,11 @@ void LODocument::setPath(QString &pathName)
     m_path = pathName;
     Q_EMIT pathChanged();
 
-    if (!loadDocument(m_path))
-        return;
-
-    loadPages();
-    loadProvider();
+    // Load the new document
+    this->loadDocument(m_path);
 }
 
+// Load the document
 bool LODocument::loadDocument(QString &pathName)
 {
     qDebug() << "Loading document...";
@@ -99,7 +71,7 @@ bool LODocument::loadDocument(QString &pathName)
     m_office = lok::lok_cpp_init(LO_PATH);
     m_document = m_office->documentLoad(m_path.toUtf8().constData());
 
-    m_docType = LODocument::DocumentType(m_document->getDocumentType());
+    m_docType = DocumentType(m_document->getDocumentType());
     Q_EMIT documentTypeChanged();
 
     qDebug() << "Document loaded successfully !";
@@ -107,53 +79,41 @@ bool LODocument::loadDocument(QString &pathName)
     return true;
 }
 
-bool LODocument::loadPages()
+// Return the type of the loaded document (e.g. text document,
+// spreadsheet or presentation).
+LODocument::DocumentType LODocument::documentType() const
 {
-    qDebug() << "Populating model...";
+    return m_docType;
+}
 
-    m_pages.clear();
-
+// Return the size of the document, in TWIPs
+QSize LODocument::documentSize() const
+{
     if (!m_document)
-        return false;
+        return QSize(0, 0);
 
-    // TODO: At the moment this is just hardcoded.
-    // LibreOfficeKit returns the whole document, and works in a different way
-    // than the poppler-qml-plugin, which is the source of this code.
-    // We should use a QQuickItem, divide its surface into a number of tiles,
-    // and paint only the ones that becomes visible.
-    beginInsertRows(QModelIndex(), rowCount(), rowCount());
-    LOItem page;
-    long docWidth(0);
-    long docHeight(0);
+    long pWidth(0);
+    long pHeight(0);
+    m_document->getDocumentSize(&pWidth, &pHeight);
 
-    m_document->getDocumentSize(&docWidth, &docHeight);
-    page.width = docWidth;
-    page.height = docHeight;
-
-    m_pages << page;
-    endInsertRows();
-
-    qDebug() << "Model has been successfully populated!";
-    Q_EMIT pagesLoaded();
-
-    return true;
+    return QSize(pWidth, pHeight);
 }
 
-void LODocument::loadProvider()
-{
-    QQmlEngine *engine = QQmlEngine::contextForObject(this)->engine();
-    engine->addImageProvider(QLatin1String("libreoffice"), new LOImageProvider(this));
-}
-
-void LODocument::getDocumentSize(long* pWidth, long* pHeight)
-{
-    m_document->getDocumentSize(pWidth, pHeight);
-}
-
-void LODocument::paintTile(unsigned char *pBuffer, const int nCanvasWidth, const int nCanvasHeight, const int nTilePosX, const int nTilePosY, const int nTileWidth, const int nTileHeight)
+// Paint a tile, with size=canvasSize, of the part of the document defined by
+// the rect tileSize.
+QImage LODocument::paintTile(QSize canvasSize, QRect tileSize)
 {
     m_document->initializeForRendering();
-    m_document->paintTile(pBuffer, nCanvasWidth, nCanvasHeight, nTilePosX, nTilePosY, nTileWidth, nTileHeight);
+
+    QImage result = QImage(canvasSize.width(), canvasSize.height(),  QImage::Format_ARGB32);
+    m_document->paintTile(result.bits(),
+                          canvasSize.width(), canvasSize.height(),
+                          Twips::convertPixelsToTwips(tileSize.x()),
+                          Twips::convertPixelsToTwips(tileSize.y()),
+                          Twips::convertPixelsToTwips(tileSize.width()),
+                          Twips::convertPixelsToTwips(tileSize.height()));
+
+    return result;
 }
 
 LODocument::~LODocument()
