@@ -79,6 +79,9 @@ void LOView::setParentFlickable(QQuickItem *flickable)
 
     m_parentFlickable = flickable;
 
+    connect(m_parentFlickable, SIGNAL(widthChanged()), this, SLOT(updateVisibleRect()));
+    connect(m_parentFlickable, SIGNAL(heightChanged()), this, SLOT(updateVisibleRect()));
+
     connect(m_parentFlickable, SIGNAL(contentXChanged()), this, SLOT(updateVisibleRect()));
     connect(m_parentFlickable, SIGNAL(contentYChanged()), this, SLOT(updateVisibleRect()));
 
