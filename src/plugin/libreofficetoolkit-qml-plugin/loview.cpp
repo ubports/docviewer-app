@@ -132,9 +132,6 @@ void LOView::updateViewSize()
     this->setWidth(Twips::convertTwipsToPixels(docSize.width()) * m_zoomFactor);
     this->setHeight(Twips::convertTwipsToPixels(docSize.height()) * m_zoomFactor);
 
-    // FIXME: updateVisibleRect (and then the update() requested) are executed
-    // when size of the view is still (0,0). For that reason no tile is visible
-    // is the content is not flicked.
     // TODO: Consider to use connections to widthChanged and heightChanged
     this->updateVisibleRect();
 }
@@ -190,24 +187,24 @@ void LOView::updateVisibleRect()
 
     // Generate new visible tiles
     qDebug() << "Generate new visible tiles...";
-    for (int r = startFromWidth; r < stopToWidth; r++) {
-        for (int c = startFromHeight; c < stopToHeight; c++) {
-            QRect tileRect(r * TILE_SIZE, c * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-            int index = r * numberOfTilesWidth + c;
+    for (int x = startFromWidth; x < stopToWidth; x++) {
+        for (int y = startFromHeight; y < stopToHeight; y++) {
+            QRect tileRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+            int index = y * numberOfTilesWidth + x;
 
             if (!m_tiles.contains(index)) {
-                qDebug() << "Creating tile" << r << "x" << c;
+                qDebug() << "Creating tile" << x << "x" << y;
                 TileItem* tile = new TileItem(tileRect, m_document);
 
                 // Append the tile in the map
                 m_tiles.insert(index, tile);
 
                 // Connect the tile to the QQuickPaintedItem's update() slot, so the tile is immediately painted.
-                qDebug() << "Connecting tile" << r << "x" << c;
+                qDebug() << "Connecting tile" << x << "x" << y;
                 connect(tile, SIGNAL(textureUpdated()), this, SLOT(update()));
             } else {
                 // Just some debugging
-                qDebug() << "tile" << r << "x" << c << "already exists";
+                qDebug() << "tile" << x << "x" << y << "already exists";
             }
         }
     }
