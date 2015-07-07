@@ -1,6 +1,5 @@
 set(PLUGIN_DIR DocumentViewer/LibreOffice)
 
-# FIXME: QML files not imported during the build.
 file(GLOB_RECURSE QML_SRCS *.qml *.js)
 include_directories(
 	${CMAKE_CURRENT_SOURCE_DIR}
@@ -36,8 +35,8 @@ add_custom_command(TARGET libreofficetoolkitqmlplugin POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/../${PLUGIN_DIR}
     COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/qmldir ${CMAKE_CURRENT_BINARY_DIR}/../${PLUGIN_DIR}
     COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:libreofficetoolkitqmlplugin> ${CMAKE_CURRENT_BINARY_DIR}/../${PLUGIN_DIR}
+    COMMAND ${CMAKE_COMMAND} -E copy ${QML_SRCS} ${CMAKE_CURRENT_BINARY_DIR}/../${PLUGIN_DIR}
 )
-add_custom_target(libreofficetoolkitqmlplugin_QMlFiles ALL SOURCES ${QML_SRCS})
 endif(NOT "${CMAKE_CURRENT_SOURCE_DIR}" STREQUAL "${CMAKE_CURRENT_BINARY_DIR}")
 
 # Install plugin file
