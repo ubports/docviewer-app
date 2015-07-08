@@ -19,13 +19,13 @@
 
 #include "pdfdocument.h"
 #include "pdfimageprovider.h"
-#include "pdfthread.h"
 
 #include <poppler/qt5/poppler-qt5.h>
 #include <QDebug>
 #include <QQmlEngine>
 #include <QQmlContext>
-#include <QThread>
+
+#include <QtConcurrent/QtConcurrent>
 
 PdfDocument::PdfDocument(QAbstractListModel *parent):
     QAbstractListModel(parent)
@@ -145,12 +145,15 @@ bool PdfDocument::loadPages()
     if (!m_document)
         return false;
 
-    PdfThread *pdfThread = new PdfThread();
-    pdfThread->setDocument(m_document);
+    Poppler::Document* document = m_document;
+    QtConcurrent::run( [=] {
+        PdfPagesList pages;
 
-    connect(pdfThread, SIGNAL(resultReady(PdfPagesList)), this, SLOT(_q_populate(PdfPagesList)));
-    connect(pdfThread, SIGNAL(finished()), pdfThread, SLOT(deleteLater()));
-    pdfThread->start();
+        for( int i = 0; i < document->numPages(); ++i )
+            pages.append(document->page(i));
+
+        QMetaObject::invokeMethod(this, "_q_populate", Qt::QueuedConnection, Q_ARG(PdfPagesList, pages));
+    });
 
     return true;
 }
