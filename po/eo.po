@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-06-24 22:48+0200\n"
-"PO-Revision-Date: 2015-03-03 23:59+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2015-07-11 01:23+0000\n"
+"Last-Translator: Adolfo Jayme <fitoschido@gmail.com>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-06-26 04:58+0000\n"
-"X-Generator: Launchpad (build 17578)\n"
+"X-Launchpad-Export-Date: 2015-07-11 05:31+0000\n"
+"X-Generator: Launchpad (build 17620)\n"
 
 #. TRANSLATORS: This string is used for renaming a copied file,
 #. when a file with the same name already exists in user's
@@ -41,35 +41,35 @@ msgstr ""
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:97
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:83
 msgid "Details"
-msgstr ""
+msgstr "Detaloj"
 
 #: ../src/app/qml/common/DetailsPage.qml:33
 msgid "Location"
-msgstr ""
+msgstr "Loko"
 
 #: ../src/app/qml/common/DetailsPage.qml:37
 msgid "Size"
-msgstr ""
+msgstr "Grandeco"
 
 #: ../src/app/qml/common/DetailsPage.qml:42
 msgid "Created"
-msgstr ""
+msgstr "Kreita"
 
 #: ../src/app/qml/common/DetailsPage.qml:47
 msgid "Last modified"
-msgstr ""
+msgstr "Laste ŝanĝita"
 
 #: ../src/app/qml/common/DetailsPage.qml:54
 msgid "MIME type"
-msgstr ""
+msgstr "MIME-tipo"
 
 #: ../src/app/qml/common/FileNotFoundDialog.qml:24
 msgid "Error"
-msgstr ""
+msgstr "Eraro"
 
 #: ../src/app/qml/common/FileNotFoundDialog.qml:25
 msgid "File does not exist"
-msgstr ""
+msgstr "La dosiero ne ekzistas"
 
 #: ../src/app/qml/common/FileNotFoundDialog.qml:28
 #: ../src/app/qml/common/PickImportedDialog.qml:47
@@ -79,7 +79,7 @@ msgstr ""
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Close"
-msgstr ""
+msgstr "Fermi"
 
 #: ../src/app/qml/common/PickImportedDialog.qml:29
 msgid "Multiple documents imported"
@@ -107,7 +107,7 @@ msgstr ""
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:26
 msgid "Unknown file type"
-msgstr ""
+msgstr "Nekonata dosierspeco"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:27
 msgid ""
@@ -117,11 +117,11 @@ msgstr ""
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:29
 msgid "Yes"
-msgstr ""
+msgstr "Jes"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:38
 msgid "No"
-msgstr ""
+msgstr "Ne"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in GB
 #: ../src/app/qml/common/utils.js:22
@@ -149,7 +149,7 @@ msgstr ""
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:28
 msgid "Delete file"
-msgstr ""
+msgstr "Forigi dosieron"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:29
 #, qt-format
@@ -231,11 +231,11 @@ msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:157
 msgid "Today"
-msgstr ""
+msgstr "Hodiaŭ"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:160
 msgid "Yesterday"
-msgstr ""
+msgstr "Hieraŭ"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:163
 msgid "Earlier this week"
@@ -337,7 +337,7 @@ msgstr ""
 #: ../src/app/qml/pdfView/PdfView.qml:34
 #, qt-format
 msgid "Page %1 of %2"
-msgstr ""
+msgstr "Paĝo %1 el %2"
 
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:85
 msgid "Go to page..."
