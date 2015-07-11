@@ -113,7 +113,7 @@ QImage LODocument::paintTile(QSize canvasSize, QRect tileSize)
                           Twips::convertPixelsToTwips(tileSize.width()),
                           Twips::convertPixelsToTwips(tileSize.height()));
 
-    return result;
+    return result.rgbSwapped();
 }
 
 LODocument::~LODocument()
