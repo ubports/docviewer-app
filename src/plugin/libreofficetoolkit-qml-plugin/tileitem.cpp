@@ -31,7 +31,7 @@ TileItem::TileItem(QRect a, LODocument *doc)
 {
     area = a;
 
-    RenderTask* task = new RenderTask(area, doc);
+    auto task = new RenderTask(area, doc);
     connect(task, SIGNAL(renderCompleted(QImage)), this, SLOT(updateTexture(QImage)));
 
     task->setAutoDelete(true);

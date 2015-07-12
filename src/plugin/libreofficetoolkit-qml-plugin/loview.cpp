@@ -158,7 +158,7 @@ void LOView::updateVisibleRect()
     // TODO: Do the same described above backwards from the last element.
     if (!m_tiles.isEmpty()) {
         // Delete tiles that are outside the loading area
-        QMap<int, TileItem*>::iterator b = m_tiles.begin();
+        auto b = m_tiles.begin();
         while (b != m_tiles.end()) {
             if (!loadingArea.intersects(b.value()->area)) {
                 qDebug() << "Removing tile indexed as" << b.key();
