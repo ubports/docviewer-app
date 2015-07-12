@@ -48,12 +48,6 @@ void LOView::paint(QPainter *painter)
 {
     qDebug() << "Painting new tiles...";
 
-    // Clean area outside the visible one
-    painter->eraseRect(QRect(0, 0, m_visibleArea.right(), m_visibleArea.top()));  // TOP
-    painter->eraseRect(QRect(m_visibleArea.left(), m_visibleArea.bottom(), m_visibleArea.right(), this->height() - m_visibleArea.bottom()));    // BOTTOM
-    painter->eraseRect(QRect(0, m_visibleArea.top(), m_visibleArea.left(), m_visibleArea.height()));  // LEFT
-    painter->eraseRect(QRect(m_visibleArea.right(), m_visibleArea.top(), this->width() - m_visibleArea.right(), m_visibleArea.height()));  // RIGHT
-
     Q_FOREACH(TileItem* tile, m_tiles) {
        // if (!tile->painted) {
             painter->drawImage(tile->area, tile->texture);
