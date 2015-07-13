@@ -60,8 +60,8 @@ Rectangle {
         }
 
         AbstractButton {
-            width: actionLabel.paintedWidth
-            height: parent.height
+            Layout.preferredWidth: actionLabel.paintedWidth
+            Layout.fillHeight: true
 
             onClicked: {
                 action.triggered("[Toast] Action %1 clicked!".arg(action.text))

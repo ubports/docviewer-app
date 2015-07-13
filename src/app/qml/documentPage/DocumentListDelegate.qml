@@ -85,8 +85,8 @@ ListItemWithActions {
         spacing: units.gu(2)
 
         Icon {
-            width: height
-            height: units.gu(5)
+            Layout.preferredWidth: height
+            Layout.preferredHeight: units.gu(5)
 
             // At the moment the suru icon theme doesn't have much icons.
             name: {
