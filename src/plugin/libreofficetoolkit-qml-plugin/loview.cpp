@@ -46,7 +46,7 @@ LOView::LOView(QQuickItem *parent)
 
 void LOView::paint(QPainter *painter)
 {
-    qDebug() << "Painting new tiles...";
+    // qDebug() << "Painting new tiles...";
 
     // Clean area outside the visible one
     painter->eraseRect(QRect(0, 0, m_visibleArea.right(), m_visibleArea.top()));  // TOP
@@ -55,8 +55,9 @@ void LOView::paint(QPainter *painter)
     painter->eraseRect(QRect(m_visibleArea.right(), m_visibleArea.top(), this->width() - m_visibleArea.right(), m_visibleArea.height()));  // RIGHT
 
     Q_FOREACH(TileItem* tile, m_tiles) {
-       // if (!tile->painted) {
+        // if (!tile->painted) {
             painter->drawImage(tile->area, tile->texture);
+            // painter->drawRect(tile->area); // Uncomment to see tile borders.
             tile->painted = true;
         //}
     }
@@ -164,7 +165,7 @@ void LOView::updateVisibleRect()
     // TODO: Do the same described above backwards from the last element.
     if (!m_tiles.isEmpty()) {
         // Delete tiles that are outside the loading area
-        QMap<int, TileItem*>::iterator b = m_tiles.begin();
+        auto b = m_tiles.begin();
         while (b != m_tiles.end()) {
             if (!loadingArea.intersects(b.value()->area)) {
                 qDebug() << "Removing tile indexed as" << b.key();

@@ -32,6 +32,8 @@
 
 // TODO: Error management
 
+lok::Office *LODocument::s_office = nullptr;
+
 LODocument::LODocument()
   : m_path("")
   , m_document(nullptr)
@@ -68,12 +70,15 @@ bool LODocument::loadDocument(QString &pathName)
         return false;
     }
 
-    m_office = lok::lok_cpp_init(LO_PATH);
-    m_document = m_office->documentLoad(m_path.toUtf8().constData());
+    if (!s_office)
+        s_office = lok::lok_cpp_init(LO_PATH);
+
+    m_document = s_office->documentLoad(m_path.toUtf8().constData());
 
     m_docType = DocumentType(m_document->getDocumentType());
     Q_EMIT documentTypeChanged();
 
+    m_document->initializeForRendering();
     qDebug() << "Document loaded successfully !";
 
     return true;
@@ -103,9 +108,7 @@ QSize LODocument::documentSize() const
 // the rect tileSize.
 QImage LODocument::paintTile(QSize canvasSize, QRect tileSize)
 {
-    m_document->initializeForRendering();
-
-    QImage result = QImage(canvasSize.width(), canvasSize.height(),  QImage::Format_ARGB32);
+    QImage result = QImage(canvasSize.width(), canvasSize.height(),  QImage::Format_RGB32);
     m_document->paintTile(result.bits(),
                           canvasSize.width(), canvasSize.height(),
                           Twips::convertPixelsToTwips(tileSize.x()),
@@ -118,4 +121,5 @@ QImage LODocument::paintTile(QSize canvasSize, QRect tileSize)
 
 LODocument::~LODocument()
 {
+    delete m_document;
 }
