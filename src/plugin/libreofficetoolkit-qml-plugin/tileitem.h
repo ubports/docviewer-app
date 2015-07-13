@@ -29,22 +29,39 @@ class TileItem : public QObject
     Q_OBJECT
 
 public:
-    TileItem(QRect a, LODocument* doc);
+    TileItem(QRect area, LODocument* document);
     ~TileItem();
 
+    QRect area() const;
+    void setArea(QRect &area);
+
+    QImage texture() const;
+
+    bool isPainted() const;
+    void setPainted(bool isPainted);
+
+    LODocument* document() const;
+    void setDocument(LODocument* document);
+
+public Q_SLOTS:
+    void requestTexture();
     void releaseTexture();
 
-    QRect area;
-    QImage texture;
-    bool painted;
-
-    LODocument* document;
-
 Q_SIGNALS:
-    void textureUpdated();
+    void areaChanged();
+    void textureChanged();
+    void isPaintedChanged();
+    void documentChanged();
 
 private Q_SLOTS:
     void updateTexture(QImage t);
+
+private:
+    QRect m_area;
+    QImage m_texture;
+    bool m_painted;
+
+    LODocument* m_document;
 };
 
 class RenderTask : public QObject, public QRunnable
@@ -52,10 +69,19 @@ class RenderTask : public QObject, public QRunnable
     Q_OBJECT
 
 public:
-    RenderTask(QRect area, LODocument* doc);
+    RenderTask(QRect area, LODocument* document);
+
+    QRect area() const;
+    void setArea(QRect &area);
+
+    LODocument* document() const;
+    void setDocument(LODocument* document);
+
     void run();
 
 Q_SIGNALS:
+    void areaChanged();
+    void documentChanged();
     void renderCompleted(QImage t);
 
 private:
