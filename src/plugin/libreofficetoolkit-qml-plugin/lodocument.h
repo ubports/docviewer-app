@@ -64,8 +64,9 @@ private:
 
     bool loadDocument(QString &pathNAme);
 
-    lok::Office *m_office;
     lok::Document *m_document;
+
+    static lok::Office *s_office;
 };
 
 #endif // LODOCUMENT_H

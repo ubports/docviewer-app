@@ -46,11 +46,12 @@ LOView::LOView(QQuickItem *parent)
 
 void LOView::paint(QPainter *painter)
 {
-    qDebug() << "Painting new tiles...";
+    // qDebug() << "Painting new tiles...";
 
     Q_FOREACH(TileItem* tile, m_tiles) {
        // if (!tile->painted) {
             painter->drawImage(tile->area(), tile->texture());
+         // painter->drawRect(tile->area()); // Uncomment to see tile borders.
             tile->setPainted(true);
         //}
     }
