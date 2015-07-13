@@ -26,7 +26,7 @@
  * TileItem class *
  ******************/
 
-TileItem::TileItem(QRect area, LODocument *document)
+TileItem::TileItem(const QRect &area, LODocument *document)
     : m_painted(false)
     , m_document(nullptr)
 {
@@ -45,7 +45,7 @@ QRect TileItem::area() const
     return m_area;
 }
 
-void TileItem::setArea(QRect &area)
+void TileItem::setArea(const QRect &area)
 {
     if (m_area == area)
         return;
@@ -117,7 +117,7 @@ void TileItem::updateTexture(QImage t)
  * RenderTask class *
  ********************/
 
-RenderTask::RenderTask(QRect area, LODocument *document)
+RenderTask::RenderTask(const QRect &area, LODocument* document)
 {
     this->setArea(area);
     this->setDocument(document);
@@ -129,7 +129,7 @@ QRect RenderTask::area() const
     return m_area;
 }
 
-void RenderTask::setArea(QRect &area)
+void RenderTask::setArea(const QRect &area)
 {
     if (m_area == area)
         return;

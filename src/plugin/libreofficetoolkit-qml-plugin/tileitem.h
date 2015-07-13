@@ -29,11 +29,11 @@ class TileItem : public QObject
     Q_OBJECT
 
 public:
-    TileItem(QRect area, LODocument* document);
+    TileItem(const QRect &area, LODocument* document);
     ~TileItem();
 
     QRect area() const;
-    void setArea(QRect &area);
+    void setArea(const QRect &area);
 
     QImage texture() const;
 
@@ -69,10 +69,10 @@ class RenderTask : public QObject, public QRunnable
     Q_OBJECT
 
 public:
-    RenderTask(QRect area, LODocument* document);
+    RenderTask(const QRect &area, LODocument* document);
 
     QRect area() const;
-    void setArea(QRect &area);
+    void setArea(const QRect &area);
 
     LODocument* document() const;
     void setDocument(LODocument* document);

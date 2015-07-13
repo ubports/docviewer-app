@@ -190,14 +190,11 @@ void LOView::updateVisibleRect()
                 qDebug() << "Creating tile" << x << "x" << y;
 
                 auto tile = new TileItem(tileRect, m_document);
+                connect(tile, SIGNAL(textureChanged()), this, SLOT(update()));
                 tile->requestTexture();
 
                 // Append the tile in the map
                 m_tiles.insert(index, tile);
-
-                // Connect the tile to the QQuickPaintedItem's update() slot, so the tile is immediately painted.
-                qDebug() << "Connecting tile" << x << "x" << y;
-                connect(tile, SIGNAL(textureChanged()), this, SLOT(update()));
             } else {
                 // Just some debugging
                 qDebug() << "tile" << x << "x" << y << "already exists";
