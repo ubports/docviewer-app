@@ -21,6 +21,7 @@
 
 #include <QPainter>
 #include <QImage>
+#include <QTimer>
 #include <QtCore/qmath.h>
 
 // TODO: Use a QQuickItem and implement painting through
@@ -34,25 +35,20 @@ LOView::LOView(QQuickItem *parent)
     , m_document(nullptr)
     , m_zoomFactor(1.0)
     , m_visibleArea(0, 0, 0, 0)
+    , m_updateTimer(nullptr)
 {
-    Q_UNUSED(parent)
+    Q_UNUSED(parent)   
+    m_updateTimer = new QTimer();
 
-    // Connections for updating the canvas size.
     connect(this, SIGNAL(documentChanged()), this, SLOT(updateViewSize()));
     connect(this, SIGNAL(zoomFactorChanged()), this, SLOT(updateViewSize()));
-
     connect(this, SIGNAL(parentFlickableChanged()), this, SLOT(updateVisibleRect()));
+    connect(m_updateTimer, SIGNAL(timeout()), this, SLOT(updateVisibleRect()));
 }
 
 void LOView::paint(QPainter *painter)
 {
     // qDebug() << "Painting new tiles...";
-
-    // Clean area outside the visible one
-    painter->eraseRect(QRect(0, 0, m_visibleArea.right(), m_visibleArea.top()));  // TOP
-    painter->eraseRect(QRect(m_visibleArea.left(), m_visibleArea.bottom(), m_visibleArea.right(), this->height() - m_visibleArea.bottom()));    // BOTTOM
-    painter->eraseRect(QRect(0, m_visibleArea.top(), m_visibleArea.left(), m_visibleArea.height()));  // LEFT
-    painter->eraseRect(QRect(m_visibleArea.right(), m_visibleArea.top(), this->width() - m_visibleArea.right(), m_visibleArea.height()));  // RIGHT
 
     Q_FOREACH(TileItem* tile, m_tiles) {
         // if (!tile->painted) {
@@ -83,8 +79,8 @@ void LOView::setParentFlickable(QQuickItem *flickable)
     connect(m_parentFlickable, SIGNAL(widthChanged()), this, SLOT(updateVisibleRect()));
     connect(m_parentFlickable, SIGNAL(heightChanged()), this, SLOT(updateVisibleRect()));
 
-    connect(m_parentFlickable, SIGNAL(contentXChanged()), this, SLOT(updateVisibleRect()));
-    connect(m_parentFlickable, SIGNAL(contentYChanged()), this, SLOT(updateVisibleRect()));
+    connect(m_parentFlickable, SIGNAL(contentXChanged()), this, SLOT(queueVisibleRectUpdate()));
+    connect(m_parentFlickable, SIGNAL(contentYChanged()), this, SLOT(queueVisibleRectUpdate()));
 
     Q_EMIT parentFlickableChanged();
 }
@@ -212,9 +208,12 @@ void LOView::updateVisibleRect()
 
     // TODO: Generate tiles in the cacheBuffer area
     // (currently called loadingArea).
+}
 
-    // Request a new paint.
-    this->update();
+void LOView::queueVisibleRectUpdate()
+{
+    if (!m_updateTimer->isActive())
+        m_updateTimer->start(20);
 }
 
 LOView::~LOView()
