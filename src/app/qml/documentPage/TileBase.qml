@@ -47,9 +47,13 @@ AbstractButton {
         Item {
             id: tileContent
 
-            width: parent.width; height: parent.height - captionsLayout.height * 0.3 - units.gu(2)
-            anchors.centerIn: parent
-            anchors.verticalCenterOffset: - captionsLayout.height * 0.3
+            height: parent.height - captionsLayout.height * 0.3 - units.gu(2)
+            anchors {
+                left: parent.left
+                right: parent.right
+                verticalCenter: parent.verticalCenter
+                verticalCenterOffset: - captionsLayout.height * 0.3
+            }
         }
 
         Loader {
@@ -197,15 +201,11 @@ AbstractButton {
         AbstractButton {
             id: button
 
-            property real iconWidth: units.gu(2.5)
-            property real iconHeight: iconWidth
-
-            width: visible ? units.gu(5) : 0
-            height: parent ? parent.height : undefined
-
             property alias color: icon.color
             property bool overflowPanelVisible: false
 
+            width: visible ? units.gu(5) : 0
+            height: parent ? parent.height : undefined
             Rectangle {
                 visible: button.pressed || button.overflowPanelVisible
                 anchors.fill: parent
@@ -214,13 +214,12 @@ AbstractButton {
 
             Icon {
                 id: icon
-                anchors {
-                    centerIn: parent
-                }
+                anchors.centerIn: parent
+
                 // prevent trying to render the icon with an invalid source
                 // when the button is invisible by setting width and height to 0
-                width: visible ? button.iconWidth : 0
-                height: visible ? button.iconHeight : 0
+                width: visible ? units.gu(2.5) : 0
+                height: visible ? units.gu(2.5) : 0
                 source: button.iconSource
                 color: Qt.rgba(0, 0, 0, 0)
                 opacity: button.enabled ? 1.0 : 0.3
@@ -256,6 +255,7 @@ AbstractButton {
             property bool square: true
             callerMargin: -units.gu(1) + units.dp(4)
             contentWidth: units.gu(20)
+            contentHeight: popoverActionsLayout.height
 
             Connections {
                 target: root
@@ -277,55 +277,32 @@ AbstractButton {
                 Repeater {
                     id: overflowTrailingRepeater
                     model: root.trailingActions
-                    delegate: Loader {
-                        sourceComponent: overflowPanelDelegate
 
-                        onStatusChanged: {
-                            if (status === Loader.Ready) {
-                                width = item.width
-                                height = item.height
-                                // Workaround for popoverActionsLayout not
-                                // updating its height
-                                item.parent = popoverActionsLayout
+                    delegate: overflowPanelDelegate
+                    onItemAdded: {
+                        item.action = model[index]
+                        item.clicked.connect(function() {
+                            actionsOverflowPopover.hide()
+                        })
 
-                                item.action = modelData
-                                item.clicked.connect(function() {
-                                    actionsOverflowPopover.hide()
-                                })
-                            }
-                        }
+                        item.showDivider = (overflowLeadingRepeater.count === 0) ? (index !== overflowTrailingRepeater.count - 1) : true
                     }
                 }
-               /* Rectangle {
-                    width: parent.width
-                    height: childrenRect.height
-                    color: UbuntuColors.red*/
-                    Repeater {
-                        id: overflowLeadingRepeater
-                        property bool isLeadingActionRepeater: true
-                        model: root.leadingActions
-                        delegate: Loader {
-                            sourceComponent: overflowPanelDelegate
 
-                            onStatusChanged: {
-                                if (status === Loader.Ready) {
-                                    width = item.width
-                                    height = item.height
-                                    // Workaround for popoverActionsLayout not
-                                    // updating its height
-                                    item.parent = popoverActionsLayout
+                Repeater {
+                    id: overflowLeadingRepeater
+                    model: root.leadingActions
 
-                                    // item.foregroundColor = "white"
-                                    item.repeater = overflowLeadingRepeater
-                                    item.action = modelData
-                                    item.clicked.connect(function() {
-                                        actionsOverflowPopover.hide()
-                                    })
-                                }
-                            }
-                        }
+                    delegate: overflowPanelDelegate
+                    onItemAdded: {
+                        item.action = model[index]
+                        item.clicked.connect(function() {
+                            actionsOverflowPopover.hide()
+                        })
+
+                        item.showDivider = (index !== overflowLeadingRepeater.count - 1)
                     }
-              //  }
+                }
             }
         }
     }
@@ -338,7 +315,7 @@ AbstractButton {
             implicitHeight: units.gu(6) + bottomDividerLine.height
             width: parent ? parent.width : units.gu(31)
 
-            property var repeater
+            property bool showDivider: true
             property color foregroundColor: Theme.palette.selected.backgroundText
 
             Rectangle {
@@ -385,8 +362,7 @@ AbstractButton {
             ListItem.ThinDivider {
                 id: bottomDividerLine
                 anchors.bottom: parent.bottom
-                visible: (model.index !== rootItem.repeater.count - 1)
-                            && !rootItem.repeater.hasOwnProperty("isLeadingActionRepeater")
+                visible: rootItem.showDivider
             }
         }
     }
