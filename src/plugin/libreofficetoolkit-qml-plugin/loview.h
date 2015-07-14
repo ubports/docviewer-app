@@ -61,7 +61,7 @@ Q_SIGNALS:
 private Q_SLOTS:
     void updateViewSize();
     void updateVisibleRect();
-    void queueVisibleRectUpdate();
+    void scheduleVisibleRectUpdate();
 
 private:
     QQuickItem*             m_parentFlickable;

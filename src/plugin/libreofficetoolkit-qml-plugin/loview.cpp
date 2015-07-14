@@ -79,8 +79,8 @@ void LOView::setParentFlickable(QQuickItem *flickable)
     connect(m_parentFlickable, SIGNAL(widthChanged()), this, SLOT(updateVisibleRect()));
     connect(m_parentFlickable, SIGNAL(heightChanged()), this, SLOT(updateVisibleRect()));
 
-    connect(m_parentFlickable, SIGNAL(contentXChanged()), this, SLOT(queueVisibleRectUpdate()));
-    connect(m_parentFlickable, SIGNAL(contentYChanged()), this, SLOT(queueVisibleRectUpdate()));
+    connect(m_parentFlickable, SIGNAL(contentXChanged()), this, SLOT(scheduleVisibleRectUpdate()));
+    connect(m_parentFlickable, SIGNAL(contentYChanged()), this, SLOT(scheduleVisibleRectUpdate()));
 
     Q_EMIT parentFlickableChanged();
 }
@@ -210,7 +210,7 @@ void LOView::updateVisibleRect()
     // (currently called loadingArea).
 }
 
-void LOView::queueVisibleRectUpdate()
+void LOView::scheduleVisibleRectUpdate()
 {
     if (!m_updateTimer->isActive())
         m_updateTimer->start(20);
