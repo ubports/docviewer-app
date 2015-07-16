@@ -54,6 +54,8 @@ public:
     QSize documentSize() const;
     QImage paintTile(QSize canvasSize, QRect tileSize);
 
+    Q_INVOKABLE bool saveAs(QString url, QString format, QString filterOptions);
+
 Q_SIGNALS:
     void pathChanged();
     void documentTypeChanged();

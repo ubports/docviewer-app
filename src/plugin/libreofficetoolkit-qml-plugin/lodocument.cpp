@@ -116,6 +116,26 @@ QImage LODocument::paintTile(QSize canvasSize, QRect tileSize)
     return result;
 }
 
+/* Export the file in a given format:
+ *  - url is a mandatory argument.
+ *  - format is optional. If not specified, lok will try to get it from the file
+ *    extension given at the 'url' argument.
+ *  - filerOptions is also optional.
+ */
+// TODO: Is there some documentation on safe formats or filterOptions that can
+// be used?
+bool LODocument::saveAs(QString url, QString format = QString(), QString filterOptions = QString())
+{
+    if (!m_document) {
+        qDebug() << "No loaded document. It's not possible to save this file.";
+        return false;
+    }
+
+    return m_document->saveAs(url.toLatin1().constData(),
+                              format.toLatin1().constData(),
+                              filterOptions.toLatin1().constData());
+}
+
 LODocument::~LODocument()
 {
 }
