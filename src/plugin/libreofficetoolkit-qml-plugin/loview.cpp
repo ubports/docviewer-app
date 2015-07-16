@@ -48,17 +48,11 @@ void LOView::paint(QPainter *painter)
 {
     // qDebug() << "Painting new tiles...";
 
-    // Clean area outside the visible one
-    painter->eraseRect(QRect(0, 0, m_visibleArea.right(), m_visibleArea.top()));  // TOP
-    painter->eraseRect(QRect(m_visibleArea.left(), m_visibleArea.bottom(), m_visibleArea.right(), this->height() - m_visibleArea.bottom()));    // BOTTOM
-    painter->eraseRect(QRect(0, m_visibleArea.top(), m_visibleArea.left(), m_visibleArea.height()));  // LEFT
-    painter->eraseRect(QRect(m_visibleArea.right(), m_visibleArea.top(), this->width() - m_visibleArea.right(), m_visibleArea.height()));  // RIGHT
-
     Q_FOREACH(TileItem* tile, m_tiles) {
-        // if (!tile->painted) {
-            painter->drawImage(tile->area, tile->texture);
-            // painter->drawRect(tile->area); // Uncomment to see tile borders.
-            tile->painted = true;
+       // if (!tile->painted) {
+            painter->drawImage(tile->area(), tile->texture());
+         // painter->drawRect(tile->area()); // Uncomment to see tile borders.
+            tile->setPainted(true);
         //}
     }
 }
@@ -167,7 +161,7 @@ void LOView::updateVisibleRect()
         // Delete tiles that are outside the loading area
         auto b = m_tiles.begin();
         while (b != m_tiles.end()) {
-            if (!loadingArea.intersects(b.value()->area)) {
+            if (!loadingArea.intersects(b.value()->area())) {
                 qDebug() << "Removing tile indexed as" << b.key();
                 b.value()->releaseTexture();
                 b = m_tiles.erase(b);
@@ -195,14 +189,13 @@ void LOView::updateVisibleRect()
 
             if (!m_tiles.contains(index)) {
                 qDebug() << "Creating tile" << x << "x" << y;
-                TileItem* tile = new TileItem(tileRect, m_document);
+
+                auto tile = new TileItem(tileRect, m_document);
+                connect(tile, SIGNAL(textureChanged()), this, SLOT(update()));
+                tile->requestTexture();
 
                 // Append the tile in the map
                 m_tiles.insert(index, tile);
-
-                // Connect the tile to the QQuickPaintedItem's update() slot, so the tile is immediately painted.
-                qDebug() << "Connecting tile" << x << "x" << y;
-                connect(tile, SIGNAL(textureUpdated()), this, SLOT(update()));
             } else {
                 // Just some debugging
                 qDebug() << "tile" << x << "x" << y << "already exists";

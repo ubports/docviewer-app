@@ -26,16 +26,12 @@
  * TileItem class *
  ******************/
 
-TileItem::TileItem(QRect a, LODocument *doc)
-    : painted(false)
+TileItem::TileItem(const QRect &area, LODocument *document)
+    : m_painted(false)
+    , m_document(nullptr)
 {
-    area = a;
-
-    RenderTask* task = new RenderTask(area, doc);
-    connect(task, SIGNAL(renderCompleted(QImage)), this, SLOT(updateTexture(QImage)));
-
-    task->setAutoDelete(true);
-    QThreadPool::globalInstance()->start(task);
+    this->setArea(area);
+    this->setDocument(document);
 }
 
 // Destructor
@@ -44,36 +40,123 @@ TileItem::~TileItem()
     this->releaseTexture();
 }
 
+QRect TileItem::area() const
+{
+    return m_area;
+}
+
+void TileItem::setArea(const QRect &area)
+{
+    if (m_area == area)
+        return;
+
+    m_area = area;
+    Q_EMIT areaChanged();
+}
+
+QImage TileItem::texture() const
+{
+    return m_texture;
+}
+
+bool TileItem::isPainted() const
+{
+    return m_painted;
+}
+
+void TileItem::setPainted(bool isPainted)
+{
+    if (m_painted == isPainted)
+        return;
+
+    m_painted = isPainted;
+    Q_EMIT isPaintedChanged();
+}
+
+LODocument* TileItem::document() const
+{
+    return m_document;
+}
+
+void TileItem::setDocument(LODocument* document)
+{
+    if (m_document == document)
+        return;
+
+    m_document = document;
+    Q_EMIT documentChanged();
+}
+
+void TileItem::requestTexture()
+{
+    auto task = new RenderTask(this->area(), this->document());
+    connect(task, SIGNAL(renderCompleted(QImage)), this, SLOT(updateTexture(QImage)));
+
+    task->setAutoDelete(true);
+    QThreadPool::globalInstance()->start(task);
+}
+
 // Free memory used by the texture
 void TileItem::releaseTexture()
 {
-    if (texture.isNull())
+    if (m_texture.isNull())
         return;
 
-    texture = QImage();
+    m_texture = QImage();
+    Q_EMIT textureChanged();
 }
 
 // This is a slot, connect to renderCompleted() signal from RenderTask class.
 void TileItem::updateTexture(QImage t)
 {
-    qDebug() << "Updating texture";
-    texture = t;
-    Q_EMIT textureUpdated();
+    m_texture = t;
+    Q_EMIT textureChanged();
 }
 
 /* ******************
  * RenderTask class *
  ********************/
 
-RenderTask::RenderTask(QRect area, LODocument *doc)
+RenderTask::RenderTask(const QRect &area, LODocument* document)
 {
-    m_document = doc;
+    this->setArea(area);
+    this->setDocument(document);
+}
+
+
+QRect RenderTask::area() const
+{
+    return m_area;
+}
+
+void RenderTask::setArea(const QRect &area)
+{
+    if (m_area == area)
+        return;
+
     m_area = area;
+    Q_EMIT areaChanged();
+}
+
+LODocument* RenderTask::document() const
+{
+    return m_document;
+}
+
+void RenderTask::setDocument(LODocument* document)
+{
+    if (m_document == document)
+        return;
+
+    m_document = document;
+    Q_EMIT documentChanged();
 }
 
 // Render the texture for this tile.
 void RenderTask::run()
 {
-    QImage render = m_document->paintTile(m_area.size(), m_area);
+    QImage render = this->document()->paintTile(this->area().size(),
+                                                this->area());
+
     Q_EMIT renderCompleted(render);
 }
