@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-06-24 22:48+0200\n"
-"PO-Revision-Date: 2015-06-29 10:13+0000\n"
+"PO-Revision-Date: 2015-07-15 10:29+0000\n"
 "Last-Translator: Simos Xenitellis <Unknown>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-06-30 05:42+0000\n"
-"X-Generator: Launchpad (build 17578)\n"
+"X-Launchpad-Export-Date: 2015-07-16 05:37+0000\n"
+"X-Generator: Launchpad (build 17628)\n"
 
 #. TRANSLATORS: This string is used for renaming a copied file,
 #. when a file with the same name already exists in user's
@@ -35,7 +35,7 @@ msgstr "αντίγραφο %1"
 #: ../src/app/docviewer-application.cpp:171
 #: /home/m/dev/core/ubuntu-docviewer-app-icon-fix/obj-x86_64-linux-gnu/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
-msgstr "Προβολέας εγγράφων"
+msgstr "Προβολή εγγράφων"
 
 #: ../src/app/qml/common/DetailsPage.qml:27
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:97
@@ -103,7 +103,7 @@ msgstr[1] "Τα παρακάτω έγγραφα δεν εισήχθησαν:"
 
 #: ../src/app/qml/common/ToastWithAction.qml:97
 msgid "Dismiss"
-msgstr ""
+msgstr "Κλείσιμο"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:26
 msgid "Unknown file type"
@@ -115,7 +115,7 @@ msgid ""
 "as a plain text?"
 msgstr ""
 "Συγγνωμή αλλά δεν είναι δυνατό να βρεθεί τρόπος να εμφανιστεί αυτό το "
-"αρχείο. Θέλετε να το ανοίξετα σαν απλό κείμενο;"
+"αρχείο. Θέλετε να το ανοίξετα ως απλό κείμενο;"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:29
 msgid "Yes"
@@ -164,8 +164,8 @@ msgstr[1] "Διαγραφή %1 αρχείων"
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:31
 msgid "Are you sure you want to permanently delete this file?"
 msgid_plural "Are you sure you want to permanently delete these files?"
-msgstr[0] "Είστε σίγουρος πως θέλετε να διαγράψετε μόνιμα αυτό το αρχείο;"
-msgstr[1] "Είστε σίγουρος πως θέλετε να διαγράψετε μόνιμα αυτά τα αρχεία;"
+msgstr[0] "Θέλετε σίγουρα να διαγράψετε για πάντα αυτό το αρχείο;"
+msgstr[1] "Θέλετε σίγουρα να διαγράψετε για πάντα αυτά τα αρχεία;"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:36
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:27
@@ -180,15 +180,15 @@ msgstr "Διαγραφή"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:24
 msgid "No document found"
-msgstr "Κανένα έγγραφο δεν βρέθηκε"
+msgstr "Δεν βρέθηκαν έγγραφα"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:28
 msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
 "folder."
 msgstr ""
-"Συνεστε την συσκευή σας σε οποιονδήποτε υπολογιστή και απλά σύτερε αρχεία "
-"στον φάκελο Έγγραφα."
+"Συνδέστε τη συσκευή σας σε οποιονδήποτε υπολογιστή και απλά σύρτε αρχεία στο "
+"φάκελο Έγγραφα."
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
@@ -202,14 +202,14 @@ msgstr "Σήμερα, %1"
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:40
 #, qt-format
 msgid "Yesterday, %1"
-msgstr "Χθές, %1"
+msgstr "Χθες, %1"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:45
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:58
 msgid "dddd, hh:mm"
-msgstr "ηηηη, ωω:λλ"
+msgstr "dddd, hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
@@ -217,7 +217,7 @@ msgstr "ηηηη, ωω:λλ"
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:47
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:63
 msgid "dd-MM-yyyy hh:mm"
-msgstr "ηη-ΜΜ-εεε ωω:λλ"
+msgstr "dd-MM-yyyy hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string, and the
 #. singlequote is an escape character.
@@ -243,15 +243,15 @@ msgstr "Χθες"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:163
 msgid "Earlier this week"
-msgstr "Νωρίτερα αυτήν την εβδομάδα"
+msgstr "Νωρίτερα αυτή την εβδομάδα"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:166
 msgid "Earlier this month"
-msgstr "Νωρίτερα αυτόν τον μήνα"
+msgstr "Νωρίτερα αυτό τον μήνα"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:168
 msgid "Even earlier..."
-msgstr "Ακόμα νωρίτερα"
+msgstr "Ακόμα νωρίτερα..."
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:24
 msgid "Documents"
@@ -347,7 +347,7 @@ msgstr "Σελίδα %1 από %2"
 
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:85
 msgid "Go to page..."
-msgstr "Μετάβαση στην σελίδα..."
+msgstr "Μετάβαση στη σελίδα..."
 
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
