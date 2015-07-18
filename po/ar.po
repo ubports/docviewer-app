@@ -1,4 +1,4 @@
-# Welsh translation for ubuntu-docviewer-app
+# Arabic translation for ubuntu-docviewer-app
 # Copyright (c) 2015 Rosetta Contributors and Canonical Ltd 2015
 # This file is distributed under the same license as the ubuntu-docviewer-app package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-06-24 22:48+0200\n"
-"PO-Revision-Date: 2015-07-17 12:00+0000\n"
-"Last-Translator: Owen Llywelyn <owen.llywelyn@gmail.com>\n"
-"Language-Team: Welsh <cy@li.org>\n"
+"PO-Revision-Date: 2015-07-17 12:21+0000\n"
+"Last-Translator: Ibrahim Saed <ibraheem5000@gmail.com>\n"
+"Language-Team: Arabic <ar@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 0 : n==2 ? 1 : (n != 8 && n != 11) ? "
-"2 : 3;\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n % 100 >= "
+"3 && n % 100 <= 10 ? 3 : n % 100 >= 11 && n % 100 <= 99 ? 4 : 5;\n"
 "X-Launchpad-Export-Date: 2015-07-18 05:31+0000\n"
 "X-Generator: Launchpad (build 17628)\n"
 
@@ -31,46 +31,46 @@ msgstr ""
 #: ../src/app/content-communicator.cpp:105
 #, qt-format
 msgid "copy %1"
-msgstr "copi %1"
+msgstr "نسخة %1"
 
 #: ../src/app/docviewer-application.cpp:171
 #: /home/m/dev/core/ubuntu-docviewer-app-icon-fix/obj-x86_64-linux-gnu/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
-msgstr "Syllwr Dogfen"
+msgstr "عارض المستندات"
 
 #: ../src/app/qml/common/DetailsPage.qml:27
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:97
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:83
 msgid "Details"
-msgstr "Manylion"
+msgstr "التفاصيل"
 
 #: ../src/app/qml/common/DetailsPage.qml:33
 msgid "Location"
-msgstr "Lleoliad"
+msgstr "الموقع"
 
 #: ../src/app/qml/common/DetailsPage.qml:37
 msgid "Size"
-msgstr "Maint"
+msgstr "الحجم"
 
 #: ../src/app/qml/common/DetailsPage.qml:42
 msgid "Created"
-msgstr "Crëwyd"
+msgstr "تم إنشاؤها"
 
 #: ../src/app/qml/common/DetailsPage.qml:47
 msgid "Last modified"
-msgstr "Newidiwyd ddiwethaf"
+msgstr "آخر تعديل"
 
 #: ../src/app/qml/common/DetailsPage.qml:54
 msgid "MIME type"
-msgstr "Math MIME"
+msgstr "نوع MIME"
 
 #: ../src/app/qml/common/FileNotFoundDialog.qml:24
 msgid "Error"
-msgstr "Gwall"
+msgstr "خطأ"
 
 #: ../src/app/qml/common/FileNotFoundDialog.qml:25
 msgid "File does not exist"
-msgstr "Nid yw'r ffeil yn bodoli"
+msgstr "الملف غير موجود"
 
 #: ../src/app/qml/common/FileNotFoundDialog.qml:28
 #: ../src/app/qml/common/PickImportedDialog.qml:47
@@ -80,145 +80,142 @@ msgstr "Nid yw'r ffeil yn bodoli"
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Close"
-msgstr "Cau"
+msgstr "إغلاق"
 
 #: ../src/app/qml/common/PickImportedDialog.qml:29
 msgid "Multiple documents imported"
-msgstr "Mewnforiwyd nifer o ddogfennau"
+msgstr "ثم استيراد مستندات متعددة"
 
 #: ../src/app/qml/common/PickImportedDialog.qml:30
 msgid "Choose which one to open:"
-msgstr "Dewiswch pa un i agor:"
+msgstr "اختر أيها تريد فتحه:"
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:28
 msgid "File not supported"
 msgid_plural "Files not supported"
-msgstr[0] "Dim cefnogaeth i'r ffeil"
-msgstr[1] "Dim cefnogaeth i'r ffeiliau"
-msgstr[2] "Dim cefnogaeth i'r ffeiliau"
-msgstr[3] "Dim cefnogaeth i'r ffeiliau"
+msgstr[0] "الملف غير مدعوم"
+msgstr[1] "الملفات غير مدعومة"
+msgstr[2] "الملفات غير مدعومة"
+msgstr[3] "الملفات غير مدعومة"
+msgstr[4] "الملفات غير مدعومة"
+msgstr[5] "الملفات غير مدعومة"
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:29
 msgid "Following document has not been imported:"
 msgid_plural "Following documents have not been imported:"
-msgstr[0] "Ni chafodd y ddogfen ganlynol ei mewnforio:"
-msgstr[1] "Ni chafodd y dogfennau canlynol eu mewnforio:"
-msgstr[2] "Ni chafodd y dogfennau canlynol eu mewnforio:"
-msgstr[3] "Ni chafodd y dogfennau canlynol eu mewnforio:"
+msgstr[0] "المستند التالي لم يتم استيراده:"
+msgstr[1] "المستندات التالية لم يتم استيرادها:"
+msgstr[2] "المستندات التالية لم يتم استيرادها:"
+msgstr[3] "المستندات التالية لم يتم استيرادها:"
+msgstr[4] "المستندات التالية لم يتم استيرادها:"
+msgstr[5] "المستندات التالية لم يتم استيرادها:"
 
 #: ../src/app/qml/common/ToastWithAction.qml:97
 msgid "Dismiss"
-msgstr "Gwrthod"
+msgstr "تجاهل"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:26
 msgid "Unknown file type"
-msgstr "Math anhysbys o ffeil"
+msgstr "نوع ملف غير معروف"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:27
 msgid ""
 "Sorry but we can't find a way to display this file. Do you want to open it "
 "as a plain text?"
 msgstr ""
-"Allwn ni ddim dangos y ffeil hon yn anffodus. Ydych chi am ei hagor fel "
-"testun plaen?"
+"نأسف ولكننا لم نعثر على طريقة لعرض هذا الملف. هل ترغب بفتحه كنص عادي؟"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:29
 msgid "Yes"
-msgstr "Ydw"
+msgstr "نعم"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:38
 msgid "No"
-msgstr "Na"
+msgstr "لا"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in GB
 #: ../src/app/qml/common/utils.js:22
 #, qt-format
 msgid "%1 GB"
-msgstr "%1 GB"
+msgstr ""
 
 #. TRANSLATORS: %1 is the size of a file, expressed in MB
 #: ../src/app/qml/common/utils.js:26
 #, qt-format
 msgid "%1 MB"
-msgstr "%1 MB"
+msgstr ""
 
 #. TRANSLATORS: %1 is the size of a file, expressed in kB
 #: ../src/app/qml/common/utils.js:30
 #, qt-format
 msgid "%1 kB"
-msgstr "%1 kB"
+msgstr ""
 
 #. TRANSLATORS: %1 is the size of a file, expressed in byte
 #: ../src/app/qml/common/utils.js:33
 #, qt-format
 msgid "%1 byte"
-msgstr "%1 beit"
+msgstr ""
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:28
 msgid "Delete file"
-msgstr "Dileu ffeil"
+msgstr ""
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:29
 #, qt-format
 msgid "Delete %1 file"
 msgid_plural "Delete %1 files"
-msgstr[0] "Dileu %1 ffeil"
-msgstr[1] "Dileu %1 ffeil"
-msgstr[2] "Dileu %1 ffeil"
-msgstr[3] "Dileu %1 ffeil"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:30
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:31
 msgid "Are you sure you want to permanently delete this file?"
 msgid_plural "Are you sure you want to permanently delete these files?"
-msgstr[0] "Ydych chi'n sicr eich bod am ddileu’r ffeil hon yn barhaol?"
-msgstr[1] "Ydych chi'n sicr eich bod am ddileu’r ffeiliau hyn yn barhaol?"
-msgstr[2] "Ydych chi'n sicr eich bod am ddileu’r ffeiliau hyn yn barhaol?"
-msgstr[3] "Ydych chi'n sicr eich bod am ddileu’r ffeiliau hyn yn barhaol?"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:36
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:27
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:52
 msgid "Cancel"
-msgstr "Diddymu"
+msgstr ""
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:41
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:82
 msgid "Delete"
-msgstr "Dileu"
+msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:24
 msgid "No document found"
-msgstr "Heb ganfod dogfen"
+msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:28
 msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
 "folder."
 msgstr ""
-"Cysylltwch eich dyfais â chyfrifiadur a llusgo ffeiliau i'r blygell "
-"Dogfennau."
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:35
 #, qt-format
 msgid "Today, %1"
-msgstr "Heddiw, %1"
+msgstr ""
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:40
 #, qt-format
 msgid "Yesterday, %1"
-msgstr "Ddoe, %1"
+msgstr ""
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:45
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:58
 msgid "dddd, hh:mm"
-msgstr "dddd, hh:mm"
+msgstr ""
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
@@ -226,122 +223,120 @@ msgstr "dddd, hh:mm"
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:47
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:63
 msgid "dd-MM-yyyy hh:mm"
-msgstr "dd-MM-yyyy hh:mm"
+msgstr ""
 
 #. TRANSLATORS: this is a datetime formatting string, and the
 #. singlequote is an escape character.
 #. See http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:36
 msgid "'Today', hh:mm"
-msgstr "'Heddiw', hh:mm"
+msgstr ""
 
 #. TRANSLATORS: this is a datetime formatting string, and the
 #. singlequote is an escape character.
 #. See http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:42
 msgid "'Yesterday', hh:mm"
-msgstr "'Ddoe', hh:mm"
+msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:157
 msgid "Today"
-msgstr "Heddiw"
+msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:160
 msgid "Yesterday"
-msgstr "Ddoe"
+msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:163
 msgid "Earlier this week"
-msgstr "Yn gynharach wythnos yma"
+msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:166
 msgid "Earlier this month"
-msgstr "Yn gynharach y mis hwn"
+msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:168
 msgid "Even earlier..."
-msgstr "Hyd yn oed yn gynt..."
+msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:24
 msgid "Documents"
-msgstr "Dogfennau"
+msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:29
 msgid "Search..."
-msgstr "Chwilio..."
+msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:37
 msgid "Sorting settings..."
-msgstr "Gosodiadau didoli..."
+msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:46
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
 msgid "Switch to single column list"
-msgstr "Newid i restr un golofn"
+msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:46
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
 msgid "Switch to grid"
-msgstr "Newid i grid"
+msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:43
 msgid "Pick"
-msgstr "Dewis"
+msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:27
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Back"
-msgstr "Nôl"
+msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:47
 msgid "search in documents..."
-msgstr "chwilio yn dofgennau..."
+msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:52
 msgid "Select None"
-msgstr "Dewis Dim"
+msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:54
 msgid "Select All"
-msgstr "Dewis y Cyfan"
+msgstr ""
 
 #: ../src/app/qml/documentPage/SearchEmptyState.qml:24
 msgid "No matching document found"
-msgstr "Heb ganfod dogfen sy'n cyfateb"
+msgstr ""
 
 #: ../src/app/qml/documentPage/SearchEmptyState.qml:26
 msgid ""
 "Please ensure that your query is not misspelled and/or try a different query."
 msgstr ""
-"Gwnewch yn siwr bod eich sillafu'n gywir a/neu rhowch gynnig ar ymholiad "
-"gwahanol."
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:26
 msgid "Sorting settings"
-msgstr "Gosodiadau didoli"
+msgstr ""
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:31
 msgid "Sort by date (Latest first)"
-msgstr "Didoli yn ôl dyddiad (Mwyaf diweddar yn gyntaf)"
+msgstr ""
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:32
 msgid "Sort by name (A-Z)"
-msgstr "Didoli yn ôl enw (A-Z)"
+msgstr ""
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:33
 msgid "Sort by size (Smaller first)"
-msgstr "Didoli yn ôl maint (Lleiaf yn gyntaf)"
+msgstr ""
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:47
 msgid "Reverse order"
-msgstr "Trefn wrthol"
+msgstr ""
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:32
 #: ../src/app/qml/pdfView/PdfView.qml:37
 msgid "Contents"
-msgstr "Cynnwys"
+msgstr ""
 
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:38
 msgid "Hide table of contents"
