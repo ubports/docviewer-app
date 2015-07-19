@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-06-24 22:48+0200\n"
-"PO-Revision-Date: 2015-07-17 12:21+0000\n"
+"PO-Revision-Date: 2015-07-18 12:06+0000\n"
 "Last-Translator: Ibrahim Saed <ibraheem5000@gmail.com>\n"
 "Language-Team: Arabic <ar@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n % 100 >= "
 "3 && n % 100 <= 10 ? 3 : n % 100 >= 11 && n % 100 <= 99 ? 4 : 5;\n"
-"X-Launchpad-Export-Date: 2015-07-18 05:31+0000\n"
+"X-Launchpad-Export-Date: 2015-07-19 05:04+0000\n"
 "X-Generator: Launchpad (build 17628)\n"
 
 #. TRANSLATORS: This string is used for renaming a copied file,
@@ -137,85 +137,94 @@ msgstr "لا"
 #: ../src/app/qml/common/utils.js:22
 #, qt-format
 msgid "%1 GB"
-msgstr ""
+msgstr "%1 ج.بايت"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in MB
 #: ../src/app/qml/common/utils.js:26
 #, qt-format
 msgid "%1 MB"
-msgstr ""
+msgstr "%1 م.بايت"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in kB
 #: ../src/app/qml/common/utils.js:30
 #, qt-format
 msgid "%1 kB"
-msgstr ""
+msgstr "%1 ك. بايت"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in byte
 #: ../src/app/qml/common/utils.js:33
 #, qt-format
 msgid "%1 byte"
-msgstr ""
+msgstr "%1 بايت"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:28
 msgid "Delete file"
-msgstr ""
+msgstr "حذف الملف"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:29
 #, qt-format
 msgid "Delete %1 file"
 msgid_plural "Delete %1 files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "حذف ملف واحد (%1)"
+msgstr[1] "حذف ملف واحد (%1)"
+msgstr[2] "حذف ملفين (%1)"
+msgstr[3] "حذف %1 ملفات"
+msgstr[4] "حذف %1 ملفا"
+msgstr[5] "حذف %1 ملف"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:30
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:31
 msgid "Are you sure you want to permanently delete this file?"
 msgid_plural "Are you sure you want to permanently delete these files?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "هل أنت متأكد من رغبتك في حذف هذا الملف بشكل دائم؟"
+msgstr[1] "هل أنت متأكد من رغبتك في حذف هذه الملفات بشكل دائم؟"
+msgstr[2] "هل أنت متأكد من رغبتك في حذف هذه الملفات بشكل دائم؟"
+msgstr[3] "هل أنت متأكد من رغبتك في حذف هذه الملفات بشكل دائم؟"
+msgstr[4] "هل أنت متأكد من رغبتك في حذف هذه الملفات بشكل دائم؟"
+msgstr[5] "هل أنت متأكد من رغبتك في حذف هذه الملفات بشكل دائم؟"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:36
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:27
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:52
 msgid "Cancel"
-msgstr ""
+msgstr "إلغاء"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:41
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:82
 msgid "Delete"
-msgstr ""
+msgstr "حذف"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:24
 msgid "No document found"
-msgstr ""
+msgstr "لم يُعثر على مستندات"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:28
 msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
 "folder."
 msgstr ""
+"قم بتوصيل جهازك بأي جهاز حاسوب ثم قم بسحب الملفات ببساطة إلى مجلد المستندات."
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:35
 #, qt-format
 msgid "Today, %1"
-msgstr ""
+msgstr "اليوم، %1"
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:40
 #, qt-format
 msgid "Yesterday, %1"
-msgstr ""
+msgstr "أمس، %1"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:45
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:58
 msgid "dddd, hh:mm"
-msgstr ""
+msgstr "dddd, hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
@@ -223,173 +232,179 @@ msgstr ""
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:47
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:63
 msgid "dd-MM-yyyy hh:mm"
-msgstr ""
+msgstr "dd-MM-yyyy hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string, and the
 #. singlequote is an escape character.
 #. See http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:36
 msgid "'Today', hh:mm"
-msgstr ""
+msgstr "'اليوم'، hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string, and the
 #. singlequote is an escape character.
 #. See http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:42
 msgid "'Yesterday', hh:mm"
-msgstr ""
+msgstr "'أمس'، hh:mm"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:157
 msgid "Today"
-msgstr ""
+msgstr "اليوم"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:160
 msgid "Yesterday"
-msgstr ""
+msgstr "أمس"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:163
 msgid "Earlier this week"
-msgstr ""
+msgstr "في وقت سابق من هذا الأسبوع"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:166
 msgid "Earlier this month"
-msgstr ""
+msgstr "في وقت سابق من هذا الشهر"
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:168
 msgid "Even earlier..."
-msgstr ""
+msgstr "حتى وقت سابق..."
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:24
 msgid "Documents"
-msgstr ""
+msgstr "المستندات"
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:29
 msgid "Search..."
-msgstr ""
+msgstr "بحث..."
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:37
 msgid "Sorting settings..."
-msgstr ""
+msgstr "إعدادات الفرز..."
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:46
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
 msgid "Switch to single column list"
-msgstr ""
+msgstr "التحويل إلى نمط القائمة العمودية"
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:46
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
 msgid "Switch to grid"
-msgstr ""
+msgstr "التحويل إلى نمط الشبكة"
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:43
 msgid "Pick"
-msgstr ""
+msgstr "اختيار"
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:27
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Back"
-msgstr ""
+msgstr "عودة"
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:47
 msgid "search in documents..."
-msgstr ""
+msgstr "بحث في المستندات..."
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:52
 msgid "Select None"
-msgstr ""
+msgstr "اختر لا شيء"
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:54
 msgid "Select All"
-msgstr ""
+msgstr "اختر الكل"
 
 #: ../src/app/qml/documentPage/SearchEmptyState.qml:24
 msgid "No matching document found"
-msgstr ""
+msgstr "لم يُعثر على مستندات مطابقة"
 
 #: ../src/app/qml/documentPage/SearchEmptyState.qml:26
 msgid ""
 "Please ensure that your query is not misspelled and/or try a different query."
 msgstr ""
+"برجاء التأكد من أن استعلامك لا يحتوي أخطاء إملائية و/أو حاول استخدام استعلام "
+"آخر."
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:26
 msgid "Sorting settings"
-msgstr ""
+msgstr "إعدادات الفرز"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:31
 msgid "Sort by date (Latest first)"
-msgstr ""
+msgstr "ترتيب حسب التاريخ (الأحدث أولا)"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:32
 msgid "Sort by name (A-Z)"
-msgstr ""
+msgstr "ترتيب حسب الاسم"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:33
 msgid "Sort by size (Smaller first)"
-msgstr ""
+msgstr "ترتيب حسب الحجم (الأصغر أولا)"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:47
 msgid "Reverse order"
-msgstr ""
+msgstr "ترتيب عكسي"
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:32
 #: ../src/app/qml/pdfView/PdfView.qml:37
 msgid "Contents"
-msgstr ""
+msgstr "المحتويات"
 
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:38
 msgid "Hide table of contents"
-msgstr ""
+msgstr "إخفاء جدول المحتويات"
 
 #. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
 #. while the second one (%2) refers to the total pages count.
 #: ../src/app/qml/pdfView/PdfView.qml:34
 #, qt-format
 msgid "Page %1 of %2"
-msgstr ""
+msgstr "صفحة %1 من %2"
 
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:85
 msgid "Go to page..."
-msgstr ""
+msgstr "اذهب إلى الصفحة..."
 
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Disable night mode"
-msgstr ""
+msgstr "تعطيل الوضع الليلي"
 
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Enable night mode"
-msgstr ""
+msgstr "تفعيل الوضع الليلي"
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:25
 msgid "Go to page"
-msgstr ""
+msgstr "اذهب إلى الصفحة"
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
 #, qt-format
 msgid "Choose a page between 1 and %1"
-msgstr ""
+msgstr "اختر صفحة بين 1 و %1"
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:44
 msgid "GO!"
-msgstr ""
+msgstr "اذهب!"
 
 #: ../src/app/qml/textView/TextView.qml:42
 msgid "Loading..."
-msgstr ""
+msgstr "يجري التحميل"
 
 #: ../src/app/qml/ubuntu-docviewer-app.qml:240
 msgid "Document successfully imported!"
 msgid_plural "Documents successfully imported!"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "تم استيراد المستند بنجاح!"
+msgstr[1] "تم استيراد المستند بنجاح!"
+msgstr[2] "تم استيراد المستندات بنجاح!"
+msgstr[3] "تم استيراد المستندات بنجاح!"
+msgstr[4] "تم استيراد المستندات بنجاح!"
+msgstr[5] "تم استيراد المستندات بنجاح!"
 
 #: ../src/app/qml/ubuntu-docviewer-app.qml:243
 msgid "Open"
-msgstr ""
+msgstr "فتح"
 
 #: /home/m/dev/core/ubuntu-docviewer-app-icon-fix/obj-x86_64-linux-gnu/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
-msgstr ""
+msgstr "مستندات;عارض;قاريء;قارئ;مستند;المستندات;المستند;"
