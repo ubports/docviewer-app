@@ -30,11 +30,11 @@
 class Twips
 {
 public:
-    static int convertTwipsToPixels(int twips, qreal zoom = 1.0) {
+    static inline int convertTwipsToPixels(int twips, qreal zoom = 1.0) {
         return int(twips / 1440.0 * VIRTUAL_DPI * zoom);
     }
 
-    static int convertPixelsToTwips(int pixels, qreal zoom = 1.0) {
+    static inline int convertPixelsToTwips(int pixels, qreal zoom = 1.0) {
         return int(pixels * 1440.0 / VIRTUAL_DPI / zoom);
     }
 };
