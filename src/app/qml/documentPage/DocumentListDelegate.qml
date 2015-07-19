@@ -23,6 +23,8 @@ import "../common/utils.js" as Utils
 import "../upstreamComponents"
 
 ListItemWithActions {
+    property QtObject documentDelegateActions: DocumentDelegateActions { }
+
     function formattedDateTime() {
         var date = new Date(model.date)
         var diff = model.dateDiff
@@ -70,15 +72,8 @@ ListItemWithActions {
 
     locked: documentPage.state == "pickMode"
 
-    // TODO: NEEDS-DESIGN: Enable left action. Still need to find an equivalent for GridDelegate.
-   /* leftSideAction: Action {
-        iconName: "delete"
-        text: i18n.tr("Delete")
-        onTriggered: {
-            PopupUtils.open(Qt.resolvedUrl("DeleteFileDialog.qml"),
-                            documentPage, { path: model.filePath })
-        }
-    }*/
+    leftSideAction: documentDelegateActions.leadingActions[0]
+    rightSideActions: documentDelegateActions.trailingActions
 
     contents: RowLayout {
         anchors.fill: parent
