@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-06-24 22:48+0200\n"
+"POT-Creation-Date: 2015-07-14 17:41+0200\n"
 "PO-Revision-Date: 2015-07-18 12:06+0000\n"
 "Last-Translator: Ibrahim Saed <ibraheem5000@gmail.com>\n"
 "Language-Team: Arabic <ar@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n % 100 >= "
 "3 && n % 100 <= 10 ? 3 : n % 100 >= 11 && n % 100 <= 99 ? 4 : 5;\n"
-"X-Launchpad-Export-Date: 2015-07-19 05:04+0000\n"
+"X-Launchpad-Export-Date: 2015-07-20 04:57+0000\n"
 "X-Generator: Launchpad (build 17628)\n"
 
 #. TRANSLATORS: This string is used for renaming a copied file,
@@ -34,7 +34,7 @@ msgid "copy %1"
 msgstr "نسخة %1"
 
 #: ../src/app/docviewer-application.cpp:171
-#: /home/m/dev/core/ubuntu-docviewer-app-icon-fix/obj-x86_64-linux-gnu/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/stefano/Progetti/docviewer/build-documentpage-add-contextual-actions-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "عارض المستندات"
 
@@ -157,11 +157,11 @@ msgstr "%1 ك. بايت"
 msgid "%1 byte"
 msgstr "%1 بايت"
 
-#: ../src/app/qml/documentPage/DeleteFileDialog.qml:28
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:36
 msgid "Delete file"
 msgstr "حذف الملف"
 
-#: ../src/app/qml/documentPage/DeleteFileDialog.qml:29
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:37
 #, qt-format
 msgid "Delete %1 file"
 msgid_plural "Delete %1 files"
@@ -172,8 +172,8 @@ msgstr[3] "حذف %1 ملفات"
 msgstr[4] "حذف %1 ملفا"
 msgstr[5] "حذف %1 ملف"
 
-#: ../src/app/qml/documentPage/DeleteFileDialog.qml:30
-#: ../src/app/qml/documentPage/DeleteFileDialog.qml:31
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:38
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:39
 msgid "Are you sure you want to permanently delete this file?"
 msgid_plural "Are you sure you want to permanently delete these files?"
 msgstr[0] "هل أنت متأكد من رغبتك في حذف هذا الملف بشكل دائم؟"
@@ -183,13 +183,14 @@ msgstr[3] "هل أنت متأكد من رغبتك في حذف هذه الملف�
 msgstr[4] "هل أنت متأكد من رغبتك في حذف هذه الملفات بشكل دائم؟"
 msgstr[5] "هل أنت متأكد من رغبتك في حذف هذه الملفات بشكل دائم؟"
 
-#: ../src/app/qml/documentPage/DeleteFileDialog.qml:36
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:44
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:27
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:52
 msgid "Cancel"
 msgstr "إلغاء"
 
-#: ../src/app/qml/documentPage/DeleteFileDialog.qml:41
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:49
+#: ../src/app/qml/documentPage/DocumentDelegateActions.qml:25
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:82
 msgid "Delete"
 msgstr "حذف"
@@ -207,44 +208,44 @@ msgstr ""
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
-#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:35
+#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:32
 #, qt-format
 msgid "Today, %1"
 msgstr "اليوم، %1"
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
-#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:40
+#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:37
 #, qt-format
 msgid "Yesterday, %1"
 msgstr "أمس، %1"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:45
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:58
+#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:42
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:60
 msgid "dddd, hh:mm"
 msgstr "dddd, hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:49
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:47
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:63
+#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:46
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:49
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:65
 msgid "dd-MM-yyyy hh:mm"
 msgstr "dd-MM-yyyy hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string, and the
 #. singlequote is an escape character.
 #. See http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:36
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:38
 msgid "'Today', hh:mm"
 msgstr "'اليوم'، hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string, and the
 #. singlequote is an escape character.
 #. See http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:42
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:44
 msgid "'Yesterday', hh:mm"
 msgstr "'أمس'، hh:mm"
 
@@ -405,6 +406,6 @@ msgstr[5] "تم استيراد المستندات بنجاح!"
 msgid "Open"
 msgstr "فتح"
 
-#: /home/m/dev/core/ubuntu-docviewer-app-icon-fix/obj-x86_64-linux-gnu/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/stefano/Progetti/docviewer/build-documentpage-add-contextual-actions-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "مستندات;عارض;قاريء;قارئ;مستند;المستندات;المستند;"

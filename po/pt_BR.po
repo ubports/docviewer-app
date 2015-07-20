@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-06-24 22:48+0200\n"
+"POT-Creation-Date: 2015-07-14 17:41+0200\n"
 "PO-Revision-Date: 2015-03-04 02:07+0000\n"
 "Last-Translator: Rafael Neri <Unknown>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2015-06-26 04:59+0000\n"
-"X-Generator: Launchpad (build 17578)\n"
+"X-Launchpad-Export-Date: 2015-07-20 04:57+0000\n"
+"X-Generator: Launchpad (build 17628)\n"
 
 #. TRANSLATORS: This string is used for renaming a copied file,
 #. when a file with the same name already exists in user's
@@ -33,7 +33,7 @@ msgid "copy %1"
 msgstr ""
 
 #: ../src/app/docviewer-application.cpp:171
-#: /home/m/dev/core/ubuntu-docviewer-app-icon-fix/obj-x86_64-linux-gnu/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/stefano/Progetti/docviewer/build-documentpage-add-contextual-actions-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Visualizador de documentos"
 
@@ -149,31 +149,32 @@ msgstr ""
 msgid "%1 byte"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DeleteFileDialog.qml:28
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:36
 msgid "Delete file"
 msgstr "Excluir arquivo"
 
-#: ../src/app/qml/documentPage/DeleteFileDialog.qml:29
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:37
 #, qt-format
 msgid "Delete %1 file"
 msgid_plural "Delete %1 files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/app/qml/documentPage/DeleteFileDialog.qml:30
-#: ../src/app/qml/documentPage/DeleteFileDialog.qml:31
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:38
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:39
 msgid "Are you sure you want to permanently delete this file?"
 msgid_plural "Are you sure you want to permanently delete these files?"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/app/qml/documentPage/DeleteFileDialog.qml:36
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:44
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:27
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:52
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: ../src/app/qml/documentPage/DeleteFileDialog.qml:41
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:49
+#: ../src/app/qml/documentPage/DocumentDelegateActions.qml:25
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:82
 msgid "Delete"
 msgstr "Excluir"
@@ -192,44 +193,44 @@ msgstr ""
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
-#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:35
+#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:32
 #, qt-format
 msgid "Today, %1"
 msgstr ""
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
-#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:40
+#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:37
 #, qt-format
 msgid "Yesterday, %1"
 msgstr ""
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:45
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:58
+#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:42
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:60
 msgid "dddd, hh:mm"
 msgstr "dddd, hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:49
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:47
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:63
+#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:46
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:49
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:65
 msgid "dd-MM-yyyy hh:mm"
 msgstr "dd/MM/yyyy hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string, and the
 #. singlequote is an escape character.
 #. See http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:36
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:38
 msgid "'Today', hh:mm"
 msgstr ""
 
 #. TRANSLATORS: this is a datetime formatting string, and the
 #. singlequote is an escape character.
 #. See http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:42
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:44
 msgid "'Yesterday', hh:mm"
 msgstr ""
 
@@ -384,6 +385,6 @@ msgstr[1] ""
 msgid "Open"
 msgstr ""
 
-#: /home/m/dev/core/ubuntu-docviewer-app-icon-fix/obj-x86_64-linux-gnu/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/stefano/Progetti/docviewer/build-documentpage-add-contextual-actions-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "documentos;visualizador;pdf;leitor"
