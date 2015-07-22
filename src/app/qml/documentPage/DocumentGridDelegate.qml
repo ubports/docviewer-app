@@ -110,6 +110,21 @@ AbstractButton {
                 if (model.mimetype === "application/pdf")
                     return "application-pdf-symbolic"
 
+                if (model.mimetype === "application/vnd.oasis.opendocument.text"
+                        || model.mimetype === "application/msword"
+                        || model.mimetype === "application/vnd.openxmlformats-officedocument.wordprocessingml.document")
+                    return "x-office-document-symbolic"
+
+                if (model.mimetype === "application/vnd.oasis.opendocument.spreadsheet"
+                        || model.mimetype === "application/vnd.ms-excel"
+                        || model.mimetype === "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+                    return "x-office-spreadsheet-symbolic"
+
+                if (model.mimetype === "application/vnd.oasis.opendocument.presentation"
+                        || model.mimetype === "application/vnd.ms-powerpoint"
+                        || model.mimetype === "application/vnd.openxmlformats-officedocument.presentationml.presentation")
+                    return "x-office-presentation-symbolic"
+
                 return "package-x-generic-symbolic"
             }
         }

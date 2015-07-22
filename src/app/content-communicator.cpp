@@ -241,14 +241,17 @@ bool ContentCommunicator::singleContentPickMode() const
  */
 bool ContentCommunicator::isSupportedMimetype(QString mimetype)
 {
-    if (mimetype.startsWith("text/"))
-        return true;
-
-    if (mimetype == "application/pdf")
-        return true;
-
-    if (mimetype.startsWith("application/vnd.oasis.opendocument"))
-        return true;
-
-    return false;
+    // TODO: We should use a common shared code for DocumentViewer.DocumentsModel
+    // QML component and ContentHub. That will happen when we'll switch to
+    // QML ContentHub APIs.
+    return (mimetype.startsWith("text/")
+            || mimetype == "application/pdf"
+            || mimetype.startsWith("application/vnd.oasis.opendocument")
+            || mimetype == "application/msword")
+            || mimetype == "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            || mimetype == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            || mimetype == "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+            || mimetype == "application/msword"
+            || mimetype == "application/vnd.ms-excel"
+            || mimetype == "application/vnd.ms-powerpoint";
 }

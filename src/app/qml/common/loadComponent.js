@@ -28,7 +28,13 @@ function load(mimetype) {
         qmlToLoad = Qt.resolvedUrl("../pdfView/PdfView.qml");
 
     // Check if LibreOffice document
-    if (mimetype.indexOf("application/vnd.oasis.opendocument") > -1)
+    if (mimetype.indexOf("application/vnd.oasis.opendocument") > -1
+            || mimetype === "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            || mimetype === "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            || mimetype === "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+            || mimetype === "application/msword"
+            || mimetype === "application/vnd.ms-excel"
+            || mimetype === "application/vnd.ms-powerpoint")
         qmlToLoad = Qt.resolvedUrl("../loView/LOView.qml")
 
     if (qmlToLoad != "") {
