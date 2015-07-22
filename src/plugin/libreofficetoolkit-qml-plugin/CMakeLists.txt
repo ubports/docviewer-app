@@ -19,6 +19,7 @@ set(libreofficetoolkitqmlplugin_SRCS
 #add the headers to compile
 set(libreofficetoolkitqmlplugin_HDRS
     twips.h
+    config.h
 )
 
 add_library(libreofficetoolkitqmlplugin MODULE

@@ -18,9 +18,14 @@
 
 #include "tileitem.h"
 #include "lodocument.h"
+#include "config.h"
 
 #include <QThreadPool>
 #include <QDebug>
+
+#ifdef DEBUG_TILE_BENCHMARK
+#include <QElapsedTimer>
+#endif
 
 /* ****************
  * TileItem class *
@@ -155,8 +160,17 @@ void RenderTask::setDocument(LODocument* document)
 // Render the texture for this tile.
 void RenderTask::run()
 {
+#ifdef DEBUG_TILE_BENCHMARK
+    QElapsedTimer renderTimer;
+    renderTimer.start();
+#endif
+
     QImage render = this->document()->paintTile(this->area().size(),
                                                 this->area());
 
     Q_EMIT renderCompleted(render);
+
+#ifdef DEBUG_TILE_BENCHMARK
+    qDebug() << "Time to render the tile:" << renderTimer.elapsed() << "ms";
+#endif
 }
