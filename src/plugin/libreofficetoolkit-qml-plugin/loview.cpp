@@ -35,15 +35,13 @@ LOView::LOView(QQuickItem *parent)
     , m_document(nullptr)
     , m_zoomFactor(1.0)
     , m_visibleArea(0, 0, 0, 0)
-    , m_updateTimer(nullptr)
 {
     Q_UNUSED(parent)   
-    m_updateTimer = new QTimer();
 
     connect(this, SIGNAL(documentChanged()), this, SLOT(updateViewSize()));
     connect(this, SIGNAL(zoomFactorChanged()), this, SLOT(updateViewSize()));
     connect(this, SIGNAL(parentFlickableChanged()), this, SLOT(updateVisibleRect()));
-    connect(m_updateTimer, SIGNAL(timeout()), this, SLOT(updateVisibleRect()));
+    connect(&m_updateTimer, SIGNAL(timeout()), this, SLOT(updateVisibleRect()));
 }
 
 void LOView::paint(QPainter *painter)
@@ -212,8 +210,8 @@ void LOView::updateVisibleRect()
 
 void LOView::scheduleVisibleRectUpdate()
 {
-    if (!m_updateTimer->isActive())
-        m_updateTimer->start(20);
+    if (!m_updateTimer.isActive())
+        m_updateTimer.start(20);
 }
 
 LOView::~LOView()

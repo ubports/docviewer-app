@@ -18,13 +18,13 @@
 #define LOVIEW_H
 
 #include <QQuickPaintedItem>
+#include <QTimer>
 
 // FIXME: Perhaps we want to use smaller tiles on mobile devices?
 #define TILE_SIZE 256.0
 
 class LODocument;
 class TileItem;
-class QTimer;
 
 class LOView : public QQuickPaintedItem
 {
@@ -70,7 +70,7 @@ private:
     qreal                   m_zoomFactor;
     QRect                   m_visibleArea;
 
-    QTimer*                 m_updateTimer;
+    QTimer                  m_updateTimer;
 
     // TODO: Should we move tiles management in another class (e.g. TileBuffer)?
     QMap<int, TileItem*>    m_tiles;
