@@ -22,6 +22,7 @@
 
 #include <QPainter>
 #include <QImage>
+#include <QTimer>
 #include <QtCore/qmath.h>
 
 // TODO: Use a QQuickItem and implement painting through
@@ -36,13 +37,12 @@ LOView::LOView(QQuickItem *parent)
     , m_zoomFactor(1.0)
     , m_visibleArea(0, 0, 0, 0)
 {
-    Q_UNUSED(parent)
+    Q_UNUSED(parent)   
 
-    // Connections for updating the canvas size.
     connect(this, SIGNAL(documentChanged()), this, SLOT(updateViewSize()));
     connect(this, SIGNAL(zoomFactorChanged()), this, SLOT(updateViewSize()));
-
     connect(this, SIGNAL(parentFlickableChanged()), this, SLOT(updateVisibleRect()));
+    connect(&m_updateTimer, SIGNAL(timeout()), this, SLOT(updateVisibleRect()));
 }
 
 void LOView::paint(QPainter *painter)
@@ -79,8 +79,8 @@ void LOView::setParentFlickable(QQuickItem *flickable)
     connect(m_parentFlickable, SIGNAL(widthChanged()), this, SLOT(updateVisibleRect()));
     connect(m_parentFlickable, SIGNAL(heightChanged()), this, SLOT(updateVisibleRect()));
 
-    connect(m_parentFlickable, SIGNAL(contentXChanged()), this, SLOT(updateVisibleRect()));
-    connect(m_parentFlickable, SIGNAL(contentYChanged()), this, SLOT(updateVisibleRect()));
+    connect(m_parentFlickable, SIGNAL(contentXChanged()), this, SLOT(scheduleVisibleRectUpdate()));
+    connect(m_parentFlickable, SIGNAL(contentYChanged()), this, SLOT(scheduleVisibleRectUpdate()));
 
     Q_EMIT parentFlickableChanged();
 }
@@ -210,9 +210,12 @@ void LOView::updateVisibleRect()
 
     // TODO: Generate tiles in the cacheBuffer area
     // (currently called loadingArea).
+}
 
-    // Request a new paint.
-    this->update();
+void LOView::scheduleVisibleRectUpdate()
+{
+    if (!m_updateTimer.isActive())
+        m_updateTimer.start(20);
 }
 
 LOView::~LOView()

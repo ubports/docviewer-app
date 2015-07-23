@@ -18,6 +18,7 @@
 #define LOVIEW_H
 
 #include <QQuickPaintedItem>
+#include <QTimer>
 
 class LODocument;
 class TileItem;
@@ -57,6 +58,7 @@ Q_SIGNALS:
 private Q_SLOTS:
     void updateViewSize();
     void updateVisibleRect();
+    void scheduleVisibleRectUpdate();
 
 private:
     QQuickItem*             m_parentFlickable;
@@ -64,6 +66,8 @@ private:
 
     qreal                   m_zoomFactor;
     QRect                   m_visibleArea;
+
+    QTimer                  m_updateTimer;
 
     // TODO: Should we move tiles management in another class (e.g. TileBuffer)?
     QMap<int, TileItem*>    m_tiles;
