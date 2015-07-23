@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-07-14 17:41+0200\n"
-"PO-Revision-Date: 2015-04-29 08:23+0000\n"
+"PO-Revision-Date: 2015-07-22 16:27+0000\n"
 "Last-Translator: Krzysztof Tataradziński <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-07-20 04:57+0000\n"
+"X-Launchpad-Export-Date: 2015-07-23 05:41+0000\n"
 "X-Generator: Launchpad (build 17628)\n"
 
 #. TRANSLATORS: This string is used for renaming a copied file,
@@ -150,7 +150,7 @@ msgstr "%1 kB"
 #: ../src/app/qml/common/utils.js:33
 #, qt-format
 msgid "%1 byte"
-msgstr "%1 bajtów"
+msgstr "%1 B"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:36
 msgid "Delete file"
@@ -167,8 +167,9 @@ msgstr[1] ""
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:39
 msgid "Are you sure you want to permanently delete this file?"
 msgid_plural "Are you sure you want to permanently delete these files?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Jesteś pewien, że chcesz trwale usunąć ten plik?"
+msgstr[1] "Jesteś pewien, że chcesz trwale usunąć te pliki?"
+msgstr[2] "Jesteś pewien, że chcesz trwale usunąć te pliki?"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:44
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:27
@@ -184,13 +185,14 @@ msgstr "Usuń"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:24
 msgid "No document found"
-msgstr ""
+msgstr "Nie znaleziono dokumentu"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:28
 msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
 "folder."
 msgstr ""
+"Podłącz urządzenie do komputera i przeciągnij pliki do folderu Dokumenty."
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
@@ -219,7 +221,7 @@ msgstr "dddd, hh:mm"
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:49
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:65
 msgid "dd-MM-yyyy hh:mm"
-msgstr "dd-MM-yyyy hh:mm"
+msgstr "dd.MM.yyyy, hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string, and the
 #. singlequote is an escape character.
