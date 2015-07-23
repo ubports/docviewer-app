@@ -18,6 +18,7 @@
 #include "lodocument.h"
 #include "tileitem.h"
 #include "twips.h"
+#include "config.h"
 
 #include <QPainter>
 #include <QImage>
@@ -49,11 +50,12 @@ void LOView::paint(QPainter *painter)
     // qDebug() << "Painting new tiles...";
 
     Q_FOREACH(TileItem* tile, m_tiles) {
-       // if (!tile->painted) {
-            painter->drawImage(tile->area(), tile->texture());
-         // painter->drawRect(tile->area()); // Uncomment to see tile borders.
-            tile->setPainted(true);
-        //}
+        painter->drawImage(tile->area(), tile->texture());
+        tile->setPainted(true);
+#ifdef DEBUG_SHOW_TILE_BORDER
+        // Show tile borders
+        painter->drawRect(tile->area());
+#endif
     }
 }
 
@@ -181,14 +183,15 @@ void LOView::updateVisibleRect()
     int stopToHeight = qCeil(qreal(m_visibleArea.bottom()) / TILE_SIZE);
 
     // Generate new visible tiles
-    qDebug() << "Generate new visible tiles...";
     for (int x = startFromWidth; x < stopToWidth; x++) {
         for (int y = startFromHeight; y < stopToHeight; y++) {
             QRect tileRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
             int index = y * numberOfTilesWidth + x;
 
             if (!m_tiles.contains(index)) {
+#ifdef DEBUG_VERBOSE
                 qDebug() << "Creating tile" << x << "x" << y;
+#endif
 
                 auto tile = new TileItem(tileRect, m_document);
                 connect(tile, SIGNAL(textureChanged()), this, SLOT(update()));
@@ -196,10 +199,12 @@ void LOView::updateVisibleRect()
 
                 // Append the tile in the map
                 m_tiles.insert(index, tile);
-            } else {
-                // Just some debugging
+            }
+#ifdef DEBUG_VERBOSE
+            else {
                 qDebug() << "tile" << x << "x" << y << "already exists";
             }
+#endif
         }
     }
 

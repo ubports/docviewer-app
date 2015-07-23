@@ -19,9 +19,6 @@
 
 #include <QQuickPaintedItem>
 
-// FIXME: Perhaps we want to use smaller tiles on mobile devices?
-#define TILE_SIZE 256.0
-
 class LODocument;
 class TileItem;
 

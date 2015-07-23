@@ -17,6 +17,7 @@
 
 #include "lodocument.h"
 #include "twips.h"
+#include "config.h"
 
 #include <QImage>
 #include <QDebug>
@@ -24,11 +25,6 @@
 #define LOK_USE_UNSTABLE_API
 #include <LibreOfficeKit/LibreOfficeKitInit.h>
 #include <LibreOfficeKit/LibreOfficeKit.hxx>
-
-// This is the hardcoded Ubuntu/Debian paths to find the LibreOffice
-// installation. If you want to use a parallel installation, change the path
-// in the following line.
-#define LO_PATH "/usr/lib/libreoffice/program/"
 
 // TODO: Error management
 
