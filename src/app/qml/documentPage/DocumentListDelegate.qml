@@ -32,16 +32,14 @@ ListItemWithActions {
         if (sortSettings.sortMode !== 0) {  // The sort rule is not "by date"
             switch(diff) {
             case 0:     // DocumentsModel.Today
-                // TRANSLATORS: this is a datetime formatting string, and the
-                // singlequote is an escape character.
-                // See http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-                return Qt.formatDateTime(date, i18n.tr("'Today', hh:mm"))
+                // TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
+                // http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
+                return i18n.tr("Today, %1").arg(Qt.formatTime(date, Qt.locale().timeFormat(Locale.ShortFormat)))
 
             case 1:     // DocumentsModel.Yesterday
-                // TRANSLATORS: this is a datetime formatting string, and the
-                // singlequote is an escape character.
-                // See http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-                return Qt.formatDateTime(date, i18n.tr("'Yesterday', hh:mm"))
+                // TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
+                // http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
+                return i18n.tr("Yesterday, %1").arg(Qt.formatTime(date, Qt.locale().timeFormat(Locale.ShortFormat)))
 
             default:    // DocumentsModel.LastWeek || DocumentsModel.LastMonth || DocumentsModel.Earlier
                 // TRANSLATORS: this is a datetime formatting string,
