@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-07-14 17:41+0200\n"
+"POT-Creation-Date: 2015-07-24 11:10+0200\n"
 "PO-Revision-Date: 2015-03-23 21:50+0000\n"
 "Last-Translator: Asier Iturralde Sarasola <Unknown>\n"
 "Language-Team: Basque <eu@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-07-20 04:57+0000\n"
+"X-Launchpad-Export-Date: 2015-07-25 05:36+0000\n"
 "X-Generator: Launchpad (build 17628)\n"
 
 #. TRANSLATORS: This string is used for renaming a copied file,
@@ -33,7 +33,7 @@ msgid "copy %1"
 msgstr ""
 
 #: ../src/app/docviewer-application.cpp:171
-#: /home/stefano/Progetti/docviewer/build-documentpage-add-contextual-actions-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/stefano/Progetti/docviewer/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Dokumentu-ikustailea"
 
@@ -190,6 +190,7 @@ msgstr ""
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:32
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:37
 #, qt-format
 msgid "Today, %1"
 msgstr "Gaur, %1"
@@ -197,6 +198,7 @@ msgstr "Gaur, %1"
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:37
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:42
 #, qt-format
 msgid "Yesterday, %1"
 msgstr "Atzo, %1"
@@ -204,31 +206,17 @@ msgstr "Atzo, %1"
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:42
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:60
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:58
 msgid "dddd, hh:mm"
 msgstr "dddd, hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentGridDelegate.qml:46
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:49
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:65
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:47
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:63
 msgid "dd-MM-yyyy hh:mm"
 msgstr "yyyy-MM-dd hh:mm"
-
-#. TRANSLATORS: this is a datetime formatting string, and the
-#. singlequote is an escape character.
-#. See http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:38
-msgid "'Today', hh:mm"
-msgstr ""
-
-#. TRANSLATORS: this is a datetime formatting string, and the
-#. singlequote is an escape character.
-#. See http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:44
-msgid "'Yesterday', hh:mm"
-msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentListView.qml:157
 msgid "Today"
@@ -381,6 +369,6 @@ msgstr[1] ""
 msgid "Open"
 msgstr ""
 
-#: /home/stefano/Progetti/docviewer/build-documentpage-add-contextual-actions-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/stefano/Progetti/docviewer/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "dokumentu;ikustailea;pdf;irakurlea"
