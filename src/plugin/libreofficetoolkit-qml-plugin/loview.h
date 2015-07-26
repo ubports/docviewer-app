@@ -31,9 +31,7 @@ class LOView : public QQuickPaintedItem
 
     // TODO: Implement zoom!
     Q_PROPERTY(qreal       zoomFactor      READ zoomFactor      WRITE setZoomFactor      NOTIFY zoomFactorChanged)
-
-    // TODO: Cache buffer
-    //Q_PROPERTY(int       cacheBuffer     READ cacheBuffer     WRITE setCacheBuffer     NOTIFY cacheBufferChanged)
+    Q_PROPERTY(int         cacheBuffer     READ cacheBuffer     WRITE setCacheBuffer     NOTIFY cacheBufferChanged)
 
 public:
     LOView(QQuickItem *parent = 0);
@@ -48,12 +46,16 @@ public:
     void        setDocument(LODocument* doc);
 
     qreal       zoomFactor() const;
-    void        setZoomFactor(qreal &zoom);
+    void        setZoomFactor(qreal zoom);
+
+    int         cacheBuffer() const;
+    void        setCacheBuffer(int cacheBuffer);
 
 Q_SIGNALS:
     void parentFlickableChanged();
     void documentChanged();
     void zoomFactorChanged();
+    void cacheBufferChanged();
 
 private Q_SLOTS:
     void updateViewSize();
@@ -65,12 +67,17 @@ private:
     LODocument*             m_document;
 
     qreal                   m_zoomFactor;
+    int                     m_cacheBuffer;
+
     QRect                   m_visibleArea;
+    QRect                   m_bufferArea;
 
     QTimer                  m_updateTimer;
 
-    // TODO: Should we move tiles management in another class (e.g. TileBuffer)?
     QMap<int, TileItem*>    m_tiles;
+
+    void                    generateTiles(int x1, int y1, int x2, int y2, int tilesPerWidth);
+    void                    createTile(int index, QRect rect);
 };
 
 #endif // LOVIEW_H
