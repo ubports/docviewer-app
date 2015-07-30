@@ -28,32 +28,31 @@
 // TODO: Use a QQuickItem and implement painting through
 // updatePaintNode(QSGNode * oldNode, UpdatePaintNodeData * data)
 
-// TODO: Should updateViewSize() and updateVisibleRect() merge together?
-
 LOView::LOView(QQuickItem *parent)
     : QQuickPaintedItem(parent)
     , m_parentFlickable(nullptr)
     , m_document(nullptr)
     , m_zoomFactor(1.0)
+    , m_cacheBuffer(TILE_SIZE * 3)
     , m_visibleArea(0, 0, 0, 0)
+    , m_bufferArea(0, 0, 0, 0)
 {
     Q_UNUSED(parent)   
 
     connect(this, SIGNAL(documentChanged()), this, SLOT(updateViewSize()));
     connect(this, SIGNAL(zoomFactorChanged()), this, SLOT(updateViewSize()));
     connect(this, SIGNAL(parentFlickableChanged()), this, SLOT(updateVisibleRect()));
+    connect(this, SIGNAL(cacheBufferChanged()), this, SLOT(updateVisibleRect()));
     connect(&m_updateTimer, SIGNAL(timeout()), this, SLOT(updateVisibleRect()));
 }
 
 void LOView::paint(QPainter *painter)
 {
-    // qDebug() << "Painting new tiles...";
-
     Q_FOREACH(TileItem* tile, m_tiles) {
         painter->drawImage(tile->area(), tile->texture());
         tile->setPainted(true);
+
 #ifdef DEBUG_SHOW_TILE_BORDER
-        // Show tile borders
         painter->drawRect(tile->area());
 #endif
     }
@@ -108,13 +107,27 @@ qreal LOView::zoomFactor() const
 }
 
 // Not used yet.
-void LOView::setZoomFactor(qreal &zoom)
+void LOView::setZoomFactor(qreal zoom)
 {
     if (m_zoomFactor == zoom)
         return;
 
     m_zoomFactor = zoom;
     Q_EMIT zoomFactorChanged();
+}
+
+int LOView::cacheBuffer() const
+{
+    return m_cacheBuffer;
+}
+
+void LOView::setCacheBuffer(int cacheBuffer)
+{
+    if (m_cacheBuffer == cacheBuffer)
+        return;
+
+    m_cacheBuffer = cacheBuffer;
+    Q_EMIT cacheBufferChanged();
 }
 
 // Update the size of LOView, according to the size of the loaded document.
@@ -148,68 +161,80 @@ void LOView::updateVisibleRect()
                           m_parentFlickable->height());
 
     // Update information about the buffer area
-    // TODO: Use cacheBuffer property
-    QRect loadingArea(m_visibleArea.x() - (m_visibleArea.width() * 2),
-                      m_visibleArea.y() - (m_visibleArea.height() * 2),
-                      m_visibleArea.width() * 5,
-                      m_visibleArea.height() * 5);
+    m_bufferArea.setRect(qMax(0, m_visibleArea.x() - this->cacheBuffer()),
+                         qMax(0, m_visibleArea.y() - this->cacheBuffer()),
+                         qMin(int(this->width() - m_bufferArea.x()), m_visibleArea.width() + (this->cacheBuffer() * 2)),
+                         qMin(int(this->height() - m_bufferArea.y()), m_visibleArea.height() + (this->cacheBuffer() * 2)));
 
-    // TODO: We are using a QMap, which sorts the elements by their index.
-    // That means that we can just delete all the first item until we get the
-    // first item that intersects the loadingArea.
-
-    // TODO: Do the same described above backwards from the last element.
+    // Delete tiles that are outside the loading area
     if (!m_tiles.isEmpty()) {
-        // Delete tiles that are outside the loading area
-        auto b = m_tiles.begin();
-        while (b != m_tiles.end()) {
-            if (!loadingArea.intersects(b.value()->area())) {
-                qDebug() << "Removing tile indexed as" << b.key();
-                b.value()->releaseTexture();
-                b = m_tiles.erase(b);
+        auto i = m_tiles.begin();
+        while (i != m_tiles.end()) {
+            TileItem* tile = i.value();
+
+            if (!m_bufferArea.intersects(tile->area())) {
+                tile->releaseTexture();
+                i = m_tiles.erase(i);
+
+#ifdef DEBUG_VERBOSE
+                qDebug() << "Removing tile indexed as" << i.key();
+#endif
             } else {
-                ++b;
+                ++i;
             }
         }
     }
 
-    // Calculate tiles grid size
-    int numberOfTilesWidth = qCeil(this->width() / TILE_SIZE);
+    // Number of tiles per row
+    int tilesPerWidth           = qCeil(this->width() / TILE_SIZE);
 
-    int startFromWidth = int(m_visibleArea.x() / TILE_SIZE);
-    int startFromHeight = int(m_visibleArea.y() / TILE_SIZE);
+    // Get indexes for visible tiles
+    int visiblesFromWidth       = int(m_visibleArea.left() / TILE_SIZE);
+    int visiblesFromHeight      = int(m_visibleArea.top() / TILE_SIZE);
+    int visiblesToWidth         = qCeil(qreal(m_visibleArea.right()) / TILE_SIZE);
+    int visiblesToHeight        = qCeil(qreal(m_visibleArea.bottom()) / TILE_SIZE);
 
-    int stopToWidth = qCeil(qreal(m_visibleArea.right()) / TILE_SIZE);
-    int stopToHeight = qCeil(qreal(m_visibleArea.bottom()) / TILE_SIZE);
+    // Get indexes for tiles in the visible area
+    int bufferFromWidth         = int(m_bufferArea.left() / TILE_SIZE);
+    int bufferFromHeight        = int(m_bufferArea.top() / TILE_SIZE);
+    int bufferToWidth           = qCeil(qreal(m_bufferArea.right()) / TILE_SIZE);
+    int bufferToHeight          = qCeil(qreal(m_bufferArea.bottom()) / TILE_SIZE);
 
-    // Generate new visible tiles
-    for (int x = startFromWidth; x < stopToWidth; x++) {
-        for (int y = startFromHeight; y < stopToHeight; y++) {
+    this->generateTiles(visiblesFromWidth, visiblesFromHeight, visiblesToWidth, visiblesToHeight, tilesPerWidth);
+    this->generateTiles(bufferFromWidth, bufferFromHeight, bufferToWidth, bufferToHeight, tilesPerWidth);
+}
+
+void LOView::generateTiles(int x1, int y1, int x2, int y2, int tilesPerWidth)
+{
+    for (int x = x1; x < x2; x++) {
+        for (int y = y1; y < y2; y++) {
             QRect tileRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-            int index = y * numberOfTilesWidth + x;
+            int index = y * tilesPerWidth + x;
 
-            if (!m_tiles.contains(index)) {
-#ifdef DEBUG_VERBOSE
-                qDebug() << "Creating tile" << x << "x" << y;
-#endif
-
-                auto tile = new TileItem(tileRect, m_document);
-                connect(tile, SIGNAL(textureChanged()), this, SLOT(update()));
-                tile->requestTexture();
-
-                // Append the tile in the map
-                m_tiles.insert(index, tile);
-            }
-#ifdef DEBUG_VERBOSE
-            else {
-                qDebug() << "tile" << x << "x" << y << "already exists";
-            }
-#endif
+            this->createTile(index, tileRect);
         }
     }
+}
 
-    // TODO: Generate tiles in the cacheBuffer area
-    // (currently called loadingArea).
+void LOView::createTile(int index, QRect rect)
+{
+    if (!m_tiles.contains(index)) {
+#ifdef DEBUG_VERBOSE
+        qDebug() << "Creating tile indexed as" << index;
+#endif
+
+        auto tile = new TileItem(rect, m_document);
+        connect(tile, SIGNAL(textureChanged()), this, SLOT(update()));
+        tile->requestTexture();
+
+        // Append the tile in the map
+        m_tiles.insert(index, tile);
+    }
+#ifdef DEBUG_VERBOSE
+    else {
+        qDebug() << "tile" << x << "x" << y << "already exists";
+    }
+#endif
 }
 
 void LOView::scheduleVisibleRectUpdate()
