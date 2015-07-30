@@ -231,15 +231,9 @@ void DocumentModel::checkDefaultDirectories() {
             QString rootPath = volume.rootPath();
 
             if (rootPath.startsWith("/media/")) {
-                // In a Unix filesystem, names are case sentitive.
-                // For that reason we need to check twice.
                 QDir dir;
-
                 dir.setPath(rootPath + "/Documents");
-                if (dir.exists())
-                    m_docsMonitor->addDirectory(dir.canonicalPath());
 
-                dir.setPath(rootPath + "/documents");
                 if (dir.exists())
                     m_docsMonitor->addDirectory(dir.canonicalPath());
             }
