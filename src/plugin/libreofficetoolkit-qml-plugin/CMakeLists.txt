@@ -4,7 +4,7 @@ file(GLOB_RECURSE QML_SRCS *.qml *.js)
 include_directories(
 	${CMAKE_CURRENT_SOURCE_DIR}
 	${CMAKE_CURRENT_BINARY_DIR}
-        /usr/include/LibreOfficeKit/
+    ${CMAKE_CURRENT_SOURCE_DIR}/LibreOfficeKit/
 )
 
 #add the sources to compile
