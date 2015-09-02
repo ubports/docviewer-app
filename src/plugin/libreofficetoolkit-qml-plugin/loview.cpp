@@ -168,24 +168,26 @@ void LOView::updateVisibleRect()
                          qMin(int(this->height() - m_bufferArea.y()), m_visibleArea.height() + (this->cacheBuffer() * 2)));
 
     // Delete tiles that are outside the loading area
-    // TODO BUG CHECK THIS
-//    if (!m_tiles.isEmpty()) {
-//        auto i = m_tiles.begin();
-//        while (i != m_tiles.end()) {
-//            TileItem* tile = i.value();
+    if (!m_tiles.isEmpty()) {
+        auto i = m_tiles.begin();
+        while (i != m_tiles.end()) {
+            SGTileItem* sgtile = i.value();
 
-//            if (!m_bufferArea.intersects(tile->area())) {
-//                tile->releaseTexture();
-//                i = m_tiles.erase(i);
+            // Ok - we still need this item.
+            if (m_bufferArea.intersects(sgtile->area())) {
+                i++;
+                continue;
+            }
 
-//#ifdef DEBUG_VERBOSE
-//                qDebug() << "Removing tile indexed as" << i.key();
-//#endif
-//            } else {
-//                ++i;
-//            }
-//        }
-//    }
+            // Out of buffer - we should delete this item.
+#ifdef DEBUG_VERBOSE
+            qDebug() << "Removing tile indexed as" << i.key();
+#endif
+
+            sgtile->deleteLater();
+            i = m_tiles.erase(i);
+        }
+    }
 
     // Number of tiles per row
     int tilesPerWidth           = qCeil(this->width() / TILE_SIZE);
@@ -226,9 +228,8 @@ void LOView::createTile(int index, QRect rect)
 #endif
 
         auto tile = new SGTileItem(rect, m_document, this);
-        // TODO BUG CHECK THIS
+        // TODO When we should update with SG?
         // connect(tile, SIGNAL(textureChanged()), this, SLOT(update()));
-        // tile->requestTexture();
 
         // Append the tile in the map
         m_tiles.insert(index, tile);
