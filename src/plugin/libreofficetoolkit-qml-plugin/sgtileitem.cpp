@@ -3,8 +3,9 @@
 #include "lodocument.h"
 #include "config.h"
 
-SGTileItem::SGTileItem(const QRect &area, LODocument *document)
-    : m_area(area)
+SGTileItem::SGTileItem(const QRect &area, LODocument *document, QQuickItem *parent)
+    : QQuickItem(parent)
+    , m_area(area)
     , m_document(document)
 {
     setFlag(ItemHasContents, true);
@@ -21,13 +22,14 @@ QSGNode *SGTileItem::updatePaintNode(QSGNode *oldNode, QQuickItem::UpdatePaintNo
     if (!node && wnd)
     {
         QImage image;
-        image.load("/home/qtros/screenshot.png");
+        // image.load("/home/qtros/screenshot.png");
+        image = m_document->paintTile(this->area().size(), this->area());
         auto texture = wnd->createTextureFromImage(image);
 
         node = new QSGSimpleTextureNode();
         node->setTexture(texture);
         node->setOwnsTexture(true);
-        node->setRect(0, 0, this->width(), this->height());
+        node->setRect(m_area);
     }
 
     return node;

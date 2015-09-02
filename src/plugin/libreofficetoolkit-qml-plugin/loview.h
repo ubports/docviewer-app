@@ -18,12 +18,14 @@
 #define LOVIEW_H
 
 #include <QQuickPaintedItem>
+#include <QQuickItem>
 #include <QTimer>
 
 class LODocument;
 class TileItem;
+class SGTileItem;
 
-class LOView : public QQuickPaintedItem
+class LOView : public QQuickItem // QQuickPaintedItem
 {
     Q_OBJECT
     Q_PROPERTY(QQuickItem* parentFlickable READ parentFlickable WRITE setParentFlickable NOTIFY parentFlickableChanged)
@@ -37,7 +39,7 @@ public:
     LOView(QQuickItem *parent = 0);
     ~LOView();
 
-    void        paint(QPainter *painter);
+//    void        paint(QPainter *painter);
 
     QQuickItem* parentFlickable() const;
     void        setParentFlickable(QQuickItem* flickable);
@@ -74,7 +76,7 @@ private:
 
     QTimer                  m_updateTimer;
 
-    QMap<int, TileItem*>    m_tiles;
+    QMap<int, SGTileItem*>    m_tiles;
 
     void                    generateTiles(int x1, int y1, int x2, int y2, int tilesPerWidth);
     void                    createTile(int index, QRect rect);

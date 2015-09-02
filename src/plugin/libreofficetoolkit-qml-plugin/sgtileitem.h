@@ -11,7 +11,7 @@ class SGTileItem : public QQuickItem
 {
     Q_OBJECT
 public:
-    SGTileItem(const QRect &area, LODocument *document);
+    SGTileItem(const QRect &area, LODocument *document, QQuickItem *parent = 0);
     ~SGTileItem();
 
     inline QRect area() const { return m_area; }

@@ -17,6 +17,7 @@
 #include "loview.h"
 #include "lodocument.h"
 #include "tileitem.h"
+#include "sgtileitem.h"
 #include "twips.h"
 #include "config.h"
 
@@ -29,7 +30,7 @@
 // updatePaintNode(QSGNode * oldNode, UpdatePaintNodeData * data)
 
 LOView::LOView(QQuickItem *parent)
-    : QQuickPaintedItem(parent)
+    : QQuickItem(parent) //QQuickPaintedItem(parent)
     , m_parentFlickable(nullptr)
     , m_document(nullptr)
     , m_zoomFactor(1.0)
@@ -46,17 +47,17 @@ LOView::LOView(QQuickItem *parent)
     connect(&m_updateTimer, SIGNAL(timeout()), this, SLOT(updateVisibleRect()));
 }
 
-void LOView::paint(QPainter *painter)
-{
-    Q_FOREACH(TileItem* tile, m_tiles) {
-        painter->drawImage(tile->area(), tile->texture());
-        tile->setPainted(true);
+//void LOView::paint(QPainter *painter)
+//{
+//    Q_FOREACH(TileItem* tile, m_tiles) {
+//        painter->drawImage(tile->area(), tile->texture());
+//        tile->setPainted(true);
 
-#ifdef DEBUG_SHOW_TILE_BORDER
-        painter->drawRect(tile->area());
-#endif
-    }
-}
+//#ifdef DEBUG_SHOW_TILE_BORDER
+//        painter->drawRect(tile->area());
+//#endif
+//    }
+//}
 
 // Returns the parent QML Flickable
 QQuickItem* LOView::parentFlickable() const
@@ -167,23 +168,24 @@ void LOView::updateVisibleRect()
                          qMin(int(this->height() - m_bufferArea.y()), m_visibleArea.height() + (this->cacheBuffer() * 2)));
 
     // Delete tiles that are outside the loading area
-    if (!m_tiles.isEmpty()) {
-        auto i = m_tiles.begin();
-        while (i != m_tiles.end()) {
-            TileItem* tile = i.value();
+    // TODO BUG CHECK THIS
+//    if (!m_tiles.isEmpty()) {
+//        auto i = m_tiles.begin();
+//        while (i != m_tiles.end()) {
+//            TileItem* tile = i.value();
 
-            if (!m_bufferArea.intersects(tile->area())) {
-                tile->releaseTexture();
-                i = m_tiles.erase(i);
+//            if (!m_bufferArea.intersects(tile->area())) {
+//                tile->releaseTexture();
+//                i = m_tiles.erase(i);
 
-#ifdef DEBUG_VERBOSE
-                qDebug() << "Removing tile indexed as" << i.key();
-#endif
-            } else {
-                ++i;
-            }
-        }
-    }
+//#ifdef DEBUG_VERBOSE
+//                qDebug() << "Removing tile indexed as" << i.key();
+//#endif
+//            } else {
+//                ++i;
+//            }
+//        }
+//    }
 
     // Number of tiles per row
     int tilesPerWidth           = qCeil(this->width() / TILE_SIZE);
@@ -223,9 +225,10 @@ void LOView::createTile(int index, QRect rect)
         qDebug() << "Creating tile indexed as" << index;
 #endif
 
-        auto tile = new TileItem(rect, m_document);
-        connect(tile, SIGNAL(textureChanged()), this, SLOT(update()));
-        tile->requestTexture();
+        auto tile = new SGTileItem(rect, m_document, this);
+        // TODO BUG CHECK THIS
+        // connect(tile, SIGNAL(textureChanged()), this, SLOT(update()));
+        // tile->requestTexture();
 
         // Append the tile in the map
         m_tiles.insert(index, tile);

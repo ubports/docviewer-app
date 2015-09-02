@@ -30,8 +30,8 @@
 
 CommandLineParser::CommandLineParser()
     : m_pickMode(false),
-      m_testability(false),
       m_isFullscreen(false),
+      m_testability(false),
       m_documentFile(""),
       m_documentsDir("")
 {
