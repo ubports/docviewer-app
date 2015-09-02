@@ -7,6 +7,7 @@ SGTileItem::SGTileItem(const QRect &area, LODocument *document, QQuickItem *pare
     : QQuickItem(parent)
     , m_area(area)
     , m_document(document)
+    , m_state(SgstInitial)
 {
     setFlag(ItemHasContents, true);
 }
@@ -14,22 +15,43 @@ SGTileItem::SGTileItem(const QRect &area, LODocument *document, QQuickItem *pare
 SGTileItem::~SGTileItem()
 { }
 
+void SGTileItem::dispose()
+{
+    if (m_state.loadAcquire() != SgstRendering)
+        deleteLater();
+    m_state.storeRelease(SgstDisposed);
+    // qDebug() << "---- dispose called: " << this << m_state;
+}
+
 QSGNode *SGTileItem::updatePaintNode(QSGNode *oldNode, QQuickItem::UpdatePaintNodeData *)
 {
     QSGSimpleTextureNode* node = static_cast<QSGSimpleTextureNode*>(oldNode);
     QQuickWindow* wnd = window();
 
-    if (!node && wnd)
-    {
-        QImage image;
-        // image.load("/home/qtros/screenshot.png");
-        image = m_document->paintTile(this->area().size(), this->area());
-        auto texture = wnd->createTextureFromImage(image);
+    if (!node && wnd) {
+        if (this->m_state.loadAcquire() == SgstInitial) {
+            m_state.storeRelease(SgstRendering);
+            QtConcurrent::run( [=] {
 
-        node = new QSGSimpleTextureNode();
-        node->setTexture(texture);
-        node->setOwnsTexture(true);
-        node->setRect(m_area);
+                QImage img;
+
+                // By this time already can be disposed, so it's better to ckeck again.
+                if (this->m_state.loadAcquire() == SgstRendering)
+                    img = m_document->paintTile(this->area().size(), this->area());
+
+                if (this->m_state.loadAcquire() == SgstDisposed)
+                    qDebug() << "Already disposed:" << m_state.loadAcquire();
+                QMetaObject::invokeMethod(this, "renderCallback", Q_ARG(QImage, img));
+
+            });
+        } else if (m_state.loadAcquire() == SgstActive) {
+            QImage image = m_data;
+            auto texture = wnd->createTextureFromImage(image);
+            node = new QSGSimpleTextureNode();
+            node->setTexture(texture);
+            node->setOwnsTexture(true);
+            node->setRect(m_area);
+        }
     }
 
     return node;
@@ -38,5 +60,14 @@ QSGNode *SGTileItem::updatePaintNode(QSGNode *oldNode, QQuickItem::UpdatePaintNo
 void SGTileItem::geometryChanged(const QRectF &newGeometry, const QRectF &oldGeometry)
 {
     QQuickItem::geometryChanged(newGeometry, oldGeometry);
+}
+
+void SGTileItem::renderCallback(QImage image)
+{
+    if (m_state.loadAcquire() == SgstRendering) {
+        m_data = image;
+        m_state.storeRelease(SgstActive);
+        update();
+    } else deleteLater();
 }
 

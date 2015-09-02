@@ -184,7 +184,7 @@ void LOView::updateVisibleRect()
             qDebug() << "Removing tile indexed as" << i.key();
 #endif
 
-            sgtile->deleteLater();
+            sgtile->dispose();
             i = m_tiles.erase(i);
         }
     }

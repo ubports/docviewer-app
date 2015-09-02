@@ -19,7 +19,7 @@ set(docviewer_SRCS
 
 add_executable(ubuntu-docviewer-app ${docviewer_SRCS})
 
-qt5_use_modules(ubuntu-docviewer-app Widgets Gui Qml Quick DBus)
+qt5_use_modules(ubuntu-docviewer-app Widgets Gui Qml Quick DBus Concurrent)
 
 target_link_libraries( ubuntu-docviewer-app
     ${CONTENTHUB_LIBRARIES}
