@@ -17,12 +17,11 @@
 
 #include "documentmodel.h"
 #include "fswatcher.h"
-#include "qstorageinfo.h"
 
 #include <QStandardPaths>
 #include <QDir>
 #include <QFileInfo>
-
+#include <QStorageInfo>
 #include <QMimeDatabase>
 #include <QDateTime>
 
