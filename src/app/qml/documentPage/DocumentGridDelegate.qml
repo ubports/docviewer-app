@@ -16,14 +16,11 @@
 
 import QtQuick 2.0
 import Ubuntu.Components 1.1
-import QtQuick.Layouts 1.1
 
 import "../common/utils.js" as Utils
 
-AbstractButton {
+TileBase {
     id: root
-    property bool selected: false
-    property bool selectionMode: false
 
     function formattedDateTime() {
         var date = new Date(model.date)
@@ -49,169 +46,68 @@ AbstractButton {
         return Qt.formatDateTime(date, i18n.tr("dd-MM-yyyy hh:mm"))
     }
 
-    Rectangle {
-        anchors { fill: parent; margins: units.gu(0.5) }
+    title: model.name
+    text: formattedDateTime()
+    subText: Utils.printSize(i18n, model.size)
 
-        color: Qt.lighter(UbuntuColors.lightGrey)
-        clip: true
+    leadingActions: documentDelegateActions.leadingActions
+    trailingActions: documentDelegateActions.trailingActions
 
-        Loader {
-            id: selectionIcon
+    Icon {
+        id: extStorageIcon
 
-            anchors {
-                right: parent.right
-                top: parent.top
-            }
-
-            z: 10
-
-            width: (status === Loader.Ready) ? item.implicitWidth : 0
-            visible: (status === Loader.Ready) && (item.width === item.implicitWidth)
-            Behavior on opacity {
-                NumberAnimation {
-                    duration: UbuntuAnimation.SnapDuration
-                }
-            }
+        width: units.gu(4)
+        height: units.gu(4)
+        anchors {
+            left: parent.left
+            top: parent.top
+            margins: units.gu(0.5)
         }
 
-        Icon {
-            id: extStorageIcon
-
-            width: units.gu(4)
-            height: units.gu(4)
-            anchors {
-                left: parent.left
-                top: parent.top
-                margins: units.gu(0.5)
-            }
-
-            visible: model.isFromExternalStorage
-            name: "sdcard-symbolic"
-        }
-
-        // Document mimetype icon
-        Icon {
-            anchors.centerIn: parent
-            anchors.verticalCenterOffset: - infoColumn.height * 0.3
-
-            width: units.gu(8); height: width
-
-            // At the moment the suru icon theme doesn't have much icons.
-            // Just some note for the future:
-            // TODO: Add icons for Office/ODF documents
-            // TODO: Whenever there will be icons for source code files, add them.
-            name: {
-                if (model.mimetype.substring(0, 5) === "text/")
-                    return "text-x-generic-symbolic"
-
-                if (model.mimetype.substring(0, 5) === "image")
-                    return "image-x-generic-symbolic"
-
-                if (model.mimetype === "application/pdf")
-                    return "application-pdf-symbolic"
-
-                if (model.mimetype === "application/vnd.oasis.opendocument.text"
-                        || model.mimetype === "application/msword"
-                        || model.mimetype === "application/vnd.openxmlformats-officedocument.wordprocessingml.document")
-                    return "x-office-document-symbolic"
-
-                if (model.mimetype === "application/vnd.oasis.opendocument.spreadsheet"
-                        || model.mimetype === "application/vnd.ms-excel"
-                        || model.mimetype === "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
-                    return "x-office-spreadsheet-symbolic"
-
-                if (model.mimetype === "application/vnd.oasis.opendocument.presentation"
-                        || model.mimetype === "application/vnd.ms-powerpoint"
-                        || model.mimetype === "application/vnd.openxmlformats-officedocument.presentationml.presentation")
-                    return "x-office-presentation-symbolic"
-
-                return "package-x-generic-symbolic"
-            }
-        }
-
-        // Cover
-       /* Image {
-            anchors.fill: parent
-
-            source: {
-                if (model.cover !== "" && typeof model.cover !== "undefined")
-                    return model.cover
-
-                if (model.mimetype.toString().indexOf("image") !== -1)
-                    return model.path
-
-                return ""
-            }
-
-            sourceSize.width: width
-            fillMode: Image.PreserveAspectCrop
-        }*/
-
-        // Document info overlay
-        Rectangle {
-            id: overlay
-
-            anchors {
-                left: parent.left
-                right: parent.right
-                bottom: parent.bottom
-            }
-
-            height: infoColumn.height + units.gu(1)
-
-            color: UbuntuColors.darkGrey
-            opacity: 0.75
-            layer.enabled: true
-
-            // Document info
-            Column {
-                id: infoColumn
-                anchors {
-                    left: parent.left;
-                    right: parent.right
-                    verticalCenter: parent.verticalCenter
-                    margins: units.gu(0.5)
-                }
-
-                Label {
-                    text: model.name
-                    color: "white"
-
-                    elide: Text.ElideRight
-                    font.weight: Font.DemiBold
-                    fontSize: "small"
-
-                    anchors { left: parent.left; right: parent.right }
-                }
-
-                Label {
-                    text: formattedDateTime()
-                    color: "white"
-                    fontSize: "small"
-
-                    anchors { left: parent.left; right: parent.right }
-                }
-
-                Label {
-                    text: Utils.printSize(i18n, model.size)
-                    color: "white"
-                    fontSize: "small"
-
-                    anchors { left: parent.left; right: parent.right }
-                }
-            }   // Document info end
-        }
-
-        states: [
-            State {
-                name: "select"
-                when: selectionMode || selected
-                PropertyChanges {
-                    target: selectionIcon
-                    source: Qt.resolvedUrl("../upstreamComponents/ListItemWithActionsCheckBox.qml")
-                    anchors.margins: units.gu(1)
-                }
-            }
-        ]
+        visible: model.isFromExternalStorage
+        name: "sdcard-symbolic"
     }
+
+    // Document mimetype icon
+    Icon {
+        anchors.centerIn: parent
+        width: units.gu(8); height: width
+
+        // At the moment the suru icon theme doesn't have much icons.
+        // Just some note for the future:
+        // TODO: Add icons for Office/ODF documents
+        // TODO: Whenever there will be icons for source code files, add them.
+        name: {
+            if (model.mimetype.substring(0, 5) === "text/")
+                return "text-x-generic-symbolic"
+
+            if (model.mimetype.substring(0, 5) === "image")
+                return "image-x-generic-symbolic"
+
+            if (model.mimetype === "application/pdf")
+                return "application-pdf-symbolic"
+
+            return "package-x-generic-symbolic"
+        }
+    }
+
+    // Cover
+    /* Image {
+        anchors.fill: parent
+
+        source: {
+            if (model.cover !== "" && typeof model.cover !== "undefined")
+                return model.cover
+
+            if (model.mimetype.toString().indexOf("image") !== -1)
+                return model.path
+
+            return ""
+        }
+
+        sourceSize.width: width
+        fillMode: Image.PreserveAspectCrop
+    }*/
+
+    DocumentDelegateActions { id: documentDelegateActions }
 }

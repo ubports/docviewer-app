@@ -25,6 +25,14 @@ Dialog {
     property string path
     property int __deleteCount: documentPage.view.item.selectedItems.count
 
+    // WORKAROUND: This property is used only when user wants to remove a single
+    // file from a delegate action, and the value of the property is read during
+    // the Component.onDestruction event.
+    // We do this because we need to avoid that the entry in the model is removed
+    // before this dialog is closed.
+    // See src/app/qml/documentPage/DocumentDelegateActions.qml
+    property bool confirmed: false
+
     title: path ? i18n.tr("Delete file") :
                   i18n.tr("Delete %1 file", "Delete %1 files", __deleteCount).arg(__deleteCount)
     text: path ? i18n.tr("Are you sure you want to permanently delete this file?") :
@@ -43,17 +51,19 @@ Dialog {
 
         onClicked: {
             if (deleteFileDialog.path) {
-                docModel.rm(path)
+               deleteFileDialog.confirmed = true;
             } else {
+                // This is called from selection mode
                 var items = documentPage.view.item.selectedItems;
 
                 for (var i=0; i < items.count; i++) {
                     console.log("Removing:", items.get(i).model.path);
                     docModel.rm(items.get(i).model.path);
                 }
+
+                viewLoader.item.endSelection();
             }
 
-            viewLoader.item.endSelection();
             PopupUtils.close(deleteFileDialog)
         }
     }
