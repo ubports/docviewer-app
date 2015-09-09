@@ -28,6 +28,10 @@
 
 // TODO: Error management
 
+#ifdef DEBUG_TILE_BENCHMARK
+#include <QElapsedTimer>
+#endif
+
 lok::Office *LODocument::s_office = nullptr;
 
 LODocument::LODocument()
@@ -105,12 +109,22 @@ QSize LODocument::documentSize() const
 QImage LODocument::paintTile(QSize canvasSize, QRect tileSize)
 {
     QImage result = QImage(canvasSize.width(), canvasSize.height(),  QImage::Format_RGB32);
+
+#ifdef DEBUG_TILE_BENCHMARK
+    QElapsedTimer renderTimer;
+    renderTimer.start();
+#endif
+
     m_document->paintTile(result.bits(),
                           canvasSize.width(), canvasSize.height(),
                           Twips::convertPixelsToTwips(tileSize.x()),
                           Twips::convertPixelsToTwips(tileSize.y()),
                           Twips::convertPixelsToTwips(tileSize.width()),
                           Twips::convertPixelsToTwips(tileSize.height()));
+
+#ifdef DEBUG_TILE_BENCHMARK
+    qDebug() << "Time to render the tile:" << renderTimer.elapsed() << "ms";
+#endif
 
     return result.rgbSwapped();
 }

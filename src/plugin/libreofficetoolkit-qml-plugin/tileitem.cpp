@@ -160,12 +160,16 @@ void RenderTask::setDocument(LODocument* document)
 // Render the texture for this tile.
 void RenderTask::run()
 {
+    // Can cause crash if document is nullptr.
+    if (!m_document)
+        return;
+
 #ifdef DEBUG_TILE_BENCHMARK
     QElapsedTimer renderTimer;
     renderTimer.start();
 #endif
 
-    QImage render = this->document()->paintTile(this->area().size(),
+    QImage render = m_document->paintTile(this->area().size(),
                                                 this->area());
 
     Q_EMIT renderCompleted(render);

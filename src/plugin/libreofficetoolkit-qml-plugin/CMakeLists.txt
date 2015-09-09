@@ -13,6 +13,7 @@ set(libreofficetoolkitqmlplugin_SRCS
     lodocument.cpp
     loview.cpp
     tileitem.cpp
+    sgtileitem.cpp
     ${QML_SRCS}
 )
 
@@ -20,6 +21,7 @@ set(libreofficetoolkitqmlplugin_SRCS
 set(libreofficetoolkitqmlplugin_HDRS
     twips.h
     config.h
+    sgtileitem.h
 )
 
 add_library(libreofficetoolkitqmlplugin MODULE
