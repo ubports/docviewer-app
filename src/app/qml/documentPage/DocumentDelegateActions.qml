@@ -37,5 +37,13 @@ QtObject {
         }
     ]
 
-    property list<Action> trailingActions
+    property list<Action> trailingActions: [
+        Action {
+            iconName: "share"
+            text: i18n.tr("Share")
+            onTriggered: {
+                pageStack.push(Qt.resolvedUrl("./SharePage.qml"), { fileUrl: model.path })
+            }
+        }
+    ]
 }
