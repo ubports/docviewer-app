@@ -18,11 +18,6 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-// This is the hardcoded Ubuntu/Debian paths to find the LibreOffice
-// installation. If you want to use a parallel installation, change the path
-// in the following line.
-#define LO_PATH "/usr/lib/libreoffice/program/"
-
 // FIXME: Perhaps we want to use smaller tiles on mobile devices?
 #define TILE_SIZE 256.0
 
@@ -34,5 +29,32 @@
 
 // Uncomment if you want more verbose application output
 //#define DEBUG_VERBOSE
+
+#include <QCoreApplication>
+#include <QDir>
+#include <QDebug>
+
+inline static const char* getLibreOfficePath() {
+    // LibreOffice installation path on Debian/Ubuntu
+    QString path = "/usr/lib/libreoffice/program/";
+
+    if (!QDir(path).exists()) {
+        // Click packages of docviewer includes LibreOffice by themselves.
+        // We know that applicationDirPath() is ./lib/<arch_triplet>/bin
+        // FIXME: Hackish!
+        QDir clickDir(QCoreApplication::applicationDirPath());
+        if (clickDir.cd("../libreoffice/program"))
+            path = clickDir.canonicalPath();
+        else
+            path = "";
+    }
+
+    if (!path.isEmpty())
+        qDebug() << "LibreOffice binaries found at:" << path;
+    else
+        qDebug() << "LibreOffice binaries not found.";
+
+    return path.toLocal8Bit().data();
+}
 
 #endif // CONFIG_H

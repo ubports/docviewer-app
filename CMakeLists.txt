@@ -121,3 +121,30 @@ enable_testing()
 add_subdirectory(src)
 add_subdirectory(tests)
 add_subdirectory(po)
+
+# If running in CLICK_MODE, include binary dependencies of docviewer
+if(CLICK_MODE)
+    MESSAGE("Grabbing upstream libs to ${CMAKE_CURRENT_BINARY_DIR}/upstream-libs")
+    execute_process(
+        COMMAND mkdir ${CMAKE_CURRENT_BINARY_DIR}/upstream-libs
+        COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/get-click-deps -d ${CMAKE_CURRENT_SOURCE_DIR}/docviewer-libs.json ${CLICK_ARCH} ${CMAKE_CURRENT_BINARY_DIR}/upstream-libs
+    )
+
+    MESSAGE("Installing upstream libs from ${CMAKE_CURRENT_BINARY_DIR}/upstream-libs/usr/lib/${ARCH_TRIPLET}/ to ${DATA_DIR}lib/${ARCH_TRIPLET}")
+    file(GLOB_RECURSE UPSTREAM_LIBS "${CMAKE_CURRENT_BINARY_DIR}/upstream-libs/usr/lib/${ARCH_TRIPLET}/*")
+    foreach(ITEM ${UPSTREAM_LIBS})
+        IF( IS_DIRECTORY "${ITEM}" )
+            LIST( APPEND DIRS_TO_DEPLOY "${ITEM}" )
+        ELSE()
+            LIST( APPEND FILES_TO_DEPLOY "${ITEM}" )
+        ENDIF()
+    endforeach()
+    MESSAGE("Following files to install:- ${FILES_TO_DEPLOY}")
+    INSTALL( FILES ${FILES_TO_DEPLOY} DESTINATION ${DATA_DIR}lib/${ARCH_TRIPLET} )
+
+    MESSAGE("Installing upstream libs from ${CMAKE_CURRENT_BINARY_DIR}/upstream-libs/lib/ to ${DATA_DIR}lib")
+    INSTALL( DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/upstream-libs/lib/ DESTINATION ${DATA_DIR}lib )
+
+    MESSAGE("Installing LibreOffice from ${CMAKE_CURRENT_BINARY_DIR}/upstream-libs/opt/libreoffice/lib/libreoffice to ${DATA_DIR}lib/${ARCH_TRIPLET}/libreoffice")
+    INSTALL( DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/upstream-libs/opt/libreoffice/lib/libreoffice/ DESTINATION ${DATA_DIR}lib/${ARCH_TRIPLET}/libreoffice )
+endif(CLICK_MODE)
