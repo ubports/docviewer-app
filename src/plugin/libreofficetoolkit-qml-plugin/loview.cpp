@@ -16,7 +16,6 @@
 
 #include "loview.h"
 #include "lodocument.h"
-#include "tileitem.h"
 #include "sgtileitem.h"
 #include "twips.h"
 #include "config.h"
@@ -26,11 +25,8 @@
 #include <QTimer>
 #include <QtCore/qmath.h>
 
-// TODO: Use a QQuickItem and implement painting through
-// updatePaintNode(QSGNode * oldNode, UpdatePaintNodeData * data)
-
 LOView::LOView(QQuickItem *parent)
-    : QQuickItem(parent) //QQuickPaintedItem(parent)
+    : QQuickItem(parent)
     , m_parentFlickable(nullptr)
     , m_document(nullptr)
     , m_zoomFactor(1.0)
@@ -46,18 +42,6 @@ LOView::LOView(QQuickItem *parent)
     connect(this, SIGNAL(cacheBufferChanged()), this, SLOT(updateVisibleRect()));
     connect(&m_updateTimer, SIGNAL(timeout()), this, SLOT(updateVisibleRect()));
 }
-
-//void LOView::paint(QPainter *painter)
-//{
-//    Q_FOREACH(TileItem* tile, m_tiles) {
-//        painter->drawImage(tile->area(), tile->texture());
-//        tile->setPainted(true);
-
-//#ifdef DEBUG_SHOW_TILE_BORDER
-//        painter->drawRect(tile->area());
-//#endif
-//    }
-//}
 
 // Returns the parent QML Flickable
 QQuickItem* LOView::parentFlickable() const
@@ -228,10 +212,6 @@ void LOView::createTile(int index, QRect rect)
 #endif
 
         auto tile = new SGTileItem(rect, m_document, this);
-        // TODO When we should update with SG?
-        // connect(tile, SIGNAL(textureChanged()), this, SLOT(update()));
-
-        // Append the tile in the map
         m_tiles.insert(index, tile);
     }
 #ifdef DEBUG_VERBOSE

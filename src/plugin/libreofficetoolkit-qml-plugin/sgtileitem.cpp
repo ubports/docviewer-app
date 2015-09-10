@@ -20,7 +20,10 @@ void SGTileItem::dispose()
     if (m_state.loadAcquire() != SgstRendering)
         deleteLater();
     m_state.storeRelease(SgstDisposed);
-    // qDebug() << "---- dispose called: " << this << m_state;
+
+#ifdef DEBUG_VERBOSE
+    qDebug() << "---- dispose called: " << this << m_state;
+#endif
 }
 
 QSGNode *SGTileItem::updatePaintNode(QSGNode *oldNode, QQuickItem::UpdatePaintNodeData *)
@@ -31,7 +34,10 @@ QSGNode *SGTileItem::updatePaintNode(QSGNode *oldNode, QQuickItem::UpdatePaintNo
     if (!node && wnd) {
         if (this->m_state.loadAcquire() == SgstInitial) {
             m_state.storeRelease(SgstRendering);
+
             QtConcurrent::run( [=] {
+                if (!m_document)
+                    return;
 
                 QImage img;
 
@@ -39,10 +45,12 @@ QSGNode *SGTileItem::updatePaintNode(QSGNode *oldNode, QQuickItem::UpdatePaintNo
                 if (this->m_state.loadAcquire() == SgstRendering)
                     img = m_document->paintTile(this->area().size(), this->area());
 
-                if (this->m_state.loadAcquire() == SgstDisposed)
+#ifdef DEBUG_VERBOSE
+                else if (this->m_state.loadAcquire() == SgstDisposed)
                     qDebug() << "Already disposed:" << m_state.loadAcquire();
-                QMetaObject::invokeMethod(this, "renderCallback", Q_ARG(QImage, img));
+#endif
 
+                QMetaObject::invokeMethod(this, "renderCallback", Q_ARG(QImage, img));
             });
         } else if (m_state.loadAcquire() == SgstActive) {
             QImage image = m_data;

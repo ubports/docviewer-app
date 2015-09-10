@@ -25,7 +25,7 @@ class LODocument;
 class TileItem;
 class SGTileItem;
 
-class LOView : public QQuickItem // QQuickPaintedItem
+class LOView : public QQuickItem
 {
     Q_OBJECT
     Q_PROPERTY(QQuickItem* parentFlickable READ parentFlickable WRITE setParentFlickable NOTIFY parentFlickableChanged)
@@ -38,8 +38,6 @@ class LOView : public QQuickItem // QQuickPaintedItem
 public:
     LOView(QQuickItem *parent = 0);
     ~LOView();
-
-//    void        paint(QPainter *painter);
 
     QQuickItem* parentFlickable() const;
     void        setParentFlickable(QQuickItem* flickable);
