@@ -62,6 +62,10 @@ QSGNode *SGTileItem::updatePaintNode(QSGNode *oldNode, QQuickItem::UpdatePaintNo
         }
     }
 
+#ifdef DEBUG_SHOW_TILE_BORDER
+    // TODO: Tile border rendering
+#endif
+
     return node;
 }
 
