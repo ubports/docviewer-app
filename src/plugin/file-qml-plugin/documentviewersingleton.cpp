@@ -79,9 +79,8 @@ QString DocumentViewerSingleton::buildDestinationPath(const QString &destination
     if (suffix.isEmpty())
         suffix = mt.preferredSuffix();
 
-    QString destination = QString("%1.%2").arg(
-                destinationDir + QDir::separator() + filenameWithoutSuffix,
-                suffix);
+    QString dir = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + QDir::separator();
+    QString destination = QString("%1.%2").arg(dir + filenameWithoutSuffix, suffix);
 
     // If there's already a file of this name, reformat it to
     // "filename (copy x).png" where x is a number, incremented until we find an
@@ -102,8 +101,9 @@ QString DocumentViewerSingleton::buildDestinationPath(const QString &destination
         // Check if the file has already a "copy" suffix
         // If so, remove it since we will update it later.
         QRegExp rx(" \\(" + reformattedSuffix.arg(QString("\\d+")) + "\\)");
+        int reformattedSuffixPos = filenameWithoutSuffix.lastIndexOf(rx);
 
-        if (filenameWithoutSuffix.lastIndexOf(rx) != -1)
+        if (reformattedSuffixPos != -1)
             filenameWithoutSuffix.truncate(reformattedSuffixPos);
 
         // Add the right "copy" suffix.
