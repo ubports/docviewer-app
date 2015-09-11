@@ -3,12 +3,13 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 #add the sources to compile
 set(fileqmlplugin_SRCS
-	backend.cpp
-	documentmodel.cpp
-        fswatcher.cpp
-	docviewerfile.cpp
-        qstorageinfo.cpp
-        qstorageinfo_unix.cpp
+    backend.cpp
+    documentmodel.cpp
+    fswatcher.cpp
+    docviewerfile.cpp
+    documentviewersingleton.cpp
+    qstorageinfo.cpp
+    qstorageinfo_unix.cpp
 )
 
 add_library(fileqmlplugin MODULE

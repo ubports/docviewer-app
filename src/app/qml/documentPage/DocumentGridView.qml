@@ -37,6 +37,8 @@ MultipleSelectionGridView {
     cellWidth: (mainView.width > units.gu(50)) ? units.gu(24)
                                                : (mainView.width - units.gu(2)) * 0.5
 
+    multipleSelection: contentHubProxy.multipleSelection ? contentHubProxy.multipleSelection : false
+
     listDelegate: DocumentGridDelegate {
         id: delegate
         width: cellWidth

@@ -10,7 +10,6 @@ add_definitions(
 
 set(docviewer_SRCS
     main.cpp
-    content-communicator.cpp
     command-line-parser.cpp
     docviewer-application.cpp
     urlhandler.cpp

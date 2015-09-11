@@ -21,6 +21,16 @@
 #include "backend.h"
 #include "documentmodel.h"
 #include "docviewerfile.h"
+#include "documentviewersingleton.h"
+
+static QObject *registerDocumentViewerSingleton (QQmlEngine *engine, QJSEngine *scriptEngine)
+{
+    Q_UNUSED(engine)
+    Q_UNUSED(scriptEngine)
+
+    DocumentViewerSingleton *ch = new DocumentViewerSingleton();
+    return ch;
+}
 
 void BackendPlugin::registerTypes(const char *uri)
 {
@@ -30,6 +40,8 @@ void BackendPlugin::registerTypes(const char *uri)
 
     qmlRegisterType<DocumentModel>(uri, 1, 0, "DocumentsModel");
     qmlRegisterType<DocviewerFile>(uri, 1, 0, "File");
+
+    qmlRegisterSingletonType<DocumentViewerSingleton>(uri, 1, 0, "DocumentViewer", registerDocumentViewerSingleton);
 }
 
 void BackendPlugin::initializeEngine(QQmlEngine *engine, const char *uri)

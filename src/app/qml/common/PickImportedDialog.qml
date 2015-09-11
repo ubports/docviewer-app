@@ -32,13 +32,13 @@ Dialog {
     // We don't use a Flickable, since it already lives in the Dialog itself.
     Repeater {
         id: repeater
-        delegate: ListItem.Standard {
-            text: Utils.getNameOfFile(modelData)
+        ListItem.Standard {
+            text: Utils.getNameOfFile(model.path)
             __foregroundColor: Theme.palette.selected.backgroundText
 
             onClicked: {
                 PopupUtils.close(multipleImportDialog);
-                mainView.openDocument(modelData);
+                mainView.openDocument(model.path);
             }
         }
     }

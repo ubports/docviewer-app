@@ -48,6 +48,8 @@ MultipleSelectionListView {
         }
     }
 
+    multipleSelection: contentHubProxy.multipleSelection ? contentHubProxy.multipleSelection : false
+
     listDelegate: DocumentListDelegate {
         id: delegate
 
