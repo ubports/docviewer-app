@@ -173,6 +173,19 @@ void LOView::updateVisibleRect()
         }
     }
 
+    /*
+      FIXME: It seems that LOView loads more tiles than necessary.
+      This can be easily tested with DEBUG_SHOW_TILE_BORDER enabled.
+
+      Step to reproduce:
+        1) Open Document Viewer
+        2) Resize the window, BEFORE opening any LibreOffice document
+           (Trying to resize the window or scrolling the Flickable when the
+           document is already loaded causes bad flickering)
+        3) Outside the document area, at the bottom-right corner, there are
+           a few tiles that should not be visible/rendered/generated.
+    */
+
     // Number of tiles per row
     int tilesPerWidth           = qCeil(this->width() / TILE_SIZE);
 
