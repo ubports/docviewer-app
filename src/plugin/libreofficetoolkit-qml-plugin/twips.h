@@ -19,23 +19,21 @@
 #ifndef TWIPS_H
 #define TWIPS_H
 
-// FIXME: Should we check for the real DPI of the screen, since we'll have in
-// future to support HiDPI devices and Full/Ultra-HD smartphones/tablet?
-// FIXME: Not common, but DPI on the X axis, and DPI on the Y axis may be
-// different.
-#define VIRTUAL_DPI 96.0
-
 #include <QtGlobal>
+#include <QtWidgets/QApplication>
+#include <QScreen>
 
 class Twips
 {
 public:
     static inline int convertTwipsToPixels(int twips, qreal zoom = 1.0) {
-        return int(twips / 1440.0 * VIRTUAL_DPI * zoom);
+        QScreen *screen = QApplication::screens().at(0);
+        return int(twips / 1440.0 * screen->logicalDotsPerInch() * zoom);
     }
 
     static inline int convertPixelsToTwips(int pixels, qreal zoom = 1.0) {
-        return int(pixels * 1440.0 / VIRTUAL_DPI / zoom);
+        QScreen *screen = QApplication::screens().at(0);
+        return int(pixels * 1440.0 / screen->logicalDotsPerInch() / zoom);
     }
 };
 
