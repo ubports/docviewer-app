@@ -22,7 +22,6 @@
 #include <QTimer>
 
 class LODocument;
-class TileItem;
 class SGTileItem;
 
 class LOView : public QQuickItem
