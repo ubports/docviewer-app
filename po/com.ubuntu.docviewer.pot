@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-12 21:23+0200\n"
+"POT-Creation-Date: 2015-09-11 16:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,22 +18,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#. TRANSLATORS: This string is used for renaming a copied file,
-#. when a file with the same name already exists in user's
-#. Documents folder.
-#.
-#. e.g. "Manual_Aquaris_E4.5_ubuntu_EN.pdf" will become
-#. "Manual_Aquaris_E4.5_ubuntu_EN (copy 2).pdf"
-#.
-#. where "2" is given by the argument "%1"
-#.
-#: ../src/app/content-communicator.cpp:105
-#, qt-format
-msgid "copy %1"
-msgstr ""
-
-#: ../src/app/docviewer-application.cpp:171
-#: /home/stefano/Progetti/docviewer/Libreoffice/build-lo-tiled-rendering-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: ../src/app/docviewer-application.cpp:162
+#: /home/stefano/Progetti/docviewer/build-reboot-app-init-refactor-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr ""
 
@@ -103,10 +89,6 @@ msgid_plural "Following documents have not been imported:"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/app/qml/common/ToastWithAction.qml:97
-msgid "Dismiss"
-msgstr ""
-
 #: ../src/app/qml/common/UnknownTypeDialog.qml:26
 msgid "Unknown file type"
 msgstr ""
@@ -168,7 +150,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:36
-#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:27
+#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:28
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:52
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:52
 msgid "Cancel"
@@ -232,23 +214,23 @@ msgstr ""
 msgid "'Yesterday', hh:mm"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:157
+#: ../src/app/qml/documentPage/DocumentListView.qml:159
 msgid "Today"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:160
+#: ../src/app/qml/documentPage/DocumentListView.qml:162
 msgid "Yesterday"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:163
+#: ../src/app/qml/documentPage/DocumentListView.qml:165
 msgid "Earlier this week"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:166
+#: ../src/app/qml/documentPage/DocumentListView.qml:168
 msgid "Earlier this month"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:168
+#: ../src/app/qml/documentPage/DocumentListView.qml:170
 msgid "Even earlier..."
 msgstr ""
 
@@ -265,16 +247,16 @@ msgid "Sorting settings..."
 msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:46
-#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
+#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:41
 msgid "Switch to single column list"
 msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:46
-#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
+#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:41
 msgid "Switch to grid"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:43
+#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:49
 msgid "Pick"
 msgstr ""
 
@@ -404,16 +386,20 @@ msgstr ""
 msgid "Loading..."
 msgstr ""
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:240
-msgid "Document successfully imported!"
-msgid_plural "Documents successfully imported!"
-msgstr[0] ""
-msgstr[1] ""
-
-#: ../src/app/qml/ubuntu-docviewer-app.qml:243
-msgid "Open"
+#. TRANSLATORS: This string is used for renaming a copied file,
+#. when a file with the same name already exists in user's
+#. Documents folder.
+#.
+#. e.g. "Manual_Aquaris_E4.5_ubuntu_EN.pdf" will become
+#. "Manual_Aquaris_E4.5_ubuntu_EN (copy 2).pdf"
+#.
+#. where "2" is given by the argument "%1"
+#.
+#: ../src/plugin/file-qml-plugin/documentviewersingleton.cpp:99
+#, qt-format
+msgid "copy %1"
 msgstr ""
 
-#: /home/stefano/Progetti/docviewer/Libreoffice/build-lo-tiled-rendering-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/stefano/Progetti/docviewer/build-reboot-app-init-refactor-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr ""
