@@ -32,6 +32,8 @@ public:
     Q_INVOKABLE static QString getXdgDocumentsLocation();
 
     Q_INVOKABLE static QString buildDestinationPath(const QString &destinationDir, const QString &sourcePath);
+
+    Q_INVOKABLE static QString checkIfFileAlreadyImported(const QString &filePath, const QStringList &storageLocationList);
 };
 
 #endif // DOCUMENTVIEWERSINGLETON_H

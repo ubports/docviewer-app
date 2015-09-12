@@ -53,10 +53,20 @@ Item {
 
                     if (DocumentViewer.isFileSupported(sourcePath)) {
                         var documentsLocation = DocumentViewer.getXdgDocumentsLocation()
-                        var destPath = DocumentViewer.buildDestinationPath(documentsLocation, sourcePath);
 
-                        internal.importDocument(sourcePath, destPath)
+                        // Check if we have already imported the same document in the past.
+                        var earlierImportedFile = DocumentViewer.checkIfFileAlreadyImported(sourcePath, [documentsLocation])
+                        if (earlierImportedFile.length > 0) {
+                            // Document has been already imported in the past.
+                            // Append the path of the earlier copy of the
+                            // document in our model, so we can open it instead.
+                            importedDocsModel.append({ path: earlierImportedFile })
+                        } else {
+                            // No document has been found, so we can safely copy it.
+                            var destPath = DocumentViewer.buildDestinationPath(documentsLocation, sourcePath);
 
+                            internal.importDocument(sourcePath, destPath)
+                        }
                     } else {
                         // Document is not supported, append its entry into the
                         // rejected documents model, so that we can inform the

@@ -20,6 +20,8 @@
 #include <QDir>
 #include <QMimeDatabase>
 #include <QStandardPaths>
+#include <QDirIterator>
+#include <QDateTime>
 
 bool DocumentViewerSingleton::exists(const QString &path)
 {
@@ -118,4 +120,40 @@ QString DocumentViewerSingleton::buildDestinationPath(const QString &destination
     }
 
     return destination;
+}
+
+// Return the path of the file, if found in the storageLocation paths,
+// otherwise return an empty string.
+// Used for prevent importing of a second copy of a file through ContentHub.
+QString DocumentViewerSingleton::checkIfFileAlreadyImported(const QString &filePath, const QStringList &storageLocationList)
+{
+    QFileInfo fi(filePath);
+    QStringList files;
+
+    // Get the list of all the files in the watched folders
+    Q_FOREACH(const QString &storageLocation, storageLocationList) {
+        QDirIterator dir(storageLocation, QDir::Files | QDir::NoDotAndDotDot | QDir::Readable,
+                         QDirIterator::Subdirectories);
+
+        while (dir.hasNext())
+        {
+            dir.next();
+            files.append(dir.filePath());
+        }
+    }
+
+    // Check if there's a file with the same name in the list
+    Q_FOREACH(const QString &file, files) {
+        if (file.endsWith(fi.fileName())) {
+            // Seems there could be already the same file in the watched
+            // folders. Check also size and lastModified date.
+            QFileInfo fileToCheck(file);
+
+            if (fi.size() == fileToCheck.size() &&
+                    fi.lastModified() == fileToCheck.lastModified())
+                return file;
+        }
+    }
+
+    return QString();
 }
