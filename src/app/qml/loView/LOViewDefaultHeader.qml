@@ -90,7 +90,6 @@ PageHeadState {
         Action {
             iconName: "search"
             // onTriggered: pageMain.state = "search"
-            //Disable it until we provide search in Poppler plugin.
             enabled: false
         },
 
@@ -98,7 +97,7 @@ PageHeadState {
             objectName:"gotopage"
             iconName: "browser-tabs"
             text: i18n.tr("Go to page...")
-            onTriggered: PopupUtils.open(Qt.resolvedUrl("LOViewGotoDialog.qml"), targetPage)
+            enabled: false
         },
 
         Action {

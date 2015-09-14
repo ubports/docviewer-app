@@ -19,6 +19,7 @@
 
 // Uncomment if you need to use QML analyzer
 // #define QT_QML_DEBUG
+// #include <QtQuick>
 
 #include "docviewer-application.h"
 #include <QDebug>

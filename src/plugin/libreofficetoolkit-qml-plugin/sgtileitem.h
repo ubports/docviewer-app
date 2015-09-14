@@ -22,7 +22,7 @@ class SGTileItem : public QQuickItem
 {
     Q_OBJECT
 public:
-    SGTileItem(const QRect &area, LODocument *document, QQuickItem *parent = 0);
+    SGTileItem(const QRect &area, LODocument *document, const qreal &zoom = 1.0, QQuickItem *parent = 0);
     ~SGTileItem();
 
     inline QRect area() const { return m_area; }
@@ -30,6 +30,9 @@ public:
 
     inline LODocument* document() const { return m_document; }
     inline void setDocument(LODocument* document) { m_document = document; }
+
+    inline qreal zoomFactor() const { return m_zoomFactor; }
+    void setZoomFactor(const qreal &zoom) { m_zoomFactor = zoom; }
 
     void dispose();
 
@@ -45,6 +48,7 @@ signals:
 private:
     QRect m_area;
     LODocument* m_document;
+    qreal m_zoomFactor;
     QImage m_data;
     QAtomicInteger<int> m_state;
 

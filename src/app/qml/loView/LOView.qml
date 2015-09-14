@@ -24,10 +24,7 @@ import "../upstreamComponents"
 Page {
     id: loPage
     title: Utils.getNameOfFile(file.path);
-
-    // Disable header auto-hide.
-    // TODO: Show/hide header if a user taps the page
-    flickable: null
+    flickable: loView
 
     // TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
     // while the second one (%2) refers to the total pages count.
@@ -70,6 +67,29 @@ Page {
             // Hide header when the document is ready
             mainView.setHeaderVisibility(false);
         }*/
+    }
+
+    BottomPanel {
+        id: bottomPanel
+
+        // TODO: if we'll still be using a bottom panel, when we'll switch to
+        // UITK1.3, we could use the ActionBar component.
+        Row {
+            anchors.fill: parent
+            layoutDirection: Qt.RightToLeft
+
+            PanelButton {
+                iconName: "zoom-out"
+                onClicked: loView.zoomFactor -= 0.1
+            }
+
+            PanelButton {
+                iconName: "zoom-in"
+                onClicked: loView.zoomFactor += 0.1
+            }
+
+            ZoomSelector {}
+        }
     }
 
     // *** HEADER ***

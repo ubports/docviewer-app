@@ -8,10 +8,11 @@
 #include <QSGFlatColorMaterial>
 #endif
 
-SGTileItem::SGTileItem(const QRect &area, LODocument *document, QQuickItem *parent)
+SGTileItem::SGTileItem(const QRect &area, LODocument *document,const qreal &zoom, QQuickItem *parent)
     : QQuickItem(parent)
     , m_area(area)
     , m_document(document)
+    , m_zoomFactor(zoom)
     , m_state(SgstInitial)
 {
     setFlag(ItemHasContents, true);
@@ -48,7 +49,7 @@ QSGNode *SGTileItem::updatePaintNode(QSGNode *oldNode, QQuickItem::UpdatePaintNo
 
                 // By this time already can be disposed, so it's better to ckeck again.
                 if (this->m_state.loadAcquire() == SgstRendering)
-                    img = m_document->paintTile(this->area().size(), this->area());
+                    img = m_document->paintTile(this->area().size(), this->area(), this->zoomFactor());
 
 #ifdef DEBUG_VERBOSE
                 else if (this->m_state.loadAcquire() == SgstDisposed)

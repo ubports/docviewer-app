@@ -52,7 +52,7 @@ public:
     DocumentType documentType() const;
 
     QSize documentSize() const;
-    QImage paintTile(QSize canvasSize, QRect tileSize);
+    QImage paintTile(QSize canvasSize, QRect tileSize, qreal zoom = 1.0);
 
     Q_INVOKABLE bool saveAs(QString url, QString format, QString filterOptions);
 

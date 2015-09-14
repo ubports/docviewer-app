@@ -24,10 +24,21 @@ Flickable {
     property alias zoomFactor:  view.zoomFactor
     property alias cacheBuffer: view.cacheBuffer
 
-    contentHeight: view.height * view.zoomFactor
-    contentWidth: view.width * view.zoomFactor
+    property alias zoomMode:    view.zoomMode
+
+    function adjustZoomToWidth()
+    {
+        view.adjustZoomToWidth();
+    }
+
+    // zoomFactor is not used here to set contentSize, since it's all managed
+    // internally, in the LibreOffice.View component.
+    contentHeight: view.height
+    contentWidth: view.width
 
     boundsBehavior: Flickable.StopAtBounds
+
+    Component.onCompleted: adjustZoomToWidth()
 
     LibreOffice.View {
         id: view

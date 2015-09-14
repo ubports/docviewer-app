@@ -106,7 +106,7 @@ QSize LODocument::documentSize() const
 
 // Paint a tile, with size=canvasSize, of the part of the document defined by
 // the rect tileSize.
-QImage LODocument::paintTile(QSize canvasSize, QRect tileSize)
+QImage LODocument::paintTile(QSize canvasSize, QRect tileSize, qreal zoom)
 {
     QImage result = QImage(canvasSize.width(), canvasSize.height(),  QImage::Format_RGB32);
 
@@ -117,10 +117,10 @@ QImage LODocument::paintTile(QSize canvasSize, QRect tileSize)
 
     m_document->paintTile(result.bits(),
                           canvasSize.width(), canvasSize.height(),
-                          Twips::convertPixelsToTwips(tileSize.x()),
-                          Twips::convertPixelsToTwips(tileSize.y()),
-                          Twips::convertPixelsToTwips(tileSize.width()),
-                          Twips::convertPixelsToTwips(tileSize.height()));
+                          Twips::convertPixelsToTwips(tileSize.x(), zoom),
+                          Twips::convertPixelsToTwips(tileSize.y(), zoom),
+                          Twips::convertPixelsToTwips(tileSize.width(), zoom),
+                          Twips::convertPixelsToTwips(tileSize.height(), zoom));
 
 #ifdef DEBUG_TILE_BENCHMARK
     qDebug() << "Time to render the tile:" << renderTimer.elapsed() << "ms";
