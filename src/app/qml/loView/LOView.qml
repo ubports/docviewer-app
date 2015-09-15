@@ -16,87 +16,172 @@
 
 import QtQuick 2.3
 import Ubuntu.Components 1.1
+import Ubuntu.Layouts 1.0
 import DocumentViewer.LibreOffice 1.0 as LO
 
-import "../common/utils.js" as Utils
 import "../upstreamComponents"
 
-Page {
+import "../common/utils.js" as Utils
+import "KeybHelper.js" as KeybHelper
+
+PageWithBottomEdge {
     id: loPage
     title: Utils.getNameOfFile(file.path);
-    flickable: loView
 
-    // TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
-    // while the second one (%2) refers to the total pages count.
-    property string currentPage: i18n.tr("Page %1 of %2").arg(loView.currentPageIndex + 1).arg(loView.count)
+    // FIXME: At the moment don't hide header if the document is a presentation
+    flickable: loDocument.documentType != LO.Document.PresentationDocument ? loView : null
+
+    readonly property bool wideWindow: width > units.gu(120)
+ 
+    function moveView(axis, diff) {
+        if (axis == "vertical") {
+            var maxContentY = Math.max(0, loView.contentHeight - loView.height)
+            loView.contentY = Math.max(0, Math.min(loView.contentY + diff, maxContentY ))
+        } else {
+            var maxContentX = Math.max(0, loView.contentWidth - loView.width)
+            loView.contentX = Math.max(0, Math.min(loView.contentX + diff, maxContentX ))
+        }
+    }
 
     // Reset night mode shader settings when closing the page
     // Component.onDestruction: mainView.nightModeEnabled = false
 
-    LO.Viewer {
-        id: loView
-        objectName: "loView"
-        anchors.fill: parent
+    // LibreOfficeKit parts are only supported for Presentation type
+    bottomEdgeEnabled: loDocument.documentType == LO.Document.PresentationDocument && !wideWindow
+    bottomEdgeTitle: i18n.tr("Slides")
+    bottomEdgePageComponent: Page {
+        title: i18n.tr("Slides")
+        head.backAction: Action {
+            text: i18n.tr("Back")
+            iconName: "down"
+            onTriggered: pageStack.pop()
+        }
 
-        clip: true
-        document: loDocument
+        flickable: null
 
-        Component.onCompleted: {
-            // WORKAROUND: Fix for wrong grid unit size
-            flickDeceleration = 1500 * units.gridUnit / 8
-            maximumFlickVelocity = 2500 * units.gridUnit / 8
+        PartsView {
+            anchors.fill: parent
+            model: partsModelLoader.item
         }
     }
 
-    Scrollbar { flickableItem: loView }
-    Scrollbar { flickableItem: loView; align: Qt.AlignBottom }
+    Layouts {
+        id: layouts
+        anchors.fill: parent
+
+        layouts: [
+            ConditionalLayout {
+                when: wideWindow
+                name: "wideWindowLayout"
+
+                Item {
+                    anchors.fill: parent
+
+                    // TODO: Add a setting to show/hide sidebar when width > units.gu(80)
+                    PartsView {
+                        id: partsView
+                        anchors {
+                            top: parent.top
+                            bottom: bottomBarLayoutItem.top
+                            left: parent.left
+                        }
+
+                        model: partsModelLoader.item
+                        visible: model
+                        width: visible ? units.gu(40) : 0
+                    }
+
+                    Item {
+                        anchors {
+                            left: partsView.right
+                            right: parent.right
+                            top: parent.top
+                            bottom: bottomBarLayoutItem.top
+                        }
+                        ItemLayout { item: "loView"; anchors.fill: parent }
+                    }
+
+                    Item {
+                        id: bottomBarLayoutItem
+                        visible: loDocument.documentType == LO.Document.PresentationDocument
+                        height: visible ? units.gu(5) : 0
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                            bottom: parent.bottom
+                        }
+
+                        ItemLayout { item: "bottomBar"; anchors.fill: parent }
+                    }
+                }
+            }
+        ]
+
+        LO.Viewer {
+            id: loView
+            objectName: "loView"
+            Layouts.item: "loView"
+            anchors {
+                left: parent.left
+                right: parent.right
+                top: parent.top
+                bottom: bottomBar.top
+            }
+            anchors.fill: parent
+
+            clip: true
+            document: loDocument
+
+            Component.onCompleted: {
+                // WORKAROUND: Fix for wrong grid unit size
+                flickDeceleration = 1500 * units.gridUnit / 8
+                maximumFlickVelocity = 2500 * units.gridUnit / 8
+            }
+
+            Scrollbar { flickableItem: loView; parent: loView.parent }
+            Scrollbar { flickableItem: loView; parent: loView.parent; align: Qt.AlignBottom }
+        }
+
+        // TODO: When we'll have to merge this with the zooming branch, replace this
+        // and use a single bottom panel
+        SlideControllerPanel {
+            id: bottomBar
+            Layouts.item: "bottomBar"
+            visible: loDocument.documentType == LO.Document.PresentationDocument
+            height: visible ? units.gu(5) : 0
+            anchors {
+                left: parent.left
+                right: parent.right
+                bottom: parent.bottom
+            }
+        }
+    }
 
     LO.Document {
         id: loDocument
-
         property bool isLoading: true
         path: file.path
-
-       /* onPagesLoaded: {
-            isLoading = false;
-
-            var title = getDocumentInfo("Title")
-            if (title !== "")
-                loPage.title = title;
-
-            // Hide header when the document is ready
-            mainView.setHeaderVisibility(false);
-        }*/
     }
 
-    BottomPanel {
-        id: bottomPanel
-
-        // TODO: if we'll still be using a bottom panel, when we'll switch to
-        // UITK1.3, we could use the ActionBar component.
-        Row {
-            anchors.fill: parent
-            layoutDirection: Qt.RightToLeft
-
-            PanelButton {
-                iconName: "zoom-out"
-                onClicked: loView.zoomFactor -= 0.1
-            }
-
-            PanelButton {
-                iconName: "zoom-in"
-                onClicked: loView.zoomFactor += 0.1
-            }
-
-            ZoomSelector {}
-        }
+    // We use a loader here, since not all the document types support LOK:Parts
+    // This prevents the thumbnail provider to try a tile rendering of the part.
+    Loader {
+        id: partsModelLoader
+        active: loDocument.documentType == LO.Document.PresentationDocument
+        sourceComponent: LO.PartsModel { document: loDocument }
     }
 
     // *** HEADER ***
     state: "default"
-    states: LOViewDefaultHeader {
-        name: "default"
-        targetPage: loPage
-        //activityRunning: loView.currentPageItem.status == Image.Loading || loDocument.isLoading
-    }
+    states: [
+        LOViewDefaultHeader {
+            name: "default"
+            targetPage: loPage
+        },
+
+        LOViewZoomHeader {
+            name: "zoom"
+            targetPage: loPage
+        }
+    ]
 }

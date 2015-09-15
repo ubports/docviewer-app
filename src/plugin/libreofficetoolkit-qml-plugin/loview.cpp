@@ -88,8 +88,13 @@ void LOView::setDocument(LODocument *doc)
     if (m_document == doc)
         return;
 
+    if (m_document)
+        m_document->disconnect(this);
+
     m_document = doc;
     Q_EMIT documentChanged();
+
+    connect(m_document, SIGNAL(currentPartChanged()), this, SLOT(invalidateAllTiles()));
 }
 
 qreal LOView::zoomFactor() const
@@ -293,6 +298,14 @@ void LOView::generateTiles(int x1, int y1, int x2, int y2, int tilesPerWidth)
             this->createTile(index, tileRect);
         }
     }
+}
+
+// FIXME: Just for the moment. In zoom branch we have all we need :)
+void LOView::invalidateAllTiles()
+{
+    m_tiles.clear();
+ 
+    this->updateViewSize();
 }
 
 void LOView::createTile(int index, QRect rect)

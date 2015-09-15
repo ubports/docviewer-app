@@ -88,9 +88,9 @@ PageHeadState {
 
     actions: [
         Action {
-            iconName: "search"
-            // onTriggered: pageMain.state = "search"
-            enabled: false
+            iconName: "zoom-in"
+            text: i18n.tr("Show zoom controls")
+            onTriggered: targetPage.state = "zoom"
         },
 
         Action {

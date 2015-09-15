@@ -70,6 +70,7 @@ private Q_SLOTS:
     void updateViewSize();
     void updateVisibleRect();
     void scheduleVisibleRectUpdate();
+    void invalidateAllTiles();
 
 private:
     QQuickItem*             m_parentFlickable;

@@ -15,25 +15,21 @@
  *
  */
 
-#include <QtQml>
-#include <QtQml/QQmlContext>
+#ifndef LOPARTSIMAGEPROVIDER_H
+#define LOPARTSIMAGEPROVIDER_H
 
-#include "plugin.h"
-#include "lodocument.h"
-#include "loview.h"
-#include "lopartsmodel.h"
+#include <QQuickImageProvider>
 
-void LOPlugin::registerTypes(const char *uri)
+class LODocument;
+
+class LOPartsImageProvider : public QQuickImageProvider
 {
-    Q_ASSERT(uri == QLatin1String("DocumentViewer.LibreOffice"));
-    
-    //@uri DocumentViewer.LibreOffice
-    qmlRegisterType<LODocument>(uri, 1, 0, "Document");
-    qmlRegisterType<LOView>(uri, 1, 0, "View");
-    qmlRegisterType<LOPartsModel>(uri, 1, 0, "PartsModel");
-}
+public:
+    LOPartsImageProvider(LODocument *document);
+    QImage requestImage(const QString & id, QSize * size, const QSize & requestedSize);
 
-void LOPlugin::initializeEngine(QQmlEngine *engine, const char *uri)
-{
-    QQmlExtensionPlugin::initializeEngine(engine, uri);
-}
+private:
+    LODocument *m_document;
+};
+
+#endif // LOPARTSIMAGEPROVIDER_H

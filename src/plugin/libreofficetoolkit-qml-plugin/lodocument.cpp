@@ -60,6 +60,25 @@ void LODocument::setPath(QString &pathName)
     this->loadDocument(m_path);
 }
 
+int LODocument::currentPart() {
+    if (!m_document)
+        return int(-1);
+ 
+    return m_document->getPart();
+}
+ 
+void LODocument::setCurrentPart(int index)
+{
+    if (!m_document)
+        return;
+ 
+    if (this->currentPart() == index || index < 0 || index > partsCount() - 1)
+        return;
+ 
+    m_document->setPart(index);
+    Q_EMIT currentPartChanged();
+}
+
 // Load the document
 bool LODocument::loadDocument(QString &pathName)
 {
@@ -127,6 +146,33 @@ QImage LODocument::paintTile(QSize canvasSize, QRect tileSize, qreal zoom)
 #endif
 
     return result.rgbSwapped();
+}
+
+int LODocument::partsCount()
+{
+    if (!m_document)
+        return int(0);
+ 
+    return m_document->getParts();
+}
+ 
+QString LODocument::getPartName(int index) const
+{
+    if (!m_document)
+        return QString();
+ 
+    return QString::fromLatin1(m_document->getPartName(index));
+}
+ 
+// This is used by LOPartsImageProvider to temporarily change the current part,
+// in order to generate thumbnails.
+// FIXME: We need to disable tiled rendering when we're generating the thumbnail.
+int LODocument::swapCurrentPart(int newPartIndex)
+{
+    int oldIndex = this->currentPart();
+ 
+    m_document->setPart(newPartIndex);
+    return oldIndex;
 }
 
 /* Export the file in a given format:
