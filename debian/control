@@ -28,6 +28,7 @@ Package: ubuntu-docviewer-app
 Architecture: any
 Depends: qtdeclarative5-qtquick2-plugin,
          qtdeclarative5-ubuntu-ui-toolkit-plugin,
+         suru-icon-theme (>= 14.04+15.10.20150707-0ubuntu1),
          ${misc:Depends}
 Description: Document Viewer application
  Core Document Viewer application
