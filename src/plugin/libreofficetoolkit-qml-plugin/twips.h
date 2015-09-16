@@ -27,13 +27,28 @@ class Twips
 {
 public:
     static inline int convertTwipsToPixels(int twips, qreal zoom = 1.0) {
-        QScreen *screen = QApplication::screens().at(0);
-        return int(twips / 1440.0 * screen->logicalDotsPerInch() * zoom);
+        return int(twips / 1440.0 * getLogicalDotsPerInch() * zoom);
     }
 
     static inline int convertPixelsToTwips(int pixels, qreal zoom = 1.0) {
-        QScreen *screen = QApplication::screens().at(0);
-        return int(pixels * 1440.0 / screen->logicalDotsPerInch() / zoom);
+        return int(pixels * 1440.0 / getLogicalDotsPerInch() / zoom);
+    }
+
+    static inline qreal getLogicalDotsPerInch()
+    {
+        static qreal value = 0;
+        if (!value) {
+            QList<QScreen*> screens = QGuiApplication::screens();
+            if (screens.size()) {
+                QScreen *screen = screens.at(0);
+                // Subscribe for changing signal (just to make caching rock-solid).
+                QObject::connect(screen, &QScreen::logicalDotsPerInchChanged,
+                                 [] (const qreal newValue) { value = newValue; } );
+                value = screen->logicalDotsPerInch();
+            }
+        }
+
+        return value;
     }
 };
 
