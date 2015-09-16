@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-09 19:05+0200\n"
+"POT-Creation-Date: 2015-09-09 19:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,7 +33,7 @@ msgid "copy %1"
 msgstr ""
 
 #: ../src/app/docviewer-application.cpp:171
-#: /tmp/build-reboot-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/build-reboot-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr ""
 
@@ -180,6 +180,10 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
+#: ../src/app/qml/documentPage/DocumentDelegateActions.qml:43
+msgid "Share"
+msgstr ""
+
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:24
 msgid "No document found"
 msgstr ""
@@ -295,6 +299,10 @@ msgid ""
 "Please ensure that your query is not misspelled and/or try a different query."
 msgstr ""
 
+#: ../src/app/qml/documentPage/SharePage.qml:23
+msgid "Share to"
+msgstr ""
+
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:26
 msgid "Sorting settings"
 msgstr ""
@@ -403,6 +411,6 @@ msgstr[1] ""
 msgid "Open"
 msgstr ""
 
-#: /tmp/build-reboot-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/build-reboot-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr ""
