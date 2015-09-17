@@ -23,15 +23,19 @@
 #include <QtWidgets/QApplication>
 #include <QScreen>
 
+#define DEFAULT_DPI 96.0
+
 class Twips
 {
 public:
     static inline int convertTwipsToPixels(int twips, qreal zoom = 1.0) {
-        return int(twips / 1440.0 * getLogicalDotsPerInch() * zoom);
+        qreal dpi = getLogicalDotsPerInch();
+        return int(twips / 1440.0 * (dpi ? dpi : DEFAULT_DPI) * zoom);
     }
 
     static inline int convertPixelsToTwips(int pixels, qreal zoom = 1.0) {
-        return int(pixels * 1440.0 / getLogicalDotsPerInch() / zoom);
+        qreal dpi = getLogicalDotsPerInch();
+        return int(pixels * 1440.0 / (dpi ? dpi : DEFAULT_DPI) / zoom);
     }
 
     static inline qreal getLogicalDotsPerInch()
