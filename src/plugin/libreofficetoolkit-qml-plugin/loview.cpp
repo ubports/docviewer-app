@@ -70,6 +70,13 @@ void LOView::setParentFlickable(QQuickItem *flickable)
     Q_EMIT parentFlickableChanged();
 }
 
+void LOView::initializeDocument(const QString &path)
+{
+    m_document = QSharedPointer<LODocument>(new LODocument());
+    m_document->setPath(path);
+    Q_EMIT documentChanged();
+}
+
 // Return the LODocument rendered by this class
 LODocument* LOView::document() const
 {
@@ -77,14 +84,14 @@ LODocument* LOView::document() const
 }
 
 // Set the LODocument
-void LOView::setDocument(LODocument *doc)
-{
-    if (m_document == doc)
-        return;
+//void LOView::setDocument(LODocument *doc)
+//{
+//    if (m_document == doc)
+//        return;
 
-    m_document = QSharedPointer<LODocument>(doc);
-    Q_EMIT documentChanged();
-}
+//    m_document = QSharedPointer<LODocument>(doc);
+//    Q_EMIT documentChanged();
+//}
 
 // Not used yet.
 qreal LOView::zoomFactor() const

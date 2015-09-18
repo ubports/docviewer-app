@@ -31,7 +31,7 @@ class LOView : public QQuickItem
 {
     Q_OBJECT
     Q_PROPERTY(QQuickItem* parentFlickable READ parentFlickable WRITE setParentFlickable NOTIFY parentFlickableChanged)
-    Q_PROPERTY(LODocument* document        READ document        WRITE setDocument        NOTIFY documentChanged)
+    Q_PROPERTY(LODocument* document        READ document        /*WRITE setDocument*/    NOTIFY documentChanged)
 
     // TODO: Implement zoom!
     Q_PROPERTY(qreal       zoomFactor      READ zoomFactor      WRITE setZoomFactor      NOTIFY zoomFactorChanged)
@@ -44,9 +44,11 @@ public:
     QQuickItem* parentFlickable() const;
     void        setParentFlickable(QQuickItem* flickable);
 
+    Q_INVOKABLE void initializeDocument(const QString& path);
+
     // TODO REWORK
     LODocument* document() const;
-    void        setDocument(LODocument* doc);
+//    void        setDocument(LODocument* doc);
 
     qreal       zoomFactor() const;
     void        setZoomFactor(qreal zoom);

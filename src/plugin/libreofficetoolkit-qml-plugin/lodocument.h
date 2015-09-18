@@ -47,7 +47,7 @@ public:
     };
 
     QString path() const;
-    void setPath(QString &pathName);
+    void setPath(const QString& pathName);
 
     DocumentType documentType() const;
 
@@ -64,7 +64,7 @@ private:
     QString m_path;
     DocumentType m_docType;
 
-    bool loadDocument(QString &pathNAme);
+    bool loadDocument(const QString &pathNAme);
 
     lok::Document *m_document;
 

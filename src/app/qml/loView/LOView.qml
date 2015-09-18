@@ -42,7 +42,7 @@ Page {
         anchors.fill: parent
 
         clip: true
-        document: loDocument
+        documentPath: file.path
 
         Component.onCompleted: {
             // WORKAROUND: Fix for wrong grid unit size
@@ -54,29 +54,17 @@ Page {
     Scrollbar { flickableItem: loView }
     Scrollbar { flickableItem: loView; align: Qt.AlignBottom }
 
-    LO.Document {
-        id: loDocument
+//    LO.Document {
+//        id: loDocument
 
-        property bool isLoading: true
-        path: file.path
-
-       /* onPagesLoaded: {
-            isLoading = false;
-
-            var title = getDocumentInfo("Title")
-            if (title !== "")
-                loPage.title = title;
-
-            // Hide header when the document is ready
-            mainView.setHeaderVisibility(false);
-        }*/
-    }
+//        property bool isLoading: true
+//        path: file.path
+//    }
 
     // *** HEADER ***
     state: "default"
     states: LOViewDefaultHeader {
         name: "default"
         targetPage: loPage
-        //activityRunning: loView.currentPageItem.status == Image.Loading || loDocument.isLoading
     }
 }
