@@ -176,7 +176,8 @@ void LOView::updateVisibleRect()
             qDebug() << "Removing tile indexed as" << i.key();
 #endif
 
-            sgtile->deleteLater(); // TODO
+            RenderEngine::instance()->dequeueTask(sgtile->id());
+            sgtile->deleteLater();
             i = m_tiles.erase(i);
         }
     }
@@ -234,7 +235,7 @@ void LOView::createTile(int index, QRect rect)
 
         auto tile = new SGTileItem(rect, this);
         m_tiles.insert(index, tile);
-        RenderEngine::instance()->renderArea(m_document, rect, tile->id());
+        RenderEngine::instance()->enqueueTask(m_document, rect, tile->id());
     }
 #ifdef DEBUG_VERBOSE
     else {
@@ -251,9 +252,8 @@ void LOView::scheduleVisibleRectUpdate()
 
 void LOView::renderResultReceived(int id, QImage img)
 {
-    auto i = m_tiles.begin();
-    while (i != m_tiles.end()) {
-        SGTileItem* sgtile = i++.value();
+    for (auto i = m_tiles.begin(); i != m_tiles.end(); ++i) {
+        SGTileItem* sgtile = i.value();
         if (sgtile->id() == id) {
             sgtile->setData(img);
             break;
@@ -264,4 +264,8 @@ void LOView::renderResultReceived(int id, QImage img)
 LOView::~LOView()
 {
     disconnect(RenderEngine::instance(), SIGNAL(renderFinished(int,QImage)), this, SLOT(renderResultReceived(int,QImage)));
+
+    // Remove all tasks from rendering queue.
+    for (auto i = m_tiles.begin(); i != m_tiles.end(); ++i)
+        RenderEngine::instance()->dequeueTask(i.value()->id());
 }
