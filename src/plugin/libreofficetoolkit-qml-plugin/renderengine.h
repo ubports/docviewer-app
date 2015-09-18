@@ -51,7 +51,6 @@ private:
     void doNextTask();
 
 private:
-    QHash<int, QSharedPointer<LODocument> > m_requests;
     QQueue<EngineTask> m_queue;
     int m_activeTaskCount;
     int m_idealThreadCount;

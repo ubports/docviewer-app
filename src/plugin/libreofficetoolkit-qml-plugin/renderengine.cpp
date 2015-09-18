@@ -17,7 +17,6 @@ void RenderEngine::enqueueTask(const QSharedPointer<LODocument>& doc, const QRec
     Q_ASSERT(doc != nullptr);
 
     m_queue.enqueue(EngineTask(doc, area, id));
-    m_requests.insert(id, doc);
 
     doNextTask();
 }
@@ -29,12 +28,10 @@ void RenderEngine::dequeueTask(int id)
             m_queue.removeAt(i);
             break;
         }
-    m_requests.remove(id);
 }
 
 void RenderEngine::internalRenderCallback(int id, QImage img)
 {
-    m_requests.remove(id);
     m_activeTaskCount--;
     Q_EMIT renderFinished(id, img);
     doNextTask();
@@ -42,7 +39,10 @@ void RenderEngine::internalRenderCallback(int id, QImage img)
 
 void RenderEngine::doNextTask()
 {
-    qDebug() << " ---- grabNextTask" << m_activeTaskCount << m_queue.count();
+#ifdef DEBUG_VERBOSE
+    qDebug() << " ---- doNextTask" << m_activeTaskCount << m_queue.count();
+#endif
+
     if (m_activeTaskCount >= m_idealThreadCount || !m_queue.count())
         return;
 
