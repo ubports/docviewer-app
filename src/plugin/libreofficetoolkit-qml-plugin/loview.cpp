@@ -41,6 +41,7 @@ LOView::LOView(QQuickItem *parent)
     connect(this, SIGNAL(parentFlickableChanged()), this, SLOT(updateVisibleRect()));
     connect(this, SIGNAL(cacheBufferChanged()), this, SLOT(updateVisibleRect()));
     connect(&m_updateTimer, SIGNAL(timeout()), this, SLOT(updateVisibleRect()));
+    connect(RenderEngine::instance(), SIGNAL(renderFinished(int,QImage)), this, SLOT(renderResultReceived(int,QImage)));
 }
 
 // Returns the parent QML Flickable
@@ -72,7 +73,7 @@ void LOView::setParentFlickable(QQuickItem *flickable)
 // Return the LODocument rendered by this class
 LODocument* LOView::document() const
 {
-    return m_document;
+    return m_document.data();
 }
 
 // Set the LODocument
@@ -81,7 +82,7 @@ void LOView::setDocument(LODocument *doc)
     if (m_document == doc)
         return;
 
-    m_document = doc;
+    m_document = QSharedPointer<LODocument>(doc);
     Q_EMIT documentChanged();
 }
 
@@ -168,7 +169,7 @@ void LOView::updateVisibleRect()
             qDebug() << "Removing tile indexed as" << i.key();
 #endif
 
-            sgtile->dispose();
+            sgtile->deleteLater(); // TODO
             i = m_tiles.erase(i);
         }
     }
@@ -224,8 +225,9 @@ void LOView::createTile(int index, QRect rect)
         qDebug() << "Creating tile indexed as" << index;
 #endif
 
-        auto tile = new SGTileItem(rect, m_document, this);
+        auto tile = new SGTileItem(rect, this);
         m_tiles.insert(index, tile);
+        RenderEngine::instance()->renderArea(m_document, rect, tile->id());
     }
 #ifdef DEBUG_VERBOSE
     else {
@@ -240,7 +242,19 @@ void LOView::scheduleVisibleRectUpdate()
         m_updateTimer.start(20);
 }
 
+void LOView::renderResultReceived(int id, QImage img)
+{
+    auto i = m_tiles.begin();
+    while (i != m_tiles.end()) {
+        SGTileItem* sgtile = i++.value();
+        if (sgtile->id() == id) {
+            sgtile->setData(img);
+            break;
+        }
+    }
+}
+
 LOView::~LOView()
 {
-    //
+    disconnect(RenderEngine::instance(), SIGNAL(renderFinished(int,QImage)), this, SLOT(renderResultReceived(int,QImage)));
 }

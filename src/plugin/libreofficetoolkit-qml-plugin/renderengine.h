@@ -4,41 +4,36 @@
 #include <QObject>
 #include <QImage>
 #include <QSharedPointer>
+#include <QHash>
 
 #include "lodocument.h"
-
-struct RenderRequestData
-{
-    int id;
-
-};
 
 class RenderEngine : public QObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(RenderEngine)
 
-public:
-    void renderTile(QSharedPointer<LODocument> doc, const QRect& area, int id);
-
-Q_SIGNALS:
-    void renderFinished(int id, QImage img);
-
-private:
-    void renderCallback(int id, QImage img);
-
-private:
-
-private:
     static RenderEngine* s_instance;
     RenderEngine(): QObject(nullptr) { }
-    RenderEngine( const RenderEngine& ): QObject(nullptr) {}
-    RenderEngine& operator=( RenderEngine& );
+
 public:
+    void renderArea(const QSharedPointer<LODocument>& doc, const QRect& area, int id);
+
     static RenderEngine* instance() {
         if(!s_instance)
             s_instance = new RenderEngine();
         return s_instance;
     }
+
+Q_SIGNALS:
+    void renderFinished(int id, QImage img);
+
+private:
+    Q_INVOKABLE void internalRenderCallback(int id, QImage img);
+
+private:
+    QHash<int, QSharedPointer<LODocument> > m_requests;
+
 };
 
 #endif // RENDERENGINE_H

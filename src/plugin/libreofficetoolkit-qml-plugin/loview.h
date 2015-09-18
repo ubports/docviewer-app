@@ -20,6 +20,9 @@
 #include <QQuickPaintedItem>
 #include <QQuickItem>
 #include <QTimer>
+#include <QSharedPointer>
+
+#include "renderengine.h"
 
 class LODocument;
 class SGTileItem;
@@ -41,6 +44,7 @@ public:
     QQuickItem* parentFlickable() const;
     void        setParentFlickable(QQuickItem* flickable);
 
+    // TODO REWORK
     LODocument* document() const;
     void        setDocument(LODocument* doc);
 
@@ -60,23 +64,24 @@ private Q_SLOTS:
     void updateViewSize();
     void updateVisibleRect();
     void scheduleVisibleRectUpdate();
+    void renderResultReceived(int id, QImage img);
 
 private:
-    QQuickItem*             m_parentFlickable;
-    LODocument*             m_document;
+    QQuickItem*                 m_parentFlickable;
+    QSharedPointer<LODocument>  m_document;
 
-    qreal                   m_zoomFactor;
-    int                     m_cacheBuffer;
+    qreal                       m_zoomFactor;
+    int                         m_cacheBuffer;
 
-    QRect                   m_visibleArea;
-    QRect                   m_bufferArea;
+    QRect                       m_visibleArea;
+    QRect                       m_bufferArea;
 
-    QTimer                  m_updateTimer;
+    QTimer                      m_updateTimer;
 
-    QMap<int, SGTileItem*>    m_tiles;
+    QMap<int, SGTileItem*>      m_tiles;
 
-    void                    generateTiles(int x1, int y1, int x2, int y2, int tilesPerWidth);
-    void                    createTile(int index, QRect rect);
+    void generateTiles(int x1, int y1, int x2, int y2, int tilesPerWidth);
+    void createTile(int index, QRect rect);
 };
 
 #endif // LOVIEW_H
