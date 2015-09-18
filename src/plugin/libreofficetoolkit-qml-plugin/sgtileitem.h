@@ -31,6 +31,11 @@ protected:
     virtual void geometryChanged(const QRectF &newGeometry, const QRectF &oldGeometry);
 
 private:
+#ifdef DEBUG_SHOW_TILE_BORDER
+    void drawTileBorders(QSGNode* basicNode);
+#endif
+
+private:
     QRect m_area;
     QImage m_data;
     int m_id;
