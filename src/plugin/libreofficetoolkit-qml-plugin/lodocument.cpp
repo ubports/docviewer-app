@@ -106,7 +106,7 @@ QSize LODocument::documentSize() const
 
 // Paint a tile, with size=canvasSize, of the part of the document defined by
 // the rect tileSize.
-QImage LODocument::paintTile(QSize canvasSize, QRect tileSize)
+QImage LODocument::paintTile(const QSize& canvasSize, const QRect& tileSize)
 {
     QImage result = QImage(canvasSize.width(), canvasSize.height(),  QImage::Format_RGB32);
 
