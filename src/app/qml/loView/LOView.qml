@@ -33,8 +33,7 @@ Page {
     // while the second one (%2) refers to the total pages count.
     property string currentPage: i18n.tr("Page %1 of %2").arg(loView.currentPageIndex + 1).arg(loView.count)
 
-    // Reset night mode shader settings when closing the page
-    // Component.onDestruction: mainView.nightModeEnabled = false
+    property alias loDocument: loView.document
 
     LO.Viewer {
         id: loView
@@ -53,13 +52,6 @@ Page {
 
     Scrollbar { flickableItem: loView }
     Scrollbar { flickableItem: loView; align: Qt.AlignBottom }
-
-//    LO.Document {
-//        id: loDocument
-
-//        property bool isLoading: true
-//        path: file.path
-//    }
 
     // *** HEADER ***
     state: "default"
