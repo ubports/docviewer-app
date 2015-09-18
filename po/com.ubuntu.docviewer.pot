@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-09 19:15+0200\n"
+"POT-Creation-Date: 2015-09-18 20:28+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,12 +33,12 @@ msgid "copy %1"
 msgstr ""
 
 #: ../src/app/docviewer-application.cpp:171
-#: /tmp/build-reboot-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/stefano/Progetti/docviewer/LAUNCHPAD/build-reboot-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr ""
 
 #: ../src/app/qml/common/DetailsPage.qml:27
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:112
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:114
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:97
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:83
 msgid "Details"
@@ -77,7 +77,7 @@ msgstr ""
 #: ../src/app/qml/common/RejectedImportDialog.qml:38
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:32
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:53
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:76
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:77
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Close"
@@ -169,7 +169,7 @@ msgstr[1] ""
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:44
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:27
-#: ../src/app/qml/loView/LOViewGotoDialog.qml:52
+#: ../src/app/qml/loView/LOViewGotoDialog.qml:54
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:52
 msgid "Cancel"
 msgstr ""
@@ -272,7 +272,7 @@ msgid "Pick"
 msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:27
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:76
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:77
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Back"
@@ -330,59 +330,55 @@ msgstr ""
 msgid "Page %1 of %2"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:57
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:58
 msgid "LibreOffice text document"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:59
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:60
 msgid "LibreOffice spread sheet"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:61
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:62
 msgid "LibreOffice presentation"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:63
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:64
 msgid "LibreOffice Draw document"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:65
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:66
 msgid "Unknown LibreOffice document"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:67
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:68
 msgid "Unknown type document"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:85
-msgid "Go to page..."
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:101
+msgid "Go to position..."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:106
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:108
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Disable night mode"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:106
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:108
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Enable night mode"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewGotoDialog.qml:25
-#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:25
-msgid "Go to page"
+#: ../src/app/qml/loView/LOViewGotoDialog.qml:27
+msgid "Go to position"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewGotoDialog.qml:26
-#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
-#, qt-format
-msgid "Choose a page between 1 and %1"
+#: ../src/app/qml/loView/LOViewGotoDialog.qml:28
+msgid "Choose a position between 1% and 100%"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewGotoDialog.qml:44
+#: ../src/app/qml/loView/LOViewGotoDialog.qml:46
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:44
 msgid "GO!"
 msgstr ""
@@ -395,6 +391,19 @@ msgstr ""
 
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:38
 msgid "Hide table of contents"
+msgstr ""
+
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:85
+msgid "Go to page..."
+msgstr ""
+
+#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:25
+msgid "Go to page"
+msgstr ""
+
+#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
+#, qt-format
+msgid "Choose a page between 1 and %1"
 msgstr ""
 
 #: ../src/app/qml/textView/TextView.qml:42
@@ -411,6 +420,6 @@ msgstr[1] ""
 msgid "Open"
 msgstr ""
 
-#: /tmp/build-reboot-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/stefano/Progetti/docviewer/LAUNCHPAD/build-reboot-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr ""
