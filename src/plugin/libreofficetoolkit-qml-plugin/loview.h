@@ -46,9 +46,7 @@ public:
 
     Q_INVOKABLE void initializeDocument(const QString& path);
 
-    // TODO REWORK
     LODocument* document() const;
-//    void        setDocument(LODocument* doc);
 
     qreal       zoomFactor() const;
     void        setZoomFactor(qreal zoom);
