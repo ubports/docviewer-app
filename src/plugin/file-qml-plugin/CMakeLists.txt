@@ -8,8 +8,6 @@ set(fileqmlplugin_SRCS
     fswatcher.cpp
     docviewerfile.cpp
     documentviewersingleton.cpp
-    qstorageinfo.cpp
-    qstorageinfo_unix.cpp
 )
 
 add_library(fileqmlplugin MODULE
