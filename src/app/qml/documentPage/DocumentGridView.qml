@@ -37,7 +37,15 @@ MultipleSelectionGridView {
     cellWidth: (mainView.width > units.gu(50)) ? units.gu(24)
                                                : (mainView.width - units.gu(2)) * 0.5
 
-    multipleSelection: contentHubProxy.multipleSelection ? contentHubProxy.multipleSelection : false
+    // We allow multiple selection both in selection and pick mode.
+    multipleSelection: {
+        // No active transfer, then we're in selection mode.
+        if (!contentHubProxy.activeTransfer)
+            return true
+
+        // We have an active transfer, get the value from the content hub proxy
+        return contentHubProxy.multipleSelectionType
+    }
 
     listDelegate: DocumentGridDelegate {
         id: delegate
