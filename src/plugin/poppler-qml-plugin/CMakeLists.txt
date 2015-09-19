@@ -11,7 +11,6 @@ set(popplerqmlplugin_SRCS
     plugin.cpp
     pdfdocument.cpp
     pdfimageprovider.cpp
-    pdfthread.cpp
     pdfitem.cpp
     verticalview.cpp
     pdftocmodel.cpp
@@ -23,7 +22,7 @@ add_library(popplerqmlplugin MODULE
 
 target_link_libraries(popplerqmlplugin poppler-qt5)
 
-qt5_use_modules(popplerqmlplugin Gui Qml Quick Xml)
+qt5_use_modules(popplerqmlplugin Gui Qml Quick Xml Concurrent)
 
 # Copy the plugin, the qmldir file and other assets to the build dir for running in QtCreator
 if(NOT "${CMAKE_CURRENT_SOURCE_DIR}" STREQUAL "${CMAKE_CURRENT_BINARY_DIR}")

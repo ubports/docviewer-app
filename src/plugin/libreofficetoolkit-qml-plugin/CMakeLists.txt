@@ -1,9 +1,13 @@
 set(PLUGIN_DIR DocumentViewer/LibreOffice)
 
-file(GLOB_RECURSE QML_SRCS *.qml *.js)
+file(GLOB_RECURSE QML_SRCS
+    qml/*.qml
+    qml/*.js
+)
+
 include_directories(
-	${CMAKE_CURRENT_SOURCE_DIR}
-	${CMAKE_CURRENT_BINARY_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_BINARY_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/LibreOfficeKit/
 )
 
@@ -12,7 +16,7 @@ set(libreofficetoolkitqmlplugin_SRCS
     plugin.cpp
     lodocument.cpp
     loview.cpp
-    tileitem.cpp
+    sgtileitem.cpp
     ${QML_SRCS}
 )
 

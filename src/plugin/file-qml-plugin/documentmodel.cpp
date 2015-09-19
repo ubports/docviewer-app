@@ -17,13 +17,12 @@
 
 #include "documentmodel.h"
 #include "fswatcher.h"
-#include "qstorageinfo.h"
 #include "documentviewersingleton.h"
 
 #include <QStandardPaths>
 #include <QDir>
 #include <QFileInfo>
-
+#include <QStorageInfo>
 #include <QMimeDatabase>
 #include <QDateTime>
 
@@ -229,15 +228,9 @@ void DocumentModel::checkDefaultDirectories() {
             QString rootPath = volume.rootPath();
 
             if (rootPath.startsWith("/media/")) {
-                // In a Unix filesystem, names are case sentitive.
-                // For that reason we need to check twice.
                 QDir dir;
-
                 dir.setPath(rootPath + "/Documents");
-                if (dir.exists())
-                    m_docsMonitor->addDirectory(dir.canonicalPath());
 
-                dir.setPath(rootPath + "/documents");
                 if (dir.exists())
                     m_docsMonitor->addDirectory(dir.canonicalPath());
             }
