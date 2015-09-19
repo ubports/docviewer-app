@@ -16,7 +16,7 @@
 
 #include "loview.h"
 #include "lodocument.h"
-#include "tileitem.h"
+#include "sgtileitem.h"
 #include "twips.h"
 #include "config.h"
 
@@ -25,11 +25,8 @@
 #include <QTimer>
 #include <QtCore/qmath.h>
 
-// TODO: Use a QQuickItem and implement painting through
-// updatePaintNode(QSGNode * oldNode, UpdatePaintNodeData * data)
-
 LOView::LOView(QQuickItem *parent)
-    : QQuickPaintedItem(parent)
+    : QQuickItem(parent)
     , m_parentFlickable(nullptr)
     , m_document(nullptr)
     , m_zoomFactor(1.0)
@@ -44,18 +41,6 @@ LOView::LOView(QQuickItem *parent)
     connect(this, SIGNAL(parentFlickableChanged()), this, SLOT(updateVisibleRect()));
     connect(this, SIGNAL(cacheBufferChanged()), this, SLOT(updateVisibleRect()));
     connect(&m_updateTimer, SIGNAL(timeout()), this, SLOT(updateVisibleRect()));
-}
-
-void LOView::paint(QPainter *painter)
-{
-    Q_FOREACH(TileItem* tile, m_tiles) {
-        painter->drawImage(tile->area(), tile->texture());
-        tile->setPainted(true);
-
-#ifdef DEBUG_SHOW_TILE_BORDER
-        painter->drawRect(tile->area());
-#endif
-    }
 }
 
 // Returns the parent QML Flickable
@@ -170,20 +155,36 @@ void LOView::updateVisibleRect()
     if (!m_tiles.isEmpty()) {
         auto i = m_tiles.begin();
         while (i != m_tiles.end()) {
-            TileItem* tile = i.value();
+            SGTileItem* sgtile = i.value();
 
-            if (!m_bufferArea.intersects(tile->area())) {
-                tile->releaseTexture();
-                i = m_tiles.erase(i);
-
-#ifdef DEBUG_VERBOSE
-                qDebug() << "Removing tile indexed as" << i.key();
-#endif
-            } else {
-                ++i;
+            // Ok - we still need this item.
+            if (m_bufferArea.intersects(sgtile->area())) {
+                i++;
+                continue;
             }
+
+            // Out of buffer - we should delete this item.
+#ifdef DEBUG_VERBOSE
+            qDebug() << "Removing tile indexed as" << i.key();
+#endif
+
+            sgtile->dispose();
+            i = m_tiles.erase(i);
         }
     }
+
+    /*
+      FIXME: It seems that LOView loads more tiles than necessary.
+      This can be easily tested with DEBUG_SHOW_TILE_BORDER enabled.
+
+      Step to reproduce:
+        1) Open Document Viewer
+        2) Resize the window, BEFORE opening any LibreOffice document
+           (Trying to resize the window or scrolling the Flickable when the
+           document is already loaded causes bad flickering)
+        3) Outside the document area, at the bottom-right corner, there are
+           a few tiles that should not be visible/rendered/generated.
+    */
 
     // Number of tiles per row
     int tilesPerWidth           = qCeil(this->width() / TILE_SIZE);
@@ -223,11 +224,7 @@ void LOView::createTile(int index, QRect rect)
         qDebug() << "Creating tile indexed as" << index;
 #endif
 
-        auto tile = new TileItem(rect, m_document);
-        connect(tile, SIGNAL(textureChanged()), this, SLOT(update()));
-        tile->requestTexture();
-
-        // Append the tile in the map
+        auto tile = new SGTileItem(rect, m_document, this);
         m_tiles.insert(index, tile);
     }
 #ifdef DEBUG_VERBOSE

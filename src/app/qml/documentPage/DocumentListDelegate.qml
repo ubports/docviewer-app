@@ -23,6 +23,8 @@ import "../common/utils.js" as Utils
 import "../upstreamComponents"
 
 ListItemWithActions {
+    property QtObject documentDelegateActions: DocumentDelegateActions { }
+
     function formattedDateTime() {
         var date = new Date(model.date)
         var diff = model.dateDiff
@@ -30,16 +32,14 @@ ListItemWithActions {
         if (sortSettings.sortMode !== 0) {  // The sort rule is not "by date"
             switch(diff) {
             case 0:     // DocumentsModel.Today
-                // TRANSLATORS: this is a datetime formatting string, and the
-                // singlequote is an escape character.
-                // See http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-                return Qt.formatDateTime(date, i18n.tr("'Today', hh:mm"))
+                // TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
+                // http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
+                return i18n.tr("Today, %1").arg(Qt.formatTime(date, Qt.locale().timeFormat(Locale.ShortFormat)))
 
             case 1:     // DocumentsModel.Yesterday
-                // TRANSLATORS: this is a datetime formatting string, and the
-                // singlequote is an escape character.
-                // See http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-                return Qt.formatDateTime(date, i18n.tr("'Yesterday', hh:mm"))
+                // TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
+                // http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
+                return i18n.tr("Yesterday, %1").arg(Qt.formatTime(date, Qt.locale().timeFormat(Locale.ShortFormat)))
 
             default:    // DocumentsModel.LastWeek || DocumentsModel.LastMonth || DocumentsModel.Earlier
                 // TRANSLATORS: this is a datetime formatting string,
@@ -70,23 +70,16 @@ ListItemWithActions {
 
     locked: documentPage.state == "pickMode"
 
-    // TODO: NEEDS-DESIGN: Enable left action. Still need to find an equivalent for GridDelegate.
-   /* leftSideAction: Action {
-        iconName: "delete"
-        text: i18n.tr("Delete")
-        onTriggered: {
-            PopupUtils.open(Qt.resolvedUrl("DeleteFileDialog.qml"),
-                            documentPage, { path: model.filePath })
-        }
-    }*/
+    leftSideAction: documentDelegateActions.leadingActions[0]
+    rightSideActions: documentDelegateActions.trailingActions
 
     contents: RowLayout {
         anchors.fill: parent
         spacing: units.gu(2)
 
         Icon {
-            width: height
-            height: units.gu(5)
+            Layout.preferredWidth: height
+            Layout.preferredHeight: units.gu(5)
 
             // At the moment the suru icon theme doesn't have much icons.
             name: {
@@ -131,7 +124,7 @@ ListItemWithActions {
 
                 Icon {
                     anchors.fill: parent
-                    source: Qt.resolvedUrl("../../graphics/sd-card-symbolic.png")
+                    name: "sdcard-symbolic"
                 }
             }
         }
