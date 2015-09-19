@@ -65,13 +65,13 @@ Page {
 
             Scrollbar { flickableItem: loView }
             Scrollbar { flickableItem: loView; align: Qt.AlignBottom }
-
-            // *** HEADER ***
-            state: "default"
-            states: LOViewDefaultHeader {
-                name: "default"
-                targetPage: loPage
-            }
         }
+    }
+
+    // *** HEADER ***
+    state: "default"
+    states: LOViewDefaultHeader {
+        name: "default"
+        targetPage: loPage
     }
 }
