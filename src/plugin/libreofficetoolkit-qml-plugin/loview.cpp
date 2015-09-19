@@ -83,16 +83,6 @@ LODocument* LOView::document() const
     return m_document.data();
 }
 
-// Set the LODocument
-//void LOView::setDocument(LODocument *doc)
-//{
-//    if (m_document == doc)
-//        return;
-
-//    m_document = QSharedPointer<LODocument>(doc);
-//    Q_EMIT documentChanged();
-//}
-
 // Not used yet.
 qreal LOView::zoomFactor() const
 {
