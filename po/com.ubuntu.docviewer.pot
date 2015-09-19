@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-09 19:15+0200\n"
+"POT-Creation-Date: 2015-09-19 17:18+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,7 +33,7 @@ msgid "copy %1"
 msgstr ""
 
 #: ../src/app/docviewer-application.cpp:171
-#: /tmp/build-reboot-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/qtros/dev/build-ubuntu-docviewer-app-async-lok-loading-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr ""
 
@@ -323,13 +323,6 @@ msgstr ""
 msgid "Reverse order"
 msgstr ""
 
-#. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
-#. while the second one (%2) refers to the total pages count.
-#: ../src/app/qml/loView/LOView.qml:34 ../src/app/qml/pdfView/PdfView.qml:34
-#, qt-format
-msgid "Page %1 of %2"
-msgstr ""
-
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:57
 msgid "LibreOffice text document"
 msgstr ""
@@ -397,6 +390,13 @@ msgstr ""
 msgid "Hide table of contents"
 msgstr ""
 
+#. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
+#. while the second one (%2) refers to the total pages count.
+#: ../src/app/qml/pdfView/PdfView.qml:34
+#, qt-format
+msgid "Page %1 of %2"
+msgstr ""
+
 #: ../src/app/qml/textView/TextView.qml:42
 msgid "Loading..."
 msgstr ""
@@ -411,6 +411,6 @@ msgstr[1] ""
 msgid "Open"
 msgstr ""
 
-#: /tmp/build-reboot-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/qtros/dev/build-ubuntu-docviewer-app-async-lok-loading-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr ""
