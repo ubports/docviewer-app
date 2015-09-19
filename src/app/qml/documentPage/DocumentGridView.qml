@@ -82,5 +82,5 @@ MultipleSelectionGridView {
         }
     }
 
-    Component.onCompleted: { if (DOC_VIEWER.pickModeEnabled) documentGridView.startSelection(); }
+    Component.onCompleted: { if (mainView.pickMode) documentGridView.startSelection(); }
 }

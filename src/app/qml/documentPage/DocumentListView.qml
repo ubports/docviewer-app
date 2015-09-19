@@ -187,5 +187,5 @@ MultipleSelectionListView {
         }
     }
 
-    Component.onCompleted: { if (DOC_VIEWER.pickModeEnabled) documentListView.startSelection(); }
+    Component.onCompleted: { if (mainView.pickMode) documentListView.startSelection(); }
 }
