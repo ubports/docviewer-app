@@ -33,8 +33,7 @@ Page {
     // while the second one (%2) refers to the total pages count.
     property string currentPage: i18n.tr("Page %1 of %2").arg(loView.currentPageIndex + 1).arg(loView.count)
 
-    // Reset night mode shader settings when closing the page
-    // Component.onDestruction: mainView.nightModeEnabled = false
+    property alias loDocument: loView.document
 
     LO.Viewer {
         id: loView
@@ -42,7 +41,7 @@ Page {
         anchors.fill: parent
 
         clip: true
-        document: loDocument
+        documentPath: file.path
 
         Component.onCompleted: {
             // WORKAROUND: Fix for wrong grid unit size
@@ -54,29 +53,10 @@ Page {
     Scrollbar { flickableItem: loView }
     Scrollbar { flickableItem: loView; align: Qt.AlignBottom }
 
-    LO.Document {
-        id: loDocument
-
-        property bool isLoading: true
-        path: file.path
-
-       /* onPagesLoaded: {
-            isLoading = false;
-
-            var title = getDocumentInfo("Title")
-            if (title !== "")
-                loPage.title = title;
-
-            // Hide header when the document is ready
-            mainView.setHeaderVisibility(false);
-        }*/
-    }
-
     // *** HEADER ***
     state: "default"
     states: LOViewDefaultHeader {
         name: "default"
         targetPage: loPage
-        //activityRunning: loView.currentPageItem.status == Image.Loading || loDocument.isLoading
     }
 }

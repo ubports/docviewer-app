@@ -8,47 +8,39 @@
 #include <QtConcurrent/QtConcurrent>
 #include <QAtomicInteger>
 
-enum SGTileItemState
-{
-    SgstInitial = 1,
-    SgstRendering,
-    SgstActive,
-    SgstDisposed
-};
-
 class LODocument;
 
 class SGTileItem : public QQuickItem
 {
     Q_OBJECT
 public:
-    SGTileItem(const QRect &area, LODocument *document, QQuickItem *parent = 0);
+    SGTileItem(const QRect& area, QQuickItem *parent = 0);
     ~SGTileItem();
 
-    inline QRect area() const { return m_area; }
-    inline void setArea(const QRect &area) { m_area = area; }
+    inline const QRect& area() { return m_area; }
+    inline void setArea(const QRect& rect) { m_area = rect; }
 
-    inline LODocument* document() const { return m_document; }
-    inline void setDocument(LODocument* document) { m_document = document; }
+    inline int id() { return m_id; }
+    inline void setId(int id) { m_id = id; }
 
-    void dispose();
+    inline QImage data() { return m_data; }
+    inline void setData(QImage data) { m_data = data; update(); }
 
 protected:
     virtual QSGNode *updatePaintNode(QSGNode *, UpdatePaintNodeData *);
     virtual void geometryChanged(const QRectF &newGeometry, const QRectF &oldGeometry);
 
 private:
-    Q_INVOKABLE void renderCallback(QImage image);
-
-signals:
+#ifdef DEBUG_SHOW_TILE_BORDER
+    void drawTileBorders(QSGNode* basicNode);
+#endif
 
 private:
     QRect m_area;
-    LODocument* m_document;
     QImage m_data;
-    QAtomicInteger<int> m_state;
+    int m_id;
 
-public slots:
+    static int s_idCounter;
 };
 
 #endif // SGTILEITEM_H
