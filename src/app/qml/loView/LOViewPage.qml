@@ -26,32 +26,47 @@ Page {
     title: Utils.getNameOfFile(file.path);
 
     // Disable header auto-hide.
-    // TODO: Show/hide header if a user taps the page
     flickable: null
 
-    // TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
-    // while the second one (%2) refers to the total pages count.
-    property string currentPage: i18n.tr("Page %1 of %2").arg(loView.currentPageIndex + 1).arg(loView.count)
+    Loader {
+        id: contentLoader
 
-    property alias loDocument: loView.document
-
-    LO.Viewer {
-        id: loView
-        objectName: "loView"
+        asynchronous: true
         anchors.fill: parent
-
-        clip: true
-        documentPath: file.path
-
-        Component.onCompleted: {
-            // WORKAROUND: Fix for wrong grid unit size
-            flickDeceleration = 1500 * units.gridUnit / 8
-            maximumFlickVelocity = 2500 * units.gridUnit / 8
-        }
+        sourceComponent: loPageContentComponent
     }
 
-    Scrollbar { flickableItem: loView }
-    Scrollbar { flickableItem: loView; align: Qt.AlignBottom }
+    ActivityIndicator {
+        running: contentLoader.status != Loader.Ready
+        visible: running
+        anchors.centerIn: parent
+    }
+
+    Component {
+        id: loPageContentComponent
+
+        Item {
+            property alias loDocument: loView.document
+
+            LO.Viewer {
+                id: loView
+                objectName: "loView"
+                anchors.fill: parent
+
+                clip: true
+                documentPath: file.path
+
+                Component.onCompleted: {
+                    // WORKAROUND: Fix for wrong grid unit size
+                    flickDeceleration = 1500 * units.gridUnit / 8
+                    maximumFlickVelocity = 2500 * units.gridUnit / 8
+                }
+            }
+
+            Scrollbar { flickableItem: loView }
+            Scrollbar { flickableItem: loView; align: Qt.AlignBottom }
+        }
+    }
 
     // *** HEADER ***
     state: "default"
