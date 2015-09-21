@@ -125,7 +125,7 @@ QString DocviewerUtils::buildDestinationPath(const QString &destinationDir, cons
 // Return the path of the file, if found in the storageLocation paths,
 // otherwise return an empty string.
 // Used for prevent importing of a second copy of a file through ContentHub.
-QString DocumentViewerSingleton::checkIfFileAlreadyImported(const QString &filePath, const QStringList &storageLocationList)
+QString DocviewerUtils::checkIfFileAlreadyImported(const QString &filePath, const QStringList &storageLocationList)
 {
     QFileInfo fi(filePath);
     QStringList files;
