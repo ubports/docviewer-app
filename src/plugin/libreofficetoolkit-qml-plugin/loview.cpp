@@ -41,6 +41,7 @@ LOView::LOView(QQuickItem *parent)
     connect(this, SIGNAL(parentFlickableChanged()), this, SLOT(updateVisibleRect()));
     connect(this, SIGNAL(cacheBufferChanged()), this, SLOT(updateVisibleRect()));
     connect(&m_updateTimer, SIGNAL(timeout()), this, SLOT(updateVisibleRect()));
+    connect(RenderEngine::instance(), SIGNAL(renderFinished(int,QImage)), this, SLOT(renderResultReceived(int,QImage)));
 }
 
 // Returns the parent QML Flickable
@@ -69,20 +70,17 @@ void LOView::setParentFlickable(QQuickItem *flickable)
     Q_EMIT parentFlickableChanged();
 }
 
+void LOView::initializeDocument(const QString &path)
+{
+    m_document = QSharedPointer<LODocument>(new LODocument());
+    m_document->setPath(path);
+    Q_EMIT documentChanged();
+}
+
 // Return the LODocument rendered by this class
 LODocument* LOView::document() const
 {
-    return m_document;
-}
-
-// Set the LODocument
-void LOView::setDocument(LODocument *doc)
-{
-    if (m_document == doc)
-        return;
-
-    m_document = doc;
-    Q_EMIT documentChanged();
+    return m_document.data();
 }
 
 // Not used yet.
@@ -168,7 +166,8 @@ void LOView::updateVisibleRect()
             qDebug() << "Removing tile indexed as" << i.key();
 #endif
 
-            sgtile->dispose();
+            RenderEngine::instance()->dequeueTask(sgtile->id());
+            sgtile->deleteLater();
             i = m_tiles.erase(i);
         }
     }
@@ -224,8 +223,9 @@ void LOView::createTile(int index, QRect rect)
         qDebug() << "Creating tile indexed as" << index;
 #endif
 
-        auto tile = new SGTileItem(rect, m_document, this);
+        auto tile = new SGTileItem(rect, this);
         m_tiles.insert(index, tile);
+        RenderEngine::instance()->enqueueTask(m_document, rect, tile->id());
     }
 #ifdef DEBUG_VERBOSE
     else {
@@ -240,7 +240,22 @@ void LOView::scheduleVisibleRectUpdate()
         m_updateTimer.start(20);
 }
 
+void LOView::renderResultReceived(int id, QImage img)
+{
+    for (auto i = m_tiles.begin(); i != m_tiles.end(); ++i) {
+        SGTileItem* sgtile = i.value();
+        if (sgtile->id() == id) {
+            sgtile->setData(img);
+            break;
+        }
+    }
+}
+
 LOView::~LOView()
 {
-    //
+    disconnect(RenderEngine::instance(), SIGNAL(renderFinished(int,QImage)), this, SLOT(renderResultReceived(int,QImage)));
+
+    // Remove all tasks from rendering queue.
+    for (auto i = m_tiles.begin(); i != m_tiles.end(); ++i)
+        RenderEngine::instance()->dequeueTask(i.value()->id());
 }

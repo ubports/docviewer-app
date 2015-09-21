@@ -17,7 +17,7 @@
 
 #include "documentmodel.h"
 #include "fswatcher.h"
-#include "documentviewersingleton.h"
+#include "docviewerutils.h"
 
 #include <QStandardPaths>
 #include <QDir>
@@ -115,7 +115,7 @@ DocumentItem DocumentModel::createEntry(const QString &path)
 
 bool DocumentModel::isFileSupported(const QString &path)
 {
-    return DocumentViewerSingleton::isFileSupported(path);
+    return DocviewerUtils::isFileSupported(path);
 }
 
 QHash<int, QByteArray> DocumentModel::roleNames() const

@@ -14,13 +14,13 @@
   along with this program. If not, see http://www.gnu.org/licenses/.
 */
 
-#ifndef DOCUMENTVIEWERSINGLETON_H
-#define DOCUMENTVIEWERSINGLETON_H
+#ifndef DOCVIEWERUTILS_H
+#define DOCVIEWERUTILS_H
 
 #include <QObject>
 #include <QThread>
 
-class DocumentViewerSingleton : public QObject
+class DocviewerUtils : public QObject
 {
     Q_OBJECT
 
@@ -34,4 +34,4 @@ public:
     Q_INVOKABLE static QString buildDestinationPath(const QString &destinationDir, const QString &sourcePath);
 };
 
-#endif // DOCUMENTVIEWERSINGLETON_H
+#endif // DOCVIEWERUTILS_H

@@ -24,6 +24,13 @@ Flickable {
     property alias zoomFactor:  view.zoomFactor
     property alias cacheBuffer: view.cacheBuffer
 
+    property string documentPath: ""
+
+    onDocumentPathChanged: {
+        if (documentPath)
+            view.initializeDocument(documentPath)
+    }
+
     contentHeight: view.height * view.zoomFactor
     contentWidth: view.width * view.zoomFactor
 

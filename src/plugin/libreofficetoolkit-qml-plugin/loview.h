@@ -20,6 +20,9 @@
 #include <QQuickPaintedItem>
 #include <QQuickItem>
 #include <QTimer>
+#include <QSharedPointer>
+
+#include "renderengine.h"
 
 class LODocument;
 class SGTileItem;
@@ -28,7 +31,7 @@ class LOView : public QQuickItem
 {
     Q_OBJECT
     Q_PROPERTY(QQuickItem* parentFlickable READ parentFlickable WRITE setParentFlickable NOTIFY parentFlickableChanged)
-    Q_PROPERTY(LODocument* document        READ document        WRITE setDocument        NOTIFY documentChanged)
+    Q_PROPERTY(LODocument* document        READ document        /*WRITE setDocument*/    NOTIFY documentChanged)
 
     // TODO: Implement zoom!
     Q_PROPERTY(qreal       zoomFactor      READ zoomFactor      WRITE setZoomFactor      NOTIFY zoomFactorChanged)
@@ -41,8 +44,9 @@ public:
     QQuickItem* parentFlickable() const;
     void        setParentFlickable(QQuickItem* flickable);
 
+    Q_INVOKABLE void initializeDocument(const QString& path);
+
     LODocument* document() const;
-    void        setDocument(LODocument* doc);
 
     qreal       zoomFactor() const;
     void        setZoomFactor(qreal zoom);
@@ -60,23 +64,24 @@ private Q_SLOTS:
     void updateViewSize();
     void updateVisibleRect();
     void scheduleVisibleRectUpdate();
+    void renderResultReceived(int id, QImage img);
 
 private:
-    QQuickItem*             m_parentFlickable;
-    LODocument*             m_document;
+    QQuickItem*                 m_parentFlickable;
+    QSharedPointer<LODocument>  m_document;
 
-    qreal                   m_zoomFactor;
-    int                     m_cacheBuffer;
+    qreal                       m_zoomFactor;
+    int                         m_cacheBuffer;
 
-    QRect                   m_visibleArea;
-    QRect                   m_bufferArea;
+    QRect                       m_visibleArea;
+    QRect                       m_bufferArea;
 
-    QTimer                  m_updateTimer;
+    QTimer                      m_updateTimer;
 
-    QMap<int, SGTileItem*>    m_tiles;
+    QMap<int, SGTileItem*>      m_tiles;
 
-    void                    generateTiles(int x1, int y1, int x2, int y2, int tilesPerWidth);
-    void                    createTile(int index, QRect rect);
+    void generateTiles(int x1, int y1, int x2, int y2, int tilesPerWidth);
+    void createTile(int index, QRect rect);
 };
 
 #endif // LOVIEW_H
