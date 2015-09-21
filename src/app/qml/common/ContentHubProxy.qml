@@ -25,10 +25,12 @@ Item {
 
     property var activeTransfer
 
+    // This property is used in ../documentPage/Document(Grid|List)View.qml
+    // so that we avoid to import Ubuntu.Content module outside this proxy.
+    property bool multipleSelectionType: !activeTransfer || activeTransfer.selectionType == ContentTransfer.Multiple
+
     property alias rejectedDocuments: rejectedDocsModel
     property alias importedDocuments: importedDocsModel
-
-    property bool multipleSelection: activeTransfer ? (activeTransfer.selectionType !== ContentTransfer.Single) : true
 
     ListModel { id: rejectedDocsModel }
     ListModel { id: importedDocsModel }
@@ -41,7 +43,7 @@ Item {
         target: ContentHub
 
         onImportRequested: {
-             activeTransfer = transfer;
+             activeTransfer = transfer
 
             if (activeTransfer.state === ContentTransfer.Charged) {
                 mainView.switchToBrowseMode()
@@ -82,7 +84,7 @@ Item {
         }
 
         onExportRequested: {
-            activeTransfer = transfer;
+            activeTransfer = transfer
             mainView.switchToPickMode()
         }
     }
@@ -100,11 +102,11 @@ Item {
                             {
                                 parent: mainView,
                                 model: contentHubProxy.importedDocuments
-                            });
+                            })
             } else {
                 // It has been imported just a document, open it when
                 // user taps the action button.
-                mainView.openDocument(contentHubProxy.importedDocuments.get(0).path);
+                mainView.openDocument(contentHubProxy.importedDocuments.get(0).path)
             }
         }
 
@@ -118,7 +120,7 @@ Item {
         }
 
         function importDocument(sourcePath, destPath) {
-            DocumentViewer.copy(sourcePath, destPath);
+            DocumentViewer.copy(sourcePath, destPath)
             importedDocsModel.append({ path: destPath })
         }
 
@@ -136,7 +138,7 @@ Item {
                             {
                                 parent: mainView,
                                 model: contentHubProxy.rejectedDocuments
-                            });
+                            })
                 rejectedDialog.closed.connect(openDocument)
             } else {
                 // Open the document, or show a pick dialog if more than one have been imported.

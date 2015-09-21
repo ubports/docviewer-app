@@ -14,7 +14,7 @@
   along with this program. If not, see http://www.gnu.org/licenses/.
 */
 
-#include "documentviewersingleton.h"
+#include "docviewerutils.h"
 
 #include <QFileInfo>
 #include <QDir>
@@ -23,7 +23,7 @@
 #include <QDirIterator>
 #include <QDateTime>
 
-bool DocumentViewerSingleton::exists(const QString &path)
+bool DocviewerUtils::exists(const QString &path)
 {
     QFileInfo fi(path);
 
@@ -34,12 +34,12 @@ bool DocumentViewerSingleton::exists(const QString &path)
     return QDir(path).exists();
 }
 
-bool DocumentViewerSingleton::copy(const QString &source, const QString &destination)
+bool DocviewerUtils::copy(const QString &source, const QString &destination)
 {
     return QFile::copy(source, destination);
 }
 
-bool DocumentViewerSingleton::isFileSupported(const QString &path)
+bool DocviewerUtils::isFileSupported(const QString &path)
 {
     QMimeDatabase mdb;
     const QString mimetype = mdb.mimeTypeForFile(path).name();
@@ -55,12 +55,12 @@ bool DocumentViewerSingleton::isFileSupported(const QString &path)
             || mimetype == "application/vnd.ms-powerpoint";
 }
 
-QString DocumentViewerSingleton::getXdgDocumentsLocation()
+QString DocviewerUtils::getXdgDocumentsLocation()
 {
     return QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
 }
 
-QString DocumentViewerSingleton::buildDestinationPath(const QString &destinationDir, const QString &sourcePath)
+QString DocviewerUtils::buildDestinationPath(const QString &destinationDir, const QString &sourcePath)
 {
     QFileInfo fi(sourcePath);
 
