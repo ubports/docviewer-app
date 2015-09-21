@@ -48,6 +48,16 @@ MultipleSelectionListView {
         }
     }
 
+    // We allow multiple selection both in selection and pick mode.
+    multipleSelection: {
+        // No active transfer, then we're in selection mode.
+        if (!contentHubProxy.activeTransfer)
+            return true
+
+        // We have an active transfer, get the value from the content hub proxy
+        return contentHubProxy.multipleSelectionType
+    }
+
     listDelegate: DocumentListDelegate {
         id: delegate
 
@@ -185,5 +195,5 @@ MultipleSelectionListView {
         }
     }
 
-    Component.onCompleted: { if (DOC_VIEWER.pickModeEnabled) documentListView.startSelection(); }
+    Component.onCompleted: { if (mainView.pickMode) documentListView.startSelection(); }
 }

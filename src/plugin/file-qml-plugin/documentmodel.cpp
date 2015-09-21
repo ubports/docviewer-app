@@ -17,6 +17,7 @@
 
 #include "documentmodel.h"
 #include "fswatcher.h"
+#include "docviewerutils.h"
 
 #include <QStandardPaths>
 #include <QDir>
@@ -114,19 +115,7 @@ DocumentItem DocumentModel::createEntry(const QString &path)
 
 bool DocumentModel::isFileSupported(const QString &path)
 {
-    QMimeDatabase db;
-    QString mimetype = db.mimeTypeForFile(path).name();
-
-    return (mimetype.startsWith("text/")
-            || mimetype == "application/pdf"
-            || mimetype.startsWith("application/vnd.oasis.opendocument")
-            || mimetype == "application/msword")
-            || mimetype == "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-            || mimetype == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-            || mimetype == "application/vnd.openxmlformats-officedocument.presentationml.presentation"
-            || mimetype == "application/msword"
-            || mimetype == "application/vnd.ms-excel"
-            || mimetype == "application/vnd.ms-powerpoint";
+    return DocviewerUtils::isFileSupported(path);
 }
 
 QHash<int, QByteArray> DocumentModel::roleNames() const
