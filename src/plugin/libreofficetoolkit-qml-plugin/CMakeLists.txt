@@ -19,6 +19,7 @@ set(libreofficetoolkitqmlplugin_SRCS
     sgtileitem.cpp
     lopartsimageprovider.cpp
     lopartsmodel.cpp
+    renderengine.cpp
     ${QML_SRCS}
 )
 

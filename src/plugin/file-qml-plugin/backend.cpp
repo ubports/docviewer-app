@@ -21,6 +21,16 @@
 #include "backend.h"
 #include "documentmodel.h"
 #include "docviewerfile.h"
+#include "docviewerutils.h"
+
+static QObject *registerDocviewerUtils (QQmlEngine *engine, QJSEngine *scriptEngine)
+{
+    Q_UNUSED(engine)
+    Q_UNUSED(scriptEngine)
+
+    DocviewerUtils *ch = new DocviewerUtils();
+    return ch;
+}
 
 void BackendPlugin::registerTypes(const char *uri)
 {
@@ -30,6 +40,8 @@ void BackendPlugin::registerTypes(const char *uri)
 
     qmlRegisterType<DocumentModel>(uri, 1, 0, "DocumentsModel");
     qmlRegisterType<DocviewerFile>(uri, 1, 0, "File");
+
+    qmlRegisterSingletonType<DocviewerUtils>(uri, 1, 0, "DocumentViewer", registerDocviewerUtils);
 }
 
 void BackendPlugin::initializeEngine(QQmlEngine *engine, const char *uri)

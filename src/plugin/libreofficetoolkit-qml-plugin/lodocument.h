@@ -50,7 +50,7 @@ public:
     };
 
     QString path() const;
-    void setPath(QString &pathName);
+    void setPath(const QString& pathName);
 
     int currentPart();
     void setCurrentPart(int index);
@@ -58,7 +58,8 @@ public:
     DocumentType documentType() const;
 
     QSize documentSize() const;
-    QImage paintTile(QSize canvasSize, QRect tileSize, qreal zoom = 1.0);
+
+    QImage paintTile(const QSize& canvasSize, const QRect& tileSize, const qreal& zoom = 1.0);
 
     int partsCount();
  
@@ -78,7 +79,7 @@ private:
     QString m_path;
     DocumentType m_docType;
 
-    bool loadDocument(QString &pathNAme);
+    bool loadDocument(const QString &pathNAme);
 
     lok::Document *m_document;
 

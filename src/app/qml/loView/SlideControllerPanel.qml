@@ -38,7 +38,7 @@ Rectangle {
 
         AbstractButton {
             width: units.gu(4); height: parent.height
-            onClicked: loDocument.currentPart -= 1
+            onClicked: loPageContentLoader.item.loDocument.currentPart -= 1
 
             Icon {
                 id: icon
@@ -49,12 +49,13 @@ Rectangle {
         }
 
         Label {
-            text: "%1 of %2".arg(loDocument.currentPart + 1).arg(loDocument.partsCount)
+            text: "%1 of %2".arg(loPageContentLoader.item.loDocument.currentPart + 1)
+                            .arg(loPageContentLoader.item.loDocument.partsCount)
         }
 
         AbstractButton {
             width: units.gu(4); height: parent.height
-            onClicked: loDocument.currentPart += 1
+            onClicked: loPageContentLoader.item.loDocument.currentPart += 1
 
             Icon {
                 anchors.centerIn: parent

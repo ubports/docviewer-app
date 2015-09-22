@@ -52,7 +52,10 @@ PageHeadState {
 
                 fontSize: "small"
                 text: {
-                    switch(loDocument.documentType) {
+                    if (!loPageContentLoader.item)
+                        return i18n.tr("Loading...")
+
+                    switch(loPageContentLoader.item.loDocument.documentType) {
                     case 0:
                         return i18n.tr("LibreOffice text document")
                     case 1:

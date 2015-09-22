@@ -65,7 +65,7 @@ TileBase {
         }
 
         visible: model.isFromExternalStorage
-        source: Qt.resolvedUrl("../../graphics/sd-card-symbolic.png")
+        name: "sdcard-symbolic"
     }
 
     // Document mimetype icon

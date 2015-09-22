@@ -48,6 +48,7 @@ LOView::LOView(QQuickItem *parent)
     connect(this, SIGNAL(parentFlickableChanged()), this, SLOT(updateVisibleRect()));
     connect(this, SIGNAL(cacheBufferChanged()), this, SLOT(updateVisibleRect()));
     connect(&m_updateTimer, SIGNAL(timeout()), this, SLOT(updateVisibleRect()));
+    connect(RenderEngine::instance(), SIGNAL(renderFinished(int,QImage)), this, SLOT(renderResultReceived(int,QImage)));
 }
 
 // Returns the parent QML Flickable
@@ -76,25 +77,23 @@ void LOView::setParentFlickable(QQuickItem *flickable)
     Q_EMIT parentFlickableChanged();
 }
 
+void LOView::initializeDocument(const QString &path)
+{
+    if (m_document.data())
+        m_document.data()->disconnect(this);
+
+    m_document = QSharedPointer<LODocument>(new LODocument());
+    m_document->setPath(path);
+
+    connect(m_document.data(), SIGNAL(currentPartChanged()), this, SLOT(invalidateAllTiles()));
+
+    Q_EMIT documentChanged();
+}
+
 // Return the LODocument rendered by this class
 LODocument* LOView::document() const
 {
-    return m_document;
-}
-
-// Set the LODocument
-void LOView::setDocument(LODocument *doc)
-{
-    if (m_document == doc)
-        return;
-
-    if (m_document)
-        m_document->disconnect(this);
-
-    m_document = doc;
-    Q_EMIT documentChanged();
-
-    connect(m_document, SIGNAL(currentPartChanged()), this, SLOT(invalidateAllTiles()));
+    return m_document.data();
 }
 
 qreal LOView::zoomFactor() const
@@ -214,11 +213,11 @@ void LOView::updateVisibleRect()
         SGTileItem* tile = m_tiles.first();
 
         if (tile->zoomFactor() != m_zoomFactor) {
+            clearView();
+
 #ifdef DEBUG_VERBOSE
             qDebug() << "Zoom value of tiles is different than the current zoom value. Erasing cache...";
 #endif
-
-            m_tiles.clear();
         }
     }
 
@@ -251,7 +250,8 @@ void LOView::updateVisibleRect()
             qDebug() << "Removing tile indexed as" << i.key();
 #endif
 
-            sgtile->dispose();
+            RenderEngine::instance()->dequeueTask(sgtile->id());
+            sgtile->deleteLater();
             i = m_tiles.erase(i);
         }
     }
@@ -303,9 +303,8 @@ void LOView::generateTiles(int x1, int y1, int x2, int y2, int tilesPerWidth)
 // FIXME: Just for the moment. In zoom branch we have all we need :)
 void LOView::invalidateAllTiles()
 {
-    m_tiles.clear();
- 
-    this->updateViewSize();
+    clearView();
+    updateViewSize();
 }
 
 void LOView::createTile(int index, QRect rect)
@@ -315,8 +314,9 @@ void LOView::createTile(int index, QRect rect)
         qDebug() << "Creating tile indexed as" << index;
 #endif
 
-        auto tile = new SGTileItem(rect, m_document, m_zoomFactor, this);
+        auto tile = new SGTileItem(rect, m_zoomFactor, this);
         m_tiles.insert(index, tile);
+        RenderEngine::instance()->enqueueTask(m_document, rect, m_zoomFactor, tile->id());
     }
 #ifdef DEBUG_VERBOSE
     else {
@@ -331,7 +331,30 @@ void LOView::scheduleVisibleRectUpdate()
         m_updateTimer.start(20);
 }
 
+void LOView::renderResultReceived(int id, QImage img)
+{
+    for (auto i = m_tiles.begin(); i != m_tiles.end(); ++i) {
+        SGTileItem* sgtile = i.value();
+        if (sgtile->id() == id) {
+            sgtile->setData(img);
+            break;
+        }
+    }
+}
+
+void LOView::clearView()
+{
+    for (auto i = m_tiles.begin(); i != m_tiles.end(); ++i)
+        RenderEngine::instance()->dequeueTask(i.value()->id());
+
+    m_tiles.clear();
+}
+
 LOView::~LOView()
 {
-    //
+    disconnect(RenderEngine::instance(), SIGNAL(renderFinished(int,QImage)), this, SLOT(renderResultReceived(int,QImage)));
+
+    // Remove all tasks from rendering queue.
+    for (auto i = m_tiles.begin(); i != m_tiles.end(); ++i)
+        RenderEngine::instance()->dequeueTask(i.value()->id());
 }

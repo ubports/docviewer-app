@@ -38,7 +38,7 @@ TextField {
     validator: IntValidator{ bottom: 50; top: 400 }
 
     onAccepted: {
-        loView.zoomFactor = parseInt(text) / 100
+        loPageContentLoader.item.loView.zoomFactor = parseInt(text) / 100
         focus = false
     }
 
@@ -82,7 +82,7 @@ TextField {
 
     onHighlightedChanged: {
         if (highlighted) {
-            text = parseInt(loView.zoomFactor * 100)
+            text = parseInt(loPageContentLoader.item.loView.zoomFactor * 100)
         } else text = ""
     }
 
@@ -91,8 +91,8 @@ TextField {
         anchors.left: parent.left
         anchors.leftMargin: units.gu(2)
         visible: !textField.highlighted
-        text: loView.zoomMode == LibreOffice.View.FitToWidth ? i18n.tr("Automatic (%1%)").arg(parseInt(loView.zoomFactor*100))
-                                                             : i18n.tr("Zoom: %1%").arg(parseInt(loView.zoomFactor*100))
+        text: loPageContentLoader.item.loView.zoomMode == LibreOffice.View.FitToWidth ? i18n.tr("Automatic (%1%)").arg(parseInt(loPageContentLoader.item.loView.zoomFactor*100))
+                                                             : i18n.tr("Zoom: %1%").arg(parseInt(loPageContentLoader.item.loView.zoomFactor*100))
     }
 
     Component {
@@ -124,7 +124,7 @@ TextField {
                 containerHeight: units.gu(24)
                 model: textField.labels
                 selectedIndex: {
-                    if (loView.zoomMode == LibreOffice.View.FitToWidth)
+                    if (loPageContentLoader.item.loView.zoomMode == LibreOffice.View.FitToWidth)
                         return 0
 
                     for (var i=0; i<textField.values.length; i++) {
@@ -140,7 +140,7 @@ TextField {
                         return;
                     }
 
-                    loView.zoomFactor = textField.values[selectedIndex]
+                    loPageContentLoader.item.loView.zoomFactor = textField.values[selectedIndex]
                     PopupUtils.close(zoomSelectorDialogue)
                 }
             }

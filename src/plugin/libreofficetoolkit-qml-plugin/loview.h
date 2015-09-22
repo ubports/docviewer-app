@@ -20,6 +20,9 @@
 #include <QQuickPaintedItem>
 #include <QQuickItem>
 #include <QTimer>
+#include <QSharedPointer>
+
+#include "renderengine.h"
 
 class LODocument;
 class SGTileItem;
@@ -29,7 +32,7 @@ class LOView : public QQuickItem
     Q_OBJECT
     Q_ENUMS(ZoomMode)
     Q_PROPERTY(QQuickItem* parentFlickable READ parentFlickable WRITE setParentFlickable NOTIFY parentFlickableChanged)
-    Q_PROPERTY(LODocument* document        READ document        WRITE setDocument        NOTIFY documentChanged)
+    Q_PROPERTY(LODocument* document        READ document        /*WRITE setDocument*/    NOTIFY documentChanged)
     Q_PROPERTY(qreal       zoomFactor      READ zoomFactor      WRITE setZoomFactor      NOTIFY zoomFactorChanged)
     Q_PROPERTY(ZoomMode    zoomMode        READ zoomMode                                 NOTIFY zoomModeChanged)
     Q_PROPERTY(int         cacheBuffer     READ cacheBuffer     WRITE setCacheBuffer     NOTIFY cacheBufferChanged)
@@ -46,8 +49,9 @@ public:
     QQuickItem* parentFlickable() const;
     void        setParentFlickable(QQuickItem* flickable);
 
+    Q_INVOKABLE void initializeDocument(const QString& path);
+
     LODocument* document() const;
-    void        setDocument(LODocument* doc);
 
     qreal       zoomFactor() const;
     void        setZoomFactor(const qreal zoom);
@@ -71,27 +75,29 @@ private Q_SLOTS:
     void updateVisibleRect();
     void scheduleVisibleRectUpdate();
     void invalidateAllTiles();
+    void renderResultReceived(int id, QImage img);
 
 private:
-    QQuickItem*             m_parentFlickable;
-    LODocument*             m_document;
 
-    qreal                   m_zoomFactor;
-    ZoomMode                m_zoomMode;
-    int                     m_cacheBuffer;
+    QQuickItem*                 m_parentFlickable;
+    QSharedPointer<LODocument>  m_document;
 
-    QRect                   m_visibleArea;
-    QRect                   m_bufferArea;
+    qreal                       m_zoomFactor;
+    ZoomMode                    m_zoomMode;
+    int                         m_cacheBuffer;
 
-    QTimer                  m_updateTimer;
+    QRect                       m_visibleArea;
+    QRect                       m_bufferArea;
 
-    QMap<int, SGTileItem*>  m_tiles;
+    QTimer                      m_updateTimer;
 
-    void                    setZoomMode(const ZoomMode zoomMode);
-    bool                    updateZoomIfAutomatic();
+    QMap<int, SGTileItem*>      m_tiles;
 
-    void                    generateTiles(int x1, int y1, int x2, int y2, int tilesPerWidth);
-    void                    createTile(int index, QRect rect);
+    void generateTiles(int x1, int y1, int x2, int y2, int tilesPerWidth);
+    void createTile(int index, QRect rect);
+    void setZoomMode(const ZoomMode zoomMode);
+    bool updateZoomIfAutomatic();
+    void clearView();
 };
 
 #endif // LOVIEW_H
