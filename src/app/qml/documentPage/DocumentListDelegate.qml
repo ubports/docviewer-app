@@ -124,7 +124,7 @@ ListItemWithActions {
 
                 Icon {
                     anchors.fill: parent
-                    source: Qt.resolvedUrl("../../graphics/sd-card-symbolic.png")
+                    name: "sdcard-symbolic"
                 }
             }
         }

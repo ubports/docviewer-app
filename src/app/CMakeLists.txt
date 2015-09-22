@@ -1,8 +1,6 @@
 file(GLOB_RECURSE QML_SRCS *.qml *.js)
 file(GLOB_RECURSE IMAGE_FILES *.qml *.js)
 
-pkg_check_modules(CONTENTHUB REQUIRED libcontent-hub)
-
 add_definitions(
   -DGETTEXT_PACKAGE=\"${PROJECT_NAME}\"
   -DGETTEXT_LOCALEDIR=\"${CMAKE_INSTALL_LOCALEDIR}\"
@@ -10,7 +8,6 @@ add_definitions(
 
 set(docviewer_SRCS
     main.cpp
-    content-communicator.cpp
     command-line-parser.cpp
     docviewer-application.cpp
     urlhandler.cpp
@@ -20,10 +17,6 @@ set(docviewer_SRCS
 add_executable(ubuntu-docviewer-app ${docviewer_SRCS})
 
 qt5_use_modules(ubuntu-docviewer-app Widgets Gui Qml Quick DBus Concurrent)
-
-target_link_libraries( ubuntu-docviewer-app
-    ${CONTENTHUB_LIBRARIES}
-)
 
 if(NOT "${CMAKE_CURRENT_SOURCE_DIR}" STREQUAL "${CMAKE_CURRENT_BINARY_DIR}")
 add_custom_target(docviewer-qmlfiles ALL

@@ -28,7 +28,8 @@ MainView {
     id: mainView
     objectName: "mainView"
 
-    property bool pickMode: DOC_VIEWER.pickModeEnabled
+    // TODO: Connect with arguments
+    property bool pickMode: false
     readonly property bool isLandscape: Screen.orientation == Qt.LandscapeOrientation ||
                                         Screen.orientation == Qt.InvertedLandscapeOrientation
 
@@ -66,26 +67,12 @@ MainView {
                         mainView, { parent: mainView });
     }
 
-    function showNotification(args) {
-        var component = Qt.createComponent("common/Toast.qml")
-        var toast = component.createObject(mainView, args);
-
-        return toast;
-    }
-
-    function showNotificationWithAction(args) {
-        var component = Qt.createComponent("common/ToastWithAction.qml")
-        var toast = component.createObject(mainView, args);
-
-        return toast;
-    }
-
     function setFullScreen(fullScreen) {
         DOC_VIEWER.fullScreen = fullScreen;
     }
 
     function toggleFullScreen() {
-        DOC_VIEWER.fullScreen = !APP.fullScreen;
+        DOC_VIEWER.fullScreen = !DOC_VIEWER.fullScreen;
     }
 
     function setHeaderVisibility(visible, toggleFullscreen) {
@@ -107,6 +94,19 @@ MainView {
     function toggleHeaderVisibility() {
         setHeaderVisibility(!header.visible);
     }
+
+    function setPickMode(pickMode) {
+        mainView.pickMode = pickMode
+    }
+
+    function switchToBrowseMode() {
+        setPickMode(false)
+    }
+
+    function switchToPickMode() {
+        setPickMode(true)
+    }
+
 
     // On screen rotation, force updating of header/U8 indicators panel visibility
     onIsLandscapeChanged: setHeaderVisibility(true);
@@ -183,6 +183,16 @@ MainView {
         property bool reverseOrder: false
     }
 
+    // Content Hub support
+    property alias contentHubProxy: contentHubLoader.item
+    Loader {
+        id: contentHubLoader
+
+        asynchronous: true
+        source: Qt.resolvedUrl("common/ContentHubProxy.qml")
+    }
+
+    // Uri Handler support
     Connections {
         target: UriHandler
         onOpened: {
@@ -198,91 +208,13 @@ MainView {
         onDocumentFileChanged: {
             openDocument(DOC_VIEWER.documentFile);
         }
-
-        onPickModeEnabledChanged: {
-            mainView.pickMode = DOC_VIEWER.pickModeEnabled
-
-            if (mainView.pickMode) {
-                // If a document is loaded, pop() its page.
-                while (pageStack.depth > 1) {
-                    pageStack.pop()
-                }
-            }
-        }
     }
 
-    Connections {
-        target: PICKER_HUB
-
-        onDocumentImported: {
-            // Create two arrays: one for rejected documents, and the other
-            // for imported documents.
-            var importedDocuments = [];
-            var rejectedDocuments = [];
-            var entry;
-
-            // Fill the arrays.
-            for (var i=0; i<documents.length; i++) {
-                entry = documents[i];
-
-                if (entry.rejected) {
-                    rejectedDocuments.push(entry.fileName);
-                    break;
-                }
-
-                importedDocuments.push(entry.fileName);
-            }
-
-            // Prepare import notification
-            var showImportNotification = function() {
-                if (importedDocuments.length > 0) {
-                    var importDialog = showNotificationWithAction({
-                        "text": i18n.tr("Document successfully imported!",
-                                        "Documents successfully imported!",
-                                        importedDocuments.length),
-                        "action.text": i18n.tr("Open")
-                    })
-
-                    if (importedDocuments.length > 1) {
-                        // If it has been imported more than a document, show
-                        // a file picker when user taps the "open" action.
-                        importDialog.action.triggered.connect(function() {
-                            PopupUtils.open(
-                                Qt.resolvedUrl("common/PickImportedDialog.qml"),
-                                mainView,
-                                {
-                                    parent: mainView,
-                                    model: importedDocuments
-                                }
-                            );
-                        });
-                    } else {
-                        // It has been imported just a document, open it when
-                        // user taps the action button.
-                        importDialog.action.triggered.connect(function() {
-                            openDocument(importedDocuments[0]);
-                        });
-                    }
-                }
-            }
-
-            // Check if there's any rejected document in the last transfer.
-            // If so, show an error dialog.
-            if (rejectedDocuments.length > 0) {
-                var rejectedDialog = PopupUtils.open(
-                    Qt.resolvedUrl("common/RejectedImportDialog.qml"),
-                    mainView,
-                    {
-                        parent: mainView,
-                        model: rejectedDocuments
-                    }
-                );
-
-                // Show import notification after the dialog has been closed.
-                rejectedDialog.closed.connect(showImportNotification)
-            } else {
-                // No dialog has been shown. Show the notification.
-                showImportNotification.call();
+    onPickModeChanged: {
+        if (mainView.pickMode) {
+            // If a document is loaded, pop() its page.
+            while (pageStack.depth > 1) {
+                pageStack.pop()
             }
         }
     }

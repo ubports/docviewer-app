@@ -25,10 +25,16 @@ Flickable {
     property alias cacheBuffer: view.cacheBuffer
 
     property alias zoomMode:    view.zoomMode
+    property string documentPath: ""
 
     function adjustZoomToWidth()
     {
         view.adjustZoomToWidth();
+    }
+
+    onDocumentPathChanged: {
+        if (documentPath)
+            view.initializeDocument(documentPath)
     }
 
     // zoomFactor is not used here to set contentSize, since it's all managed

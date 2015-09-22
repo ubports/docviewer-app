@@ -48,7 +48,7 @@ QString LODocument::path() const
 }
 
 // Set the path of the document, then it tries to load it.
-void LODocument::setPath(QString &pathName)
+void LODocument::setPath(const QString& pathName)
 {
     if (pathName.isEmpty())
         return;
@@ -61,7 +61,7 @@ void LODocument::setPath(QString &pathName)
 }
 
 // Load the document
-bool LODocument::loadDocument(QString &pathName)
+bool LODocument::loadDocument(const QString &pathName)
 {
     qDebug() << "Loading document...";
 
@@ -106,7 +106,7 @@ QSize LODocument::documentSize() const
 
 // Paint a tile, with size=canvasSize, of the part of the document defined by
 // the rect tileSize.
-QImage LODocument::paintTile(QSize canvasSize, QRect tileSize, qreal zoom)
+QImage LODocument::paintTile(const QSize& canvasSize, const QRect& tileSize, const qreal &zoom)
 {
     QImage result = QImage(canvasSize.width(), canvasSize.height(),  QImage::Format_RGB32);
 
@@ -152,4 +152,7 @@ bool LODocument::saveAs(QString url, QString format = QString(), QString filterO
 LODocument::~LODocument()
 {
     delete m_document;
+#ifdef DEBUG_VERBOSE
+    qDebug() << " ---- ~LODocument";
+#endif
 }

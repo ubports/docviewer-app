@@ -77,10 +77,10 @@ Page {
     ]
 
     Connections {
-        target: DOC_VIEWER
+        target: mainView
 
-        onPickModeEnabledChanged: {
-            if (DOC_VIEWER.pickModeEnabled) {
+        onPickModeChanged: {
+            if (mainView.pickMode) {
                 viewLoader.item.startSelection()
             } else {
                 viewLoader.item.cancelSelection()

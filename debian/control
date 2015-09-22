@@ -4,14 +4,13 @@ Maintainer: Ubuntu App Cats <ubuntu-touch-coreapps@lists.launchpad.net>
 Build-Depends: cmake,
                debhelper (>= 9),
                intltool,
-               libcontent-hub-dev (>= 0.0+13.10.20130930.1),
                libpoppler-qt5-dev,
                pep8,
                pkg-config,
                pkg-kde-tools,
                python3-all,
                qt5-default,
-               qtbase5-dev,
+               qtbase5-dev (>= 5.4.0),
                qtchooser,
                qtdeclarative5-dev,
                qtdeclarative5-dev-tools,
@@ -28,6 +27,10 @@ Package: ubuntu-docviewer-app
 Architecture: any
 Depends: qtdeclarative5-qtquick2-plugin,
          qtdeclarative5-ubuntu-ui-toolkit-plugin,
+         qtdeclarative5-ubuntu-content1,
+         qtdeclarative5-quicklayouts-plugin,
+         qtdeclarative5-window-plugin,
+         suru-icon-theme (>= 14.04+15.10.20150707-0ubuntu1),
          ${misc:Depends}
 Description: Document Viewer application
  Core Document Viewer application

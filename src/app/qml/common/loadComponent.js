@@ -35,7 +35,7 @@ function load(mimetype) {
             || mimetype === "application/msword"
             || mimetype === "application/vnd.ms-excel"
             || mimetype === "application/vnd.ms-powerpoint")
-        qmlToLoad = Qt.resolvedUrl("../loView/LOView.qml")
+        qmlToLoad = Qt.resolvedUrl("../loView/LOViewPage.qml")
 
     if (qmlToLoad != "") {
        pageStack.push(qmlToLoad);
