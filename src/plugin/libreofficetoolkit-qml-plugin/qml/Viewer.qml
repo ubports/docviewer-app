@@ -32,6 +32,17 @@ Flickable {
         view.adjustZoomToWidth();
     }
 
+    function moveView(axis, diff)
+    {
+        if (axis == "vertical") {
+            var maxContentY = Math.max(0, rootFlickable.contentHeight - rootFlickable.height)
+            rootFlickable.contentY = Math.max(0, Math.min(rootFlickable.contentY + diff, maxContentY ))
+        } else {
+            var maxContentX = Math.max(0, rootFlickable.contentWidth - rootFlickable.width)
+            rootFlickable.contentX = Math.max(0, Math.min(rootFlickable.contentX + diff, maxContentX ))
+        }
+    }
+
     onDocumentPathChanged: {
         if (documentPath)
             view.initializeDocument(documentPath)
@@ -50,5 +61,15 @@ Flickable {
         id: view
 
         parentFlickable: rootFlickable
+    }
+
+    Connections {
+        target: view.document
+
+        onCurrentPartChanged: {
+            // Position view at top-left corner
+            rootFlickable.contentX = 0
+            rootFlickable.contentY = 0
+        }
     }
 }

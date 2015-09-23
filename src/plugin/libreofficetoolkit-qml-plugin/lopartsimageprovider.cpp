@@ -16,62 +16,35 @@
 
 #include "lopartsimageprovider.h"
 #include "lodocument.h"
-#include "config.h"
-#include "twips.h"
-
-#include <QDebug>
+#include "renderengine.h"
 
 LOPartsImageProvider::LOPartsImageProvider(LODocument *document)
     : QQuickImageProvider(QQuickImageProvider::Image, QQuickImageProvider::ForceAsynchronousImageLoading)
-{
-    m_document = document;
-}
+    , m_document(document)
+{ }
 
 QImage LOPartsImageProvider::requestImage(const QString & id, QSize * size, const QSize & requestedSize)
 {
     Q_UNUSED(size)
-    Q_UNUSED(requestedSize)
 
-    if (m_document->documentType() != LODocument::PresentationDocument)
-        return QImage();
-
-    // Here's the tricky magic. For getting a thumbnail of a document part
-    // (e.g. a specific slide in a Impress document), we need to change the
-    // current active part in LODocument, render the thumbnail, then re-set
-    // the previous value through lok::Document::setPath(index).
     QString type = id.section("/", 0, 0);
 
-    if (type != "part")
+    if (requestedSize.isNull() || type != "part" ||
+            m_document->documentType() != LODocument::PresentationDocument)
         return QImage();
 
-    int partNumber = id.section("/", 1, 1).toInt();
-    QImage result;
-    QSize partSize;
-    QSize resultSize;
+    // Wait for any in-progress rendering to be completed
+    while (RenderEngine::instance()->activeTaskCount() != 0) { }
 
-    // Get the current part index and set the index of the part to be rendered.
-    int currentPart = m_document->swapCurrentPart(partNumber);
-
-    // Get the size of the part
-    partSize = m_document->documentSize();
-    partSize.setHeight(Twips::convertTwipsToPixels(partSize.height()));
-    partSize.setWidth(Twips::convertTwipsToPixels(partSize.width()));
-
-    // Set the size of the rendered thumbnail
-    if (partSize.width() > partSize.height()) {
-        resultSize.setWidth(TILE_SIZE);
-        resultSize.setHeight(TILE_SIZE * partSize.height() / partSize.width());
-    } else {
-        resultSize.setHeight(TILE_SIZE);
-        resultSize.setWidth(TILE_SIZE * partSize.width() / partSize.height());
-    }
+    // Lock the render engine
+    RenderEngine::instance()->setEnabled(false);
 
     // Render the part to QImage
-    result = m_document->paintTile(resultSize, QRect(QPoint(0, 0), partSize));
+    int partNumber = id.section("/", 1, 1).toInt();
+    QImage result = m_document->paintThumbnail(partNumber, 256.0);
 
-    // Re-set the earlier current part
-    m_document->swapCurrentPart(currentPart);
+    // Unlock the render engine
+    RenderEngine::instance()->setEnabled(true);
 
     return result;
-
 }

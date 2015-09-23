@@ -31,6 +31,7 @@ PageWithBottomEdge {
 
     readonly property bool wideWindow: width > units.gu(120)
 
+    bottomEdgeTitle: i18n.tr("Slides")
     bottomEdgeEnabled: {
         if (!loPageContentLoader.loaded)
             return false
@@ -38,7 +39,6 @@ PageWithBottomEdge {
         // else
         return loPageContentLoader.item.loDocument.documentType == LO.Document.PresentationDocument && !wideWindow
     }
-    bottomEdgeTitle: i18n.tr("Slides")
 
     Loader {
         id: loPageContentLoader
@@ -70,22 +70,13 @@ PageWithBottomEdge {
     Component {
         id: loPageContentComponent
 
-        Item {
+        FocusScope {
             id: loPageContent
             anchors.fill: parent
+
             property alias loDocument: loView.document
             property alias loView: loView
             property alias bottomEdgePartsPage: bottomEdgePartsPage
-
-            function moveView(axis, diff) {
-                if (axis == "vertical") {
-                    var maxContentY = Math.max(0, loView.contentHeight - loView.height)
-                    loView.contentY = Math.max(0, Math.min(loView.contentY + diff, maxContentY ))
-                } else {
-                    var maxContentX = Math.max(0, loView.contentWidth - loView.width)
-                    loView.contentX = Math.max(0, Math.min(loView.contentX + diff, maxContentX ))
-                }
-            }
 
             Layouts {
                 id: layouts
@@ -108,8 +99,8 @@ PageWithBottomEdge {
                                     left: parent.left
                                 }
 
-                                model: partsModel
-                                visible: model
+                                model: LO.PartsModel { document: loPageContent.loDocument }
+                                visible: model && loDocument.documentType == LO.Document.PresentationDocument
                                 width: visible ? units.gu(40) : 0
                             }
 
@@ -120,7 +111,16 @@ PageWithBottomEdge {
                                     top: parent.top
                                     bottom: bottomBarLayoutItem.top
                                 }
-                                ItemLayout { item: "loView"; anchors.fill: parent }
+
+                                ItemLayout {
+                                    item: "loView"
+                                    anchors.fill: parent
+
+                                    // Keyboard events
+                                    focus: true
+                                    Keys.onPressed: KeybHelper.parseEvent(event)
+                                    Component.onCompleted: loPageContent.forceActiveFocus()
+                                }
                             }
 
                             Item {
@@ -153,10 +153,15 @@ PageWithBottomEdge {
                     clip: true
                     documentPath: file.path
 
+                    // Keyboard events
+                    focus: true
+                    Keys.onPressed: KeybHelper.parseEvent(event)
+
                     Component.onCompleted: {
                         // WORKAROUND: Fix for wrong grid unit size
                         flickDeceleration = 1500 * units.gridUnit / 8
                         maximumFlickVelocity = 2500 * units.gridUnit / 8
+                        loPageContent.forceActiveFocus()
                     }
 
                     Scrollbar { flickableItem: loView; parent: loView.parent }
@@ -191,6 +196,7 @@ PageWithBottomEdge {
                     flickable: null
 
                     PartsView {
+                        property bool belongsToNestedPage: true
                         anchors.fill: parent
                         model: LO.PartsModel { document: loPageContent.loDocument }
                     }

@@ -49,8 +49,8 @@ Rectangle {
         }
 
         Label {
-            text: "%1 of %2".arg(loPageContentLoader.item.loDocument.currentPart + 1)
-                            .arg(loPageContentLoader.item.loDocument.partsCount)
+            text: i18n.tr("Slide %1 of %2").arg(loPageContentLoader.item.loDocument.currentPart + 1)
+                                           .arg(loPageContentLoader.item.loDocument.partsCount)
         }
 
         AbstractButton {

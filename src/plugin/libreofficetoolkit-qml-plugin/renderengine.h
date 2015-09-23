@@ -6,6 +6,7 @@
 #include <QSharedPointer>
 #include <QHash>
 #include <QQueue>
+#include <QAtomicInt>
 
 #include "lodocument.h"
 
@@ -45,17 +46,33 @@ public:
         return s_instance;
     }
 
+    int activeTaskCount() { return m_activeTaskCount; }
+
+    bool enabled() { return m_enabled.loadAcquire(); }
+    void setEnabled(bool enabled) {
+        if (m_enabled.loadAcquire() == enabled)
+            return;
+
+        m_enabled.storeRelease(enabled);
+        Q_EMIT enabledChanged();
+    }
+
 Q_SIGNALS:
     void renderFinished(int id, QImage img);
+    void enabledChanged();
 
 private:
     Q_INVOKABLE void internalRenderCallback(int id, QImage img);
+
+private slots:
     void doNextTask();
 
 private:
     QQueue<EngineTask> m_queue;
     int m_activeTaskCount;
     int m_idealThreadCount;
+
+    QAtomicInt m_enabled;
 };
 
 #endif // RENDERENGINE_H

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-22 21:00+0200\n"
+"POT-Creation-Date: 2015-09-23 18:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -254,7 +254,7 @@ msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:27
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:79
-#: ../src/app/qml/loView/LOViewPage.qml:186
+#: ../src/app/qml/loView/LOViewPage.qml:191
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Back"
@@ -355,8 +355,8 @@ msgstr ""
 msgid "Enable night mode"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewPage.qml:41
-#: ../src/app/qml/loView/LOViewPage.qml:184
+#: ../src/app/qml/loView/LOViewPage.qml:34
+#: ../src/app/qml/loView/LOViewPage.qml:189
 msgid "Slides"
 msgstr ""
 
@@ -370,6 +370,11 @@ msgstr ""
 
 #: ../src/app/qml/loView/LOViewZoomHeader.qml:55
 msgid "Zoom out"
+msgstr ""
+
+#: ../src/app/qml/loView/SlideControllerPanel.qml:52
+#, qt-format
+msgid "Slide %1 of %2"
 msgstr ""
 
 #: ../src/app/qml/loView/ZoomSelector.qml:29
