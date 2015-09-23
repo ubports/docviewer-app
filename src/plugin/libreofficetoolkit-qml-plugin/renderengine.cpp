@@ -46,7 +46,7 @@ void RenderEngine::doNextTask()
     qDebug() << " ---- doNextTask" << m_activeTaskCount << m_queue.count();
 #endif
 
-    if (m_activeTaskCount >= m_idealThreadCount || !m_queue.count() || !enabled())
+    if (m_activeTaskCount >= m_idealThreadCount || !m_queue.count() || !m_enabled)
         return;
 
     m_activeTaskCount++;
