@@ -43,6 +43,26 @@ Flickable {
         }
     }
 
+    function goNextPart()
+    {
+        document.currentPart = Math.min(document.currentPart + 1, document.partsCount - 1)
+    }
+
+    function goPreviousPart()
+    {
+        document.currentPart = Math.max(0, document.currentPart - 1)
+    }
+
+    function goFirstPart()
+    {
+        document.currentPart = 0
+    }
+
+    function goLastPart()
+    {
+        document.currentPart = document.partsCount - 1
+    }
+
     onDocumentPathChanged: {
         if (documentPath)
             view.initializeDocument(documentPath)

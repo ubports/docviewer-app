@@ -34,14 +34,24 @@ Rectangle {
 
     Row {
         anchors.centerIn: parent
-        spacing: units.gu(2)
+        //spacing: units.gu(2)
 
         AbstractButton {
             width: units.gu(4); height: parent.height
-            onClicked: loPageContentLoader.item.loDocument.currentPart -= 1
+            onClicked: loPageContentLoader.item.loView.goFirstPart()
 
             Icon {
-                id: icon
+                anchors.centerIn: parent
+                width: units.gu(2.5); height: width
+                name: "go-first"
+            }
+        }
+
+        AbstractButton {
+            width: units.gu(4); height: parent.height
+            onClicked: loPageContentLoader.item.loView.goPreviousPart()
+
+            Icon {
                 anchors.centerIn: parent
                 width: units.gu(2.5); height: width
                 name: "go-previous"
@@ -49,18 +59,28 @@ Rectangle {
         }
 
         Label {
-            text: i18n.tr("Slide %1 of %2").arg(loPageContentLoader.item.loDocument.currentPart + 1)
-                                           .arg(loPageContentLoader.item.loDocument.partsCount)
+            text: i18n.tr("Slide %1 of %2").arg(loPageContentLoader.item.loDocument.currentPart + 1).arg(loPageContentLoader.item.loDocument.partsCount)
         }
 
         AbstractButton {
             width: units.gu(4); height: parent.height
-            onClicked: loPageContentLoader.item.loDocument.currentPart += 1
+            onClicked: loPageContentLoader.item.loView.goNextPart()
 
             Icon {
                 anchors.centerIn: parent
                 width: units.gu(2.5); height: width
                 name: "go-next"
+            }
+        }
+
+        AbstractButton {
+            width: units.gu(4); height: parent.height
+            onClicked: loPageContentLoader.item.loView.goLastPart()
+
+            Icon {
+                anchors.centerIn: parent
+                width: units.gu(2.5); height: width
+                name: "go-last"
             }
         }
     }
