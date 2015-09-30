@@ -18,7 +18,6 @@
  */
 
 #include "docviewer-application.h"
-#include "content-communicator.h"
 #include "command-line-parser.h"
 #include "urlhandler.h"
 
@@ -38,9 +37,6 @@
 DocViewerApplication::DocViewerApplication(int& argc, char** argv)
     : QApplication(argc, argv),
       m_view(new QQuickView()),
-      m_contentCommunicator(new ContentCommunicator(this)),
-      m_pickModeEnabled(false),
-      m_defaultUiMode(BrowseContentMode),
       m_documentFile(""),
       m_documentLoaded(false)
 {
@@ -73,15 +69,10 @@ bool DocViewerApplication::init()
 
     registerQML();
 
-    if (m_cmdLineParser->pickModeEnabled())
+    // FIXME: Broken after removal of it.
+    /*if (m_cmdLineParser->pickModeEnabled())
         setDefaultUiMode(DocViewerApplication::PickContentMode);
-
-    QObject::connect(m_contentCommunicator, SIGNAL(documentRequested()),
-                     this, SLOT(switchToPickMode()));
-
-    QObject::connect(m_contentCommunicator, SIGNAL(documentImported()),
-                     this, SLOT(switchToBrowseMode()));
-
+*/
     return true;
 }
 
@@ -172,7 +163,6 @@ void DocViewerApplication::createView()
 
     // Set ourselves up to expose functionality to run external commands from QML...
     m_view->engine()->rootContext()->setContextProperty("DOC_VIEWER", this);
-    m_view->engine()->rootContext()->setContextProperty("PICKER_HUB", m_contentCommunicator);
 
     QObject::connect(m_view->engine(), SIGNAL(quit()), this, SLOT(quit()));
 
@@ -201,7 +191,6 @@ void DocViewerApplication::createView()
         qFatal("File: %s does not exist at any of the standard paths!", qPrintable(filePath));
     }
 
-    registerHub();
     m_view->setSource(QUrl::fromLocalFile(qmlfile));
     setDocumentFile(m_cmdLineParser->documentFile());
 
@@ -214,57 +203,6 @@ void DocViewerApplication::createView()
     } else {
         m_view->show();
     }
-}
-
-/*!
- * \brief DocViewerApplication::setDefaultUiMode set the default UI mode. This might
- * get overridden during the lifetime
- * \param mode
- */
-void DocViewerApplication::setDefaultUiMode(DocViewerApplication::UiMode mode)
-{
-    m_defaultUiMode = mode;
-    setUiMode(mode);
-}
-
-/*!
- * \brief DocViewerApplication::setUiMode set's the current UI mode
- * \param mode
- */
-void DocViewerApplication::setUiMode(DocViewerApplication::UiMode mode)
-{
-    bool enablePickMode = (mode == PickContentMode);
-
-    if (enablePickMode != m_pickModeEnabled) {
-        m_pickModeEnabled = enablePickMode;
-        Q_EMIT pickModeEnabledChanged();
-    }
-}
-
-/*!
- * \brief DocViewerApplication::pickModeEnabled returns true if the current UI
- * mode should be for picking acontent
- * \return
- */
-bool DocViewerApplication::pickModeEnabled() const
-{
-    return m_pickModeEnabled;
-}
-
-/*!
- * \brief DocViewerApplication::switchToPickMode
- */
-void DocViewerApplication::switchToPickMode()
-{
-    setUiMode(PickContentMode);
-}
-
-/*!
- * \brief DocViewerApplication::switchToBrowseMode
- */
-void DocViewerApplication::switchToBrowseMode()
-{
-    Q_EMIT browseModeRequested();
 }
 
 /*!
@@ -290,50 +228,6 @@ void DocViewerApplication::setDocumentFile(const QString &documentFile)
             Q_EMIT documentFileChanged();;
         }
     }
-}
-
-/*!
- * \brief DocViewerApplication::returnPickedContent passes the selcted items to the
- * content manager
- * \param variant
- */
-void DocViewerApplication::returnPickedContent(QList<QString> paths)
-{
-    QVector<QUrl> selectedMedias;
-    selectedMedias.reserve(paths.size());
-    foreach (const QString path, paths) {
-        // We handle paths without "file://" prefix, so we need to add it when exporting to content-hub.
-        selectedMedias.append(QUrl("file://" + path));
-    }
-    m_contentCommunicator->returnDocuments(selectedMedias);
-
-    if (m_defaultUiMode == BrowseContentMode) {
-        setUiMode(BrowseContentMode);
-    } else {
-        // give the app and content-hub some time to finish taks (run the event loop)
-        QTimer::singleShot(10, this, SLOT(quit()));
-    }
-}
-
-/*!
- * \brief DocViewerApplication::contentPickingCanceled tell the content manager, that
- * the picking was canceled
- */
-void DocViewerApplication::contentPickingCanceled()
-{
-    m_contentCommunicator->cancelTransfer();
-
-    if (m_defaultUiMode == BrowseContentMode) {
-        setUiMode(BrowseContentMode);
-    } else {
-        // give the app and content-hub some time to finish taks (run the event loop)
-        QTimer::singleShot(10, this, SLOT(quit()));
-    }
-}
-
-void DocViewerApplication::registerHub()
-{
-    m_contentCommunicator->registerWithHub();
 }
 
 void DocViewerApplication::parseUri(const QString &arg)

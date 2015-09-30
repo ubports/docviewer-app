@@ -25,13 +25,13 @@ Dialog {
 
     signal closed
 
-    title: i18n.tr("File not supported", "Files not supported", model.length)
+    title: i18n.tr("File not supported", "Files not supported", repeater.count)
     text: i18n.tr("Following document has not been imported:",
-                  "Following documents have not been imported:", model.length)
+                  "Following documents have not been imported:", repeater.count)
 
     Repeater {
         id: repeater
-        delegate: Label { text: modelData }
+        Label { text: model.path }
     }
 
     Button {

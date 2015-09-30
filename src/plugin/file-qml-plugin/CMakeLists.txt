@@ -7,6 +7,7 @@ set(fileqmlplugin_SRCS
     documentmodel.cpp
     fswatcher.cpp
     docviewerfile.cpp
+    docviewerutils.cpp
 )
 
 add_library(fileqmlplugin MODULE
