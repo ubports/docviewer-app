@@ -47,13 +47,19 @@ PageHeadState {
         Action {
             iconName: "zoom-in"
             text: i18n.tr("Zoom in")
-            onTriggered: loPageContentLoader.item.loView.zoomFactor += 0.1
+            onTriggered: {
+                var view = loPageContentLoader.item.loView
+                view.setZoom(view.zoomFactor + 0.1)
+            }
         },
 
         Action {
             iconName: "zoom-out"
             text: i18n.tr("Zoom out")
-            onTriggered: loPageContentLoader.item.loView.zoomFactor -= 0.1
+            onTriggered: {
+                var view = loPageContentLoader.item.loView
+                view.setZoom(view.zoomFactor - 0.1)
+            }
         }
     ]
 }

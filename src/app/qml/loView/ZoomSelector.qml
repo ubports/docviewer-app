@@ -38,7 +38,7 @@ TextField {
     validator: IntValidator{ bottom: 50; top: 400 }
 
     onAccepted: {
-        loPageContentLoader.item.loView.zoomFactor = parseInt(text) / 100
+        loPageContentLoader.item.loView.setZoom(parseInt(text) / 100)
         focus = false
     }
 
@@ -128,7 +128,7 @@ TextField {
                         return 0
 
                     for (var i=0; i<textField.values.length; i++) {
-                        if (values[i] == loView.zoomFactor)
+                        if (values[i] == loPageContentLoader.item.loView.zoomFactor)
                             return i
                     }
                     return -1
@@ -136,11 +136,11 @@ TextField {
 
                 onSelectedIndexChanged: {
                     if (selectedIndex == 0) {
-                        loView.adjustZoomToWidth();
+                        loPageContentLoader.item.loView.adjustZoomToWidth();
                         return;
                     }
 
-                    loPageContentLoader.item.loView.zoomFactor = textField.values[selectedIndex]
+                    loPageContentLoader.item.loView.setZoom(textField.values[selectedIndex])
                     PopupUtils.close(zoomSelectorDialogue)
                 }
             }
