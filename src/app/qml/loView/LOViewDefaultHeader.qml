@@ -18,6 +18,7 @@ import QtQuick 2.3
 import Ubuntu.Components 1.1
 import QtQuick.Layouts 1.1
 import Ubuntu.Components.Popups 1.0
+import DocumentViewer.LibreOffice 1.0 as LibreOffice
 
 PageHeadState {
     id: rootItem
@@ -95,10 +96,11 @@ PageHeadState {
         },
 
         Action {
-            objectName:"gotopage"
+            objectName: "gotopage"
             iconName: "browser-tabs"
-            text: i18n.tr("Go to page...")
+            text: i18n.tr("Go to position...")
             onTriggered: PopupUtils.open(Qt.resolvedUrl("LOViewGotoDialog.qml"), targetPage)
+            visible: loDocument.documentType == LibreOffice.Document.TextDocument
         },
 
         Action {
