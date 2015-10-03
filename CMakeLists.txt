@@ -142,8 +142,6 @@ if(CLICK_MODE)
     MESSAGE("Following files to install:- ${FILES_TO_DEPLOY}")
     INSTALL( FILES ${FILES_TO_DEPLOY} DESTINATION ${DATA_DIR}lib/${ARCH_TRIPLET} )
 
-    MESSAGE("Installing upstream libs from ${CMAKE_CURRENT_BINARY_DIR}/upstream-libs/lib/ to ${DATA_DIR}lib")
-    INSTALL( DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/upstream-libs/lib/ DESTINATION ${DATA_DIR}lib )
 
     MESSAGE("Installing LibreOffice from ${CMAKE_CURRENT_BINARY_DIR}/upstream-libs/opt/libreoffice/lib/libreoffice to ${DATA_DIR}lib/${ARCH_TRIPLET}/libreoffice")
     INSTALL( DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/upstream-libs/opt/libreoffice/lib/libreoffice/ DESTINATION ${DATA_DIR}lib/${ARCH_TRIPLET}/libreoffice )

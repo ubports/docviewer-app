@@ -30,31 +30,40 @@
 // Uncomment if you want more verbose application output
 //#define DEBUG_VERBOSE
 
-#include <QCoreApplication>
 #include <QDir>
 #include <QDebug>
 
 inline static const char* getLibreOfficePath() {
     // LibreOffice installation path on Debian/Ubuntu
-    QString path = "/usr/lib/libreoffice/program/";
+    const char* path = "/usr/lib/librefice/program";
 
-    if (!QDir(path).exists()) {
-        // Click packages of docviewer includes LibreOffice by themselves.
-        // We know that applicationDirPath() is ./lib/<arch_triplet>/bin
-        // FIXME: Hackish!
-        QDir clickDir(QCoreApplication::applicationDirPath());
-        if (clickDir.cd("../libreoffice/program"))
-            path = clickDir.canonicalPath();
-        else
-            path = "";
+    if (QDir(QString::fromUtf8(path)).exists()) {
+        qDebug() << "LibreOffice binaries found at:" << path;
+        return path;
     }
 
-    if (!path.isEmpty())
-        qDebug() << "LibreOffice binaries found at:" << path;
-    else
-        qDebug() << "LibreOffice binaries not found.";
+    const char* loClickPath = "libreoffice/program";
 
-    return path.toLocal8Bit().data();
+    char* libPaths = getenv("LD_LIBRARY_PATH");
+    char* libPathsArray = strtok(libPaths, ":");
+
+    while (libPathsArray) {
+        QDir clickDir(QString::fromUtf8(libPathsArray));
+
+        if (clickDir.cd(QString::fromUtf8(loClickPath))) {
+            char* clickPath = (char*) malloc(1 + strlen(libPathsArray) + 1 + strlen(loClickPath));
+
+            strcpy(clickPath, libPathsArray);
+            strcat(clickPath, "/");
+            strcat(clickPath, loClickPath);
+
+            qDebug() << "LibreOffice binaries found at:" << clickPath;
+            return clickPath;
+        }
+    }
+
+    qDebug() << "LibreOffice binaries not found.";
+    return NULL;
 }
 
 #endif // CONFIG_H
