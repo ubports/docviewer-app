@@ -52,6 +52,7 @@ QHash<int, QByteArray> LOPartsModel::roleNames() const
     QHash<int, QByteArray> roles;
     roles[IndexRole] = "index";
     roles[NameRole] = "name";
+    roles[ThumbnailRole] = "thumbnail";
 
     return roles;
 }
@@ -74,6 +75,8 @@ QVariant LOPartsModel::data(const QModelIndex & index, int role) const
         return part.index;
     case NameRole:
         return part.name;
+    case ThumbnailRole:
+        return part.thumbnail;
 
     default:
         return 0;
@@ -92,6 +95,7 @@ QVariantMap LOPartsModel::get(int index) const
     QVariantMap map;
     map["name"] = part.name;
     map["index"] = part.index;
+    map["thumbnail"] = part.index;
 
     return map;
 }

@@ -19,6 +19,7 @@
 #define LOPARTSMODEL_H
 
 #include <QAbstractListModel>
+#include <QImage>
 
 class LODocument;
 
@@ -27,6 +28,7 @@ class LOPartEntry
 public:
     QString name;
     int index = 0;
+    QImage thumbnail;
 };
 
 class LOPartsModel : public QAbstractListModel
@@ -38,8 +40,9 @@ class LOPartsModel : public QAbstractListModel
 
 public:
     enum Roles {
-        NameRole,
-        IndexRole
+        NameRole = Qt::UserRole + 1,
+        IndexRole,
+        ThumbnailRole
     };
 
     explicit LOPartsModel(QAbstractListModel *parent = 0);

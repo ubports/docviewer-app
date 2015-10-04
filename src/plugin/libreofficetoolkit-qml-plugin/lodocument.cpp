@@ -110,6 +110,17 @@ LODocument::DocumentType LODocument::documentType() const
     return m_docType;
 }
 
+int LODocument::documentPart() const
+{
+    return m_document->getPart();
+}
+
+void LODocument::setDocumentPart(int p)
+{
+    if (documentPart() != p)
+        m_document->setPart(p);
+}
+
 // Return the size of the document, in TWIPs
 QSize LODocument::documentSize() const
 {
@@ -154,7 +165,7 @@ QImage LODocument::paintTile(const QSize& canvasSize, const QRect& tileSize, con
     return result.rgbSwapped();
 }
 
-QImage LODocument::paintThumbnail(int part, qreal size)
+QImage LODocument::paintThumbnail(qreal size)
 {
     if (!m_document)
         return QImage();
@@ -163,14 +174,6 @@ QImage LODocument::paintThumbnail(int part, qreal size)
     QElapsedTimer renderTimer;
     renderTimer.start();
 #endif
-
-    // This is used by LOPartsImageProvider to temporarily change the current part,
-    // in order to generate thumbnails.
-
-    // FIXME: Sometimes docviewer crashes at m_document->getPart() when a
-    // document is being loaded.
-    if (m_document->getPart() != part)
-        m_document->setPart(part);
 
     qreal tWidth = this->documentSize().width();
     qreal tHeight = this->documentSize().height();
@@ -188,10 +191,6 @@ QImage LODocument::paintThumbnail(int part, qreal size)
     QImage result = QImage(resultSize.width(), resultSize.height(), QImage::Format_RGB32);
     m_document->paintTile(result.bits(), resultSize.width(), resultSize.height(),
                           0, 0, tWidth, tHeight);
-
-    // Restore the active part used for tile rendering.
-    if (m_currentPart != part)
-        m_document->setPart(m_currentPart);
 
 #ifdef DEBUG_TILE_BENCHMARK
     qDebug() << "Time to render the thumbnail:" << renderTimer.elapsed() << "ms";
@@ -213,7 +212,7 @@ QString LODocument::getPartName(int index) const
     if (!m_document)
         return QString();
  
-    return QString::fromLatin1(m_document->getPartName(index));
+    return QString::fromUtf8(m_document->getPartName(index));
 }
  
 /* Export the file in a given format:

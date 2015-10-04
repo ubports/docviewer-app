@@ -41,7 +41,7 @@ QImage LOPartsImageProvider::requestImage(const QString & id, QSize * size, cons
 
     // Render the part to QImage
     int partNumber = id.section("/", 1, 1).toInt();
-    QImage result = m_document->paintThumbnail(partNumber, 256.0);
+    QImage result; //  = m_document->paintThumbnail(partNumber, 256.0);
 
     // Unlock the render engine
     RenderEngine::instance()->setEnabled(true);
