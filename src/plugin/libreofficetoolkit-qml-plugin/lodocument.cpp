@@ -213,7 +213,7 @@ QString LODocument::getPartName(int index) const
     if (!m_document)
         return QString();
  
-    return QString::fromLatin1(m_document->getPartName(index));
+    return QString::fromUtf8(m_document->getPartName(index));
 }
  
 /* Export the file in a given format:
