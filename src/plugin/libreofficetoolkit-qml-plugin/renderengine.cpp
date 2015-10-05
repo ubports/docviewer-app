@@ -16,11 +16,11 @@ RenderEngine::RenderEngine():
     connect(this, SIGNAL(enabledChanged()), this, SLOT(doNextTask()));
 }
 
-void RenderEngine::enqueueTask(const QSharedPointer<LODocument>& doc, const QRect& area, const qreal &zoom, int id)
+void RenderEngine::enqueueTask(const QSharedPointer<LODocument>& doc, int part, const QRect& area, const qreal &zoom, int id)
 {
     Q_ASSERT(doc != nullptr);
 
-    m_queue.enqueue(EngineTask(doc, area, zoom, id));
+    m_queue.enqueue(EngineTask(doc, part, area, zoom, id));
 
     doNextTask();
 }
@@ -74,10 +74,20 @@ void RenderEngine::doNextTask()
     task.document->setDocumentPart(m_lastPart);
 
     QtConcurrent::run( [=] {
-        QImage img = task.isThumbnail ?
-                    task.document->paintThumbnail(task.size) :
-                    task.document->paintTile(task.area.size(), task.area, task.zoom);
-        QMetaObject::invokeMethod(this, "internalRenderCallback",
-                                  Q_ARG(int, task.id), Q_ARG(QImage, img), Q_ARG(bool, task.isThumbnail));
+        if (task.isThumbnail) {
+            QImage img = task.document->paintThumbnail(task.size);
+            QMetaObject::invokeMethod(this, "internalRenderCallback",
+                                      Q_ARG(int, task.id), Q_ARG(QImage, img), Q_ARG(bool, task.isThumbnail));
+        } else {
+            QImage img = task.document->paintTile(task.area.size(), task.area, task.zoom);
+            QMetaObject::invokeMethod(this, "internalRenderCallback",
+                                      Q_ARG(int, task.id), Q_ARG(QImage, img), Q_ARG(bool, task.isThumbnail));
+        }
+//        QImage img = task.isThumbnail ?
+//                    //task.document->paintThumbnail(task.size) :
+//                    task.document->paintTile(task.area.size(), task.area, task.zoom) :
+//                    task.document->paintTile(task.area.size(), task.area, task.zoom);
+//        QMetaObject::invokeMethod(this, "internalRenderCallback",
+//                                  Q_ARG(int, task.id), Q_ARG(QImage, img), Q_ARG(bool, task.isThumbnail));
     });
 }

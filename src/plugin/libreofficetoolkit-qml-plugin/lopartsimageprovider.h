@@ -20,6 +20,7 @@
 
 #include <QQuickImageProvider>
 #include <QSharedPointer>
+#include <QHash>
 #include <QDebug>
 
 class LODocument;
@@ -27,8 +28,13 @@ class LODocument;
 class LOPartsImageProvider : public QQuickImageProvider
 {
 public:
-    LOPartsImageProvider();
+    LOPartsImageProvider(const QSharedPointer<LODocument>& d);
     QImage requestImage(const QString & id, QSize * size, const QSize & requestedSize);
+
+    QHash<int, QImage> m_images;
+
+private:
+    QSharedPointer<LODocument> m_document;
 };
 
 #endif // LOPARTSIMAGEPROVIDER_H

@@ -28,19 +28,21 @@ struct EngineTask
     bool isThumbnail;
 public:
 
-    EngineTask(const QSharedPointer<LODocument>& d, const QRect& a, const qreal& z, int i):
+    EngineTask(const QSharedPointer<LODocument>& d, int p, const QRect& a, const qreal& z, int i):
         id(i),
-        part(0),
+        part(p),
         document(d),
+        size(0),
         area(a),
         zoom(z),
         isThumbnail(false)
     { }
 
-    EngineTask(const QSharedPointer<LODocument>& d, int p, qreal size, int i):
+    EngineTask(const QSharedPointer<LODocument>& d, int p, qreal s, int i):
         id(i),
         part(p),
         document(d),
+        size(s),
         area(),
         zoom(0),
         isThumbnail(true)
@@ -58,7 +60,7 @@ class RenderEngine : public QObject
     const int DefaultIdealThreadCount = 2;
 
 public:
-    void enqueueTask(const QSharedPointer<LODocument>& doc, const QRect& area, const qreal& zoom, int id);
+    void enqueueTask(const QSharedPointer<LODocument>& doc, int part, const QRect& area, const qreal& zoom, int id);
     void enqueueTask(const QSharedPointer<LODocument>& doc, int part, qreal size, int id);
     void dequeueTask(int id);
 

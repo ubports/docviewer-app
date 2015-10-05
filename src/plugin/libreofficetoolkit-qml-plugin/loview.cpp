@@ -99,7 +99,8 @@ void LOView::initializeDocument(const QString &path)
     if (engine->imageProvider("lok"))
         engine->removeImageProvider("lok");
 
-    engine->addImageProvider("lok", new LOPartsImageProvider());
+    m_imageProvider = new LOPartsImageProvider(m_document);
+    engine->addImageProvider("lok", m_imageProvider);
     // --------------------------------------------------
 
     connect(m_document.data(), SIGNAL(currentPartChanged()), this, SLOT(invalidateAllTiles()));
@@ -338,7 +339,7 @@ void LOView::createTile(int index, QRect rect)
 
         auto tile = new SGTileItem(rect, m_zoomFactor, RenderEngine::getNextId(), this);
         m_tiles.insert(index, tile);
-        RenderEngine::instance()->enqueueTask(m_document, rect, m_zoomFactor, tile->id());
+        RenderEngine::instance()->enqueueTask(m_document, m_document->currentPart(), rect, m_zoomFactor, tile->id());
     }
 #ifdef DEBUG_VERBOSE
     else {
@@ -364,6 +365,12 @@ void LOView::renderResultReceived(int id, QImage img)
     }
 }
 
+void LOView::slotThumbnailRenderFinished(int id, QImage img)
+{
+    if (!m_imageProvider->m_images.contains(id))
+        m_imageProvider->m_images.insert(id, img);
+}
+
 void LOView::clearView()
 {
     for (auto i = m_tiles.begin(); i != m_tiles.end(); ++i)
@@ -375,6 +382,7 @@ void LOView::clearView()
 LOView::~LOView()
 {
     delete m_partsModel;
+    delete m_imageProvider;
 
     disconnect(RenderEngine::instance(), SIGNAL(renderFinished(int,QImage)),
                this, SLOT(renderResultReceived(int,QImage)));

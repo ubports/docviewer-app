@@ -141,8 +141,8 @@ QImage LODocument::paintTile(const QSize& canvasSize, const QRect& tileSize, con
     if (!m_document)
         return QImage();
 
-    if (m_currentPart != m_document->getPart())
-        m_document->setPart(m_currentPart);
+//    if (m_currentPart != m_document->getPart())
+//        m_document->setPart(m_currentPart);
 
     QImage result = QImage(canvasSize.width(), canvasSize.height(),  QImage::Format_RGB32);
 

@@ -91,6 +91,7 @@ private:
     QQuickItem*                 m_parentFlickable;
     QSharedPointer<LODocument>  m_document;
     LOPartsModel*               m_partsModel; // TODO MB move to document.
+    LOPartsImageProvider*       m_imageProvider;
 
     qreal                       m_zoomFactor;
     ZoomMode                    m_zoomMode;
