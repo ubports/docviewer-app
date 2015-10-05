@@ -55,8 +55,6 @@ public:
         IdRole
     };
 
-    explicit LOPartsModel(QAbstractListModel *parent = 0)
-    { }
     explicit LOPartsModel(const QSharedPointer<LODocument>& document, QAbstractListModel *parent = 0);
     ~LOPartsModel();
 
@@ -76,12 +74,10 @@ Q_SIGNALS:
 
 private slots:
     void fillModel();
-    void slotThumbnailRenderFinished(int id, QImage img);
 
 private:
     QSharedPointer<LODocument> m_document;
     QList<LOPartEntry> m_entries;
-    QHash<int, QImage> m_images;
 };
 
 #endif // LOPARTSMODEL_H

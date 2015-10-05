@@ -30,13 +30,9 @@ LOPartsModel::LOPartsModel(const QSharedPointer<LODocument>& document, QAbstract
 {   
     //connect(this, SIGNAL(documentChanged()), this, SLOT(fillModel()));
 
-    connect(RenderEngine::instance(), SIGNAL(thumbnailRenderFinished(int,QImage)),
-            this, SLOT(slotThumbnailRenderFinished(int,QImage)));
-
-    // TODO
-
     m_document = document;
     fillModel();
+
     // Q_EMIT documentChanged();
 
 //    QQmlEngine *engine = QQmlEngine::contextForObject(this)->engine();
@@ -136,16 +132,5 @@ void LOPartsModel::fillModel() {
     Q_EMIT countChanged();
 }
 
-void LOPartsModel::slotThumbnailRenderFinished(int id, QImage img)
-{
-    m_images.insert(id, img);
-}
-
 LOPartsModel::~LOPartsModel()
-{
-    disconnect(RenderEngine::instance(), SIGNAL(thumbnailRenderFinished(int,QImage)),
-               this, SLOT(slotThumbnailRenderFinished(int,QImage)));
-
-    // TODO THINK
-    m_images.clear();
-}
+{ }

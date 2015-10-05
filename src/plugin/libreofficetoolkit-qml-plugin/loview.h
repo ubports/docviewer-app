@@ -35,7 +35,7 @@ class LOView : public QQuickItem
     Q_ENUMS(ZoomMode)
     Q_PROPERTY(QQuickItem*   parentFlickable READ parentFlickable WRITE setParentFlickable NOTIFY parentFlickableChanged)
     Q_PROPERTY(LODocument*   document        READ document        /*WRITE setDocument*/    NOTIFY documentChanged)
-    Q_PROPERTY(QAbstractListModel* partsModel      READ partsModel                               NOTIFY partsModelChanged)
+    Q_PROPERTY(LOPartsModel* partsModel      READ partsModel                               NOTIFY partsModelChanged)
     Q_PROPERTY(qreal         zoomFactor      READ zoomFactor      WRITE setZoomFactor      NOTIFY zoomFactorChanged)
     Q_PROPERTY(ZoomMode      zoomMode        READ zoomMode                                 NOTIFY zoomModeChanged)
     Q_PROPERTY(int           cacheBuffer     READ cacheBuffer     WRITE setCacheBuffer     NOTIFY cacheBufferChanged)
@@ -55,7 +55,7 @@ public:
     Q_INVOKABLE void initializeDocument(const QString& path);
 
     LODocument* document() const;
-    QAbstractListModel* partsModel() const;
+    LOPartsModel* partsModel() const;
 
     qreal       zoomFactor() const;
     void        setZoomFactor(const qreal zoom);
@@ -80,7 +80,9 @@ private Q_SLOTS:
     void updateVisibleRect();
     void scheduleVisibleRectUpdate();
     void invalidateAllTiles();
+
     void renderResultReceived(int id, QImage img);
+    void slotThumbnailRenderFinished(int id, QImage img);
 
 private:
 

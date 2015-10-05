@@ -49,7 +49,11 @@ LOView::LOView(QQuickItem *parent)
     connect(this, SIGNAL(parentFlickableChanged()), this, SLOT(updateVisibleRect()));
     connect(this, SIGNAL(cacheBufferChanged()), this, SLOT(updateVisibleRect()));
     connect(&m_updateTimer, SIGNAL(timeout()), this, SLOT(updateVisibleRect()));
-    connect(RenderEngine::instance(), SIGNAL(renderFinished(int,QImage)), this, SLOT(renderResultReceived(int,QImage)));
+
+    connect(RenderEngine::instance(), SIGNAL(renderFinished(int,QImage)),
+            this, SLOT(renderResultReceived(int,QImage)));
+    connect(RenderEngine::instance(), SIGNAL(thumbnailRenderFinished(int,QImage)),
+            this, SLOT(slotThumbnailRenderFinished(int,QImage)));
 }
 
 // Returns the parent QML Flickable
@@ -362,7 +366,11 @@ void LOView::clearView()
 LOView::~LOView()
 {
     delete m_partsModel;
-    disconnect(RenderEngine::instance(), SIGNAL(renderFinished(int,QImage)), this, SLOT(renderResultReceived(int,QImage)));
+
+    disconnect(RenderEngine::instance(), SIGNAL(renderFinished(int,QImage)),
+               this, SLOT(renderResultReceived(int,QImage)));
+    disconnect(RenderEngine::instance(), SIGNAL(thumbnailRenderFinished(int,QImage)),
+               this, SLOT(slotThumbnailRenderFinished(int,QImage)));
 
     // Remove all tasks from rendering queue.
     for (auto i = m_tiles.begin(); i != m_tiles.end(); ++i)

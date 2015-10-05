@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-23 18:40+0200\n"
+"POT-Creation-Date: 2015-10-05 23:51+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 #: ../src/app/docviewer-application.cpp:162
-#: /home/stefano/build-reboot-qsg-impress-support-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/qtros/dev/build-reboot-qsg-impress-support-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr ""
 
@@ -372,7 +372,7 @@ msgstr ""
 msgid "Zoom out"
 msgstr ""
 
-#: ../src/app/qml/loView/SlideControllerPanel.qml:52
+#: ../src/app/qml/loView/SlideControllerPanel.qml:62
 #, qt-format
 msgid "Slide %1 of %2"
 msgstr ""
@@ -435,6 +435,6 @@ msgstr ""
 msgid "copy %1"
 msgstr ""
 
-#: /home/stefano/build-reboot-qsg-impress-support-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/qtros/dev/build-reboot-qsg-impress-support-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr ""
