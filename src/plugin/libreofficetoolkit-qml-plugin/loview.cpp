@@ -90,8 +90,17 @@ void LOView::initializeDocument(const QString &path)
     m_document = QSharedPointer<LODocument>(new LODocument());
     m_document->setPath(path);
 
+    // TODO MOVE
     m_partsModel = new LOPartsModel(m_document);
     Q_EMIT partsModelChanged();
+
+    // --------------------------------------------------
+    QQmlEngine *engine = QQmlEngine::contextForObject(this)->engine();
+    if (engine->imageProvider("lok"))
+        engine->removeImageProvider("lok");
+
+    engine->addImageProvider("lok", new LOPartsImageProvider());
+    // --------------------------------------------------
 
     connect(m_document.data(), SIGNAL(currentPartChanged()), this, SLOT(invalidateAllTiles()));
 

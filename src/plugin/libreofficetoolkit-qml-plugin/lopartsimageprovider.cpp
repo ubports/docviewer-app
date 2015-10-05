@@ -18,12 +18,9 @@
 #include "lodocument.h"
 #include "renderengine.h"
 
-LOPartsImageProvider::LOPartsImageProvider(LODocument *document)
+LOPartsImageProvider::LOPartsImageProvider()
     : QQuickImageProvider(QQuickImageProvider::Image, QQuickImageProvider::ForceAsynchronousImageLoading)
-    , m_document(document)
-{
-    // m_document = QSharedPointer<LODocument>(document);
-}
+{ }
 
 QImage LOPartsImageProvider::requestImage(const QString & id, QSize * size, const QSize & requestedSize)
 {
@@ -31,8 +28,8 @@ QImage LOPartsImageProvider::requestImage(const QString & id, QSize * size, cons
 
     QString type = id.section("/", 0, 0);
 
-    if (requestedSize.isNull() || type != "part" ||
-            m_document->documentType() != LODocument::PresentationDocument)
+    if (requestedSize.isNull() || type != "part" /*||
+            m_document->documentType() != LODocument::PresentationDocument*/)
         return QImage();
 
     // Wait for any in-progress rendering to be completed
@@ -47,10 +44,10 @@ QImage LOPartsImageProvider::requestImage(const QString & id, QSize * size, cons
     int partNumber = id.section("/", 1, 1).toInt();
     int itemId = id.section("/", 2, 2).toInt();
     qDebug() << " ---- requestImage" << partNumber << itemId;
-    RenderEngine::instance()->enqueueTask(m_document, partNumber, 256.0, itemId); // TODO BUG FIXME
+    // RenderEngine::instance()->enqueueTask(m_document, partNumber, 256.0, itemId); // TODO BUG FIXME
 
     // Unlock the render engine
     //RenderEngine::instance()->setEnabled(true);
 
-    return QImage();
+    return QImage("/home/qtros/Изображения/public_icon.jpg");
 }

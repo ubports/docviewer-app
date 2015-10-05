@@ -124,9 +124,9 @@ void LOPartsModel::fillModel() {
         part.name = m_document->getPartName(i);
         part.id = RenderEngine::getNextId();
 
-        beginRemoveRows(QModelIndex(), rowCount(), rowCount());
+        beginInsertColumns(QModelIndex(), rowCount(), rowCount());
         m_entries.append(part);
-        endRemoveRows();
+        endInsertColumns();
     }
 
     Q_EMIT countChanged();

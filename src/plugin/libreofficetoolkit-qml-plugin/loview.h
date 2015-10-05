@@ -21,10 +21,12 @@
 #include <QQuickItem>
 #include <QTimer>
 #include <QSharedPointer>
-
+#include <QQmlContext>
+#include <QQmlEngine>
 
 #include "renderengine.h"
 #include "lopartsmodel.h"
+#include "lopartsimageprovider.h"
 
 class LODocument;
 class SGTileItem;
