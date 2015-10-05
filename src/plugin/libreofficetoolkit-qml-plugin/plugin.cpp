@@ -30,7 +30,7 @@ void LOPlugin::registerTypes(const char *uri)
     //@uri DocumentViewer.LibreOffice
     qmlRegisterType<LODocument>(uri, 1, 0, "Document");
     qmlRegisterType<LOView>(uri, 1, 0, "View");
-    qmlRegisterType<LOPartsModel>(uri, 1, 0, "PartsModel");
+    // qmlRegisterType<LOPartsModel>(uri, 1, 0, "PartsModel");
 }
 
 void LOPlugin::initializeEngine(QQmlEngine *engine, const char *uri)

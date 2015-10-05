@@ -10,6 +10,9 @@
 
 #include "lodocument.h"
 
+// TODO replace with class.
+
+
 // TODO Need more OOP here.
 struct EngineTask
 {
@@ -65,16 +68,22 @@ public:
         return s_instance;
     }
 
-    int activeTaskCount() { return m_activeTaskCount; }
-
-    bool enabled() { return m_enabled.loadAcquire(); }
-    void setEnabled(bool enabled) {
-        if (m_enabled.loadAcquire() == enabled)
-            return;
-
-        m_enabled.storeRelease(enabled);
-        Q_EMIT enabledChanged();
+    static int getNextId() {
+        static int idCounter = 0xDEAD0000;
+        return idCounter++;
     }
+
+    // TODO DELETE
+    //int activeTaskCount() { return m_activeTaskCount; }
+
+//    bool enabled() { return m_enabled.loadAcquire(); }
+//    void setEnabled(bool enabled) {
+//        if (m_enabled.loadAcquire() == enabled)
+//            return;
+
+//        m_enabled.storeRelease(enabled);
+//        Q_EMIT enabledChanged();
+//    }
 
 Q_SIGNALS:
     void renderFinished(int id, QImage img);

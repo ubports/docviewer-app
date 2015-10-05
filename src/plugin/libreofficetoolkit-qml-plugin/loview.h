@@ -22,7 +22,9 @@
 #include <QTimer>
 #include <QSharedPointer>
 
+
 #include "renderengine.h"
+#include "lopartsmodel.h"
 
 class LODocument;
 class SGTileItem;
@@ -31,11 +33,12 @@ class LOView : public QQuickItem
 {
     Q_OBJECT
     Q_ENUMS(ZoomMode)
-    Q_PROPERTY(QQuickItem* parentFlickable READ parentFlickable WRITE setParentFlickable NOTIFY parentFlickableChanged)
-    Q_PROPERTY(LODocument* document        READ document        /*WRITE setDocument*/    NOTIFY documentChanged)
-    Q_PROPERTY(qreal       zoomFactor      READ zoomFactor      WRITE setZoomFactor      NOTIFY zoomFactorChanged)
-    Q_PROPERTY(ZoomMode    zoomMode        READ zoomMode                                 NOTIFY zoomModeChanged)
-    Q_PROPERTY(int         cacheBuffer     READ cacheBuffer     WRITE setCacheBuffer     NOTIFY cacheBufferChanged)
+    Q_PROPERTY(QQuickItem*   parentFlickable READ parentFlickable WRITE setParentFlickable NOTIFY parentFlickableChanged)
+    Q_PROPERTY(LODocument*   document        READ document        /*WRITE setDocument*/    NOTIFY documentChanged)
+    Q_PROPERTY(QAbstractListModel* partsModel      READ partsModel                               NOTIFY partsModelChanged)
+    Q_PROPERTY(qreal         zoomFactor      READ zoomFactor      WRITE setZoomFactor      NOTIFY zoomFactorChanged)
+    Q_PROPERTY(ZoomMode      zoomMode        READ zoomMode                                 NOTIFY zoomModeChanged)
+    Q_PROPERTY(int           cacheBuffer     READ cacheBuffer     WRITE setCacheBuffer     NOTIFY cacheBufferChanged)
 
 public:
     LOView(QQuickItem *parent = 0);
@@ -52,6 +55,7 @@ public:
     Q_INVOKABLE void initializeDocument(const QString& path);
 
     LODocument* document() const;
+    QAbstractListModel* partsModel() const;
 
     qreal       zoomFactor() const;
     void        setZoomFactor(const qreal zoom);
@@ -66,6 +70,7 @@ public:
 Q_SIGNALS:
     void parentFlickableChanged();
     void documentChanged();
+    void partsModelChanged();
     void zoomFactorChanged();
     void zoomModeChanged();
     void cacheBufferChanged();
@@ -81,6 +86,7 @@ private:
 
     QQuickItem*                 m_parentFlickable;
     QSharedPointer<LODocument>  m_document;
+    LOPartsModel*               m_partsModel; // TODO MB move to document.
 
     qreal                       m_zoomFactor;
     ZoomMode                    m_zoomMode;

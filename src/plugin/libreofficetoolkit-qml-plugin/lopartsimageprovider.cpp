@@ -21,7 +21,9 @@
 LOPartsImageProvider::LOPartsImageProvider(LODocument *document)
     : QQuickImageProvider(QQuickImageProvider::Image, QQuickImageProvider::ForceAsynchronousImageLoading)
     , m_document(document)
-{ }
+{
+    // m_document = QSharedPointer<LODocument>(document);
+}
 
 QImage LOPartsImageProvider::requestImage(const QString & id, QSize * size, const QSize & requestedSize)
 {
@@ -34,17 +36,21 @@ QImage LOPartsImageProvider::requestImage(const QString & id, QSize * size, cons
         return QImage();
 
     // Wait for any in-progress rendering to be completed
-    while (RenderEngine::instance()->activeTaskCount() != 0) { }
+    //while (RenderEngine::instance()->activeTaskCount() != 0) { }
 
     // Lock the render engine
-    RenderEngine::instance()->setEnabled(false);
+    //RenderEngine::instance()->setEnabled(false);
+
+    // TODO CHECK HASH
 
     // Render the part to QImage
     int partNumber = id.section("/", 1, 1).toInt();
-    QImage result; //  = m_document->paintThumbnail(partNumber, 256.0);
+    int itemId = id.section("/", 2, 2).toInt();
+    qDebug() << " ---- requestImage" << partNumber << itemId;
+    RenderEngine::instance()->enqueueTask(m_document, partNumber, 256.0, itemId); // TODO BUG FIXME
 
     // Unlock the render engine
-    RenderEngine::instance()->setEnabled(true);
+    //RenderEngine::instance()->setEnabled(true);
 
-    return result;
+    return QImage();
 }

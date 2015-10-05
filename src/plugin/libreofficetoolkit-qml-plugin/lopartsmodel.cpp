@@ -23,36 +23,45 @@
 #include <QQmlEngine>
 #include <QDebug>
 
-LOPartsModel::LOPartsModel(QAbstractListModel *parent):
+
+
+LOPartsModel::LOPartsModel(const QSharedPointer<LODocument>& document, QAbstractListModel *parent):
     QAbstractListModel(parent)
 {   
-    connect(this, SIGNAL(documentChanged()), this, SLOT(fillModel()));
-}
+    //connect(this, SIGNAL(documentChanged()), this, SLOT(fillModel()));
 
-void LOPartsModel::setDocument(LODocument *document)
-{
-    if (m_document == document)
-        return;
+    connect(RenderEngine::instance(), SIGNAL(thumbnailRenderFinished(int,QImage)),
+            this, SLOT(slotThumbnailRenderFinished(int,QImage)));
+
+    // TODO
 
     m_document = document;
-    Q_EMIT documentChanged();
+    fillModel();
+    // Q_EMIT documentChanged();
 
-    QQmlEngine *engine = QQmlEngine::contextForObject(this)->engine();
-    QString imageProviderName = "lok";
+//    QQmlEngine *engine = QQmlEngine::contextForObject(this)->engine();
+//    QString imageProviderName = "lok";
 
-    if (engine->imageProvider(imageProviderName))
-        engine->removeImageProvider(imageProviderName);
+//    if (engine->imageProvider(imageProviderName))
+//        engine->removeImageProvider(imageProviderName);
 
-    engine->addImageProvider(imageProviderName, new LOPartsImageProvider(m_document));
-
+//    engine->addImageProvider(imageProviderName, new LOPartsImageProvider(m_document));
 }
+
+//void LOPartsModel::setDocument(LODocument *document)
+//{
+//    if (m_document == document)
+//        return;
+
+//    qDebug () << " ---- LOPartsModel::setDocument" << m_document << document;
+//}
 
 QHash<int, QByteArray> LOPartsModel::roleNames() const
 {
     QHash<int, QByteArray> roles;
     roles[IndexRole] = "index";
     roles[NameRole] = "name";
-    roles[ThumbnailRole] = "thumbnail";
+    roles[IdRole] = "id";
 
     return roles;
 }
@@ -75,8 +84,8 @@ QVariant LOPartsModel::data(const QModelIndex & index, int role) const
         return part.index;
     case NameRole:
         return part.name;
-    case ThumbnailRole:
-        return part.thumbnail;
+    case IdRole:
+        return part.id;
 
     default:
         return 0;
@@ -95,35 +104,48 @@ QVariantMap LOPartsModel::get(int index) const
     QVariantMap map;
     map["name"] = part.name;
     map["index"] = part.index;
-    map["thumbnail"] = part.index;
+    map["id"] = part.id;
 
     return map;
 }
 
 void LOPartsModel::fillModel() {
-    if (m_document) {
-        if (!m_entries.isEmpty()) {
-            beginRemoveRows(QModelIndex(), 0, rowCount());
-            m_entries.clear();
-            endRemoveRows();
-        }
+    if (!m_document)
+        return; // TODO DEBUG ERROR
 
-        int partsCount = m_document->partsCount();
+    if (!m_entries.isEmpty()) {
+        beginRemoveRows(QModelIndex(), 0, rowCount());
+        m_entries.clear();
+        endRemoveRows();
+    }
 
-        for (int i = 0; i < partsCount; i++) {
-            LOPartEntry part;
-            part.index = i;
-            part.name = m_document->getPartName(i);
+    int partsCount = m_document->partsCount();
+    qDebug() << Q_FUNC_INFO << partsCount;
 
-            beginRemoveRows(QModelIndex(), rowCount(), rowCount());
-            m_entries.append(part);
-            endRemoveRows();
-        }
+    for (int i = 0; i < partsCount; i++) {
+        LOPartEntry part;
+        part.index = i;
+        part.name = m_document->getPartName(i);
+        part.id = RenderEngine::getNextId();
 
-        Q_EMIT countChanged();
-    }    
+        beginRemoveRows(QModelIndex(), rowCount(), rowCount());
+        m_entries.append(part);
+        endRemoveRows();
+    }
+
+    Q_EMIT countChanged();
+}
+
+void LOPartsModel::slotThumbnailRenderFinished(int id, QImage img)
+{
+    m_images.insert(id, img);
 }
 
 LOPartsModel::~LOPartsModel()
 {
+    disconnect(RenderEngine::instance(), SIGNAL(thumbnailRenderFinished(int,QImage)),
+               this, SLOT(slotThumbnailRenderFinished(int,QImage)));
+
+    // TODO THINK
+    m_images.clear();
 }

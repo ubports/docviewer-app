@@ -19,6 +19,8 @@
 #define LOPARTSIMAGEPROVIDER_H
 
 #include <QQuickImageProvider>
+#include <QSharedPointer>
+#include <QDebug>
 
 class LODocument;
 
@@ -29,7 +31,8 @@ public:
     QImage requestImage(const QString & id, QSize * size, const QSize & requestedSize);
 
 private:
-    LODocument *m_document;
+    QSharedPointer<LODocument> m_document;
+    // LODocument* m_document;
 };
 
 #endif // LOPARTSIMAGEPROVIDER_H

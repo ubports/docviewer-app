@@ -36,6 +36,7 @@ LOView::LOView(QQuickItem *parent)
     : QQuickItem(parent)
     , m_parentFlickable(nullptr)
     , m_document(nullptr)
+    , m_partsModel(nullptr)
     , m_zoomFactor(1.0)
     , m_cacheBuffer(TILE_SIZE * 3)
     , m_visibleArea(0, 0, 0, 0)
@@ -79,11 +80,14 @@ void LOView::setParentFlickable(QQuickItem *flickable)
 
 void LOView::initializeDocument(const QString &path)
 {
-    if (m_document.data())
-        m_document.data()->disconnect(this);
+    if (m_document)
+        m_document->disconnect(this);
 
     m_document = QSharedPointer<LODocument>(new LODocument());
     m_document->setPath(path);
+
+    m_partsModel = new LOPartsModel(m_document);
+    Q_EMIT partsModelChanged();
 
     connect(m_document.data(), SIGNAL(currentPartChanged()), this, SLOT(invalidateAllTiles()));
 
@@ -94,6 +98,11 @@ void LOView::initializeDocument(const QString &path)
 LODocument* LOView::document() const
 {
     return m_document.data();
+}
+
+LOPartsModel *LOView::partsModel() const
+{
+    return m_partsModel;
 }
 
 qreal LOView::zoomFactor() const
@@ -314,7 +323,7 @@ void LOView::createTile(int index, QRect rect)
         qDebug() << "Creating tile indexed as" << index;
 #endif
 
-        auto tile = new SGTileItem(rect, m_zoomFactor, this);
+        auto tile = new SGTileItem(rect, m_zoomFactor, RenderEngine::getNextId(), this);
         m_tiles.insert(index, tile);
         RenderEngine::instance()->enqueueTask(m_document, rect, m_zoomFactor, tile->id());
     }
@@ -352,6 +361,7 @@ void LOView::clearView()
 
 LOView::~LOView()
 {
+    delete m_partsModel;
     disconnect(RenderEngine::instance(), SIGNAL(renderFinished(int,QImage)), this, SLOT(renderResultReceived(int,QImage)));
 
     // Remove all tasks from rendering queue.

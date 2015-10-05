@@ -20,36 +20,48 @@
 
 #include <QAbstractListModel>
 #include <QImage>
+#include <QHash>
+#include <QSharedPointer>
+
+#include "renderengine.h"
 
 class LODocument;
 
 class LOPartEntry
 {
 public:
+    LOPartEntry():
+        index(0)
+    {
+        id = RenderEngine::getNextId();
+    }
+
+    int id;
     QString name;
-    int index = 0;
-    QImage thumbnail;
+    int index;
 };
 
 class LOPartsModel : public QAbstractListModel
 {
     Q_OBJECT
     Q_DISABLE_COPY(LOPartsModel)
-    Q_PROPERTY(LODocument* document READ document WRITE setDocument NOTIFY documentChanged)
+    // Q_PROPERTY(LODocument* document READ document WRITE setDocument NOTIFY documentChanged)
     Q_PROPERTY(int count READ rowCount NOTIFY countChanged)
 
 public:
     enum Roles {
         NameRole = Qt::UserRole + 1,
         IndexRole,
-        ThumbnailRole
+        IdRole
     };
 
-    explicit LOPartsModel(QAbstractListModel *parent = 0);
+    explicit LOPartsModel(QAbstractListModel *parent = 0)
+    { }
+    explicit LOPartsModel(const QSharedPointer<LODocument>& document, QAbstractListModel *parent = 0);
     ~LOPartsModel();
 
-    LODocument* document() { return m_document; }
-    void setDocument(LODocument* document);
+    // LODocument* document() { return m_document; }
+    //void setDocument(LODocument* document);
 
     QHash<int, QByteArray> roleNames() const;
 
@@ -59,15 +71,17 @@ public:
     Q_INVOKABLE QVariantMap get(int index) const;
 
 Q_SIGNALS:
-    void documentChanged();
+    // void documentChanged();
     void countChanged();
 
 private slots:
     void fillModel();
+    void slotThumbnailRenderFinished(int id, QImage img);
 
 private:
-    LODocument* m_document;
+    QSharedPointer<LODocument> m_document;
     QList<LOPartEntry> m_entries;
+    QHash<int, QImage> m_images;
 };
 
 #endif // LOPARTSMODEL_H

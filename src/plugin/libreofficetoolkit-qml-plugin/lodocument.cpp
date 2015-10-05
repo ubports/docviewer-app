@@ -238,7 +238,8 @@ bool LODocument::saveAs(QString url, QString format = QString(), QString filterO
 LODocument::~LODocument()
 {
     delete m_document;
-#ifdef DEBUG_VERBOSE
+#ifndef DEBUG_VERBOSE
     qDebug() << " ---- ~LODocument";
+    m_document->setPart(1);
 #endif
 }

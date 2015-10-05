@@ -67,7 +67,7 @@ ListView {
                 // thumbnails of a previously loaded document.
                 cache: false
 
-                source: "image://lok/part/" + model.index
+                source: "image://lok/part/" + model.index + "/" + model.id
             }
 
             Label {

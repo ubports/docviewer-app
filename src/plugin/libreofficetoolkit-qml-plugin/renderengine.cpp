@@ -67,7 +67,7 @@ void RenderEngine::doNextTask()
         return;
 
     m_activeTaskCount++;
-    auto task = m_queue.dequeue();
+    EngineTask task = m_queue.dequeue();
 
     // Set correct part.
     m_lastPart = task.part;

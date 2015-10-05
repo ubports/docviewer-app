@@ -23,8 +23,9 @@ Flickable {
     property alias document:    view.document
     property alias zoomFactor:  view.zoomFactor
     property alias cacheBuffer: view.cacheBuffer
-
+    property alias partsModel: view.partsModel
     property alias zoomMode:    view.zoomMode
+
     property string documentPath: ""
 
     function adjustZoomToWidth()

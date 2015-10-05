@@ -8,13 +8,13 @@
 #include <QSGFlatColorMaterial>
 #endif
 
-int SGTileItem::s_idCounter = 0xDEAD0000;
+//int SGTileItem::s_idCounter = 0xDEAD0000;
 
-SGTileItem::SGTileItem(const QRect& area, const qreal &zoom, QQuickItem *parent)
+SGTileItem::SGTileItem(const QRect& area, qreal zoom, int id, QQuickItem *parent)
     : QQuickItem(parent)
     , m_area(area)
     , m_zoomFactor(zoom)
-    , m_id (s_idCounter++)
+    , m_id (id)
 {
     setFlag(ItemHasContents, true);
 }

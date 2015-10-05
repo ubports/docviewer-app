@@ -99,8 +99,8 @@ PageWithBottomEdge {
                                     left: parent.left
                                 }
 
-                                model: LO.PartsModel { document: loPageContent.loDocument }
-                                visible: model && loDocument.documentType == LO.Document.PresentationDocument
+                                model: loView.partsModel //LO.PartsModel { document: loPageContent.loDocument }
+                                visible: /*loView.partsModel &&*/ loDocument.documentType == LO.Document.PresentationDocument
                                 width: visible ? units.gu(40) : 0
                             }
 
@@ -198,7 +198,7 @@ PageWithBottomEdge {
                     PartsView {
                         property bool belongsToNestedPage: true
                         anchors.fill: parent
-                        model: LO.PartsModel { document: loPageContent.loDocument }
+                        model: loView.partsModel //LO.PartsModel { document: loPageContent.loDocument }
                     }
                 }
             }
