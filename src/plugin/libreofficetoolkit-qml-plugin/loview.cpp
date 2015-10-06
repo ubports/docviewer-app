@@ -51,7 +51,7 @@ LOView::LOView(QQuickItem *parent)
     connect(&m_updateTimer, SIGNAL(timeout()), this, SLOT(updateVisibleRect()));
 
     connect(RenderEngine::instance(), SIGNAL(renderFinished(int,QImage)),
-            this, SLOT(renderResultReceived(int,QImage)));
+            this, SLOT(slotTileRenderFinished(int,QImage)));
     connect(RenderEngine::instance(), SIGNAL(thumbnailRenderFinished(int,QImage)),
             this, SLOT(slotThumbnailRenderFinished(int,QImage)));
 }
@@ -354,7 +354,7 @@ void LOView::scheduleVisibleRectUpdate()
         m_updateTimer.start(20);
 }
 
-void LOView::renderResultReceived(int id, QImage img)
+void LOView::slotTileRenderFinished(int id, QImage img)
 {
     for (auto i = m_tiles.begin(); i != m_tiles.end(); ++i) {
         SGTileItem* sgtile = i.value();
@@ -383,10 +383,9 @@ void LOView::clearView()
 LOView::~LOView()
 {
     delete m_partsModel;
-    delete m_imageProvider;
 
     disconnect(RenderEngine::instance(), SIGNAL(renderFinished(int,QImage)),
-               this, SLOT(renderResultReceived(int,QImage)));
+               this, SLOT(slotTileRenderFinished(int,QImage)));
     disconnect(RenderEngine::instance(), SIGNAL(thumbnailRenderFinished(int,QImage)),
                this, SLOT(slotThumbnailRenderFinished(int,QImage)));
 

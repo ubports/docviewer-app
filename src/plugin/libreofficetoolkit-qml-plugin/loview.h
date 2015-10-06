@@ -83,7 +83,7 @@ private Q_SLOTS:
     void scheduleVisibleRectUpdate();
     void invalidateAllTiles();
 
-    void renderResultReceived(int id, QImage img);
+    void slotTileRenderFinished(int id, QImage img);
     void slotThumbnailRenderFinished(int id, QImage img);
 
 private:
@@ -91,7 +91,7 @@ private:
     QQuickItem*                 m_parentFlickable;
     QSharedPointer<LODocument>  m_document;
     LOPartsModel*               m_partsModel; // TODO MB move to document.
-    LOPartsImageProvider*       m_imageProvider;
+    LOPartsImageProvider*       m_imageProvider; // The QQmlEngine takes ownership of provider.
 
     qreal                       m_zoomFactor;
     ZoomMode                    m_zoomMode;

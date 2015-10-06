@@ -19,7 +19,7 @@
 #include "renderengine.h"
 
 LOPartsImageProvider::LOPartsImageProvider(const QSharedPointer<LODocument>& d)
-    : QQuickImageProvider(QQuickImageProvider::Image/*, QQuickImageProvider::ForceAsynchronousImageLoading*/),
+    : QQuickImageProvider(QQuickImageProvider::Image),
       m_document(d)
 { }
 
@@ -33,15 +33,14 @@ QImage LOPartsImageProvider::requestImage(const QString & id, QSize * size, cons
             m_document->documentType() != LODocument::PresentationDocument)
         return QImage();
 
-    // Render the part to QImage
+    // Get info from "id".
     int partNumber = id.section("/", 1, 1).toInt();
     int itemId = id.section("/", 2, 2).toInt();
 
     if (m_images.contains(itemId))
         return m_images[itemId];
 
-    qDebug() << " ---- requestImage" << partNumber << itemId;
-    RenderEngine::instance()->enqueueTask(m_document, partNumber, 256.0, itemId); // TODO BUG FIXME
+    RenderEngine::instance()->enqueueTask(m_document, partNumber, 256.0, itemId);
 
-    return QImage(); // "/home/qtros/Изображения/public_icon.jpg");
+    return QImage(); // TODO Use default image.
 }

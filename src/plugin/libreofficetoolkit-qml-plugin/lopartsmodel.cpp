@@ -30,14 +30,6 @@ LOPartsModel::LOPartsModel(const QSharedPointer<LODocument>& document, QAbstract
 {   
     m_document = document;
     fillModel();
-
-//    QQmlEngine *engine = QQmlEngine::contextForObject(this)->engine();
-//    QString imageProviderName = "lok";
-
-//    if (engine->imageProvider(imageProviderName))
-//        engine->removeImageProvider(imageProviderName);
-
-//    engine->addImageProvider(imageProviderName, new LOPartsImageProvider(m_document));
 }
 
 QHash<int, QByteArray> LOPartsModel::roleNames() const
