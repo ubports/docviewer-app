@@ -19,7 +19,7 @@
 #include "renderengine.h"
 
 LOPartsImageProvider::LOPartsImageProvider(const QSharedPointer<LODocument>& d)
-    : QQuickImageProvider(QQuickImageProvider::Image, QQuickImageProvider::ForceAsynchronousImageLoading),
+    : QQuickImageProvider(QQuickImageProvider::Image/*, QQuickImageProvider::ForceAsynchronousImageLoading*/),
       m_document(d)
 { }
 
@@ -43,5 +43,5 @@ QImage LOPartsImageProvider::requestImage(const QString & id, QSize * size, cons
     qDebug() << " ---- requestImage" << partNumber << itemId;
     RenderEngine::instance()->enqueueTask(m_document, partNumber, 256.0, itemId); // TODO BUG FIXME
 
-    return QImage("/home/qtros/Изображения/public_icon.jpg");
+    return QImage(); // "/home/qtros/Изображения/public_icon.jpg");
 }

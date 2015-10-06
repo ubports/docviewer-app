@@ -369,6 +369,7 @@ void LOView::slotThumbnailRenderFinished(int id, QImage img)
 {
     if (!m_imageProvider->m_images.contains(id))
         m_imageProvider->m_images.insert(id, img);
+    m_partsModel->notifyAboutChanges(id);
 }
 
 void LOView::clearView()

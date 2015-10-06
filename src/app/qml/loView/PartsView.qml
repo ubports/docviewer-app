@@ -65,9 +65,8 @@ ListView {
                 fillMode: Image.PreserveAspectFit
                 // Do not store a cache of the thumbnail, so that we don't show
                 // thumbnails of a previously loaded document.
-                cache: false
-
-                source: "image://lok/part/" + model.index + "/" + model.id
+                cache: true // TODO PLAY WITH IT
+                source: model.thumbnail
             }
 
             Label {

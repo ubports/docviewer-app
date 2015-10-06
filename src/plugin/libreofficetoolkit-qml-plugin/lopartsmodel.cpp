@@ -28,12 +28,8 @@
 LOPartsModel::LOPartsModel(const QSharedPointer<LODocument>& document, QAbstractListModel *parent):
     QAbstractListModel(parent)
 {   
-    //connect(this, SIGNAL(documentChanged()), this, SLOT(fillModel()));
-
     m_document = document;
     fillModel();
-
-    // Q_EMIT documentChanged();
 
 //    QQmlEngine *engine = QQmlEngine::contextForObject(this)->engine();
 //    QString imageProviderName = "lok";
@@ -44,20 +40,13 @@ LOPartsModel::LOPartsModel(const QSharedPointer<LODocument>& document, QAbstract
 //    engine->addImageProvider(imageProviderName, new LOPartsImageProvider(m_document));
 }
 
-//void LOPartsModel::setDocument(LODocument *document)
-//{
-//    if (m_document == document)
-//        return;
-
-//    qDebug () << " ---- LOPartsModel::setDocument" << m_document << document;
-//}
-
 QHash<int, QByteArray> LOPartsModel::roleNames() const
 {
     QHash<int, QByteArray> roles;
     roles[IndexRole] = "index";
     roles[NameRole] = "name";
     roles[IdRole] = "id";
+    roles[ThumbnailRole] = "thumbnail";
 
     return roles;
 }
@@ -82,6 +71,8 @@ QVariant LOPartsModel::data(const QModelIndex & index, int role) const
         return part.name;
     case IdRole:
         return part.id;
+    case ThumbnailRole:
+        return part.thumbnail;
 
     default:
         return 0;
@@ -101,13 +92,24 @@ QVariantMap LOPartsModel::get(int index) const
     map["name"] = part.name;
     map["index"] = part.index;
     map["id"] = part.id;
+    map["thumbnail"] = part.thumbnail;
 
     return map;
 }
 
+void LOPartsModel::notifyAboutChanges(int id)
+{
+    for (int i = 0; i < m_entries.size(); i++)
+        if (m_entries[i].id == id) {
+            m_entries[i].thumbnail += "/cached";
+            Q_EMIT dataChanged(createIndex(i, 0), createIndex(i + 1, 0));
+            break;
+        }
+}
+
 void LOPartsModel::fillModel() {
     if (!m_document)
-        return; // TODO DEBUG ERROR
+        return;
 
     if (!m_entries.isEmpty()) {
         beginRemoveRows(QModelIndex(), 0, rowCount());
@@ -116,18 +118,18 @@ void LOPartsModel::fillModel() {
     }
 
     int partsCount = m_document->partsCount();
-    qDebug() << Q_FUNC_INFO << partsCount;
-
+    beginInsertColumns(QModelIndex(), 0, qMax(partsCount - 1, 0));
     for (int i = 0; i < partsCount; i++) {
         LOPartEntry part;
+
         part.index = i;
         part.name = m_document->getPartName(i);
         part.id = RenderEngine::getNextId();
+        part.thumbnail = QString("image://lok/part/%1/%2").arg(QString::number(part.index)).arg(QString::number(part.id));
 
-        beginInsertColumns(QModelIndex(), rowCount(), rowCount());
         m_entries.append(part);
-        endInsertColumns();
     }
+    endInsertColumns();
 
     Q_EMIT countChanged();
 }
