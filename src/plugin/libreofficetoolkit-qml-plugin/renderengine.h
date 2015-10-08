@@ -75,18 +75,6 @@ public:
         return idCounter++;
     }
 
-    // TODO DELETE
-    //int activeTaskCount() { return m_activeTaskCount; }
-
-//    bool enabled() { return m_enabled.loadAcquire(); }
-//    void setEnabled(bool enabled) {
-//        if (m_enabled.loadAcquire() == enabled)
-//            return;
-
-//        m_enabled.storeRelease(enabled);
-//        Q_EMIT enabledChanged();
-//    }
-
 Q_SIGNALS:
     void renderFinished(int id, QImage img);
     void thumbnailRenderFinished(int id, QImage img);

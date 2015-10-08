@@ -37,10 +37,18 @@ QImage LOPartsImageProvider::requestImage(const QString & id, QSize * size, cons
     int partNumber = id.section("/", 1, 1).toInt();
     int itemId = id.section("/", 2, 2).toInt();
 
+    // Once rendered images can be found in hash.
     if (m_images.contains(itemId))
         return m_images[itemId];
 
-    RenderEngine::instance()->enqueueTask(m_document, partNumber, 256.0, itemId);
+    const int defaultSize = 256;
 
-    return QImage(); // TODO Use default image.
+    RenderEngine::instance()->enqueueTask(m_document, partNumber, defaultSize, itemId);
+
+    // Return default image (empty).
+    static QImage defaultImage;
+    if (defaultImage.isNull())
+        defaultImage = QImage(defaultSize, defaultSize, QImage::Format_ARGB32);
+
+    return defaultImage;
 }
