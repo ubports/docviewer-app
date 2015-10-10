@@ -15,56 +15,60 @@
   along with this program. If not, see http://www.gnu.org/licenses/.
 */
 
-import QtQuick 2.0
-import Ubuntu.Components 1.1
+import QtQuick 2.4
+import Ubuntu.Components 1.2
 import Ubuntu.Components.Popups 1.0
+import QtQuick.Layouts 1.1
 
 Dialog {
     id: deleteFileDialog
 
     property string path
-    property int __deleteCount: documentPage.view.item.selectedItems.count
+    property var selectedIndices: viewLoader.item.ViewItems.selectedIndices;
+    property int deleteCount: selectedIndices.length
 
-    // WORKAROUND: This property is used only when user wants to remove a single
-    // file from a delegate action, and the value of the property is read during
-    // the Component.onDestruction event.
-    // We do this because we need to avoid that the entry in the model is removed
-    // before this dialog is closed.
-    // See src/app/qml/documentPage/DocumentDelegateActions.qml
-    property bool confirmed: false
+    title: path ? i18n.tr("Delete file")
+                : i18n.tr("Delete %1 file", "Delete %1 files", deleteCount).arg(deleteCount)
+    text: path ? i18n.tr("Are you sure you want to permanently delete this file?")
+               : i18n.tr("Are you sure you want to permanently delete this file?",
+                         "Are you sure you want to permanently delete these files?",
+                         deleteCount)
 
-    title: path ? i18n.tr("Delete file") :
-                  i18n.tr("Delete %1 file", "Delete %1 files", __deleteCount).arg(__deleteCount)
-    text: path ? i18n.tr("Are you sure you want to permanently delete this file?") :
-                 i18n.tr("Are you sure you want to permanently delete this file?",
-                            "Are you sure you want to permanently delete these files?",
-                            __deleteCount)
 
-    Button {
-        text: i18n.tr("Cancel")
-        onClicked: PopupUtils.close(deleteFileDialog)
-    }
+    RowLayout {
+        anchors {
+            left: parent.left
+            right: parent.right
+            margins: units.gu(-1)
+        }
 
-    Button {
-        text: i18n.tr("Delete")
-        color: UbuntuColors.red
+        Button {
+            text: i18n.tr("Cancel")
+            onClicked: PopupUtils.close(deleteFileDialog)
+            Layout.fillWidth: true
+        }
 
-        onClicked: {
-            if (deleteFileDialog.path) {
-               deleteFileDialog.confirmed = true;
-            } else {
-                // This is called from selection mode
-                var items = documentPage.view.item.selectedItems;
+        Button {
+            text: i18n.tr("Delete")
+            color: UbuntuColors.red
+            Layout.fillWidth: true
 
-                for (var i=0; i < items.count; i++) {
-                    console.log("Removing:", items.get(i).model.path);
-                    docModel.rm(items.get(i).model.path);
+            onClicked: {
+                if (deleteFileDialog.path) {
+                    //deleteFileDialog.confirmed = true;
+                    docModel.rm(deleteFileDialog.path);
+                } else {
+                    // This is called from selection mode
+                    for (var i=0; i < deleteCount; i++) {
+                        console.log("Removing:", folderModel.get(i).path);
+                        docModel.rm(folderModel.get(i).path);
+                    }
+
+                    viewLoader.item.endSelection();
                 }
 
-                viewLoader.item.endSelection();
+                PopupUtils.close(deleteFileDialog)
             }
-
-            PopupUtils.close(deleteFileDialog)
         }
     }
 }

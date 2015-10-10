@@ -14,13 +14,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.0
-import Ubuntu.Components 1.1
+import QtQuick 2.4
+import Ubuntu.Components 1.2
 import Qt.labs.settings 1.0
 
 Page {
     id: documentPage
-
     title: i18n.tr("Documents")
     flickable: null
 
@@ -41,12 +40,23 @@ Page {
 
     Loader {
         id: viewLoader
-        anchors.fill: parent
 
-        source: (folderModel.count === 0) ? documentPage.state == "search" ? Qt.resolvedUrl("./SearchEmptyState.qml")
-                                                                           : Qt.resolvedUrl("./DocumentEmptyState.qml")
-                                          : useGridView ? Qt.resolvedUrl("./DocumentGridView.qml")
-                                                        : Qt.resolvedUrl("./DocumentListView.qml")
+        width: Math.min(units.gu(80), parent.width)
+        anchors {
+            top: parent.top
+            bottom: parent.bottom
+            horizontalCenter: parent.horizontalCenter
+        }
+
+        source: {
+            if (folderModel.count === 0) {
+                return documentPage.state == "search"
+                        ? Qt.resolvedUrl("SearchEmptyState.qml")
+                        : Qt.resolvedUrl("BrowserEmptyState.qml")
+            }
+
+            return Qt.resolvedUrl("DocumentListView.qml")
+        }
     }
 
     // *** HEADER ***
@@ -54,7 +64,7 @@ Page {
         DocumentPageDefaultHeader {
             name: "default"
             targetPage: documentPage
-            when: !mainView.pickMode && !viewLoader.item.isInSelectionMode && !documentPage.searchMode
+            when: !mainView.pickMode && !viewLoader.item.ViewItems.selectMode && !documentPage.searchMode
         },
 
         DocumentPagePickModeHeader {
@@ -66,13 +76,13 @@ Page {
         DocumentPageSelectionModeHeader {
             name: "selection"
             targetPage: documentPage
-            when: !mainView.pickMode && viewLoader.item.isInSelectionMode
+            when: !mainView.pickMode && viewLoader.item.ViewItems.selectMode
         },
 
         DocumentPageSearchHeader {
             name: "search"
             targetPage: documentPage
-            when: !mainView.pickMode && !viewLoader.item.isInSelectionMode && documentPage.searchMode
+            when: !mainView.pickMode && !viewLoader.item.ViewItems.selectMode && documentPage.searchMode
         }
     ]
 

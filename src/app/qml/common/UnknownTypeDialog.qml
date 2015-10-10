@@ -14,9 +14,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.3
-import Ubuntu.Components 1.1
+import QtQuick 2.4
+import Ubuntu.Components 1.2
 import Ubuntu.Components.Popups 1.0
+import QtQuick.Layouts 1.1
 
 import "loadComponent.js" as LoadComponent
 
@@ -24,20 +25,31 @@ Dialog {
     id: unknownDialog
     objectName: "unknownDialog"
     title: i18n.tr("Unknown file type")
-    text: i18n.tr("Sorry but we can't find a way to display this file. Do you want to open it as a plain text?")
-    Button {
-        text: i18n.tr("Yes")
-        color: UbuntuColors.green
+    text: i18n.tr("Sorry but we can't find a way to display this file.\n\nDo you want to open it as a plain text?")
 
-        onClicked: {
-            LoadComponent.load("text/plain");
-            PopupUtils.close(unknownDialog)
+    RowLayout {
+        anchors {
+            left: parent.left
+            right: parent.right
+            margins: units.gu(-1)
         }
-    }
-    Button {
-        text: i18n.tr("No")
-        color: UbuntuColors.red
-        onClicked: PopupUtils.close(unknownDialog)
+
+        Button {
+            text: i18n.tr("Cancel")
+            onClicked: PopupUtils.close(unknownDialog)
+            Layout.fillWidth: true
+        }
+
+        Button {
+            text: i18n.tr("Yes")
+            color: UbuntuColors.green
+            Layout.fillWidth: true
+
+            onClicked: {
+                LoadComponent.load("text/plain");
+                PopupUtils.close(unknownDialog)
+            }
+        }
     }
 }
 

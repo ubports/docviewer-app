@@ -14,9 +14,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.3
-import Ubuntu.Components 1.1
+import QtQuick 2.4
+import Ubuntu.Components 1.2
 import Ubuntu.Components.Popups 1.0
+import QtQuick.Layouts 1.1
 
 // TODO: Use page breaks detection, when LibreOfficeKit will support it.
 
@@ -41,18 +42,28 @@ Dialog {
         Component.onCompleted: forceActiveFocus()
     }
 
-    Button {
-        objectName:"GOButton"
-        text: i18n.tr("GO!")
-        color: UbuntuColors.green
+    RowLayout {
+        anchors {
+            left: parent.left
+            right: parent.right
+            margins: units.gu(-1)
+        }
 
-        enabled: goToPageTextField.acceptableInput
-        onClicked: goToPage()
-    }
+        Button {
+            text: i18n.tr("Cancel")
+            onClicked: PopupUtils.close(goToPageDialog)
+            Layout.fillWidth: true
+        }
 
-    Button {
-        text: i18n.tr("Cancel")
-        onClicked: PopupUtils.close(goToPageDialog)
+        Button {
+            objectName:"GOButton"
+            text: i18n.tr("GO!")
+            color: UbuntuColors.green
+            Layout.fillWidth: true
+
+            enabled: goToPageTextField.acceptableInput
+            onClicked: goToPage()
+        }
     }
 
     function goToPage() {

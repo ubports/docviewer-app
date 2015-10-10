@@ -14,45 +14,122 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.3
-import Ubuntu.Components 1.1
-import Ubuntu.Components.ListItems 1.0 as ListItem
+import QtQuick 2.4
+import Ubuntu.Components 1.2
+import Ubuntu.Components.ListItems 1.0 as ListItems
 
 import "utils.js" as Utils
+
+// FIXME: Autopilot tests
 
 Page {
     id: detailsPage
     objectName: "detailsPage"
-
     title: i18n.tr("Details")
 
     Column {
-        width: parent.width
+        anchors { left: parent.left; right: parent.right }
 
-        ListItem.Subtitled {
-            text: i18n.tr("Location")
-            subText: file.path
-        }
-        ListItem.Subtitled {
-            text: i18n.tr("Size")
-            subText: Utils.printSize(i18n, file.info.size)
+        ListItem {
+            Column {
+                anchors {
+                    left: parent.left; right: parent.right
+                    margins: units.gu(2)
+                    verticalCenter: parent.verticalCenter
+                }
+
+                Label {
+                    text: i18n.tr("Location")
+                    color: UbuntuColors.midAubergine
+                }
+                Label {
+                    text: file.path
+                    fontSize: "small"
+                }
+            }
         }
 
-        ListItem.Subtitled {
-            text: i18n.tr("Created")
-            subText: file.info.creationTime.toLocaleString(Qt.locale())
+        ListItem {
+            Column {
+                anchors {
+                    left: parent.left; right: parent.right
+                    margins: units.gu(2)
+                    verticalCenter: parent.verticalCenter
+                }
+
+                Label {
+                    text: i18n.tr("Size")
+                    color: UbuntuColors.midAubergine
+                }
+                Label {
+                    text: Utils.printSize(i18n, file.info.size)
+                    fontSize: "small"
+                }
+            }
         }
 
-        ListItem.Subtitled {
-            text: i18n.tr("Last modified")
-            subText: file.info.lastModified.toLocaleString(Qt.locale())
+        ListItem {
+            Column {
+                anchors {
+                    left: parent.left; right: parent.right
+                    margins: units.gu(2)
+                    verticalCenter: parent.verticalCenter
+                }
+
+                Label {
+                    text: i18n.tr("Created")
+                    color: UbuntuColors.midAubergine
+                }
+                Label {
+                    text: file.info.creationTime.toLocaleString(Qt.locale())
+                    fontSize: "small"
+                }
+            }
         }
 
-        ListItem.Subtitled {
-            id: mimetypeItem
+        ListItem {
+            Column {
+                anchors {
+                    left: parent.left; right: parent.right
+                    margins: units.gu(2)
+                    verticalCenter: parent.verticalCenter
+                }
+
+                Label {
+                    text: i18n.tr("Last modified")
+                    color: UbuntuColors.midAubergine
+                }
+                Label {
+                    text: file.info.lastModified.toLocaleString(Qt.locale())
+                    fontSize: "small"
+                }
+            }
+        }
+
+        ListItem {
+            // Used by Autopilot tests
             objectName: "mimetypeItem"
-            text: i18n.tr("MIME type")
-            subText: file.mimetype.name
+            property alias text: mimetypeText.text
+            property alias subText: mimetypeSubText.text
+
+            Column {
+                anchors {
+                    left: parent.left; right: parent.right
+                    margins: units.gu(2)
+                    verticalCenter: parent.verticalCenter
+                }
+
+                Label {
+                    id: mimetypeText
+                    text: i18n.tr("MIME type")
+                    color: UbuntuColors.midAubergine
+                }
+                Label {
+                    id: mimetypeSubText
+                    text: file.mimetype.name
+                    fontSize: "small"
+                }
+            }
         }
     }
 }

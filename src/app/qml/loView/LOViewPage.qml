@@ -14,9 +14,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.3
-import Ubuntu.Components 1.1
-import DocumentViewer.LibreOffice 1.0 as LO
+import QtQuick 2.4
+import Ubuntu.Components 1.2
+import DocumentViewer.LibreOffice 1.0 as LibreOffice
 
 import "../common/utils.js" as Utils
 import "../upstreamComponents"
@@ -48,7 +48,7 @@ Page {
         Item {
             property alias loDocument: loView.document
 
-            LO.Viewer {
+            LibreOffice.Viewer {
                 id: loView
                 objectName: "loView"
                 anchors.fill: parent

@@ -14,145 +14,116 @@
   along with this program. If not, see http://www.gnu.org/licenses/.
 */
 
-import QtQuick 2.0
-import Ubuntu.Components 1.1
+import QtQuick 2.4
+import Ubuntu.Components 1.2
 import QtQuick.Layouts 1.1
-import QtGraphicalEffects 1.0
+import DocumentViewer 1.0
 
 import "../common/utils.js" as Utils
-import "../upstreamComponents"
 
-ListItemWithActions {
-    property QtObject documentDelegateActions: DocumentDelegateActions { }
+// TODO: Ask for a review of this component to the design team
 
-    function formattedDateTime() {
-        var date = new Date(model.date)
-        var diff = model.dateDiff
+ListItem {
+    id: listDelegate
+    height: units.gu(9)
+    leadingActions: ListItemActions { actions: documentDelegateActions.leadingActions }
+    trailingActions: ListItemActions { actions: documentDelegateActions.trailingActions }
 
-        if (sortSettings.sortMode !== 0) {  // The sort rule is not "by date"
-            switch(diff) {
-            case 0:     // DocumentsModel.Today
-                // TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
-                // http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
-                return i18n.tr("Today, %1").arg(Qt.formatTime(date, Qt.locale().timeFormat(Locale.ShortFormat)))
-
-            case 1:     // DocumentsModel.Yesterday
-                // TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
-                // http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
-                return i18n.tr("Yesterday, %1").arg(Qt.formatTime(date, Qt.locale().timeFormat(Locale.ShortFormat)))
-
-            default:    // DocumentsModel.LastWeek || DocumentsModel.LastMonth || DocumentsModel.Earlier
-                // TRANSLATORS: this is a datetime formatting string,
-                // see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-                return Qt.formatDateTime(date, i18n.tr("dd-MM-yyyy hh:mm"))
-            }
-        } else {
-            switch(diff) {
-            case 0:     // DocumentsModel.Today, or
-            case 1:     // DocumentsModel.Yesterday
-                return Qt.formatDateTime(date, Qt.locale().timeFormat(Locale.ShortFormat))
-
-            case 2:     // DocumentsModel.LastWeek
-                // TRANSLATORS: this is a datetime formatting string,
-                // see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-                return Qt.formatDateTime(date, i18n.tr("dddd, hh:mm"))
-
-            default:    // DocumentsModel.LastMonth || DocumentsModel.Earlier
-                // TRANSLATORS: this is a datetime formatting string,
-                // see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-                return Qt.formatDateTime(date, i18n.tr("dd-MM-yyyy hh:mm"))
-            }
-        }
-    }
-
-    anchors { left: parent.left; right: parent.right }
-    height: units.gu(8)
-
-    locked: documentPage.state == "pickMode"
-
-    leftSideAction: documentDelegateActions.leadingActions[0]
-    rightSideActions: documentDelegateActions.trailingActions
-
-    contents: RowLayout {
-        anchors.fill: parent
+    RowLayout {
         spacing: units.gu(2)
+        anchors {
+            fill: parent; margins: units.gu(1)
+            leftMargin: units.gu(2)
+            rightMargin: units.gu(2)
+        }
 
         Icon {
+            name: Utils.getIconNameFromMimetype(model.mimetype)
             Layout.preferredWidth: height
             Layout.preferredHeight: units.gu(5)
-
-            // At the moment the suru icon theme doesn't have much icons.
-            name: {
-                if (model.mimetype.substring(0, 5) === "text/")
-                    return "text-x-generic-symbolic"
-
-                if (model.mimetype.substring(0, 5) === "image")
-                    return "image-x-generic-symbolic"
-
-                if (model.mimetype === "application/pdf")
-                    return "application-pdf-symbolic"
-
-                if (model.mimetype === "application/vnd.oasis.opendocument.text"
-                        || model.mimetype === "application/msword"
-                        || model.mimetype === "application/vnd.openxmlformats-officedocument.wordprocessingml.document")
-                    return "x-office-document-symbolic"
-
-                if (model.mimetype === "application/vnd.oasis.opendocument.spreadsheet"
-                        || model.mimetype === "application/vnd.ms-excel"
-                        || model.mimetype === "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
-                    return "x-office-spreadsheet-symbolic"
-
-                if (model.mimetype === "application/vnd.oasis.opendocument.presentation"
-                        || model.mimetype === "application/vnd.ms-powerpoint"
-                        || model.mimetype === "application/vnd.openxmlformats-officedocument.presentationml.presentation")
-                    return "x-office-presentation-symbolic"
-
-                return "package-x-generic-symbolic"
-            }
-
-            Rectangle {
-                anchors {
-                    right: parent.right
-                    bottom: parent.bottom
-                }
-
-                width: units.gu(2.5)
-                height: units.gu(2.5)
-
-                visible: model.isFromExternalStorage
-                color: mainView.backgroundColor
-
-                Icon {
-                    anchors.fill: parent
-                    name: "sdcard-symbolic"
-                }
-            }
         }
 
         Column {
             Layout.fillWidth: true
 
-            Label {
-                text: model.name
-                wrapMode: Text.Wrap
+            RowLayout {
                 width: parent.width
-
-                color: UbuntuColors.midAubergine
+                Label {
+                    text: model.name
+                    //wrapMode: Text.Wrap
+                    elide: Text.ElideRight
+                    color: UbuntuColors.midAubergine
+                    Layout.fillWidth: true
+                }
+                Label {
+                    text: Utils.printSize(i18n, model.size)
+                    fontSize: "small"
+                }
             }
 
             RowLayout {
                 width: parent.width
-
                 Label {
-                    text: formattedDateTime()
+                    text: internal.formattedDateTime()
                     fontSize: "small"
 
                     Layout.fillWidth: true
                 }
+                Icon {
+                    width: units.gu(2); height: width
+                    name: "sdcard-symbolic"
+                    visible: model.isFromExternalStorage
+                }
+            }
+        }
+    }
 
-                Label {
-                    text: Utils.printSize(i18n, model.size)
-                    fontSize: "small"
+    DocumentDelegateActions { id: documentDelegateActions }
+
+    QtObject {
+        id: internal
+
+        function formattedDateTime() {
+            var date = new Date(model.date)
+            var diff = model.dateDiff
+
+            if (sortSettings.sortMode !== 0) {  // Sort is not "by date"
+                switch(diff) {
+                case DocumentsModel.Today:
+                    // TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
+                    // http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
+                    return i18n.tr("Today, %1").arg(Qt.formatTime(date, Qt.locale().timeFormat(Locale.ShortFormat)))
+
+                case DocumentsModel.Yesterday:
+                    // TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
+                    // http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
+                    return i18n.tr("Yesterday, %1").arg(Qt.formatTime(date, Qt.locale().timeFormat(Locale.ShortFormat)))
+
+                case DocumentsModel.LastWeek:
+                case DocumentsModel.LastMonth:
+                case DocumentsModel.Earlier:
+                    // TRANSLATORS: this is a datetime formatting string,
+                    // see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
+                    return Qt.formatDateTime(date, i18n.tr("yyyy/MM/dd hh:mm"))
+                }
+            }
+
+            else {  //
+                switch(diff) {  // Sort "by date"
+                case DocumentsModel.Today:
+                case DocumentsModel.Yesterday:
+                    return Qt.formatDateTime(date, Qt.locale().timeFormat(Locale.ShortFormat))
+
+                case DocumentsModel.LastWeek:
+                    // TRANSLATORS: this is a datetime formatting string,
+                    // see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
+                    return Qt.formatDateTime(date, i18n.tr("dddd, hh:mm"))
+
+                case DocumentsModel.LastMonth:
+                case DocumentsModel.Earlier:
+                    // TRANSLATORS: this is a datetime formatting string,
+                    // see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
+                    return Qt.formatDateTime(date, i18n.tr("yyyy/MM/dd hh:mm"))
                 }
             }
         }
