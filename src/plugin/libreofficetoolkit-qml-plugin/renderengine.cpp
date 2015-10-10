@@ -12,11 +12,11 @@ RenderEngine::RenderEngine():
     m_idealThreadCount = itc == -1 ? DefaultIdealThreadCount : itc;
 }
 
-void RenderEngine::enqueueTask(const QSharedPointer<LODocument>& doc, const QRect& area, int id)
+void RenderEngine::enqueueTask(const QSharedPointer<LODocument>& doc, const QRect& area, const qreal &zoom, int id)
 {
     Q_ASSERT(doc != nullptr);
 
-    m_queue.enqueue(EngineTask(doc, area, id));
+    m_queue.enqueue(EngineTask(doc, area, zoom, id));
 
     doNextTask();
 }
@@ -50,7 +50,7 @@ void RenderEngine::doNextTask()
     auto task = m_queue.dequeue();
 
     QtConcurrent::run( [=] {
-        QImage img = task.document->paintTile(task.area.size(), task.area);
+        QImage img = task.document->paintTile(task.area.size(), task.area, task.zoom);
         QMetaObject::invokeMethod(this, "internalRenderCallback", Q_ARG(int, task.id), Q_ARG(QImage, img));
     });
 }

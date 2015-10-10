@@ -60,6 +60,25 @@ void LODocument::setPath(const QString& pathName)
     this->loadDocument(m_path);
 }
 
+int LODocument::currentPart() {
+    if (!m_document)
+        return int(-1);
+ 
+    return m_document->getPart();
+}
+ 
+void LODocument::setCurrentPart(int index)
+{
+    if (!m_document)
+        return;
+ 
+    if (this->currentPart() == index || index < 0 || index > partsCount() - 1)
+        return;
+ 
+    m_document->setPart(index);
+    Q_EMIT currentPartChanged();
+}
+
 // Load the document
 bool LODocument::loadDocument(const QString &pathName)
 {
@@ -106,7 +125,7 @@ QSize LODocument::documentSize() const
 
 // Paint a tile, with size=canvasSize, of the part of the document defined by
 // the rect tileSize.
-QImage LODocument::paintTile(const QSize& canvasSize, const QRect& tileSize)
+QImage LODocument::paintTile(const QSize& canvasSize, const QRect& tileSize, const qreal &zoom)
 {
     QImage result = QImage(canvasSize.width(), canvasSize.height(),  QImage::Format_RGB32);
 
@@ -117,16 +136,43 @@ QImage LODocument::paintTile(const QSize& canvasSize, const QRect& tileSize)
 
     m_document->paintTile(result.bits(),
                           canvasSize.width(), canvasSize.height(),
-                          Twips::convertPixelsToTwips(tileSize.x()),
-                          Twips::convertPixelsToTwips(tileSize.y()),
-                          Twips::convertPixelsToTwips(tileSize.width()),
-                          Twips::convertPixelsToTwips(tileSize.height()));
+                          Twips::convertPixelsToTwips(tileSize.x(), zoom),
+                          Twips::convertPixelsToTwips(tileSize.y(), zoom),
+                          Twips::convertPixelsToTwips(tileSize.width(), zoom),
+                          Twips::convertPixelsToTwips(tileSize.height(), zoom));
 
 #ifdef DEBUG_TILE_BENCHMARK
     qDebug() << "Time to render the tile:" << renderTimer.elapsed() << "ms";
 #endif
 
     return result.rgbSwapped();
+}
+
+int LODocument::partsCount()
+{
+    if (!m_document)
+        return int(0);
+ 
+    return m_document->getParts();
+}
+ 
+QString LODocument::getPartName(int index) const
+{
+    if (!m_document)
+        return QString();
+ 
+    return QString::fromLatin1(m_document->getPartName(index));
+}
+ 
+// This is used by LOPartsImageProvider to temporarily change the current part,
+// in order to generate thumbnails.
+// FIXME: We need to disable tiled rendering when we're generating the thumbnail.
+int LODocument::swapCurrentPart(int newPartIndex)
+{
+    int oldIndex = this->currentPart();
+ 
+    m_document->setPart(newPartIndex);
+    return oldIndex;
 }
 
 /* Export the file in a given format:

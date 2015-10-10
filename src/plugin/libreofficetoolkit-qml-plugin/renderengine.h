@@ -13,12 +13,14 @@ struct EngineTask
 {
     int id;
     QRect area;
+    qreal zoom;
     QSharedPointer<LODocument> document;
 
 public:
-    EngineTask(const QSharedPointer<LODocument>& d, const QRect& a, int i):
+    EngineTask(const QSharedPointer<LODocument>& d, const QRect& a, const qreal& z, int i):
     id(i),
     area(a),
+    zoom(z),
     document(d)
     { }
 };
@@ -34,7 +36,7 @@ class RenderEngine : public QObject
     const int DefaultIdealThreadCount = 2;
 
 public:
-    void enqueueTask(const QSharedPointer<LODocument>& doc, const QRect& area, int id);
+    void enqueueTask(const QSharedPointer<LODocument>& doc, const QRect& area, const qreal& zoom, int id);
     void dequeueTask(int id);
 
     static RenderEngine* instance() {

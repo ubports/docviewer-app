@@ -53,7 +53,10 @@ PageHeadState {
 
                 fontSize: "small"
                 text: {
-                    switch(loDocument.documentType) {
+                    if (!loPageContentLoader.item)
+                        return i18n.tr("Loading...")
+
+                    switch(loPageContentLoader.item.loDocument.documentType) {
                     case 0:
                         return i18n.tr("LibreOffice text document")
                     case 1:
@@ -89,10 +92,9 @@ PageHeadState {
 
     actions: [
         Action {
-            iconName: "search"
-            // onTriggered: pageMain.state = "search"
-            //Disable it until we provide search in Poppler plugin.
-            enabled: false
+            iconName: "zoom-in"
+            text: i18n.tr("Show zoom controls")
+            onTriggered: targetPage.state = "zoom"
         },
 
         Action {

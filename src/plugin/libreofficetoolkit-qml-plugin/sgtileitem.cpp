@@ -10,9 +10,10 @@
 
 int SGTileItem::s_idCounter = 0xDEAD0000;
 
-SGTileItem::SGTileItem(const QRect& area, QQuickItem *parent)
+SGTileItem::SGTileItem(const QRect& area, const qreal &zoom, QQuickItem *parent)
     : QQuickItem(parent)
     , m_area(area)
+    , m_zoomFactor(zoom)
     , m_id (s_idCounter++)
 {
     setFlag(ItemHasContents, true);
