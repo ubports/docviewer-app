@@ -6,10 +6,13 @@ RenderEngine* RenderEngine::s_instance = nullptr;
 
 RenderEngine::RenderEngine():
     QObject(nullptr),
-    m_activeTaskCount(0)
+    m_activeTaskCount(0),
+    m_enabled(true)
 {
     int itc = QThread::idealThreadCount();
     m_idealThreadCount = itc == -1 ? DefaultIdealThreadCount : itc;
+
+    connect(this, SIGNAL(enabledChanged()), this, SLOT(doNextTask()));
 }
 
 void RenderEngine::enqueueTask(const QSharedPointer<LODocument>& doc, const QRect& area, const qreal &zoom, int id)
@@ -43,7 +46,7 @@ void RenderEngine::doNextTask()
     qDebug() << " ---- doNextTask" << m_activeTaskCount << m_queue.count();
 #endif
 
-    if (m_activeTaskCount >= m_idealThreadCount || !m_queue.count())
+    if (m_activeTaskCount >= m_idealThreadCount || !m_queue.count() || !m_enabled)
         return;
 
     m_activeTaskCount++;

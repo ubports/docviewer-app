@@ -60,12 +60,10 @@ public:
     QSize documentSize() const;
 
     QImage paintTile(const QSize& canvasSize, const QRect& tileSize, const qreal& zoom = 1.0);
+    QImage paintThumbnail(int part, qreal size);
 
     int partsCount();
- 
     QString getPartName(int index) const;
-    int swapCurrentPart(int newPartIndex);
- 
     void setPart(int index);
 
     Q_INVOKABLE bool saveAs(QString url, QString format, QString filterOptions);
@@ -77,6 +75,7 @@ Q_SIGNALS:
 
 private:
     QString m_path;
+    int m_currentPart;
     DocumentType m_docType;
 
     bool loadDocument(const QString &pathNAme);

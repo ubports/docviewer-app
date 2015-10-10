@@ -36,6 +36,7 @@ lok::Office *LODocument::s_office = nullptr;
 
 LODocument::LODocument()
   : m_path("")
+  , m_currentPart(-1)
   , m_document(nullptr)
 {
     // This space is intentionally empty.
@@ -61,21 +62,18 @@ void LODocument::setPath(const QString& pathName)
 }
 
 int LODocument::currentPart() {
-    if (!m_document)
-        return int(-1);
- 
-    return m_document->getPart();
+    return m_currentPart;
 }
- 
+
 void LODocument::setCurrentPart(int index)
 {
     if (!m_document)
         return;
- 
-    if (this->currentPart() == index || index < 0 || index > partsCount() - 1)
+
+    if (m_currentPart == index || index < 0 || index > partsCount() - 1)
         return;
- 
-    m_document->setPart(index);
+
+    m_currentPart = index;
     Q_EMIT currentPartChanged();
 }
 
@@ -96,6 +94,8 @@ bool LODocument::loadDocument(const QString &pathName)
 
     m_docType = DocumentType(m_document->getDocumentType());
     Q_EMIT documentTypeChanged();
+
+    setCurrentPart(m_document->getPart());
 
     m_document->initializeForRendering();
     qDebug() << "Document loaded successfully !";
@@ -127,6 +127,12 @@ QSize LODocument::documentSize() const
 // the rect tileSize.
 QImage LODocument::paintTile(const QSize& canvasSize, const QRect& tileSize, const qreal &zoom)
 {
+    if (!m_document)
+        return QImage();
+
+    if (m_currentPart != m_document->getPart())
+        m_document->setPart(m_currentPart);
+
     QImage result = QImage(canvasSize.width(), canvasSize.height(),  QImage::Format_RGB32);
 
 #ifdef DEBUG_TILE_BENCHMARK
@@ -148,6 +154,52 @@ QImage LODocument::paintTile(const QSize& canvasSize, const QRect& tileSize, con
     return result.rgbSwapped();
 }
 
+QImage LODocument::paintThumbnail(int part, qreal size)
+{
+    if (!m_document)
+        return QImage();
+
+#ifdef DEBUG_TILE_BENCHMARK
+    QElapsedTimer renderTimer;
+    renderTimer.start();
+#endif
+
+    // This is used by LOPartsImageProvider to temporarily change the current part,
+    // in order to generate thumbnails.
+
+    // FIXME: Sometimes docviewer crashes at m_document->getPart() when a
+    // document is being loaded.
+    if (m_document->getPart() != part)
+        m_document->setPart(part);
+
+    qreal tWidth = this->documentSize().width();
+    qreal tHeight = this->documentSize().height();
+
+    QSize resultSize;
+
+    if (tWidth > tHeight) {
+        resultSize.setWidth(size);
+        resultSize.setHeight(size * tHeight / tWidth);
+    } else {
+        resultSize.setHeight(size);
+        resultSize.setWidth(size * tWidth / tHeight);
+    }
+
+    QImage result = QImage(resultSize.width(), resultSize.height(), QImage::Format_RGB32);
+    m_document->paintTile(result.bits(), resultSize.width(), resultSize.height(),
+                          0, 0, tWidth, tHeight);
+
+    // Restore the active part used for tile rendering.
+    if (m_currentPart != part)
+        m_document->setPart(m_currentPart);
+
+#ifdef DEBUG_TILE_BENCHMARK
+    qDebug() << "Time to render the thumbnail:" << renderTimer.elapsed() << "ms";
+#endif
+
+    return result.rgbSwapped();
+}
+
 int LODocument::partsCount()
 {
     if (!m_document)
@@ -161,20 +213,9 @@ QString LODocument::getPartName(int index) const
     if (!m_document)
         return QString();
  
-    return QString::fromLatin1(m_document->getPartName(index));
+    return QString::fromUtf8(m_document->getPartName(index));
 }
  
-// This is used by LOPartsImageProvider to temporarily change the current part,
-// in order to generate thumbnails.
-// FIXME: We need to disable tiled rendering when we're generating the thumbnail.
-int LODocument::swapCurrentPart(int newPartIndex)
-{
-    int oldIndex = this->currentPart();
- 
-    m_document->setPart(newPartIndex);
-    return oldIndex;
-}
-
 /* Export the file in a given format:
  *  - url is a mandatory argument.
  *  - format is optional. If not specified, lok will try to get it from the file

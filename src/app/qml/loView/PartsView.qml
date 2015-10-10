@@ -29,6 +29,7 @@ ListView {
     property bool expanded: true
 
     currentIndex: view.model ? view.model.document.currentPart : -1
+    highlightMoveDuration: UbuntuAnimation.SnapDuration
 
     delegate: ListItemWithActions {
         id: delegate
@@ -45,7 +46,12 @@ ListView {
 
             onClicked: {
                 view.model.document.currentPart = model.index
-                pageStack.pop();
+
+                // Check if the view has been included in a nested page (e.g.
+                // bottomEdge). If so, close that page and return to the
+                // main viewer.
+                if (view.hasOwnProperty("belongsToNestedPage"))
+                    pageStack.pop();
             }
         }
 
@@ -57,6 +63,9 @@ ListView {
                 Layout.fillHeight: true
                 Layout.preferredWidth: height
                 fillMode: Image.PreserveAspectFit
+                // Do not store a cache of the thumbnail, so that we don't show
+                // thumbnails of a previously loaded document.
+                cache: false
 
                 source: "image://lok/part/" + model.index
             }

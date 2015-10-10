@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-10 14:14+0200\n"
+"POT-Creation-Date: 2015-10-10 14:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 #: ../src/app/docviewer-application.cpp:162
-#: /tmp/build-reboot-lok-qsg-zoom-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/build-reboot-qsg-impress-support-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr ""
 
@@ -255,7 +255,7 @@ msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:27
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:80
-#: ../src/app/qml/loView/LOViewPage.qml:186
+#: ../src/app/qml/loView/LOViewPage.qml:191
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Back"
@@ -368,8 +368,8 @@ msgstr ""
 msgid "GO!"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewPage.qml:41
-#: ../src/app/qml/loView/LOViewPage.qml:184
+#: ../src/app/qml/loView/LOViewPage.qml:34
+#: ../src/app/qml/loView/LOViewPage.qml:189
 msgid "Slides"
 msgstr ""
 
@@ -383,6 +383,11 @@ msgstr ""
 
 #: ../src/app/qml/loView/LOViewZoomHeader.qml:55
 msgid "Zoom out"
+msgstr ""
+
+#: ../src/app/qml/loView/SlideControllerPanel.qml:62
+#, qt-format
+msgid "Slide %1 of %2"
 msgstr ""
 
 #: ../src/app/qml/loView/ZoomSelector.qml:29
@@ -443,6 +448,6 @@ msgstr ""
 msgid "copy %1"
 msgstr ""
 
-#: /tmp/build-reboot-lok-qsg-zoom-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/build-reboot-qsg-impress-support-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr ""
