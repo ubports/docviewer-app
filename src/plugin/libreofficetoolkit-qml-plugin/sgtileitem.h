@@ -2,11 +2,7 @@
 #define SGTILEITEM_H
 
 #include <QQuickItem>
-#include <QQuickWindow>
-#include <QSGSimpleTextureNode>
 #include <QImage>
-#include <QtConcurrent/QtConcurrent>
-#include <QAtomicInteger>
 
 class LODocument;
 
@@ -14,7 +10,7 @@ class SGTileItem : public QQuickItem
 {
     Q_OBJECT
 public:
-    SGTileItem(const QRect& area, const qreal &zoom = 1.0, QQuickItem *parent = 0);
+    SGTileItem(const QRect& area, qreal zoom, int id, QQuickItem *parent = 0);
     ~SGTileItem();
 
     inline const QRect& area() { return m_area; }
@@ -43,8 +39,6 @@ private:
     qreal m_zoomFactor;
     QImage m_data;
     int m_id;
-
-    static int s_idCounter;
 };
 
 #endif // SGTILEITEM_H

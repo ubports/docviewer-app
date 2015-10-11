@@ -1,20 +1,20 @@
 #include "sgtileitem.h"
-
 #include "lodocument.h"
 #include "config.h"
+
+#include <QQuickWindow>
+#include <QSGSimpleTextureNode>
 
 #ifdef DEBUG_SHOW_TILE_BORDER
 #include <QSGGeometryNode>
 #include <QSGFlatColorMaterial>
 #endif
 
-int SGTileItem::s_idCounter = 0xDEAD0000;
-
-SGTileItem::SGTileItem(const QRect& area, const qreal &zoom, QQuickItem *parent)
+SGTileItem::SGTileItem(const QRect& area, qreal zoom, int id, QQuickItem *parent)
     : QQuickItem(parent)
     , m_area(area)
     , m_zoomFactor(zoom)
-    , m_id (s_idCounter++)
+    , m_id (id)
 {
     setFlag(ItemHasContents, true);
 }

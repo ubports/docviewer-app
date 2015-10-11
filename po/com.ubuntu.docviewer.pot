@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-10 14:32+0200\n"
+"POT-Creation-Date: 2015-10-11 13:31+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,7 +24,7 @@ msgid "Document Viewer"
 msgstr ""
 
 #: ../src/app/qml/common/DetailsPage.qml:27
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:116
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:114
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:97
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:83
 msgid "Details"
@@ -63,7 +63,7 @@ msgstr ""
 #: ../src/app/qml/common/RejectedImportDialog.qml:38
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:32
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:53
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:80
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:78
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Close"
@@ -254,7 +254,7 @@ msgid "Pick"
 msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:27
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:80
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:78
 #: ../src/app/qml/loView/LOViewPage.qml:191
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
@@ -306,50 +306,50 @@ msgstr ""
 msgid "Reverse order"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:57
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:55
 #: ../src/app/qml/textView/TextView.qml:42
 msgid "Loading..."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:61
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:59
 msgid "LibreOffice text document"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:63
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:61
 msgid "LibreOffice spread sheet"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:65
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:63
 msgid "LibreOffice presentation"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:67
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:65
 msgid "LibreOffice Draw document"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:69
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:67
 msgid "Unknown LibreOffice document"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:71
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:69
 msgid "Unknown type document"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:96
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:94
 msgid "Show zoom controls"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:103
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:101
 msgid "Go to position..."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:110
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:108
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Disable night mode"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:110
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:108
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Enable night mode"

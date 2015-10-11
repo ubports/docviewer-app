@@ -18,9 +18,9 @@
 #include "lodocument.h"
 #include "renderengine.h"
 
-LOPartsImageProvider::LOPartsImageProvider(LODocument *document)
-    : QQuickImageProvider(QQuickImageProvider::Image, QQuickImageProvider::ForceAsynchronousImageLoading)
-    , m_document(document)
+LOPartsImageProvider::LOPartsImageProvider(const QSharedPointer<LODocument>& d)
+    : QQuickImageProvider(QQuickImageProvider::Image),
+      m_document(d)
 { }
 
 QImage LOPartsImageProvider::requestImage(const QString & id, QSize * size, const QSize & requestedSize)
@@ -33,18 +33,22 @@ QImage LOPartsImageProvider::requestImage(const QString & id, QSize * size, cons
             m_document->documentType() != LODocument::PresentationDocument)
         return QImage();
 
-    // Wait for any in-progress rendering to be completed
-    while (RenderEngine::instance()->activeTaskCount() != 0) { }
-
-    // Lock the render engine
-    RenderEngine::instance()->setEnabled(false);
-
-    // Render the part to QImage
+    // Get info from "id".
     int partNumber = id.section("/", 1, 1).toInt();
-    QImage result = m_document->paintThumbnail(partNumber, 256.0);
+    int itemId = id.section("/", 2, 2).toInt();
 
-    // Unlock the render engine
-    RenderEngine::instance()->setEnabled(true);
+    // Once rendered images can be found in hash.
+    if (m_images.contains(itemId))
+        return m_images[itemId];
 
-    return result;
+    const int defaultSize = 256;
+
+    RenderEngine::instance()->enqueueTask(m_document, partNumber, defaultSize, itemId);
+
+    // Return default image (empty).
+    static QImage defaultImage;
+    if (defaultImage.isNull())
+        defaultImage = QImage(defaultSize, defaultSize, QImage::Format_ARGB32);
+
+    return defaultImage;
 }

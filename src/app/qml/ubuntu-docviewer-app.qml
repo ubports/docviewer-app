@@ -37,7 +37,7 @@ MainView {
     useDeprecatedToolbar: false   
     automaticOrientation: true
 
-    width: units.gu(50)
+    width: units.gu(150)
     height: units.gu(75)
 
     function openDocument(path)  {

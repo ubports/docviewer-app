@@ -19,34 +19,44 @@
 #define LOPARTSMODEL_H
 
 #include <QAbstractListModel>
+#include <QHash>
+#include <QSharedPointer>
+
+#include "renderengine.h"
 
 class LODocument;
 
 class LOPartEntry
 {
 public:
+    LOPartEntry():
+        index(0)
+    {
+        id = RenderEngine::getNextId();
+    }
+
+    int id;
     QString name;
-    int index = 0;
+    int index;
+    QString thumbnail;
 };
 
 class LOPartsModel : public QAbstractListModel
 {
     Q_OBJECT
     Q_DISABLE_COPY(LOPartsModel)
-    Q_PROPERTY(LODocument* document READ document WRITE setDocument NOTIFY documentChanged)
     Q_PROPERTY(int count READ rowCount NOTIFY countChanged)
 
 public:
     enum Roles {
-        NameRole,
-        IndexRole
+        NameRole = Qt::UserRole + 1,
+        IndexRole,
+        IdRole,
+        ThumbnailRole
     };
 
-    explicit LOPartsModel(QAbstractListModel *parent = 0);
+    explicit LOPartsModel(const QSharedPointer<LODocument>& document, QAbstractListModel *parent = 0);
     ~LOPartsModel();
-
-    LODocument* document() { return m_document; }
-    void setDocument(LODocument* document);
 
     QHash<int, QByteArray> roleNames() const;
 
@@ -55,15 +65,16 @@ public:
 
     Q_INVOKABLE QVariantMap get(int index) const;
 
+    void notifyAboutChanges(int id);
+
 Q_SIGNALS:
-    void documentChanged();
     void countChanged();
 
 private slots:
     void fillModel();
 
 private:
-    LODocument* m_document;
+    QSharedPointer<LODocument> m_document;
     QList<LOPartEntry> m_entries;
 };
 

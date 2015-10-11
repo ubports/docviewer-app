@@ -28,7 +28,7 @@ ListView {
 
     property bool expanded: true
 
-    currentIndex: view.model ? view.model.document.currentPart : -1
+    currentIndex: view.model ? loView.document.currentPart : -1
     highlightMoveDuration: UbuntuAnimation.SnapDuration
 
     delegate: ListItemWithActions {
@@ -37,15 +37,15 @@ ListView {
         width: parent.width
         height: units.gu(16)
 
-        color: (view.model.document.currentPart === model.index) ? Theme.palette.selected.background
-                                                                 : "transparent"
+        color: (loView.document.currentPart === model.index) ? Theme.palette.selected.background
+                                                             : "transparent"
 
         AbstractButton {
             objectName: "abstractbutton"
             anchors.fill: parent
 
             onClicked: {
-                view.model.document.currentPart = model.index
+                loView.document.currentPart = model.index
 
                 // Check if the view has been included in a nested page (e.g.
                 // bottomEdge). If so, close that page and return to the
@@ -65,22 +65,21 @@ ListView {
                 fillMode: Image.PreserveAspectFit
                 // Do not store a cache of the thumbnail, so that we don't show
                 // thumbnails of a previously loaded document.
-                cache: false
-
-                source: "image://lok/part/" + model.index
+                cache: true // TODO PLAY WITH IT
+                source: model.thumbnail
             }
 
             Label {
                 Layout.fillWidth: true
                 wrapMode: Text.WordWrap
                 text: model.name
-                color: (view.model.document.currentPart === model.index) ? UbuntuColors.orange
+                color: (loView.document.currentPart === model.index) ? UbuntuColors.orange
                                                                          : Theme.palette.selected.backgroundText
             }
 
             Label {
                 text: model.index + 1
-                color: (view.model.document.currentPart === model.index) ? UbuntuColors.orange
+                color: (loView.document.currentPart === model.index) ? UbuntuColors.orange
                                                                          : Theme.palette.selected.backgroundText
             }
         }

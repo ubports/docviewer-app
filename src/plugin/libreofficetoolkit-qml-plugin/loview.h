@@ -17,12 +17,15 @@
 #ifndef LOVIEW_H
 #define LOVIEW_H
 
-#include <QQuickPaintedItem>
 #include <QQuickItem>
 #include <QTimer>
 #include <QSharedPointer>
+#include <QQmlContext>
+#include <QQmlEngine>
 
 #include "renderengine.h"
+#include "lopartsmodel.h"
+#include "lopartsimageprovider.h"
 
 class LODocument;
 class SGTileItem;
@@ -31,11 +34,12 @@ class LOView : public QQuickItem
 {
     Q_OBJECT
     Q_ENUMS(ZoomMode)
-    Q_PROPERTY(QQuickItem* parentFlickable READ parentFlickable WRITE setParentFlickable NOTIFY parentFlickableChanged)
-    Q_PROPERTY(LODocument* document        READ document        /*WRITE setDocument*/    NOTIFY documentChanged)
-    Q_PROPERTY(qreal       zoomFactor      READ zoomFactor      WRITE setZoomFactor      NOTIFY zoomFactorChanged)
-    Q_PROPERTY(ZoomMode    zoomMode        READ zoomMode                                 NOTIFY zoomModeChanged)
-    Q_PROPERTY(int         cacheBuffer     READ cacheBuffer     WRITE setCacheBuffer     NOTIFY cacheBufferChanged)
+    Q_PROPERTY(QQuickItem*   parentFlickable READ parentFlickable WRITE setParentFlickable NOTIFY parentFlickableChanged)
+    Q_PROPERTY(LODocument*   document        READ document        /*WRITE setDocument*/    NOTIFY documentChanged)
+    Q_PROPERTY(LOPartsModel* partsModel      READ partsModel                               NOTIFY partsModelChanged)
+    Q_PROPERTY(qreal         zoomFactor      READ zoomFactor      WRITE setZoomFactor      NOTIFY zoomFactorChanged)
+    Q_PROPERTY(ZoomMode      zoomMode        READ zoomMode                                 NOTIFY zoomModeChanged)
+    Q_PROPERTY(int           cacheBuffer     READ cacheBuffer     WRITE setCacheBuffer     NOTIFY cacheBufferChanged)
 
 public:
     LOView(QQuickItem *parent = 0);
@@ -52,6 +56,7 @@ public:
     Q_INVOKABLE void initializeDocument(const QString& path);
 
     LODocument* document() const;
+    LOPartsModel* partsModel() const;
 
     qreal       zoomFactor() const;
     void        setZoomFactor(const qreal zoom);
@@ -66,6 +71,7 @@ public:
 Q_SIGNALS:
     void parentFlickableChanged();
     void documentChanged();
+    void partsModelChanged();
     void zoomFactorChanged();
     void zoomModeChanged();
     void cacheBufferChanged();
@@ -75,12 +81,16 @@ private Q_SLOTS:
     void updateVisibleRect();
     void scheduleVisibleRectUpdate();
     void invalidateAllTiles();
-    void renderResultReceived(int id, QImage img);
+
+    void slotTileRenderFinished(int id, QImage img);
+    void slotThumbnailRenderFinished(int id, QImage img);
 
 private:
 
     QQuickItem*                 m_parentFlickable;
     QSharedPointer<LODocument>  m_document;
+    LOPartsModel*               m_partsModel; // TODO MB move to document.
+    LOPartsImageProvider*       m_imageProvider; // The QQmlEngine takes ownership of provider.
 
     qreal                       m_zoomFactor;
     ZoomMode                    m_zoomMode;

@@ -19,17 +19,22 @@
 #define LOPARTSIMAGEPROVIDER_H
 
 #include <QQuickImageProvider>
+#include <QSharedPointer>
+#include <QHash>
+#include <QDebug>
 
 class LODocument;
 
 class LOPartsImageProvider : public QQuickImageProvider
 {
 public:
-    LOPartsImageProvider(LODocument *document);
+    LOPartsImageProvider(const QSharedPointer<LODocument>& d);
     QImage requestImage(const QString & id, QSize * size, const QSize & requestedSize);
 
+    QHash<int, QImage> m_images;
+
 private:
-    LODocument *m_document;
+    QSharedPointer<LODocument> m_document;
 };
 
 #endif // LOPARTSIMAGEPROVIDER_H
