@@ -23,8 +23,6 @@ PageHeadState {
     id: rootItem
 
     property Page targetPage
-    property alias activityRunning: activity.running
-
     head: targetPage.head
 
     contents: RowLayout {

@@ -134,15 +134,10 @@ QSize LODocument::documentSize() const
     return QSize(pWidth, pHeight);
 }
 
-// Paint a tile, with size=canvasSize, of the part of the document defined by
-// the rect tileSize.
 QImage LODocument::paintTile(const QSize& canvasSize, const QRect& tileSize, const qreal &zoom)
 {
     if (!m_document)
         return QImage();
-
-//    if (m_currentPart != m_document->getPart())
-//        m_document->setPart(m_currentPart);
 
     QImage result = QImage(canvasSize.width(), canvasSize.height(),  QImage::Format_RGB32);
 
@@ -215,12 +210,6 @@ QString LODocument::getPartName(int index) const
     return QString::fromUtf8(m_document->getPartName(index));
 }
  
-/* Export the file in a given format:
- *  - url is a mandatory argument.
- *  - format is optional. If not specified, lok will try to get it from the file
- *    extension given at the 'url' argument.
- *  - filerOptions is also optional.
- */
 // TODO: Is there some documentation on safe formats or filterOptions that can
 // be used?
 bool LODocument::saveAs(QString url, QString format = QString(), QString filterOptions = QString())

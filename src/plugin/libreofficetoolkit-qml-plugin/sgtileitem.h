@@ -2,11 +2,7 @@
 #define SGTILEITEM_H
 
 #include <QQuickItem>
-#include <QQuickWindow>
-#include <QSGSimpleTextureNode>
 #include <QImage>
-#include <QtConcurrent/QtConcurrent>
-#include <QAtomicInteger>
 
 class LODocument;
 
@@ -43,8 +39,6 @@ private:
     qreal m_zoomFactor;
     QImage m_data;
     int m_id;
-
-    // static int s_idCounter;
 };
 
 #endif // SGTILEITEM_H
