@@ -83,11 +83,5 @@ void RenderEngine::doNextTask()
             QMetaObject::invokeMethod(this, "internalRenderCallback",
                                       Q_ARG(int, task.id), Q_ARG(QImage, img), Q_ARG(bool, task.isThumbnail));
         }
-//        QImage img = task.isThumbnail ?
-//                    //task.document->paintThumbnail(task.size) :
-//                    task.document->paintTile(task.area.size(), task.area, task.zoom) :
-//                    task.document->paintTile(task.area.size(), task.area, task.zoom);
-//        QMetaObject::invokeMethod(this, "internalRenderCallback",
-//                                  Q_ARG(int, task.id), Q_ARG(QImage, img), Q_ARG(bool, task.isThumbnail));
     });
 }

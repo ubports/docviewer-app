@@ -38,7 +38,7 @@ ListView {
         height: units.gu(16)
 
         color: (loView.document.currentPart === model.index) ? Theme.palette.selected.background
-                                                                 : "transparent"
+                                                             : "transparent"
 
         AbstractButton {
             objectName: "abstractbutton"

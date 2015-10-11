@@ -19,7 +19,6 @@
 #define LOPARTSMODEL_H
 
 #include <QAbstractListModel>
-#include <QImage>
 #include <QHash>
 #include <QSharedPointer>
 
@@ -46,7 +45,6 @@ class LOPartsModel : public QAbstractListModel
 {
     Q_OBJECT
     Q_DISABLE_COPY(LOPartsModel)
-    // Q_PROPERTY(LODocument* document READ document WRITE setDocument NOTIFY documentChanged)
     Q_PROPERTY(int count READ rowCount NOTIFY countChanged)
 
 public:
@@ -60,9 +58,6 @@ public:
     explicit LOPartsModel(const QSharedPointer<LODocument>& document, QAbstractListModel *parent = 0);
     ~LOPartsModel();
 
-    // LODocument* document() { return m_document; }
-    //void setDocument(LODocument* document);
-
     QHash<int, QByteArray> roleNames() const;
 
     int rowCount(const QModelIndex & parent = QModelIndex()) const;
@@ -73,7 +68,6 @@ public:
     void notifyAboutChanges(int id);
 
 Q_SIGNALS:
-    // void documentChanged();
     void countChanged();
 
 private slots:

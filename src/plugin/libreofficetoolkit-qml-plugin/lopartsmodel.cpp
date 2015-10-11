@@ -19,11 +19,7 @@
 #include "lodocument.h"
 #include "lopartsimageprovider.h"
 
-#include <QQmlContext>
-#include <QQmlEngine>
 #include <QDebug>
-
-
 
 LOPartsModel::LOPartsModel(const QSharedPointer<LODocument>& document, QAbstractListModel *parent):
     QAbstractListModel(parent)

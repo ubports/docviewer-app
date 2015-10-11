@@ -17,7 +17,6 @@
 #ifndef LOVIEW_H
 #define LOVIEW_H
 
-#include <QQuickPaintedItem>
 #include <QQuickItem>
 #include <QTimer>
 #include <QSharedPointer>

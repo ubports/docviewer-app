@@ -20,7 +20,6 @@
 #include "twips.h"
 #include "config.h"
 
-#include <QPainter>
 #include <QImage>
 #include <QTimer>
 #include <QtCore/qmath.h>
@@ -196,7 +195,6 @@ bool LOView::updateZoomIfAutomatic()
     return false;
 }
 
-// Update the size of LOView, according to the size of the loaded document.
 void LOView::updateViewSize()
 {
     if (!m_document)
@@ -207,13 +205,9 @@ void LOView::updateViewSize()
     this->setWidth(Twips::convertTwipsToPixels(docSize.width(), m_zoomFactor));
     this->setHeight(Twips::convertTwipsToPixels(docSize.height(), m_zoomFactor));
 
-    // TODO: Consider to use connections to widthChanged and heightChanged
-    this->updateVisibleRect();
+    updateVisibleRect();
 }
 
-// Update the informations of the currently visible area of the parent
-// Flickable, then generate/delete all the required tiles, according to these
-// informations.
 void LOView::updateVisibleRect()
 {
     if (!m_parentFlickable)
@@ -251,10 +245,10 @@ void LOView::updateVisibleRect()
                           m_parentFlickable->height());
 
     // Update information about the buffer area
-    m_bufferArea.setRect(qMax(0, m_visibleArea.x() - this->cacheBuffer()),
-                         qMax(0, m_visibleArea.y() - this->cacheBuffer()),
-                         qMin(int(this->width() - m_bufferArea.x()), m_visibleArea.width() + (this->cacheBuffer() * 2)),
-                         qMin(int(this->height() - m_bufferArea.y()), m_visibleArea.height() + (this->cacheBuffer() * 2)));
+    m_bufferArea.setRect(qMax(0, m_visibleArea.x() - m_cacheBuffer),
+                         qMax(0, m_visibleArea.y() - m_cacheBuffer),
+                         qMin(int(this->width() - m_bufferArea.x()), m_visibleArea.width() + (m_cacheBuffer * 2)),
+                         qMin(int(this->height() - m_bufferArea.y()), m_visibleArea.height() + (m_cacheBuffer * 2)));
 
     // Delete tiles that are outside the loading area
     if (!m_tiles.isEmpty()) {
@@ -323,7 +317,6 @@ void LOView::generateTiles(int x1, int y1, int x2, int y2, int tilesPerWidth)
     }
 }
 
-// FIXME: Just for the moment. In zoom branch we have all we need :)
 void LOView::invalidateAllTiles()
 {
     clearView();

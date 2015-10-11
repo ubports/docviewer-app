@@ -1,14 +1,14 @@
 #include "sgtileitem.h"
-
 #include "lodocument.h"
 #include "config.h"
+
+#include <QQuickWindow>
+#include <QSGSimpleTextureNode>
 
 #ifdef DEBUG_SHOW_TILE_BORDER
 #include <QSGGeometryNode>
 #include <QSGFlatColorMaterial>
 #endif
-
-//int SGTileItem::s_idCounter = 0xDEAD0000;
 
 SGTileItem::SGTileItem(const QRect& area, qreal zoom, int id, QQuickItem *parent)
     : QQuickItem(parent)
