@@ -92,7 +92,7 @@ PageHeadState {
             iconName: "browser-tabs"
             text: i18n.tr("Go to position...")
             onTriggered: PopupUtils.open(Qt.resolvedUrl("LOViewGotoDialog.qml"), targetPage)
-            visible: loDocument.documentType == LibreOffice.Document.TextDocument
+            visible: loPageContentLoader.item.loDocument.documentType == LibreOffice.Document.TextDocument
         },
 
         Action {
