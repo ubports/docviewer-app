@@ -343,8 +343,11 @@ void LOView::createTile(int index, QRect rect)
 
 void LOView::scheduleVisibleRectUpdate()
 {
-    if (!m_updateTimer.isActive())
-        m_updateTimer.start(20);
+    if (m_updateTimer.isActive())
+        return;
+
+    m_updateTimer.setSingleShot(true);
+    m_updateTimer.start(20);
 }
 
 void LOView::slotTileRenderFinished(int id, QImage img)
