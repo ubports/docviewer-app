@@ -28,12 +28,14 @@ QSGNode *SGTileItem::updatePaintNode(QSGNode *oldNode, QQuickItem::UpdatePaintNo
     QQuickWindow* wnd = window();
 
     if (!node && wnd && !m_data.isNull()) {
-        QImage image = m_data;
-        auto texture = wnd->createTextureFromImage(image);
+        auto texture = wnd->createTextureFromImage(m_data);
         node = new QSGSimpleTextureNode();
         node->setTexture(texture);
         node->setOwnsTexture(true);
         node->setRect(m_area);
+
+        // We don't need anymore QImage's data
+        m_data = QImage();
 
 #ifdef DEBUG_SHOW_TILE_BORDER
         drawTileBorders(node);

@@ -370,7 +370,12 @@ void LOView::clearView()
     for (auto i = m_tiles.begin(); i != m_tiles.end(); ++i)
         RenderEngine::instance()->dequeueTask(i.value()->id());
 
-    m_tiles.clear();
+    auto i = m_tiles.begin();
+    while (i != m_tiles.end()) {
+        SGTileItem* sgtile = i.value();
+        sgtile->deleteLater();
+        i = m_tiles.erase(i);
+    }
 }
 
 LOView::~LOView()
