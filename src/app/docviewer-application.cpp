@@ -126,15 +126,6 @@ bool DocViewerApplication::isDesktopMode() const
 }
 
 /*!
- * \brief DocViewerApplication::isFullScreen
- * Returns true if window is on FullScreen mode
- */
-bool DocViewerApplication::isFullScreen() const
-{
-    return m_view->windowState() == Qt::WindowFullScreen;
-}
-
-/*!
  * \brief DocViewerApplication::getDocumentFile
  * Returns the document file passed as a parameter
  */
@@ -197,27 +188,12 @@ void DocViewerApplication::createView()
     m_view->setResizeMode(QQuickView::SizeRootObjectToView);
 
     //run fullscreen if specified at command line
-    if (m_cmdLineParser->isFullscreen()) {
-        setFullScreen(true);
-        m_view->showFullScreen();
-    } else {
+  //  if (m_cmdLineParser->isFullscreen()) {
+//        setFullScreen(true);
+//        m_view->showFullScreen();
+//    } else {
         m_view->show();
-    }
-}
-
-/*!
- * \brief DocViewerApplication::setFullScreen
- * Change window state to fullScreen or no state
- */
-void DocViewerApplication::setFullScreen(bool fullScreen)
-{
-    if(fullScreen) {
-        m_view->setWindowState(Qt::WindowFullScreen);
-    } else {
-        m_view->setWindowState(Qt::WindowNoState);
-    }
-
-    Q_EMIT fullScreenChanged();
+  //  }
 }
 
 void DocViewerApplication::setDocumentFile(const QString &documentFile)

@@ -30,11 +30,12 @@ MainView {
 
     // TODO: Connect with arguments
     property bool pickMode: false
+    property bool fullscreen: window ? window.visibility === window.FullScreen : false
     readonly property bool isLandscape: Screen.orientation == Qt.LandscapeOrientation ||
                                         Screen.orientation == Qt.InvertedLandscapeOrientation
 
     applicationName: "com.ubuntu.docviewer"
-    useDeprecatedToolbar: false   
+    useDeprecatedToolbar: false
     automaticOrientation: true
 
     width: units.gu(150)
@@ -67,12 +68,8 @@ MainView {
                         mainView, { parent: mainView });
     }
 
-    function setFullScreen(fullScreen) {
-        DOC_VIEWER.fullScreen = fullScreen;
-    }
-
     function toggleFullScreen() {
-        DOC_VIEWER.fullScreen = !DOC_VIEWER.fullScreen;
+        mainView.fullscreen = !mainView.fullscreen
     }
 
     function setHeaderVisibility(visible, toggleFullscreen) {
@@ -83,33 +80,40 @@ MainView {
         // force hiding Unity 8 indicators panel.
         if (!DOC_VIEWER.desktopMode && mainView.isLandscape &&
                 mainView.width < units.gu(51)) {
-            setFullScreen(true);
+            mainView.fullscreen = true;
             return;
         }
 
         if (!DOC_VIEWER.desktopMode && toggleFullscreen)
-            setFullScreen(!visible);
+            mainView.fullscreen = !visible;
     }
 
     function toggleHeaderVisibility() {
         setHeaderVisibility(!header.visible);
     }
 
-    function setPickMode(pickMode) {
-        mainView.pickMode = pickMode
-    }
-
     function switchToBrowseMode() {
-        setPickMode(false)
+        mainView.pickMode = false
     }
 
     function switchToPickMode() {
-        setPickMode(true)
+        mainView.pickMode = true
     }
-
 
     // On screen rotation, force updating of header/U8 indicators panel visibility
     onIsLandscapeChanged: setHeaderVisibility(true);
+
+    onFullscreenChanged: {
+        // 'window' property is exposed by Ubuntu.Components module, and
+        // provides an interface to the root QQuickView.
+        if (!window)
+            return
+
+        if (mainView.fullScreen)
+            window.showFullScreen()
+        else
+            window.showNormal()
+    }
 
     Component.onCompleted: {
         pageStack.push(Qt.resolvedUrl("documentPage/DocumentPage.qml"));

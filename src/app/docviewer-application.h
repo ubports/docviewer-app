@@ -38,7 +38,6 @@ class DocViewerApplication : public QApplication
 {
     Q_OBJECT
     Q_PROPERTY(bool desktopMode READ isDesktopMode CONSTANT)
-    Q_PROPERTY(bool fullScreen READ isFullScreen WRITE setFullScreen NOTIFY fullScreenChanged)
     Q_PROPERTY(QString documentFile READ getDocumentFile WRITE setDocumentFile NOTIFY documentFileChanged)
     Q_PROPERTY(QString documentsDir READ getDocumentsDir CONSTANT)
 
@@ -50,7 +49,6 @@ public:
     int exec();
 
     bool isDesktopMode() const;
-    bool isFullScreen() const;
     const QString &getDocumentFile() const;
     const QString &getDocumentsDir() const;
 
@@ -58,11 +56,9 @@ public:
     Q_INVOKABLE void releaseResources();
 
 signals:
-    void fullScreenChanged();
     void documentFileChanged();
 
 private slots:
-    void setFullScreen(bool fullScreen);
     void setDocumentFile(const QString &documentFile);
 
 private:
