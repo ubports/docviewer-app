@@ -21,25 +21,11 @@
 #define DOCVIEWERAPPLICATION_H
 
 #include <QApplication>
-#include <QElapsedTimer>
-#include <QFileInfo>
-#include <QTimer>
-
-class CommandLineParser;
-class UrlHandler;
-class ContentCommunicator;
 
 class QQuickView;
-
-/*!
- * \brief The DocViewerApplication class
- */
 class DocViewerApplication : public QApplication
 {
     Q_OBJECT
-    Q_PROPERTY(bool desktopMode READ isDesktopMode CONSTANT)
-    Q_PROPERTY(QString documentFile READ getDocumentFile WRITE setDocumentFile NOTIFY documentFileChanged)
-    Q_PROPERTY(QString documentsDir READ getDocumentsDir CONSTANT)
 
 public:
     explicit DocViewerApplication(int& argc, char** argv);
@@ -48,29 +34,11 @@ public:
     bool init();
     int exec();
 
-    bool isDesktopMode() const;
-    const QString &getDocumentFile() const;
-    const QString &getDocumentsDir() const;
-
-    Q_INVOKABLE void parseUri(const QString &arg);
-    Q_INVOKABLE void releaseResources();
-
-signals:
-    void documentFileChanged();
-
-private slots:
-    void setDocumentFile(const QString &documentFile);
-
 private:
     void registerQML();
     void createView();
 
     QQuickView *m_view;
-    CommandLineParser* m_cmdLineParser;
-    UrlHandler *m_urlHandler;
-
-    QString m_documentFile;
-    bool m_documentLoaded;
 };
 
 #endif // DOCVIEWERAPPLICATION_H

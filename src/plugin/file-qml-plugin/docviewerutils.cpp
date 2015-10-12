@@ -22,6 +22,16 @@
 #include <QStandardPaths>
 #include <QDirIterator>
 #include <QDateTime>
+#include <QtGui/QGuiApplication>
+
+bool DocviewerUtils::desktopMode() const
+{
+    // Assume that platformName (QtUbuntu) with ubuntu
+    // in name means it's running on device
+    // TODO: replace this check with SDK call for formfactor
+    QString platform = QGuiApplication::platformName();
+    return !((platform == "ubuntu") || (platform == "ubuntumirclient"));
+}
 
 bool DocviewerUtils::exists(const QString &path)
 {

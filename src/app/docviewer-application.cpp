@@ -18,8 +18,6 @@
  */
 
 #include "docviewer-application.h"
-#include "command-line-parser.h"
-#include "urlhandler.h"
 
 #include <QQuickItem>
 #include <QStandardPaths>
@@ -36,21 +34,13 @@
  */
 DocViewerApplication::DocViewerApplication(int& argc, char** argv)
     : QApplication(argc, argv),
-      m_view(new QQuickView()),
-      m_documentFile(""),
-      m_documentLoaded(false)
-{
-   //
-}
+      m_view(new QQuickView())
+{ }
 
 bool DocViewerApplication::init()
 {
-    m_cmdLineParser = new CommandLineParser();
 
-    if (!m_cmdLineParser->processArguments(arguments()))
-        return false;
-
-    if (qgetenv("QT_LOAD_TESTABILITY") == "1" || m_cmdLineParser->testability()) {
+    if (qgetenv("QT_LOAD_TESTABILITY") == "1") {
         QLibrary testLib(QLatin1String("qttestability"));
         if (testLib.load()) {
             typedef void (*TasInitialize)(void);
@@ -65,14 +55,8 @@ bool DocViewerApplication::init()
         }
     }
 
-    m_urlHandler = new UrlHandler();
-
     registerQML();
 
-    // FIXME: Broken after removal of it.
-    /*if (m_cmdLineParser->pickModeEnabled())
-        setDefaultUiMode(DocViewerApplication::PickContentMode);
-*/
     return true;
 }
 
@@ -82,7 +66,6 @@ bool DocViewerApplication::init()
 DocViewerApplication::~DocViewerApplication()
 {
     delete m_view;
-    delete m_cmdLineParser;
 }
 
 /*!
@@ -112,48 +95,12 @@ void DocViewerApplication::registerQML()
 }
 
 /*!
- * \brief DocViewerApplication::isDesktopMode
- * Returns true if the DESKTOP_MODE env var is set
- */
-bool DocViewerApplication::isDesktopMode() const
-{
-
-  // Assume that platformName (QtUbuntu) with ubuntu
-  // in name means it's running on device
-  // TODO: replace this check with SDK call for formfactor
-  QString platform = QGuiApplication::platformName();
-  return !((platform == "ubuntu") || (platform == "ubuntumirclient"));
-}
-
-/*!
- * \brief DocViewerApplication::getDocumentFile
- * Returns the document file passed as a parameter
- */
-const QString& DocViewerApplication::getDocumentFile() const
-{
-    return m_documentFile;
-}
-
-/*!
- * \brief DocViewerApplication::getDocumentsDir
- * Returns the documents dir passed as a parameter
- */
-const QString& DocViewerApplication::getDocumentsDir() const
-{
-    return m_cmdLineParser->documentsDir();
-}
-
-
-/*!
  * \brief DocViewerApplication::createView
  * Create the master QDeclarativeView that all the pages will operate within
  */
 void DocViewerApplication::createView()
 {
     m_view->setTitle(tr("Document Viewer"));
-
-    // Set ourselves up to expose functionality to run external commands from QML...
-    m_view->engine()->rootContext()->setContextProperty("DOC_VIEWER", this);
 
     QObject::connect(m_view->engine(), SIGNAL(quit()), this, SLOT(quit()));
 
@@ -183,39 +130,7 @@ void DocViewerApplication::createView()
     }
 
     m_view->setSource(QUrl::fromLocalFile(qmlfile));
-    setDocumentFile(m_cmdLineParser->documentFile());
-
     m_view->setResizeMode(QQuickView::SizeRootObjectToView);
 
-    //run fullscreen if specified at command line
-  //  if (m_cmdLineParser->isFullscreen()) {
-//        setFullScreen(true);
-//        m_view->showFullScreen();
-//    } else {
-        m_view->show();
-  //  }
-}
-
-void DocViewerApplication::setDocumentFile(const QString &documentFile)
-{
-    if(!documentFile.isEmpty()) {
-        if (m_documentFile != documentFile) {
-            m_documentFile = "file://" + documentFile;
-            Q_EMIT documentFileChanged();;
-        }
-    }
-}
-
-void DocViewerApplication::parseUri(const QString &arg)
-{
-    if (m_urlHandler->processUri(arg)) {
-        setDocumentFile(m_urlHandler->documentFile());
-    }
-}
-
-void DocViewerApplication::releaseResources()
-{
-    if (m_view) {
-        m_view->releaseResources();
-    }
+    m_view->show();
 }
