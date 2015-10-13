@@ -33,37 +33,50 @@
 #include <QDir>
 #include <QDebug>
 
-inline static const char* getLibreOfficePath() {
-    // LibreOffice installation path on Debian/Ubuntu
-    const char* path = "/usr/lib/librefice/program";
+class Config
+{
 
-    if (QDir(QString::fromUtf8(path)).exists()) {
-        qDebug() << "LibreOffice binaries found at:" << path;
-        return path;
-    }
+public:
+    static const char* getLibreOfficePath() {
+        // LibreOffice installation path on Debian/Ubuntu
+        const char* path = "/usr/lib/libreoffice/program";
 
-    const char* loClickPath = "libreoffice/program";
-
-    char* libPaths = getenv("LD_LIBRARY_PATH");
-    char* libPathsArray = strtok(libPaths, ":");
-
-    while (libPathsArray) {
-        QDir clickDir(QString::fromUtf8(libPathsArray));
-
-        if (clickDir.cd(QString::fromUtf8(loClickPath))) {
-            char* clickPath = (char*) malloc(1 + strlen(libPathsArray) + 1 + strlen(loClickPath));
-
-            strcpy(clickPath, libPathsArray);
-            strcat(clickPath, "/");
-            strcat(clickPath, loClickPath);
-
-            qDebug() << "LibreOffice binaries found at:" << clickPath;
-            return clickPath;
+        if (QDir(QString::fromUtf8(path)).exists()) {
+            qDebug() << "LibreOffice binaries found at:" << path;
+            return path;
         }
+
+        const char* loClickPath = "libreoffice/program";
+
+        char* libPaths = getenv("LD_LIBRARY_PATH");
+        char* libPathsArray = strtok(libPaths, ":");
+
+        while (libPathsArray) {
+            QDir clickDir(QString::fromUtf8(libPathsArray));
+
+            if (clickDir.cd(QString::fromUtf8(loClickPath))) {
+                char* clickPath = (char*) malloc(1 + strlen(libPathsArray) + 1 + strlen(loClickPath));
+
+                strcpy(clickPath, libPathsArray);
+                strcat(clickPath, "/");
+                strcat(clickPath, loClickPath);
+
+                qDebug() << "LibreOffice binaries found at:" << clickPath;
+                return clickPath;
+            }
+        }
+
+        qDebug() << "LibreOffice binaries not found.";
+        return NULL;
     }
 
-    qDebug() << "LibreOffice binaries not found.";
-    return NULL;
-}
+    inline static const char* getLibreOfficeProfilePath() {
+        // TODO: Get APP_PKGNAME variable and use it when available
+        const char* profilePath = "$SYSUSERCONFIG/com.ubuntu.docviewer/libreoffice/4";
+
+        qDebug() << "LibreOffice profile path:" << profilePath;
+        return profilePath;
+    }
+};
 
 #endif // CONFIG_H

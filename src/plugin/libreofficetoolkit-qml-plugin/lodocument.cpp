@@ -67,7 +67,8 @@ bool LODocument::loadDocument(QString &pathName)
     }
 
     if (!s_office)
-        s_office = lok::lok_cpp_init(getLibreOfficePath());
+        s_office = lok::lok_cpp_init(Config::getLibreOfficePath(),
+                                     Config::getLibreOfficeProfilePath());
 
     m_document = s_office->documentLoad(m_path.toUtf8().constData());
 
