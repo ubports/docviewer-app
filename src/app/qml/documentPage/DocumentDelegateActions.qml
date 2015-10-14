@@ -28,6 +28,14 @@ QtObject {
             onTriggered: {
                 var dialog = PopupUtils.open(Qt.resolvedUrl("DeleteFileDialog.qml"),
                                 documentPage, { path: model.path })
+
+                // See DeleteFileDialog.qml
+                dialog.Component.destruction.connect(function() {
+                    if (dialog.confirmed) {
+                        console.log("Removing:", model.path);
+                        docModel.rm(model.path);
+                    }
+                })
             }
         }
     ]

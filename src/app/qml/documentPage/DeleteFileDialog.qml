@@ -27,6 +27,15 @@ Dialog {
     property var selectedIndices: viewLoader.item.ViewItems.selectedIndices;
     property int deleteCount: selectedIndices.length
 
+    // WORKAROUND: This property is only used when the dialog is opened from a
+    // ListView delegate action for removing a single file.
+    // In this case, we remove the file as soon as the dialog is destroyed
+    // (it means that docModel.rm() is called externally).
+    // We do this because we need to avoid that the entry in the model is removed
+    // before this dialog is closed.
+    // See src/app/qml/documentPage/DocumentDelegateActions.qml
+    property bool confirmed: false
+
     title: path ? i18n.tr("Delete file")
                 : i18n.tr("Delete %1 file", "Delete %1 files", deleteCount).arg(deleteCount)
     text: path ? i18n.tr("Are you sure you want to permanently delete this file?")
@@ -55,16 +64,16 @@ Dialog {
 
             onClicked: {
                 if (deleteFileDialog.path) {
-                    //deleteFileDialog.confirmed = true;
-                    docModel.rm(deleteFileDialog.path);
+                    // WORKAROUND: See above.
+                    deleteFileDialog.confirmed = true;
                 } else {
                     // This is called from selection mode
-                    for (var i=0; i < deleteCount; i++) {
-                        console.log("Removing:", folderModel.get(i).path);
-                        docModel.rm(folderModel.get(i).path);
+                    for (var i=0; i < selectedIndices.length; i++) {
+                        console.log("Removing:", folderModel.get(selectedIndices[i]).path);
+                        docModel.rm(folderModel.get(selectedIndices[i]).path);
                     }
 
-                    viewLoader.item.endSelection();
+                    viewLoader.item.cancelSelection();
                 }
 
                 PopupUtils.close(deleteFileDialog)
