@@ -102,6 +102,61 @@ PageWithBottomEdge {
                                 model: loView.partsModel
                                 visible: loDocument.documentType == LO.Document.PresentationDocument
                                 width: visible ? units.gu(40) : 0
+
+                                Rectangle {
+                                    id: verticalDivider
+                                    anchors {
+                                        top: parent.top
+                                        bottom: parent.bottom
+                                        right: parent.right
+                                        rightMargin: units.dp(2)
+                                    }
+                                    width: units.dp(2)
+                                    color: Theme.palette.selected.background
+
+                                    MouseArea {
+                                        id: resizerSensing
+                                        objectName: "Divider"
+                                        enabled: verticalDivider.width > 0
+                                        anchors {
+                                            fill: parent
+                                            leftMargin: enabled ? -units.gu(1) : 0
+                                            rightMargin: enabled ? -units.gu(1) : 0
+                                        }
+                                        cursorShape: Qt.SizeHorCursor
+                                        drag {
+                                            axis: Drag.XAxis
+                                            target: resizer
+                                            smoothed: false
+                                            minimumX: units.gu(20)
+                                            maximumX: units.gu(40)
+                                        }
+                                        onPressed: resizer.x = partsView.width
+                                    }
+                                    states: State {
+                                        name: "active"
+                                        when: resizerSensing.pressed || resizerSensing.containsMouse
+                                        PropertyChanges {
+                                            target: verticalDivider
+                                            color: Qt.darker(Theme.palette.normal.background, 1.5)
+                                        }
+                                    }
+                                    transitions: Transition {
+                                        from: ""
+                                        to: "*"
+                                        reversible: true
+                                        ColorAnimation {
+                                            target: verticalDivider
+                                            property: "color"
+                                            duration: UbuntuAnimation.SlowDuration
+                                        }
+                                    }
+                                }
+                                Item {
+                                    id: resizer
+                                    height: parent.height
+                                    onXChanged: partsView.width = x
+                                }
                             }
 
                             Item {

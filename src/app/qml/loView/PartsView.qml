@@ -27,6 +27,7 @@ ListView {
     clip: true
 
     property bool expanded: true
+    property bool isWide: width > units.gu(24)
 
     currentIndex: view.model ? loView.document.currentPart : -1
     highlightMoveDuration: UbuntuAnimation.SnapDuration
@@ -73,6 +74,7 @@ ListView {
                 Layout.fillWidth: true
                 wrapMode: Text.WordWrap
                 text: model.name
+                visible: view.isWide
                 color: (loView.document.currentPart === model.index) ? UbuntuColors.orange
                                                                          : Theme.palette.selected.backgroundText
             }
