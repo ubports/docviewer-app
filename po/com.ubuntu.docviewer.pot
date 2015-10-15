@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-02 14:48+0200\n"
+"POT-Creation-Date: 2015-10-15 20:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,12 +19,12 @@ msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 #: ../src/app/docviewer-application.cpp:162
-#: /tmp/build-reboot-qsg-impress-support-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/build-reboot-lok-touch-zoom-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr ""
 
 #: ../src/app/qml/common/DetailsPage.qml:27
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:114
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:122
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:97
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:83
 msgid "Details"
@@ -63,7 +63,7 @@ msgstr ""
 #: ../src/app/qml/common/RejectedImportDialog.qml:38
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:32
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:53
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:79
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:87
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Close"
@@ -253,7 +253,7 @@ msgid "Pick"
 msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:27
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:79
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:87
 #: ../src/app/qml/loView/LOViewPage.qml:245
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
@@ -305,51 +305,51 @@ msgstr ""
 msgid "Reverse order"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:56
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:52
 #: ../src/app/qml/textView/TextView.qml:42
 msgid "Loading..."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:60
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:56
 msgid "LibreOffice text document"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:62
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:58
 msgid "LibreOffice spread sheet"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:64
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:60
 msgid "LibreOffice presentation"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:66
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:62
 msgid "LibreOffice Draw document"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:68
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:64
 msgid "Unknown LibreOffice document"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:70
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:66
 msgid "Unknown type document"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:95
-msgid "Show zoom controls"
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:103
+msgid "Search"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:102
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:110
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:85
 msgid "Go to page..."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:108
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:116
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Disable night mode"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:108
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:116
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Enable night mode"
@@ -377,17 +377,7 @@ msgstr ""
 msgid "Slide %1 of %2"
 msgstr ""
 
-#: ../src/app/qml/loView/ZoomSelector.qml:89
-#, qt-format
-msgid "Automatic (%1%)"
-msgstr ""
-
-#: ../src/app/qml/loView/ZoomSelector.qml:92
-#, qt-format
-msgid "Zoom: %1%"
-msgstr ""
-
-#: ../src/app/qml/loView/ZoomSelector.qml:134
+#: ../src/app/qml/loView/ZoomSelector.qml:176
 msgid "Fit width"
 msgstr ""
 
@@ -435,6 +425,6 @@ msgstr ""
 msgid "copy %1"
 msgstr ""
 
-#: /tmp/build-reboot-qsg-impress-support-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/build-reboot-lok-touch-zoom-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr ""

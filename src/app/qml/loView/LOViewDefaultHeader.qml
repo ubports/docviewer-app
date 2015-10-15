@@ -23,15 +23,11 @@ PageHeadState {
     id: rootItem
 
     property Page targetPage
-    property alias activityRunning: activity.running
-
     head: targetPage.head
 
     contents: RowLayout {
         anchors.fill: parent
         spacing: units.gu(1)
-
-        ActivityIndicator { id: activity }
 
         Column {
             id: layout
@@ -72,6 +68,18 @@ PageHeadState {
                 }
             }
         }
+
+        ZoomSelector {
+            Layout.preferredWidth: units.gu(12)
+            Layout.preferredHeight: units.gu(3)
+
+            visible: {
+                if (!loPageContentLoader.item)
+                    return false
+
+                return DOC_VIEWER.desktopMode || targetPage.width > units.gu(80)
+            }
+        }
     }
 
     backAction: Action {
@@ -91,9 +99,9 @@ PageHeadState {
 
     actions: [
         Action {
-            iconName: "zoom-in"
-            text: i18n.tr("Show zoom controls")
-            onTriggered: targetPage.state = "zoom"
+            iconName: "Search"
+            text: i18n.tr("Search")
+            enabled: false
         },
 
         Action {

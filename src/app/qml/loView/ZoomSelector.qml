@@ -24,7 +24,7 @@ import DocumentViewer.LibreOffice 1.0 as LibreOffice
 TextField {
     id: textField
     anchors.verticalCenter: parent.verticalCenter
-    width: units.gu(24)
+    width: units.gu(12)
 
     property bool expanded: false
     property var view: loPageContentLoader.item.loView
@@ -84,13 +84,7 @@ TextField {
         anchors.left: parent.left
         anchors.leftMargin: units.gu(2)
         visible: !textField.highlighted
-        text: {
-            if (view.zoomMode == LibreOffice.View.FitToWidth)
-                return i18n.tr("Automatic (%1%)").arg(parseInt(view.zoomFactor*100))
-
-            // else
-            return i18n.tr("Zoom: %1%").arg(parseInt(view.zoomFactor*100))
-        }
+        text: "%1%".arg(parseInt(view.zoomFactor*100))
     }
 
     Component {
@@ -125,6 +119,54 @@ TextField {
                     right: parent.right
                     margins: units.gu(2)
                 }
+
+                RowLayout {
+                    anchors { left: parent.left; right: parent.right }
+                    height: units.gu(4)
+                    spacing: units.gu(1)
+
+                    ListItems.Base {
+                        showDivider: false
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+
+                        onClicked: {
+                            var view = loPageContentLoader.item.loView
+                            view.setZoom(view.zoomFactor + 0.1)
+                        }
+
+                        Icon {
+                            width: units.gu(2); height: width
+                            anchors.centerIn: parent
+                            name: "zoom-in"
+                        }
+                    }
+
+                    Rectangle {
+                        Layout.fillHeight: true
+                        Layout.preferredWidth: units.dp(1)
+                        color: Theme.palette.selected.background
+                    }
+
+                    ListItems.Base {
+                        showDivider: false
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+
+                        onClicked: {
+                            var view = loPageContentLoader.item.loView
+                            view.setZoom(view.zoomFactor - 0.1)
+                        }
+
+                        Icon {
+                            width: units.gu(2); height: width
+                            anchors.centerIn: parent
+                            name: "zoom-out"
+                        }
+                    }
+                }
+
+                ListItems.ThinDivider { }
 
                 ListItems.Standard {
                     showDivider: false
