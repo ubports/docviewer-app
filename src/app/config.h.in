@@ -1,0 +1,52 @@
+/*
+ * Copyright (C) 2013 Canonical Ltd.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#ifndef __CONFIG_H__
+#define __CONFIG_H__
+
+#include <QtCore/QCoreApplication>
+#include <QtCore/QDir>
+#include <QtCore/QString>
+
+inline bool isClick() {
+#ifdef CLICK_MODE
+    return true;
+#else
+    return false;
+#endif
+}
+
+inline bool isRunningInstalled()
+{
+    static bool installed = (QCoreApplication::applicationDirPath() == QDir("@CMAKE_INSTALL_FULL_BINDIR@").canonicalPath());
+    return installed;
+}
+
+inline void setOrganization() {
+    QCoreApplication::setOrganizationName("@APP_PACKAGE_NAME@");
+}
+
+inline QString docviewerDirectory()
+{
+    if (isClick()) {
+        return QString(".");
+    } else if (isRunningInstalled()) {
+        return QString("@DATA_DIR@");
+    } else {
+        return QString("@CMAKE_CURRENT_SOURCE_DIR@");
+    }
+}
+#endif // __CONFIG_H__
