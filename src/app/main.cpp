@@ -52,6 +52,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setApplicationName("com.ubuntu.docviewer");
     QCoreApplication::setOrganizationDomain("com.ubuntu.docviewer");
 
+    view.rootContext()->setContextProperty("window", &view);
     QObject::connect(view.engine(), SIGNAL(quit()), &app, SLOT(quit()));
 
     if (qgetenv("QT_LOAD_TESTABILITY") == "1")

@@ -102,14 +102,9 @@ MainView {
     // On screen rotation, force updating of header/U8 indicators panel visibility
     onIsLandscapeChanged: setHeaderVisibility(true);
 
-    // FIXME: window is not defined when the command line arguments are processed.
     onFullscreenChanged: {
-        // 'window' property is exposed by Ubuntu.Components module, and
-        // provides an interface to the root QQuickView.
-        if (typeof window == "undefined")
-            return
-
-        if (mainView.fullScreen)
+        if (mainView.fullscreen)
+            // FIXME: Not going fullscreen
             window.showFullScreen()
         else
             window.showNormal()

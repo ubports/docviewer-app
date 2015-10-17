@@ -43,7 +43,8 @@ Item {
             rootItem.pickMode = pickMode
 
         // Error catching
-        // FIXME: Not working
+        // This does not include any argument which is not expected: they are
+        // just skipped.
         if (args.error) {
             var errorString = i18n.tr("Some of the provided arguments is not valid.")
             args.quitWithError(errorString)
