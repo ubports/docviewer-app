@@ -104,10 +104,9 @@ MainView {
 
     onFullscreenChanged: {
         if (mainView.fullscreen)
-            // FIXME: Not going fullscreen
-            window.showFullScreen()
+            window.visibility = Window.FullScreen
         else
-            window.showNormal()
+            window.visibility = Window.Windowed
     }
 
     Component.onCompleted: {

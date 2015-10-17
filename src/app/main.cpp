@@ -63,7 +63,12 @@ int main(int argc, char *argv[])
 
     view.setSource(QUrl::fromLocalFile(docviewerDirectory() + "/qml/ubuntu-docviewer-app.qml"));
     view.setResizeMode(QQuickView::SizeRootObjectToView);
-    view.show();
+
+    // UITK/QML command line arguments are parsed before view's window becomes visible.
+    if (view.windowState() == Qt::WindowFullScreen)
+        view.showFullScreen();
+    else
+        view.show();
 
     return app.exec();
 }
