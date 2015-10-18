@@ -22,21 +22,14 @@
 #include <QtCore/QString>
 
 inline bool isClick() {
-#ifdef CLICK_MODE
-    return true;
-#else
-    return false;
-#endif
+    static bool click = (QCoreApplication::applicationDirPath().contains("click.ubuntu.com"));
+    return click;
 }
 
 inline bool isRunningInstalled()
 {
-    static bool installed = (QCoreApplication::applicationDirPath() == QDir("@CMAKE_INSTALL_FULL_BINDIR@").canonicalPath());
+    static bool installed = (QCoreApplication::applicationDirPath().startsWith("/usr"));
     return installed;
-}
-
-inline void setOrganization() {
-    QCoreApplication::setOrganizationName("@APP_PACKAGE_NAME@");
 }
 
 inline QString docviewerDirectory()
