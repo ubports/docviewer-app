@@ -49,7 +49,7 @@ LOView::LOView(QQuickItem *parent)
     connect(this, SIGNAL(cacheBufferChanged()), this, SLOT(updateVisibleRect()));
     connect(&m_updateTimer, SIGNAL(timeout()), this, SLOT(updateVisibleRect()));
 
-    connect(RenderEngine::instance(), SIGNAL(renderFinished(int,QImage)),
+    connect(RenderEngine::instance(), SIGNAL(tileRenderFinished(int,QImage)),
             this, SLOT(slotTileRenderFinished(int,QImage)));
     connect(RenderEngine::instance(), SIGNAL(thumbnailRenderFinished(int,QImage)),
             this, SLOT(slotThumbnailRenderFinished(int,QImage)));
@@ -385,7 +385,7 @@ LOView::~LOView()
 {
     delete m_partsModel;
 
-    disconnect(RenderEngine::instance(), SIGNAL(renderFinished(int,QImage)),
+    disconnect(RenderEngine::instance(), SIGNAL(tileRenderFinished(int,QImage)),
                this, SLOT(slotTileRenderFinished(int,QImage)));
     disconnect(RenderEngine::instance(), SIGNAL(thumbnailRenderFinished(int,QImage)),
                this, SLOT(slotThumbnailRenderFinished(int,QImage)));

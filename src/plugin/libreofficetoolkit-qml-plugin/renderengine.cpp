@@ -7,48 +7,76 @@ RenderEngine* RenderEngine::s_instance = nullptr;
 RenderEngine::RenderEngine():
     QObject(nullptr),
     m_activeTaskCount(0),
-    m_enabled(true),
     m_lastPart(-1)
 {
     int itc = QThread::idealThreadCount();
     m_idealThreadCount = itc == -1 ? DefaultIdealThreadCount : itc;
 
+    // For QMetaObject::invoke.
+    qRegisterMetaType<AbstractRenderTask*>();
+
     connect(this, SIGNAL(enabledChanged()), this, SLOT(doNextTask()));
 }
 
-void RenderEngine::enqueueTask(const QSharedPointer<LODocument>& doc, int part, const QRect& area, const qreal &zoom, int id)
+void RenderEngine::enqueueTask(const QSharedPointer<LODocument>& doc, int part, const QRect& area, qreal zoom, int id)
 {
     Q_ASSERT(doc != nullptr);
 
-    m_queue.enqueue(EngineTask(doc, part, area, zoom, id));
+    TileRenderTask* task = new TileRenderTask();
+    task->setId(id);
+    task->setPart(part);
+    task->setDocument(doc);
+    task->setArea(area);
+    task->setZoom(zoom);
 
-    doNextTask();
+    enqueueTask(task);
 }
 
 void RenderEngine::enqueueTask(const QSharedPointer<LODocument> &doc, int part, qreal size, int id)
 {
     Q_ASSERT(doc != nullptr);
 
-    m_queue.enqueue(EngineTask(doc, part, size, id));
+    ThumbnailRenderTask* task = new ThumbnailRenderTask();
+    task->setId(id);
+    task->setPart(part);
+    task->setDocument(doc);
+    task->setSize(size);
 
+    enqueueTask(task);
+}
+
+void RenderEngine::enqueueTask(AbstractRenderTask *task)
+{
+    m_queue.enqueue(task);
     doNextTask();
 }
 
 void RenderEngine::dequeueTask(int id)
 {
     for (int i = 0; i < m_queue.size(); i++)
-        if (m_queue.at(i).id == id) {
+        if (m_queue.at(i)->id() == id) {
             m_queue.removeAt(i);
+            // TODO BUG FREE MEMORY
             break;
         }
 }
 
-void RenderEngine::internalRenderCallback(int id, QImage img, bool isThumbnail)
+void RenderEngine::internalRenderCallback(AbstractRenderTask* task, QImage img)
 {
     m_activeTaskCount--;
-    if (isThumbnail)
-        Q_EMIT thumbnailRenderFinished(id, img);
-    else Q_EMIT renderFinished(id, img);
+
+    switch (task->type())
+    {
+    case RttTile:
+        Q_EMIT tileRenderFinished(task->id(), img);
+        break;
+    case RttImpressThumbnail:
+        Q_EMIT thumbnailRenderFinished(task->id(), img);
+        break;
+    }
+
+    // TODO BUG FREE MEMORY
+
     doNextTask();
 }
 
@@ -59,29 +87,29 @@ void RenderEngine::doNextTask()
 #endif
 
     // Check for too much threads or empty queue.
-    if (m_activeTaskCount >= m_idealThreadCount || !m_queue.count() || !m_enabled)
+    if (m_activeTaskCount >= m_idealThreadCount || !m_queue.count())
         return;
 
-    // We should avoid different part rendering in the same time.
-    if (m_activeTaskCount && m_queue.head().part != m_lastPart)
-        return;
+    AbstractRenderTask* task = m_queue.head();
+
+    // LoRenderTask requires special part check.
+    if (task->type() == RttTile || task->type() == RttImpressThumbnail) {
+        LoRenderTask* loTask = static_cast<LoRenderTask*>(task);
+
+        if (m_activeTaskCount && loTask->part() != m_lastPart)
+            return;
+
+        // Set correct part.
+        m_lastPart = loTask->part();
+        loTask->document()->setDocumentPart(m_lastPart);
+    }
 
     m_activeTaskCount++;
-    EngineTask task = m_queue.dequeue();
-
-    // Set correct part.
-    m_lastPart = task.part;
-    task.document->setDocumentPart(m_lastPart);
+    m_queue.dequeue();
 
     QtConcurrent::run( [=] {
-        if (task.isThumbnail) {
-            QImage img = task.document->paintThumbnail(task.size);
-            QMetaObject::invokeMethod(this, "internalRenderCallback",
-                                      Q_ARG(int, task.id), Q_ARG(QImage, img), Q_ARG(bool, task.isThumbnail));
-        } else {
-            QImage img = task.document->paintTile(task.area.size(), task.area, task.zoom);
-            QMetaObject::invokeMethod(this, "internalRenderCallback",
-                                      Q_ARG(int, task.id), Q_ARG(QImage, img), Q_ARG(bool, task.isThumbnail));
-        }
+        QImage img = task->doWork();
+        QMetaObject::invokeMethod(this, "internalRenderCallback",
+                                  Q_ARG(AbstractRenderTask*, task), Q_ARG(QImage, img));
     });
 }
