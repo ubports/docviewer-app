@@ -22,8 +22,8 @@ class RenderEngine : public QObject
     const int DefaultIdealThreadCount = 2;
 
 public:
-    void enqueueTask(const QSharedPointer<LODocument>& doc, int part, const QRect& area, qreal zoom, int id);
-    void enqueueTask(const QSharedPointer<LODocument>& doc, int part, qreal size, int id);
+    void enqueueTileTask(const QSharedPointer<LODocument>& doc, int part, const QRect& area, qreal zoom, int id);
+    void enqueueThumbnailTask(const QSharedPointer<LODocument>& doc, int part, qreal size, int id);
     void enqueueTask(AbstractRenderTask* task);
     void dequeueTask(int id);
 
@@ -45,8 +45,7 @@ Q_SIGNALS:
 
 private:
     Q_INVOKABLE void internalRenderCallback(AbstractRenderTask* task, QImage img);
-
-private slots:
+    void disposeTask(AbstractRenderTask* task);
     void doNextTask();
 
 private:

@@ -332,7 +332,7 @@ void LOView::createTile(int index, QRect rect)
 
         auto tile = new SGTileItem(rect, m_zoomFactor, RenderEngine::getNextId(), this);
         m_tiles.insert(index, tile);
-        RenderEngine::instance()->enqueueTask(m_document, m_document->currentPart(), rect, m_zoomFactor, tile->id());
+        RenderEngine::instance()->enqueueTileTask(m_document, m_document->currentPart(), rect, m_zoomFactor, tile->id());
     }
 #ifdef DEBUG_VERBOSE
     else {

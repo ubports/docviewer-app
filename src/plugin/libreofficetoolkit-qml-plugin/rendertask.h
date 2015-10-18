@@ -10,8 +10,6 @@
 
 #include "lodocument.h"
 
-// TODO replace with class.
-
 enum RenderTaskType
 {
     RttUnknown = 0x0,
@@ -20,13 +18,12 @@ enum RenderTaskType
     RttPdfPage = 0x3 // TODO
 };
 
-// TODO Abstract.
 class AbstractRenderTask
 {
 
 public:
     virtual RenderTaskType type() { return RttUnknown; }
-    virtual QImage doWork() = 0 ; // { return QImage(); }
+    virtual QImage doWork() = 0 ;
     virtual ~AbstractRenderTask() { }
 
     int id() { return m_id; }

@@ -14,11 +14,9 @@ RenderEngine::RenderEngine():
 
     // For QMetaObject::invoke.
     qRegisterMetaType<AbstractRenderTask*>();
-
-    connect(this, SIGNAL(enabledChanged()), this, SLOT(doNextTask()));
 }
 
-void RenderEngine::enqueueTask(const QSharedPointer<LODocument>& doc, int part, const QRect& area, qreal zoom, int id)
+void RenderEngine::enqueueTileTask(const QSharedPointer<LODocument>& doc, int part, const QRect& area, qreal zoom, int id)
 {
     Q_ASSERT(doc != nullptr);
 
@@ -32,7 +30,7 @@ void RenderEngine::enqueueTask(const QSharedPointer<LODocument>& doc, int part, 
     enqueueTask(task);
 }
 
-void RenderEngine::enqueueTask(const QSharedPointer<LODocument> &doc, int part, qreal size, int id)
+void RenderEngine::enqueueThumbnailTask(const QSharedPointer<LODocument> &doc, int part, qreal size, int id)
 {
     Q_ASSERT(doc != nullptr);
 
@@ -53,12 +51,14 @@ void RenderEngine::enqueueTask(AbstractRenderTask *task)
 
 void RenderEngine::dequeueTask(int id)
 {
-    for (int i = 0; i < m_queue.size(); i++)
-        if (m_queue.at(i)->id() == id) {
+    for (int i = 0; i < m_queue.size(); i++) {
+        auto task = m_queue.at(i);
+        if (task->id() == id) {
             m_queue.removeAt(i);
-            // TODO BUG FREE MEMORY
+            disposeTask(task);
             break;
         }
+    }
 }
 
 void RenderEngine::internalRenderCallback(AbstractRenderTask* task, QImage img)
@@ -75,9 +75,14 @@ void RenderEngine::internalRenderCallback(AbstractRenderTask* task, QImage img)
         break;
     }
 
-    // TODO BUG FREE MEMORY
+    disposeTask(task);
 
     doNextTask();
+}
+
+void RenderEngine::disposeTask(AbstractRenderTask *task)
+{
+    delete task;
 }
 
 void RenderEngine::doNextTask()
@@ -92,7 +97,7 @@ void RenderEngine::doNextTask()
 
     AbstractRenderTask* task = m_queue.head();
 
-    // LoRenderTask requires special part check.
+    // LoRenderTask requires special check.
     if (task->type() == RttTile || task->type() == RttImpressThumbnail) {
         LoRenderTask* loTask = static_cast<LoRenderTask*>(task);
 
