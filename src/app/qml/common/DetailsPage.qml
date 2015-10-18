@@ -28,7 +28,12 @@ Page {
     title: i18n.tr("Details")
 
     Column {
-        anchors { left: parent.left; right: parent.right }
+        width: Math.min(units.gu(80), parent.width)
+        anchors {
+            top: parent.top
+            bottom: parent.bottom
+            horizontalCenter: parent.horizontalCenter
+        }
 
         ListItem {
             Column {
