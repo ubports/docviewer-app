@@ -37,7 +37,7 @@ PageWithBottomEdge {
             return false
 
         // else
-        return loPageContentLoader.item.loDocument.documentType == LO.Document.PresentationDocument && !wideWindow
+        return loPageContentLoader.item.loDocument.documentType == LibreOffice.Document.PresentationDocument && !wideWindow
     }
 
     Loader {
@@ -50,7 +50,7 @@ PageWithBottomEdge {
         onLoaded: {
             if (loaded) {
                 // FIXME: At the moment don't hide header if the document is a presentation
-                var isPresentation = (item.loDocument.documentType === LO.Document.PresentationDocument)
+                var isPresentation = (item.loDocument.documentType === LibreOffice.Document.PresentationDocument)
                 loPage.flickable = isPresentation ? null : item.loView
 
                 loPage.bottomEdgePageComponent = item.bottomEdgePartsPage
@@ -100,7 +100,7 @@ PageWithBottomEdge {
                                 }
 
                                 model: loView.partsModel
-                                visible: loDocument.documentType == LO.Document.PresentationDocument
+                                visible: loDocument.documentType == LibreOffice.Document.PresentationDocument
                                 width: visible ? units.gu(40) : 0
                             }
 
@@ -125,7 +125,7 @@ PageWithBottomEdge {
 
                             Item {
                                 id: bottomBarLayoutItem
-                                visible: loDocument.documentType == LO.Document.PresentationDocument
+                                visible: loDocument.documentType == LibreOffice.Document.PresentationDocument
                                 height: visible ? units.gu(5) : 0
                                 anchors {
                                     left: parent.left
@@ -173,7 +173,7 @@ PageWithBottomEdge {
                 SlideControllerPanel {
                     id: bottomBar
                     Layouts.item: "bottomBar"
-                    visible: loDocument.documentType == LO.Document.PresentationDocument
+                    visible: loDocument.documentType == LibreOffice.Document.PresentationDocument
                     height: visible ? units.gu(5) : 0
                     anchors {
                         left: parent.left

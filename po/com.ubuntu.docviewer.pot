@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-10 03:16+0200\n"
+"POT-Creation-Date: 2015-10-19 13:42+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,34 +19,34 @@ msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 #: ../src/app/docviewer-application.cpp:162
-#: /home/stefano/build-reboot-switch-to-uitk12-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/build-reboot-uitk12-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr ""
 
 #: ../src/app/qml/common/DetailsPage.qml:28
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:114
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:106
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:97
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:83
 msgid "Details"
 msgstr ""
 
-#: ../src/app/qml/common/DetailsPage.qml:42
+#: ../src/app/qml/common/DetailsPage.qml:47
 msgid "Location"
 msgstr ""
 
-#: ../src/app/qml/common/DetailsPage.qml:61
+#: ../src/app/qml/common/DetailsPage.qml:66
 msgid "Size"
 msgstr ""
 
-#: ../src/app/qml/common/DetailsPage.qml:80
+#: ../src/app/qml/common/DetailsPage.qml:85
 msgid "Created"
 msgstr ""
 
-#: ../src/app/qml/common/DetailsPage.qml:99
+#: ../src/app/qml/common/DetailsPage.qml:104
 msgid "Last modified"
 msgstr ""
 
-#: ../src/app/qml/common/DetailsPage.qml:124
+#: ../src/app/qml/common/DetailsPage.qml:129
 msgid "MIME type"
 msgstr ""
 
@@ -63,7 +63,7 @@ msgstr ""
 #: ../src/app/qml/common/RejectedImportDialog.qml:38
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:33
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:53
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:77
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:70
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Close"
@@ -101,7 +101,7 @@ msgid ""
 msgstr ""
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:38
-#: ../src/app/qml/documentPage/DeleteFileDialog.qml:46
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:55
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:28
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:53
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:51
@@ -136,31 +136,31 @@ msgstr ""
 msgid "%1 byte"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DeleteFileDialog.qml:30
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:39
 msgid "Delete file"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DeleteFileDialog.qml:31
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:40
 #, qt-format
 msgid "Delete %1 file"
 msgid_plural "Delete %1 files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/app/qml/documentPage/DeleteFileDialog.qml:32
-#: ../src/app/qml/documentPage/DeleteFileDialog.qml:33
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:41
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:42
 msgid "Are you sure you want to permanently delete this file?"
 msgid_plural "Are you sure you want to permanently delete these files?"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/app/qml/documentPage/DeleteFileDialog.qml:52
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:61
 #: ../src/app/qml/documentPage/DocumentDelegateActions.qml:27
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:55
 msgid "Delete"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentDelegateActions.qml:38
+#: ../src/app/qml/documentPage/DocumentDelegateActions.qml:46
 msgid "Share"
 msgstr ""
 
@@ -226,7 +226,8 @@ msgid "Pick"
 msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:27
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:77
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:70
+#: ../src/app/qml/loView/LOViewPage.qml:191
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Back"
@@ -297,41 +298,50 @@ msgstr ""
 msgid "Reverse order"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:58
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:47
+#: ../src/app/qml/textView/TextView.qml:42
+msgid "Loading..."
+msgstr ""
+
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:51
 msgid "LibreOffice text document"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:60
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:53
 msgid "LibreOffice spread sheet"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:62
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:55
 msgid "LibreOffice presentation"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:64
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:57
 msgid "LibreOffice Draw document"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:66
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:59
 msgid "Unknown LibreOffice document"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:68
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:61
 msgid "Unknown type document"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:101
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:86
+msgid "Show zoom controls"
+msgstr ""
+
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:93
 msgid "Go to position..."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:108
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Disable night mode"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:108
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Enable night mode"
@@ -348,6 +358,42 @@ msgstr ""
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:60
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:58
 msgid "GO!"
+msgstr ""
+
+#: ../src/app/qml/loView/LOViewPage.qml:34
+#: ../src/app/qml/loView/LOViewPage.qml:189
+msgid "Slides"
+msgstr ""
+
+#: ../src/app/qml/loView/LOViewZoomHeader.qml:42
+msgid "Hide zoom controls"
+msgstr ""
+
+#: ../src/app/qml/loView/LOViewZoomHeader.qml:49
+msgid "Zoom in"
+msgstr ""
+
+#: ../src/app/qml/loView/LOViewZoomHeader.qml:55
+msgid "Zoom out"
+msgstr ""
+
+#: ../src/app/qml/loView/SlideControllerPanel.qml:62
+#, qt-format
+msgid "Slide %1 of %2"
+msgstr ""
+
+#: ../src/app/qml/loView/ZoomSelector.qml:29
+msgid "Automatic (Fit width)"
+msgstr ""
+
+#: ../src/app/qml/loView/ZoomSelector.qml:94
+#, qt-format
+msgid "Automatic (%1%)"
+msgstr ""
+
+#: ../src/app/qml/loView/ZoomSelector.qml:95
+#, qt-format
+msgid "Zoom: %1%"
 msgstr ""
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
@@ -380,10 +426,6 @@ msgstr ""
 msgid "Choose a page between 1 and %1"
 msgstr ""
 
-#: ../src/app/qml/textView/TextView.qml:42
-msgid "Loading..."
-msgstr ""
-
 #. TRANSLATORS: This string is used for renaming a copied file,
 #. when a file with the same name already exists in user's
 #. Documents folder.
@@ -398,6 +440,6 @@ msgstr ""
 msgid "copy %1"
 msgstr ""
 
-#: /home/stefano/build-reboot-switch-to-uitk12-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/build-reboot-uitk12-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr ""
