@@ -20,6 +20,7 @@ set(libreofficetoolkitqmlplugin_SRCS
     lopartsimageprovider.cpp
     lopartsmodel.cpp
     renderengine.cpp
+    rendertask.cpp
     ${QML_SRCS}
 )
 

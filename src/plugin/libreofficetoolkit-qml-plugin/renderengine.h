@@ -9,45 +9,7 @@
 #include <QAtomicInt>
 
 #include "lodocument.h"
-
-// TODO replace with class.
-
-
-// TODO Need more OOP here.
-struct EngineTask
-{
-    int id;
-    int part;
-    QSharedPointer<LODocument> document;
-    // Used in thumbnail rendering.
-    qreal size;
-    // Used in tile rendering.
-    QRect area;
-    qreal zoom;
-    // Internal.
-    bool isThumbnail;
-public:
-
-    EngineTask(const QSharedPointer<LODocument>& d, int p, const QRect& a, const qreal& z, int i):
-        id(i),
-        part(p),
-        document(d),
-        size(0),
-        area(a),
-        zoom(z),
-        isThumbnail(false)
-    { }
-
-    EngineTask(const QSharedPointer<LODocument>& d, int p, qreal s, int i):
-        id(i),
-        part(p),
-        document(d),
-        size(s),
-        area(),
-        zoom(0),
-        isThumbnail(true)
-    { }
-};
+#include "rendertask.h"
 
 class RenderEngine : public QObject
 {
@@ -60,8 +22,9 @@ class RenderEngine : public QObject
     const int DefaultIdealThreadCount = 2;
 
 public:
-    void enqueueTask(const QSharedPointer<LODocument>& doc, int part, const QRect& area, const qreal& zoom, int id);
-    void enqueueTask(const QSharedPointer<LODocument>& doc, int part, qreal size, int id);
+    void enqueueTileTask(const QSharedPointer<LODocument>& doc, int part, const QRect& area, qreal zoom, int id);
+    void enqueueThumbnailTask(const QSharedPointer<LODocument>& doc, int part, qreal size, int id);
+    void enqueueTask(AbstractRenderTask* task);
     void dequeueTask(int id);
 
     static RenderEngine* instance() {
@@ -76,23 +39,20 @@ public:
     }
 
 Q_SIGNALS:
-    void renderFinished(int id, QImage img);
+    void tileRenderFinished(int id, QImage img);
     void thumbnailRenderFinished(int id, QImage img);
     void enabledChanged();
 
 private:
-    Q_INVOKABLE void internalRenderCallback(int id, QImage img, bool isThumbnail);
-
-private slots:
+    Q_INVOKABLE void internalRenderCallback(AbstractRenderTask* task, QImage img);
+    void disposeTask(AbstractRenderTask* task);
     void doNextTask();
 
 private:
-    QQueue<EngineTask> m_queue;
+    QQueue<AbstractRenderTask*> m_queue;
     int m_activeTaskCount;
     int m_idealThreadCount;
     int m_lastPart;
-
-    QAtomicInt m_enabled;
 };
 
 #endif // RENDERENGINE_H
