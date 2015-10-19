@@ -15,7 +15,7 @@
  */
 
 import QtQuick 2.4
-import Ubuntu.Components 1.2
+import Ubuntu.Components 1.3
 import Ubuntu.Layouts 1.0
 import DocumentViewer.LibreOffice 1.0 as LibreOffice
 
@@ -95,7 +95,7 @@ PageWithBottomEdge {
                                 id: partsView
                                 anchors {
                                     top: parent.top
-                                    bottom: bottomBarLayoutItem.top
+                                    bottom: parent.bottom
                                     left: parent.left
                                 }
 
@@ -109,31 +109,37 @@ PageWithBottomEdge {
                                     left: partsView.right
                                     right: parent.right
                                     top: parent.top
-                                    bottom: bottomBarLayoutItem.top
+                                    bottom: parent.bottom
                                 }
 
                                 ItemLayout {
                                     item: "loView"
-                                    anchors.fill: parent
+                                    anchors {
+                                        top: parent.top
+                                        bottom: bottomBarLayoutItem.top
+                                        left: parent.left
+                                        right: parent.right
+                                    }
+
 
                                     // Keyboard events
                                     focus: true
                                     Keys.onPressed: KeybHelper.parseEvent(event)
                                     Component.onCompleted: loPageContent.forceActiveFocus()
                                 }
-                            }
 
-                            Item {
-                                id: bottomBarLayoutItem
-                                visible: loDocument.documentType == LibreOffice.Document.PresentationDocument
-                                height: visible ? units.gu(5) : 0
-                                anchors {
-                                    left: parent.left
-                                    right: parent.right
-                                    bottom: parent.bottom
+                                Item {
+                                    id: bottomBarLayoutItem
+                                    visible: loDocument.documentType == LibreOffice.Document.PresentationDocument
+                                    height: visible ? units.gu(5) : 0
+                                    anchors {
+                                        left: parent.left
+                                        right: parent.right
+                                        bottom: parent.bottom
+                                    }
+
+                                    ItemLayout { item: "bottomBar"; anchors.fill: parent }
                                 }
-
-                                ItemLayout { item: "bottomBar"; anchors.fill: parent }
                             }
                         }
                     }

@@ -15,7 +15,7 @@
 */
 
 import QtQuick 2.4
-import Ubuntu.Components 1.2
+import Ubuntu.Components 1.3
 import Ubuntu.Components.Popups 1.0
 
 // TODO: Probably requires some change in order to work with latest ListItem 1.2
