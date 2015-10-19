@@ -34,6 +34,7 @@ PageHeadState {
         Column {
             id: layout
             Layout.fillWidth: true
+            visible: !DOC_VIEWER.desktopMode
 
             Label {
             anchors { left: parent.left; right: parent.right }
@@ -66,6 +67,13 @@ PageHeadState {
                 }
             }
         }
+
+        Item {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            visible: DOC_VIEWER.desktopMode
+        }
+
 
         ZoomSelector {
             Layout.preferredWidth: units.gu(12)

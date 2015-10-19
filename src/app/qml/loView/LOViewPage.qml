@@ -26,7 +26,27 @@ import "KeybHelper.js" as KeybHelper
 
 PageWithBottomEdge {
     id: loPage
-    title: Utils.getNameOfFile(file.path);
+    title: {
+        var fileName = Utils.getNameOfFile(file.path);
+
+        if (!loPageContentLoader.item)
+            return fileName
+
+        switch(loPageContentLoader.item.loDocument.documentType) {
+        case 0:
+            return fileName + "-" + i18n.tr("LibreOffice text document")
+        case 1:
+            return fileName + "-" + i18n.tr("LibreOffice spread sheet")
+        case 2:
+            return fileName + "-" + i18n.tr("LibreOffice presentation")
+        case 3:
+            return fileName + "-" + i18n.tr("LibreOffice Draw document")
+        case 4:
+            return fileName + "-" + i18n.tr("Unknown LibreOffice document")
+        default:
+            return fileName + "-" + i18n.tr("Unknown type document")
+        }
+    }
     flickable: null
 
     readonly property bool wideWindow: width > units.gu(120)

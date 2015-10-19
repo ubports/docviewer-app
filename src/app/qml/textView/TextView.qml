@@ -22,7 +22,7 @@ import "../common/utils.js" as Utils
 
 Page {
     id: textPage
-    title: Utils.getNameOfFile(file.path);
+    title: Utils.getNameOfFile(file.path) + "-" + file.mimetype.description
 
     // Reset night mode shader settings when closing the page
     // Component.onDestruction: mainView.nightModeEnabled = false

@@ -36,6 +36,7 @@ PageHeadState {
         Column {
             id: layout
             Layout.fillWidth: true
+            visible: !DOC_VIEWER.desktopMode
 
             Label {
                 width: parent.width
