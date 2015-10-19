@@ -16,6 +16,7 @@
 
 import QtQuick 2.4
 import Ubuntu.Components 1.3
+import QtQuick.Layouts 1.1
 import Ubuntu.Components.Popups 1.0
 import DocumentViewer.LibreOffice 1.0 as LibreOffice
 
@@ -25,14 +26,16 @@ PageHeadState {
     property Page targetPage
     head: targetPage.head
 
-    contents: Column {
-        anchors {
-            left: parent.left
-            right: parent.right
-            verticalCenter: parent.verticalCenter
-        }
+    contents: RowLayout {
+        anchors.fill: parent
+        anchors.rightMargin: units.gu(2)
+        spacing: units.gu(1)
 
-        Label {
+        Column {
+            id: layout
+            Layout.fillWidth: true
+
+            Label {
             anchors { left: parent.left; right: parent.right }
             elide: Text.ElideMiddle
             font.weight: Font.DemiBold
@@ -59,7 +62,20 @@ PageHeadState {
                     return i18n.tr("Unknown LibreOffice document")
                 default:
                     return i18n.tr("Unknown type document")
+                    }
                 }
+            }
+        }
+
+        ZoomSelector {
+            Layout.preferredWidth: units.gu(12)
+            Layout.preferredHeight: units.gu(4)
+
+            visible: {
+                if (!loPageContentLoader.item)
+                    return false
+
+                return DOC_VIEWER.desktopMode || targetPage.width > units.gu(80)
             }
         }
     }
@@ -81,11 +97,11 @@ PageHeadState {
     }
 
     actions: [
-        Action {
-            iconName: "zoom-in"
-            text: i18n.tr("Show zoom controls")
-            onTriggered: targetPage.state = "zoom"
-        },
+       /* Action {
+            iconName: "Search"
+            text: i18n.tr("Search")
+            enabled: false
+        },*/
 
         Action {
             objectName: "gotopage"

@@ -20,17 +20,30 @@ import DocumentViewer.LibreOffice 1.0 as LibreOffice
 Flickable {
     id: rootFlickable
 
-    property alias document:    view.document
-    property alias zoomFactor:  view.zoomFactor
-    property alias cacheBuffer: view.cacheBuffer
-    property alias partsModel: view.partsModel
-    property alias zoomMode:    view.zoomMode
-
-    property string documentPath: ""
+    property alias  document:       view.document
+    property alias  zoomFactor:     view.zoomFactor
+    property alias  cacheBuffer:    view.cacheBuffer
+    property alias  zoomMode:       view.zoomMode
+    property alias  partsModel:     view.partsModel
+    property string documentPath:   ""
 
     function adjustZoomToWidth()
     {
-        view.adjustZoomToWidth();
+        var oldZoom = view.zoomFactor
+        view.adjustZoomToWidth()
+
+        var zoomScale = view.zoomFactor / oldZoom
+        rootFlickable.contentX *= zoomScale
+        rootFlickable.contentY *= zoomScale
+    }
+
+    function setZoom(newValue)
+    {
+        var zoomScale = newValue / view.zoomFactor;
+        view.zoomFactor = newValue;
+
+        rootFlickable.contentX *= zoomScale;
+        rootFlickable.contentY *= zoomScale;
     }
 
     function moveView(axis, diff)

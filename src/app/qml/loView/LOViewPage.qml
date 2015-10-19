@@ -52,12 +52,8 @@ PageWithBottomEdge {
                 // FIXME: At the moment don't hide header if the document is a presentation
                 var isPresentation = (item.loDocument.documentType === LibreOffice.Document.PresentationDocument)
                 loPage.flickable = isPresentation ? null : item.loView
-
                 loPage.bottomEdgePageComponent = item.bottomEdgePartsPage
-
-            } else {
-                loPage.flickable = null
-            }
+            } else loPage.flickable = null
         }
     }
 
@@ -113,19 +109,13 @@ PageWithBottomEdge {
                                 }
 
                                 ItemLayout {
-                                    item: "loView"
+                                    item: "pinchy"
                                     anchors {
                                         top: parent.top
                                         bottom: bottomBarLayoutItem.top
                                         left: parent.left
                                         right: parent.right
                                     }
-
-
-                                    // Keyboard events
-                                    focus: true
-                                    Keys.onPressed: KeybHelper.parseEvent(event)
-                                    Component.onCompleted: loPageContent.forceActiveFocus()
                                 }
 
                                 Item {
@@ -145,10 +135,10 @@ PageWithBottomEdge {
                     }
                 ]
 
-                LibreOffice.Viewer {
-                    id: loView
-                    objectName: "loView"
-                    Layouts.item: "loView"
+                PinchArea {
+                    id: pinchy
+                    Layouts.item: "pinchy"
+
                     anchors {
                         left: parent.left
                         right: parent.right
@@ -156,22 +146,86 @@ PageWithBottomEdge {
                         bottom: bottomBar.top
                     }
 
-                    clip: true
-                    documentPath: file.path
+                    property bool active: false
+                    property real initialZoom
+                    property var  center
 
-                    // Keyboard events
-                    focus: true
-                    Keys.onPressed: KeybHelper.parseEvent(event)
+                    // Limits for pinch-to-zoom
+                    // FIXME: We should get these limits from the C++
+                    // LibreOffice Viewer class
+                    property real minimumZoom: 0.5
+                    property real maximumZoom: 4.0
 
-                    Component.onCompleted: {
-                        // WORKAROUND: Fix for wrong grid unit size
-                        flickDeceleration = 1500 * units.gridUnit / 8
-                        maximumFlickVelocity = 2500 * units.gridUnit / 8
-                        loPageContent.forceActiveFocus()
+                    onPinchStarted: {
+                        active = true;
+                        initialZoom = loView.zoomFactor;
+                        center = pinchy.mapToItem(loView.contentItem, pinch.startCenter.x, pinch.startCenter.y);
                     }
 
-                    Scrollbar { flickableItem: loView; parent: loView.parent }
-                    Scrollbar { flickableItem: loView; parent: loView.parent; align: Qt.AlignBottom }
+                    onPinchUpdated: {
+                        var zoomFactor = MathUtils.clamp(initialZoom * pinch.scale, minimumZoom, maximumZoom);
+                        var z = zoomFactor / initialZoom;
+
+                        var _oldContentY = loView.contentY
+                        var _oldContentX = loView.contentX
+                        loView.contentX *= z
+                        loView.contentY *= z
+                        loView.contentX += (center.x - _oldContentX) * (z - 1);
+                        loView.contentY += (center.y - _oldContentY) * (z - 1);
+
+                        center.x *= z;
+                        center.y *= z;
+                    }
+
+                    onPinchFinished: {
+                        active = false;
+                    }
+
+                    LibreOffice.Viewer {
+                        id: loView
+                        objectName: "loView"
+                        anchors.fill: parent
+
+                        clip: true
+                        documentPath: file.path
+                        interactive: !pinchy.active
+
+                        Behavior on zoomFactor {
+                            enabled: !pinchy.active
+                            UbuntuNumberAnimation { duration: UbuntuAnimation.FastDuration }
+                        }
+
+                        Component.onCompleted: {
+                            // WORKAROUND: Fix for wrong grid unit size
+                            flickDeceleration = 1500 * units.gridUnit / 8
+                            maximumFlickVelocity = 2500 * units.gridUnit / 8
+                        }
+
+                        MouseArea {
+                            id: mouseArea
+                            anchors.fill: parent
+
+                            onDoubleClicked: {
+                                // Limit zoom by double-click to 3.0x factor
+                                if (loView.zoomFactor < pinchy.maximumZoom) {
+                                    var scaleRatio = 3.0 / loView.zoomFactor
+
+                                    loView.contentX += mouse.x * (scaleRatio - 1)
+                                    loView.contentY += mouse.y * (scaleRatio - 1)
+
+                                    loView.zoomFactor = 3.0
+                                } else loView.adjustZoomToWidth()
+                            }
+
+                            /* Keyboard events */
+                            focus: true
+                            Keys.onPressed: KeybHelper.parseEvent(event)
+                            Component.onCompleted: loPageContent.forceActiveFocus()
+                        }
+
+                        Scrollbar { flickableItem: loView; parent: loView.parent }
+                        Scrollbar { flickableItem: loView; parent: loView.parent; align: Qt.AlignBottom }
+                    }
                 }
 
                 // TODO: When we'll have to merge this with the zooming branch, replace this
