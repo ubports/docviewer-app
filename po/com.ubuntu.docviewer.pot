@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-19 13:42+0200\n"
+"POT-Creation-Date: 2015-10-20 01:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,30 +23,30 @@ msgstr ""
 msgid "Document Viewer"
 msgstr ""
 
-#: ../src/app/qml/common/DetailsPage.qml:28
+#: ../src/app/qml/common/DetailsPage.qml:25
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:106
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:97
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:83
 msgid "Details"
 msgstr ""
 
-#: ../src/app/qml/common/DetailsPage.qml:47
+#: ../src/app/qml/common/DetailsPage.qml:36
 msgid "Location"
 msgstr ""
 
-#: ../src/app/qml/common/DetailsPage.qml:66
+#: ../src/app/qml/common/DetailsPage.qml:41
 msgid "Size"
 msgstr ""
 
-#: ../src/app/qml/common/DetailsPage.qml:85
+#: ../src/app/qml/common/DetailsPage.qml:46
 msgid "Created"
 msgstr ""
 
-#: ../src/app/qml/common/DetailsPage.qml:104
+#: ../src/app/qml/common/DetailsPage.qml:51
 msgid "Last modified"
 msgstr ""
 
-#: ../src/app/qml/common/DetailsPage.qml:129
+#: ../src/app/qml/common/DetailsPage.qml:58
 msgid "MIME type"
 msgstr ""
 
