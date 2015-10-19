@@ -36,6 +36,7 @@ lok::Office *LODocument::s_office = nullptr;
 
 LODocument::LODocument()
   : m_path("")
+  , m_currentPart(-1)
   , m_document(nullptr)
 {
     // This space is intentionally empty.
@@ -60,6 +61,22 @@ void LODocument::setPath(const QString& pathName)
     this->loadDocument(m_path);
 }
 
+int LODocument::currentPart() {
+    return m_currentPart;
+}
+
+void LODocument::setCurrentPart(int index)
+{
+    if (!m_document)
+        return;
+
+    if (m_currentPart == index || index < 0 || index > partsCount() - 1)
+        return;
+
+    m_currentPart = index;
+    Q_EMIT currentPartChanged();
+}
+
 // Load the document
 bool LODocument::loadDocument(const QString &pathName)
 {
@@ -78,6 +95,8 @@ bool LODocument::loadDocument(const QString &pathName)
     m_docType = DocumentType(m_document->getDocumentType());
     Q_EMIT documentTypeChanged();
 
+    setCurrentPart(m_document->getPart());
+
     m_document->initializeForRendering();
     qDebug() << "Document loaded successfully !";
 
@@ -89,6 +108,17 @@ bool LODocument::loadDocument(const QString &pathName)
 LODocument::DocumentType LODocument::documentType() const
 {
     return m_docType;
+}
+
+int LODocument::documentPart() const
+{
+    return m_document->getPart();
+}
+
+void LODocument::setDocumentPart(int p)
+{
+    if (documentPart() != p)
+        m_document->setPart(p);
 }
 
 // Return the size of the document, in TWIPs
@@ -104,10 +134,11 @@ QSize LODocument::documentSize() const
     return QSize(pWidth, pHeight);
 }
 
-// Paint a tile, with size=canvasSize, of the part of the document defined by
-// the rect tileSize.
-QImage LODocument::paintTile(const QSize& canvasSize, const QRect& tileSize)
+QImage LODocument::paintTile(const QSize& canvasSize, const QRect& tileSize, const qreal &zoom)
 {
+    if (!m_document)
+        return QImage();
+
     QImage result = QImage(canvasSize.width(), canvasSize.height(),  QImage::Format_RGB32);
 
 #ifdef DEBUG_TILE_BENCHMARK
@@ -117,10 +148,10 @@ QImage LODocument::paintTile(const QSize& canvasSize, const QRect& tileSize)
 
     m_document->paintTile(result.bits(),
                           canvasSize.width(), canvasSize.height(),
-                          Twips::convertPixelsToTwips(tileSize.x()),
-                          Twips::convertPixelsToTwips(tileSize.y()),
-                          Twips::convertPixelsToTwips(tileSize.width()),
-                          Twips::convertPixelsToTwips(tileSize.height()));
+                          Twips::convertPixelsToTwips(tileSize.x(), zoom),
+                          Twips::convertPixelsToTwips(tileSize.y(), zoom),
+                          Twips::convertPixelsToTwips(tileSize.width(), zoom),
+                          Twips::convertPixelsToTwips(tileSize.height(), zoom));
 
 #ifdef DEBUG_TILE_BENCHMARK
     qDebug() << "Time to render the tile:" << renderTimer.elapsed() << "ms";
@@ -129,12 +160,56 @@ QImage LODocument::paintTile(const QSize& canvasSize, const QRect& tileSize)
     return result.rgbSwapped();
 }
 
-/* Export the file in a given format:
- *  - url is a mandatory argument.
- *  - format is optional. If not specified, lok will try to get it from the file
- *    extension given at the 'url' argument.
- *  - filerOptions is also optional.
- */
+QImage LODocument::paintThumbnail(qreal size)
+{
+    if (!m_document)
+        return QImage();
+
+#ifdef DEBUG_TILE_BENCHMARK
+    QElapsedTimer renderTimer;
+    renderTimer.start();
+#endif
+
+    qreal tWidth = this->documentSize().width();
+    qreal tHeight = this->documentSize().height();
+
+    QSize resultSize;
+
+    if (tWidth > tHeight) {
+        resultSize.setWidth(size);
+        resultSize.setHeight(size * tHeight / tWidth);
+    } else {
+        resultSize.setHeight(size);
+        resultSize.setWidth(size * tWidth / tHeight);
+    }
+
+    QImage result = QImage(resultSize.width(), resultSize.height(), QImage::Format_RGB32);
+    m_document->paintTile(result.bits(), resultSize.width(), resultSize.height(),
+                          0, 0, tWidth, tHeight);
+
+#ifdef DEBUG_TILE_BENCHMARK
+    qDebug() << "Time to render the thumbnail:" << renderTimer.elapsed() << "ms";
+#endif
+
+    return result.rgbSwapped();
+}
+
+int LODocument::partsCount()
+{
+    if (!m_document)
+        return int(0);
+ 
+    return m_document->getParts();
+}
+ 
+QString LODocument::getPartName(int index) const
+{
+    if (!m_document)
+        return QString();
+ 
+    return QString::fromUtf8(m_document->getPartName(index));
+}
+ 
 // TODO: Is there some documentation on safe formats or filterOptions that can
 // be used?
 bool LODocument::saveAs(QString url, QString format = QString(), QString filterOptions = QString())

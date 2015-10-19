@@ -17,12 +17,15 @@
 #ifndef LOVIEW_H
 #define LOVIEW_H
 
-#include <QQuickPaintedItem>
 #include <QQuickItem>
 #include <QTimer>
 #include <QSharedPointer>
+#include <QQmlContext>
+#include <QQmlEngine>
 
 #include "renderengine.h"
+#include "lopartsmodel.h"
+#include "lopartsimageprovider.h"
 
 class LODocument;
 class SGTileItem;
@@ -30,16 +33,22 @@ class SGTileItem;
 class LOView : public QQuickItem
 {
     Q_OBJECT
-    Q_PROPERTY(QQuickItem* parentFlickable READ parentFlickable WRITE setParentFlickable NOTIFY parentFlickableChanged)
-    Q_PROPERTY(LODocument* document        READ document        /*WRITE setDocument*/    NOTIFY documentChanged)
-
-    // TODO: Implement zoom!
-    Q_PROPERTY(qreal       zoomFactor      READ zoomFactor      WRITE setZoomFactor      NOTIFY zoomFactorChanged)
-    Q_PROPERTY(int         cacheBuffer     READ cacheBuffer     WRITE setCacheBuffer     NOTIFY cacheBufferChanged)
+    Q_ENUMS(ZoomMode)
+    Q_PROPERTY(QQuickItem*   parentFlickable READ parentFlickable WRITE setParentFlickable NOTIFY parentFlickableChanged)
+    Q_PROPERTY(LODocument*   document        READ document        /*WRITE setDocument*/    NOTIFY documentChanged)
+    Q_PROPERTY(LOPartsModel* partsModel      READ partsModel                               NOTIFY partsModelChanged)
+    Q_PROPERTY(qreal         zoomFactor      READ zoomFactor      WRITE setZoomFactor      NOTIFY zoomFactorChanged)
+    Q_PROPERTY(ZoomMode      zoomMode        READ zoomMode                                 NOTIFY zoomModeChanged)
+    Q_PROPERTY(int           cacheBuffer     READ cacheBuffer     WRITE setCacheBuffer     NOTIFY cacheBufferChanged)
 
 public:
     LOView(QQuickItem *parent = 0);
     ~LOView();
+
+    enum ZoomMode {
+        FitToWidth,
+        Manual
+    };
 
     QQuickItem* parentFlickable() const;
     void        setParentFlickable(QQuickItem* flickable);
@@ -47,30 +56,44 @@ public:
     Q_INVOKABLE void initializeDocument(const QString& path);
 
     LODocument* document() const;
+    LOPartsModel* partsModel() const;
 
     qreal       zoomFactor() const;
-    void        setZoomFactor(qreal zoom);
+    void        setZoomFactor(const qreal zoom);
+
+    ZoomMode    zoomMode() const;
 
     int         cacheBuffer() const;
     void        setCacheBuffer(int cacheBuffer);
 
+    Q_INVOKABLE void adjustZoomToWidth();
+
 Q_SIGNALS:
     void parentFlickableChanged();
     void documentChanged();
+    void partsModelChanged();
     void zoomFactorChanged();
+    void zoomModeChanged();
     void cacheBufferChanged();
 
 private Q_SLOTS:
     void updateViewSize();
     void updateVisibleRect();
     void scheduleVisibleRectUpdate();
-    void renderResultReceived(int id, QImage img);
+    void invalidateAllTiles();
+
+    void slotTileRenderFinished(int id, QImage img);
+    void slotThumbnailRenderFinished(int id, QImage img);
 
 private:
+
     QQuickItem*                 m_parentFlickable;
     QSharedPointer<LODocument>  m_document;
+    LOPartsModel*               m_partsModel; // TODO MB move to document.
+    LOPartsImageProvider*       m_imageProvider; // The QQmlEngine takes ownership of provider.
 
     qreal                       m_zoomFactor;
+    ZoomMode                    m_zoomMode;
     int                         m_cacheBuffer;
 
     QRect                       m_visibleArea;
@@ -82,6 +105,9 @@ private:
 
     void generateTiles(int x1, int y1, int x2, int y2, int tilesPerWidth);
     void createTile(int index, QRect rect);
+    void setZoomMode(const ZoomMode zoomMode);
+    bool updateZoomIfAutomatic();
+    void clearView();
 };
 
 #endif // LOVIEW_H

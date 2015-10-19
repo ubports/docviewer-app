@@ -6,22 +6,10 @@
 #include <QSharedPointer>
 #include <QHash>
 #include <QQueue>
+#include <QAtomicInt>
 
 #include "lodocument.h"
-
-struct EngineTask
-{
-    int id;
-    QRect area;
-    QSharedPointer<LODocument> document;
-
-public:
-    EngineTask(const QSharedPointer<LODocument>& d, const QRect& a, int i):
-    id(i),
-    area(a),
-    document(d)
-    { }
-};
+#include "rendertask.h"
 
 class RenderEngine : public QObject
 {
@@ -34,7 +22,9 @@ class RenderEngine : public QObject
     const int DefaultIdealThreadCount = 2;
 
 public:
-    void enqueueTask(const QSharedPointer<LODocument>& doc, const QRect& area, int id);
+    void enqueueTileTask(const QSharedPointer<LODocument>& doc, int part, const QRect& area, qreal zoom, int id);
+    void enqueueThumbnailTask(const QSharedPointer<LODocument>& doc, int part, qreal size, int id);
+    void enqueueTask(AbstractRenderTask* task);
     void dequeueTask(int id);
 
     static RenderEngine* instance() {
@@ -43,17 +33,26 @@ public:
         return s_instance;
     }
 
+    static int getNextId() {
+        static int idCounter = 0xDEAD0000;
+        return idCounter++;
+    }
+
 Q_SIGNALS:
-    void renderFinished(int id, QImage img);
+    void tileRenderFinished(int id, QImage img);
+    void thumbnailRenderFinished(int id, QImage img);
+    void enabledChanged();
 
 private:
-    Q_INVOKABLE void internalRenderCallback(int id, QImage img);
+    Q_INVOKABLE void internalRenderCallback(AbstractRenderTask* task, QImage img);
+    void disposeTask(AbstractRenderTask* task);
     void doNextTask();
 
 private:
-    QQueue<EngineTask> m_queue;
+    QQueue<AbstractRenderTask*> m_queue;
     int m_activeTaskCount;
     int m_idealThreadCount;
+    int m_lastPart;
 };
 
 #endif // RENDERENGINE_H

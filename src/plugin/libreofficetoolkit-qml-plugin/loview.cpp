@@ -20,15 +20,22 @@
 #include "twips.h"
 #include "config.h"
 
-#include <QPainter>
 #include <QImage>
 #include <QTimer>
 #include <QtCore/qmath.h>
+
+static qreal zoomValueToFitWidth;
+
+static qreal getZoomToFitWidth(const qreal &width, int documentWidth)
+{
+    return qreal(width / Twips::convertTwipsToPixels(documentWidth, 1.0));
+}
 
 LOView::LOView(QQuickItem *parent)
     : QQuickItem(parent)
     , m_parentFlickable(nullptr)
     , m_document(nullptr)
+    , m_partsModel(nullptr)
     , m_zoomFactor(1.0)
     , m_cacheBuffer(TILE_SIZE * 3)
     , m_visibleArea(0, 0, 0, 0)
@@ -41,7 +48,11 @@ LOView::LOView(QQuickItem *parent)
     connect(this, SIGNAL(parentFlickableChanged()), this, SLOT(updateVisibleRect()));
     connect(this, SIGNAL(cacheBufferChanged()), this, SLOT(updateVisibleRect()));
     connect(&m_updateTimer, SIGNAL(timeout()), this, SLOT(updateVisibleRect()));
-    connect(RenderEngine::instance(), SIGNAL(renderFinished(int,QImage)), this, SLOT(renderResultReceived(int,QImage)));
+
+    connect(RenderEngine::instance(), SIGNAL(tileRenderFinished(int,QImage)),
+            this, SLOT(slotTileRenderFinished(int,QImage)));
+    connect(RenderEngine::instance(), SIGNAL(thumbnailRenderFinished(int,QImage)),
+            this, SLOT(slotThumbnailRenderFinished(int,QImage)));
 }
 
 // Returns the parent QML Flickable
@@ -72,8 +83,27 @@ void LOView::setParentFlickable(QQuickItem *flickable)
 
 void LOView::initializeDocument(const QString &path)
 {
+    if (m_document)
+        m_document->disconnect(this);
+
     m_document = QSharedPointer<LODocument>(new LODocument());
     m_document->setPath(path);
+
+    // TODO MOVE
+    m_partsModel = new LOPartsModel(m_document);
+    Q_EMIT partsModelChanged();
+
+    // --------------------------------------------------
+    QQmlEngine *engine = QQmlEngine::contextForObject(this)->engine();
+    if (engine->imageProvider("lok"))
+        engine->removeImageProvider("lok");
+
+    m_imageProvider = new LOPartsImageProvider(m_document);
+    engine->addImageProvider("lok", m_imageProvider);
+    // --------------------------------------------------
+
+    connect(m_document.data(), SIGNAL(currentPartChanged()), this, SLOT(invalidateAllTiles()));
+
     Q_EMIT documentChanged();
 }
 
@@ -83,20 +113,41 @@ LODocument* LOView::document() const
     return m_document.data();
 }
 
-// Not used yet.
+LOPartsModel *LOView::partsModel() const
+{
+    return m_partsModel;
+}
+
 qreal LOView::zoomFactor() const
 {
     return m_zoomFactor;
 }
 
-// Not used yet.
-void LOView::setZoomFactor(qreal zoom)
+void LOView::setZoomFactor(const qreal zoom)
 {
     if (m_zoomFactor == zoom)
         return;
 
     m_zoomFactor = zoom;
+
+   if (m_zoomFactor != zoomValueToFitWidth)
+        setZoomMode(LOView::Manual);
+
     Q_EMIT zoomFactorChanged();
+}
+
+LOView::ZoomMode LOView::zoomMode() const
+{
+    return m_zoomMode;
+}
+
+void LOView::setZoomMode(const ZoomMode zoomMode)
+{
+    if (m_zoomMode == zoomMode)
+        return;
+
+    m_zoomMode = zoomMode;
+    Q_EMIT zoomModeChanged();
 }
 
 int LOView::cacheBuffer() const
@@ -113,7 +164,37 @@ void LOView::setCacheBuffer(int cacheBuffer)
     Q_EMIT cacheBufferChanged();
 }
 
-// Update the size of LOView, according to the size of the loaded document.
+void LOView::adjustZoomToWidth()
+ {
+    setZoomMode(LOView::FitToWidth);
+
+    zoomValueToFitWidth = getZoomToFitWidth(m_parentFlickable->width(),
+                                            m_document->documentSize().width());
+
+    setZoomFactor(zoomValueToFitWidth);
+    qDebug() << "Adjust zoom to width - value:" << zoomValueToFitWidth;
+ }
+
+bool LOView::updateZoomIfAutomatic()
+{
+    // This function is only used in LOView::updateVisibleRect()
+    // It returns a bool, so that we can stop the execution of that function,
+    // which will be triggered again when we'll automatically update the zoom value.
+    if (m_zoomMode == LOView::FitToWidth) {
+        zoomValueToFitWidth = getZoomToFitWidth(m_parentFlickable->width(),
+                                                m_document->documentSize().width());
+
+        if (m_zoomFactor != zoomValueToFitWidth) {
+            setZoomFactor(zoomValueToFitWidth);
+
+            qDebug() << "Adjust automatic zoom to width - value:" << zoomValueToFitWidth;
+            return true;
+        }
+    }
+
+    return false;
+}
+
 void LOView::updateViewSize()
 {
     if (!m_document)
@@ -121,21 +202,41 @@ void LOView::updateViewSize()
 
     QSize docSize = m_document->documentSize();
 
-    // FIXME: Area may become too large, resulting in a black texture.
-    this->setWidth(Twips::convertTwipsToPixels(docSize.width()) * m_zoomFactor);
-    this->setHeight(Twips::convertTwipsToPixels(docSize.height()) * m_zoomFactor);
+    this->setWidth(Twips::convertTwipsToPixels(docSize.width(), m_zoomFactor));
+    this->setHeight(Twips::convertTwipsToPixels(docSize.height(), m_zoomFactor));
 
-    // TODO: Consider to use connections to widthChanged and heightChanged
-    this->updateVisibleRect();
+    updateVisibleRect();
 }
 
-// Update the informations of the currently visible area of the parent
-// Flickable, then generate/delete all the required tiles, according to these
-// informations.
 void LOView::updateVisibleRect()
 {
     if (!m_parentFlickable)
         return;
+
+    // Changes in parentFlickable width/height trigger directly LOView::updateVisibleRect(),
+    // since they don't imply a change in the zoom factor - i.e. LOView::updateViewSize().
+    // Anyway, this class also handle an automatic zoom when the parentFlickable has been
+    // resized, so we need to take care of it.
+    // updateZoomIfAutomatic() returns a bool, which is true when the zoomFactor is
+    // set to a new value.
+    // If that happens, stop the execution of this function, since the change of
+    // zoomFactor will trigger the updateViewSize() function, which triggers this
+    // function again.
+    if (this->updateZoomIfAutomatic())
+        return;
+
+    // Check if current tiles have a different zoom value
+    if (!m_tiles.isEmpty()) {
+        SGTileItem* tile = m_tiles.first();
+
+        if (tile->zoomFactor() != m_zoomFactor) {
+            clearView();
+
+#ifdef DEBUG_VERBOSE
+            qDebug() << "Zoom value of tiles is different than the current zoom value. Erasing cache...";
+#endif
+        }
+    }
 
     // Update information about the visible area
     m_visibleArea.setRect(m_parentFlickable->property("contentX").toInt(),
@@ -144,10 +245,10 @@ void LOView::updateVisibleRect()
                           m_parentFlickable->height());
 
     // Update information about the buffer area
-    m_bufferArea.setRect(qMax(0, m_visibleArea.x() - this->cacheBuffer()),
-                         qMax(0, m_visibleArea.y() - this->cacheBuffer()),
-                         qMin(int(this->width() - m_bufferArea.x()), m_visibleArea.width() + (this->cacheBuffer() * 2)),
-                         qMin(int(this->height() - m_bufferArea.y()), m_visibleArea.height() + (this->cacheBuffer() * 2)));
+    m_bufferArea.setRect(qMax(0, m_visibleArea.x() - m_cacheBuffer),
+                         qMax(0, m_visibleArea.y() - m_cacheBuffer),
+                         qMin(int(this->width() - m_bufferArea.x()), m_visibleArea.width() + (m_cacheBuffer * 2)),
+                         qMin(int(this->height() - m_bufferArea.y()), m_visibleArea.height() + (m_cacheBuffer * 2)));
 
     // Delete tiles that are outside the loading area
     if (!m_tiles.isEmpty()) {
@@ -216,6 +317,12 @@ void LOView::generateTiles(int x1, int y1, int x2, int y2, int tilesPerWidth)
     }
 }
 
+void LOView::invalidateAllTiles()
+{
+    clearView();
+    updateViewSize();
+}
+
 void LOView::createTile(int index, QRect rect)
 {
     if (!m_tiles.contains(index)) {
@@ -223,24 +330,27 @@ void LOView::createTile(int index, QRect rect)
         qDebug() << "Creating tile indexed as" << index;
 #endif
 
-        auto tile = new SGTileItem(rect, this);
+        auto tile = new SGTileItem(rect, m_zoomFactor, RenderEngine::getNextId(), this);
         m_tiles.insert(index, tile);
-        RenderEngine::instance()->enqueueTask(m_document, rect, tile->id());
+        RenderEngine::instance()->enqueueTileTask(m_document, m_document->currentPart(), rect, m_zoomFactor, tile->id());
     }
 #ifdef DEBUG_VERBOSE
     else {
-        qDebug() << "tile" << x << "x" << y << "already exists";
+        qDebug() << "tile" << index << "already exists";
     }
 #endif
 }
 
 void LOView::scheduleVisibleRectUpdate()
 {
-    if (!m_updateTimer.isActive())
-        m_updateTimer.start(20);
+    if (m_updateTimer.isActive())
+        return;
+
+    m_updateTimer.setSingleShot(true);
+    m_updateTimer.start(20);
 }
 
-void LOView::renderResultReceived(int id, QImage img)
+void LOView::slotTileRenderFinished(int id, QImage img)
 {
     for (auto i = m_tiles.begin(); i != m_tiles.end(); ++i) {
         SGTileItem* sgtile = i.value();
@@ -251,9 +361,34 @@ void LOView::renderResultReceived(int id, QImage img)
     }
 }
 
+void LOView::slotThumbnailRenderFinished(int id, QImage img)
+{
+    if (!m_imageProvider->m_images.contains(id))
+        m_imageProvider->m_images.insert(id, img);
+    m_partsModel->notifyAboutChanges(id);
+}
+
+void LOView::clearView()
+{
+    for (auto i = m_tiles.begin(); i != m_tiles.end(); ++i)
+        RenderEngine::instance()->dequeueTask(i.value()->id());
+
+    auto i = m_tiles.begin();
+    while (i != m_tiles.end()) {
+        SGTileItem* sgtile = i.value();
+        sgtile->deleteLater();
+        i = m_tiles.erase(i);
+    }
+}
+
 LOView::~LOView()
 {
-    disconnect(RenderEngine::instance(), SIGNAL(renderFinished(int,QImage)), this, SLOT(renderResultReceived(int,QImage)));
+    delete m_partsModel;
+
+    disconnect(RenderEngine::instance(), SIGNAL(tileRenderFinished(int,QImage)),
+               this, SLOT(slotTileRenderFinished(int,QImage)));
+    disconnect(RenderEngine::instance(), SIGNAL(thumbnailRenderFinished(int,QImage)),
+               this, SLOT(slotThumbnailRenderFinished(int,QImage)));
 
     // Remove all tasks from rendering queue.
     for (auto i = m_tiles.begin(); i != m_tiles.end(); ++i)

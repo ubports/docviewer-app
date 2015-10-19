@@ -1,19 +1,20 @@
 #include "sgtileitem.h"
-
 #include "lodocument.h"
 #include "config.h"
+
+#include <QQuickWindow>
+#include <QSGSimpleTextureNode>
 
 #ifdef DEBUG_SHOW_TILE_BORDER
 #include <QSGGeometryNode>
 #include <QSGFlatColorMaterial>
 #endif
 
-int SGTileItem::s_idCounter = 0xDEAD0000;
-
-SGTileItem::SGTileItem(const QRect& area, QQuickItem *parent)
+SGTileItem::SGTileItem(const QRect& area, qreal zoom, int id, QQuickItem *parent)
     : QQuickItem(parent)
     , m_area(area)
-    , m_id (s_idCounter++)
+    , m_zoomFactor(zoom)
+    , m_id (id)
 {
     setFlag(ItemHasContents, true);
 }
@@ -27,12 +28,14 @@ QSGNode *SGTileItem::updatePaintNode(QSGNode *oldNode, QQuickItem::UpdatePaintNo
     QQuickWindow* wnd = window();
 
     if (!node && wnd && !m_data.isNull()) {
-        QImage image = m_data;
-        auto texture = wnd->createTextureFromImage(image);
+        auto texture = wnd->createTextureFromImage(m_data);
         node = new QSGSimpleTextureNode();
         node->setTexture(texture);
         node->setOwnsTexture(true);
         node->setRect(m_area);
+
+        // We don't need anymore QImage's data
+        m_data = QImage();
 
 #ifdef DEBUG_SHOW_TILE_BORDER
         drawTileBorders(node);

@@ -23,22 +23,74 @@ Flickable {
     property alias document:    view.document
     property alias zoomFactor:  view.zoomFactor
     property alias cacheBuffer: view.cacheBuffer
+    property alias partsModel: view.partsModel
+    property alias zoomMode:    view.zoomMode
 
     property string documentPath: ""
+
+    function adjustZoomToWidth()
+    {
+        view.adjustZoomToWidth();
+    }
+
+    function moveView(axis, diff)
+    {
+        if (axis == "vertical") {
+            var maxContentY = Math.max(0, rootFlickable.contentHeight - rootFlickable.height)
+            rootFlickable.contentY = Math.max(0, Math.min(rootFlickable.contentY + diff, maxContentY ))
+        } else {
+            var maxContentX = Math.max(0, rootFlickable.contentWidth - rootFlickable.width)
+            rootFlickable.contentX = Math.max(0, Math.min(rootFlickable.contentX + diff, maxContentX ))
+        }
+    }
+
+    function goNextPart()
+    {
+        document.currentPart = Math.min(document.currentPart + 1, document.partsCount - 1)
+    }
+
+    function goPreviousPart()
+    {
+        document.currentPart = Math.max(0, document.currentPart - 1)
+    }
+
+    function goFirstPart()
+    {
+        document.currentPart = 0
+    }
+
+    function goLastPart()
+    {
+        document.currentPart = document.partsCount - 1
+    }
 
     onDocumentPathChanged: {
         if (documentPath)
             view.initializeDocument(documentPath)
     }
 
-    contentHeight: view.height * view.zoomFactor
-    contentWidth: view.width * view.zoomFactor
+    // zoomFactor is not used here to set contentSize, since it's all managed
+    // internally, in the LibreOffice.View component.
+    contentHeight: view.height
+    contentWidth: view.width
 
     boundsBehavior: Flickable.StopAtBounds
+
+    Component.onCompleted: adjustZoomToWidth()
 
     LibreOffice.View {
         id: view
 
         parentFlickable: rootFlickable
+    }
+
+    Connections {
+        target: view.document
+
+        onCurrentPartChanged: {
+            // Position view at top-left corner
+            rootFlickable.contentX = 0
+            rootFlickable.contentY = 0
+        }
     }
 }
