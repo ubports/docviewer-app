@@ -49,7 +49,7 @@ LOView::LOView(QQuickItem *parent)
     connect(this, SIGNAL(cacheBufferChanged()), this, SLOT(updateVisibleRect()));
     connect(&m_updateTimer, SIGNAL(timeout()), this, SLOT(updateVisibleRect()));
 
-    connect(RenderEngine::instance(), SIGNAL(renderFinished(int,QImage)),
+    connect(RenderEngine::instance(), SIGNAL(tileRenderFinished(int,QImage)),
             this, SLOT(slotTileRenderFinished(int,QImage)));
     connect(RenderEngine::instance(), SIGNAL(thumbnailRenderFinished(int,QImage)),
             this, SLOT(slotThumbnailRenderFinished(int,QImage)));
@@ -332,7 +332,7 @@ void LOView::createTile(int index, QRect rect)
 
         auto tile = new SGTileItem(rect, m_zoomFactor, RenderEngine::getNextId(), this);
         m_tiles.insert(index, tile);
-        RenderEngine::instance()->enqueueTask(m_document, m_document->currentPart(), rect, m_zoomFactor, tile->id());
+        RenderEngine::instance()->enqueueTileTask(m_document, m_document->currentPart(), rect, m_zoomFactor, tile->id());
     }
 #ifdef DEBUG_VERBOSE
     else {
@@ -343,8 +343,11 @@ void LOView::createTile(int index, QRect rect)
 
 void LOView::scheduleVisibleRectUpdate()
 {
-    if (!m_updateTimer.isActive())
-        m_updateTimer.start(20);
+    if (m_updateTimer.isActive())
+        return;
+
+    m_updateTimer.setSingleShot(true);
+    m_updateTimer.start(20);
 }
 
 void LOView::slotTileRenderFinished(int id, QImage img)
@@ -382,7 +385,7 @@ LOView::~LOView()
 {
     delete m_partsModel;
 
-    disconnect(RenderEngine::instance(), SIGNAL(renderFinished(int,QImage)),
+    disconnect(RenderEngine::instance(), SIGNAL(tileRenderFinished(int,QImage)),
                this, SLOT(slotTileRenderFinished(int,QImage)));
     disconnect(RenderEngine::instance(), SIGNAL(thumbnailRenderFinished(int,QImage)),
                this, SLOT(slotThumbnailRenderFinished(int,QImage)));
