@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-19 00:19+0300\n"
+"POT-Creation-Date: 2015-10-20 00:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,9 +18,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: ../src/app/docviewer-application.cpp:162
-#: /home/qtros/dev/build-ubuntu-docviewer-app-more-oop-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
-msgid "Document Viewer"
+#: ../src/app/qml/common/CommandLineProxy.qml:49
+msgid "Some of the provided arguments is not valid."
+msgstr ""
+
+#: ../src/app/qml/common/CommandLineProxy.qml:58
+msgid "Opens ubuntu-docviewer-app displaying the selected file"
+msgstr ""
+
+#: ../src/app/qml/common/CommandLineProxy.qml:65
+msgid "Run fullscreen"
+msgstr ""
+
+#: ../src/app/qml/common/CommandLineProxy.qml:71
+msgid "Open ubuntu-docviewer-app in pick mode. Use it for tests only."
+msgstr ""
+
+#: ../src/app/qml/common/CommandLineProxy.qml:77
+msgid ""
+"Load the list of documents from the given folder, instead of default ~/"
+"Documents.\n"
+"The path must exist prior to running ubuntu-docviewer-app"
 msgstr ""
 
 #: ../src/app/qml/common/DetailsPage.qml:27
@@ -443,11 +461,15 @@ msgstr ""
 #.
 #. where "2" is given by the argument "%1"
 #.
-#: ../src/plugin/file-qml-plugin/docviewerutils.cpp:101
+#: ../src/plugin/file-qml-plugin/docviewerutils.cpp:111
 #, qt-format
 msgid "copy %1"
 msgstr ""
 
-#: /home/qtros/dev/build-ubuntu-docviewer-app-more-oop-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/build-reboot-app-init-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+msgid "Document Viewer"
+msgstr ""
+
+#: /tmp/build-reboot-app-init-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr ""
