@@ -37,7 +37,7 @@ inline QString docviewerDirectory()
     if (isClick()) {
         return QString(".");
     } else if (isRunningInstalled()) {
-        return QString("@DATA_DIR@");
+        return QString("@CMAKE_INSTALL_PREFIX@/@DATA_DIR@");
     } else {
         return QString("@CMAKE_CURRENT_SOURCE_DIR@");
     }
