@@ -14,8 +14,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.3
-import Ubuntu.Components 1.1
+import QtQuick 2.4
+import Ubuntu.Components 1.2
 import Ubuntu.Content 1.1
 
 PageHeadState {
@@ -55,10 +55,10 @@ PageHeadState {
                     return;
 
                 var urlList = []
-                var items = documentPage.view.item.selectedItems;
+                var indices = documentPage.view.item.selectedIndices;
 
-                for (var i=0; i < items.count; i++) {
-                    urlList.push("file://" + items.get(i).model.path);
+                for (var i=0; i < indices.length; i++) {
+                    urlList.push("file://" + folderModel.get(i).path);
                 }
 
                 contentHubProxy.activeTransfer.items = urlList

@@ -14,8 +14,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.3
-import Ubuntu.Components 1.1
+import QtQuick 2.4
+import Ubuntu.Components 1.2
 import Ubuntu.Components.Popups 1.0
 import DocumentViewer 1.0
 import QtQuick.Window 2.0
@@ -34,7 +34,6 @@ MainView {
                                         Screen.orientation == Qt.InvertedLandscapeOrientation
 
     applicationName: "com.ubuntu.docviewer"
-    useDeprecatedToolbar: false
     automaticOrientation: true
 
     width: units.gu(150)
@@ -143,6 +142,7 @@ MainView {
             customDir: commandLineProxy.documentsDir
         }
 
+        // TODO: Expose an enum from DocumentViewer module.
         sort.property: {
             switch (sortSettings.sortMode) {
             case 0:

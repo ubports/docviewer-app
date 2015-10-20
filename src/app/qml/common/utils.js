@@ -36,3 +36,31 @@ function printSize(i18n, size) {
 function getNameOfFile(path) {
     return path.toString().substring(path.lastIndexOf('/') + 1);
 }
+
+function getIconNameFromMimetype(mimetype) {
+    if (mimetype.substring(0, 5) === "text/")
+        return "text-x-generic-symbolic"
+
+    if (mimetype.substring(0, 5) === "image")
+        return "image-x-generic-symbolic"
+
+    if (mimetype === "application/pdf")
+        return "application-pdf-symbolic"
+
+    if (mimetype === "application/vnd.oasis.opendocument.text"
+            || mimetype === "application/msword"
+            || mimetype === "application/vnd.openxmlformats-officedocument.wordprocessingml.document")
+        return "x-office-document-symbolic"
+
+    if (mimetype === "application/vnd.oasis.opendocument.spreadsheet"
+            || mimetype === "application/vnd.ms-excel"
+            || mimetype === "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+        return "x-office-spreadsheet-symbolic"
+
+    if (mimetype === "application/vnd.oasis.opendocument.presentation"
+            || mimetype === "application/vnd.ms-powerpoint"
+            || mimetype === "application/vnd.openxmlformats-officedocument.presentationml.presentation")
+        return "x-office-presentation-symbolic"
+
+    return "package-x-generic-symbolic"
+}

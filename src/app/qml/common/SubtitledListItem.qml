@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012-2014 Canonical, Ltd.
+ * Copyright (C) 2015 Canonical, Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,12 +14,28 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.3
-import Ubuntu.Components 1.1
+import QtQuick 2.4
+import Ubuntu.Components 1.2
 
-CheckBox {
-    checked: root.selected
-    width: implicitWidth
-    // disable item mouse area to avoid conflicts with parent mouse area
-    __mouseArea.enabled: false
+ListItem {
+    id: listItemSubtitled
+    property alias text: mainLabel.text
+    property alias subText: subLabel.text
+
+    Column {
+        anchors {
+            left: parent.left; right: parent.right
+            margins: units.gu(2)
+            verticalCenter: parent.verticalCenter
+        }
+
+        Label {
+            id: mainLabel
+            color: UbuntuColors.midAubergine
+        }
+        Label {
+            id: subLabel
+            fontSize: "small"
+        }
+    }
 }

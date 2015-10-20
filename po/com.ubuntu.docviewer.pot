@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-20 00:24+0200\n"
+"POT-Creation-Date: 2015-10-20 20:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,30 +41,30 @@ msgid ""
 "The path must exist prior to running ubuntu-docviewer-app"
 msgstr ""
 
-#: ../src/app/qml/common/DetailsPage.qml:27
+#: ../src/app/qml/common/DetailsPage.qml:25
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:106
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:97
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:83
 msgid "Details"
 msgstr ""
 
-#: ../src/app/qml/common/DetailsPage.qml:33
+#: ../src/app/qml/common/DetailsPage.qml:36
 msgid "Location"
 msgstr ""
 
-#: ../src/app/qml/common/DetailsPage.qml:37
+#: ../src/app/qml/common/DetailsPage.qml:41
 msgid "Size"
 msgstr ""
 
-#: ../src/app/qml/common/DetailsPage.qml:42
+#: ../src/app/qml/common/DetailsPage.qml:46
 msgid "Created"
 msgstr ""
 
-#: ../src/app/qml/common/DetailsPage.qml:47
+#: ../src/app/qml/common/DetailsPage.qml:51
 msgid "Last modified"
 msgstr ""
 
-#: ../src/app/qml/common/DetailsPage.qml:54
+#: ../src/app/qml/common/DetailsPage.qml:58
 msgid "MIME type"
 msgstr ""
 
@@ -77,9 +77,9 @@ msgid "File does not exist"
 msgstr ""
 
 #: ../src/app/qml/common/FileNotFoundDialog.qml:28
-#: ../src/app/qml/common/PickImportedDialog.qml:47
+#: ../src/app/qml/common/PickImportedDialog.qml:53
 #: ../src/app/qml/common/RejectedImportDialog.qml:38
-#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:32
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:33
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:53
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:70
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
@@ -87,11 +87,11 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: ../src/app/qml/common/PickImportedDialog.qml:29
+#: ../src/app/qml/common/PickImportedDialog.qml:28
 msgid "Multiple documents imported"
 msgstr ""
 
-#: ../src/app/qml/common/PickImportedDialog.qml:30
+#: ../src/app/qml/common/PickImportedDialog.qml:29
 msgid "Choose which one to open:"
 msgstr ""
 
@@ -107,22 +107,27 @@ msgid_plural "Following documents have not been imported:"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/app/qml/common/UnknownTypeDialog.qml:26
+#: ../src/app/qml/common/UnknownTypeDialog.qml:27
 msgid "Unknown file type"
 msgstr ""
 
-#: ../src/app/qml/common/UnknownTypeDialog.qml:27
+#: ../src/app/qml/common/UnknownTypeDialog.qml:28
 msgid ""
-"Sorry but we can't find a way to display this file. Do you want to open it "
-"as a plain text?"
-msgstr ""
-
-#: ../src/app/qml/common/UnknownTypeDialog.qml:29
-msgid "Yes"
+"Sorry but we can't find a way to display this file.\n"
+"\n"
+"Do you want to open it as a plain text?"
 msgstr ""
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:38
-msgid "No"
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:55
+#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:28
+#: ../src/app/qml/loView/LOViewGotoDialog.qml:53
+#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:51
+msgid "Cancel"
+msgstr ""
+
+#: ../src/app/qml/common/UnknownTypeDialog.qml:44
+msgid "Yes"
 msgstr ""
 
 #. TRANSLATORS: %1 is the size of a file, expressed in GB
@@ -149,38 +154,31 @@ msgstr ""
 msgid "%1 byte"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DeleteFileDialog.qml:36
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:39
 msgid "Delete file"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DeleteFileDialog.qml:37
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:40
 #, qt-format
 msgid "Delete %1 file"
 msgid_plural "Delete %1 files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/app/qml/documentPage/DeleteFileDialog.qml:38
-#: ../src/app/qml/documentPage/DeleteFileDialog.qml:39
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:41
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:42
 msgid "Are you sure you want to permanently delete this file?"
 msgid_plural "Are you sure you want to permanently delete these files?"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/app/qml/documentPage/DeleteFileDialog.qml:44
-#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:28
-#: ../src/app/qml/loView/LOViewGotoDialog.qml:54
-#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:52
-msgid "Cancel"
-msgstr ""
-
-#: ../src/app/qml/documentPage/DeleteFileDialog.qml:49
-#: ../src/app/qml/documentPage/DocumentDelegateActions.qml:25
-#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:82
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:61
+#: ../src/app/qml/documentPage/DocumentDelegateActions.qml:27
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:55
 msgid "Delete"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentDelegateActions.qml:43
+#: ../src/app/qml/documentPage/DocumentDelegateActions.qml:46
 msgid "Share"
 msgstr ""
 
@@ -196,56 +194,32 @@ msgstr ""
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
-#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:32
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:37
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:95
 #, qt-format
 msgid "Today, %1"
 msgstr ""
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
-#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:37
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:42
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:100
 #, qt-format
 msgid "Yesterday, %1"
 msgstr ""
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:42
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:58
-msgid "dddd, hh:mm"
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:107
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:126
+msgid "yyyy/MM/dd hh:mm"
 msgstr ""
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:46
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:47
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:63
-msgid "dd-MM-yyyy hh:mm"
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:120
+msgid "dddd, hh:mm"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentListView.qml:167
-msgid "Today"
-msgstr ""
-
-#: ../src/app/qml/documentPage/DocumentListView.qml:170
-msgid "Yesterday"
-msgstr ""
-
-#: ../src/app/qml/documentPage/DocumentListView.qml:173
-msgid "Earlier this week"
-msgstr ""
-
-#: ../src/app/qml/documentPage/DocumentListView.qml:176
-msgid "Earlier this month"
-msgstr ""
-
-#: ../src/app/qml/documentPage/DocumentListView.qml:178
-msgid "Even earlier..."
-msgstr ""
-
-#: ../src/app/qml/documentPage/DocumentPage.qml:24
+#: ../src/app/qml/documentPage/DocumentPage.qml:23
 msgid "Documents"
 msgstr ""
 
@@ -253,16 +227,14 @@ msgstr ""
 msgid "Search..."
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:37
+#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:36
 msgid "Sorting settings..."
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:46
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:41
 msgid "Switch to single column list"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:46
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:41
 msgid "Switch to grid"
 msgstr ""
@@ -283,11 +255,11 @@ msgstr ""
 msgid "search in documents..."
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:52
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:42
 msgid "Select None"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:54
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:42
 msgid "Select All"
 msgstr ""
 
@@ -298,6 +270,26 @@ msgstr ""
 #: ../src/app/qml/documentPage/SearchEmptyState.qml:26
 msgid ""
 "Please ensure that your query is not misspelled and/or try a different query."
+msgstr ""
+
+#: ../src/app/qml/documentPage/SectionHeader.qml:13
+msgid "Today"
+msgstr ""
+
+#: ../src/app/qml/documentPage/SectionHeader.qml:16
+msgid "Yesterday"
+msgstr ""
+
+#: ../src/app/qml/documentPage/SectionHeader.qml:19
+msgid "Earlier this week"
+msgstr ""
+
+#: ../src/app/qml/documentPage/SectionHeader.qml:22
+msgid "Earlier this month"
+msgstr ""
+
+#: ../src/app/qml/documentPage/SectionHeader.qml:24
+msgid "Even earlier..."
 msgstr ""
 
 #: ../src/app/qml/documentPage/SharePage.qml:23
@@ -373,16 +365,16 @@ msgstr ""
 msgid "Enable night mode"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewGotoDialog.qml:27
+#: ../src/app/qml/loView/LOViewGotoDialog.qml:28
 msgid "Go to position"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewGotoDialog.qml:28
+#: ../src/app/qml/loView/LOViewGotoDialog.qml:29
 msgid "Choose a position between 1% and 100%"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewGotoDialog.qml:46
-#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:44
+#: ../src/app/qml/loView/LOViewGotoDialog.qml:60
+#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:58
 msgid "GO!"
 msgstr ""
 
@@ -443,11 +435,11 @@ msgstr ""
 msgid "Go to page..."
 msgstr ""
 
-#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:25
+#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
 msgid "Go to page"
 msgstr ""
 
-#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
+#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:27
 #, qt-format
 msgid "Choose a page between 1 and %1"
 msgstr ""
@@ -466,10 +458,10 @@ msgstr ""
 msgid "copy %1"
 msgstr ""
 
-#: /tmp/build-reboot-app-init-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/build-reboot-uitk12-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr ""
 
-#: /tmp/build-reboot-app-init-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/build-reboot-uitk12-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr ""
