@@ -28,8 +28,8 @@ MainView {
     id: mainView
     objectName: "mainView"
 
-    // TODO: Connect with arguments
-    property bool pickMode: false
+    property bool pickMode: commandLineProxy.pickMode
+    property bool fullscreen: commandLineProxy.fullscreen
     readonly property bool isLandscape: Screen.orientation == Qt.LandscapeOrientation ||
                                         Screen.orientation == Qt.InvertedLandscapeOrientation
 
@@ -66,12 +66,8 @@ MainView {
                         mainView, { parent: mainView });
     }
 
-    function setFullScreen(fullScreen) {
-        DOC_VIEWER.fullScreen = fullScreen;
-    }
-
     function toggleFullScreen() {
-        DOC_VIEWER.fullScreen = !DOC_VIEWER.fullScreen;
+        mainView.fullscreen = !mainView.fullscreen
     }
 
     function setHeaderVisibility(visible, toggleFullscreen) {
@@ -80,41 +76,43 @@ MainView {
 
         // If device orientation is landscape and screen width is limited,
         // force hiding Unity 8 indicators panel.
-        if (!DOC_VIEWER.desktopMode && mainView.isLandscape &&
+        if (!DocumentViewer.desktopMode && mainView.isLandscape &&
                 mainView.width < units.gu(51)) {
-            setFullScreen(true);
+            mainView.fullscreen = true;
             return;
         }
 
-        if (!DOC_VIEWER.desktopMode && toggleFullscreen)
-            setFullScreen(!visible);
+        if (!DocumentViewer.desktopMode && toggleFullscreen)
+            mainView.fullscreen = !visible;
     }
 
     function toggleHeaderVisibility() {
         setHeaderVisibility(!header.visible);
     }
 
-    function setPickMode(pickMode) {
-        mainView.pickMode = pickMode
-    }
-
     function switchToBrowseMode() {
-        setPickMode(false)
+        mainView.pickMode = false
     }
 
     function switchToPickMode() {
-        setPickMode(true)
+        mainView.pickMode = true
     }
-
 
     // On screen rotation, force updating of header/U8 indicators panel visibility
     onIsLandscapeChanged: setHeaderVisibility(true);
+
+    onFullscreenChanged: {
+        if (mainView.fullscreen)
+            window.visibility = Window.FullScreen
+        else
+            window.visibility = Window.Windowed
+    }
 
     Component.onCompleted: {
         pageStack.push(Qt.resolvedUrl("documentPage/DocumentPage.qml"));
 
         // Open the document, if one has been specified.
-        openDocument(DOC_VIEWER.documentFile);
+        openDocument(commandLineProxy.documentFile);
     }
 
     File {
@@ -141,7 +139,7 @@ MainView {
             id: docModel
 
             // Used for autopilot tests! If customDir is empty, this property is not used.
-            customDir: DOC_VIEWER.documentsDir
+            customDir: commandLineProxy.documentsDir
         }
 
         // TODO: Expose an enum from DocumentViewer module.
@@ -183,6 +181,11 @@ MainView {
         property bool reverseOrder: false
     }
 
+    // CommandLine parser
+    CommandLineProxy {
+        id: commandLineProxy
+    }
+
     // Content Hub support
     property alias contentHubProxy: contentHubLoader.item
     Loader {
@@ -195,19 +198,7 @@ MainView {
     // Uri Handler support
     Connections {
         target: UriHandler
-        onOpened: {
-            for (var i = 0; i < uris.length; ++i) {
-                DOC_VIEWER.parseUri(uris[i])
-            }
-        }
-    }
-
-    Connections {
-        target: DOC_VIEWER
-
-        onDocumentFileChanged: {
-            openDocument(DOC_VIEWER.documentFile);
-        }
+        onOpened: openDocument(uris[0])
     }
 
     onPickModeChanged: {

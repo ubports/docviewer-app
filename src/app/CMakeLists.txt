@@ -6,11 +6,18 @@ add_definitions(
   -DGETTEXT_LOCALEDIR=\"${CMAKE_INSTALL_LOCALEDIR}\"
 )
 
+configure_file(
+    config.h.in
+    ${CMAKE_CURRENT_BINARY_DIR}/config.h
+    @ONLY
+)
+
+include_directories(
+    ${CMAKE_CURRENT_BINARY_DIR}
+)
+
 set(docviewer_SRCS
     main.cpp
-    command-line-parser.cpp
-    docviewer-application.cpp
-    urlhandler.cpp
     ${QML_SRCS}
 )
 

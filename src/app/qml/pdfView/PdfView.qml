@@ -58,7 +58,7 @@ PageWithBottomEdge {
 
         model: poppler
         delegate: PdfViewDelegate {
-            Component.onDestruction: DOC_VIEWER.releaseResources()
+            Component.onDestruction: window.releaseResources()
         }
 
         // FIXME: On zooming, keep the same content position.
@@ -78,7 +78,7 @@ PageWithBottomEdge {
                 // This is a bit expensive, so it's safer to put it here.
                 // It won't be called on desktop (where PinchArea is not used),
                 // but it's not a problem at the moment (our target is phone).
-                DOC_VIEWER.releaseResources();
+                window.releaseResources();
             }
 
             MouseArea {
