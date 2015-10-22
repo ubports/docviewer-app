@@ -20,6 +20,7 @@ import Ubuntu.Layouts 1.0
 import DocumentViewer.LibreOffice 1.0 as LO
 
 import "../upstreamComponents"
+import "../common"
 
 import "../common/utils.js" as Utils
 import "KeybHelper.js" as KeybHelper
@@ -91,77 +92,22 @@ PageWithBottomEdge {
                             anchors.fill: parent
 
                             // TODO: Add a setting to show/hide sidebar when width > units.gu(80)
-                            PartsView {
-                                id: partsView
-                                anchors {
-                                    top: parent.top
-                                    bottom: bottomBarLayoutItem.top
-                                    left: parent.left
-                                }
-
-                                model: loView.partsModel
+                            ResizeableSidebar {
+                                id: leftSidebar
+                                anchors.left: parent.left
+                                anchors.bottom: bottomBarLayoutItem.top
                                 visible: loDocument.documentType == LO.Document.PresentationDocument
-                                width: visible ? units.gu(40) : 0
 
-                                Rectangle {
-                                    id: verticalDivider
-                                    anchors {
-                                        top: parent.top
-                                        bottom: parent.bottom
-                                        right: parent.right
-                                        rightMargin: units.dp(2)
-                                    }
-                                    width: units.dp(2)
-                                    color: Theme.palette.selected.background
-
-                                    MouseArea {
-                                        id: resizerSensing
-                                        objectName: "Divider"
-                                        enabled: verticalDivider.width > 0
-                                        anchors {
-                                            fill: parent
-                                            leftMargin: enabled ? -units.gu(1) : 0
-                                            rightMargin: enabled ? -units.gu(1) : 0
-                                        }
-                                        cursorShape: Qt.SizeHorCursor
-                                        drag {
-                                            axis: Drag.XAxis
-                                            target: resizer
-                                            smoothed: false
-                                            minimumX: units.gu(20)
-                                            maximumX: units.gu(40)
-                                        }
-                                        onPressed: resizer.x = partsView.width
-                                    }
-                                    states: State {
-                                        name: "active"
-                                        when: resizerSensing.pressed || resizerSensing.containsMouse
-                                        PropertyChanges {
-                                            target: verticalDivider
-                                            color: Qt.darker(Theme.palette.normal.background, 1.5)
-                                        }
-                                    }
-                                    transitions: Transition {
-                                        from: ""
-                                        to: "*"
-                                        reversible: true
-                                        ColorAnimation {
-                                            target: verticalDivider
-                                            property: "color"
-                                            duration: UbuntuAnimation.SlowDuration
-                                        }
-                                    }
-                                }
-                                Item {
-                                    id: resizer
-                                    height: parent.height
-                                    onXChanged: partsView.width = x
+                                PartsView {
+                                    id: partsView
+                                    anchors.fill: parent
+                                    model: loView.partsModel
                                 }
                             }
 
                             Item {
                                 anchors {
-                                    left: partsView.right
+                                    left: leftSidebar.right
                                     right: parent.right
                                     top: parent.top
                                     bottom: bottomBarLayoutItem.top
