@@ -41,7 +41,7 @@ Item {
         width: units.dp(2)
         color: Theme.palette.selected.background
 
-        // Stay over the sidebar content
+        // Stay above the sidebar content
         z: 10
 
         MouseArea {
