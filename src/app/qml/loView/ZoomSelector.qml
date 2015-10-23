@@ -151,7 +151,7 @@ TextField {
                     Rectangle {
                         Layout.fillHeight: true
                         Layout.preferredWidth: units.dp(1)
-                        color: Theme.palette.selected.background
+                        color: theme.palette.selected.background
                     }
 
                     ListItems.Base {
@@ -175,13 +175,13 @@ TextField {
                 Rectangle {
                     anchors { left: parent.left; right: parent.right }
                     height: units.dp(1)
-                    color: Theme.palette.selected.background
+                    color: theme.palette.selected.background
                 }
 
                 ListItems.Standard {
                     showDivider: false
                     height: units.gu(4)
-                    __foregroundColor: Theme.palette.selected.backgroundText
+                    __foregroundColor: theme.palette.selected.backgroundText
 
                     text: i18n.tr("Fit width")
                     control: Icon {
@@ -200,13 +200,13 @@ TextField {
                 Rectangle {
                     anchors { left: parent.left; right: parent.right }
                     height: units.dp(1)
-                    color: Theme.palette.selected.background
+                    color: theme.palette.selected.background
                 }
 
                 ListItems.Standard {
                     showDivider: false
                     height: units.gu(4)
-                    __foregroundColor: Theme.palette.selected.backgroundText
+                    __foregroundColor: theme.palette.selected.backgroundText
 
                     text: "50%"
                     onClicked: {
@@ -217,7 +217,7 @@ TextField {
                 ListItems.Standard {
                     showDivider: false
                     height: units.gu(4)
-                    __foregroundColor: Theme.palette.selected.backgroundText
+                    __foregroundColor: theme.palette.selected.backgroundText
 
                     text: "70%"
                     onClicked: {
@@ -228,7 +228,7 @@ TextField {
                 ListItems.Standard {
                     showDivider: false
                     height: units.gu(4)
-                    __foregroundColor: Theme.palette.selected.backgroundText
+                    __foregroundColor: theme.palette.selected.backgroundText
 
                     text: "85%"
                     onClicked: {
@@ -239,7 +239,7 @@ TextField {
                 ListItems.Standard {
                     showDivider: false
                     height: units.gu(4)
-                    __foregroundColor: Theme.palette.selected.backgroundText
+                    __foregroundColor: theme.palette.selected.backgroundText
 
                     text: "100%"
                     onClicked: {
@@ -250,7 +250,7 @@ TextField {
                 ListItems.Standard {
                     showDivider: false
                     height: units.gu(4)
-                    __foregroundColor: Theme.palette.selected.backgroundText
+                    __foregroundColor: theme.palette.selected.backgroundText
 
                     text: "125%"
                     onClicked: {
@@ -261,7 +261,7 @@ TextField {
                 ListItems.Standard {
                     showDivider: false
                     height: units.gu(4)
-                    __foregroundColor: Theme.palette.selected.backgroundText
+                    __foregroundColor: theme.palette.selected.backgroundText
 
                     text: "150%"
                     onClicked: {
@@ -272,7 +272,7 @@ TextField {
                 ListItems.Standard {
                     showDivider: false
                     height: units.gu(4)
-                    __foregroundColor: Theme.palette.selected.backgroundText
+                    __foregroundColor: theme.palette.selected.backgroundText
 
                     text: "175%"
                     onClicked: {
@@ -283,7 +283,7 @@ TextField {
                 ListItems.Standard {
                     showDivider: false
                     height: units.gu(4)
-                    __foregroundColor: Theme.palette.selected.backgroundText
+                    __foregroundColor: theme.palette.selected.backgroundText
 
                     text: "200%"
                     onClicked: {
@@ -294,7 +294,7 @@ TextField {
                 ListItems.Standard {
                     showDivider: false
                     height: units.gu(4)
-                    __foregroundColor: Theme.palette.selected.backgroundText
+                    __foregroundColor: theme.palette.selected.backgroundText
 
                     text: "300%"
                     onClicked: {
@@ -305,7 +305,7 @@ TextField {
                 ListItems.Standard {
                     showDivider: false
                     height: units.gu(4)
-                    __foregroundColor: Theme.palette.selected.backgroundText
+                    __foregroundColor: theme.palette.selected.backgroundText
 
                     text: "400%"
                     onClicked: {

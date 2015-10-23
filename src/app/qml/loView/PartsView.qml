@@ -35,7 +35,7 @@ ListView {
         width: parent.width
         height: units.gu(16)
 
-        color: (loView.document.currentPart === model.index) ? Theme.palette.selected.background
+        color: (loView.document.currentPart === model.index) ? theme.palette.selected.background
                                                              : "transparent"
 
         AbstractButton {
@@ -76,13 +76,13 @@ ListView {
                 wrapMode: Text.WordWrap
                 text: model.name
                 color: (loView.document.currentPart === model.index) ? UbuntuColors.orange
-                                                                     : Theme.palette.selected.backgroundText
+                                                                     : theme.palette.selected.backgroundText
             }
 
             Label {
                 text: model.index + 1
                 color: (loView.document.currentPart === model.index) ? UbuntuColors.orange
-                                                                     : Theme.palette.selected.backgroundText
+                                                                     : theme.palette.selected.backgroundText
             }
         }
     }

@@ -111,7 +111,7 @@ Page {
 
                     font.weight: model.level == 0 ? Font.DemiBold : Font.Normal
                     color: (model.level == 0) ? UbuntuColors.midAubergine
-                                              : Theme.palette.selected.backgroundText
+                                              : theme.palette.selected.backgroundText
                 }
 
                 /*
@@ -134,7 +134,7 @@ Page {
                     text: model.pageIndex + 1
                     font.weight: model.level == 0 ? Font.DemiBold : Font.Normal
                     color: (model.level == 0) ? UbuntuColors.midAubergine
-                                              : Theme.palette.selected.backgroundText
+                                              : theme.palette.selected.backgroundText
                 }
             }
         }
