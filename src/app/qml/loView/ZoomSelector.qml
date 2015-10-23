@@ -18,9 +18,11 @@ import QtQuick 2.4
 import Ubuntu.Components 1.3
 import QtQuick.Layouts 1.1
 import Ubuntu.Components.Popups 1.3
-import Ubuntu.Components.ListItems 1.3 as ListItems
 import DocumentViewer.LibreOffice 1.0 as LibreOffice
 import Ubuntu.Components.Themes.Ambiance 1.3 as Theme
+
+// FIXME: "Fit width" item alignment
+// TODO: Complete code refactor
 
 TextField {
     id: textField
@@ -131,8 +133,8 @@ TextField {
                     height: units.gu(4)
                     spacing: units.gu(1)
 
-                    ListItems.Base {
-                        showDivider: false
+                    ListItem {
+                        divider.visible: false
                         Layout.fillHeight: true
                         Layout.fillWidth: true
 
@@ -154,8 +156,8 @@ TextField {
                         color: theme.palette.selected.background
                     }
 
-                    ListItems.Base {
-                        showDivider: false
+                    ListItem {
+                        divider.visible: false
                         Layout.fillHeight: true
                         Layout.fillWidth: true
 
@@ -178,22 +180,29 @@ TextField {
                     color: theme.palette.selected.background
                 }
 
-                ListItems.Standard {
-                    showDivider: false
+                ListItem {
                     height: units.gu(4)
-                    __foregroundColor: theme.palette.selected.backgroundText
-
-                    text: i18n.tr("Fit width")
-                    control: Icon {
-                        width: units.gu(2); height: width
-                        name: "tick"
-                        color: UbuntuColors.green
-                        visible: view.zoomMode == LibreOffice.View.FitToWidth
-                    }
 
                     onClicked: {
                         view.adjustZoomToWidth()
                         PopupUtils.close(zoomSelectorDialogue)
+                    }
+
+                    /* UITK 1.3 specs: Two slot layout (A-B) */
+                    ListItemLayout {
+                        anchors.fill: parent
+
+                        /* UITK 1.3 specs: Slot A */
+                        title.text: i18n.tr("Fit width")
+
+                        /* UITK 1.3 specs: Slot B */
+                        Icon {
+                            SlotsLayout.position: SlotsLayout.Trailing
+                            width: units.gu(2); height: width
+                            name: "tick"
+                            color: UbuntuColors.green
+                            visible: view.zoomMode == LibreOffice.View.FitToWidth
+                        }
                     }
                 }
 
@@ -203,114 +212,36 @@ TextField {
                     color: theme.palette.selected.background
                 }
 
-                ListItems.Standard {
-                    showDivider: false
-                    height: units.gu(4)
-                    __foregroundColor: theme.palette.selected.backgroundText
+                Repeater {
+                    model: [
+                        { text: "50%",  value: 0.50 },
+                        { text: "70%",  value: 0.70 },
+                        { text: "85%",  value: 0.85 },
+                        { text: "100%", value: 1.00 },
+                        { text: "125%", value: 1.25 },
+                        { text: "150%", value: 1.50 },
+                        { text: "175%", value: 1.75 },
+                        { text: "200%", value: 2.00 },
+                        { text: "300%", value: 3.00 },
+                        { text: "400%", value: 4.00 }
+                    ]
 
-                    text: "50%"
-                    onClicked: {
-                        view.setZoom(0.5)
-                        PopupUtils.close(zoomSelectorDialogue)
-                    }
-                }
-                ListItems.Standard {
-                    showDivider: false
-                    height: units.gu(4)
-                    __foregroundColor: theme.palette.selected.backgroundText
+                    ListItem {
+                        divider.visible: false
+                        height: units.gu(4)
 
-                    text: "70%"
-                    onClicked: {
-                        view.setZoom(0.7)
-                        PopupUtils.close(zoomSelectorDialogue)
-                    }
-                }
-                ListItems.Standard {
-                    showDivider: false
-                    height: units.gu(4)
-                    __foregroundColor: theme.palette.selected.backgroundText
+                        onClicked: {
+                            view.setZoom(modelData.value)
+                            PopupUtils.close(zoomSelectorDialogue)
+                        }
 
-                    text: "85%"
-                    onClicked: {
-                        view.setZoom(0.85)
-                        PopupUtils.close(zoomSelectorDialogue)
-                    }
-                }
-                ListItems.Standard {
-                    showDivider: false
-                    height: units.gu(4)
-                    __foregroundColor: theme.palette.selected.backgroundText
-
-                    text: "100%"
-                    onClicked: {
-                        view.setZoom(1.0)
-                        PopupUtils.close(zoomSelectorDialogue)
-                    }
-                }
-                ListItems.Standard {
-                    showDivider: false
-                    height: units.gu(4)
-                    __foregroundColor: theme.palette.selected.backgroundText
-
-                    text: "125%"
-                    onClicked: {
-                        view.setZoom(1.25)
-                        PopupUtils.close(zoomSelectorDialogue)
-                    }
-                }
-                ListItems.Standard {
-                    showDivider: false
-                    height: units.gu(4)
-                    __foregroundColor: theme.palette.selected.backgroundText
-
-                    text: "150%"
-                    onClicked: {
-                        view.setZoom(1.5)
-                        PopupUtils.close(zoomSelectorDialogue)
-                    }
-                }
-                ListItems.Standard {
-                    showDivider: false
-                    height: units.gu(4)
-                    __foregroundColor: theme.palette.selected.backgroundText
-
-                    text: "175%"
-                    onClicked: {
-                        view.setZoom(1.75)
-                        PopupUtils.close(zoomSelectorDialogue)
-                    }
-                }
-                ListItems.Standard {
-                    showDivider: false
-                    height: units.gu(4)
-                    __foregroundColor: theme.palette.selected.backgroundText
-
-                    text: "200%"
-                    onClicked: {
-                        view.setZoom(2.0)
-                        PopupUtils.close(zoomSelectorDialogue)
-                    }
-                }
-                ListItems.Standard {
-                    showDivider: false
-                    height: units.gu(4)
-                    __foregroundColor: theme.palette.selected.backgroundText
-
-                    text: "300%"
-                    onClicked: {
-                        view.setZoom(3.0)
-                        PopupUtils.close(zoomSelectorDialogue)
-                    }
-                }
-                ListItems.Standard {
-                    showDivider: false
-                    height: units.gu(4)
-                    __foregroundColor: theme.palette.selected.backgroundText
-
-                    text: "400%"
-                    onClicked: {
-                        view.setZoom(4.0)
-                        PopupUtils.close(zoomSelectorDialogue)
+                        Label {
+                            text: modelData.text
+                            anchors {
+                                left: parent.left; leftMargin: units.gu(1)
+                                verticalCenter: parent.verticalCenter
+                            }
+                        }
                     }
                 }
             }   // layout

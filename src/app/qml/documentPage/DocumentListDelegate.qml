@@ -21,59 +21,62 @@ import DocumentViewer 1.0
 
 import "../common/utils.js" as Utils
 
-// TODO: Ask for a review of this component to the design team
-
 ListItem {
     id: listDelegate
     height: units.gu(9)
     leadingActions: ListItemActions { actions: documentDelegateActions.leadingActions }
     trailingActions: ListItemActions { actions: documentDelegateActions.trailingActions }
 
-    RowLayout {
-        spacing: units.gu(2)
-        anchors {
-            fill: parent; margins: units.gu(1)
-            leftMargin: units.gu(2)
-            rightMargin: units.gu(2)
-        }
+    /* UITK 1.3 spec: Three slot layout (B-A-C)   */
+    //  ________________________________________
+    // |   |                                |   |
+    // | B |               A                | C |
+    // |___|________________________________|___|
+    //
+    ListItemLayout {
+        id: listItemLayout
+        anchors.fill: parent
 
+        /* UITK 1.3 specs: Slot B */
         Icon {
+            SlotsLayout.position: SlotsLayout.Leading
             name: Utils.getIconNameFromMimetype(model.mimetype)
-            Layout.preferredWidth: height
-            Layout.preferredHeight: units.gu(5)
+            width: units.gu(5); height: width
         }
 
-        Column {
-            Layout.fillWidth: true
+        /* UITK 1.3 specs: Slot A */
+        title {
+            text: model.name
+            elide: Text.ElideRight
+            color: UbuntuColors.midAubergine
+        }
 
-            RowLayout {
-                width: parent.width
-                Label {
-                    text: model.name
-                    //wrapMode: Text.Wrap
-                    elide: Text.ElideRight
-                    color: UbuntuColors.midAubergine
-                    Layout.fillWidth: true
-                }
-                Label {
-                    text: Utils.printSize(i18n, model.size)
-                    textSize: Label.Small
-                }
+        subtitle.text: internal.formattedDateTime()
+
+        /* UITK 1.3 specs: Slot C */
+        Item {
+            SlotsLayout.position: SlotsLayout.Trailing
+            SlotsLayout.overrideVerticalPositioning: true
+            width: Math.max(sizeLabel.width, externalStorageLabel.width)
+            height: parent.height
+
+            Label {
+                id: sizeLabel
+                anchors.right: parent.right
+                text: Utils.printSize(i18n, model.size)
+                textSize: Label.Small
+                y: listItemLayout.mainSlot.y + listItemLayout.title.y
+                   + listItemLayout.title.baselineOffset - baselineOffset
             }
 
-            RowLayout {
-                width: parent.width
-                Label {
-                    text: internal.formattedDateTime()
-                    textSize: Label.Small
-
-                    Layout.fillWidth: true
-                }
-                Icon {
-                    width: units.gu(2); height: width
-                    name: "sdcard-symbolic"
-                    visible: model.isFromExternalStorage
-                }
+            Icon {
+                id: externalStorageLabel
+                anchors.right: parent.right
+                width: units.gu(2); height: width
+                name: "sdcard-symbolic"
+                visible: model.isFromExternalStorage
+                y: listItemLayout.mainSlot.y + listItemLayout.subtitle.y
+                   + listItemLayout.subtitle.baselineOffset - baselineOffset
             }
         }
     }
