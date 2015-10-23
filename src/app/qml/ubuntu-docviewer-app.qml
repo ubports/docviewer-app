@@ -16,7 +16,7 @@
 
 import QtQuick 2.4
 import Ubuntu.Components 1.3
-import Ubuntu.Components.Popups 1.0
+import Ubuntu.Components.Popups 1.3
 import DocumentViewer 1.0
 import QtQuick.Window 2.0
 import Qt.labs.settings 1.0

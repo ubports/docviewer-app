@@ -17,7 +17,8 @@
 import QtQuick 2.4
 import Ubuntu.Components 1.3
 import QtQuick.Layouts 1.1
-import Ubuntu.Components.Popups 1.0
+import Ubuntu.Components.Popups 1.3
+import DocumentViewer 1.0
 
 PageHeadState {
     id: rootItem
@@ -36,7 +37,7 @@ PageHeadState {
         Column {
             id: layout
             Layout.fillWidth: true
-            visible: !DOC_VIEWER.desktopMode
+            visible: !DocumentViewer.desktopMode
 
             Label {
                 width: parent.width

@@ -291,11 +291,6 @@ PageWithBottomEdge {
         LOViewDefaultHeader {
             name: "default"
             targetPage: loPage
-        },
-
-        LOViewZoomHeader {
-            name: "zoom"
-            targetPage: loPage
         }
     ]
 }
