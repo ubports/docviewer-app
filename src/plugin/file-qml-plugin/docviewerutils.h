@@ -23,8 +23,11 @@
 class DocviewerUtils : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(bool desktopMode READ desktopMode CONSTANT)
 
 public:
+    bool desktopMode() const;
+
     Q_INVOKABLE static bool exists(const QString &path);
     Q_INVOKABLE static bool copy(const QString &source, const QString &destination);
 

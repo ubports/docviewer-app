@@ -1,8 +1,5 @@
 /*
- * Copyright (C) 2014 Canonical, Ltd.
- *
- * Authors:
- *  Arthur Mello <arthur.mello@canonical.com>
+ * Copyright (C) 2015 Canonical, Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,29 +12,30 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
  */
 
-#ifndef URLHANDLER_H
-#define URLHANDLER_H
+import QtQuick 2.4
+import Ubuntu.Components 1.2
 
-#include <QString>
-#include <QList>
+ListItem {
+    id: listItemSubtitled
+    property alias text: mainLabel.text
+    property alias subText: subLabel.text
 
-/*!
- * @brief The UrlHandler is used to parse calls of docviewer from the url schema.
- */
-class UrlHandler
-{
-public:
-    UrlHandler();
+    Column {
+        anchors {
+            left: parent.left; right: parent.right
+            margins: units.gu(2)
+            verticalCenter: parent.verticalCenter
+        }
 
-    bool processUri(const QString &arg);
-    const QString &documentFile() { return m_documentFile; }
-
-private:
-    QList<QString> m_validSchemes;
-    QString m_documentFile;
-};
-
-#endif // URLHANDLER_H
+        Label {
+            id: mainLabel
+            color: UbuntuColors.midAubergine
+        }
+        Label {
+            id: subLabel
+            fontSize: "small"
+        }
+    }
+}

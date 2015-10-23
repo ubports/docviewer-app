@@ -16,11 +16,8 @@
 
 import QtQuick 2.4
 import Ubuntu.Components 1.3
-import Ubuntu.Components.ListItems 1.0 as ListItems
 
 import "utils.js" as Utils
-
-// FIXME: Autopilot tests
 
 Page {
     id: detailsPage
@@ -35,106 +32,31 @@ Page {
             horizontalCenter: parent.horizontalCenter
         }
 
-        ListItem {
-            Column {
-                anchors {
-                    left: parent.left; right: parent.right
-                    margins: units.gu(2)
-                    verticalCenter: parent.verticalCenter
-                }
-
-                Label {
-                    text: i18n.tr("Location")
-                    color: UbuntuColors.midAubergine
-                }
-                Label {
-                    text: file.path
-                    fontSize: "small"
-                }
-            }
+        SubtitledListItem {
+            text: i18n.tr("Location")
+            subText: file.path
         }
 
-        ListItem {
-            Column {
-                anchors {
-                    left: parent.left; right: parent.right
-                    margins: units.gu(2)
-                    verticalCenter: parent.verticalCenter
-                }
-
-                Label {
-                    text: i18n.tr("Size")
-                    color: UbuntuColors.midAubergine
-                }
-                Label {
-                    text: Utils.printSize(i18n, file.info.size)
-                    fontSize: "small"
-                }
-            }
+        SubtitledListItem {
+            text: i18n.tr("Size")
+            subText: Utils.printSize(i18n, file.info.size)
         }
 
-        ListItem {
-            Column {
-                anchors {
-                    left: parent.left; right: parent.right
-                    margins: units.gu(2)
-                    verticalCenter: parent.verticalCenter
-                }
-
-                Label {
-                    text: i18n.tr("Created")
-                    color: UbuntuColors.midAubergine
-                }
-                Label {
-                    text: file.info.creationTime.toLocaleString(Qt.locale())
-                    fontSize: "small"
-                }
-            }
+        SubtitledListItem {
+            text: i18n.tr("Created")
+            subText: file.info.creationTime.toLocaleString(Qt.locale())
         }
 
-        ListItem {
-            Column {
-                anchors {
-                    left: parent.left; right: parent.right
-                    margins: units.gu(2)
-                    verticalCenter: parent.verticalCenter
-                }
-
-                Label {
-                    text: i18n.tr("Last modified")
-                    color: UbuntuColors.midAubergine
-                }
-                Label {
-                    text: file.info.lastModified.toLocaleString(Qt.locale())
-                    fontSize: "small"
-                }
-            }
+        SubtitledListItem {
+            text: i18n.tr("Last modified")
+            subText: file.info.lastModified.toLocaleString(Qt.locale())
         }
 
-        ListItem {
+        SubtitledListItem {
             // Used by Autopilot tests
             objectName: "mimetypeItem"
-            property alias text: mimetypeText.text
-            property alias subText: mimetypeSubText.text
-
-            Column {
-                anchors {
-                    left: parent.left; right: parent.right
-                    margins: units.gu(2)
-                    verticalCenter: parent.verticalCenter
-                }
-
-                Label {
-                    id: mimetypeText
-                    text: i18n.tr("MIME type")
-                    color: UbuntuColors.midAubergine
-                }
-                Label {
-                    id: mimetypeSubText
-                    text: file.mimetype.name
-                    fontSize: "small"
-                }
-            }
+            text: i18n.tr("MIME type")
+            subText: file.mimetype.name
         }
     }
 }
