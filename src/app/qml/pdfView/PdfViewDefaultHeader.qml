@@ -52,7 +52,7 @@ PageHeadState {
                 //horizontalAlignment: Text.AlignHCenter
                 elide: Text.ElideMiddle
 
-                fontSize: "small"
+                textSize: Label.Small
                 text: targetPage.currentPage
             }
         }

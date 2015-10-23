@@ -47,7 +47,7 @@ Item {
         anchors.top: emptyIcon.bottom
         anchors.topMargin: units.gu(5)
         anchors.horizontalCenter: parent.horizontalCenter
-        fontSize: "large"
+        textSize: Label.Large
         font.bold: true
     }
 

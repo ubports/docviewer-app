@@ -35,7 +35,7 @@ ListItem {
         }
         Label {
             id: subLabel
-            fontSize: "small"
+            textSize: Label.Small
         }
     }
 }

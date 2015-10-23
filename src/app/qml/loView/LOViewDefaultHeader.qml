@@ -46,7 +46,7 @@ PageHeadState {
         Label {
             anchors { left: parent.left; right: parent.right }
             elide: Text.ElideMiddle
-            fontSize: "small"
+            textSize: Label.Small
             text: {
                 if (!loPageContentLoader.item)
                     return i18n.tr("Loading...")
