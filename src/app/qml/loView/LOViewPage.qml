@@ -20,6 +20,7 @@ import Ubuntu.Layouts 1.0
 import DocumentViewer.LibreOffice 1.0 as LibreOffice
 
 import "../upstreamComponents"
+import "../common"
 
 import "../common/utils.js" as Utils
 import "KeybHelper.js" as KeybHelper
@@ -106,23 +107,22 @@ PageWithBottomEdge {
                         Item {
                             anchors.fill: parent
 
-                            // TODO: Add a setting to show/hide sidebar when width > units.gu(80)
-                            PartsView {
-                                id: partsView
-                                anchors {
-                                    top: parent.top
-                                    bottom: parent.bottom
-                                    left: parent.left
-                                }
+                            ResizeableSidebar {
+                                id: leftSidebar
+                                anchors.left: parent.left
+                                anchors.bottom: bottomBarLayoutItem.top
+                                visible: loDocument.documentType == LO.Document.PresentationDocument
 
-                                model: loView.partsModel
-                                visible: loDocument.documentType == LibreOffice.Document.PresentationDocument
-                                width: visible ? units.gu(40) : 0
+                                PartsView {
+                                    id: partsView
+                                    anchors.fill: parent
+                                    model: loView.partsModel
+                                }
                             }
 
                             Item {
                                 anchors {
-                                    left: partsView.right
+                                    left: leftSidebar.right
                                     right: parent.right
                                     top: parent.top
                                     bottom: parent.bottom
