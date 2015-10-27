@@ -110,7 +110,7 @@ PageWithBottomEdge {
                             ResizeableSidebar {
                                 id: leftSidebar
                                 anchors.left: parent.left
-                                anchors.bottom: bottomBarLayoutItem.top
+                                anchors.bottom: parent.bottom
                                 visible: loDocument.documentType == LO.Document.PresentationDocument
 
                                 PartsView {

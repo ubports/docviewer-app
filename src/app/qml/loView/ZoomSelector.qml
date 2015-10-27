@@ -18,16 +18,18 @@ import QtQuick 2.4
 import Ubuntu.Components 1.3
 import QtQuick.Layouts 1.1
 import Ubuntu.Components.Popups 1.3
-import Ubuntu.Components.ListItems 1.3 as ListItems
 import DocumentViewer.LibreOffice 1.0 as LibreOffice
 import Ubuntu.Components.Themes.Ambiance 1.3 as Theme
+
+import "../common"
+
+// TODO: Complete code refactor
 
 TextField {
     id: textField
     anchors.verticalCenter: parent.verticalCenter
     width: units.gu(12)
 
-    property bool expanded: false
     property var view: loPageContentLoader.item.loView
 
     hasClearButton: true
@@ -36,28 +38,32 @@ TextField {
 
     secondaryItem: AbstractButton {
         id: listButton
+        property bool expanded: false
+
         height: parent.height
         visible: !textField.highlighted
         width: visible ? height : 0
 
         onClicked: {
-            textField.expanded = true
-            PopupUtils.open(zoomSelectorDialog, listButton)
+            expanded = !expanded
+
+            if (expanded)
+                PopupUtils.open(zoomSelectorDialog, listButton)
         }
 
-        Rectangle {
+        Item {
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
             height: parent.height
+            width: units.dp(2)
 
-            width: units.dp(1)
-            color: theme.palette.selected.background
+            VerticalDivider { anchors { top: parent.top; bottom: parent.bottom } }
         }
 
         Rectangle {
             anchors.fill: parent
             color: theme.palette.selected.background
-            visible: textField.expanded
+            visible: listButton.expanded
         }
 
         Icon {
@@ -66,7 +72,7 @@ TextField {
 
             name: "go-down"
             color: "Grey"
-            rotation: textField.expanded ? 180 : 0
+            rotation: listButton.expanded ? 180 : 0
 
             Behavior on rotation {
                 UbuntuNumberAnimation {}
@@ -100,7 +106,7 @@ TextField {
             autoClose: false
             contentHeight: layout.height + units.gu(4)
             contentWidth: units.gu(24)
-            Component.onDestruction: textField.expanded = false
+            Component.onDestruction: listButton.expanded = false
 
             // We don't use 'autoClose' property, since we want to propagate
             // mouse/touch events to other items (e.g. when zoomSelectorDialogue
@@ -131,8 +137,8 @@ TextField {
                     height: units.gu(4)
                     spacing: units.gu(1)
 
-                    ListItems.Base {
-                        showDivider: false
+                    ListItem {
+                        divider.visible: false
                         Layout.fillHeight: true
                         Layout.fillWidth: true
 
@@ -148,14 +154,13 @@ TextField {
                         }
                     }
 
-                    Rectangle {
+                    VerticalDivider {
                         Layout.fillHeight: true
-                        Layout.preferredWidth: units.dp(1)
-                        color: theme.palette.selected.background
+                        Layout.preferredWidth: units.dp(2)
                     }
 
-                    ListItems.Base {
-                        showDivider: false
+                    ListItem {
+                        divider.visible: false
                         Layout.fillHeight: true
                         Layout.fillWidth: true
 
@@ -172,145 +177,67 @@ TextField {
                     }
                 }
 
-                Rectangle {
-                    anchors { left: parent.left; right: parent.right }
-                    height: units.dp(1)
-                    color: theme.palette.selected.background
-                }
+                HorizontalDivider { anchors { left: parent.left; right: parent.right } }
 
-                ListItems.Standard {
-                    showDivider: false
+                ListItem {
                     height: units.gu(4)
-                    __foregroundColor: theme.palette.selected.backgroundText
-
-                    text: i18n.tr("Fit width")
-                    control: Icon {
-                        width: units.gu(2); height: width
-                        name: "tick"
-                        color: UbuntuColors.green
-                        visible: view.zoomMode == LibreOffice.View.FitToWidth
-                    }
+                    divider.visible: false
 
                     onClicked: {
                         view.adjustZoomToWidth()
                         PopupUtils.close(zoomSelectorDialogue)
                     }
-                }
 
-                Rectangle {
-                    anchors { left: parent.left; right: parent.right }
-                    height: units.dp(1)
-                    color: theme.palette.selected.background
-                }
+                    /* UITK 1.3 specs: Two slot layout (A-B) */
+                    ListItemLayout {
+                        anchors.centerIn: parent
 
-                ListItems.Standard {
-                    showDivider: false
-                    height: units.gu(4)
-                    __foregroundColor: theme.palette.selected.backgroundText
+                        /* UITK 1.3 specs: Slot A */
+                        title.text: i18n.tr("Fit width")
 
-                    text: "50%"
-                    onClicked: {
-                        view.setZoom(0.5)
-                        PopupUtils.close(zoomSelectorDialogue)
+                        /* UITK 1.3 specs: Slot B */
+                        Icon {
+                            SlotsLayout.position: SlotsLayout.Last
+                            width: units.gu(2); height: width
+                            name: "tick"
+                            color: UbuntuColors.green
+                            visible: view.zoomMode == LibreOffice.View.FitToWidth
+                        }
                     }
                 }
-                ListItems.Standard {
-                    showDivider: false
-                    height: units.gu(4)
-                    __foregroundColor: theme.palette.selected.backgroundText
 
-                    text: "70%"
-                    onClicked: {
-                        view.setZoom(0.7)
-                        PopupUtils.close(zoomSelectorDialogue)
-                    }
-                }
-                ListItems.Standard {
-                    showDivider: false
-                    height: units.gu(4)
-                    __foregroundColor: theme.palette.selected.backgroundText
+                HorizontalDivider { anchors { left: parent.left; right: parent.right } }
 
-                    text: "85%"
-                    onClicked: {
-                        view.setZoom(0.85)
-                        PopupUtils.close(zoomSelectorDialogue)
-                    }
-                }
-                ListItems.Standard {
-                    showDivider: false
-                    height: units.gu(4)
-                    __foregroundColor: theme.palette.selected.backgroundText
+                Repeater {
+                    model: [
+                        { text: "50%",  value: 0.50 },
+                        { text: "70%",  value: 0.70 },
+                        { text: "85%",  value: 0.85 },
+                        { text: "100%", value: 1.00 },
+                        { text: "125%", value: 1.25 },
+                        { text: "150%", value: 1.50 },
+                        { text: "175%", value: 1.75 },
+                        { text: "200%", value: 2.00 },
+                        { text: "300%", value: 3.00 },
+                        { text: "400%", value: 4.00 }
+                    ]
 
-                    text: "100%"
-                    onClicked: {
-                        view.setZoom(1.0)
-                        PopupUtils.close(zoomSelectorDialogue)
-                    }
-                }
-                ListItems.Standard {
-                    showDivider: false
-                    height: units.gu(4)
-                    __foregroundColor: theme.palette.selected.backgroundText
+                    ListItem {
+                        divider.visible: false
+                        height: units.gu(4)
 
-                    text: "125%"
-                    onClicked: {
-                        view.setZoom(1.25)
-                        PopupUtils.close(zoomSelectorDialogue)
-                    }
-                }
-                ListItems.Standard {
-                    showDivider: false
-                    height: units.gu(4)
-                    __foregroundColor: theme.palette.selected.backgroundText
+                        onClicked: {
+                            view.setZoom(modelData.value)
+                            PopupUtils.close(zoomSelectorDialogue)
+                        }
 
-                    text: "150%"
-                    onClicked: {
-                        view.setZoom(1.5)
-                        PopupUtils.close(zoomSelectorDialogue)
-                    }
-                }
-                ListItems.Standard {
-                    showDivider: false
-                    height: units.gu(4)
-                    __foregroundColor: theme.palette.selected.backgroundText
-
-                    text: "175%"
-                    onClicked: {
-                        view.setZoom(1.75)
-                        PopupUtils.close(zoomSelectorDialogue)
-                    }
-                }
-                ListItems.Standard {
-                    showDivider: false
-                    height: units.gu(4)
-                    __foregroundColor: theme.palette.selected.backgroundText
-
-                    text: "200%"
-                    onClicked: {
-                        view.setZoom(2.0)
-                        PopupUtils.close(zoomSelectorDialogue)
-                    }
-                }
-                ListItems.Standard {
-                    showDivider: false
-                    height: units.gu(4)
-                    __foregroundColor: theme.palette.selected.backgroundText
-
-                    text: "300%"
-                    onClicked: {
-                        view.setZoom(3.0)
-                        PopupUtils.close(zoomSelectorDialogue)
-                    }
-                }
-                ListItems.Standard {
-                    showDivider: false
-                    height: units.gu(4)
-                    __foregroundColor: theme.palette.selected.backgroundText
-
-                    text: "400%"
-                    onClicked: {
-                        view.setZoom(4.0)
-                        PopupUtils.close(zoomSelectorDialogue)
+                        Label {
+                            text: modelData.text
+                            anchors {
+                                left: parent.left; leftMargin: units.gu(1)
+                                verticalCenter: parent.verticalCenter
+                            }
+                        }
                     }
                 }
             }   // layout

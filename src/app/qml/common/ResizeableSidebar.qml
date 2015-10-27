@@ -87,4 +87,12 @@ Item {
         height: parent.height
         onXChanged: resizeableSidebar.width = x
     }
+
+    VerticalDivider {
+        anchors {
+            top: parent.top
+            bottom: parent.bottom
+            right: parent.right
+        }
+    }
 }
