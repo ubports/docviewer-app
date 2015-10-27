@@ -27,12 +27,14 @@ ListItem {
     leadingActions: ListItemActions { actions: documentDelegateActions.leadingActions }
     trailingActions: ListItemActions { actions: documentDelegateActions.trailingActions }
 
-    /* UITK 1.3 spec: Three slot layout (B-A-C)   */
-    //  ________________________________________
-    // |   |                                |   |
-    // | B |               A                | C |
-    // |___|________________________________|___|
-    //
+    /*** UITK 1.3 spec: Three slot layout (B-A-C)
+      ________________________________________
+     |   |                                |   |
+     | B |               A                | C |
+     |___|________________________________|___|
+
+    *********************************************/
+
     ListItemLayout {
         id: listItemLayout
         anchors.fill: parent

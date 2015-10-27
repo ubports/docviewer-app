@@ -29,7 +29,6 @@ TextField {
     anchors.verticalCenter: parent.verticalCenter
     width: units.gu(12)
 
-    property bool expanded: false
     property var view: loPageContentLoader.item.loView
 
     hasClearButton: true
@@ -38,28 +37,43 @@ TextField {
 
     secondaryItem: AbstractButton {
         id: listButton
+        property bool expanded: false
+
         height: parent.height
         visible: !textField.highlighted
         width: visible ? height : 0
 
         onClicked: {
-            textField.expanded = true
-            PopupUtils.open(zoomSelectorDialog, listButton)
+            expanded = !expanded
+
+            if (expanded)
+                PopupUtils.open(zoomSelectorDialog, listButton)
         }
 
-        Rectangle {
+        Item {
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
             height: parent.height
+            width: units.dp(2)
 
-            width: units.dp(1)
-            color: theme.palette.selected.background
+            Rectangle {
+                height: parent.width
+                width: parent.height
+                rotation: 90; anchors.centerIn: parent
+
+                gradient: Gradient {
+                    GradientStop { position: 0.0; color: Qt.rgba(0, 0, 0, 0.1)  }
+                    GradientStop { position: 0.49; color:  Qt.rgba(0, 0, 0, 0.1)  }
+                    GradientStop { position: 0.5; color: Qt.rgba(1, 1, 1, 0.4) }
+                    GradientStop { position: 1.0; color:  Qt.rgba(1, 1, 1, 0.4)  }
+                }
+            }
         }
 
         Rectangle {
             anchors.fill: parent
             color: theme.palette.selected.background
-            visible: textField.expanded
+            visible: listButton.expanded
         }
 
         Icon {
@@ -68,7 +82,7 @@ TextField {
 
             name: "go-down"
             color: "Grey"
-            rotation: textField.expanded ? 180 : 0
+            rotation: listButton.expanded ? 180 : 0
 
             Behavior on rotation {
                 UbuntuNumberAnimation {}
@@ -102,7 +116,7 @@ TextField {
             autoClose: false
             contentHeight: layout.height + units.gu(4)
             contentWidth: units.gu(24)
-            Component.onDestruction: textField.expanded = false
+            Component.onDestruction: listButton.expanded = false
 
             // We don't use 'autoClose' property, since we want to propagate
             // mouse/touch events to other items (e.g. when zoomSelectorDialogue
@@ -152,8 +166,20 @@ TextField {
 
                     Rectangle {
                         Layout.fillHeight: true
-                        Layout.preferredWidth: units.dp(1)
-                        color: theme.palette.selected.background
+                        Layout.preferredWidth: units.dp(2)
+
+                        Rectangle {
+                            height: parent.width
+                            width: parent.height
+                            rotation: 90; anchors.centerIn: parent
+
+                            gradient: Gradient {
+                                GradientStop { position: 0.0; color: Qt.rgba(0, 0, 0, 0.1)  }
+                                GradientStop { position: 0.49; color:  Qt.rgba(0, 0, 0, 0.1)  }
+                                GradientStop { position: 0.5; color: Qt.rgba(1, 1, 1, 0.4) }
+                                GradientStop { position: 1.0; color:  Qt.rgba(1, 1, 1, 0.4)  }
+                            }
+                        }
                     }
 
                     ListItem {
@@ -176,12 +202,18 @@ TextField {
 
                 Rectangle {
                     anchors { left: parent.left; right: parent.right }
-                    height: units.dp(1)
-                    color: theme.palette.selected.background
+                    height: units.dp(2)
+                    gradient: Gradient {
+                        GradientStop { position: 0.0; color: Qt.rgba(0, 0, 0, 0.1)  }
+                        GradientStop { position: 0.49; color:  Qt.rgba(0, 0, 0, 0.1)  }
+                        GradientStop { position: 0.5; color: Qt.rgba(1, 1, 1, 0.4) }
+                        GradientStop { position: 1.0; color:  Qt.rgba(1, 1, 1, 0.4)  }
+                    }
                 }
 
                 ListItem {
                     height: units.gu(4)
+                    divider.visible: false
 
                     onClicked: {
                         view.adjustZoomToWidth()
@@ -190,14 +222,14 @@ TextField {
 
                     /* UITK 1.3 specs: Two slot layout (A-B) */
                     ListItemLayout {
-                        anchors.fill: parent
+                        anchors.centerIn: parent
 
                         /* UITK 1.3 specs: Slot A */
                         title.text: i18n.tr("Fit width")
 
                         /* UITK 1.3 specs: Slot B */
                         Icon {
-                            SlotsLayout.position: SlotsLayout.Trailing
+                            SlotsLayout.position: SlotsLayout.Last
                             width: units.gu(2); height: width
                             name: "tick"
                             color: UbuntuColors.green
@@ -208,8 +240,13 @@ TextField {
 
                 Rectangle {
                     anchors { left: parent.left; right: parent.right }
-                    height: units.dp(1)
-                    color: theme.palette.selected.background
+                    height: units.dp(2)
+                    gradient: Gradient {
+                        GradientStop { position: 0.0; color: Qt.rgba(0, 0, 0, 0.1)  }
+                        GradientStop { position: 0.49; color:  Qt.rgba(0, 0, 0, 0.1)  }
+                        GradientStop { position: 0.5; color: Qt.rgba(1, 1, 1, 0.4) }
+                        GradientStop { position: 1.0; color:  Qt.rgba(1, 1, 1, 0.4)  }
+                    }
                 }
 
                 Repeater {
