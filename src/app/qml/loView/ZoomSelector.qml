@@ -21,7 +21,6 @@ import Ubuntu.Components.Popups 1.3
 import DocumentViewer.LibreOffice 1.0 as LibreOffice
 import Ubuntu.Components.Themes.Ambiance 1.3 as Theme
 
-// FIXME: "Fit width" item alignment
 // TODO: Complete code refactor
 
 TextField {

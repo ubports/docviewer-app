@@ -104,6 +104,7 @@ Page {
             //
             ListItemLayout {
                 id: listItemLayout
+                objectName: "listItemLayout" + index
                 anchors.fill: parent
 
                 /* UITK 1.3 specs: Slot A */
@@ -126,8 +127,8 @@ Page {
 
                 /* UITK 1.3 specs: Slot C */
                 Label {
-                    SlotsLayout.position: SlotsLayout.Last
                     objectName: "pageindex"
+                    SlotsLayout.position: SlotsLayout.Last
                     text: model.pageIndex + 1
                     font.weight: model.level == 0 ? Font.DemiBold : Font.Normal
                     color: (model.level == 0) ? UbuntuColors.midAubergine
