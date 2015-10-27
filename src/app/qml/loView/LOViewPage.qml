@@ -166,40 +166,10 @@ PageWithBottomEdge {
                         bottom: bottomBar.top
                     }
 
-                    property bool active: false
-                    property real initialZoom
-                    property var  center
-
                     // Limits for pinch-to-zoom
-                    // FIXME: We should get these limits from the C++
-                    // LibreOffice Viewer class
+                    // FIXME: We should get these limits from the C++ LibreOffice Viewer class
                     property real minimumZoom: 0.5
                     property real maximumZoom: 4.0
-
-                    onPinchStarted: {
-                        active = true;
-                        initialZoom = loView.zoomFactor;
-                        center = pinchy.mapToItem(loView.contentItem, pinch.startCenter.x, pinch.startCenter.y);
-                    }
-
-                    onPinchUpdated: {
-                        var zoomFactor = MathUtils.clamp(initialZoom * pinch.scale, minimumZoom, maximumZoom);
-                        var z = zoomFactor / initialZoom;
-
-                        var _oldContentY = loView.contentY
-                        var _oldContentX = loView.contentX
-                        loView.contentX *= z
-                        loView.contentY *= z
-                        loView.contentX += (center.x - _oldContentX) * (z - 1);
-                        loView.contentY += (center.y - _oldContentY) * (z - 1);
-
-                        center.x *= z;
-                        center.y *= z;
-                    }
-
-                    onPinchFinished: {
-                        active = false;
-                    }
 
                     LibreOffice.Viewer {
                         id: loView
@@ -208,10 +178,8 @@ PageWithBottomEdge {
 
                         clip: true
                         documentPath: file.path
-                        interactive: !pinchy.active
 
                         Behavior on zoomFactor {
-                            enabled: !pinchy.active
                             UbuntuNumberAnimation { duration: UbuntuAnimation.FastDuration }
                         }
 
