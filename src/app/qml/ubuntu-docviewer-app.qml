@@ -14,8 +14,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.3
-import Ubuntu.Components 1.1
+import QtQuick 2.4
+import Ubuntu.Components 1.2
 import Ubuntu.Components.Popups 1.0
 import DocumentViewer 1.0
 import QtQuick.Window 2.0
@@ -28,15 +28,15 @@ MainView {
     id: mainView
     objectName: "mainView"
 
-    property bool pickMode: DOC_VIEWER.pickModeEnabled
+    property bool pickMode: commandLineProxy.pickMode
+    property bool fullscreen: commandLineProxy.fullscreen
     readonly property bool isLandscape: Screen.orientation == Qt.LandscapeOrientation ||
                                         Screen.orientation == Qt.InvertedLandscapeOrientation
 
     applicationName: "com.ubuntu.docviewer"
-    useDeprecatedToolbar: false   
     automaticOrientation: true
 
-    width: units.gu(50)
+    width: units.gu(150)
     height: units.gu(75)
 
     function openDocument(path)  {
@@ -66,26 +66,8 @@ MainView {
                         mainView, { parent: mainView });
     }
 
-    function showNotification(args) {
-        var component = Qt.createComponent("common/Toast.qml")
-        var toast = component.createObject(mainView, args);
-
-        return toast;
-    }
-
-    function showNotificationWithAction(args) {
-        var component = Qt.createComponent("common/ToastWithAction.qml")
-        var toast = component.createObject(mainView, args);
-
-        return toast;
-    }
-
-    function setFullScreen(fullScreen) {
-        DOC_VIEWER.fullScreen = fullScreen;
-    }
-
     function toggleFullScreen() {
-        DOC_VIEWER.fullScreen = !APP.fullScreen;
+        mainView.fullscreen = !mainView.fullscreen
     }
 
     function setHeaderVisibility(visible, toggleFullscreen) {
@@ -94,28 +76,43 @@ MainView {
 
         // If device orientation is landscape and screen width is limited,
         // force hiding Unity 8 indicators panel.
-        if (!DOC_VIEWER.desktopMode && mainView.isLandscape &&
+        if (!DocumentViewer.desktopMode && mainView.isLandscape &&
                 mainView.width < units.gu(51)) {
-            setFullScreen(true);
+            mainView.fullscreen = true;
             return;
         }
 
-        if (!DOC_VIEWER.desktopMode && toggleFullscreen)
-            setFullScreen(!visible);
+        if (!DocumentViewer.desktopMode && toggleFullscreen)
+            mainView.fullscreen = !visible;
     }
 
     function toggleHeaderVisibility() {
         setHeaderVisibility(!header.visible);
     }
 
+    function switchToBrowseMode() {
+        mainView.pickMode = false
+    }
+
+    function switchToPickMode() {
+        mainView.pickMode = true
+    }
+
     // On screen rotation, force updating of header/U8 indicators panel visibility
     onIsLandscapeChanged: setHeaderVisibility(true);
+
+    onFullscreenChanged: {
+        if (mainView.fullscreen)
+            window.visibility = Window.FullScreen
+        else
+            window.visibility = Window.Windowed
+    }
 
     Component.onCompleted: {
         pageStack.push(Qt.resolvedUrl("documentPage/DocumentPage.qml"));
 
         // Open the document, if one has been specified.
-        openDocument(DOC_VIEWER.documentFile);
+        openDocument(commandLineProxy.documentFile);
     }
 
     File {
@@ -142,9 +139,10 @@ MainView {
             id: docModel
 
             // Used for autopilot tests! If customDir is empty, this property is not used.
-            customDir: DOC_VIEWER.documentsDir
+            customDir: commandLineProxy.documentsDir
         }
 
+        // TODO: Expose an enum from DocumentViewer module.
         sort.property: {
             switch (sortSettings.sortMode) {
             case 0:
@@ -183,106 +181,31 @@ MainView {
         property bool reverseOrder: false
     }
 
+    // CommandLine parser
+    CommandLineProxy {
+        id: commandLineProxy
+    }
+
+    // Content Hub support
+    property alias contentHubProxy: contentHubLoader.item
+    Loader {
+        id: contentHubLoader
+
+        asynchronous: true
+        source: Qt.resolvedUrl("common/ContentHubProxy.qml")
+    }
+
+    // Uri Handler support
     Connections {
         target: UriHandler
-        onOpened: {
-            for (var i = 0; i < uris.length; ++i) {
-                DOC_VIEWER.parseUri(uris[i])
-            }
-        }
+        onOpened: openDocument(uris[0])
     }
 
-    Connections {
-        target: DOC_VIEWER
-
-        onDocumentFileChanged: {
-            openDocument(DOC_VIEWER.documentFile);
-        }
-
-        onPickModeEnabledChanged: {
-            mainView.pickMode = DOC_VIEWER.pickModeEnabled
-
-            if (mainView.pickMode) {
-                // If a document is loaded, pop() its page.
-                while (pageStack.depth > 1) {
-                    pageStack.pop()
-                }
-            }
-        }
-    }
-
-    Connections {
-        target: PICKER_HUB
-
-        onDocumentImported: {
-            // Create two arrays: one for rejected documents, and the other
-            // for imported documents.
-            var importedDocuments = [];
-            var rejectedDocuments = [];
-            var entry;
-
-            // Fill the arrays.
-            for (var i=0; i<documents.length; i++) {
-                entry = documents[i];
-
-                if (entry.rejected) {
-                    rejectedDocuments.push(entry.fileName);
-                    break;
-                }
-
-                importedDocuments.push(entry.fileName);
-            }
-
-            // Prepare import notification
-            var showImportNotification = function() {
-                if (importedDocuments.length > 0) {
-                    var importDialog = showNotificationWithAction({
-                        "text": i18n.tr("Document successfully imported!",
-                                        "Documents successfully imported!",
-                                        importedDocuments.length),
-                        "action.text": i18n.tr("Open")
-                    })
-
-                    if (importedDocuments.length > 1) {
-                        // If it has been imported more than a document, show
-                        // a file picker when user taps the "open" action.
-                        importDialog.action.triggered.connect(function() {
-                            PopupUtils.open(
-                                Qt.resolvedUrl("common/PickImportedDialog.qml"),
-                                mainView,
-                                {
-                                    parent: mainView,
-                                    model: importedDocuments
-                                }
-                            );
-                        });
-                    } else {
-                        // It has been imported just a document, open it when
-                        // user taps the action button.
-                        importDialog.action.triggered.connect(function() {
-                            openDocument(importedDocuments[0]);
-                        });
-                    }
-                }
-            }
-
-            // Check if there's any rejected document in the last transfer.
-            // If so, show an error dialog.
-            if (rejectedDocuments.length > 0) {
-                var rejectedDialog = PopupUtils.open(
-                    Qt.resolvedUrl("common/RejectedImportDialog.qml"),
-                    mainView,
-                    {
-                        parent: mainView,
-                        model: rejectedDocuments
-                    }
-                );
-
-                // Show import notification after the dialog has been closed.
-                rejectedDialog.closed.connect(showImportNotification)
-            } else {
-                // No dialog has been shown. Show the notification.
-                showImportNotification.call();
+    onPickModeChanged: {
+        if (mainView.pickMode) {
+            // If a document is loaded, pop() its page.
+            while (pageStack.depth > 1) {
+                pageStack.pop()
             }
         }
     }

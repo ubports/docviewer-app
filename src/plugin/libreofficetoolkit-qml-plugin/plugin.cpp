@@ -21,6 +21,7 @@
 #include "plugin.h"
 #include "lodocument.h"
 #include "loview.h"
+#include "lopartsmodel.h"
 
 void LOPlugin::registerTypes(const char *uri)
 {
@@ -29,6 +30,7 @@ void LOPlugin::registerTypes(const char *uri)
     //@uri DocumentViewer.LibreOffice
     qmlRegisterType<LODocument>(uri, 1, 0, "Document");
     qmlRegisterType<LOView>(uri, 1, 0, "View");
+    qmlRegisterUncreatableType<LOPartsModel>(uri, 1, 0, "PartsModel", "You shouldn't create LOPartsModel in QML");
 }
 
 void LOPlugin::initializeEngine(QQmlEngine *engine, const char *uri)

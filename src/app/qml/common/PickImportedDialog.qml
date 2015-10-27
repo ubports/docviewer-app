@@ -14,10 +14,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.3
-import Ubuntu.Components 1.1
+import QtQuick 2.4
+import Ubuntu.Components 1.2
 import Ubuntu.Components.Popups 1.0
-import Ubuntu.Components.ListItems 1.0 as ListItem
 
 import "utils.js" as Utils
 
@@ -29,16 +28,23 @@ Dialog {
     title: i18n.tr("Multiple documents imported")
     text: i18n.tr("Choose which one to open:")
 
-    // We don't use a Flickable, since it already lives in the Dialog itself.
+    // We don't use a Flickable, since the Dialog has already one.
     Repeater {
         id: repeater
-        delegate: ListItem.Standard {
-            text: Utils.getNameOfFile(modelData)
-            __foregroundColor: Theme.palette.selected.backgroundText
 
+        ListItem {
             onClicked: {
                 PopupUtils.close(multipleImportDialog);
-                mainView.openDocument(modelData);
+                mainView.openDocument(model.path);
+            }
+
+            Label {
+                text: Utils.getNameOfFile(model.path)
+                anchors {
+                    left: parent.left; right: parent.right
+                    margins: units.gu(2)
+                    verticalCenter: parent.verticalCenter
+                }
             }
         }
     }

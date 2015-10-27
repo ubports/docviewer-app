@@ -14,62 +14,56 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.3
-import Ubuntu.Components 1.1
-import QtQuick.Layouts 1.1
+import QtQuick 2.4
+import Ubuntu.Components 1.2
 import Ubuntu.Components.Popups 1.0
+import DocumentViewer.LibreOffice 1.0 as LibreOffice
 
 PageHeadState {
     id: rootItem
 
     property Page targetPage
-    property alias activityRunning: activity.running
-
     head: targetPage.head
 
-    contents: RowLayout {
-        anchors.fill: parent
-        spacing: units.gu(1)
+    contents: Column {
+        anchors {
+            left: parent.left
+            right: parent.right
+            verticalCenter: parent.verticalCenter
+        }
 
-        ActivityIndicator { id: activity }
+        Label {
+            anchors { left: parent.left; right: parent.right }
+            elide: Text.ElideMiddle
+            font.weight: Font.DemiBold
+            text: targetPage.title
+        }
+        Label {
+            anchors { left: parent.left; right: parent.right }
+            elide: Text.ElideMiddle
+            fontSize: "small"
+            text: {
+                if (!loPageContentLoader.item)
+                    return i18n.tr("Loading...")
 
-        Column {
-            id: layout
-            Layout.fillWidth: true
-
-            Label {
-                width: parent.width
-                //horizontalAlignment: Text.AlignHCenter
-                elide: Text.ElideMiddle
-
-                font.weight: Font.DemiBold
-                text: targetPage.title
-            }
-            Label {
-                width: parent.width
-                //horizontalAlignment: Text.AlignHCenter
-                elide: Text.ElideMiddle
-
-                fontSize: "small"
-                text: {
-                    switch(loDocument.documentType) {
-                    case 0:
-                        return i18n.tr("LibreOffice text document")
-                    case 1:
-                        return i18n.tr("LibreOffice spread sheet")
-                    case 2:
-                        return i18n.tr("LibreOffice presentation")
-                    case 3:
-                        return i18n.tr("LibreOffice Draw document")
-                    case 4:
-                        return i18n.tr("Unknown LibreOffice document")
-                    default:
-                        return i18n.tr("Unknown type document")
-                    }
+                switch(loPageContentLoader.item.loDocument.documentType) {
+                case 0:
+                    return i18n.tr("LibreOffice text document")
+                case 1:
+                    return i18n.tr("LibreOffice spread sheet")
+                case 2:
+                    return i18n.tr("LibreOffice presentation")
+                case 3:
+                    return i18n.tr("LibreOffice Draw document")
+                case 4:
+                    return i18n.tr("Unknown LibreOffice document")
+                default:
+                    return i18n.tr("Unknown type document")
                 }
             }
         }
     }
+
 
     backAction: Action {
         iconName: "back"
@@ -88,17 +82,17 @@ PageHeadState {
 
     actions: [
         Action {
-            iconName: "search"
-            // onTriggered: pageMain.state = "search"
-            //Disable it until we provide search in Poppler plugin.
-            enabled: false
+            iconName: "zoom-in"
+            text: i18n.tr("Show zoom controls")
+            onTriggered: targetPage.state = "zoom"
         },
 
         Action {
-            objectName:"gotopage"
+            objectName: "gotopage"
             iconName: "browser-tabs"
-            text: i18n.tr("Go to page...")
+            text: i18n.tr("Go to position...")
             onTriggered: PopupUtils.open(Qt.resolvedUrl("LOViewGotoDialog.qml"), targetPage)
+            visible: loPageContentLoader.item.loDocument.documentType == LibreOffice.Document.TextDocument
         },
 
         Action {

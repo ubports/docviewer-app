@@ -30,8 +30,12 @@ class LODocument : public QObject
     Q_OBJECT
     Q_DISABLE_COPY(LODocument)
 
-    Q_PROPERTY(QString      path         READ path         WRITE setPath        NOTIFY pathChanged)
-    Q_PROPERTY(DocumentType documentType READ documentType                      NOTIFY documentTypeChanged)
+    Q_PROPERTY(QString      path         READ path         WRITE setPath         NOTIFY pathChanged)
+    Q_PROPERTY(int          currentPart  READ currentPart  WRITE setCurrentPart  NOTIFY currentPartChanged)
+    // Declare partsCount as constant at the moment, since LOK-plugin is just a viewer for now.
+    Q_PROPERTY(int          partsCount   READ partsCount                                                    CONSTANT)
+    Q_PROPERTY(int          documentPart READ documentPart WRITE setDocumentPart NOTIFY documentPartChanged)
+    Q_PROPERTY(DocumentType documentType READ documentType                       NOTIFY documentTypeChanged)
     Q_ENUMS(DocumentType)
 
 public:
@@ -47,24 +51,39 @@ public:
     };
 
     QString path() const;
-    void setPath(QString &pathName);
+    void setPath(const QString& pathName);
+
+    int currentPart();
+    void setCurrentPart(int index);
 
     DocumentType documentType() const;
 
+    int documentPart() const;
+    void setDocumentPart(int p);
+
     QSize documentSize() const;
-    QImage paintTile(QSize canvasSize, QRect tileSize);
+
+    QImage paintTile(const QSize& canvasSize, const QRect& tileSize, const qreal& zoom = 1.0);
+    QImage paintThumbnail(qreal size);
+
+    int partsCount();
+    QString getPartName(int index) const;
+    void setPart(int index);
 
     Q_INVOKABLE bool saveAs(QString url, QString format, QString filterOptions);
 
 Q_SIGNALS:
     void pathChanged();
+    void currentPartChanged();
     void documentTypeChanged();
+    void documentPartChanged();
 
 private:
     QString m_path;
+    int m_currentPart;
     DocumentType m_docType;
 
-    bool loadDocument(QString &pathNAme);
+    bool loadDocument(const QString &pathNAme);
 
     lok::Document *m_document;
 

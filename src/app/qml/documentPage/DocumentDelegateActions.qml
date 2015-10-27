@@ -14,9 +14,11 @@
   along with this program. If not, see http://www.gnu.org/licenses/.
 */
 
-import QtQuick 2.0
-import Ubuntu.Components 1.1
+import QtQuick 2.4
+import Ubuntu.Components 1.2
 import Ubuntu.Components.Popups 1.0
+
+// TODO: Probably requires some change in order to work with latest ListItem 1.2
 
 QtObject {
     property list<Action> leadingActions: [
@@ -27,15 +29,24 @@ QtObject {
                 var dialog = PopupUtils.open(Qt.resolvedUrl("DeleteFileDialog.qml"),
                                 documentPage, { path: model.path })
 
+                // See DeleteFileDialog.qml
                 dialog.Component.destruction.connect(function() {
                     if (dialog.confirmed) {
                         console.log("Removing:", model.path);
                         docModel.rm(model.path);
                     }
-                });
+                })
             }
         }
     ]
 
-    property list<Action> trailingActions
+    property list<Action> trailingActions: [
+        Action {
+            iconName: "share"
+            text: i18n.tr("Share")
+            onTriggered: {
+                pageStack.push(Qt.resolvedUrl("./SharePage.qml"), { fileUrl: model.path })
+            }
+        }
+    ]
 }

@@ -14,8 +14,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.3
-import Ubuntu.Components 1.1
+import QtQuick 2.4
+import Ubuntu.Components 1.2
 import Ubuntu.Components.Popups 1.0
 
 import "../upstreamComponents"
@@ -24,8 +24,9 @@ PageHeadState {
     id: rootItem
 
     property Page targetPage
-
     head: targetPage.head
+
+    property bool selectedAll: viewLoader.item.ViewItems.selectedIndices.length == viewLoader.item.count
 
     backAction: Action {
         iconName: "close"
@@ -35,61 +36,40 @@ PageHeadState {
         }
     }
 
-    contents: Loader {
-        id: selectionStateLoader
-        active: documentPage.state === "selection"
-        sourceComponent: Item {
-            HeaderButton {
-                id: selectButton
+    actions: [
+        Action {
+            iconName: selectedAll ? "select-none" :  "select"
+            text: selectedAll ? i18n.tr("Select None") : i18n.tr("Select All")
 
-                anchors {
-                    right: deleteButton.left
-                    rightMargin: units.gu(1)
-                }
-
-                text: {
-                    if(viewLoader.item.selectedItems.count === viewLoader.item.count) {
-                        return i18n.tr("Select None")
-                    } else {
-                        return i18n.tr("Select All")
-                    }
-                }
-
-                iconSource: {
-                    if(viewLoader.item.selectedItems.count === viewLoader.item.count) {
-                        return Qt.resolvedUrl("../../graphics/select-none.svg")
-                    } else {
-                        return Qt.resolvedUrl("../../graphics/select.svg")
-                    }
-                }
-
-                onTriggered: {
-                    if(viewLoader.item.selectedItems.count === viewLoader.item.count) {
-                        viewLoader.item.clearSelection()
-                    } else {
-                        viewLoader.item.selectAll()
-                    }
+            onTriggered: {
+                if (selectedAll) {
+                    viewLoader.item.clearSelection()
+                } else {
+                    viewLoader.item.selectAll()
                 }
             }
+        },
 
-            HeaderButton {
-                id: deleteButton
+        Action {
+            iconName: "delete"
+            text: i18n.tr("Delete")
+            enabled: viewLoader.item.ViewItems.selectedIndices.length !== 0
 
-                anchors.right: parent.right
-                anchors.rightMargin: units.gu(2)
+            onTriggered: PopupUtils.open(Qt.resolvedUrl("DeleteFileDialog.qml"), documentPage)
+        }
+    ]
 
-                iconName: "delete"
-                text: i18n.tr("Delete")
-                enabled: viewLoader.item.selectedItems.count !== 0
-
-                onTriggered: {
-                    PopupUtils.open(Qt.resolvedUrl("DeleteFileDialog.qml"), documentPage)
-                }
+    // WORKAROUND: "preset" property of PageHeadConfiguration is still not
+    // exposed in PageHeadState.
+    contents: Item {
+        Connections {
+            target: targetPage
+            onStateChanged: {
+                if (targetPage.state === "selection")
+                    head.preset = "select"
+                else
+                    head.preset = ""
             }
         }
-
-        height: parent ? parent.height : undefined
-        anchors.right: parent ? parent.right: undefined
     }
-
 }

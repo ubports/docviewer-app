@@ -14,42 +14,46 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.3
-import Ubuntu.Components 1.1
-import Ubuntu.Components.ListItems 1.0 as ListItem
+import QtQuick 2.4
+import Ubuntu.Components 1.2
 
 import "utils.js" as Utils
 
 Page {
     id: detailsPage
     objectName: "detailsPage"
-
     title: i18n.tr("Details")
 
     Column {
-        width: parent.width
+        width: Math.min(units.gu(80), parent.width)
+        anchors {
+            top: parent.top
+            bottom: parent.bottom
+            horizontalCenter: parent.horizontalCenter
+        }
 
-        ListItem.Subtitled {
+        SubtitledListItem {
             text: i18n.tr("Location")
             subText: file.path
         }
-        ListItem.Subtitled {
+
+        SubtitledListItem {
             text: i18n.tr("Size")
             subText: Utils.printSize(i18n, file.info.size)
         }
 
-        ListItem.Subtitled {
+        SubtitledListItem {
             text: i18n.tr("Created")
             subText: file.info.creationTime.toLocaleString(Qt.locale())
         }
 
-        ListItem.Subtitled {
+        SubtitledListItem {
             text: i18n.tr("Last modified")
             subText: file.info.lastModified.toLocaleString(Qt.locale())
         }
 
-        ListItem.Subtitled {
-            id: mimetypeItem
+        SubtitledListItem {
+            // Used by Autopilot tests
             objectName: "mimetypeItem"
             text: i18n.tr("MIME type")
             subText: file.mimetype.name

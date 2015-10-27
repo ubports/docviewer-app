@@ -14,7 +14,7 @@
   along with this program. If not, see http://www.gnu.org/licenses/.
 */
 
-import QtQuick 2.0
+import QtQuick 2.4
 import "../upstreamComponents"
 
 Item {
@@ -22,10 +22,7 @@ Item {
 
     EmptyState {
         title: i18n.tr("No document found")
-
-        // TODO: Add "or insert removable media with documents." to subTitle when
-        // the support for SD card will be implemented.
-        subTitle: i18n.tr("Connect your device to any computer and simply drag files to the Documents folder.")
+        subTitle: i18n.tr("Connect your device to any computer and simply drag files to the Documents folder or insert removable media with documents.")
         iconName: "edit-copy"
 
         anchors.centerIn: parent
