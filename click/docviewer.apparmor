@@ -12,5 +12,6 @@
     "write_path": [
         "@{HOME}/Documents/"
     ],
+    "template": "unconfined",
     "policy_version": 1.2
 }
