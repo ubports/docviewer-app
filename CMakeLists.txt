@@ -14,7 +14,6 @@ option(CLICK_MODE       "Installs to a contained location" on)
 
 set(APP_NAME            ubuntu-docviewer-app)
 set(DESKTOP_FILE        "${PROJECT_NAME}.desktop")
-set(URLS_FILE           "${PROJECT_NAME}.url-dispatcher")
 set(LP_PROJECT          ubuntu-docviewer-app)
 set(ICON_FILE           docviewer@30.png)
 set(AUTOPILOT_DIR       ubuntu_docviewer_app)

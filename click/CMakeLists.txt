@@ -5,7 +5,7 @@ if(CLICK_MODE)
 
   configure_file(manifest.json.in ${CMAKE_CURRENT_BINARY_DIR}/manifest.json)
   install(FILES ${CMAKE_CURRENT_BINARY_DIR}/manifest.json DESTINATION ${CMAKE_INSTALL_PREFIX})
-  install(FILES docviewer.apparmor docviewer-content.json DESTINATION ${CMAKE_INSTALL_PREFIX})
+  install(FILES docviewer.apparmor docviewer-content.json com.ubuntu.docviewer.url-dispatcher DESTINATION ${CMAKE_INSTALL_PREFIX})
 endif(CLICK_MODE)
 
 
