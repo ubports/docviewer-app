@@ -155,26 +155,16 @@ class PdfContentsPage(Page):
         index = 0
         for index in range(list_items_count):
             list_item = self.select_single(
-                "UCListItem", objectName="delegate{}".format(index))
+                "ListItemWithActions", objectName="delegate{}".format(index))
             while list_item.y > (view_item.contentY +
                                  view_item.globalRect.height):
                 self.scroll_pdfcontentspage()
-            list_item_layout = list_item.select_single(
-                "UCListItemLayout",
-                objectName="listItemLayout{}".format(index))
-            layout_main_slot = list_item_layout.select_single(
-                "UCThreeLabelsSlot")
-            try:
-                main_slot_title = layout_main_slot.select_single(
-                    "UCLabel", textSize=3)
-                if main_slot_title.text == labelText:
-                    page_no = list_item.select_single(
-                        "UCLabel", objectName="pageindex").text
-                    return main_slot_title, page_no
-                    break
-            except dbus.StateNotFoundError:
-                logger.error('ToC entry title label not found.')
-                raise
+            label = list_item.select_single("Label", objectName="content")
+            if label.text == labelText:
+                page_no = list_item.select_single(
+                    "Label", objectName="pageindex").text
+                return label, page_no
+                break
 
     @autopilot_logging.log_action(logger.info)
     def click_content_line(self, content_line):
