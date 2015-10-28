@@ -21,6 +21,8 @@ import Ubuntu.Components.Popups 1.3
 import DocumentViewer.LibreOffice 1.0 as LibreOffice
 import Ubuntu.Components.Themes.Ambiance 1.3 as Theme
 
+import "../common"
+
 // TODO: Complete code refactor
 
 TextField {
@@ -55,18 +57,7 @@ TextField {
             height: parent.height
             width: units.dp(2)
 
-            Rectangle {
-                height: parent.width
-                width: parent.height
-                rotation: 90; anchors.centerIn: parent
-
-                gradient: Gradient {
-                    GradientStop { position: 0.0; color: Qt.rgba(0, 0, 0, 0.1)  }
-                    GradientStop { position: 0.49; color:  Qt.rgba(0, 0, 0, 0.1)  }
-                    GradientStop { position: 0.5; color: Qt.rgba(1, 1, 1, 0.4) }
-                    GradientStop { position: 1.0; color:  Qt.rgba(1, 1, 1, 0.4)  }
-                }
-            }
+            VerticalDivider { anchors { top: parent.top; bottom: parent.bottom } }
         }
 
         Rectangle {
@@ -163,22 +154,9 @@ TextField {
                         }
                     }
 
-                    Rectangle {
+                    VerticalDivider {
                         Layout.fillHeight: true
                         Layout.preferredWidth: units.dp(2)
-
-                        Rectangle {
-                            height: parent.width
-                            width: parent.height
-                            rotation: 90; anchors.centerIn: parent
-
-                            gradient: Gradient {
-                                GradientStop { position: 0.0; color: Qt.rgba(0, 0, 0, 0.1)  }
-                                GradientStop { position: 0.49; color:  Qt.rgba(0, 0, 0, 0.1)  }
-                                GradientStop { position: 0.5; color: Qt.rgba(1, 1, 1, 0.4) }
-                                GradientStop { position: 1.0; color:  Qt.rgba(1, 1, 1, 0.4)  }
-                            }
-                        }
                     }
 
                     ListItem {
@@ -199,16 +177,7 @@ TextField {
                     }
                 }
 
-                Rectangle {
-                    anchors { left: parent.left; right: parent.right }
-                    height: units.dp(2)
-                    gradient: Gradient {
-                        GradientStop { position: 0.0; color: Qt.rgba(0, 0, 0, 0.1)  }
-                        GradientStop { position: 0.49; color:  Qt.rgba(0, 0, 0, 0.1)  }
-                        GradientStop { position: 0.5; color: Qt.rgba(1, 1, 1, 0.4) }
-                        GradientStop { position: 1.0; color:  Qt.rgba(1, 1, 1, 0.4)  }
-                    }
-                }
+                HorizontalDivider { anchors { left: parent.left; right: parent.right } }
 
                 ListItem {
                     height: units.gu(4)
@@ -237,16 +206,7 @@ TextField {
                     }
                 }
 
-                Rectangle {
-                    anchors { left: parent.left; right: parent.right }
-                    height: units.dp(2)
-                    gradient: Gradient {
-                        GradientStop { position: 0.0; color: Qt.rgba(0, 0, 0, 0.1)  }
-                        GradientStop { position: 0.49; color:  Qt.rgba(0, 0, 0, 0.1)  }
-                        GradientStop { position: 0.5; color: Qt.rgba(1, 1, 1, 0.4) }
-                        GradientStop { position: 1.0; color:  Qt.rgba(1, 1, 1, 0.4)  }
-                    }
-                }
+                HorizontalDivider { anchors { left: parent.left; right: parent.right } }
 
                 Repeater {
                     model: [

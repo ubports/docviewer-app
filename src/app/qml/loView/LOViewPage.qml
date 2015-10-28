@@ -20,6 +20,7 @@ import Ubuntu.Layouts 1.0
 import DocumentViewer.LibreOffice 1.0 as LibreOffice
 
 import "../upstreamComponents"
+import "../common"
 
 import "../common/utils.js" as Utils
 import "KeybHelper.js" as KeybHelper
@@ -106,23 +107,22 @@ PageWithBottomEdge {
                         Item {
                             anchors.fill: parent
 
-                            // TODO: Add a setting to show/hide sidebar when width > units.gu(80)
-                            PartsView {
-                                id: partsView
-                                anchors {
-                                    top: parent.top
-                                    bottom: parent.bottom
-                                    left: parent.left
-                                }
+                            ResizeableSidebar {
+                                id: leftSidebar
+                                anchors.left: parent.left
+                                anchors.bottom: parent.bottom
+                                visible: loDocument.documentType == LO.Document.PresentationDocument
 
-                                model: loView.partsModel
-                                visible: loDocument.documentType == LibreOffice.Document.PresentationDocument
-                                width: visible ? units.gu(40) : 0
+                                PartsView {
+                                    id: partsView
+                                    anchors.fill: parent
+                                    model: loView.partsModel
+                                }
                             }
 
                             Item {
                                 anchors {
-                                    left: partsView.right
+                                    left: leftSidebar.right
                                     right: parent.right
                                     top: parent.top
                                     bottom: parent.bottom
@@ -166,40 +166,10 @@ PageWithBottomEdge {
                         bottom: bottomBar.top
                     }
 
-                    property bool active: false
-                    property real initialZoom
-                    property var  center
-
                     // Limits for pinch-to-zoom
-                    // FIXME: We should get these limits from the C++
-                    // LibreOffice Viewer class
+                    // FIXME: We should get these limits from the C++ LibreOffice Viewer class
                     property real minimumZoom: 0.5
                     property real maximumZoom: 4.0
-
-                    onPinchStarted: {
-                        active = true;
-                        initialZoom = loView.zoomFactor;
-                        center = pinchy.mapToItem(loView.contentItem, pinch.startCenter.x, pinch.startCenter.y);
-                    }
-
-                    onPinchUpdated: {
-                        var zoomFactor = MathUtils.clamp(initialZoom * pinch.scale, minimumZoom, maximumZoom);
-                        var z = zoomFactor / initialZoom;
-
-                        var _oldContentY = loView.contentY
-                        var _oldContentX = loView.contentX
-                        loView.contentX *= z
-                        loView.contentY *= z
-                        loView.contentX += (center.x - _oldContentX) * (z - 1);
-                        loView.contentY += (center.y - _oldContentY) * (z - 1);
-
-                        center.x *= z;
-                        center.y *= z;
-                    }
-
-                    onPinchFinished: {
-                        active = false;
-                    }
 
                     LibreOffice.Viewer {
                         id: loView
@@ -208,10 +178,8 @@ PageWithBottomEdge {
 
                         clip: true
                         documentPath: file.path
-                        interactive: !pinchy.active
 
                         Behavior on zoomFactor {
-                            enabled: !pinchy.active
                             UbuntuNumberAnimation { duration: UbuntuAnimation.FastDuration }
                         }
 
