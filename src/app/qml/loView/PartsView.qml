@@ -14,12 +14,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.3
-import Ubuntu.Components 1.1
+import QtQuick 2.4
+import Ubuntu.Components 1.2
 import QtQuick.Layouts 1.1
 import DocumentViewer.LibreOffice 1.0 as LibreOffice
-
-import "../upstreamComponents"
 
 ListView {
     id: view
@@ -31,7 +29,7 @@ ListView {
     currentIndex: view.model ? loView.document.currentPart : -1
     highlightMoveDuration: UbuntuAnimation.SnapDuration
 
-    delegate: ListItemWithActions {
+    delegate: ListItem {
         id: delegate
 
         width: parent.width
@@ -56,7 +54,11 @@ ListView {
         }
 
         RowLayout {
-            anchors.fill: parent
+            anchors {
+                fill: parent
+                leftMargin: units.gu(1)
+                rightMargin: units.gu(1)
+            }
             spacing: units.gu(1)
 
             Image {
@@ -74,13 +76,13 @@ ListView {
                 wrapMode: Text.WordWrap
                 text: model.name
                 color: (loView.document.currentPart === model.index) ? UbuntuColors.orange
-                                                                         : Theme.palette.selected.backgroundText
+                                                                     : Theme.palette.selected.backgroundText
             }
 
             Label {
                 text: model.index + 1
                 color: (loView.document.currentPart === model.index) ? UbuntuColors.orange
-                                                                         : Theme.palette.selected.backgroundText
+                                                                     : Theme.palette.selected.backgroundText
             }
         }
     }

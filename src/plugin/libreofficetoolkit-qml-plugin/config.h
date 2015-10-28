@@ -18,11 +18,6 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-// This is the hardcoded Ubuntu/Debian paths to find the LibreOffice
-// installation. If you want to use a parallel installation, change the path
-// in the following line.
-#define LO_PATH "/usr/lib/libreoffice/program/"
-
 // FIXME: Perhaps we want to use smaller tiles on mobile devices?
 #define TILE_SIZE 256.0
 
@@ -34,5 +29,70 @@
 
 // Uncomment if you want more verbose application output
 //#define DEBUG_VERBOSE
+
+#include <QDir>
+#include <QStandardPaths>
+#include <QCoreApplication>
+#include <QDebug>
+
+class Config
+{
+
+public:
+    static const char* getLibreOfficePath() {
+        QString loPath;
+
+        // LibreOffice installation path on Debian/Ubuntu
+        QString path = "/usr/lib/libreoffice/program";
+
+        if (QDir(path).exists()) {
+            loPath = path;
+        }
+
+        // Check if LibreOffice has been provided through a .click package
+        else {
+            QString libPaths = getenv("LD_LIBRARY_PATH");
+
+            Q_FOREACH(QString libPath, libPaths.split(":")) {
+                QDir clickDir(libPath);
+
+                if (clickDir.cd("libreoffice/program")) {
+                    QString clickPath = libPath + "/libreoffice/program";
+
+                    loPath = clickPath;
+                }
+            }
+        }
+
+        if (loPath.isEmpty()) {
+            qDebug() << "LibreOffice binaries not found.";
+
+            return NULL;
+        }
+
+        else {
+            char *data = new char[loPath.toLatin1().size() + 1];
+            strcpy(data, loPath.toLatin1().data());
+
+            qDebug() << "LibreOffice binaries found at:" << loPath;
+
+            return data;
+        }
+    }
+
+    static const char* getLibreOfficeProfilePath() {
+        QString configLocation = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
+        QString appPkgName = QCoreApplication::organizationDomain();
+
+        QString profilePath = "file://" + configLocation + "/" + appPkgName + "/libreoffice/4";
+
+        qDebug() << "LibreOffice profile path:" << profilePath;
+
+        char *data = new char[profilePath.toLatin1().size() + 1];
+        strcpy(data, profilePath.toLatin1().data());
+
+        return data;
+    }
+};
 
 #endif // CONFIG_H

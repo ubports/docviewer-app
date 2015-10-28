@@ -14,10 +14,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.3
-import Ubuntu.Components 1.1
+import QtQuick 2.4
+import Ubuntu.Components 1.2
 import Ubuntu.Layouts 1.0
-import DocumentViewer.LibreOffice 1.0 as LO
+import DocumentViewer.LibreOffice 1.0 as LibreOffice
 
 import "../upstreamComponents"
 
@@ -37,7 +37,7 @@ PageWithBottomEdge {
             return false
 
         // else
-        return loPageContentLoader.item.loDocument.documentType == LO.Document.PresentationDocument && !wideWindow
+        return loPageContentLoader.item.loDocument.documentType == LibreOffice.Document.PresentationDocument && !wideWindow
     }
 
     Loader {
@@ -50,7 +50,7 @@ PageWithBottomEdge {
         onLoaded: {
             if (loaded) {
                 // FIXME: At the moment don't hide header if the document is a presentation
-                var isPresentation = (item.loDocument.documentType === LO.Document.PresentationDocument)
+                var isPresentation = (item.loDocument.documentType === LibreOffice.Document.PresentationDocument)
                 loPage.flickable = isPresentation ? null : item.loView
 
                 loPage.bottomEdgePageComponent = item.bottomEdgePartsPage
@@ -100,7 +100,7 @@ PageWithBottomEdge {
                                 }
 
                                 model: loView.partsModel
-                                visible: loDocument.documentType == LO.Document.PresentationDocument
+                                visible: loDocument.documentType == LibreOffice.Document.PresentationDocument
                                 width: visible ? units.gu(40) : 0
                             }
 
@@ -125,7 +125,7 @@ PageWithBottomEdge {
 
                             Item {
                                 id: bottomBarLayoutItem
-                                visible: loDocument.documentType == LO.Document.PresentationDocument
+                                visible: loDocument.documentType == LibreOffice.Document.PresentationDocument
                                 height: visible ? units.gu(5) : 0
                                 anchors {
                                     left: parent.left
@@ -139,7 +139,7 @@ PageWithBottomEdge {
                     }
                 ]
 
-                LO.Viewer {
+                LibreOffice.Viewer {
                     id: loView
                     objectName: "loView"
                     Layouts.item: "loView"
@@ -173,7 +173,7 @@ PageWithBottomEdge {
                 SlideControllerPanel {
                     id: bottomBar
                     Layouts.item: "bottomBar"
-                    visible: loDocument.documentType == LO.Document.PresentationDocument
+                    visible: loDocument.documentType == LibreOffice.Document.PresentationDocument
                     height: visible ? units.gu(5) : 0
                     anchors {
                         left: parent.left

@@ -43,7 +43,7 @@ QImage LOPartsImageProvider::requestImage(const QString & id, QSize * size, cons
 
     const int defaultSize = 256;
 
-    RenderEngine::instance()->enqueueTask(m_document, partNumber, defaultSize, itemId);
+    RenderEngine::instance()->enqueueThumbnailTask(m_document, partNumber, defaultSize, itemId);
 
     // Return default image (empty).
     static QImage defaultImage;

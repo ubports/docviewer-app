@@ -15,8 +15,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.0
-import Ubuntu.Components 1.1
+import QtQuick 2.4
+import Ubuntu.Components 1.2
 import QtQuick.Layouts 1.1
 
 import "../upstreamComponents"
@@ -69,31 +69,34 @@ Page {
 
         model: poppler.tocModel
 
-        delegate: ListItemWithActions {
+        delegate: ListItem {
             id: delegate
             objectName: "delegate" + index
 
-            width: parent.width
-            height: (model.level === 0) ? units.gu(7) : units.gu(6)
+            anchors {
+                left: parent.left; right: parent.right
+                leftMargin: units.gu(2) + (model.level * units.gu(2))
+                rightMargin: units.gu(2)
+            }
 
-            // Don't use 'selected' property here, since it shows a CheckBox
-            color: (view.currentIndex == model.index) ? Qt.lighter(UbuntuColors.lightGrey)
-                                                      : Theme.palette.normal.background
+            onClicked: {
+                pdfView.positionAtIndex(model.pageIndex);
+                pageStack.pop();
+            }
 
-            AbstractButton {
-                objectName: "abstractbutton"
+            // Highlighted property of ListItem is read-only. In order to
+            // provide an highlight for the current page, we need to duplicate
+            // the overlay.
+            Rectangle {
                 anchors.fill: parent
-
-                onClicked: {
-                    pdfView.positionAtIndex(model.pageIndex);
-                    pageStack.pop();
-                }
+                color: Qt.rgba(0, 0, 0, 0.05)
+                visible: view.currentIndex == model.index
             }
 
             RowLayout {
                 anchors {
                     fill: parent
-                    leftMargin: units.gu(1) + (units.gu(2) * model.level)
+                    leftMargin: units.gu(1)
                     rightMargin: units.gu(1)
                 }
 
@@ -107,31 +110,35 @@ Page {
                     elide: Text.ElideRight
 
                     font.weight: model.level == 0 ? Font.DemiBold : Font.Normal
-                    color: (model.level === 0) ? UbuntuColors.midAubergine
-                                               : Theme.palette.selected.backgroundText
+                    color: (model.level == 0) ? UbuntuColors.midAubergine
+                                              : Theme.palette.selected.backgroundText
+                }
+
+                /*
+                    TODO: Needs UX team's review.
+                    UX specifications for ListItem suggest to use a "tick" icon
+                    as indicator for a selected state.
+                    This currently looks a bit redundant, since we already
+                    use a grey overlay (see above).
+                */
+                Icon {
+                    Layout.preferredHeight: units.gu(2)
+                    Layout.preferredWidth: units.gu(2)
+                    name: "tick"
+                    color: UbuntuColors.green
+                    visible: view.currentIndex == model.index
                 }
 
                 Label {
                     objectName: "pageindex"
                     text: model.pageIndex + 1
                     font.weight: model.level == 0 ? Font.DemiBold : Font.Normal
-                    color: (model.level === 0) ? UbuntuColors.midAubergine
-                                               : Theme.palette.selected.backgroundText
+                    color: (model.level == 0) ? UbuntuColors.midAubergine
+                                              : Theme.palette.selected.backgroundText
                 }
-            }
-
-            Rectangle {
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                    bottom: parent.bottom
-                }
-
-                height: units.gu(0.1)
-                visible: model.level == 0
-                color: (view.currentIndex === model.index) ? "transparent"
-                                                           : UbuntuColors.midAubergine
             }
         }
     }
+
+    Scrollbar { flickableItem: view }
 }

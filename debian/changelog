@@ -1,13 +1,43 @@
-ubuntu-docviewer-app (2.0) vivid; urgency=medium
+ubuntu-docviewer-app (2.0.194) vivid; urgency=medium
 
-  * Don't import a second copy of a document using ContentHub
-  * Use ContentHub QML APIs
-  * Updated to Qt 5.4
-  * Added share option
-  * UI updates
+  [ Ubuntu Document Viewer Developers ]
   * Support for LibreOffice documents
 
- -- Stefano Verzegnassi <verzegnassi.stefano@gmail.com>  Sun, 18 Oct 2015 19:34:17 +0200
+  [ Roman Shchekin ]
+  * Performance improvements in LibreOffice viewer
+  * Multithreading support in LibreOffice viewer
+  * Get screen DPIs at runtime.
+  * Asynchronous LibreOffice viewer loading
+  * LibreOffice viewer render engine
+
+  [ Stefano Verzegnassi ]
+  * Don't import a second copy of a document using ContentHub (LP: #1432394)
+  * Use ContentHub QML APIs (LP: #1469422)
+  * Updated to Qt 5.4 and Ubuntu.Components 1.2 (LP: #1470897)
+  * Added share option (LP: #1494818)
+  * UI updates
+  * Removed GridView from documents page
+  * Refactored app initialization
+  * Refactored project folders
+  * Automatically fetch LibreOffice dependencies when building a .click package
+  * Updated app icons (LP: #1476659)
+  * Performance improvements in LibreOffice viewer
+  * Zoom implementation in LibreOffice viewer
+  * Support for LibreOffice Presentation documents
+
+ -- Stefano Verzegnassi <verzegnassi.stefano@gmail.com>  Wed, 28 Oct 2015 15:04:17 +0200
+
+ubuntu-docviewer-app (0.3.181) vivid; urgency=medium
+
+  [ Roman Shchekin ]
+  * Improved multithreading in the PDF viewer
+
+  [ Stefano Verzegnassi ]
+  * Don't show duplicated entries from VFAT file systems (LP: #1477713)
+  * Fixed bad strings in the translation template (LP: #1477502)
+  * Restored contextual actions in the documents page (LP: #1447995)
+
+ -- Stefano Verzegnassi <verzegnassi.stefano@gmail.com>  Sat, 01 Aug 2015 07:43:03 +0200
 
 ubuntu-docviewer-app (0.3.154) vivid; urgency=medium
 
