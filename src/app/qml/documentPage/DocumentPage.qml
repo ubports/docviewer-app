@@ -52,7 +52,7 @@ Page {
             if (folderModel.count === 0) {
                 return documentPage.state == "search"
                         ? Qt.resolvedUrl("SearchEmptyState.qml")
-                        : Qt.resolvedUrl("BrowserEmptyState.qml")
+                        : Qt.resolvedUrl("DocumentEmptyState.qml")
             }
 
             return Qt.resolvedUrl("DocumentListView.qml")

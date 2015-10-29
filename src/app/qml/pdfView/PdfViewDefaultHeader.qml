@@ -32,7 +32,7 @@ PageHeadState {
         anchors.fill: parent
         spacing: units.gu(1)
 
-        ActivityIndicator { id: activity }
+        ActivityIndicator { id: activity; visible: running }
 
         Column {
             id: layout
