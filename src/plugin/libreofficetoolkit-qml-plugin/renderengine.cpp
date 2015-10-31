@@ -5,9 +5,9 @@
 RenderEngine* RenderEngine::s_instance = nullptr;
 
 RenderEngine::RenderEngine():
-    QObject(nullptr),
-    m_activeTaskCount(0),
-    m_lastPart(-1)
+    QObject(nullptr)
+    ,m_activeTaskCount(0)
+    ,m_lastTask(nullptr)
 {
     int itc = QThread::idealThreadCount();
     m_idealThreadCount = itc == -1 ? DefaultIdealThreadCount : itc;
@@ -55,7 +55,7 @@ void RenderEngine::dequeueTask(int id)
         auto task = m_queue.at(i);
         if (task->id() == id) {
             m_queue.removeAt(i);
-            disposeTask(task);
+            disposeLater(task);
             break;
         }
     }
@@ -65,6 +65,11 @@ void RenderEngine::internalRenderCallback(AbstractRenderTask* task, QImage img)
 {
     m_activeTaskCount--;
 
+    if (!m_activeTaskCount) {
+        m_lastTask = nullptr;
+        doDispose();
+    }
+
     switch (task->type())
     {
     case RttTile:
@@ -73,16 +78,27 @@ void RenderEngine::internalRenderCallback(AbstractRenderTask* task, QImage img)
     case RttImpressThumbnail:
         Q_EMIT thumbnailRenderFinished(task->id(), img);
         break;
+    case RttPdfPage:
+    case RttUnknown:
+    default:
+        break;
     }
 
-    disposeTask(task);
-
     doNextTask();
+
+    disposeLater(task);
 }
 
-void RenderEngine::disposeTask(AbstractRenderTask *task)
+void RenderEngine::disposeLater(AbstractRenderTask *task)
 {
-    delete task;
+    m_disposedTasks.append(task);
+}
+
+void RenderEngine::doDispose()
+{
+    for (int i = 0; i < m_disposedTasks.size(); ++i)
+        delete m_disposedTasks.at(i);
+    m_disposedTasks.clear();
 }
 
 void RenderEngine::doNextTask()
@@ -97,20 +113,15 @@ void RenderEngine::doNextTask()
 
     AbstractRenderTask* task = m_queue.head();
 
-    // LoRenderTask requires special check.
-    if (task->type() == RttTile || task->type() == RttImpressThumbnail) {
-        LoRenderTask* loTask = static_cast<LoRenderTask*>(task);
+    // If some tasks already in progress, we should ask task about
+    // compatibility of parallel execution with last the task.
+    if (m_activeTaskCount && !task->canBeRunInParallel(m_lastTask))
+        return;
 
-        if (m_activeTaskCount && loTask->part() != m_lastPart)
-            return;
-
-        // Set correct part.
-        m_lastPart = loTask->part();
-        loTask->document()->setDocumentPart(m_lastPart);
-    }
+    task->prepare();
 
     m_activeTaskCount++;
-    m_queue.dequeue();
+    m_lastTask = m_queue.dequeue();
 
     QtConcurrent::run( [=] {
         QImage img = task->doWork();
