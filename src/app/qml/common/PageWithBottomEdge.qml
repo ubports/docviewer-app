@@ -70,7 +70,7 @@ Page {
 
     property alias bottomEdgePageComponent: edgeLoader.sourceComponent
     property alias bottomEdgePageSource: edgeLoader.source
-    property alias bottomEdgeTitle: tipLabel.text
+    property alias bottomEdgeTitle: tip.text
     property bool bottomEdgeEnabled: true
     property int bottomEdgeExpandThreshold: page.height * 0.2
     property int bottomEdgeExposedArea: bottomEdge.state !== "expanded" ? (page.height - bottomEdge.y - bottomEdge.tipHeight) : _areaWhenExpanded
@@ -142,53 +142,15 @@ Page {
         z: 1
     }
 
-    UbuntuShape {
+    BottomEdgeHint {
         id: tip
         objectName: "bottomEdgeTip"
 
-        property bool hidden: (activeFocus === false) || ((bottomEdge.y - units.gu(1)) < tip.y)
-
         enabled: mouseArea.enabled
         visible: page.bottomEdgeEnabled
-        anchors {
-            bottom: parent.bottom
-            horizontalCenter: bottomEdge.horizontalCenter
-            bottomMargin: hidden ? - height + units.gu(1) : -units.gu(1)
-            Behavior on bottomMargin {
-                SequentialAnimation {
-                    // wait some msecs in case of the focus change again, to avoid flickering
-                    PauseAnimation {
-                        duration: 300
-                    }
-                    UbuntuNumberAnimation {
-                        duration: UbuntuAnimation.SnapDuration
-                    }
-                }
-            }
-        }
-
         z: 1
-        width: tipLabel.paintedWidth + units.gu(6)
-        height: bottomEdge.tipHeight + units.gu(1)
-        color: theme.palette.normal.overlay
-        Label {
-            id: tipLabel
 
-            anchors {
-                top: parent.top
-                left: parent.left
-                right: parent.right
-            }
-            height: bottomEdge.tipHeight
-            verticalAlignment: Text.AlignVCenter
-            horizontalAlignment: Text.AlignHCenter
-            opacity: tip.hidden ? 0.0 : 1.0
-            Behavior on opacity {
-                UbuntuNumberAnimation {
-                    duration: UbuntuAnimation.SnapDuration
-                }
-            }
-        }
+        onClicked: bottomEdge.state = "expanded"
     }
 
     Rectangle {
@@ -231,7 +193,7 @@ Page {
 
         }
         height: bottomEdge.tipHeight
-        z: 1
+        z: 10
 
         onReleased: {
             page.bottomEdgeReleased()
@@ -249,6 +211,9 @@ Page {
             previousY = mouse.y
             tip.forceActiveFocus()
         }
+
+        // Propagate click event to the BottomEdgeHint
+        onClicked: tip.clicked()
 
         onMouseYChanged: {
             var yOffset = previousY - mouseY
@@ -268,7 +233,7 @@ Page {
         readonly property int tipHeight: units.gu(3)
         readonly property int pageStartY: 0
 
-        z: 1
+        z: Number.MAX_VALUE
         color: theme.palette.normal.background
         clip: true
         anchors {

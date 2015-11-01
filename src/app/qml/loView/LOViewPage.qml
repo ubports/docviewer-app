@@ -23,6 +23,8 @@ import "../common"
 import "../common/utils.js" as Utils
 import "KeybHelper.js" as KeybHelper
 
+// TODO: Use UITK 1.3 BottomEdge component when available
+
 PageWithBottomEdge {
     id: loPage
     title: {
