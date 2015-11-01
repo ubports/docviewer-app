@@ -111,7 +111,7 @@ PageWithBottomEdge {
                                 id: leftSidebar
                                 anchors.left: parent.left
                                 anchors.bottom: parent.bottom
-                                visible: loDocument.documentType == LO.Document.PresentationDocument
+                                visible: loDocument.documentType == LibreOffice.Document.PresentationDocument
 
                                 PartsView {
                                     id: partsView
