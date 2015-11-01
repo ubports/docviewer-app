@@ -39,9 +39,6 @@ Page {
     }
 
     onActiveChanged: {
-        // If the header was hidden in the PdfPage, make it visible.
-        mainView.setHeaderVisibility(true);
-
         // Find out the current page position in the ToC index
         for (var i=0; i<poppler.tocModel.count; i++) {
             if (i+1 < poppler.tocModel.count) {

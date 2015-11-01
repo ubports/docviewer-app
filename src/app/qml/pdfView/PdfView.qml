@@ -27,9 +27,7 @@ PageWithBottomEdge {
     id: pdfPage
     title: Utils.getNameOfFile(file.path);
 
-    // Disable header auto-hide.
-    // TODO: Show/hide header if a user taps the page
-    flickable: null
+    flickable: pdfView
 
     // TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
     // while the second one (%2) refers to the total pages count.
@@ -46,10 +44,18 @@ PageWithBottomEdge {
     PDF.VerticalView {
         id: pdfView
         objectName: "pdfView"
-        anchors.fill: parent
+
+        anchors {
+            fill: parent
+
+            // WORKAROUND: If we set 'pdfPage.flickable' properly, 'pdfView' is not
+            // longer aligned to the bottom of the header, but to the top instead.
+            // This is deprecated code though, and I don't want to spend my time here.
+            topMargin: units.gu(6)
+        }
+
         spacing: units.gu(2)
 
-        clip: true
         boundsBehavior: Flickable.StopAtBounds
         flickDeceleration: 1500 * units.gridUnit / 8
         maximumFlickVelocity: 2500 * units.gridUnit / 8
@@ -94,6 +100,7 @@ PageWithBottomEdge {
         Item { id: _zoomHelper }
     }
 
+
     Scrollbar { flickableItem: pdfView }
     Scrollbar { flickableItem: pdfView; align: Qt.AlignBottom }
 
@@ -109,9 +116,6 @@ PageWithBottomEdge {
             var title = getDocumentInfo("Title")
             if (title !== "")
                 pdfPage.title = title;
-
-            // Hide header when the document is ready
-            mainView.setHeaderVisibility(false);
         }
     }
 
