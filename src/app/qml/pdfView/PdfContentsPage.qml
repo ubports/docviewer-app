@@ -19,8 +19,6 @@ import QtQuick 2.4
 import Ubuntu.Components 1.3
 import QtQuick.Layouts 1.1
 
-import "../upstreamComponents"
-
 Page {
     id: pdfContents
     objectName: "pdfcontents"

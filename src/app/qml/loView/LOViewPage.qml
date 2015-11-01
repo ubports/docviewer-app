@@ -19,9 +19,7 @@ import Ubuntu.Components 1.3
 import Ubuntu.Layouts 1.0
 import DocumentViewer.LibreOffice 1.0 as LibreOffice
 
-import "../upstreamComponents"
 import "../common"
-
 import "../common/utils.js" as Utils
 import "KeybHelper.js" as KeybHelper
 
