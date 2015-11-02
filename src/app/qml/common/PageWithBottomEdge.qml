@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 Canonical, Ltd.
+ * Copyright (C) 2014, 2015 Canonical, Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -151,6 +151,30 @@ Page {
         z: 1
 
         onClicked: bottomEdge.state = "expanded"
+
+        Connections {
+            target: mouseArea
+            onClosedChanged: {
+                if (!mouseArea.closed) {
+                    tip.state = "Visible";
+                }
+            }
+        }
+
+        Connections {
+            target: page.flickable
+            onVerticalVelocityChanged: {
+                if (!mouseArea.closed) {
+                    return;
+                }
+
+                if (page.flickable.verticalVelocity > 0) {
+                    tip.state = "Hidden";
+                } else if (page.flickable.verticalVelocity < 0) {
+                    tip.state = "Visible";
+                }
+            }
+        }
     }
 
     Rectangle {
@@ -175,6 +199,7 @@ Page {
 
         property real previousY: -1
         property string dragDirection: "None"
+        property bool closed: drag.target.y == drag.maximumY && !mouseArea.pressed
 
         preventStealing: true
         drag {
