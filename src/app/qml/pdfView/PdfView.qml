@@ -52,6 +52,7 @@ PageWithBottomEdge {
             // longer aligned to the bottom of the header, but to the top instead.
             // This is deprecated code though, and it's not worth to spend more time
             // for a proper fix here.
+            // (This is likely a bug in the VerticalView class.)
             topMargin: units.gu(6)
         }
 
