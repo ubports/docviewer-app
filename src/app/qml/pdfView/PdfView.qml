@@ -48,9 +48,10 @@ PageWithBottomEdge {
         anchors {
             fill: parent
 
-            // WORKAROUND: If we set 'pdfPage.flickable' properly, 'pdfView' is not
+            // WORKAROUND: If we set 'pdfPage.flickable' property, 'pdfView' is not
             // longer aligned to the bottom of the header, but to the top instead.
-            // This is deprecated code though, and I don't want to spend my time here.
+            // This is deprecated code though, and it's not worth to spend more time
+            // for a proper fix here.
             topMargin: units.gu(6)
         }
 
