@@ -25,6 +25,8 @@ public:
     virtual RenderTaskType type() { return RttUnknown; }
     virtual QImage doWork() = 0 ;
     virtual ~AbstractRenderTask() { }
+    virtual bool canBeRunInParallel(AbstractRenderTask*) { return true; }
+    virtual void prepare() = 0 ;
 
     int id() { return m_id; }
     void setId(int i) { m_id = i; }
@@ -37,6 +39,22 @@ Q_DECLARE_METATYPE(AbstractRenderTask*)
 class LoRenderTask : public AbstractRenderTask
 {
 public:
+    virtual bool canBeRunInParallel(AbstractRenderTask* prevTask)
+    {
+        Q_ASSERT(prevTask != nullptr);
+        if (prevTask->type() == RttTile || prevTask->type() == RttImpressThumbnail) {
+            LoRenderTask* loTask = static_cast<LoRenderTask*>(prevTask);
+
+            // Another document or the same part in the same document can be run parallel.
+            return (loTask->document() != m_document ||
+                    loTask->part() == m_part);
+        }
+
+        return true;
+    }
+
+    virtual void prepare() { m_document->setDocumentPart(m_part); }
+
     int part() { return m_part; }
     void setPart(int p) { m_part = p; }
 
