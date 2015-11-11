@@ -164,6 +164,31 @@ PageWithBottomEdge {
                         loPageContent.forceActiveFocus()
                     }
 
+                    onErrorChanged: {
+                        var errorString;
+
+                        switch(error) {
+                        case LibreOffice.Error.LibreOfficeNotFound:
+                            errorString = i18n.tr("LibreOffice binaries not found.")
+                            break;
+                        case LibreOffice.Error.LibreOfficeNotInitialized:
+                            errorString = i18n.tr("Error while loading LibreOffice.")
+                            break;
+                        case LibreOffice.Error.DocumentNotLoaded:
+                            errorString = i18n.tr("Document not loaded.")
+                            break;
+                        }
+
+                        if (errorString) {
+                            loPage.pageStack.pop()
+
+                            // We create the dialog in the MainView, so that it isn't
+                            // initialized by 'loPage' and keep on working after the
+                            // page is destroyed.
+                            mainView.showErrorDialog(errorString);
+                        }
+                    }
+
                     Scrollbar { flickableItem: loView; parent: loView.parent }
                     Scrollbar { flickableItem: loView; parent: loView.parent; align: Qt.AlignBottom }
                 }
