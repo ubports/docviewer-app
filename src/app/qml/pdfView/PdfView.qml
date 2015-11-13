@@ -41,6 +41,14 @@ PageWithBottomEdge {
     // Reset night mode shader settings when closing the page
     // Component.onDestruction: mainView.nightModeEnabled = false
 
+    Rectangle {
+        // Since UITK 1.3, the MainView background is white.
+        // We need to set a different color, otherwise pages
+        // boundaries are not visible.
+        anchors.fill: parent
+        color: "#f5f5f5"
+    }
+
     PDF.VerticalView {
         id: pdfView
         objectName: "pdfView"
