@@ -103,7 +103,7 @@ private:
 
     QMap<int, SGTileItem*>      m_tiles;
 
-    void generateTiles(int x1, int y1, int x2, int y2, int tilesPerWidth);
+    void generateTiles(int x1, int y1, int x2, int y2, int tilesPerWidth, int tilesPerHeight);
     void createTile(int index, QRect rect);
     void setZoomMode(const ZoomMode zoomMode);
     bool updateZoomIfAutomatic();

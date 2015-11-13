@@ -288,6 +288,7 @@ void LOView::updateVisibleRect()
 
     // Number of tiles per row
     int tilesPerWidth           = qCeil(this->width() / TILE_SIZE);
+    int tilesPerHeight           = qCeil(this->height() / TILE_SIZE);
 
     // Get indexes for visible tiles
     int visiblesFromWidth       = int(m_visibleArea.left() / TILE_SIZE);
@@ -301,18 +302,30 @@ void LOView::updateVisibleRect()
     int bufferToWidth           = qCeil(qreal(m_bufferArea.right()) / TILE_SIZE);
     int bufferToHeight          = qCeil(qreal(m_bufferArea.bottom()) / TILE_SIZE);
 
-    this->generateTiles(visiblesFromWidth, visiblesFromHeight, visiblesToWidth, visiblesToHeight, tilesPerWidth);
-    this->generateTiles(bufferFromWidth, bufferFromHeight, bufferToWidth, bufferToHeight, tilesPerWidth);
+    this->generateTiles(visiblesFromWidth, visiblesFromHeight, visiblesToWidth, visiblesToHeight, tilesPerWidth, tilesPerHeight);
+    this->generateTiles(bufferFromWidth, bufferFromHeight, bufferToWidth, bufferToHeight, tilesPerWidth, tilesPerHeight);
 }
 
-void LOView::generateTiles(int x1, int y1, int x2, int y2, int tilesPerWidth)
+void LOView::generateTiles(int x1, int y1, int x2, int y2, int tilesPerWidth, int tilesPerHeight)
 {
     for (int x = x1; x < x2; x++) {
         for (int y = y1; y < y2; y++) {
-            QRect tileRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+            bool lastColumn = (x == (tilesPerWidth - 1));
+            bool lastRow = (y == (tilesPerHeight - 1));
+
+            qreal width = lastColumn ? this->width() - (TILE_SIZE * (tilesPerWidth - 1)) : TILE_SIZE;
+            qreal height = lastRow ? this->height() - (TILE_SIZE * (tilesPerHeight - 1)) : TILE_SIZE;
+
+            QRect tileRect(x * TILE_SIZE, y * TILE_SIZE, width, height);
             int index = y * tilesPerWidth + x;
 
-            this->createTile(index, tileRect);
+            if (x < tilesPerWidth && y < tilesPerHeight) {
+#ifdef DEBUG_VERBOSE
+        qDebug() << "Generating tile - Index:" << index << "X:" << x << "Y:" << y;
+#endif
+
+                this->createTile(index, tileRect);
+            }
         }
     }
 }
@@ -327,7 +340,7 @@ void LOView::createTile(int index, QRect rect)
 {
     if (!m_tiles.contains(index)) {
 #ifdef DEBUG_VERBOSE
-        qDebug() << "Creating tile indexed as" << index;
+        qDebug() << "Creating tile indexed as" << index << "- Rect:" << rect;
 #endif
 
         auto tile = new SGTileItem(rect, m_zoomFactor, RenderEngine::getNextId(), this);
