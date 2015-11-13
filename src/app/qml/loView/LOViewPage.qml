@@ -19,47 +19,16 @@ import Ubuntu.Components 1.3
 import Ubuntu.Layouts 1.0
 import DocumentViewer.LibreOffice 1.0 as LibreOffice
 
-import "../upstreamComponents"
 import "../common"
-
 import "../common/utils.js" as Utils
 import "KeybHelper.js" as KeybHelper
 
-PageWithBottomEdge {
+Page {
     id: loPage
-    title: {
-        var fileName = Utils.getNameOfFile(file.path);
-
-        if (!loPageContentLoader.item)
-            return fileName
-
-        switch(loPageContentLoader.item.loDocument.documentType) {
-        case 0:
-            return fileName + "-" + i18n.tr("LibreOffice text document")
-        case 1:
-            return fileName + "-" + i18n.tr("LibreOffice spread sheet")
-        case 2:
-            return fileName + "-" + i18n.tr("LibreOffice presentation")
-        case 3:
-            return fileName + "-" + i18n.tr("LibreOffice Draw document")
-        case 4:
-            return fileName + "-" + i18n.tr("Unknown LibreOffice document")
-        default:
-            return fileName + "-" + i18n.tr("Unknown type document")
-        }
-    }
+    title: Utils.getNameOfFile(file.path);
     flickable: null
 
     readonly property bool wideWindow: width > units.gu(120)
-
-    bottomEdgeTitle: i18n.tr("Slides")
-    bottomEdgeEnabled: {
-        if (!loPageContentLoader.loaded)
-            return false
-
-        // else
-        return loPageContentLoader.item.loDocument.documentType == LibreOffice.Document.PresentationDocument && !wideWindow
-    }
 
     Loader {
         id: loPageContentLoader
@@ -73,7 +42,6 @@ PageWithBottomEdge {
                 // FIXME: At the moment don't hide header if the document is a presentation
                 var isPresentation = (item.loDocument.documentType === LibreOffice.Document.PresentationDocument)
                 loPage.flickable = isPresentation ? null : item.loView
-                loPage.bottomEdgePageComponent = item.bottomEdgePartsPage
             } else loPage.flickable = null
         }
     }
@@ -93,7 +61,6 @@ PageWithBottomEdge {
 
             property alias loDocument: loView.document
             property alias loView: loView
-            property alias bottomEdgePartsPage: bottomEdgePartsPage
 
             Layouts {
                 id: layouts
@@ -111,7 +78,7 @@ PageWithBottomEdge {
                                 id: leftSidebar
                                 anchors.left: parent.left
                                 anchors.bottom: parent.bottom
-                                visible: loDocument.documentType == LO.Document.PresentationDocument
+                                visible: loDocument.documentType == LibreOffice.Document.PresentationDocument
 
                                 PartsView {
                                     id: partsView
@@ -120,35 +87,13 @@ PageWithBottomEdge {
                                 }
                             }
 
-                            Item {
+                            ItemLayout {
+                                item: "pinchy"
                                 anchors {
                                     left: leftSidebar.right
                                     right: parent.right
                                     top: parent.top
                                     bottom: parent.bottom
-                                }
-
-                                ItemLayout {
-                                    item: "pinchy"
-                                    anchors {
-                                        top: parent.top
-                                        bottom: bottomBarLayoutItem.top
-                                        left: parent.left
-                                        right: parent.right
-                                    }
-                                }
-
-                                Item {
-                                    id: bottomBarLayoutItem
-                                    visible: loDocument.documentType == LibreOffice.Document.PresentationDocument
-                                    height: visible ? units.gu(5) : 0
-                                    anchors {
-                                        left: parent.left
-                                        right: parent.right
-                                        bottom: parent.bottom
-                                    }
-
-                                    ItemLayout { item: "bottomBar"; anchors.fill: parent }
                                 }
                             }
                         }
@@ -216,37 +161,25 @@ PageWithBottomEdge {
                     }
                 }
 
-                // TODO: When we'll have to merge this with the zooming branch, replace this
-                // and use a single bottom panel
-                SlideControllerPanel {
+                PartsView {
                     id: bottomBar
-                    Layouts.item: "bottomBar"
-                    visible: loDocument.documentType == LibreOffice.Document.PresentationDocument
-                    height: visible ? units.gu(5) : 0
                     anchors {
                         left: parent.left
                         right: parent.right
                         bottom: parent.bottom
                     }
-                }
-            }
+                    height: visible ? units.gu(12) : 0
+                    visible: loDocument.documentType == LibreOffice.Document.PresentationDocument
 
-            Component {
-                id: bottomEdgePartsPage
-                Page {
-                    title: i18n.tr("Slides")
-                    head.backAction: Action {
-                        text: i18n.tr("Back")
-                        iconName: "down"
-                        onTriggered: pageStack.pop()
-                    }
+                    model: loView.partsModel
+                    orientation: ListView.Horizontal
 
-                    flickable: null
-
-                    PartsView {
-                        property bool belongsToNestedPage: true
-                        anchors.fill: parent
-                        model: loView.partsModel
+                    HorizontalDivider {
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                            top: parent.top
+                        }
                     }
                 }
             }

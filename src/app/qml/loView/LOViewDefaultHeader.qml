@@ -35,7 +35,6 @@ PageHeadState {
         Column {
             id: layout
             Layout.fillWidth: true
-            visible: !DocumentViewer.desktopMode
 
             Label {
             anchors { left: parent.left; right: parent.right }
@@ -69,13 +68,6 @@ PageHeadState {
             }
         }
 
-        Item {
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-            visible: DocumentViewer.desktopMode
-        }
-
-
         ZoomSelector {
             Layout.preferredWidth: units.gu(12)
             Layout.preferredHeight: units.gu(4)
@@ -85,22 +77,6 @@ PageHeadState {
                     return false
 
                 return DocumentViewer.desktopMode || targetPage.width > units.gu(80)
-            }
-        }
-    }
-
-
-    backAction: Action {
-        iconName: "back"
-        text: (pageStack.depth > 1) ? i18n.tr("Back") : i18n.tr("Close")
-        onTriggered: {
-            if (pageStack.depth > 1) {
-                // Go back to Welcome page
-                pageStack.pop();
-            } else {
-                // File has been imported through Content Hub (or was not chosen through WelcomePage)
-                // Close the application and show our source app (e.g. ubuntu-filemanager-app, if used to open a document)
-                Qt.quit()
             }
         }
     }

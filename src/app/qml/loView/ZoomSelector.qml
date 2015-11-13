@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 Canonical, Ltd.
+ * Copyright (C) 2015 Stefano Verzegnassi
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,15 +17,11 @@
 import QtQuick 2.4
 import Ubuntu.Components 1.3
 import QtQuick.Layouts 1.1
-import Ubuntu.Components.Popups 1.3
 import DocumentViewer.LibreOffice 1.0 as LibreOffice
-import Ubuntu.Components.Themes.Ambiance 1.3 as Theme
 
 import "../common"
 
-// TODO: Complete code refactor
-
-TextField {
+TextFieldWithButton {
     id: textField
     anchors.verticalCenter: parent.verticalCenter
     width: units.gu(12)
@@ -35,50 +31,6 @@ TextField {
     hasClearButton: true
     inputMethodHints: Qt.ImhFormattedNumbersOnly
     validator: IntValidator { bottom: 50; top: 400 }
-
-    secondaryItem: AbstractButton {
-        id: listButton
-        property bool expanded: false
-
-        height: parent.height
-        visible: !textField.highlighted
-        width: visible ? height : 0
-
-        onClicked: {
-            expanded = !expanded
-
-            if (expanded)
-                PopupUtils.open(zoomSelectorDialog, listButton)
-        }
-
-        Item {
-            anchors.left: parent.left
-            anchors.verticalCenter: parent.verticalCenter
-            height: parent.height
-            width: units.dp(2)
-
-            VerticalDivider { anchors { top: parent.top; bottom: parent.bottom } }
-        }
-
-        Rectangle {
-            anchors.fill: parent
-            color: theme.palette.selected.background
-            visible: listButton.expanded
-        }
-
-        Icon {
-            width: units.gu(2); height: width
-            anchors.centerIn: parent
-
-            name: "go-down"
-            color: "Grey"
-            rotation: listButton.expanded ? 180 : 0
-
-            Behavior on rotation {
-                UbuntuNumberAnimation {}
-            }
-        }
-    }
 
     onAccepted: {
         view.setZoom(parseInt(text) / 100)
@@ -93,163 +45,120 @@ TextField {
 
     Label {
         anchors.centerIn: parent
-        anchors.horizontalCenterOffset: - listButton.width * 0.5
-
         visible: !textField.highlighted
         text: "%1%".arg(parseInt(view.zoomFactor*100))
     }
 
-    Component {
-        id: zoomSelectorDialog
-        Popover {
-            id: zoomSelectorDialogue
-            autoClose: false
-            contentHeight: layout.height + units.gu(4)
-            contentWidth: units.gu(24)
-            Component.onDestruction: listButton.expanded = false
+    popover: TextFieldButtonPopover {
+        id: zoomSelectorDialogue
 
-            // We don't use 'autoClose' property, since we want to propagate
-            // mouse/touch events to other items (e.g. when zoomSelectorDialogue
-            // is visible, and user taps the zoom+ button on its right, we want
-            // the zoom button to receive the event).
-            InverseMouseArea {
-                anchors.fill: parent
-                propagateComposedEvents: true
+        RowLayout {
+            anchors { left: parent.left; right: parent.right }
+            height: units.gu(4)
+            spacing: units.gu(1)
 
-                onPressed: {
-                    mouse.accepted = false
-                    PopupUtils.close(zoomSelectorDialogue)
+            ListItem {
+                divider.visible: false
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+
+                onClicked: {
+                    var view = loPageContentLoader.item.loView
+                    view.setZoom(view.zoomFactor + 0.1)
+                }
+
+                Icon {
+                    width: units.gu(2); height: width
+                    anchors.centerIn: parent
+                    name: "zoom-in"
                 }
             }
 
-            Column {
-                id: layout
-                spacing: units.gu(0.5)
-                anchors {
-                    top: parent.top
-                    left: parent.left
-                    right: parent.right
-                    margins: units.gu(2)
+            VerticalDivider {
+                Layout.fillHeight: true
+                Layout.preferredWidth: units.dp(2)
+            }
+
+            ListItem {
+                divider.visible: false
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+
+                onClicked: {
+                    var view = loPageContentLoader.item.loView
+                    view.setZoom(view.zoomFactor - 0.1)
                 }
 
-                RowLayout {
-                    anchors { left: parent.left; right: parent.right }
-                    height: units.gu(4)
-                    spacing: units.gu(1)
+                Icon {
+                    width: units.gu(2); height: width
+                    anchors.centerIn: parent
+                    name: "zoom-out"
+                }
+            }
+        }   // RowLayout
 
-                    ListItem {
-                        divider.visible: false
-                        Layout.fillHeight: true
-                        Layout.fillWidth: true
+        HorizontalDivider { anchors { left: parent.left; right: parent.right } }
 
-                        onClicked: {
-                            var view = loPageContentLoader.item.loView
-                            view.setZoom(view.zoomFactor + 0.1)
-                        }
+        ListItem {
+            height: units.gu(4)
+            divider.visible: false
 
-                        Icon {
-                            width: units.gu(2); height: width
-                            anchors.centerIn: parent
-                            name: "zoom-in"
-                        }
-                    }
+            onClicked: {
+                view.adjustZoomToWidth()
+                zoomSelectorDialogue.close()
+            }
 
-                    VerticalDivider {
-                        Layout.fillHeight: true
-                        Layout.preferredWidth: units.dp(2)
-                    }
+            /* UITK 1.3 specs: Two slot layout (A-B) */
+            ListItemLayout {
+                anchors.centerIn: parent
 
-                    ListItem {
-                        divider.visible: false
-                        Layout.fillHeight: true
-                        Layout.fillWidth: true
+                /* UITK 1.3 specs: Slot A */
+                title.text: i18n.tr("Fit width")
 
-                        onClicked: {
-                            var view = loPageContentLoader.item.loView
-                            view.setZoom(view.zoomFactor - 0.1)
-                        }
+                /* UITK 1.3 specs: Slot B */
+                Icon {
+                    SlotsLayout.position: SlotsLayout.Last
+                    width: units.gu(2); height: width
+                    name: "tick"
+                    color: UbuntuColors.green
+                    visible: view.zoomMode == LibreOffice.View.FitToWidth
+                }
+            }
+        }   // ListItem
 
-                        Icon {
-                            width: units.gu(2); height: width
-                            anchors.centerIn: parent
-                            name: "zoom-out"
-                        }
-                    }
+        HorizontalDivider { anchors { left: parent.left; right: parent.right } }
+
+        Repeater {
+            model: [
+                { text: "50%",  value: 0.50 },
+                { text: "70%",  value: 0.70 },
+                { text: "85%",  value: 0.85 },
+                { text: "100%", value: 1.00 },
+                { text: "125%", value: 1.25 },
+                { text: "150%", value: 1.50 },
+                { text: "175%", value: 1.75 },
+                { text: "200%", value: 2.00 },
+                { text: "300%", value: 3.00 },
+                { text: "400%", value: 4.00 }
+            ]
+
+            ListItem {
+                divider.visible: false
+                height: units.gu(4)
+
+                onClicked: {
+                    view.setZoom(modelData.value)
+                    zoomSelectorDialogue.close()
                 }
 
-                HorizontalDivider { anchors { left: parent.left; right: parent.right } }
-
-                ListItem {
-                    height: units.gu(4)
-                    divider.visible: false
-
-                    onClicked: {
-                        view.adjustZoomToWidth()
-                        PopupUtils.close(zoomSelectorDialogue)
-                    }
-
-                    /* UITK 1.3 specs: Two slot layout (A-B) */
-                    ListItemLayout {
-                        anchors.centerIn: parent
-
-                        /* UITK 1.3 specs: Slot A */
-                        title.text: i18n.tr("Fit width")
-
-                        /* UITK 1.3 specs: Slot B */
-                        Icon {
-                            SlotsLayout.position: SlotsLayout.Last
-                            width: units.gu(2); height: width
-                            name: "tick"
-                            color: UbuntuColors.green
-                            visible: view.zoomMode == LibreOffice.View.FitToWidth
-                        }
+                Label {
+                    text: modelData.text
+                    anchors {
+                        left: parent.left; leftMargin: units.gu(1)
+                        verticalCenter: parent.verticalCenter
                     }
                 }
-
-                HorizontalDivider { anchors { left: parent.left; right: parent.right } }
-
-                Repeater {
-                    model: [
-                        { text: "50%",  value: 0.50 },
-                        { text: "70%",  value: 0.70 },
-                        { text: "85%",  value: 0.85 },
-                        { text: "100%", value: 1.00 },
-                        { text: "125%", value: 1.25 },
-                        { text: "150%", value: 1.50 },
-                        { text: "175%", value: 1.75 },
-                        { text: "200%", value: 2.00 },
-                        { text: "300%", value: 3.00 },
-                        { text: "400%", value: 4.00 }
-                    ]
-
-                    ListItem {
-                        divider.visible: false
-                        height: units.gu(4)
-
-                        onClicked: {
-                            view.setZoom(modelData.value)
-                            PopupUtils.close(zoomSelectorDialogue)
-                        }
-
-                        Label {
-                            text: modelData.text
-                            anchors {
-                                left: parent.left; leftMargin: units.gu(1)
-                                verticalCenter: parent.verticalCenter
-                            }
-                        }
-                    }
-                }
-            }   // layout
-        }   // zoomSelectorDialogue
-    }   // zoomSelectorDialog
-
-    /* style */
-    style: Theme.TextFieldStyle {
-        background: UbuntuShape {
-            anchors.fill: parent
-            aspect: UbuntuShape.DropShadow
-        }
-    }
-
+            }
+        }   // Repeater
+    }   // zoomSelectorDialogue
 }   // textField

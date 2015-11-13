@@ -19,11 +19,6 @@ import QtQuick 2.4
 import Ubuntu.Components 1.3
 import QtQuick.Layouts 1.1
 
-import "../upstreamComponents"
-
-// FIXME: Moving to new ListItem + ListItemLayout stuff could break Autopilot tests
-// for PDF Table of Contents.
-
 Page {
     id: pdfContents
     objectName: "pdfcontents"
@@ -44,9 +39,6 @@ Page {
     }
 
     onActiveChanged: {
-        // If the header was hidden in the PdfPage, make it visible.
-        mainView.setHeaderVisibility(true);
-
         // Find out the current page position in the ToC index
         for (var i=0; i<poppler.tocModel.count; i++) {
             if (i+1 < poppler.tocModel.count) {

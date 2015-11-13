@@ -18,16 +18,16 @@ import QtQuick 2.4
 import Ubuntu.Components 1.3
 import DocumentViewer.PDF 1.0 as PDF
 
+import "../common"
 import "../common/utils.js" as Utils
-import "../upstreamComponents"
+
+// TODO: Use UITK 1.3 BottomEdge component when available
 
 PageWithBottomEdge {
     id: pdfPage
     title: Utils.getNameOfFile(file.path);
 
-    // Disable header auto-hide.
-    // TODO: Show/hide header if a user taps the page
-    flickable: null
+    flickable: pdfView
 
     // TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
     // while the second one (%2) refers to the total pages count.
@@ -35,19 +35,37 @@ PageWithBottomEdge {
 
     // TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
     bottomEdgeTitle: i18n.tr("Contents")
-    bottomEdgePageComponent: PdfContentsPage {}
+    bottomEdgePageComponent: PdfContentsPage { }
     bottomEdgeEnabled: poppler.tocModel.count > 0
 
     // Reset night mode shader settings when closing the page
     // Component.onDestruction: mainView.nightModeEnabled = false
 
+    Rectangle {
+        // Since UITK 1.3, the MainView background is white.
+        // We need to set a different color, otherwise pages
+        // boundaries are not visible.
+        anchors.fill: parent
+        color: "#f5f5f5"
+    }
+
     PDF.VerticalView {
         id: pdfView
         objectName: "pdfView"
-        anchors.fill: parent
+
+        anchors {
+            fill: parent
+
+            // WORKAROUND: If we set 'pdfPage.flickable' property, 'pdfView' is not
+            // longer aligned to the bottom of the header, but to the top instead.
+            // This is deprecated code though, and it's not worth to spend more time
+            // for a proper fix here.
+            // (This is likely a bug in the VerticalView class.)
+            topMargin: units.gu(6)
+        }
+
         spacing: units.gu(2)
 
-        clip: true
         boundsBehavior: Flickable.StopAtBounds
         flickDeceleration: 1500 * units.gridUnit / 8
         maximumFlickVelocity: 2500 * units.gridUnit / 8
@@ -92,6 +110,7 @@ PageWithBottomEdge {
         Item { id: _zoomHelper }
     }
 
+
     Scrollbar { flickableItem: pdfView }
     Scrollbar { flickableItem: pdfView; align: Qt.AlignBottom }
 
@@ -107,9 +126,6 @@ PageWithBottomEdge {
             var title = getDocumentInfo("Title")
             if (title !== "")
                 pdfPage.title = title;
-
-            // Hide header when the document is ready
-            mainView.setHeaderVisibility(false);
         }
     }
 

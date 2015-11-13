@@ -17,8 +17,6 @@
 import QtQuick 2.4
 import Ubuntu.Components 1.3
 
-import "../upstreamComponents"
-
 ListView {
     id: documentListView
     anchors { fill: parent; margins: units.gu(0.5) }

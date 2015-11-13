@@ -15,7 +15,7 @@
 */
 
 import QtQuick 2.4
-import "../upstreamComponents"
+import "../common"
 
 Item {
     anchors.fill: parent
