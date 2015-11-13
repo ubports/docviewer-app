@@ -21,7 +21,7 @@ import DocumentViewer.LibreOffice 1.0 as LibreOffice
 
 import "../common"
 
-TextFieldWithRightButton {
+TextFieldWithButton {
     id: textField
     anchors.verticalCenter: parent.verticalCenter
     width: units.gu(12)
