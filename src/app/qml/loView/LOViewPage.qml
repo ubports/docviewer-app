@@ -175,7 +175,7 @@ PageWithBottomEdge {
                             errorString = i18n.tr("Error while loading LibreOffice.")
                             break;
                         case LibreOffice.Error.DocumentNotLoaded:
-                            errorString = i18n.tr("Document not loaded.")
+                            errorString = i18n.tr("Document not loaded.\nThe requested document may be corrupt.")
                             break;
                         }
 
