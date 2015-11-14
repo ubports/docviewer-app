@@ -139,10 +139,41 @@ PageWithBottomEdge {
                     }
                 ]
 
-                LibreOffice.Viewer {
-                    id: loView
-                    objectName: "loView"
-                    Layouts.item: "loView"
+
+
+//                LibreOffice.Viewer {
+//                    id: loView
+//                    objectName: "loView"
+//                    Layouts.item: "loView"
+
+//                    anchors.fill: parent
+
+//                    clip: true
+//                    documentPath: file.path
+
+//                    // Keyboard events
+//                    focus: true
+//                    Keys.onPressed: KeybHelper.parseEvent(event)
+
+//                    Component.onCompleted: {
+//                        // WORKAROUND: Fix for wrong grid unit size
+//                        flickDeceleration = 1500 * units.gridUnit / 8
+//                        maximumFlickVelocity = 2500 * units.gridUnit / 8
+//                        loPageContent.forceActiveFocus()
+//                    }
+
+//                    Scrollbar { flickableItem: loView; parent: loView.parent }
+//                    Scrollbar { flickableItem: loView; parent: loView.parent; align: Qt.AlignBottom }
+//                }
+
+                // -------------------------------------------------------------------
+
+                PinchArea {
+                    id: pinchArea
+
+                    property real baseScale: 1
+                    property var myItem: loView
+
                     anchors {
                         left: parent.left
                         right: parent.right
@@ -150,23 +181,127 @@ PageWithBottomEdge {
                         bottom: bottomBar.top
                     }
 
-                    clip: true
-                    documentPath: file.path
-
-                    // Keyboard events
-                    focus: true
-                    Keys.onPressed: KeybHelper.parseEvent(event)
-
-                    Component.onCompleted: {
-                        // WORKAROUND: Fix for wrong grid unit size
-                        flickDeceleration = 1500 * units.gridUnit / 8
-                        maximumFlickVelocity = 2500 * units.gridUnit / 8
-                        loPageContent.forceActiveFocus()
+                    onPinchUpdated: {
+                        pinchUpdatedHandler(pinch)
+                    }
+                    onPinchFinished: {
+                        pinchFinishedHandler()
                     }
 
-                    Scrollbar { flickableItem: loView; parent: loView.parent }
-                    Scrollbar { flickableItem: loView; parent: loView.parent; align: Qt.AlignBottom }
+                    function pinchUpdatedHandler(pinch) {
+                        myItem.transformScale = pinch.scale
+                        //myItem.originX = pinch.center.x
+                        //myItem.originY = pinch.center.y
+                    }
+
+                    // Component.onCompleted: myItem.transformOrigin = Item.TopLeft
+                    function pinchFinishedHandler() {
+                        var pt = pinchArea.mapFromItem(myItem, -myItem.contentX , -myItem.contentY )
+                        console.log("pinchFinishedHandler", -myItem.contentX, -myItem.contentY, Math.round(pt.x), Math.round(pt.y))
+                        myItem.contentX = -pt.x
+                        myItem.contentY = -pt.y
+
+                        baseScale = myItem.transformScale * baseScale
+                        myItem.updateContentSize(baseScale)
+                        myItem.transformScale = 1
+                    }
+
+                    LibreOffice.Viewer {
+                        id: loView
+                        objectName: "loView"
+                        Layouts.item: "loView"
+
+                        anchors.fill: parent
+
+                        property real transformScale: 1
+                        property real originX: 0
+                        property real originY: 0
+                        scale: transformScale
+
+                        clip: true
+                        documentPath: file.path
+
+                        // Keyboard events
+                        focus: true
+                        Keys.onPressed: KeybHelper.parseEvent(event)
+
+                        Component.onCompleted: {
+                            // WORKAROUND: Fix for wrong grid unit size
+                            flickDeceleration = 1500 * units.gridUnit / 8
+                            maximumFlickVelocity = 2500 * units.gridUnit / 8
+                            loPageContent.forceActiveFocus()
+                        }
+
+                        function updateContentSize(tgtScale) {
+                            zoomFactor = tgtScale
+                        }
+
+                        Scrollbar { flickableItem: loView; parent: loView.parent }
+                        Scrollbar { flickableItem: loView; parent: loView.parent; align: Qt.AlignBottom }
+                    }
+
+                    // ------------------------ Desktop DEBUG
+
+                    MouseArea {
+                        id: testMa
+                        anchors.fill: parent
+                        visible: false //  Qt.platform.os == "linux"
+                        z: 9999999
+                        acceptedButtons: Qt.RightButton
+
+                        property int touchPointY
+                        property int touchPointX
+                        onPressed: {
+                            console.log("PRESSED")
+                            touchPointY = mouse.y
+                            touchPointX = mouse.x
+                        }
+                        onPositionChanged: {
+                            var diff = mouse.y - touchPointY
+                            var sc = (1 + diff / 200)
+                            //pinchUpdatedHandler({"center" : { "x" : touchPointX, "y" : touchPointY }, "scale" : sc })
+                            pinchUpdatedHandler({"center" : { "x" : mouse.x, "y" : mouse.y }, "scale" : sc })
+                        }
+                        onReleased: {
+                            pinchFinishedHandler()
+                        }
+                    }
+
+                    // ------------------------ Desktop DEBUG end
+
+//                    Flickable {
+//                        //id: flickable
+//                        id: myItem
+
+//                        property real transformScale: 1
+//                        property real originX: 0
+//                        property real originY: 0
+
+//                        //        transform: [
+//                        //            Scale {
+//                        //                origin {
+//                        //                    x: myItem.originX
+//                        //                    y: myItem.originY
+//                        //                }
+//                        //                xScale: myItem.transformScale
+//                        //                yScale: myItem.transformScale
+//                        //            }
+//                        //        ]
+//                        scale: transformScale
+
+//                        function updateContentSize(tgtScale) {
+//                            image.width = image.sourceSize.width * tgtScale
+//                            image.height = image.sourceSize.height * tgtScale
+//                        }
+
+//                        anchors.fill: parent
+//                        contentWidth: image.width; contentHeight: image.height
+
+//                        Image { id: image; source: "qrc:/back.jpg" }
+//                    }
                 }
+
+                // -------------------------------------------------------------------
 
                 // TODO: When we'll have to merge this with the zooming branch, replace this
                 // and use a single bottom panel
