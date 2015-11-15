@@ -238,17 +238,24 @@ void LOView::updateVisibleRect()
         }
     }
 
-    // Update information about the visible area
-    m_visibleArea.setRect(m_parentFlickable->property("contentX").toInt(),
-                          m_parentFlickable->property("contentY").toInt(),
-                          m_parentFlickable->width(),
-                          m_parentFlickable->height());
+    // Just for convenience.
+    QRect documentRect(this->boundingRect().toRect());
 
-    // Update information about the buffer area
-    m_bufferArea.setRect(qMax(0, m_visibleArea.x() - m_cacheBuffer),
-                         qMax(0, m_visibleArea.y() - m_cacheBuffer),
-                         qMin(int(this->width() - m_bufferArea.x()), m_visibleArea.width() + (m_cacheBuffer * 2)),
-                         qMin(int(this->height() - m_bufferArea.y()), m_visibleArea.height() + (m_cacheBuffer * 2)));
+    // Update visible area
+    QRect visibleRect(m_parentFlickable->property("contentX").toInt(),
+                      m_parentFlickable->property("contentY").toInt(),
+                      m_parentFlickable->width(),
+                      m_parentFlickable->height());
+
+    m_visibleArea = visibleRect.intersected(documentRect);
+
+    // Update buffer area
+    QRect bufferRect(m_visibleArea.left()   -  m_cacheBuffer,
+                     m_visibleArea.top()    -  m_cacheBuffer,
+                     m_visibleArea.width()  + (m_cacheBuffer * 2),
+                     m_visibleArea.height() + (m_cacheBuffer * 2));
+
+    m_bufferArea = bufferRect.intersected(documentRect);
 
     // Delete tiles that are outside the loading area
     if (!m_tiles.isEmpty()) {
@@ -273,19 +280,6 @@ void LOView::updateVisibleRect()
         }
     }
 
-    /*
-      FIXME: It seems that LOView loads more tiles than necessary.
-      This can be easily tested with DEBUG_SHOW_TILE_BORDER enabled.
-
-      Step to reproduce:
-        1) Open Document Viewer
-        2) Resize the window, BEFORE opening any LibreOffice document
-           (Trying to resize the window or scrolling the Flickable when the
-           document is already loaded causes bad flickering)
-        3) Outside the document area, at the bottom-right corner, there are
-           a few tiles that should not be visible/rendered/generated.
-    */
-
     // Number of tiles per row
     int tilesPerWidth           = qCeil(this->width() / TILE_SIZE);
     int tilesPerHeight           = qCeil(this->height() / TILE_SIZE);
@@ -301,6 +295,11 @@ void LOView::updateVisibleRect()
     int bufferFromHeight        = int(m_bufferArea.top() / TILE_SIZE);
     int bufferToWidth           = qCeil(qreal(m_bufferArea.right()) / TILE_SIZE);
     int bufferToHeight          = qCeil(qreal(m_bufferArea.bottom()) / TILE_SIZE);
+
+#ifdef DEBUG_VERBOSE
+    qDebug() << "Visible area - Left:" << visiblesFromWidth << "Right:" << visiblesToWidth << "Top:" << visiblesFromHeight << "Bottom:" << visiblesToHeight;
+    qDebug() << "Buffer area  - Left:" << bufferFromWidth   << "Right:" << bufferToWidth   << "Top:" << bufferFromHeight   << "Bottom:" << bufferToHeight;
+#endif
 
     this->generateTiles(visiblesFromWidth, visiblesFromHeight, visiblesToWidth, visiblesToHeight, tilesPerWidth, tilesPerHeight);
     this->generateTiles(bufferFromWidth, bufferFromHeight, bufferToWidth, bufferToHeight, tilesPerWidth, tilesPerHeight);
@@ -319,13 +318,11 @@ void LOView::generateTiles(int x1, int y1, int x2, int y2, int tilesPerWidth, in
             QRect tileRect(x * TILE_SIZE, y * TILE_SIZE, width, height);
             int index = y * tilesPerWidth + x;
 
-            if (x < tilesPerWidth && y < tilesPerHeight) {
 #ifdef DEBUG_VERBOSE
-        qDebug() << "Generating tile - Index:" << index << "X:" << x << "Y:" << y;
+            qDebug() << "Generating tile - Index:" << index << "X:" << x << "Y:" << y;
 #endif
 
-                this->createTile(index, tileRect);
-            }
+            this->createTile(index, tileRect);
         }
     }
 }
