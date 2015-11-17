@@ -127,7 +127,7 @@ if(CLICK_MODE)
     MESSAGE("Grabbing upstream libs to ${CMAKE_CURRENT_BINARY_DIR}/upstream-libs")
     execute_process(
         COMMAND mkdir ${CMAKE_CURRENT_BINARY_DIR}/upstream-libs
-        COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/get-click-deps -d ${CMAKE_CURRENT_SOURCE_DIR}/docviewer-libs.json ${CLICK_ARCH} ${CMAKE_CURRENT_BINARY_DIR}/upstream-libs
+        COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/get-click-deps -d ${CMAKE_CURRENT_SOURCE_DIR}/docviewer-libs.json -c ${CMAKE_CURRENT_SOURCE_DIR}/click/disable-file-locking.sh ${CLICK_ARCH} ${CMAKE_CURRENT_BINARY_DIR}/upstream-libs
     )
 
     MESSAGE("Installing upstream libs from ${CMAKE_CURRENT_BINARY_DIR}/upstream-libs/usr/lib/${ARCH_TRIPLET}/ to ${DATA_DIR}lib/${ARCH_TRIPLET}")
