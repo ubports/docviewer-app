@@ -21,13 +21,13 @@
 #define TILE_SIZE 256.0
 
 // Uncomment it if you want to see tiles boundaries
-#define DEBUG_SHOW_TILE_BORDER
+//#define DEBUG_SHOW_TILE_BORDER
 
 // Uncomment for benchmarking tile rendering performance
 //#define DEBUG_TILE_BENCHMARK
 
 // Uncomment if you want more verbose application output
-#define DEBUG_VERBOSE
+//#define DEBUG_VERBOSE
 
 #include <QDir>
 #include <QStandardPaths>
