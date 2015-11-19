@@ -28,6 +28,7 @@ set(libreofficetoolkitqmlplugin_SRCS
 set(libreofficetoolkitqmlplugin_HDRS
     twips.h
     config.h
+    loerror.h
 )
 
 add_library(libreofficetoolkitqmlplugin MODULE
