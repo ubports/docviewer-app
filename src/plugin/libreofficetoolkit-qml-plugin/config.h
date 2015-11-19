@@ -18,7 +18,6 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-// FIXME: Perhaps we want to use smaller tiles on mobile devices?
 #define TILE_SIZE 256.0
 
 // Uncomment it if you want to see tiles boundaries

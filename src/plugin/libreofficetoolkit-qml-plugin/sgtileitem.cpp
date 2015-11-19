@@ -1,6 +1,5 @@
 #include "sgtileitem.h"
 #include "lodocument.h"
-#include "config.h"
 
 #include <QQuickWindow>
 #include <QSGSimpleTextureNode>
@@ -51,9 +50,9 @@ void SGTileItem::geometryChanged(const QRectF &newGeometry, const QRectF &oldGeo
 }
 
 #ifdef DEBUG_SHOW_TILE_BORDER
-void SGTileItem::drawTileBorders(QSGNode* basicNode)
+void SGTileItem::drawTileBorders(QSGSimpleTextureNode* parentNode)
 {
-    auto node = basicNode;
+    auto node = parentNode;
     auto tileBorderGeometry = new QSGGeometry(QSGGeometry::defaultAttributes_Point2D(), 8);
     tileBorderGeometry->setDrawingMode(GL_LINES);
     tileBorderGeometry->setLineWidth(4);
