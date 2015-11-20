@@ -1,4 +1,4 @@
-# Norwegian Bokmal translation for ubuntu-docviewer-app
+# Swedish translation for ubuntu-docviewer-app
 # Copyright (c) 2015 Rosetta Contributors and Canonical Ltd 2015
 # This file is distributed under the same license as the ubuntu-docviewer-app package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-10-31 23:16+0300\n"
-"PO-Revision-Date: 2015-11-20 05:24+0000\n"
-"Last-Translator: Stefano Verzegnassi <stefano92.100@gmail.com>\n"
-"Language-Team: Norwegian Bokmal <nb@li.org>\n"
+"PO-Revision-Date: 2015-11-19 18:20+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -50,31 +50,31 @@ msgstr "Detaljer"
 
 #: ../src/app/qml/common/DetailsPage.qml:36
 msgid "Location"
-msgstr "Plassering"
+msgstr "Plats"
 
 #: ../src/app/qml/common/DetailsPage.qml:41
 msgid "Size"
-msgstr "Størrelse"
+msgstr "Storlek"
 
 #: ../src/app/qml/common/DetailsPage.qml:46
 msgid "Created"
-msgstr "Opprettet"
+msgstr "Skapad"
 
 #: ../src/app/qml/common/DetailsPage.qml:51
 msgid "Last modified"
-msgstr "Sist endret"
+msgstr "Senast ändrad"
 
 #: ../src/app/qml/common/DetailsPage.qml:58
 msgid "MIME type"
-msgstr "MIME-type"
+msgstr "MIME-typ"
 
 #: ../src/app/qml/common/FileNotFoundDialog.qml:24
 msgid "Error"
-msgstr "Feil"
+msgstr "Fel"
 
 #: ../src/app/qml/common/FileNotFoundDialog.qml:25
 msgid "File does not exist"
-msgstr "Fila finnes ikke"
+msgstr "Filen finns inte"
 
 #: ../src/app/qml/common/FileNotFoundDialog.qml:28
 #: ../src/app/qml/common/PickImportedDialog.qml:53
@@ -85,31 +85,31 @@ msgstr "Fila finnes ikke"
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Close"
-msgstr "Lukk"
+msgstr "Stäng"
 
 #: ../src/app/qml/common/PickImportedDialog.qml:28
 msgid "Multiple documents imported"
-msgstr "Flere dokumenter importert"
+msgstr "Flera dokument importerade"
 
 #: ../src/app/qml/common/PickImportedDialog.qml:29
 msgid "Choose which one to open:"
-msgstr "Velg hvilken du vil åpne:"
+msgstr "Välj vilken som skall öppnas:"
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:28
 msgid "File not supported"
 msgid_plural "Files not supported"
-msgstr[0] "Fila støttes ikke"
-msgstr[1] "Filene støttes ikke"
+msgstr[0] "Filens format stöds inte"
+msgstr[1] "Filernas format stöds inte"
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:29
 msgid "Following document has not been imported:"
 msgid_plural "Following documents have not been imported:"
-msgstr[0] "Følgende dokument er importert:"
-msgstr[1] "Følgende dokumenter er importert:"
+msgstr[0] "Följande dokument importerades inte:"
+msgstr[1] "Följande dokument importerades inte:"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:27
 msgid "Unknown file type"
-msgstr "Ukjent filtype"
+msgstr "Okänd filtyp"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:28
 msgid ""
@@ -134,19 +134,19 @@ msgstr "Ja"
 #: ../src/app/qml/common/utils.js:22
 #, qt-format
 msgid "%1 GB"
-msgstr "%1 GiB"
+msgstr "%1 GB"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in MB
 #: ../src/app/qml/common/utils.js:26
 #, qt-format
 msgid "%1 MB"
-msgstr "%1 MiB"
+msgstr "%1 MB"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in kB
 #: ../src/app/qml/common/utils.js:30
 #, qt-format
 msgid "%1 kB"
-msgstr "%1 KiB"
+msgstr "%1 kB"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in byte
 #: ../src/app/qml/common/utils.js:33
@@ -156,27 +156,27 @@ msgstr "%1 byte"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:39
 msgid "Delete file"
-msgstr "Slett fil"
+msgstr "Ta bort fil"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:40
 #, qt-format
 msgid "Delete %1 file"
 msgid_plural "Delete %1 files"
-msgstr[0] "Slett %1 fil"
-msgstr[1] "Slett %1 filer"
+msgstr[0] "Ta bort %1 fil"
+msgstr[1] "Ta bort %1 filer"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:41
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:42
 msgid "Are you sure you want to permanently delete this file?"
 msgid_plural "Are you sure you want to permanently delete these files?"
-msgstr[0] "Er du sikker på at du vil slette denne fila for godt?"
-msgstr[1] "Er du sikker på at du vil slette disse filene for godt?"
+msgstr[0] "Är du säker på att du vill ta bort denna fil permanent?"
+msgstr[1] "Är du säker på att du vill ta bort dessa filer permanent?"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:61
 #: ../src/app/qml/documentPage/DocumentDelegateActions.qml:27
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:55
 msgid "Delete"
-msgstr "Slett"
+msgstr "Ta bort"
 
 #: ../src/app/qml/documentPage/DocumentDelegateActions.qml:46
 msgid "Share"
@@ -184,7 +184,7 @@ msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:24
 msgid "No document found"
-msgstr "Fant ingen dokumenter"
+msgstr "Inga dokument hittade"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:25
 msgid ""
@@ -197,14 +197,14 @@ msgstr ""
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:95
 #, qt-format
 msgid "Today, %1"
-msgstr "I dag %1"
+msgstr "Idag, %1"
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:100
 #, qt-format
 msgid "Yesterday, %1"
-msgstr "I går %1"
+msgstr "Igår, %1"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
@@ -217,31 +217,31 @@ msgstr ""
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:120
 msgid "dddd, hh:mm"
-msgstr "dddd hh:mm"
+msgstr "dddd, hh:mm"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
 msgid "Documents"
-msgstr "Dokumenter"
+msgstr "Dokument"
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:29
 msgid "Search..."
-msgstr "Søk …"
+msgstr "Sök..."
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:36
 msgid "Sorting settings..."
-msgstr "Sorterer innstillinger …"
+msgstr "Sorterar inställningar..."
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:41
 msgid "Switch to single column list"
-msgstr "Bytt til liste med én kolonne"
+msgstr "Växla till listvy"
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:41
 msgid "Switch to grid"
-msgstr "Bytt til rutenett"
+msgstr "Växla till ikonvy"
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:49
 msgid "Pick"
-msgstr "Plukk"
+msgstr "Välj"
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:27
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:70
@@ -249,49 +249,48 @@ msgstr "Plukk"
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Back"
-msgstr "Tilbake"
+msgstr "Bakåt"
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:47
 msgid "search in documents..."
-msgstr "søk etter dokumenter …"
+msgstr "sök i dokument..."
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:42
 msgid "Select None"
-msgstr "Velg ingen"
+msgstr "Markera ingen"
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:42
 msgid "Select All"
-msgstr "Velg alle"
+msgstr "Markera alla"
 
 #: ../src/app/qml/documentPage/SearchEmptyState.qml:24
 msgid "No matching document found"
-msgstr "Søket ga ingen treff på dokumenter"
+msgstr "Inga matchande dokument hittade"
 
 #: ../src/app/qml/documentPage/SearchEmptyState.qml:26
 msgid ""
 "Please ensure that your query is not misspelled and/or try a different query."
-msgstr ""
-"Kontroller at søket ditt ikke er feilstavet, og/eller prøv et annet søk."
+msgstr "Kontrollera stavningen och/eller försök med andra söktermer"
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:13
 msgid "Today"
-msgstr "I dag"
+msgstr "Idag"
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:16
 msgid "Yesterday"
-msgstr "I går"
+msgstr "Igår"
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:19
 msgid "Earlier this week"
-msgstr "Tidligere denne uka"
+msgstr "Tidigare denna vecka"
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:22
 msgid "Earlier this month"
-msgstr "Tidligere denne måneden"
+msgstr "Tidigare denna månad"
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:24
 msgid "Even earlier..."
-msgstr "Enda tidligere …"
+msgstr "Ännu äldre..."
 
 #: ../src/app/qml/documentPage/SharePage.qml:23
 msgid "Share to"
@@ -299,28 +298,28 @@ msgstr ""
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:26
 msgid "Sorting settings"
-msgstr "Sorteringsoppsett"
+msgstr "Sorterar inställningar"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:31
 msgid "Sort by date (Latest first)"
-msgstr "Sorter på dato (nyeste først)"
+msgstr "Sortera efter datum (senaste först)"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:32
 msgid "Sort by name (A-Z)"
-msgstr "Sorter på navn (A-Å)"
+msgstr "Sortera efter namn (A-Ö)"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:33
 msgid "Sort by size (Smaller first)"
-msgstr "Sorter på størrelse (minste først)"
+msgstr "Sortera efter storlek (minsta först)"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:47
 msgid "Reverse order"
-msgstr "Omvendt rekkefølge"
+msgstr "Omvänd ordning"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:47
 #: ../src/app/qml/textView/TextView.qml:42
 msgid "Loading..."
-msgstr "Laster inn …"
+msgstr "Läser in…"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:51
 msgid "LibreOffice text document"
@@ -358,13 +357,13 @@ msgstr ""
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Disable night mode"
-msgstr "Slå av nattmodus"
+msgstr "Inaktivera nattläge"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Enable night mode"
-msgstr "Slå på nattmodus"
+msgstr "Aktivera nattläge"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:28
 msgid "Go to position"
@@ -419,31 +418,31 @@ msgstr ""
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:32
 #: ../src/app/qml/pdfView/PdfView.qml:37
 msgid "Contents"
-msgstr "Innhold"
+msgstr "Innehållsförteckning"
 
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:38
 msgid "Hide table of contents"
-msgstr "Skjul innholdsliste"
+msgstr "Göm innehållsförteckningen"
 
 #. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
 #. while the second one (%2) refers to the total pages count.
 #: ../src/app/qml/pdfView/PdfView.qml:34
 #, qt-format
 msgid "Page %1 of %2"
-msgstr "Side %1 av %2"
+msgstr "Sida %1 av %2"
 
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:85
 msgid "Go to page..."
-msgstr "Gå til side …"
+msgstr "Gå till sida..."
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
 msgid "Go to page"
-msgstr "Gå til side"
+msgstr "Gå till sida"
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:27
 #, qt-format
 msgid "Choose a page between 1 and %1"
-msgstr "Velg en side mellom 1 og %1"
+msgstr "Välj en sida mellan 1 och %1"
 
 #. TRANSLATORS: This string is used for renaming a copied file,
 #. when a file with the same name already exists in user's
@@ -457,18 +456,12 @@ msgstr "Velg en side mellom 1 og %1"
 #: ../src/plugin/file-qml-plugin/docviewerutils.cpp:111
 #, qt-format
 msgid "copy %1"
-msgstr "kopi nr. %1"
+msgstr "kopia %1"
 
 #: /home/qtros/dev/ubuntu-docviewer-app-render-engine-tuning-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
-msgstr "Dokumentvisning"
+msgstr "Dokumentvisare"
 
 #: /home/qtros/dev/ubuntu-docviewer-app-render-engine-tuning-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
-msgstr "dokumenter;visning;pdf;leser;"
-
-#~ msgid "'Today', hh:mm"
-#~ msgstr "'Today', hh:mm"
-
-#~ msgid "'Yesterday', hh:mm"
-#~ msgstr "'Yesterday', hh:mm"
+msgstr "dokument;visare;pdf;läsare;"
