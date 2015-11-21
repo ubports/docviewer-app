@@ -3,7 +3,7 @@ import QtQuick 2.4
 PinchArea {
     id: pinchArea
 
-    property var targetFlickable: bull
+    property var targetFlickable: null
     property real totalScale: 1
 
     onPinchUpdated: {
