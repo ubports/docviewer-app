@@ -153,11 +153,6 @@ PageWithBottomEdge {
 
                         anchors.fill: parent
 
-                        property real transformScale: 1
-                        property real originX: 0
-                        property real originY: 0
-                        scale: transformScale
-
                         clip: true
                         documentPath: file.path
 

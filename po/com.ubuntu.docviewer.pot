@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-19 00:57+0300\n"
+"POT-Creation-Date: 2015-11-21 21:36+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -245,7 +245,7 @@ msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:27
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:70
-#: ../src/app/qml/loView/LOViewPage.qml:204
+#: ../src/app/qml/loView/LOViewPage.qml:199
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Back"
@@ -379,7 +379,7 @@ msgid "GO!"
 msgstr ""
 
 #: ../src/app/qml/loView/LOViewPage.qml:35
-#: ../src/app/qml/loView/LOViewPage.qml:202
+#: ../src/app/qml/loView/LOViewPage.qml:197
 msgid "Slides"
 msgstr ""
 
@@ -458,10 +458,10 @@ msgstr ""
 msgid "copy %1"
 msgstr ""
 
-#: /home/qtros/dev/ubuntu-docviewer-app-zoom-final-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/qtros/dev/build-ubuntu-docviewer-app-zoom-final-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr ""
 
-#: /home/qtros/dev/ubuntu-docviewer-app-zoom-final-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/qtros/dev/build-ubuntu-docviewer-app-zoom-final-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr ""
