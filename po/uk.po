@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-11-20 05:35+0000\n"
+"X-Launchpad-Export-Date: 2015-11-21 05:38+0000\n"
 "X-Generator: Launchpad (build 17850)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
@@ -472,9 +472,3 @@ msgstr "Перегляд документів"
 #: /home/qtros/dev/ubuntu-docviewer-app-render-engine-tuning-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "documents;viewer;pdf;reader;документи;перегляд;пдф;читання;"
-
-#~ msgid "'Today', hh:mm"
-#~ msgstr "'Today', hh:mm"
-
-#~ msgid "'Yesterday', hh:mm"
-#~ msgstr "'Yesterday', hh:mm"
