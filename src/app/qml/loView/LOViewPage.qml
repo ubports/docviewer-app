@@ -114,7 +114,7 @@ PageWithBottomEdge {
                                 }
 
                                 ItemLayout {
-                                    item: "loView"
+                                    item: "pinchArea"
                                     anchors.fill: parent
 
                                     // Keyboard events
@@ -142,9 +142,18 @@ PageWithBottomEdge {
 
                 ScalingPinchArea {
                     id: pinchArea
+                    objectName: "pinchArea"
+                    Layouts.item: "pinchArea"
 
                     targetFlickable: loView
                     onTotalScaleChanged: targetFlickable.updateContentSize(totalScale)
+
+                    anchors {
+                        top: parent.top
+                        left: parent.left
+                        right: parent.right
+                        bottom: bottomBar.top
+                    }
 
                     LibreOffice.Viewer {
                         id: loView

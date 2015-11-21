@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-21 21:41+0300\n"
+"POT-Creation-Date: 2015-11-21 22:13+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -245,7 +245,7 @@ msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:27
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:70
-#: ../src/app/qml/loView/LOViewPage.qml:199
+#: ../src/app/qml/loView/LOViewPage.qml:208
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Back"
@@ -379,7 +379,7 @@ msgid "GO!"
 msgstr ""
 
 #: ../src/app/qml/loView/LOViewPage.qml:35
-#: ../src/app/qml/loView/LOViewPage.qml:197
+#: ../src/app/qml/loView/LOViewPage.qml:206
 msgid "Slides"
 msgstr ""
 
