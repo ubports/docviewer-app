@@ -40,6 +40,7 @@ LOView::LOView(QQuickItem *parent)
     , m_cacheBuffer(TILE_SIZE * 3)
     , m_visibleArea(0, 0, 0, 0)
     , m_bufferArea(0, 0, 0, 0)
+    , m_error(LibreOfficeError::NoError)
 {
     Q_UNUSED(parent)   
 
@@ -86,8 +87,21 @@ void LOView::initializeDocument(const QString &path)
     if (m_document)
         m_document->disconnect(this);
 
+    setError(LibreOfficeError::NoError);
+
     m_document = QSharedPointer<LODocument>(new LODocument());
     m_document->setPath(path);
+
+    /* A lot of things happens when we set the path property in
+     * m_document. Need to check if an error has been emitted. */
+    if (m_document->error() != LibreOfficeError::NoError) {
+        setError(m_document->error());
+
+        m_document.clear();
+
+        // Stop doing anything below.
+        return;
+    }
 
     // TODO MOVE
     m_partsModel = new LOPartsModel(m_document);
@@ -164,8 +178,16 @@ void LOView::setCacheBuffer(int cacheBuffer)
     Q_EMIT cacheBufferChanged();
 }
 
+LibreOfficeError::Error LOView::error() const
+{
+    return m_error;
+}
+
 void LOView::adjustZoomToWidth()
- {
+{
+    if (!m_document)
+        return;
+
     setZoomMode(LOView::FitToWidth);
 
     zoomValueToFitWidth = getZoomToFitWidth(m_parentFlickable->width(),
@@ -173,26 +195,6 @@ void LOView::adjustZoomToWidth()
 
     setZoomFactor(zoomValueToFitWidth);
     qDebug() << "Adjust zoom to width - value:" << zoomValueToFitWidth;
- }
-
-bool LOView::updateZoomIfAutomatic()
-{
-    // This function is only used in LOView::updateVisibleRect()
-    // It returns a bool, so that we can stop the execution of that function,
-    // which will be triggered again when we'll automatically update the zoom value.
-    if (m_zoomMode == LOView::FitToWidth) {
-        zoomValueToFitWidth = getZoomToFitWidth(m_parentFlickable->width(),
-                                                m_document->documentSize().width());
-
-        if (m_zoomFactor != zoomValueToFitWidth) {
-            setZoomFactor(zoomValueToFitWidth);
-
-            qDebug() << "Adjust automatic zoom to width - value:" << zoomValueToFitWidth;
-            return true;
-        }
-    }
-
-    return false;
 }
 
 void LOView::updateViewSize()
@@ -210,7 +212,7 @@ void LOView::updateViewSize()
 
 void LOView::updateVisibleRect()
 {
-    if (!m_parentFlickable)
+    if (!m_parentFlickable || !m_document)
         return;
 
     // Changes in parentFlickable width/height trigger directly LOView::updateVisibleRect(),
@@ -222,8 +224,17 @@ void LOView::updateVisibleRect()
     // If that happens, stop the execution of this function, since the change of
     // zoomFactor will trigger the updateViewSize() function, which triggers this
     // function again.
-    if (this->updateZoomIfAutomatic())
-        return;
+    if (m_zoomMode == LOView::FitToWidth) {
+        zoomValueToFitWidth = getZoomToFitWidth(m_parentFlickable->width(),
+                                                m_document->documentSize().width());
+
+        if (m_zoomFactor != zoomValueToFitWidth) {
+            setZoomFactor(zoomValueToFitWidth);
+
+            qDebug() << "Adjust automatic zoom to width - value:" << zoomValueToFitWidth;
+            return;
+        }
+    }
 
     // Check if current tiles have a different zoom value
     if (!m_tiles.isEmpty()) {
@@ -379,6 +390,15 @@ void LOView::clearView()
         sgtile->deleteLater();
         i = m_tiles.erase(i);
     }
+}
+
+void LOView::setError(const LibreOfficeError::Error &error)
+{
+    if (m_error == error)
+        return;
+
+    m_error = error;
+    Q_EMIT errorChanged();
 }
 
 LOView::~LOView()

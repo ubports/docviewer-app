@@ -22,15 +22,17 @@
 #include "lodocument.h"
 #include "loview.h"
 #include "lopartsmodel.h"
+#include "loerror.h"
 
 void LOPlugin::registerTypes(const char *uri)
 {
     Q_ASSERT(uri == QLatin1String("DocumentViewer.LibreOffice"));
     
     //@uri DocumentViewer.LibreOffice
-    qmlRegisterType<LODocument>(uri, 1, 0, "Document");
-    qmlRegisterType<LOView>(uri, 1, 0, "View");
-    qmlRegisterUncreatableType<LOPartsModel>(uri, 1, 0, "PartsModel", "You shouldn't create LOPartsModel in QML");
+    qmlRegisterType             <LODocument>        (uri, 1, 0, "Document");
+    qmlRegisterType             <LOView>            (uri, 1, 0, "View");
+    qmlRegisterUncreatableType  <LOPartsModel>      (uri, 1, 0, "PartsModel", "You shouldn't create LOPartsModel in QML");
+    qmlRegisterUncreatableType  <LibreOfficeError>  (uri, 1, 0, "Error",      "Not creatable as an object, use only to retrieve error enums (e.g. LibreOffice.Error.DocumentNotFound)");
 }
 
 void LOPlugin::initializeEngine(QQmlEngine *engine, const char *uri)

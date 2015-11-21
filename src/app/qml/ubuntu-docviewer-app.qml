@@ -98,6 +98,11 @@ MainView {
         mainView.pickMode = true
     }
 
+    function showErrorDialog(message) {
+        PopupUtils.open(Qt.resolvedUrl("common/ErrorDialog.qml"),
+                        mainView, { parent: mainView, text: message });
+    }
+
     // On screen rotation, force updating of header/U8 indicators panel visibility
     onIsLandscapeChanged: setHeaderVisibility(true);
 
@@ -122,8 +127,7 @@ MainView {
         onMimetypeChanged: LoadComponent.load(mimetype.name)
         onErrorChanged: {
             if (error == -1)
-                PopupUtils.open(Qt.resolvedUrl("common/FileNotFoundDialog.qml"),
-                                mainView, { parent: mainView });
+                mainView.showErrorDialog(i18n.tr("File does not exist."));
         }
     }
 
