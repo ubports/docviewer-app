@@ -7,6 +7,7 @@
 #include <QHash>
 #include <QQueue>
 #include <QAtomicInt>
+#include <QList>
 
 #include "lodocument.h"
 #include "rendertask.h"
@@ -45,14 +46,17 @@ Q_SIGNALS:
 
 private:
     Q_INVOKABLE void internalRenderCallback(AbstractRenderTask* task, QImage img);
-    void disposeTask(AbstractRenderTask* task);
     void doNextTask();
+    void disposeLater(AbstractRenderTask* task); // Delayed deletion, must be used in pair with "doDispose".
+    void doDispose();                            // Deletes marked objects (disposeLater).
 
 private:
     QQueue<AbstractRenderTask*> m_queue;
     int m_activeTaskCount;
     int m_idealThreadCount;
-    int m_lastPart;
+
+    AbstractRenderTask* m_lastTask; // WARNING: valid only when: m_activeTaskCount > 0.
+    QList<AbstractRenderTask*> m_disposedTasks;
 };
 
 #endif // RENDERENGINE_H

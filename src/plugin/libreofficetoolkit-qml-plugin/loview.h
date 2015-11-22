@@ -23,6 +23,7 @@
 #include <QQmlContext>
 #include <QQmlEngine>
 
+#include "loerror.h"
 #include "renderengine.h"
 #include "lopartsmodel.h"
 #include "lopartsimageprovider.h"
@@ -34,12 +35,13 @@ class LOView : public QQuickItem
 {
     Q_OBJECT
     Q_ENUMS(ZoomMode)
-    Q_PROPERTY(QQuickItem*   parentFlickable READ parentFlickable WRITE setParentFlickable NOTIFY parentFlickableChanged)
-    Q_PROPERTY(LODocument*   document        READ document        /*WRITE setDocument*/    NOTIFY documentChanged)
-    Q_PROPERTY(LOPartsModel* partsModel      READ partsModel                               NOTIFY partsModelChanged)
-    Q_PROPERTY(qreal         zoomFactor      READ zoomFactor      WRITE setZoomFactor      NOTIFY zoomFactorChanged)
-    Q_PROPERTY(ZoomMode      zoomMode        READ zoomMode                                 NOTIFY zoomModeChanged)
-    Q_PROPERTY(int           cacheBuffer     READ cacheBuffer     WRITE setCacheBuffer     NOTIFY cacheBufferChanged)
+    Q_PROPERTY(QQuickItem*              parentFlickable READ parentFlickable WRITE setParentFlickable NOTIFY parentFlickableChanged)
+    Q_PROPERTY(LODocument*              document        READ document        /*WRITE setDocument*/    NOTIFY documentChanged)
+    Q_PROPERTY(LOPartsModel*            partsModel      READ partsModel                               NOTIFY partsModelChanged)
+    Q_PROPERTY(qreal                    zoomFactor      READ zoomFactor      WRITE setZoomFactor      NOTIFY zoomFactorChanged)
+    Q_PROPERTY(ZoomMode                 zoomMode        READ zoomMode                                 NOTIFY zoomModeChanged)
+    Q_PROPERTY(int                      cacheBuffer     READ cacheBuffer     WRITE setCacheBuffer     NOTIFY cacheBufferChanged)
+    Q_PROPERTY(LibreOfficeError::Error  error           READ error                                    NOTIFY errorChanged)
 
 public:
     LOView(QQuickItem *parent = 0);
@@ -66,6 +68,8 @@ public:
     int         cacheBuffer() const;
     void        setCacheBuffer(int cacheBuffer);
 
+    LibreOfficeError::Error error() const;
+
     Q_INVOKABLE void adjustZoomToWidth();
 
 Q_SIGNALS:
@@ -75,6 +79,7 @@ Q_SIGNALS:
     void zoomFactorChanged();
     void zoomModeChanged();
     void cacheBufferChanged();
+    void errorChanged();
 
 private Q_SLOTS:
     void updateViewSize();
@@ -99,15 +104,18 @@ private:
     QRect                       m_visibleArea;
     QRect                       m_bufferArea;
 
+    LibreOfficeError::Error     m_error;
+
     QTimer                      m_updateTimer;
 
     QMap<int, SGTileItem*>      m_tiles;
 
-    void generateTiles(int x1, int y1, int x2, int y2, int tilesPerWidth);
+    void generateTiles(int x1, int y1, int x2, int y2, int tilesPerWidth, int tilesPerHeight);
     void createTile(int index, QRect rect);
     void setZoomMode(const ZoomMode zoomMode);
-    bool updateZoomIfAutomatic();
     void clearView();
+
+    void setError(const LibreOfficeError::Error &error);
 };
 
 #endif // LOVIEW_H
