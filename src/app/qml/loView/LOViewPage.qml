@@ -22,6 +22,7 @@ import DocumentViewer.LibreOffice 1.0 as LibreOffice
 import "../upstreamComponents"
 
 import "../common/utils.js" as Utils
+import "../common"
 import "KeybHelper.js" as KeybHelper
 
 PageWithBottomEdge {
@@ -113,7 +114,7 @@ PageWithBottomEdge {
                                 }
 
                                 ItemLayout {
-                                    item: "loView"
+                                    item: "pinchArea"
                                     anchors.fill: parent
 
                                     // Keyboard events
@@ -139,58 +140,74 @@ PageWithBottomEdge {
                     }
                 ]
 
-                LibreOffice.Viewer {
-                    id: loView
-                    objectName: "loView"
-                    Layouts.item: "loView"
+                ScalingPinchArea {
+                    id: pinchArea
+                    objectName: "pinchArea"
+                    Layouts.item: "pinchArea"
+
+                    targetFlickable: loView
+                    onTotalScaleChanged: targetFlickable.updateContentSize(totalScale)
+
                     anchors {
+                        top: parent.top
                         left: parent.left
                         right: parent.right
-                        top: parent.top
                         bottom: bottomBar.top
                     }
 
-                    clip: true
-                    documentPath: file.path
+                    LibreOffice.Viewer {
+                        id: loView
+                        objectName: "loView"
+                        Layouts.item: "loView"
 
-                    // Keyboard events
-                    focus: true
-                    Keys.onPressed: KeybHelper.parseEvent(event)
+                        anchors.fill: parent
 
-                    Component.onCompleted: {
-                        // WORKAROUND: Fix for wrong grid unit size
-                        flickDeceleration = 1500 * units.gridUnit / 8
-                        maximumFlickVelocity = 2500 * units.gridUnit / 8
-                        loPageContent.forceActiveFocus()
-                    }
+                        clip: true
+                        documentPath: file.path
 
-                    onErrorChanged: {
-                        var errorString;
+                        // Keyboard events
+                        focus: true
+                        Keys.onPressed: KeybHelper.parseEvent(event)
 
-                        switch(error) {
-                        case LibreOffice.Error.LibreOfficeNotFound:
-                            errorString = i18n.tr("LibreOffice binaries not found.")
-                            break;
-                        case LibreOffice.Error.LibreOfficeNotInitialized:
-                            errorString = i18n.tr("Error while loading LibreOffice.")
-                            break;
-                        case LibreOffice.Error.DocumentNotLoaded:
-                            errorString = i18n.tr("Document not loaded.\nThe requested document may be corrupt.")
-                            break;
+                        Component.onCompleted: {
+                            // WORKAROUND: Fix for wrong grid unit size
+                            flickDeceleration = 1500 * units.gridUnit / 8
+                            maximumFlickVelocity = 2500 * units.gridUnit / 8
+                            loPageContent.forceActiveFocus()
                         }
 
-                        if (errorString) {
-                            loPage.pageStack.pop()
-
-                            // We create the dialog in the MainView, so that it isn't
-                            // initialized by 'loPage' and keep on working after the
-                            // page is destroyed.
-                            mainView.showErrorDialog(errorString);
+                        function updateContentSize(tgtScale) {
+                            zoomFactor = tgtScale
                         }
-                    }
 
-                    Scrollbar { flickableItem: loView; parent: loView.parent }
-                    Scrollbar { flickableItem: loView; parent: loView.parent; align: Qt.AlignBottom }
+                        onErrorChanged: {
+                            var errorString;
+
+                            switch(error) {
+                            case LibreOffice.Error.LibreOfficeNotFound:
+                                errorString = i18n.tr("LibreOffice binaries not found.")
+                                break;
+                            case LibreOffice.Error.LibreOfficeNotInitialized:
+                                errorString = i18n.tr("Error while loading LibreOffice.")
+                                break;
+                            case LibreOffice.Error.DocumentNotLoaded:
+                                errorString = i18n.tr("Document not loaded.\nThe requested document may be corrupt.")
+                                break;
+                            }
+
+                            if (errorString) {
+                                loPage.pageStack.pop()
+
+                                // We create the dialog in the MainView, so that it isn't
+                                // initialized by 'loPage' and keep on working after the
+                                // page is destroyed.
+                                mainView.showErrorDialog(errorString);
+                            }
+                        }
+
+                        Scrollbar { flickableItem: loView; parent: loView.parent }
+                        Scrollbar { flickableItem: loView; parent: loView.parent; align: Qt.AlignBottom }
+                    }
                 }
 
                 // TODO: When we'll have to merge this with the zooming branch, replace this
