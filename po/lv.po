@@ -1,38 +1,41 @@
 # Latvian translation for ubuntu-docviewer-app
 # Copyright (c) 2015 Rosetta Contributors and Canonical Ltd 2015
 # This file is distributed under the same license as the ubuntu-docviewer-app package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
 #
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
+# Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>, 2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-10-31 23:16+0300\n"
-"PO-Revision-Date: 2015-11-19 18:20+0000\n"
+"POT-Creation-Date: 2015-11-21 22:13+0300\n"
+"PO-Revision-Date: 2015-11-22 07:42+0000\n"
 "Last-Translator: Rūdolfs Mazurs <Unknown>\n"
-"Language-Team: Latvian <lv@li.org>\n"
+"Language-Team: Latvian <lata-l10n@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-11-20 05:35+0000\n"
+"X-Launchpad-Export-Date: 2015-11-24 05:40+0000\n"
 "X-Generator: Launchpad (build 17850)\n"
+"Language: lv\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
 msgid "Some of the provided arguments is not valid."
-msgstr ""
+msgstr "Daži no sniegtajiem parametriem nav pareizi."
 
 #: ../src/app/qml/common/CommandLineProxy.qml:58
 msgid "Opens ubuntu-docviewer-app displaying the selected file"
-msgstr ""
+msgstr "Atver ubuntu-docviewer-app rādot izvēlēto datni"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:65
 msgid "Run fullscreen"
-msgstr ""
+msgstr "Palaist pa visu ekrānu"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:71
 msgid "Open ubuntu-docviewer-app in pick mode. Use it for tests only."
 msgstr ""
+"Atver ubuntu-docviewer-app ņemšanas režīmā. Izmantot šo tikai testiem."
 
 #: ../src/app/qml/common/CommandLineProxy.qml:77
 msgid ""
@@ -40,6 +43,9 @@ msgid ""
 "~/Documents.\n"
 "The path must exist prior to running ubuntu-docviewer-app"
 msgstr ""
+"Ielādēt sarakstu ar dokumentiem no dotās mapes, nevis no noklusējuma "
+"~/Documents.\n"
+"Šim ceļam ir jāeksistē pirms ubuntu-docviewer-app palaišanas"
 
 #: ../src/app/qml/common/DetailsPage.qml:25
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:106
@@ -89,23 +95,25 @@ msgstr "Aizvērt"
 
 #: ../src/app/qml/common/PickImportedDialog.qml:28
 msgid "Multiple documents imported"
-msgstr ""
+msgstr "Importēti vairāki dokumenti"
 
 #: ../src/app/qml/common/PickImportedDialog.qml:29
 msgid "Choose which one to open:"
-msgstr ""
+msgstr "Izvēlieties, kuru atvērt:"
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:28
 msgid "File not supported"
 msgid_plural "Files not supported"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Datne nav atbalstīta"
+msgstr[1] "Datnes nav atbalstītas"
+msgstr[2] "Datnes nav atbalstītas"
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:29
 msgid "Following document has not been imported:"
 msgid_plural "Following documents have not been imported:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Tika importēts sekojošais dokuments:"
+msgstr[1] "Tika importēti sekojošie dokumenti:"
+msgstr[2] "Tika importēti sekojošie dokumenti:"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:27
 msgid "Unknown file type"
@@ -117,6 +125,9 @@ msgid ""
 "\n"
 "Do you want to open it as a plain text?"
 msgstr ""
+"Diemžēl nevaram atrast veidu, kā attēlot šo datni.\n"
+"\n"
+"Vai vēlaties to atvērt kā vienkāršu tekstu?"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:38
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:55
@@ -134,118 +145,122 @@ msgstr "Jā"
 #: ../src/app/qml/common/utils.js:22
 #, qt-format
 msgid "%1 GB"
-msgstr ""
+msgstr "%1 GB"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in MB
 #: ../src/app/qml/common/utils.js:26
 #, qt-format
 msgid "%1 MB"
-msgstr ""
+msgstr "%1 MB"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in kB
 #: ../src/app/qml/common/utils.js:30
 #, qt-format
 msgid "%1 kB"
-msgstr ""
+msgstr "%1 kB"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in byte
 #: ../src/app/qml/common/utils.js:33
 #, qt-format
 msgid "%1 byte"
-msgstr ""
+msgstr "%1 baits"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:39
 msgid "Delete file"
-msgstr ""
+msgstr "Dzēst datni"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:40
 #, qt-format
 msgid "Delete %1 file"
 msgid_plural "Delete %1 files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Dzēst %1 datni"
+msgstr[1] "Dzēst %1 datnes"
+msgstr[2] "Dzēst %1 datnes"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:41
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:42
 msgid "Are you sure you want to permanently delete this file?"
 msgid_plural "Are you sure you want to permanently delete these files?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Vai tiešām vēlaties neatgriezeniski dzēst šo datni?"
+msgstr[1] "Vai tiešām vēlaties neatgriezeniski dzēst šīs datnes?"
+msgstr[2] "Vai tiešām vēlaties neatgriezeniski dzēst šīs datnes?"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:61
 #: ../src/app/qml/documentPage/DocumentDelegateActions.qml:27
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:55
 msgid "Delete"
-msgstr ""
+msgstr "Dzēst"
 
 #: ../src/app/qml/documentPage/DocumentDelegateActions.qml:46
 msgid "Share"
-msgstr ""
+msgstr "Dalīties"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:24
 msgid "No document found"
-msgstr ""
+msgstr "Nav atrastu dokumentu"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:25
 msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
 "folder or insert removable media with documents."
 msgstr ""
+"Savienojiet savu ierīci ar jebkuru datoru un vienkārši velciet datnes uz "
+"Dokumentu mapi, vai ievietojiet noņemamu datu nesēju ar dokumentiem."
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:95
 #, qt-format
 msgid "Today, %1"
-msgstr ""
+msgstr "Šodien, %1"
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:100
 #, qt-format
 msgid "Yesterday, %1"
-msgstr ""
+msgstr "Vakar, %1"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:107
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:126
 msgid "yyyy/MM/dd hh:mm"
-msgstr ""
+msgstr "yyyy-MM-dd hh.mm"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:120
 msgid "dddd, hh:mm"
-msgstr ""
+msgstr "dddd, hh.mm"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
 msgid "Documents"
-msgstr ""
+msgstr "Dokumenti"
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:29
 msgid "Search..."
-msgstr ""
+msgstr "Meklēt..."
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:36
 msgid "Sorting settings..."
-msgstr ""
+msgstr "Kārtošanas iestatījumi..."
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:41
 msgid "Switch to single column list"
-msgstr ""
+msgstr "Pārslēgties uz vienas kolonnas sarakstu"
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:41
 msgid "Switch to grid"
-msgstr ""
+msgstr "Pārslēgties uz režģi"
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:49
 msgid "Pick"
-msgstr ""
+msgstr "Paņemt"
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:27
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:70
-#: ../src/app/qml/loView/LOViewPage.qml:191
+#: ../src/app/qml/loView/LOViewPage.qml:208
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Back"
@@ -253,68 +268,70 @@ msgstr "Atpakaļ"
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:47
 msgid "search in documents..."
-msgstr ""
+msgstr "meklēt dokumentos..."
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:42
 msgid "Select None"
-msgstr ""
+msgstr "Neizvēlēties nevienu"
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:42
 msgid "Select All"
-msgstr ""
+msgstr "Izvēlēties visu"
 
 #: ../src/app/qml/documentPage/SearchEmptyState.qml:24
 msgid "No matching document found"
-msgstr ""
+msgstr "Nav atrastu atbilstošu dokumentu"
 
 #: ../src/app/qml/documentPage/SearchEmptyState.qml:26
 msgid ""
 "Please ensure that your query is not misspelled and/or try a different query."
 msgstr ""
+"Pārliecinieties, ka vaicājums ir uzrakstīts pareizi, vai arī mēģiniet citu "
+"vaicājumu."
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:13
 msgid "Today"
-msgstr ""
+msgstr "Šodien"
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:16
 msgid "Yesterday"
-msgstr ""
+msgstr "Vakar"
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:19
 msgid "Earlier this week"
-msgstr ""
+msgstr "Agrāk šonedēļ"
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:22
 msgid "Earlier this month"
-msgstr ""
+msgstr "Agrāk šomēnes"
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:24
 msgid "Even earlier..."
-msgstr ""
+msgstr "Vēl agrāk..."
 
 #: ../src/app/qml/documentPage/SharePage.qml:23
 msgid "Share to"
-msgstr ""
+msgstr "Koplietot uz"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:26
 msgid "Sorting settings"
-msgstr ""
+msgstr "Kārtošanas iestatījumi"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:31
 msgid "Sort by date (Latest first)"
-msgstr ""
+msgstr "Kārtot pēc datuma (vispirms jaunākie)"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:32
 msgid "Sort by name (A-Z)"
-msgstr ""
+msgstr "Kārtot pēc nosaukuma (A-Z)"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:33
 msgid "Sort by size (Smaller first)"
-msgstr ""
+msgstr "Kārtot pēc izmēra (vispirms mazākie)"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:47
 msgid "Reverse order"
-msgstr ""
+msgstr "Apgrieztā secībā"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:47
 #: ../src/app/qml/textView/TextView.qml:42
@@ -323,96 +340,96 @@ msgstr "Ielādē..."
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:51
 msgid "LibreOffice text document"
-msgstr ""
+msgstr "LibreOffice teksta dokuments"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:53
 msgid "LibreOffice spread sheet"
-msgstr ""
+msgstr "LibreOffice izklājlapa"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:55
 msgid "LibreOffice presentation"
-msgstr ""
+msgstr "LibreOffice prezentācija"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:57
 msgid "LibreOffice Draw document"
-msgstr ""
+msgstr "LibreOffice zīmējuma dokuments"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:59
 msgid "Unknown LibreOffice document"
-msgstr ""
+msgstr "Nezināms LibreOffice dokuments"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:61
 msgid "Unknown type document"
-msgstr ""
+msgstr "Nezināms dokumenta tips"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:86
 msgid "Show zoom controls"
-msgstr ""
+msgstr "Rādīt mēroga vadīklas"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:93
 msgid "Go to position..."
-msgstr ""
+msgstr "Iet uz pozīciju..."
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Disable night mode"
-msgstr ""
+msgstr "Izslēgt nakts režīmu"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
 msgid "Enable night mode"
-msgstr ""
+msgstr "Ieslēgt nakts režīmu"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:28
 msgid "Go to position"
-msgstr ""
+msgstr "Iet uz pozīciju"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:29
 msgid "Choose a position between 1% and 100%"
-msgstr ""
+msgstr "Izvēlieties pozīciju starp 1% un 100%"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:60
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:58
 msgid "GO!"
 msgstr "Iet!"
 
-#: ../src/app/qml/loView/LOViewPage.qml:34
-#: ../src/app/qml/loView/LOViewPage.qml:189
+#: ../src/app/qml/loView/LOViewPage.qml:35
+#: ../src/app/qml/loView/LOViewPage.qml:206
 msgid "Slides"
-msgstr ""
+msgstr "Slaidi"
 
 #: ../src/app/qml/loView/LOViewZoomHeader.qml:42
 msgid "Hide zoom controls"
-msgstr ""
+msgstr "Slēpt mēroga vadīklas"
 
 #: ../src/app/qml/loView/LOViewZoomHeader.qml:49
 msgid "Zoom in"
-msgstr ""
+msgstr "Tuvināt"
 
 #: ../src/app/qml/loView/LOViewZoomHeader.qml:55
 msgid "Zoom out"
-msgstr ""
+msgstr "Tālināt"
 
 #: ../src/app/qml/loView/SlideControllerPanel.qml:62
 #, qt-format
 msgid "Slide %1 of %2"
-msgstr ""
+msgstr "Slaids %1 no %2"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:29
 msgid "Automatic (Fit width)"
-msgstr ""
+msgstr "Automātiski (piekārtot platumam)"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:94
 #, qt-format
 msgid "Automatic (%1%)"
-msgstr ""
+msgstr "Automātisks (%1%)"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:95
 #, qt-format
 msgid "Zoom: %1%"
-msgstr ""
+msgstr "Mērogs: %1%"
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:32
@@ -422,7 +439,7 @@ msgstr "Saturs"
 
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:38
 msgid "Hide table of contents"
-msgstr ""
+msgstr "Slēpt satura rādītāju"
 
 #. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
 #. while the second one (%2) refers to the total pages count.
@@ -433,7 +450,7 @@ msgstr "Lappuse %1 no %2"
 
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:85
 msgid "Go to page..."
-msgstr ""
+msgstr "Iet uz lappusi..."
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
 msgid "Go to page"
@@ -456,12 +473,12 @@ msgstr "Izvēlies lappusi starp 1 un %1"
 #: ../src/plugin/file-qml-plugin/docviewerutils.cpp:111
 #, qt-format
 msgid "copy %1"
-msgstr ""
+msgstr "kopēt %1"
 
-#: /home/qtros/dev/ubuntu-docviewer-app-render-engine-tuning-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/qtros/dev/build-ubuntu-docviewer-app-zoom-final-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Dokumentu skatītājs"
 
-#: /home/qtros/dev/ubuntu-docviewer-app-render-engine-tuning-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/qtros/dev/build-ubuntu-docviewer-app-zoom-final-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "dokumenti;skatītājs;pdf;lasītājs;"
