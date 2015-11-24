@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-10-31 23:16+0300\n"
+"POT-Creation-Date: 2015-11-21 22:13+0300\n"
 "PO-Revision-Date: 2015-11-19 18:20+0000\n"
 "Last-Translator: Danial Behzadi <dani.behzi@gmail.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2015-11-20 05:35+0000\n"
+"X-Launchpad-Export-Date: 2015-11-24 05:40+0000\n"
 "X-Generator: Launchpad (build 17850)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
@@ -241,7 +241,7 @@ msgstr "برداشتن"
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:27
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:70
-#: ../src/app/qml/loView/LOViewPage.qml:191
+#: ../src/app/qml/loView/LOViewPage.qml:208
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Back"
@@ -376,8 +376,8 @@ msgstr ""
 msgid "GO!"
 msgstr "برو!"
 
-#: ../src/app/qml/loView/LOViewPage.qml:34
-#: ../src/app/qml/loView/LOViewPage.qml:189
+#: ../src/app/qml/loView/LOViewPage.qml:35
+#: ../src/app/qml/loView/LOViewPage.qml:206
 msgid "Slides"
 msgstr ""
 
@@ -456,10 +456,10 @@ msgstr "صفحه‌ای بین ۱ و %1 برگزینید"
 msgid "copy %1"
 msgstr "رونوشت %1"
 
-#: /home/qtros/dev/ubuntu-docviewer-app-render-engine-tuning-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/qtros/dev/build-ubuntu-docviewer-app-zoom-final-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "نمایشگر سند"
 
-#: /home/qtros/dev/ubuntu-docviewer-app-render-engine-tuning-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/qtros/dev/build-ubuntu-docviewer-app-zoom-final-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "documents;viewer;pdf;reader;"

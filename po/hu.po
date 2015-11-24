@@ -7,32 +7,36 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-10-31 23:16+0300\n"
-"PO-Revision-Date: 2015-11-20 05:20+0000\n"
+"POT-Creation-Date: 2015-11-21 22:13+0300\n"
+"PO-Revision-Date: 2015-11-23 08:08+0000\n"
 "Last-Translator: Richard Somlói <ricsipontaz@gmail.com>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-11-21 05:38+0000\n"
+"X-Launchpad-Export-Date: 2015-11-24 05:40+0000\n"
 "X-Generator: Launchpad (build 17850)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
 msgid "Some of the provided arguments is not valid."
-msgstr ""
+msgstr "A megadott argumentumok közül néhány nem érvényes."
 
 #: ../src/app/qml/common/CommandLineProxy.qml:58
 msgid "Opens ubuntu-docviewer-app displaying the selected file"
 msgstr ""
+"Megnyitja az ubuntu-docviewer-app alkalmazást a kiválasztott fájl "
+"megjelenítéséhez"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:65
 msgid "Run fullscreen"
-msgstr ""
+msgstr "Teljes képernyős futás"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:71
 msgid "Open ubuntu-docviewer-app in pick mode. Use it for tests only."
 msgstr ""
+"Az ubuntu-docviewer-app alkalmazás elindítása „pick” módban. Csak "
+"teszteléshez."
 
 #: ../src/app/qml/common/CommandLineProxy.qml:77
 msgid ""
@@ -40,6 +44,9 @@ msgid ""
 "~/Documents.\n"
 "The path must exist prior to running ubuntu-docviewer-app"
 msgstr ""
+"A ~/Dokumentumok mappa helyett a megadott mappáról tölti be a "
+"dokumentumokat.\n"
+"A megadott helynek létezni kell."
 
 #: ../src/app/qml/common/DetailsPage.qml:25
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:106
@@ -117,6 +124,9 @@ msgid ""
 "\n"
 "Do you want to open it as a plain text?"
 msgstr ""
+"Sajnáljuk, de nem sikerült ennek a fájlnak a megjelenítése.\n"
+"\n"
+"Szeretné megnyitni egyszerű szövegként?"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:38
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:55
@@ -180,7 +190,7 @@ msgstr "Törlés"
 
 #: ../src/app/qml/documentPage/DocumentDelegateActions.qml:46
 msgid "Share"
-msgstr ""
+msgstr "Megosztás"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:24
 msgid "No document found"
@@ -191,6 +201,9 @@ msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
 "folder or insert removable media with documents."
 msgstr ""
+"Csatlakoztassa az eszközét bármilyen számítógéphez és másolj a fájlokat a "
+"Dokumentumok mappába, vagy helyezzen be egy dokumentumokat tartalmazó "
+"hordozható médiát."
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
@@ -211,7 +224,7 @@ msgstr "Tegnap, %1"
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:107
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:126
 msgid "yyyy/MM/dd hh:mm"
-msgstr ""
+msgstr "yyyy-MM-dd hh.mm"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
@@ -245,7 +258,7 @@ msgstr "Válasszon"
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:27
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:70
-#: ../src/app/qml/loView/LOViewPage.qml:191
+#: ../src/app/qml/loView/LOViewPage.qml:208
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Back"
@@ -296,7 +309,7 @@ msgstr "Még korábban…"
 
 #: ../src/app/qml/documentPage/SharePage.qml:23
 msgid "Share to"
-msgstr ""
+msgstr "Megosztás"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:26
 msgid "Sorting settings"
@@ -325,35 +338,35 @@ msgstr "Betöltés…"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:51
 msgid "LibreOffice text document"
-msgstr ""
+msgstr "LibreOffice szöveges dokumentum"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:53
 msgid "LibreOffice spread sheet"
-msgstr ""
+msgstr "LibreOffice táblázat"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:55
 msgid "LibreOffice presentation"
-msgstr ""
+msgstr "LibreOffice bemutató"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:57
 msgid "LibreOffice Draw document"
-msgstr ""
+msgstr "LibreOffice rajzdokumentum"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:59
 msgid "Unknown LibreOffice document"
-msgstr ""
+msgstr "Ismeretlen LibreOffice dokumentum"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:61
 msgid "Unknown type document"
-msgstr ""
+msgstr "Ismeretlen típusú dokumentum"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:86
 msgid "Show zoom controls"
-msgstr ""
+msgstr "Nagyításvezérlés megjelenítése"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:93
 msgid "Go to position..."
-msgstr ""
+msgstr "Ugrás pozícióhoz…"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
@@ -369,52 +382,52 @@ msgstr "Éjjeli mód"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:28
 msgid "Go to position"
-msgstr ""
+msgstr "Ugrás pozícióhoz"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:29
 msgid "Choose a position between 1% and 100%"
-msgstr ""
+msgstr "Válasszon egy pozíciót 1% és 100% között"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:60
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:58
 msgid "GO!"
 msgstr "Mehet!"
 
-#: ../src/app/qml/loView/LOViewPage.qml:34
-#: ../src/app/qml/loView/LOViewPage.qml:189
+#: ../src/app/qml/loView/LOViewPage.qml:35
+#: ../src/app/qml/loView/LOViewPage.qml:206
 msgid "Slides"
-msgstr ""
+msgstr "Diák"
 
 #: ../src/app/qml/loView/LOViewZoomHeader.qml:42
 msgid "Hide zoom controls"
-msgstr ""
+msgstr "Nagyításvezérlők elrejtése"
 
 #: ../src/app/qml/loView/LOViewZoomHeader.qml:49
 msgid "Zoom in"
-msgstr ""
+msgstr "Nagyítás"
 
 #: ../src/app/qml/loView/LOViewZoomHeader.qml:55
 msgid "Zoom out"
-msgstr ""
+msgstr "Kicsinyítés"
 
 #: ../src/app/qml/loView/SlideControllerPanel.qml:62
 #, qt-format
 msgid "Slide %1 of %2"
-msgstr ""
+msgstr "%1 / %2 dia"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:29
 msgid "Automatic (Fit width)"
-msgstr ""
+msgstr "Automatikus (szélességhez)"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:94
 #, qt-format
 msgid "Automatic (%1%)"
-msgstr ""
+msgstr "Automatikus (%1%)"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:95
 #, qt-format
 msgid "Zoom: %1%"
-msgstr ""
+msgstr "Nagyítás: %1%"
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:32
@@ -460,10 +473,10 @@ msgstr "Válasszon egy oldalt 1 és %1 között"
 msgid "copy %1"
 msgstr "másolat %1"
 
-#: /home/qtros/dev/ubuntu-docviewer-app-render-engine-tuning-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/qtros/dev/build-ubuntu-docviewer-app-zoom-final-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Dokumentummegjelenítő"
 
-#: /home/qtros/dev/ubuntu-docviewer-app-render-engine-tuning-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/qtros/dev/build-ubuntu-docviewer-app-zoom-final-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "dokumentumok;megtekintő;pdf;olvasó;"
