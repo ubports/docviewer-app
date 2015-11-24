@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-22 16:06+0100\n"
+"POT-Creation-Date: 2015-11-24 17:00+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -241,7 +241,7 @@ msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:27
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:70
-#: ../src/app/qml/loView/LOViewPage.qml:216
+#: ../src/app/qml/loView/LOViewPage.qml:233
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Back"
@@ -374,20 +374,20 @@ msgstr ""
 msgid "GO!"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewPage.qml:34
-#: ../src/app/qml/loView/LOViewPage.qml:214
+#: ../src/app/qml/loView/LOViewPage.qml:35
+#: ../src/app/qml/loView/LOViewPage.qml:231
 msgid "Slides"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewPage.qml:172
+#: ../src/app/qml/loView/LOViewPage.qml:188
 msgid "LibreOffice binaries not found."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewPage.qml:175
+#: ../src/app/qml/loView/LOViewPage.qml:191
 msgid "Error while loading LibreOffice."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewPage.qml:178
+#: ../src/app/qml/loView/LOViewPage.qml:194
 msgid ""
 "Document not loaded.\n"
 "The requested document may be corrupt."
@@ -472,10 +472,10 @@ msgstr ""
 msgid "copy %1"
 msgstr ""
 
-#: /tmp/build-reboot-cmake-refactor-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/build-reboot-cmake-refactor-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr ""
 
-#: /tmp/build-reboot-cmake-refactor-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/build-reboot-cmake-refactor-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr ""
