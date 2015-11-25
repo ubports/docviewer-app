@@ -7,32 +7,33 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-11-21 22:13+0300\n"
-"PO-Revision-Date: 2015-11-20 05:27+0000\n"
-"Last-Translator: Stefano Verzegnassi <stefano92.100@gmail.com>\n"
+"POT-Creation-Date: 2015-11-24 17:00+0100\n"
+"PO-Revision-Date: 2015-11-24 20:57+0000\n"
+"Last-Translator: Ivo Xavier <ivofernandes12@gmail.com>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-11-24 05:40+0000\n"
+"X-Launchpad-Export-Date: 2015-11-25 05:37+0000\n"
 "X-Generator: Launchpad (build 17850)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
 msgid "Some of the provided arguments is not valid."
-msgstr ""
+msgstr "Alguns dos argumentos fornecidos não são válidos."
 
 #: ../src/app/qml/common/CommandLineProxy.qml:58
 msgid "Opens ubuntu-docviewer-app displaying the selected file"
-msgstr ""
+msgstr "Abre o ubuntu-docviewer-app mostrando o ficheiro selecionado"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:65
 msgid "Run fullscreen"
-msgstr ""
+msgstr "Abrir em ecrã completo"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:71
 msgid "Open ubuntu-docviewer-app in pick mode. Use it for tests only."
 msgstr ""
+"Abrir ubuntu-docviewer-app em modo de escolha. Use-o apenas para testes."
 
 #: ../src/app/qml/common/CommandLineProxy.qml:77
 msgid ""
@@ -40,6 +41,9 @@ msgid ""
 "~/Documents.\n"
 "The path must exist prior to running ubuntu-docviewer-app"
 msgstr ""
+"Carrega a lista de documentos da pasta indicada, em vez da padrão "
+"~/Documentos.\n"
+"Esse diretório já deve existir antes de executar o ubuntu-docviewer-app"
 
 #: ../src/app/qml/common/DetailsPage.qml:25
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:106
@@ -68,15 +72,11 @@ msgstr "Última modificação"
 msgid "MIME type"
 msgstr "Tipo MIME"
 
-#: ../src/app/qml/common/FileNotFoundDialog.qml:24
+#: ../src/app/qml/common/ErrorDialog.qml:23
 msgid "Error"
 msgstr "Erro"
 
-#: ../src/app/qml/common/FileNotFoundDialog.qml:25
-msgid "File does not exist"
-msgstr "O ficheiro não existe"
-
-#: ../src/app/qml/common/FileNotFoundDialog.qml:28
+#: ../src/app/qml/common/ErrorDialog.qml:26
 #: ../src/app/qml/common/PickImportedDialog.qml:53
 #: ../src/app/qml/common/RejectedImportDialog.qml:38
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:33
@@ -93,7 +93,7 @@ msgstr "Múltiplos documentos importados"
 
 #: ../src/app/qml/common/PickImportedDialog.qml:29
 msgid "Choose which one to open:"
-msgstr "Escolha qual quer abrir"
+msgstr "Escolha qual abrir:"
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:28
 msgid "File not supported"
@@ -117,6 +117,8 @@ msgid ""
 "\n"
 "Do you want to open it as a plain text?"
 msgstr ""
+"Desculpe, mas não conseguimos encontrar maneira de mostrar este ficheiro.\n"
+"Quer abrir em texto simples?"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:38
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:55
@@ -180,17 +182,19 @@ msgstr "Apagar"
 
 #: ../src/app/qml/documentPage/DocumentDelegateActions.qml:46
 msgid "Share"
-msgstr ""
+msgstr "Partilhar"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:24
 msgid "No document found"
-msgstr "Nenhum documento encontrado"
+msgstr "Sem documentos encontrados"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:25
 msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
 "folder or insert removable media with documents."
 msgstr ""
+"Ligue o seu dispositivo a qualquer computador e arraste os ficheiros para a "
+"pasta Documentos ou insira um armazenamento externo com documentos."
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
@@ -211,7 +215,7 @@ msgstr "Ontem, %1"
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:107
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:126
 msgid "yyyy/MM/dd hh:mm"
-msgstr ""
+msgstr "yyyy/MM/dd hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
@@ -245,7 +249,7 @@ msgstr "Escolher"
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:27
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:70
-#: ../src/app/qml/loView/LOViewPage.qml:208
+#: ../src/app/qml/loView/LOViewPage.qml:233
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Back"
@@ -296,7 +300,7 @@ msgstr "Mesmo antes..."
 
 #: ../src/app/qml/documentPage/SharePage.qml:23
 msgid "Share to"
-msgstr ""
+msgstr "Partilhar para"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:26
 msgid "Sorting settings"
@@ -325,35 +329,35 @@ msgstr "A carregar..."
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:51
 msgid "LibreOffice text document"
-msgstr ""
+msgstr "Documento de texto LibreOffice"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:53
 msgid "LibreOffice spread sheet"
-msgstr ""
+msgstr "Folha de cálculo LibreOffice"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:55
 msgid "LibreOffice presentation"
-msgstr ""
+msgstr "Apresentação LibreOffice"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:57
 msgid "LibreOffice Draw document"
-msgstr ""
+msgstr "Documento LibreOffice Draw"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:59
 msgid "Unknown LibreOffice document"
-msgstr ""
+msgstr "Documento LibreOffice desconhecido"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:61
 msgid "Unknown type document"
-msgstr ""
+msgstr "Tipo de documento desconhecido"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:86
 msgid "Show zoom controls"
-msgstr ""
+msgstr "Mostrar controlos de zoom"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:93
 msgid "Go to position..."
-msgstr ""
+msgstr "Ir para posição..."
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
@@ -369,11 +373,11 @@ msgstr "Ativar modo noturno"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:28
 msgid "Go to position"
-msgstr ""
+msgstr "Ir para posição"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:29
 msgid "Choose a position between 1% and 100%"
-msgstr ""
+msgstr "Escolha uma posição entre 1% e 100%"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:60
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:58
@@ -381,40 +385,56 @@ msgid "GO!"
 msgstr "IR!"
 
 #: ../src/app/qml/loView/LOViewPage.qml:35
-#: ../src/app/qml/loView/LOViewPage.qml:206
+#: ../src/app/qml/loView/LOViewPage.qml:231
 msgid "Slides"
+msgstr "Diapositivos"
+
+#: ../src/app/qml/loView/LOViewPage.qml:188
+msgid "LibreOffice binaries not found."
+msgstr "Binários do LibreOffice não encontrados."
+
+#: ../src/app/qml/loView/LOViewPage.qml:191
+msgid "Error while loading LibreOffice."
+msgstr "Erro ao carregar LibreOffice."
+
+#: ../src/app/qml/loView/LOViewPage.qml:194
+msgid ""
+"Document not loaded.\n"
+"The requested document may be corrupt."
 msgstr ""
+"Documento não carregado.\n"
+"O documento pedido pode estar corrompido."
 
 #: ../src/app/qml/loView/LOViewZoomHeader.qml:42
 msgid "Hide zoom controls"
-msgstr ""
+msgstr "Ocultar controlos de zoom"
 
 #: ../src/app/qml/loView/LOViewZoomHeader.qml:49
 msgid "Zoom in"
-msgstr ""
+msgstr "Ampliar"
 
 #: ../src/app/qml/loView/LOViewZoomHeader.qml:55
 msgid "Zoom out"
-msgstr ""
+msgstr "Reduzir"
 
 #: ../src/app/qml/loView/SlideControllerPanel.qml:62
 #, qt-format
 msgid "Slide %1 of %2"
-msgstr ""
+msgstr "Diapositivo %1 de %2"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:29
 msgid "Automatic (Fit width)"
-msgstr ""
+msgstr "Automático (ajustar largura)"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:94
 #, qt-format
 msgid "Automatic (%1%)"
-msgstr ""
+msgstr "Automático (%1%)"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:95
 #, qt-format
 msgid "Zoom: %1%"
-msgstr ""
+msgstr "Zoom: %1%"
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:32
@@ -446,6 +466,10 @@ msgstr "Ir para a página"
 msgid "Choose a page between 1 and %1"
 msgstr "Escolha uma página entre 1 e %1"
 
+#: ../src/app/qml/ubuntu-docviewer-app.qml:130
+msgid "File does not exist."
+msgstr "Ficheiro não existe."
+
 #. TRANSLATORS: This string is used for renaming a copied file,
 #. when a file with the same name already exists in user's
 #. Documents folder.
@@ -460,10 +484,13 @@ msgstr "Escolha uma página entre 1 e %1"
 msgid "copy %1"
 msgstr "cópia %1"
 
-#: /home/qtros/dev/build-ubuntu-docviewer-app-zoom-final-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/build-reboot-cmake-refactor-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Documentos"
 
-#: /home/qtros/dev/build-ubuntu-docviewer-app-zoom-final-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/build-reboot-cmake-refactor-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "visualizador;documentos;leitor;pdf"
+
+#~ msgid "File does not exist"
+#~ msgstr "O ficheiro não existe"

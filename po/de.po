@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-11-21 22:13+0300\n"
+"POT-Creation-Date: 2015-11-24 17:00+0100\n"
 "PO-Revision-Date: 2015-11-19 18:20+0000\n"
 "Last-Translator: Phillip Sz <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-11-24 05:40+0000\n"
+"X-Launchpad-Export-Date: 2015-11-25 05:37+0000\n"
 "X-Generator: Launchpad (build 17850)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
@@ -68,15 +68,11 @@ msgstr "Zuletzt geändert"
 msgid "MIME type"
 msgstr "MIME-Typ"
 
-#: ../src/app/qml/common/FileNotFoundDialog.qml:24
+#: ../src/app/qml/common/ErrorDialog.qml:23
 msgid "Error"
 msgstr "Fehler"
 
-#: ../src/app/qml/common/FileNotFoundDialog.qml:25
-msgid "File does not exist"
-msgstr "Datei existiert nicht"
-
-#: ../src/app/qml/common/FileNotFoundDialog.qml:28
+#: ../src/app/qml/common/ErrorDialog.qml:26
 #: ../src/app/qml/common/PickImportedDialog.qml:53
 #: ../src/app/qml/common/RejectedImportDialog.qml:38
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:33
@@ -246,7 +242,7 @@ msgstr "Auswählen"
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:27
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:70
-#: ../src/app/qml/loView/LOViewPage.qml:208
+#: ../src/app/qml/loView/LOViewPage.qml:233
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Back"
@@ -382,8 +378,22 @@ msgid "GO!"
 msgstr "Los!"
 
 #: ../src/app/qml/loView/LOViewPage.qml:35
-#: ../src/app/qml/loView/LOViewPage.qml:206
+#: ../src/app/qml/loView/LOViewPage.qml:231
 msgid "Slides"
+msgstr ""
+
+#: ../src/app/qml/loView/LOViewPage.qml:188
+msgid "LibreOffice binaries not found."
+msgstr ""
+
+#: ../src/app/qml/loView/LOViewPage.qml:191
+msgid "Error while loading LibreOffice."
+msgstr ""
+
+#: ../src/app/qml/loView/LOViewPage.qml:194
+msgid ""
+"Document not loaded.\n"
+"The requested document may be corrupt."
 msgstr ""
 
 #: ../src/app/qml/loView/LOViewZoomHeader.qml:42
@@ -447,6 +457,10 @@ msgstr "Zu Seite gehen"
 msgid "Choose a page between 1 and %1"
 msgstr "Bitte eine Seite zwischen 1 und %1 auswählen"
 
+#: ../src/app/qml/ubuntu-docviewer-app.qml:130
+msgid "File does not exist."
+msgstr ""
+
 #. TRANSLATORS: This string is used for renaming a copied file,
 #. when a file with the same name already exists in user's
 #. Documents folder.
@@ -461,10 +475,13 @@ msgstr "Bitte eine Seite zwischen 1 und %1 auswählen"
 msgid "copy %1"
 msgstr "Kopie %1"
 
-#: /home/qtros/dev/build-ubuntu-docviewer-app-zoom-final-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/build-reboot-cmake-refactor-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Dokumentenbetrachter"
 
-#: /home/qtros/dev/build-ubuntu-docviewer-app-zoom-final-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/build-reboot-cmake-refactor-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "Dokumente;Betrachter;PDF;Leser;Dokumentenbetrachter;PDF-Betrachter"
+
+#~ msgid "File does not exist"
+#~ msgstr "Datei existiert nicht"
