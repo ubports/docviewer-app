@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-11-24 17:00+0100\n"
-"PO-Revision-Date: 2015-11-23 08:08+0000\n"
+"PO-Revision-Date: 2015-11-25 07:07+0000\n"
 "Last-Translator: Richard Somlói <ricsipontaz@gmail.com>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-11-25 05:37+0000\n"
+"X-Launchpad-Export-Date: 2015-11-26 05:39+0000\n"
 "X-Generator: Launchpad (build 17850)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
@@ -396,17 +396,19 @@ msgstr "Diák"
 
 #: ../src/app/qml/loView/LOViewPage.qml:188
 msgid "LibreOffice binaries not found."
-msgstr ""
+msgstr "Nem találhatóak LibreOffice binárisok."
 
 #: ../src/app/qml/loView/LOViewPage.qml:191
 msgid "Error while loading LibreOffice."
-msgstr ""
+msgstr "Hiba a LibreOffice betöltése közben."
 
 #: ../src/app/qml/loView/LOViewPage.qml:194
 msgid ""
 "Document not loaded.\n"
 "The requested document may be corrupt."
 msgstr ""
+"A dokumentum betöltése sikertelen.\n"
+"A kért dokumentum sérült lehet."
 
 #: ../src/app/qml/loView/LOViewZoomHeader.qml:42
 msgid "Hide zoom controls"
@@ -471,7 +473,7 @@ msgstr "Válasszon egy oldalt 1 és %1 között"
 
 #: ../src/app/qml/ubuntu-docviewer-app.qml:130
 msgid "File does not exist."
-msgstr ""
+msgstr "A fájl nem létezik."
 
 #. TRANSLATORS: This string is used for renaming a copied file,
 #. when a file with the same name already exists in user's

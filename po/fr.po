@@ -8,31 +8,33 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-11-24 17:00+0100\n"
-"PO-Revision-Date: 2015-11-19 18:20+0000\n"
-"Last-Translator: Yuri <Unknown>\n"
+"PO-Revision-Date: 2015-11-25 22:22+0000\n"
+"Last-Translator: Jean-Marc <Unknown>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2015-11-25 05:37+0000\n"
+"X-Launchpad-Export-Date: 2015-11-26 05:39+0000\n"
 "X-Generator: Launchpad (build 17850)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
 msgid "Some of the provided arguments is not valid."
-msgstr ""
+msgstr "Certains des arguments fournis ne sont pas valides."
 
 #: ../src/app/qml/common/CommandLineProxy.qml:58
 msgid "Opens ubuntu-docviewer-app displaying the selected file"
-msgstr ""
+msgstr "Ouvre ubuntu-docviewer-app en affichant le fichier sélectionné"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:65
 msgid "Run fullscreen"
-msgstr ""
+msgstr "Lancer en plein écran"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:71
 msgid "Open ubuntu-docviewer-app in pick mode. Use it for tests only."
 msgstr ""
+"Ouvrir ubuntu-docviewer-app en mode sélection. Utilisez-le uniquement pour "
+"des tests."
 
 #: ../src/app/qml/common/CommandLineProxy.qml:77
 msgid ""
@@ -40,6 +42,9 @@ msgid ""
 "~/Documents.\n"
 "The path must exist prior to running ubuntu-docviewer-app"
 msgstr ""
+"Charger la liste de documents à partir du dossier donné, au lieu de "
+"~/Documents par défaut.\n"
+"Le chemin doit exister avant de lancer ubuntu-docviewer-app"
 
 #: ../src/app/qml/common/DetailsPage.qml:25
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:106
@@ -113,6 +118,9 @@ msgid ""
 "\n"
 "Do you want to open it as a plain text?"
 msgstr ""
+"Désolé, mais nous ne trouvons pas de moyen pour afficher ce fichier.\n"
+"\n"
+"Voulez-vous l'ouvrir en texte brut ?"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:38
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:55
@@ -176,7 +184,7 @@ msgstr "Supprimer"
 
 #: ../src/app/qml/documentPage/DocumentDelegateActions.qml:46
 msgid "Share"
-msgstr ""
+msgstr "Partager"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:24
 msgid "No document found"
@@ -187,6 +195,9 @@ msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
 "folder or insert removable media with documents."
 msgstr ""
+"Connectez votre appareil à n'importe quel ordinateur et faites glisser tout "
+"simplement des fichiers dans le dossier Documents ou insérez un média "
+"amovible avec des documents."
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
@@ -207,7 +218,7 @@ msgstr "Hier, %1"
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:107
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:126
 msgid "yyyy/MM/dd hh:mm"
-msgstr ""
+msgstr "dd/MM/yyyy hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
@@ -292,7 +303,7 @@ msgstr "Encore plus tôt ..."
 
 #: ../src/app/qml/documentPage/SharePage.qml:23
 msgid "Share to"
-msgstr ""
+msgstr "Partager avec"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:26
 msgid "Sorting settings"
@@ -321,35 +332,35 @@ msgstr "Chargement..."
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:51
 msgid "LibreOffice text document"
-msgstr ""
+msgstr "Document texte LibreOffice"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:53
 msgid "LibreOffice spread sheet"
-msgstr ""
+msgstr "Feuille de calcul LibreOffice"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:55
 msgid "LibreOffice presentation"
-msgstr ""
+msgstr "Présentation LibreOffice"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:57
 msgid "LibreOffice Draw document"
-msgstr ""
+msgstr "Dessin LibreOffice Draw"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:59
 msgid "Unknown LibreOffice document"
-msgstr ""
+msgstr "Document LibreOffice inconnu"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:61
 msgid "Unknown type document"
-msgstr ""
+msgstr "Document de type inconnu"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:86
 msgid "Show zoom controls"
-msgstr ""
+msgstr "Afficher les contrôles de zoom"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:93
 msgid "Go to position..."
-msgstr ""
+msgstr "Aller à la position..."
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
@@ -365,11 +376,11 @@ msgstr "Activer le mode nuit"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:28
 msgid "Go to position"
-msgstr ""
+msgstr "Aller à la position"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:29
 msgid "Choose a position between 1% and 100%"
-msgstr ""
+msgstr "Sélectionner une position entre 1 % et 100 %"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:60
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:58
@@ -379,52 +390,54 @@ msgstr "ALLEZ !"
 #: ../src/app/qml/loView/LOViewPage.qml:35
 #: ../src/app/qml/loView/LOViewPage.qml:231
 msgid "Slides"
-msgstr ""
+msgstr "Diapositives"
 
 #: ../src/app/qml/loView/LOViewPage.qml:188
 msgid "LibreOffice binaries not found."
-msgstr ""
+msgstr "Binaires de LibreOffice introuvables."
 
 #: ../src/app/qml/loView/LOViewPage.qml:191
 msgid "Error while loading LibreOffice."
-msgstr ""
+msgstr "Erreur lors du chargement de LibreOffice."
 
 #: ../src/app/qml/loView/LOViewPage.qml:194
 msgid ""
 "Document not loaded.\n"
 "The requested document may be corrupt."
 msgstr ""
+"Document non chargé.\n"
+"Le document demandé est peut-être corrompu."
 
 #: ../src/app/qml/loView/LOViewZoomHeader.qml:42
 msgid "Hide zoom controls"
-msgstr ""
+msgstr "Masquer les contrôles de zoom"
 
 #: ../src/app/qml/loView/LOViewZoomHeader.qml:49
 msgid "Zoom in"
-msgstr ""
+msgstr "Agrandir"
 
 #: ../src/app/qml/loView/LOViewZoomHeader.qml:55
 msgid "Zoom out"
-msgstr ""
+msgstr "Réduire"
 
 #: ../src/app/qml/loView/SlideControllerPanel.qml:62
 #, qt-format
 msgid "Slide %1 of %2"
-msgstr ""
+msgstr "Diapositive %1 sur %2"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:29
 msgid "Automatic (Fit width)"
-msgstr ""
+msgstr "Automatique (adapté à la largeur)"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:94
 #, qt-format
 msgid "Automatic (%1%)"
-msgstr ""
+msgstr "Automatique (%1 %)"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:95
 #, qt-format
 msgid "Zoom: %1%"
-msgstr ""
+msgstr "Zoom : %1 %"
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:32
@@ -458,7 +471,7 @@ msgstr "Choisissez une page entre 1 et %1"
 
 #: ../src/app/qml/ubuntu-docviewer-app.qml:130
 msgid "File does not exist."
-msgstr ""
+msgstr "Le fichier n’existe pas."
 
 #. TRANSLATORS: This string is used for renaming a copied file,
 #. when a file with the same name already exists in user's

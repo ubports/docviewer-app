@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-11-24 17:00+0100\n"
-"PO-Revision-Date: 2015-11-24 21:26+0000\n"
+"PO-Revision-Date: 2015-11-25 08:17+0000\n"
 "Last-Translator: Marcos Lans <Unknown>\n"
 "Language-Team: Galician <gl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-11-25 05:37+0000\n"
+"X-Launchpad-Export-Date: 2015-11-26 05:39+0000\n"
 "X-Generator: Launchpad (build 17850)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
@@ -34,6 +34,8 @@ msgstr "En pantalla completa"
 #: ../src/app/qml/common/CommandLineProxy.qml:71
 msgid "Open ubuntu-docviewer-app in pick mode. Use it for tests only."
 msgstr ""
+"Abrir o aplicativo Docviewer para Ubuntu en modo selección. Usar só para "
+"probas."
 
 #: ../src/app/qml/common/CommandLineProxy.qml:77
 msgid ""
@@ -41,6 +43,9 @@ msgid ""
 "~/Documents.\n"
 "The path must exist prior to running ubuntu-docviewer-app"
 msgstr ""
+"Cargar a lista de documentos do cartafol indicado, no canto do "
+"predeterminado ~/Documents.\n"
+"A ruta debe existir antes de executar o aplicativo Docviewer."
 
 #: ../src/app/qml/common/DetailsPage.qml:25
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:106
@@ -191,6 +196,8 @@ msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
 "folder or insert removable media with documents."
 msgstr ""
+"Conectar o dispositivo a un computador e arrastrar os ficheiros ao cartafol "
+"Documentos ou inserir un medio extraíbel con documentos."
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
