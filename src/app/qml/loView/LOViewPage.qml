@@ -25,7 +25,7 @@ import "KeybHelper.js" as KeybHelper
 
 Page {
     id: loPage
-    title: Utils.getNameOfFile(file.path);
+    title: Utils.getNameOfFile(file.path)
     flickable: null
 
     readonly property bool wideWindow: width > units.gu(120)

@@ -25,7 +25,7 @@ import "../common/utils.js" as Utils
 
 PageWithBottomEdge {
     id: pdfPage
-    title: Utils.getNameOfFile(file.path);
+    title: Utils.getNameOfFile(file.path)
 
     flickable: pdfView
 
