@@ -98,13 +98,6 @@ PageWithBottomEdge {
                 // but it's not a problem at the moment (our target is phone).
                 window.releaseResources();
             }
-
-            MouseArea {
-                objectName: "mouseArea"
-
-                anchors.fill: parent
-                onClicked: mainView.toggleHeaderVisibility()
-            }
         }
 
         Item { id: _zoomHelper }
