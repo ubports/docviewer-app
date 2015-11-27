@@ -17,25 +17,12 @@
 import QtQuick 2.4
 import Ubuntu.Components 1.3
 
-ListItem {
-    id: listItemSubtitled
-    property alias text: mainLabel.text
-    property alias subText: subLabel.text
-
-    Column {
-        anchors {
-            left: parent.left; right: parent.right
-            margins: units.gu(2)
-            verticalCenter: parent.verticalCenter
-        }
-
-        Label {
-            id: mainLabel
-            color: UbuntuColors.midAubergine
-        }
-        Label {
-            id: subLabel
-            textSize: Label.Small
-        }
+Rectangle {
+    height: units.dp(2)
+    gradient: Gradient {
+        GradientStop { position: 0.0; color: Qt.rgba(0, 0, 0, 0.1)  }
+        GradientStop { position: 0.49; color:  Qt.rgba(0, 0, 0, 0.1)  }
+        GradientStop { position: 0.5; color: Qt.rgba(1, 1, 1, 0.4) }
+        GradientStop { position: 1.0; color:  Qt.rgba(1, 1, 1, 0.4)  }
     }
 }

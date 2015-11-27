@@ -16,10 +16,8 @@
  */
 
 import QtQuick 2.4
-import Ubuntu.Components 1.2
+import Ubuntu.Components 1.3
 import QtQuick.Layouts 1.1
-
-import "../upstreamComponents"
 
 Page {
     id: pdfContents
@@ -41,9 +39,6 @@ Page {
     }
 
     onActiveChanged: {
-        // If the header was hidden in the PdfPage, make it visible.
-        mainView.setHeaderVisibility(true);
-
         // Find out the current page position in the ToC index
         for (var i=0; i<poppler.tocModel.count; i++) {
             if (i+1 < poppler.tocModel.count) {
@@ -111,7 +106,7 @@ Page {
 
                     font.weight: model.level == 0 ? Font.DemiBold : Font.Normal
                     color: (model.level == 0) ? UbuntuColors.midAubergine
-                                              : Theme.palette.selected.backgroundText
+                                              : theme.palette.selected.backgroundText
                 }
 
                 /*
@@ -134,7 +129,7 @@ Page {
                     text: model.pageIndex + 1
                     font.weight: model.level == 0 ? Font.DemiBold : Font.Normal
                     color: (model.level == 0) ? UbuntuColors.midAubergine
-                                              : Theme.palette.selected.backgroundText
+                                              : theme.palette.selected.backgroundText
                 }
             }
         }

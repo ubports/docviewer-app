@@ -15,9 +15,10 @@
  */
 
 import QtQuick 2.4
-import Ubuntu.Components 1.2
+import Ubuntu.Components 1.3
 import QtQuick.Layouts 1.1
-import Ubuntu.Components.Popups 1.0
+import Ubuntu.Components.Popups 1.3
+import DocumentViewer 1.0
 
 PageHeadState {
     id: rootItem
@@ -31,7 +32,7 @@ PageHeadState {
         anchors.fill: parent
         spacing: units.gu(1)
 
-        ActivityIndicator { id: activity }
+        ActivityIndicator { id: activity; visible: running }
 
         Column {
             id: layout
@@ -50,23 +51,8 @@ PageHeadState {
                 //horizontalAlignment: Text.AlignHCenter
                 elide: Text.ElideMiddle
 
-                fontSize: "small"
+                textSize: Label.Small
                 text: targetPage.currentPage
-            }
-        }
-    }
-
-    backAction: Action {
-        iconName: "back"
-        text: (pageStack.depth > 1) ? i18n.tr("Back") : i18n.tr("Close")
-        onTriggered: {
-            if (pageStack.depth > 1) {
-                // Go back to Welcome page
-                pageStack.pop();
-            } else {
-                // File has been imported through Content Hub (or was not chosen through WelcomePage)
-                // Close the application and show our source app (e.g. ubuntu-filemanager-app, if used to open a document)
-                Qt.quit()
             }
         }
     }

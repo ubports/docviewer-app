@@ -15,7 +15,7 @@
 */
 
 import QtQuick 2.4
-import Ubuntu.Components 1.2
+import Ubuntu.Components 1.3
 import QtQuick.Layouts 1.1
 import DocumentViewer 1.0
 
@@ -57,7 +57,7 @@ ListItem {
                 }
                 Label {
                     text: Utils.printSize(i18n, model.size)
-                    fontSize: "small"
+                    textSize: Label.Small
                 }
             }
 
@@ -65,7 +65,7 @@ ListItem {
                 width: parent.width
                 Label {
                     text: internal.formattedDateTime()
-                    fontSize: "small"
+                    textSize: Label.Small
 
                     Layout.fillWidth: true
                 }

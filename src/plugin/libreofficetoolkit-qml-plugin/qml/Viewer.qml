@@ -31,7 +31,21 @@ Flickable {
 
     function adjustZoomToWidth()
     {
-        view.adjustZoomToWidth();
+        var oldZoom = view.zoomFactor
+        view.adjustZoomToWidth()
+
+        var zoomScale = view.zoomFactor / oldZoom
+        rootFlickable.contentX *= zoomScale
+        rootFlickable.contentY *= zoomScale
+    }
+
+    function setZoom(newValue)
+    {
+        var zoomScale = newValue / view.zoomFactor;
+        view.zoomFactor = newValue;
+
+        rootFlickable.contentX *= zoomScale;
+        rootFlickable.contentY *= zoomScale;
     }
 
     function moveView(axis, diff)

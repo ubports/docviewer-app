@@ -15,8 +15,8 @@
  */
 
 import QtQuick 2.4
-import Ubuntu.Components 1.2
-import Ubuntu.Components.Popups 1.0
+import Ubuntu.Components 1.3
+import Ubuntu.Components.Popups 1.3
 import DocumentViewer 1.0
 import QtQuick.Window 2.0
 import Qt.labs.settings 1.0
@@ -66,30 +66,6 @@ MainView {
                         mainView, { parent: mainView });
     }
 
-    function toggleFullScreen() {
-        mainView.fullscreen = !mainView.fullscreen
-    }
-
-    function setHeaderVisibility(visible, toggleFullscreen) {
-        toggleFullscreen = typeof toggleFullscreen !== 'undefined' ? toggleFullscreen : true
-        header.visible = visible;
-
-        // If device orientation is landscape and screen width is limited,
-        // force hiding Unity 8 indicators panel.
-        if (!DocumentViewer.desktopMode && mainView.isLandscape &&
-                mainView.width < units.gu(51)) {
-            mainView.fullscreen = true;
-            return;
-        }
-
-        if (!DocumentViewer.desktopMode && toggleFullscreen)
-            mainView.fullscreen = !visible;
-    }
-
-    function toggleHeaderVisibility() {
-        setHeaderVisibility(!header.visible);
-    }
-
     function switchToBrowseMode() {
         mainView.pickMode = false
     }
@@ -98,13 +74,22 @@ MainView {
         mainView.pickMode = true
     }
 
+    onIsLandscapeChanged: {
+        // If device orientation is landscape and screen width is limited,
+        // force hiding Unity 8 indicators panel.
+        if (!DocumentViewer.desktopMode && mainView.isLandscape &&
+                mainView.width < units.gu(51)) {
+            mainView.fullscreen = true
+            return;
+        } else {
+            mainView.fullscreen = false
+        }
+    }
+
     function showErrorDialog(message) {
         PopupUtils.open(Qt.resolvedUrl("common/ErrorDialog.qml"),
                         mainView, { parent: mainView, text: message });
     }
-
-    // On screen rotation, force updating of header/U8 indicators panel visibility
-    onIsLandscapeChanged: setHeaderVisibility(true);
 
     onFullscreenChanged: {
         if (mainView.fullscreen)

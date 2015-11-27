@@ -15,7 +15,7 @@
  */
 
 import QtQuick 2.4
-import Ubuntu.Components 1.2
+import Ubuntu.Components 1.3
 import QtQuick.Layouts 1.1
 import DocumentViewer.LibreOffice 1.0 as LibreOffice
 
@@ -26,66 +26,120 @@ ListView {
 
     property bool expanded: true
 
+    orientation: ListView.Vertical
+
+    // used in vertical mode
+    property bool isWide: width > units.gu(24)
+
     currentIndex: view.model ? loView.document.currentPart : -1
     highlightMoveDuration: UbuntuAnimation.SnapDuration
 
-    delegate: ListItem {
-        id: delegate
+    delegate: (orientation == ListView.Vertical) ? verticalDelegate : horizontalDelegate
 
-        width: parent.width
-        height: units.gu(16)
+    Component {
+        id: verticalDelegate
 
-        color: (loView.document.currentPart === model.index) ? Theme.palette.selected.background
-                                                             : "transparent"
+        ListItem {
+            id: delegate
+            width: parent.width
+            height: units.gu(16)
 
-        AbstractButton {
-            objectName: "abstractbutton"
-            anchors.fill: parent
+            color: (loView.document.currentPart === model.index) ? theme.palette.selected.background
+                                                                 : "transparent"
 
-            onClicked: {
-                loView.document.currentPart = model.index
+            onClicked: internal.delegate_onClicked(model.index)
 
-                // Check if the view has been included in a nested page (e.g.
-                // bottomEdge). If so, close that page and return to the
-                // main viewer.
-                if (view.hasOwnProperty("belongsToNestedPage"))
-                    pageStack.pop();
-            }
-        }
+            RowLayout {
+                anchors {
+                    fill: parent
+                    leftMargin: units.gu(1)
+                    rightMargin: units.gu(1)
+                }
+                spacing: units.gu(1)
 
-        RowLayout {
-            anchors {
-                fill: parent
-                leftMargin: units.gu(1)
-                rightMargin: units.gu(1)
-            }
-            spacing: units.gu(1)
+                Image {
+                    Layout.fillHeight: true
+                    Layout.preferredWidth: height
+                    fillMode: Image.PreserveAspectFit
+                    // Do not store a cache of the thumbnail, so that we don't show
+                    // thumbnails of a previously loaded document.
+                    cache: true // TODO PLAY WITH IT
+                    source: model.thumbnail
+                }
 
-            Image {
-                Layout.fillHeight: true
-                Layout.preferredWidth: height
-                fillMode: Image.PreserveAspectFit
-                // Do not store a cache of the thumbnail, so that we don't show
-                // thumbnails of a previously loaded document.
-                cache: true // TODO PLAY WITH IT
-                source: model.thumbnail
-            }
+                Label {
+                    Layout.fillWidth: true
+                    wrapMode: Text.WordWrap
+                    text: model.name
+                    visible: view.isWide
+                    color: (loView.document.currentPart === model.index) ? UbuntuColors.orange
+                                                                         : theme.palette.selected.backgroundText
+                }
 
-            Label {
-                Layout.fillWidth: true
-                wrapMode: Text.WordWrap
-                text: model.name
-                color: (loView.document.currentPart === model.index) ? UbuntuColors.orange
-                                                                     : Theme.palette.selected.backgroundText
-            }
-
-            Label {
-                text: model.index + 1
-                color: (loView.document.currentPart === model.index) ? UbuntuColors.orange
-                                                                     : Theme.palette.selected.backgroundText
+                Label {
+                    text: model.index + 1
+                    color: (loView.document.currentPart === model.index) ? UbuntuColors.orange
+                                                                         : theme.palette.selected.backgroundText
+                }
             }
         }
     }
+
+    Component {
+        id: horizontalDelegate
+
+        ListItem {
+            id: delegate
+            height: parent.height; width: height
+
+            color: (loView.document.currentPart === model.index) ? theme.palette.selected.background
+                                                                 : "transparent"
+
+            onClicked: internal.delegate_onClicked(model.index)
+
+            ColumnLayout {
+                anchors {
+                    fill: parent
+                    topMargin: units.gu(1)
+                    leftMargin: units.gu(2)
+                    rightMargin: units.gu(2)
+                }
+                spacing: units.gu(0.5)
+
+                Image {
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: width
+                    fillMode: Image.PreserveAspectFit
+                    // Do not store a cache of the thumbnail, so that we don't show
+                    // thumbnails of a previously loaded document.
+                    cache: true // TODO PLAY WITH IT
+                    source: model.thumbnail
+                }
+
+                Label {
+                    Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
+                    text: model.index + 1
+                    color: (loView.document.currentPart === model.index) ? UbuntuColors.orange
+                                                                         : theme.palette.selected.backgroundText
+                }
+            }
+        }
+    }
+
+    QtObject {
+        id: internal
+
+        function delegate_onClicked(index) {
+            loView.document.currentPart = index
+
+            // Check if the view has been included in a nested page (e.g.
+            // bottomEdge). If so, close that page and return to the
+            // main viewer.
+            if (view.hasOwnProperty("belongsToNestedPage"))
+                pageStack.pop();
+        }
+    }
+
 
     Scrollbar { flickableItem: view; parent: view.parent }
 }

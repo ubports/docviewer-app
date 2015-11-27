@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014-2015 Canonical, Ltd.
+ * Copyright (C) 2015 Canonical, Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,30 +16,20 @@
 
 import QtQuick 2.4
 import Ubuntu.Components 1.3
-import Ubuntu.Components.Popups 1.3
 
-Dialog {
-    id: rejectedDialog
+Item {
+    width: units.dp(2)
 
-    property alias model: repeater.model
+    Rectangle {
+        height: parent.width
+        width: parent.height
+        rotation: 90; anchors.centerIn: parent
 
-    signal closed()
-
-    title: i18n.tr("File not supported", "Files not supported", repeater.count)
-    text: i18n.tr("Following document has not been imported:",
-                  "Following documents have not been imported:", repeater.count)
-
-    Repeater {
-        id: repeater
-        Label { text: model.path }
-    }
-
-    Button {
-        text: i18n.tr("Close")
-        color: UbuntuColors.red
-        onClicked: {
-            PopupUtils.close(rejectedDialog)
-            rejectedDialog.closed()
+        gradient: Gradient {
+            GradientStop { position: 0.0; color: Qt.rgba(0, 0, 0, 0.1)  }
+            GradientStop { position: 0.49; color:  Qt.rgba(0, 0, 0, 0.1)  }
+            GradientStop { position: 0.5; color: Qt.rgba(1, 1, 1, 0.4) }
+            GradientStop { position: 1.0; color:  Qt.rgba(1, 1, 1, 0.4)  }
         }
     }
 }

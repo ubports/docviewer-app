@@ -15,31 +15,21 @@
  */
 
 import QtQuick 2.4
-import Ubuntu.Components 1.2
+import Ubuntu.Components 1.3
 import Ubuntu.Layouts 1.0
 import DocumentViewer.LibreOffice 1.0 as LibreOffice
 
-import "../upstreamComponents"
-
+import "../common"
 import "../common/utils.js" as Utils
 import "../common"
 import "KeybHelper.js" as KeybHelper
 
-PageWithBottomEdge {
+Page {
     id: loPage
-    title: Utils.getNameOfFile(file.path);
+    title: Utils.getNameOfFile(file.path)
     flickable: null
 
     readonly property bool wideWindow: width > units.gu(120)
-
-    bottomEdgeTitle: i18n.tr("Slides")
-    bottomEdgeEnabled: {
-        if (!loPageContentLoader.loaded)
-            return false
-
-        // else
-        return loPageContentLoader.item.loDocument.documentType == LibreOffice.Document.PresentationDocument && !wideWindow
-    }
 
     Loader {
         id: loPageContentLoader
@@ -53,12 +43,7 @@ PageWithBottomEdge {
                 // FIXME: At the moment don't hide header if the document is a presentation
                 var isPresentation = (item.loDocument.documentType === LibreOffice.Document.PresentationDocument)
                 loPage.flickable = isPresentation ? null : item.loView
-
-                loPage.bottomEdgePageComponent = item.bottomEdgePartsPage
-
-            } else {
-                loPage.flickable = null
-            }
+            } else loPage.flickable = null
         }
     }
 
@@ -77,7 +62,6 @@ PageWithBottomEdge {
 
             property alias loDocument: loView.document
             property alias loView: loView
-            property alias bottomEdgePartsPage: bottomEdgePartsPage
 
             Layouts {
                 id: layouts
@@ -91,50 +75,29 @@ PageWithBottomEdge {
                         Item {
                             anchors.fill: parent
 
-                            // TODO: Add a setting to show/hide sidebar when width > units.gu(80)
-                            PartsView {
-                                id: partsView
-                                anchors {
-                                    top: parent.top
-                                    bottom: bottomBarLayoutItem.top
-                                    left: parent.left
-                                }
-
-                                model: loView.partsModel
+                            ResizeableSidebar {
+                                id: leftSidebar
+                                anchors.left: parent.left
+                                anchors.bottom: parent.bottom
                                 visible: loDocument.documentType == LibreOffice.Document.PresentationDocument
+
                                 width: visible ? units.gu(40) : 0
+
+                                PartsView {
+                                    id: partsView
+                                    anchors.fill: parent
+                                    model: loView.partsModel
+                                }
                             }
 
-                            Item {
+                            ItemLayout {
+                                item: "pinchArea"
                                 anchors {
-                                    left: partsView.right
+                                    left: leftSidebar.right
                                     right: parent.right
                                     top: parent.top
-                                    bottom: bottomBarLayoutItem.top
-                                }
-
-                                ItemLayout {
-                                    item: "pinchArea"
-                                    anchors.fill: parent
-
-                                    // Keyboard events
-                                    focus: true
-                                    Keys.onPressed: KeybHelper.parseEvent(event)
-                                    Component.onCompleted: loPageContent.forceActiveFocus()
-                                }
-                            }
-
-                            Item {
-                                id: bottomBarLayoutItem
-                                visible: loDocument.documentType == LibreOffice.Document.PresentationDocument
-                                height: visible ? units.gu(5) : 0
-                                anchors {
-                                    left: parent.left
-                                    right: parent.right
                                     bottom: parent.bottom
                                 }
-
-                                ItemLayout { item: "bottomBar"; anchors.fill: parent }
                             }
                         }
                     }
@@ -158,12 +121,14 @@ PageWithBottomEdge {
                     LibreOffice.Viewer {
                         id: loView
                         objectName: "loView"
-                        Layouts.item: "loView"
-
                         anchors.fill: parent
 
                         clip: true
                         documentPath: file.path
+
+                        function updateContentSize(tgtScale) {
+                            zoomFactor = tgtScale
+                        }
 
                         // Keyboard events
                         focus: true
@@ -174,10 +139,6 @@ PageWithBottomEdge {
                             flickDeceleration = 1500 * units.gridUnit / 8
                             maximumFlickVelocity = 2500 * units.gridUnit / 8
                             loPageContent.forceActiveFocus()
-                        }
-
-                        function updateContentSize(tgtScale) {
-                            zoomFactor = tgtScale
                         }
 
                         onErrorChanged: {
@@ -210,37 +171,25 @@ PageWithBottomEdge {
                     }
                 }
 
-                // TODO: When we'll have to merge this with the zooming branch, replace this
-                // and use a single bottom panel
-                SlideControllerPanel {
+                PartsView {
                     id: bottomBar
-                    Layouts.item: "bottomBar"
-                    visible: loDocument.documentType == LibreOffice.Document.PresentationDocument
-                    height: visible ? units.gu(5) : 0
                     anchors {
                         left: parent.left
                         right: parent.right
                         bottom: parent.bottom
                     }
-                }
-            }
+                    height: visible ? units.gu(12) : 0
+                    visible: loDocument.documentType == LibreOffice.Document.PresentationDocument
 
-            Component {
-                id: bottomEdgePartsPage
-                Page {
-                    title: i18n.tr("Slides")
-                    head.backAction: Action {
-                        text: i18n.tr("Back")
-                        iconName: "down"
-                        onTriggered: pageStack.pop()
-                    }
+                    model: loView.partsModel
+                    orientation: ListView.Horizontal
 
-                    flickable: null
-
-                    PartsView {
-                        property bool belongsToNestedPage: true
-                        anchors.fill: parent
-                        model: loView.partsModel
+                    HorizontalDivider {
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                            top: parent.top
+                        }
                     }
                 }
             }
@@ -252,11 +201,6 @@ PageWithBottomEdge {
     states: [
         LOViewDefaultHeader {
             name: "default"
-            targetPage: loPage
-        },
-
-        LOViewZoomHeader {
-            name: "zoom"
             targetPage: loPage
         }
     ]
