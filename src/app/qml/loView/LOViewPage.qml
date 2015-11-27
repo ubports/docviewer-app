@@ -118,11 +118,6 @@ Page {
                         bottom: bottomBar.top
                     }
 
-                    // Limits for pinch-to-zoom
-                    // FIXME: We should get these limits from the C++ LibreOffice Viewer class
-                    property real minimumZoom: 0.5
-                    property real maximumZoom: 4.0
-
                     LibreOffice.Viewer {
                         id: loView
                         objectName: "loView"
@@ -130,6 +125,10 @@ Page {
 
                         clip: true
                         documentPath: file.path
+
+                        function updateContentSize(tgtScale) {
+                            zoomFactor = tgtScale
+                        }
 
                         // Keyboard events
                         focus: true
@@ -139,32 +138,7 @@ Page {
                             // WORKAROUND: Fix for wrong grid unit size
                             flickDeceleration = 1500 * units.gridUnit / 8
                             maximumFlickVelocity = 2500 * units.gridUnit / 8
-                        }
-
-                        MouseArea {
-                            id: mouseArea
-                            anchors.fill: parent
-
-                            onDoubleClicked: {
-                                // Limit zoom by double-click to 3.0x factor
-                                if (loView.zoomFactor < pinchArea.maximumZoom) {
-                                    var scaleRatio = 3.0 / loView.zoomFactor
-
-                                    loView.contentX += mouse.x * (scaleRatio - 1)
-                                    loView.contentY += mouse.y * (scaleRatio - 1)
-
-                                    loView.zoomFactor = 3.0
-                                } else loView.adjustZoomToWidth()
-                            }
-
-                            /* Keyboard events */
-                            focus: true
-                            Keys.onPressed: KeybHelper.parseEvent(event)
-                            Component.onCompleted: loPageContent.forceActiveFocus()
-                        }
-
-                        function updateContentSize(tgtScale) {
-                            zoomFactor = tgtScale
+                            loPageContent.forceActiveFocus()
                         }
 
                         onErrorChanged: {
