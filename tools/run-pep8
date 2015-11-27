@@ -2,7 +2,7 @@
 set -e
 
 echo "= pep8 ="
-for i in `find . -iname '*.py'` ; do 
+for i in `find .. -iname '*.py'` ; do 
     echo "Checking $i"
     pep8 $i
 done

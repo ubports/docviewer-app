@@ -1,4 +1,12 @@
 set(PLUGIN_DIR DocumentViewer/PDF)
+
+find_package(Qt5Core)
+find_package(Qt5Gui)
+find_package(Qt5Qml)
+find_package(Qt5Quick)
+find_package(Qt5Xml)
+find_package(Qt5Concurrent)
+
 include_directories(
 	${CMAKE_CURRENT_SOURCE_DIR}
 	${CMAKE_CURRENT_BINARY_DIR}

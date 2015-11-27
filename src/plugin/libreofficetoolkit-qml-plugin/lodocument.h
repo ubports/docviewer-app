@@ -20,6 +20,8 @@
 
 #include <QObject>
 
+#include "loerror.h"
+
 namespace lok {
 class Office;
 class Document;
@@ -30,12 +32,13 @@ class LODocument : public QObject
     Q_OBJECT
     Q_DISABLE_COPY(LODocument)
 
-    Q_PROPERTY(QString      path         READ path         WRITE setPath         NOTIFY pathChanged)
-    Q_PROPERTY(int          currentPart  READ currentPart  WRITE setCurrentPart  NOTIFY currentPartChanged)
+    Q_PROPERTY(QString                 path         READ path         WRITE setPath         NOTIFY pathChanged)
+    Q_PROPERTY(int                     currentPart  READ currentPart  WRITE setCurrentPart  NOTIFY currentPartChanged)
     // Declare partsCount as constant at the moment, since LOK-plugin is just a viewer for now.
-    Q_PROPERTY(int          partsCount   READ partsCount                                                    CONSTANT)
-    Q_PROPERTY(int          documentPart READ documentPart WRITE setDocumentPart NOTIFY documentPartChanged)
-    Q_PROPERTY(DocumentType documentType READ documentType                       NOTIFY documentTypeChanged)
+    Q_PROPERTY(int                     partsCount   READ partsCount                                                    CONSTANT)
+    Q_PROPERTY(int                     documentPart READ documentPart WRITE setDocumentPart NOTIFY documentPartChanged)
+    Q_PROPERTY(DocumentType            documentType READ documentType                       NOTIFY documentTypeChanged)
+    Q_PROPERTY(LibreOfficeError::Error error        READ error                              NOTIFY errorChanged)
     Q_ENUMS(DocumentType)
 
 public:
@@ -70,6 +73,8 @@ public:
     QString getPartName(int index) const;
     void setPart(int index);
 
+    LibreOfficeError::Error error() const;
+
     Q_INVOKABLE bool saveAs(QString url, QString format, QString filterOptions);
 
 Q_SIGNALS:
@@ -77,13 +82,17 @@ Q_SIGNALS:
     void currentPartChanged();
     void documentTypeChanged();
     void documentPartChanged();
+    void errorChanged();
 
 private:
     QString m_path;
     int m_currentPart;
     DocumentType m_docType;
+    LibreOfficeError::Error m_error;
 
-    bool loadDocument(const QString &pathNAme);
+    void loadDocument(const QString &pathNAme);
+
+    void setError(const LibreOfficeError::Error &error);
 
     lok::Document *m_document;
 

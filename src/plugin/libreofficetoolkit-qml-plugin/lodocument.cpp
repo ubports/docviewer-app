@@ -26,8 +26,6 @@
 #include <LibreOfficeKit/LibreOfficeKitInit.h>
 #include <LibreOfficeKit/LibreOfficeKit.hxx>
 
-// TODO: Error management
-
 #ifdef DEBUG_TILE_BENCHMARK
 #include <QElapsedTimer>
 #endif
@@ -37,6 +35,7 @@ lok::Office *LODocument::s_office = nullptr;
 LODocument::LODocument()
   : m_path("")
   , m_currentPart(-1)
+  , m_error(LibreOfficeError::NoError)
   , m_document(nullptr)
 {
     // This space is intentionally empty.
@@ -58,7 +57,7 @@ void LODocument::setPath(const QString& pathName)
     Q_EMIT pathChanged();
 
     // Load the new document
-    this->loadDocument(m_path);
+    loadDocument(m_path);
 }
 
 int LODocument::currentPart() {
@@ -78,20 +77,48 @@ void LODocument::setCurrentPart(int index)
 }
 
 // Load the document
-bool LODocument::loadDocument(const QString &pathName)
+void LODocument::loadDocument(const QString &pathName)
 {
     qDebug() << "Loading document...";
+    setError(LibreOfficeError::NoError);
 
     if (pathName.isEmpty()) {
         qDebug() << "Can't load the document, path is empty.";
-        return false;
+        return;
     }
 
-    if (!s_office)
-        s_office = lok::lok_cpp_init(LO_PATH);
 
+    /* Get LibreOffice path */
+    const char* loPath = Config::getLibreOfficePath();
+
+    if (loPath == NULL) {
+        setError(LibreOfficeError::LibreOfficeNotFound);
+        return;
+    }
+
+
+    /* Load LibreOffice */
+    if (!s_office)
+        s_office = lok::lok_cpp_init(loPath, Config::getLibreOfficeProfilePath());
+
+    if (s_office == NULL) {
+        setError(LibreOfficeError::LibreOfficeNotInitialized);
+        qDebug() << "[lok-qml]: LibreOffice not initialized.";
+        return;
+    }
+
+
+    /* Load the document */
     m_document = s_office->documentLoad(m_path.toUtf8().constData());
 
+    if (m_document == NULL) {
+        setError(LibreOfficeError::DocumentNotLoaded);
+        qDebug() << "[lok-qml]: Document not loaded.";
+        return;
+    }
+
+
+    /* Do the further initialization */
     m_docType = DocumentType(m_document->getDocumentType());
     Q_EMIT documentTypeChanged();
 
@@ -100,7 +127,16 @@ bool LODocument::loadDocument(const QString &pathName)
     m_document->initializeForRendering();
     qDebug() << "Document loaded successfully !";
 
-    return true;
+    return;
+}
+
+void LODocument::setError(const LibreOfficeError::Error &error)
+{
+    if (m_error == error)
+        return;
+
+    m_error = error;
+    Q_EMIT errorChanged();
 }
 
 // Return the type of the loaded document (e.g. text document,
@@ -209,7 +245,12 @@ QString LODocument::getPartName(int index) const
  
     return QString::fromUtf8(m_document->getPartName(index));
 }
- 
+
+LibreOfficeError::Error LODocument::error() const
+{
+    return m_error;
+}
+
 // TODO: Is there some documentation on safe formats or filterOptions that can
 // be used?
 bool LODocument::saveAs(QString url, QString format = QString(), QString filterOptions = QString())

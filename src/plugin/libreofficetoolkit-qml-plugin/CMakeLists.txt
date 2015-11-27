@@ -1,5 +1,10 @@
 set(PLUGIN_DIR DocumentViewer/LibreOffice)
 
+find_package(Qt5Core)
+find_package(Qt5Gui)
+find_package(Qt5Qml)
+find_package(Qt5Quick)
+
 file(GLOB_RECURSE QML_SRCS
     qml/*.qml
     qml/*.js
@@ -28,6 +33,7 @@ set(libreofficetoolkitqmlplugin_SRCS
 set(libreofficetoolkitqmlplugin_HDRS
     twips.h
     config.h
+    loerror.h
 )
 
 add_library(libreofficetoolkitqmlplugin MODULE

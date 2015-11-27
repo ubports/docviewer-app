@@ -4,7 +4,13 @@
 #include <QQuickItem>
 #include <QImage>
 
+#include "config.h"
+
 class LODocument;
+
+#ifdef DEBUG_SHOW_TILE_BORDER
+class QSGSimpleTextureNode;
+#endif
 
 class SGTileItem : public QQuickItem
 {
@@ -31,7 +37,7 @@ protected:
 
 private:
 #ifdef DEBUG_SHOW_TILE_BORDER
-    void drawTileBorders(QSGNode* basicNode);
+    void drawTileBorders(QSGSimpleTextureNode *parentNode);
 #endif
 
 private:

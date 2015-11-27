@@ -86,6 +86,11 @@ MainView {
         }
     }
 
+    function showErrorDialog(message) {
+        PopupUtils.open(Qt.resolvedUrl("common/ErrorDialog.qml"),
+                        mainView, { parent: mainView, text: message });
+    }
+
     onFullscreenChanged: {
         if (mainView.fullscreen)
             window.visibility = Window.FullScreen
@@ -107,8 +112,7 @@ MainView {
         onMimetypeChanged: LoadComponent.load(mimetype.name)
         onErrorChanged: {
             if (error == -1)
-                PopupUtils.open(Qt.resolvedUrl("common/FileNotFoundDialog.qml"),
-                                mainView, { parent: mainView });
+                mainView.showErrorDialog(i18n.tr("File does not exist."));
         }
     }
 

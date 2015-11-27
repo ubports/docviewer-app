@@ -18,11 +18,9 @@ import QtQuick 2.4
 import Ubuntu.Components 1.3
 import Ubuntu.Components.Popups 1.3
 
-// We may want to refactor this dialog for a more generic usage, when we'll need it.
 Dialog {
     id: errorDialog
     title: i18n.tr("Error")
-    text: i18n.tr("File does not exist")
 
     Button {
         text: i18n.tr("Close")
