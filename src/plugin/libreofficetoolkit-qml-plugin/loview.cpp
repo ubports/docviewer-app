@@ -40,6 +40,7 @@ LOView::LOView(QQuickItem *parent)
     , m_cacheBuffer(TILE_SIZE * 3)
     , m_visibleArea(0, 0, 0, 0)
     , m_bufferArea(0, 0, 0, 0)
+    , m_error(LibreOfficeError::NoError)
 {
     Q_UNUSED(parent)   
 
@@ -86,8 +87,21 @@ void LOView::initializeDocument(const QString &path)
     if (m_document)
         m_document->disconnect(this);
 
+    setError(LibreOfficeError::NoError);
+
     m_document = QSharedPointer<LODocument>(new LODocument());
     m_document->setPath(path);
+
+    /* A lot of things happens when we set the path property in
+     * m_document. Need to check if an error has been emitted. */
+    if (m_document->error() != LibreOfficeError::NoError) {
+        setError(m_document->error());
+
+        m_document.clear();
+
+        // Stop doing anything below.
+        return;
+    }
 
     // TODO MOVE
     m_partsModel = new LOPartsModel(m_document);
@@ -164,8 +178,16 @@ void LOView::setCacheBuffer(int cacheBuffer)
     Q_EMIT cacheBufferChanged();
 }
 
+LibreOfficeError::Error LOView::error() const
+{
+    return m_error;
+}
+
 void LOView::adjustZoomToWidth()
- {
+{
+    if (!m_document)
+        return;
+
     setZoomMode(LOView::FitToWidth);
 
     zoomValueToFitWidth = getZoomToFitWidth(m_parentFlickable->width(),
@@ -173,26 +195,6 @@ void LOView::adjustZoomToWidth()
 
     setZoomFactor(zoomValueToFitWidth);
     qDebug() << "Adjust zoom to width - value:" << zoomValueToFitWidth;
- }
-
-bool LOView::updateZoomIfAutomatic()
-{
-    // This function is only used in LOView::updateVisibleRect()
-    // It returns a bool, so that we can stop the execution of that function,
-    // which will be triggered again when we'll automatically update the zoom value.
-    if (m_zoomMode == LOView::FitToWidth) {
-        zoomValueToFitWidth = getZoomToFitWidth(m_parentFlickable->width(),
-                                                m_document->documentSize().width());
-
-        if (m_zoomFactor != zoomValueToFitWidth) {
-            setZoomFactor(zoomValueToFitWidth);
-
-            qDebug() << "Adjust automatic zoom to width - value:" << zoomValueToFitWidth;
-            return true;
-        }
-    }
-
-    return false;
 }
 
 void LOView::updateViewSize()
@@ -210,7 +212,7 @@ void LOView::updateViewSize()
 
 void LOView::updateVisibleRect()
 {
-    if (!m_parentFlickable)
+    if (!m_parentFlickable || !m_document)
         return;
 
     // Changes in parentFlickable width/height trigger directly LOView::updateVisibleRect(),
@@ -222,8 +224,17 @@ void LOView::updateVisibleRect()
     // If that happens, stop the execution of this function, since the change of
     // zoomFactor will trigger the updateViewSize() function, which triggers this
     // function again.
-    if (this->updateZoomIfAutomatic())
-        return;
+    if (m_zoomMode == LOView::FitToWidth) {
+        zoomValueToFitWidth = getZoomToFitWidth(m_parentFlickable->width(),
+                                                m_document->documentSize().width());
+
+        if (m_zoomFactor != zoomValueToFitWidth) {
+            setZoomFactor(zoomValueToFitWidth);
+
+            qDebug() << "Adjust automatic zoom to width - value:" << zoomValueToFitWidth;
+            return;
+        }
+    }
 
     // Check if current tiles have a different zoom value
     if (!m_tiles.isEmpty()) {
@@ -238,17 +249,24 @@ void LOView::updateVisibleRect()
         }
     }
 
-    // Update information about the visible area
-    m_visibleArea.setRect(m_parentFlickable->property("contentX").toInt(),
-                          m_parentFlickable->property("contentY").toInt(),
-                          m_parentFlickable->width(),
-                          m_parentFlickable->height());
+    // Just for convenience.
+    QRect documentRect(this->boundingRect().toRect());
 
-    // Update information about the buffer area
-    m_bufferArea.setRect(qMax(0, m_visibleArea.x() - m_cacheBuffer),
-                         qMax(0, m_visibleArea.y() - m_cacheBuffer),
-                         qMin(int(this->width() - m_bufferArea.x()), m_visibleArea.width() + (m_cacheBuffer * 2)),
-                         qMin(int(this->height() - m_bufferArea.y()), m_visibleArea.height() + (m_cacheBuffer * 2)));
+    // Update visible area
+    QRect visibleRect(m_parentFlickable->property("contentX").toInt(),
+                      m_parentFlickable->property("contentY").toInt(),
+                      m_parentFlickable->width(),
+                      m_parentFlickable->height());
+
+    m_visibleArea = visibleRect.intersected(documentRect);
+
+    // Update buffer area
+    QRect bufferRect(m_visibleArea.left()   -  m_cacheBuffer,
+                     m_visibleArea.top()    -  m_cacheBuffer,
+                     m_visibleArea.width()  + (m_cacheBuffer * 2),
+                     m_visibleArea.height() + (m_cacheBuffer * 2));
+
+    m_bufferArea = bufferRect.intersected(documentRect);
 
     // Delete tiles that are outside the loading area
     if (!m_tiles.isEmpty()) {
@@ -273,21 +291,9 @@ void LOView::updateVisibleRect()
         }
     }
 
-    /*
-      FIXME: It seems that LOView loads more tiles than necessary.
-      This can be easily tested with DEBUG_SHOW_TILE_BORDER enabled.
-
-      Step to reproduce:
-        1) Open Document Viewer
-        2) Resize the window, BEFORE opening any LibreOffice document
-           (Trying to resize the window or scrolling the Flickable when the
-           document is already loaded causes bad flickering)
-        3) Outside the document area, at the bottom-right corner, there are
-           a few tiles that should not be visible/rendered/generated.
-    */
-
     // Number of tiles per row
     int tilesPerWidth           = qCeil(this->width() / TILE_SIZE);
+    int tilesPerHeight           = qCeil(this->height() / TILE_SIZE);
 
     // Get indexes for visible tiles
     int visiblesFromWidth       = int(m_visibleArea.left() / TILE_SIZE);
@@ -301,18 +307,35 @@ void LOView::updateVisibleRect()
     int bufferToWidth           = qCeil(qreal(m_bufferArea.right()) / TILE_SIZE);
     int bufferToHeight          = qCeil(qreal(m_bufferArea.bottom()) / TILE_SIZE);
 
-    this->generateTiles(visiblesFromWidth, visiblesFromHeight, visiblesToWidth, visiblesToHeight, tilesPerWidth);
-    this->generateTiles(bufferFromWidth, bufferFromHeight, bufferToWidth, bufferToHeight, tilesPerWidth);
+#ifdef DEBUG_VERBOSE
+    qDebug() << "Visible area - Left:" << visiblesFromWidth << "Right:" << visiblesToWidth << "Top:" << visiblesFromHeight << "Bottom:" << visiblesToHeight;
+    qDebug() << "Buffer area  - Left:" << bufferFromWidth   << "Right:" << bufferToWidth   << "Top:" << bufferFromHeight   << "Bottom:" << bufferToHeight;
+#endif
+
+    this->generateTiles(visiblesFromWidth, visiblesFromHeight, visiblesToWidth, visiblesToHeight, tilesPerWidth, tilesPerHeight);
+    this->generateTiles(bufferFromWidth,   bufferFromHeight,   bufferToWidth,   bufferToHeight,   tilesPerWidth, tilesPerHeight);
 }
 
-void LOView::generateTiles(int x1, int y1, int x2, int y2, int tilesPerWidth)
+void LOView::generateTiles(int x1, int y1, int x2, int y2, int tilesPerWidth, int tilesPerHeight)
 {
     for (int x = x1; x < x2; x++) {
         for (int y = y1; y < y2; y++) {
-            QRect tileRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-            int index = y * tilesPerWidth + x;
+            bool lastRow    = (y == (tilesPerHeight - 1));
+            bool lastColumn = (x == (tilesPerWidth  - 1));
 
-            this->createTile(index, tileRect);
+            int left   = TILE_SIZE * x;
+            int top    = TILE_SIZE * y;
+            int width  = lastColumn ? this->width() - left : TILE_SIZE;
+            int height = lastRow    ? this->height() - top : TILE_SIZE;
+
+            QRect tileRect(left, top, width, height);
+            int index = x + tilesPerWidth * y;
+
+            createTile(index, tileRect);
+
+#ifdef DEBUG_VERBOSE
+            qDebug() << "Generating tile - Index:" << index << "X:" << x << "Y:" << y;
+#endif
         }
     }
 }
@@ -327,7 +350,7 @@ void LOView::createTile(int index, QRect rect)
 {
     if (!m_tiles.contains(index)) {
 #ifdef DEBUG_VERBOSE
-        qDebug() << "Creating tile indexed as" << index;
+        qDebug() << "Creating tile indexed as" << index << "- Rect:" << rect;
 #endif
 
         auto tile = new SGTileItem(rect, m_zoomFactor, RenderEngine::getNextId(), this);
@@ -379,6 +402,15 @@ void LOView::clearView()
         sgtile->deleteLater();
         i = m_tiles.erase(i);
     }
+}
+
+void LOView::setError(const LibreOfficeError::Error &error)
+{
+    if (m_error == error)
+        return;
+
+    m_error = error;
+    Q_EMIT errorChanged();
 }
 
 LOView::~LOView()

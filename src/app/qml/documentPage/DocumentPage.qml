@@ -15,7 +15,7 @@
  */
 
 import QtQuick 2.4
-import Ubuntu.Components 1.2
+import Ubuntu.Components 1.3
 import Qt.labs.settings 1.0
 
 Page {
@@ -52,7 +52,7 @@ Page {
             if (folderModel.count === 0) {
                 return documentPage.state == "search"
                         ? Qt.resolvedUrl("SearchEmptyState.qml")
-                        : Qt.resolvedUrl("BrowserEmptyState.qml")
+                        : Qt.resolvedUrl("DocumentEmptyState.qml")
             }
 
             return Qt.resolvedUrl("DocumentListView.qml")

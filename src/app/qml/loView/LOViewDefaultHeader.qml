@@ -15,9 +15,11 @@
  */
 
 import QtQuick 2.4
-import Ubuntu.Components 1.2
-import Ubuntu.Components.Popups 1.0
+import Ubuntu.Components 1.3
+import QtQuick.Layouts 1.1
+import Ubuntu.Components.Popups 1.3
 import DocumentViewer.LibreOffice 1.0 as LibreOffice
+import DocumentViewer 1.0
 
 PageHeadState {
     id: rootItem
@@ -25,14 +27,16 @@ PageHeadState {
     property Page targetPage
     head: targetPage.head
 
-    contents: Column {
-        anchors {
-            left: parent.left
-            right: parent.right
-            verticalCenter: parent.verticalCenter
-        }
+    contents: RowLayout {
+        anchors.fill: parent
+        anchors.rightMargin: units.gu(2)
+        spacing: units.gu(1)
 
-        Label {
+        Column {
+            id: layout
+            Layout.fillWidth: true
+
+            Label {
             anchors { left: parent.left; right: parent.right }
             elide: Text.ElideMiddle
             font.weight: Font.DemiBold
@@ -41,7 +45,7 @@ PageHeadState {
         Label {
             anchors { left: parent.left; right: parent.right }
             elide: Text.ElideMiddle
-            fontSize: "small"
+            textSize: Label.Small
             text: {
                 if (!loPageContentLoader.item)
                     return i18n.tr("Loading...")
@@ -59,35 +63,33 @@ PageHeadState {
                     return i18n.tr("Unknown LibreOffice document")
                 default:
                     return i18n.tr("Unknown type document")
+                    }
                 }
             }
         }
-    }
 
+        ZoomSelector {
+            Layout.preferredWidth: units.gu(12)
+            Layout.preferredHeight: units.gu(4)
 
-    backAction: Action {
-        iconName: "back"
-        text: (pageStack.depth > 1) ? i18n.tr("Back") : i18n.tr("Close")
-        onTriggered: {
-            if (pageStack.depth > 1) {
-                // Go back to Welcome page
-                pageStack.pop();
-            } else {
-                // File has been imported through Content Hub (or was not chosen through WelcomePage)
-                // Close the application and show our source app (e.g. ubuntu-filemanager-app, if used to open a document)
-                Qt.quit()
+            visible: {
+                if (!loPageContentLoader.item)
+                    return false
+
+                return DocumentViewer.desktopMode || targetPage.width > units.gu(80)
             }
         }
     }
 
     actions: [
-        Action {
-            iconName: "zoom-in"
-            text: i18n.tr("Show zoom controls")
-            onTriggered: targetPage.state = "zoom"
-        },
+       /* Action {
+            iconName: "Search"
+            text: i18n.tr("Search")
+            enabled: false
+        },*/
 
         Action {
+            // FIXME: Autopilot test broken... seems not to detect we're now using an ActionBar since the switch to UITK 1.3
             objectName: "gotopage"
             iconName: "browser-tabs"
             text: i18n.tr("Go to position...")

@@ -31,7 +31,7 @@ Depends: ${misc:Depends},
          qtdeclarative5-documentviewer-pdf (= ${source:Version}),  
          suru-icon-theme (>= 14.04+15.10.20150707-0ubuntu1),
          qtdeclarative5-qtquick2-plugin,
-         qtdeclarative5-ubuntu-ui-toolkit-plugin,
+         qtdeclarative5-ubuntu-ui-toolkit-plugin (>= 1.3.1676) | qtdeclarative5-ubuntu-ui-toolkit-plugin-gles (>= 1.3.1676),
          qtdeclarative5-ubuntu-content1,
          qtdeclarative5-quicklayouts-plugin,
          qtdeclarative5-window-plugin      

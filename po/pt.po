@@ -7,87 +7,90 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-06-24 22:48+0200\n"
-"PO-Revision-Date: 2015-06-27 21:08+0000\n"
-"Last-Translator: António Miranda <Unknown>\n"
+"POT-Creation-Date: 2015-11-27 17:38+0100\n"
+"PO-Revision-Date: 2015-11-24 20:57+0000\n"
+"Last-Translator: Ivo Xavier <ivofernandes12@gmail.com>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-06-28 05:35+0000\n"
-"X-Generator: Launchpad (build 17578)\n"
+"X-Launchpad-Export-Date: 2015-11-28 05:04+0000\n"
+"X-Generator: Launchpad (build 17850)\n"
 
-#. TRANSLATORS: This string is used for renaming a copied file,
-#. when a file with the same name already exists in user's
-#. Documents folder.
-#. 
-#. e.g. "Manual_Aquaris_E4.5_ubuntu_EN.pdf" will become
-#. "Manual_Aquaris_E4.5_ubuntu_EN (copy 2).pdf"
-#. 
-#. where "2" is given by the argument "%1"
-#. 
-#: ../src/app/content-communicator.cpp:105
-#, qt-format
-msgid "copy %1"
-msgstr "cópia %1"
+#: ../src/app/qml/common/CommandLineProxy.qml:49
+msgid "Some of the provided arguments is not valid."
+msgstr "Alguns dos argumentos fornecidos não são válidos."
 
-#: ../src/app/docviewer-application.cpp:171
-#: /home/m/dev/core/ubuntu-docviewer-app-icon-fix/obj-x86_64-linux-gnu/po/com.ubuntu.docviewer.desktop.in.in.h:1
-msgid "Document Viewer"
-msgstr "Visualizador de Documentos"
+#: ../src/app/qml/common/CommandLineProxy.qml:58
+msgid "Opens ubuntu-docviewer-app displaying the selected file"
+msgstr "Abre o ubuntu-docviewer-app mostrando o ficheiro selecionado"
 
-#: ../src/app/qml/common/DetailsPage.qml:27
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:97
-#: ../src/app/qml/textView/TextViewDefaultHeader.qml:83
+#: ../src/app/qml/common/CommandLineProxy.qml:65
+msgid "Run fullscreen"
+msgstr "Abrir em ecrã completo"
+
+#: ../src/app/qml/common/CommandLineProxy.qml:71
+msgid "Open ubuntu-docviewer-app in pick mode. Use it for tests only."
+msgstr ""
+"Abrir ubuntu-docviewer-app em modo de escolha. Use-o apenas para testes."
+
+#: ../src/app/qml/common/CommandLineProxy.qml:77
+msgid ""
+"Load the list of documents from the given folder, instead of default "
+"~/Documents.\n"
+"The path must exist prior to running ubuntu-docviewer-app"
+msgstr ""
+"Carrega a lista de documentos da pasta indicada, em vez da padrão "
+"~/Documentos.\n"
+"Esse diretório já deve existir antes de executar o ubuntu-docviewer-app"
+
+#: ../src/app/qml/common/DetailsPage.qml:25
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:107
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:83
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:69
 msgid "Details"
 msgstr "Detalhes"
 
-#: ../src/app/qml/common/DetailsPage.qml:33
+#: ../src/app/qml/common/DetailsPage.qml:36
 msgid "Location"
 msgstr "Localização"
 
-#: ../src/app/qml/common/DetailsPage.qml:37
+#: ../src/app/qml/common/DetailsPage.qml:41
 msgid "Size"
 msgstr "Tamanho"
 
-#: ../src/app/qml/common/DetailsPage.qml:42
+#: ../src/app/qml/common/DetailsPage.qml:46
 msgid "Created"
 msgstr "Criado"
 
-#: ../src/app/qml/common/DetailsPage.qml:47
+#: ../src/app/qml/common/DetailsPage.qml:51
 msgid "Last modified"
 msgstr "Última modificação"
 
-#: ../src/app/qml/common/DetailsPage.qml:54
+#: ../src/app/qml/common/DetailsPage.qml:58
 msgid "MIME type"
 msgstr "Tipo MIME"
 
-#: ../src/app/qml/common/FileNotFoundDialog.qml:24
+#: ../src/app/qml/common/ErrorDialog.qml:23
 msgid "Error"
 msgstr "Erro"
 
-#: ../src/app/qml/common/FileNotFoundDialog.qml:25
-msgid "File does not exist"
-msgstr "O ficheiro não existe"
-
-#: ../src/app/qml/common/FileNotFoundDialog.qml:28
-#: ../src/app/qml/common/PickImportedDialog.qml:47
+#: ../src/app/qml/common/ErrorDialog.qml:26
+#: ../src/app/qml/common/PickImportedDialog.qml:53
 #: ../src/app/qml/common/RejectedImportDialog.qml:38
-#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:32
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:31
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:53
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
-#: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Close"
 msgstr "Fechar"
 
-#: ../src/app/qml/common/PickImportedDialog.qml:29
+#: ../src/app/qml/common/PickImportedDialog.qml:28
 msgid "Multiple documents imported"
 msgstr "Múltiplos documentos importados"
 
-#: ../src/app/qml/common/PickImportedDialog.qml:30
+#: ../src/app/qml/common/PickImportedDialog.qml:29
 msgid "Choose which one to open:"
-msgstr "Escolha qual quer abrir"
+msgstr "Escolha qual abrir:"
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:28
 msgid "File not supported"
@@ -101,29 +104,30 @@ msgid_plural "Following documents have not been imported:"
 msgstr[0] "O seguinte documento não foi importado:"
 msgstr[1] "Os seguintes documentos não foram importados:"
 
-#: ../src/app/qml/common/ToastWithAction.qml:97
-msgid "Dismiss"
-msgstr "Descartar"
-
-#: ../src/app/qml/common/UnknownTypeDialog.qml:26
+#: ../src/app/qml/common/UnknownTypeDialog.qml:27
 msgid "Unknown file type"
 msgstr "Tipo de ficheiro desconhecido"
 
-#: ../src/app/qml/common/UnknownTypeDialog.qml:27
+#: ../src/app/qml/common/UnknownTypeDialog.qml:28
 msgid ""
-"Sorry but we can't find a way to display this file. Do you want to open it "
-"as a plain text?"
+"Sorry but we can't find a way to display this file.\n"
+"\n"
+"Do you want to open it as a plain text?"
 msgstr ""
-"Desculpe, mas não conseguimos encontrar um modo de apresentar este ficheiro. "
-"Pretende abrir em texto simples?"
-
-#: ../src/app/qml/common/UnknownTypeDialog.qml:29
-msgid "Yes"
-msgstr "Sim"
+"Desculpe, mas não conseguimos encontrar maneira de mostrar este ficheiro.\n"
+"Quer abrir em texto simples?"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:38
-msgid "No"
-msgstr "Não"
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:55
+#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:28
+#: ../src/app/qml/loView/LOViewGotoDialog.qml:53
+#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:51
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: ../src/app/qml/common/UnknownTypeDialog.qml:44
+msgid "Yes"
+msgstr "Sim"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in GB
 #: ../src/app/qml/common/utils.js:22
@@ -149,111 +153,74 @@ msgstr "%1 kB"
 msgid "%1 byte"
 msgstr "%1 byte"
 
-#: ../src/app/qml/documentPage/DeleteFileDialog.qml:28
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:39
 msgid "Delete file"
 msgstr "Apagar o ficheiro"
 
-#: ../src/app/qml/documentPage/DeleteFileDialog.qml:29
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:40
 #, qt-format
 msgid "Delete %1 file"
 msgid_plural "Delete %1 files"
 msgstr[0] "Apagar %1 ficheiro"
 msgstr[1] "Apagar %1 ficheiros"
 
-#: ../src/app/qml/documentPage/DeleteFileDialog.qml:30
-#: ../src/app/qml/documentPage/DeleteFileDialog.qml:31
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:41
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:42
 msgid "Are you sure you want to permanently delete this file?"
 msgid_plural "Are you sure you want to permanently delete these files?"
 msgstr[0] "Tem a certeza que quer eliminar este ficheiro?"
 msgstr[1] "Tem a certeza que quer eliminar estes ficheiros?"
 
-#: ../src/app/qml/documentPage/DeleteFileDialog.qml:36
-#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:27
-#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:52
-msgid "Cancel"
-msgstr "Cancelar"
-
-#: ../src/app/qml/documentPage/DeleteFileDialog.qml:41
-#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:82
+#: ../src/app/qml/documentPage/DeleteFileDialog.qml:61
+#: ../src/app/qml/documentPage/DocumentDelegateActions.qml:27
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:53
 msgid "Delete"
 msgstr "Apagar"
 
+#: ../src/app/qml/documentPage/DocumentDelegateActions.qml:46
+msgid "Share"
+msgstr "Partilhar"
+
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:24
 msgid "No document found"
-msgstr "Nenhum documento encontrado"
+msgstr "Sem documentos encontrados"
 
-#: ../src/app/qml/documentPage/DocumentEmptyState.qml:28
+#: ../src/app/qml/documentPage/DocumentEmptyState.qml:25
 msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
-"folder."
+"folder or insert removable media with documents."
 msgstr ""
-"Ligue o seu dispositivo a qualquer computador e simplesmente arraste os "
-"ficheiros para a pasta Documentos"
+"Ligue o seu dispositivo a qualquer computador e arraste os ficheiros para a "
+"pasta Documentos ou insira um armazenamento externo com documentos."
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
-#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:35
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:95
 #, qt-format
 msgid "Today, %1"
 msgstr "Hoje, %1"
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
-#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:40
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:100
 #, qt-format
 msgid "Yesterday, %1"
 msgstr "Ontem, %1"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:45
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:58
-msgid "dddd, hh:mm"
-msgstr "dddd, hh:mm"
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:107
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:126
+msgid "yyyy/MM/dd hh:mm"
+msgstr "yyyy/MM/dd hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentGridDelegate.qml:49
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:47
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:63
-msgid "dd-MM-yyyy hh:mm"
-msgstr "dd-MM-yyyy hh:mm"
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:120
+msgid "dddd, hh:mm"
+msgstr "dddd, hh:mm"
 
-#. TRANSLATORS: this is a datetime formatting string, and the
-#. singlequote is an escape character.
-#. See http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:36
-msgid "'Today', hh:mm"
-msgstr "'Hoje', hh:mm"
-
-#. TRANSLATORS: this is a datetime formatting string, and the
-#. singlequote is an escape character.
-#. See http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:42
-msgid "'Yesterday', hh:mm"
-msgstr "'Ontem', hh:mm"
-
-#: ../src/app/qml/documentPage/DocumentListView.qml:157
-msgid "Today"
-msgstr "Hoje"
-
-#: ../src/app/qml/documentPage/DocumentListView.qml:160
-msgid "Yesterday"
-msgstr "Ontem"
-
-#: ../src/app/qml/documentPage/DocumentListView.qml:163
-msgid "Earlier this week"
-msgstr "No início desta semana"
-
-#: ../src/app/qml/documentPage/DocumentListView.qml:166
-msgid "Earlier this month"
-msgstr "No início deste mês"
-
-#: ../src/app/qml/documentPage/DocumentListView.qml:168
-msgid "Even earlier..."
-msgstr "Mesmo antes..."
-
-#: ../src/app/qml/documentPage/DocumentPage.qml:24
+#: ../src/app/qml/documentPage/DocumentPage.qml:23
 msgid "Documents"
 msgstr "Documentos"
 
@@ -261,27 +228,23 @@ msgstr "Documentos"
 msgid "Search..."
 msgstr "Procurar..."
 
-#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:37
+#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:36
 msgid "Sorting settings..."
 msgstr "Ordenar definições..."
 
-#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:46
-#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
+#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:41
 msgid "Switch to single column list"
 msgstr "Mudar para lista de coluna única"
 
-#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:46
-#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:35
+#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:41
 msgid "Switch to grid"
 msgstr "Mudar para grelha"
 
-#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:43
+#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:49
 msgid "Pick"
 msgstr "Escolher"
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:27
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
-#: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Back"
 msgstr "Retroceder"
 
@@ -289,11 +252,11 @@ msgstr "Retroceder"
 msgid "search in documents..."
 msgstr "procurar em documentos..."
 
-#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:52
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:40
 msgid "Select None"
 msgstr "Não selecionar nenhum"
 
-#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:54
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:40
 msgid "Select All"
 msgstr "Selecionar todos"
 
@@ -307,6 +270,30 @@ msgid ""
 msgstr ""
 "Por favor, assegure que o que procura não contém erros ou procure por outro "
 "termo."
+
+#: ../src/app/qml/documentPage/SectionHeader.qml:13
+msgid "Today"
+msgstr "Hoje"
+
+#: ../src/app/qml/documentPage/SectionHeader.qml:16
+msgid "Yesterday"
+msgstr "Ontem"
+
+#: ../src/app/qml/documentPage/SectionHeader.qml:19
+msgid "Earlier this week"
+msgstr "No início desta semana"
+
+#: ../src/app/qml/documentPage/SectionHeader.qml:22
+msgid "Earlier this month"
+msgstr "No início deste mês"
+
+#: ../src/app/qml/documentPage/SectionHeader.qml:24
+msgid "Even earlier..."
+msgstr "Mesmo antes..."
+
+#: ../src/app/qml/documentPage/SharePage.qml:23
+msgid "Share to"
+msgstr "Partilhar para"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:26
 msgid "Sorting settings"
@@ -328,13 +315,91 @@ msgstr "Ordenar por tamanho (Menor primeiro)"
 msgid "Reverse order"
 msgstr "Inverter ordem"
 
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:51
+#: ../src/app/qml/textView/TextView.qml:42
+msgid "Loading..."
+msgstr "A carregar..."
+
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:55
+msgid "LibreOffice text document"
+msgstr "Documento de texto LibreOffice"
+
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:57
+msgid "LibreOffice spread sheet"
+msgstr "Folha de cálculo LibreOffice"
+
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:59
+msgid "LibreOffice presentation"
+msgstr "Apresentação LibreOffice"
+
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:61
+msgid "LibreOffice Draw document"
+msgstr "Documento LibreOffice Draw"
+
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:63
+msgid "Unknown LibreOffice document"
+msgstr "Documento LibreOffice desconhecido"
+
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:65
+msgid "Unknown type document"
+msgstr "Tipo de documento desconhecido"
+
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:94
+msgid "Go to position..."
+msgstr "Ir para posição..."
+
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:101
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:77
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
+msgid "Disable night mode"
+msgstr "Desativar modo noturno"
+
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:101
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:77
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
+msgid "Enable night mode"
+msgstr "Ativar modo noturno"
+
+#: ../src/app/qml/loView/LOViewGotoDialog.qml:28
+msgid "Go to position"
+msgstr "Ir para posição"
+
+#: ../src/app/qml/loView/LOViewGotoDialog.qml:29
+msgid "Choose a position between 1% and 100%"
+msgstr "Escolha uma posição entre 1% e 100%"
+
+#: ../src/app/qml/loView/LOViewGotoDialog.qml:60
+#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:58
+msgid "GO!"
+msgstr "IR!"
+
+#: ../src/app/qml/loView/LOViewPage.qml:175
+msgid "LibreOffice binaries not found."
+msgstr "Binários do LibreOffice não encontrados."
+
+#: ../src/app/qml/loView/LOViewPage.qml:178
+msgid "Error while loading LibreOffice."
+msgstr "Erro ao carregar LibreOffice."
+
+#: ../src/app/qml/loView/LOViewPage.qml:181
+msgid ""
+"Document not loaded.\n"
+"The requested document may be corrupt."
+msgstr ""
+"Documento não carregado.\n"
+"O documento pedido pode estar corrompido."
+
+#: ../src/app/qml/loView/ZoomSelector.qml:116
+msgid "Fit width"
+msgstr ""
+
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
-#: ../src/app/qml/pdfView/PdfContentsPage.qml:32
+#: ../src/app/qml/pdfView/PdfContentsPage.qml:30
 #: ../src/app/qml/pdfView/PdfView.qml:37
 msgid "Contents"
 msgstr "Conteúdos"
 
-#: ../src/app/qml/pdfView/PdfContentsPage.qml:38
+#: ../src/app/qml/pdfView/PdfContentsPage.qml:36
 msgid "Hide table of contents"
 msgstr "Esconder tabela de conteúdos"
 
@@ -345,47 +410,44 @@ msgstr "Esconder tabela de conteúdos"
 msgid "Page %1 of %2"
 msgstr "Página %1 de %2"
 
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:85
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:71
 msgid "Go to page..."
 msgstr "Ir para a página..."
 
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
-#: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
-msgid "Disable night mode"
-msgstr "Desativar modo noturno"
-
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
-#: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
-msgid "Enable night mode"
-msgstr "Ativar modo noturno"
-
-#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:25
+#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
 msgid "Go to page"
 msgstr "Ir para a página"
 
-#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
+#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:27
 #, qt-format
 msgid "Choose a page between 1 and %1"
 msgstr "Escolha uma página entre 1 e %1"
 
-#: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:44
-msgid "GO!"
-msgstr "IR!"
+#: ../src/app/qml/ubuntu-docviewer-app.qml:115
+msgid "File does not exist."
+msgstr "Ficheiro não existe."
 
-#: ../src/app/qml/textView/TextView.qml:42
-msgid "Loading..."
-msgstr "A carregar..."
+#. TRANSLATORS: This string is used for renaming a copied file,
+#. when a file with the same name already exists in user's
+#. Documents folder.
+#. 
+#. e.g. "Manual_Aquaris_E4.5_ubuntu_EN.pdf" will become
+#. "Manual_Aquaris_E4.5_ubuntu_EN (copy 2).pdf"
+#. 
+#. where "2" is given by the argument "%1"
+#. 
+#: ../src/plugin/file-qml-plugin/docviewerutils.cpp:111
+#, qt-format
+msgid "copy %1"
+msgstr "cópia %1"
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:240
-msgid "Document successfully imported!"
-msgid_plural "Documents successfully imported!"
-msgstr[0] "Documento importado com sucesso!"
-msgstr[1] "Documentos importados com sucesso!"
+#: /tmp/build-reboot-uitk13-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+msgid "Document Viewer"
+msgstr "Documentos"
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:243
-msgid "Open"
-msgstr "Abrir"
-
-#: /home/m/dev/core/ubuntu-docviewer-app-icon-fix/obj-x86_64-linux-gnu/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/build-reboot-uitk13-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "visualizador;documentos;leitor;pdf"
+
+#~ msgid "File does not exist"
+#~ msgstr "O ficheiro não existe"

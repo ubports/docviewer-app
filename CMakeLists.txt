@@ -6,6 +6,9 @@ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules")
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -fno-permissive -pedantic -Wall -Wextra -fPIC")
 
+# Debugging purpose. Keep commented unless you need it.
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CMAKE_CXX_FLAGS_DEBUG}")
+
 include(FindPkgConfig)
 include(GNUInstallDirs)
 

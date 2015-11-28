@@ -16,10 +16,8 @@
  */
 
 import QtQuick 2.4
-import Ubuntu.Components 1.2
+import Ubuntu.Components 1.3
 import QtQuick.Layouts 1.1
-
-import "../upstreamComponents"
 
 Page {
     id: pdfContents
@@ -41,9 +39,6 @@ Page {
     }
 
     onActiveChanged: {
-        // If the header was hidden in the PdfPage, make it visible.
-        mainView.setHeaderVisibility(true);
-
         // Find out the current page position in the ToC index
         for (var i=0; i<poppler.tocModel.count; i++) {
             if (i+1 < poppler.tocModel.count) {
@@ -93,48 +88,43 @@ Page {
                 visible: view.currentIndex == model.index
             }
 
-            RowLayout {
-                anchors {
-                    fill: parent
-                    leftMargin: units.gu(1)
-                    rightMargin: units.gu(1)
-                }
+            /* UITK 1.3 spec: Three slot layout (A-B-C)   */
+            //  ________________________________________
+            // |                              |     |   |
+            // |               A              |  B  | C |
+            // |______________________________|__ __|___|
+            //
+            ListItemLayout {
+                id: listItemLayout
+                objectName: "listItemLayout" + index
+                anchors.fill: parent
 
-                spacing: units.gu(1)
-
-                Label {
-                    objectName: "content"
-                    Layout.fillWidth: true
-
+                /* UITK 1.3 specs: Slot A */
+                title {
                     text: model.title
                     elide: Text.ElideRight
-
                     font.weight: model.level == 0 ? Font.DemiBold : Font.Normal
                     color: (model.level == 0) ? UbuntuColors.midAubergine
-                                              : Theme.palette.selected.backgroundText
+                                              : theme.palette.selected.backgroundText
                 }
 
-                /*
-                    TODO: Needs UX team's review.
-                    UX specifications for ListItem suggest to use a "tick" icon
-                    as indicator for a selected state.
-                    This currently looks a bit redundant, since we already
-                    use a grey overlay (see above).
-                */
+                /* UITK 1.3 specs: Slot B */
                 Icon {
-                    Layout.preferredHeight: units.gu(2)
-                    Layout.preferredWidth: units.gu(2)
+                    SlotsLayout.position: SlotsLayout.Trailing
+                    width: units.gu(2); height: width
                     name: "tick"
                     color: UbuntuColors.green
                     visible: view.currentIndex == model.index
                 }
 
+                /* UITK 1.3 specs: Slot C */
                 Label {
                     objectName: "pageindex"
+                    SlotsLayout.position: SlotsLayout.Last
                     text: model.pageIndex + 1
                     font.weight: model.level == 0 ? Font.DemiBold : Font.Normal
                     color: (model.level == 0) ? UbuntuColors.midAubergine
-                                              : Theme.palette.selected.backgroundText
+                                              : theme.palette.selected.backgroundText
                 }
             }
         }

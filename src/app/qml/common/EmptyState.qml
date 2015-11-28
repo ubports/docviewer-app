@@ -17,7 +17,7 @@
  */
 
 import QtQuick 2.4
-import Ubuntu.Components 1.2
+import Ubuntu.Components 1.3
 
 /*
  Component which displays an empty state (approved by design). It offers an
@@ -47,7 +47,7 @@ Item {
         anchors.top: emptyIcon.bottom
         anchors.topMargin: units.gu(5)
         anchors.horizontalCenter: parent.horizontalCenter
-        fontSize: "large"
+        textSize: Label.Large
         font.bold: true
     }
 
