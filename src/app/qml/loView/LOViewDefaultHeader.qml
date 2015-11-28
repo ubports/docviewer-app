@@ -89,6 +89,7 @@ PageHeadState {
         },*/
 
         Action {
+            // FIXME: Autopilot test broken... seems not to detect we're now using an ActionBar since the switch to UITK 1.3
             objectName: "gotopage"
             iconName: "browser-tabs"
             text: i18n.tr("Go to position...")

@@ -19,23 +19,16 @@ import Ubuntu.Components 1.3
 
 ListItem {
     id: listItemSubtitled
-    property alias text: mainLabel.text
-    property alias subText: subLabel.text
+    property string text
+    property string subText
 
-    Column {
-        anchors {
-            left: parent.left; right: parent.right
-            margins: units.gu(2)
-            verticalCenter: parent.verticalCenter
-        }
+    height: listItemLayout.height
 
-        Label {
-            id: mainLabel
-            color: UbuntuColors.midAubergine
-        }
-        Label {
-            id: subLabel
-            textSize: Label.Small
-        }
+    ListItemLayout {
+        id: listItemLayout
+
+        title.text: listItemSubtitled.text
+        title.color: UbuntuColors.midAubergine
+        subtitle.text: listItemSubtitled.subText
     }
 }

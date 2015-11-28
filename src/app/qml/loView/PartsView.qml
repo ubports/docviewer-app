@@ -49,17 +49,22 @@ ListView {
 
             onClicked: internal.delegate_onClicked(model.index)
 
-            RowLayout {
-                anchors {
-                    fill: parent
-                    leftMargin: units.gu(1)
-                    rightMargin: units.gu(1)
-                }
-                spacing: units.gu(1)
+            /*** UITK 1.3 specs: Three slot layout (B-A-C)
+              ________________________________________
+             |   |                                |   |
+             | B |               A                | C |
+             |___|________________________________|___|
 
+            *********************************************/
+
+            ListItemLayout {
+                id: listItemLayout
+                anchors.fill: parent
+
+                /* UITK 1.3 specs: Slot B */
                 Image {
-                    Layout.fillHeight: true
-                    Layout.preferredWidth: height
+                    SlotsLayout.position: SlotsLayout.Leading
+                    height: parent.height; width: height
                     fillMode: Image.PreserveAspectFit
                     // Do not store a cache of the thumbnail, so that we don't show
                     // thumbnails of a previously loaded document.
@@ -67,8 +72,8 @@ ListView {
                     source: model.thumbnail
                 }
 
-                Label {
-                    Layout.fillWidth: true
+                /* UITK 1.3 specs: Slot A */
+                title {
                     wrapMode: Text.WordWrap
                     text: model.name
                     visible: view.isWide
@@ -76,7 +81,10 @@ ListView {
                                                                          : theme.palette.selected.backgroundText
                 }
 
+                /* UITK 1.3 specs: Slot C */
                 Label {
+                    SlotsLayout.position: SlotsLayout.Trailing
+
                     text: model.index + 1
                     color: (loView.document.currentPart === model.index) ? UbuntuColors.orange
                                                                          : theme.palette.selected.backgroundText
