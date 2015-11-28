@@ -16,33 +16,6 @@ RenderEngine::RenderEngine():
     qRegisterMetaType<AbstractRenderTask*>();
 }
 
-void RenderEngine::enqueueTileTask(const QSharedPointer<LODocument>& doc, int part, const QRect& area, qreal zoom, int id)
-{
-    Q_ASSERT(doc != nullptr);
-
-    TileRenderTask* task = new TileRenderTask();
-    task->setId(id);
-    task->setPart(part);
-    task->setDocument(doc);
-    task->setArea(area);
-    task->setZoom(zoom);
-
-    enqueueTask(task);
-}
-
-void RenderEngine::enqueueThumbnailTask(const QSharedPointer<LODocument> &doc, int part, qreal size, int id)
-{
-    Q_ASSERT(doc != nullptr);
-
-    ThumbnailRenderTask* task = new ThumbnailRenderTask();
-    task->setId(id);
-    task->setPart(part);
-    task->setDocument(doc);
-    task->setSize(size);
-
-    enqueueTask(task);
-}
-
 void RenderEngine::enqueueTask(AbstractRenderTask *task)
 {
     m_queue.enqueue(task);

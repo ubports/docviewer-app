@@ -91,7 +91,7 @@ void LODocument::loadDocument(const QString &pathName)
     /* Get LibreOffice path */
     const char* loPath = Config::getLibreOfficePath();
 
-    if (loPath == NULL) {
+    if (!loPath) {
         setError(LibreOfficeError::LibreOfficeNotFound);
         return;
     }
@@ -101,7 +101,7 @@ void LODocument::loadDocument(const QString &pathName)
     if (!s_office)
         s_office = lok::lok_cpp_init(loPath, Config::getLibreOfficeProfilePath());
 
-    if (s_office == NULL) {
+    if (!s_office) {
         setError(LibreOfficeError::LibreOfficeNotInitialized);
         qDebug() << "[lok-qml]: LibreOffice not initialized.";
         return;
@@ -111,7 +111,7 @@ void LODocument::loadDocument(const QString &pathName)
     /* Load the document */
     m_lokDocument = s_office->documentLoad(m_path.toUtf8().constData());
 
-    if (m_lokDocument == NULL) {
+    if (!m_lokDocument) {
         setError(LibreOfficeError::DocumentNotLoaded);
         qDebug() << "[lok-qml]: Document not loaded.";
         return;

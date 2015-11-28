@@ -24,6 +24,7 @@
 #include <QQmlEngine>
 
 #include "loerror.h"
+#include "rendertask.h"
 #include "renderengine.h"
 #include "lopartsmodel.h"
 #include "lopartsimageprovider.h"
@@ -109,9 +110,10 @@ private:
     QMap<int, SGTileItem*>      m_tiles;
 
     void generateTiles(int x1, int y1, int x2, int y2, int tilesPerWidth, int tilesPerHeight);
-    void createTile(int index, QRect rect);
+    void createTile(int index, const QRect& rect);
     void setZoomMode(const ZoomMode zoomMode);
     void clearView();
+    TileRenderTask* createTask(const QRect& rect, int id) const;
     void updateTileData(AbstractRenderTask* task, QImage img);
     void updateThumbnailModel(AbstractRenderTask* task, QImage img);
 

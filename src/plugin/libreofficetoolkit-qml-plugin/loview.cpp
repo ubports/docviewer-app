@@ -353,7 +353,7 @@ void LOView::slotTaskRenderFinished(AbstractRenderTask* task, QImage img)
     }
 }
 
-void LOView::createTile(int index, QRect rect)
+void LOView::createTile(int index, const QRect &rect)
 {
     if (!m_tiles.contains(index)) {
 #ifdef DEBUG_VERBOSE
@@ -362,7 +362,7 @@ void LOView::createTile(int index, QRect rect)
 
         auto tile = new SGTileItem(rect, m_zoomFactor, RenderEngine::getNextId(), this);
         m_tiles.insert(index, tile);
-        RenderEngine::instance()->enqueueTileTask(m_document, m_document->currentPart(), rect, m_zoomFactor, tile->id());
+        RenderEngine::instance()->enqueueTask(createTask(rect, tile->id()));
     }
 #ifdef DEBUG_VERBOSE
     else {
@@ -393,6 +393,17 @@ void LOView::clearView()
         sgtile->deleteLater();
         i = m_tiles.erase(i);
     }
+}
+
+TileRenderTask* LOView::createTask(const QRect &rect, int id) const
+{
+    TileRenderTask* task = new TileRenderTask();
+    task->setId(id);
+    task->setPart(m_document->currentPart());
+    task->setDocument(m_document);
+    task->setArea(rect);
+    task->setZoom(m_zoomFactor);
+    return task;
 }
 
 void LOView::updateTileData(AbstractRenderTask* task, QImage img)

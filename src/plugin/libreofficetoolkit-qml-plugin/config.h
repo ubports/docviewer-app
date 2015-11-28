@@ -66,7 +66,7 @@ public:
         if (loPath.isEmpty()) {
             qDebug() << "LibreOffice binaries not found.";
 
-            return NULL;
+            return nullptr;
         }
 
         else {

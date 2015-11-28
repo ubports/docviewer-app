@@ -10,6 +10,9 @@
 
 #include "lodocument.h"
 
+/* Required for super-fast type detection.
+ * NOTE: only leaf nodes in inheritance tree have correct types.
+ */
 enum RenderTaskType
 {
     RttUnknown = 0x0,

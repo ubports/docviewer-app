@@ -23,9 +23,7 @@ class RenderEngine : public QObject
     const int DefaultIdealThreadCount = 2;
 
 public:
-    void enqueueTileTask(const QSharedPointer<LODocument>& doc, int part, const QRect& area, qreal zoom, int id);
-    void enqueueThumbnailTask(const QSharedPointer<LODocument>& doc, int part, qreal size, int id);
-    void enqueueTask(AbstractRenderTask* task);
+    void enqueueTask(AbstractRenderTask* task);     // Takes ownership.
     void dequeueTask(int id);
 
     static RenderEngine* instance() {
