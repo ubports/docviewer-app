@@ -1,7 +1,7 @@
-ubuntu-docviewer-app (2.0.194) vivid; urgency=medium
+ubuntu-docviewer-app (2.0) vivid; urgency=medium
 
-  [ Ubuntu Document Viewer Developers ]
-  * Support for LibreOffice documents
+  [ Alan Pope ]
+  * Use a confined template when running on phones
 
   [ Roman Shchekin ]
   * Performance improvements in LibreOffice viewer
@@ -9,6 +9,11 @@ ubuntu-docviewer-app (2.0.194) vivid; urgency=medium
   * Get screen DPIs at runtime.
   * Asynchronous LibreOffice viewer loading
   * LibreOffice viewer render engine
+  * Support for LibreOffice documents
+  * LibreOffice viewer: added pinch-to-zoom gesture (LP: #1514460)
+
+  [ Nicholas Skaggs ]
+  * Fix internet check for 'get-click-deps' script when running on jenkins.
 
   [ Stefano Verzegnassi ]
   * Don't import a second copy of a document using ContentHub (LP: #1432394)
@@ -23,9 +28,20 @@ ubuntu-docviewer-app (2.0.194) vivid; urgency=medium
   * Updated app icons (LP: #1476659)
   * Performance improvements in LibreOffice viewer
   * Zoom implementation in LibreOffice viewer
-  * Support for LibreOffice Presentation documents
+  * Support for LibreOffice documents
+  * Improved support for LibreOffice Presentation documents
+  * Disable file locking in LibreOffice (LP: #1517074)
+  * Added error detection in LibreOfficeViewer (LP: #1514458)
+  * Fixed broken SHOW_TILE_BORDER mode (LP: #1515037)
+  * LibreOffice viewer: Fix wrong size for last tile in a row/column (LP: #1516239)
+  * LibreOffice viewer: Don't create tiles outside the visible/buffer grid (LP: #1516241)
+  * Refactored project structure
+  * Updated to Ubuntu.Components 1.3 (ubuntu-sdk-14.04.1) (LP: #1508363)
+  * Better zoom support on desktop
+  * Changed header behaviour in the PDF viewer (LP: #1453403)
+  * LibreOffice viewer: Fix for slide navigation buttons obscured by bottom edge tab (LP: #1513843)
 
- -- Stefano Verzegnassi <verzegnassi.stefano@gmail.com>  Wed, 28 Oct 2015 15:04:17 +0200
+ -- Stefano Verzegnassi <verzegnassi.stefano@gmail.com>  Sat, 28 Nov 2015 13:30:55 +0100
 
 ubuntu-docviewer-app (0.3.181) vivid; urgency=medium
 
