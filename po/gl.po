@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-11-24 17:00+0100\n"
+"POT-Creation-Date: 2015-11-27 17:38+0100\n"
 "PO-Revision-Date: 2015-11-25 08:17+0000\n"
 "Last-Translator: Marcos Lans <Unknown>\n"
 "Language-Team: Galician <gl@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-11-26 05:39+0000\n"
+"X-Launchpad-Export-Date: 2015-11-28 05:04+0000\n"
 "X-Generator: Launchpad (build 17850)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
@@ -48,9 +48,9 @@ msgstr ""
 "A ruta debe existir antes de executar o aplicativo Docviewer."
 
 #: ../src/app/qml/common/DetailsPage.qml:25
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:106
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:97
-#: ../src/app/qml/textView/TextViewDefaultHeader.qml:83
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:107
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:83
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:69
 msgid "Details"
 msgstr "Información"
 
@@ -81,11 +81,8 @@ msgstr "Erro"
 #: ../src/app/qml/common/ErrorDialog.qml:26
 #: ../src/app/qml/common/PickImportedDialog.qml:53
 #: ../src/app/qml/common/RejectedImportDialog.qml:38
-#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:33
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:31
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:53
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:70
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
-#: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Close"
 msgstr "Pechar"
 
@@ -179,7 +176,7 @@ msgstr[1] "Confirma a eliminación permanente destes ficheiros?"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:61
 #: ../src/app/qml/documentPage/DocumentDelegateActions.qml:27
-#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:55
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:53
 msgid "Delete"
 msgstr "Eliminar"
 
@@ -251,10 +248,6 @@ msgid "Pick"
 msgstr "Seleccionar"
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:27
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:70
-#: ../src/app/qml/loView/LOViewPage.qml:233
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
-#: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Back"
 msgstr "Volver"
 
@@ -262,11 +255,11 @@ msgstr "Volver"
 msgid "search in documents..."
 msgstr "buscar documentos..."
 
-#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:42
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:40
 msgid "Select None"
 msgstr "Non seleccionar nada"
 
-#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:42
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:40
 msgid "Select All"
 msgstr "Seleccionar todo"
 
@@ -325,52 +318,48 @@ msgstr "Polo tamaño (máis pequenos primeiro)"
 msgid "Reverse order"
 msgstr "Orde inversa"
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:47
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:51
 #: ../src/app/qml/textView/TextView.qml:42
 msgid "Loading..."
 msgstr "Cargando..."
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:51
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:55
 msgid "LibreOffice text document"
 msgstr "Documento de texto de LibreOffice"
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:53
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:57
 msgid "LibreOffice spread sheet"
 msgstr "Folla de cálculo de LibreOffice"
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:55
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:59
 msgid "LibreOffice presentation"
 msgstr "Presentación de LibreOffice"
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:57
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:61
 msgid "LibreOffice Draw document"
 msgstr "Documento de LibreOffice Draw"
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:59
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:63
 msgid "Unknown LibreOffice document"
 msgstr "Documento de LibreOffice descoñecido"
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:61
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:65
 msgid "Unknown type document"
 msgstr "Tipo de documento descoñecido"
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:86
-msgid "Show zoom controls"
-msgstr "Mostrar controis de ampliación"
-
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:93
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:94
 msgid "Go to position..."
 msgstr "Ir á posición..."
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
-#: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:101
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:77
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Disable night mode"
 msgstr "Desact. modo noite"
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
-#: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:101
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:77
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Enable night mode"
 msgstr "Activar modo noite"
 
@@ -387,20 +376,15 @@ msgstr "Seleccionar posición entre 1% e 100%"
 msgid "GO!"
 msgstr "IR!"
 
-#: ../src/app/qml/loView/LOViewPage.qml:35
-#: ../src/app/qml/loView/LOViewPage.qml:231
-msgid "Slides"
-msgstr "Diapositivas"
-
-#: ../src/app/qml/loView/LOViewPage.qml:188
+#: ../src/app/qml/loView/LOViewPage.qml:175
 msgid "LibreOffice binaries not found."
 msgstr "Non se atoparon os binarios de LibreOffice."
 
-#: ../src/app/qml/loView/LOViewPage.qml:191
+#: ../src/app/qml/loView/LOViewPage.qml:178
 msgid "Error while loading LibreOffice."
 msgstr "Produciuse un erro cargando LibreOffice."
 
-#: ../src/app/qml/loView/LOViewPage.qml:194
+#: ../src/app/qml/loView/LOViewPage.qml:181
 msgid ""
 "Document not loaded.\n"
 "The requested document may be corrupt."
@@ -408,44 +392,17 @@ msgstr ""
 "Non se cargou o documento.\n"
 "É posíbel que o documento estea corrupto."
 
-#: ../src/app/qml/loView/LOViewZoomHeader.qml:42
-msgid "Hide zoom controls"
-msgstr "Ocultar controis de ampliación"
-
-#: ../src/app/qml/loView/LOViewZoomHeader.qml:49
-msgid "Zoom in"
-msgstr "Ampliar"
-
-#: ../src/app/qml/loView/LOViewZoomHeader.qml:55
-msgid "Zoom out"
-msgstr "Reducir"
-
-#: ../src/app/qml/loView/SlideControllerPanel.qml:62
-#, qt-format
-msgid "Slide %1 of %2"
-msgstr "Diapositiva %1 de %2"
-
-#: ../src/app/qml/loView/ZoomSelector.qml:29
-msgid "Automatic (Fit width)"
-msgstr "Automático (axuste á largura)"
-
-#: ../src/app/qml/loView/ZoomSelector.qml:94
-#, qt-format
-msgid "Automatic (%1%)"
-msgstr "Automático (%1%)"
-
-#: ../src/app/qml/loView/ZoomSelector.qml:95
-#, qt-format
-msgid "Zoom: %1%"
-msgstr "Ampliación: %1%"
+#: ../src/app/qml/loView/ZoomSelector.qml:116
+msgid "Fit width"
+msgstr ""
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
-#: ../src/app/qml/pdfView/PdfContentsPage.qml:32
+#: ../src/app/qml/pdfView/PdfContentsPage.qml:30
 #: ../src/app/qml/pdfView/PdfView.qml:37
 msgid "Contents"
 msgstr "Contidos"
 
-#: ../src/app/qml/pdfView/PdfContentsPage.qml:38
+#: ../src/app/qml/pdfView/PdfContentsPage.qml:36
 msgid "Hide table of contents"
 msgstr "Ocultar táboa de contidos"
 
@@ -456,7 +413,7 @@ msgstr "Ocultar táboa de contidos"
 msgid "Page %1 of %2"
 msgstr "Páxina %1 de %2"
 
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:85
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:71
 msgid "Go to page..."
 msgstr "Ir á páxina..."
 
@@ -469,7 +426,7 @@ msgstr "Ir á páxina"
 msgid "Choose a page between 1 and %1"
 msgstr "Seleccionar unha páxina entre 1 e %1"
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:130
+#: ../src/app/qml/ubuntu-docviewer-app.qml:115
 msgid "File does not exist."
 msgstr "O ficheiro non existe."
 
@@ -487,11 +444,11 @@ msgstr "O ficheiro non existe."
 msgid "copy %1"
 msgstr "copia %1"
 
-#: /tmp/build-reboot-cmake-refactor-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/build-reboot-uitk13-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Visor de documentos"
 
-#: /tmp/build-reboot-cmake-refactor-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/build-reboot-uitk13-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "documentos;visor;pdf;lector;"
 

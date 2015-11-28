@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-11-24 17:00+0100\n"
+"POT-Creation-Date: 2015-11-27 17:38+0100\n"
 "PO-Revision-Date: 2015-11-19 18:20+0000\n"
 "Last-Translator: Danial Behzadi <dani.behzi@gmail.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2015-11-25 05:37+0000\n"
+"X-Launchpad-Export-Date: 2015-11-28 05:04+0000\n"
 "X-Generator: Launchpad (build 17850)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
@@ -42,9 +42,9 @@ msgid ""
 msgstr ""
 
 #: ../src/app/qml/common/DetailsPage.qml:25
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:106
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:97
-#: ../src/app/qml/textView/TextViewDefaultHeader.qml:83
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:107
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:83
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:69
 msgid "Details"
 msgstr "جزئیات ‌"
 
@@ -75,11 +75,8 @@ msgstr "خطا"
 #: ../src/app/qml/common/ErrorDialog.qml:26
 #: ../src/app/qml/common/PickImportedDialog.qml:53
 #: ../src/app/qml/common/RejectedImportDialog.qml:38
-#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:33
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:31
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:53
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:70
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
-#: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Close"
 msgstr "بستن"
 
@@ -166,7 +163,7 @@ msgstr[0] "مطمئنید که می‌خواهید این پرونده‌ها ر
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:61
 #: ../src/app/qml/documentPage/DocumentDelegateActions.qml:27
-#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:55
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:53
 msgid "Delete"
 msgstr "حذف"
 
@@ -236,10 +233,6 @@ msgid "Pick"
 msgstr "برداشتن"
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:27
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:70
-#: ../src/app/qml/loView/LOViewPage.qml:233
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:61
-#: ../src/app/qml/textView/TextViewDefaultHeader.qml:61
 msgid "Back"
 msgstr "بازگشت"
 
@@ -247,11 +240,11 @@ msgstr "بازگشت"
 msgid "search in documents..."
 msgstr "جست‌وجو در مستندات…"
 
-#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:42
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:40
 msgid "Select None"
 msgstr "گزینش هیچ‌کدام"
 
-#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:42
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:40
 msgid "Select All"
 msgstr "گزینش همه"
 
@@ -310,52 +303,48 @@ msgstr "چینش بر اساس اندازه (ابتدا کوچک‌ترها)"
 msgid "Reverse order"
 msgstr "ترتیب معکوس"
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:47
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:51
 #: ../src/app/qml/textView/TextView.qml:42
 msgid "Loading..."
 msgstr "در حال بار کردن…"
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:51
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:55
 msgid "LibreOffice text document"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:53
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:57
 msgid "LibreOffice spread sheet"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:55
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:59
 msgid "LibreOffice presentation"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:57
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:61
 msgid "LibreOffice Draw document"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:59
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:63
 msgid "Unknown LibreOffice document"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:61
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:65
 msgid "Unknown type document"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:86
-msgid "Show zoom controls"
-msgstr ""
-
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:93
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:94
 msgid "Go to position..."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
-#: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:101
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:77
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Disable night mode"
 msgstr "غیرفعّال کردن حالت شب"
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:91
-#: ../src/app/qml/textView/TextViewDefaultHeader.qml:77
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:101
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:77
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Enable night mode"
 msgstr "فعّال کردن حالت شب"
 
@@ -372,63 +361,31 @@ msgstr ""
 msgid "GO!"
 msgstr "برو!"
 
-#: ../src/app/qml/loView/LOViewPage.qml:35
-#: ../src/app/qml/loView/LOViewPage.qml:231
-msgid "Slides"
-msgstr ""
-
-#: ../src/app/qml/loView/LOViewPage.qml:188
+#: ../src/app/qml/loView/LOViewPage.qml:175
 msgid "LibreOffice binaries not found."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewPage.qml:191
+#: ../src/app/qml/loView/LOViewPage.qml:178
 msgid "Error while loading LibreOffice."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewPage.qml:194
+#: ../src/app/qml/loView/LOViewPage.qml:181
 msgid ""
 "Document not loaded.\n"
 "The requested document may be corrupt."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewZoomHeader.qml:42
-msgid "Hide zoom controls"
-msgstr ""
-
-#: ../src/app/qml/loView/LOViewZoomHeader.qml:49
-msgid "Zoom in"
-msgstr ""
-
-#: ../src/app/qml/loView/LOViewZoomHeader.qml:55
-msgid "Zoom out"
-msgstr ""
-
-#: ../src/app/qml/loView/SlideControllerPanel.qml:62
-#, qt-format
-msgid "Slide %1 of %2"
-msgstr ""
-
-#: ../src/app/qml/loView/ZoomSelector.qml:29
-msgid "Automatic (Fit width)"
-msgstr ""
-
-#: ../src/app/qml/loView/ZoomSelector.qml:94
-#, qt-format
-msgid "Automatic (%1%)"
-msgstr ""
-
-#: ../src/app/qml/loView/ZoomSelector.qml:95
-#, qt-format
-msgid "Zoom: %1%"
+#: ../src/app/qml/loView/ZoomSelector.qml:116
+msgid "Fit width"
 msgstr ""
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
-#: ../src/app/qml/pdfView/PdfContentsPage.qml:32
+#: ../src/app/qml/pdfView/PdfContentsPage.qml:30
 #: ../src/app/qml/pdfView/PdfView.qml:37
 msgid "Contents"
 msgstr "فهرست"
 
-#: ../src/app/qml/pdfView/PdfContentsPage.qml:38
+#: ../src/app/qml/pdfView/PdfContentsPage.qml:36
 msgid "Hide table of contents"
 msgstr "پنهان کردن فهرست مطالب"
 
@@ -439,7 +396,7 @@ msgstr "پنهان کردن فهرست مطالب"
 msgid "Page %1 of %2"
 msgstr "صفحه‌ی %1 از %2"
 
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:85
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:71
 msgid "Go to page..."
 msgstr "رفتن به صفحه‌ی …"
 
@@ -452,7 +409,7 @@ msgstr "رفتن به صفحه"
 msgid "Choose a page between 1 and %1"
 msgstr "صفحه‌ای بین ۱ و %1 برگزینید"
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:130
+#: ../src/app/qml/ubuntu-docviewer-app.qml:115
 msgid "File does not exist."
 msgstr ""
 
@@ -470,11 +427,11 @@ msgstr ""
 msgid "copy %1"
 msgstr "رونوشت %1"
 
-#: /tmp/build-reboot-cmake-refactor-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/build-reboot-uitk13-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "نمایشگر سند"
 
-#: /tmp/build-reboot-cmake-refactor-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/build-reboot-uitk13-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "documents;viewer;pdf;reader;"
 
