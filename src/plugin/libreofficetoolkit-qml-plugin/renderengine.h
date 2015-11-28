@@ -40,9 +40,7 @@ public:
     }
 
 Q_SIGNALS:
-    void tileRenderFinished(int id, QImage img);
-    void thumbnailRenderFinished(int id, QImage img);
-    void enabledChanged();
+    void taskRenderFinished(AbstractRenderTask* task, QImage img);
 
 private:
     Q_INVOKABLE void internalRenderCallback(AbstractRenderTask* task, QImage img);

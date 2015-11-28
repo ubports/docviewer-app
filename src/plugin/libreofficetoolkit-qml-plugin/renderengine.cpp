@@ -70,22 +70,10 @@ void RenderEngine::internalRenderCallback(AbstractRenderTask* task, QImage img)
         doDispose();
     }
 
-    switch (task->type())
-    {
-    case RttTile:
-        Q_EMIT tileRenderFinished(task->id(), img);
-        break;
-    case RttImpressThumbnail:
-        Q_EMIT thumbnailRenderFinished(task->id(), img);
-        break;
-    case RttPdfPage:
-    case RttUnknown:
-    default:
-        break;
-    }
+    // Notify about result.
+    emit taskRenderFinished(task, img);
 
     doNextTask();
-
     disposeLater(task);
 }
 

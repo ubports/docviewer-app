@@ -86,9 +86,7 @@ private Q_SLOTS:
     void updateVisibleRect();
     void scheduleVisibleRectUpdate();
     void invalidateAllTiles();
-
-    void slotTileRenderFinished(int id, QImage img);
-    void slotThumbnailRenderFinished(int id, QImage img);
+    void slotTaskRenderFinished(AbstractRenderTask* task, QImage img);
 
 private:
 
@@ -114,6 +112,8 @@ private:
     void createTile(int index, QRect rect);
     void setZoomMode(const ZoomMode zoomMode);
     void clearView();
+    void updateTileData(AbstractRenderTask* task, QImage img);
+    void updateThumbnailModel(AbstractRenderTask* task, QImage img);
 
     void setError(const LibreOfficeError::Error &error);
 };
