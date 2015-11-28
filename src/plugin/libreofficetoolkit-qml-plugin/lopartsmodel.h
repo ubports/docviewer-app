@@ -30,14 +30,13 @@ class LOPartEntry
 {
 public:
     LOPartEntry():
+        id(0),
         index(0)
-    {
-        id = RenderEngine::getNextId();
-    }
+    { }
 
     int id;
-    QString name;
     int index;
+    QString name;
     QString thumbnail;
 };
 

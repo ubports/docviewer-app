@@ -94,7 +94,7 @@ private:
 
     void setError(const LibreOfficeError::Error &error);
 
-    lok::Document *m_document;
+    lok::Document *m_lokDocument;
 
     static lok::Office *s_office;
 };

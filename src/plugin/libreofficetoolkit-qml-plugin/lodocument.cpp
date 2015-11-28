@@ -36,7 +36,7 @@ LODocument::LODocument()
   : m_path("")
   , m_currentPart(-1)
   , m_error(LibreOfficeError::NoError)
-  , m_document(nullptr)
+  , m_lokDocument(nullptr)
 {
     // This space is intentionally empty.
 }
@@ -66,7 +66,7 @@ int LODocument::currentPart() {
 
 void LODocument::setCurrentPart(int index)
 {
-    if (!m_document)
+    if (!m_lokDocument)
         return;
 
     if (m_currentPart == index || index < 0 || index > partsCount() - 1)
@@ -109,9 +109,9 @@ void LODocument::loadDocument(const QString &pathName)
 
 
     /* Load the document */
-    m_document = s_office->documentLoad(m_path.toUtf8().constData());
+    m_lokDocument = s_office->documentLoad(m_path.toUtf8().constData());
 
-    if (m_document == NULL) {
+    if (m_lokDocument == NULL) {
         setError(LibreOfficeError::DocumentNotLoaded);
         qDebug() << "[lok-qml]: Document not loaded.";
         return;
@@ -119,12 +119,12 @@ void LODocument::loadDocument(const QString &pathName)
 
 
     /* Do the further initialization */
-    m_docType = DocumentType(m_document->getDocumentType());
+    m_docType = DocumentType(m_lokDocument->getDocumentType());
     Q_EMIT documentTypeChanged();
 
-    setCurrentPart(m_document->getPart());
+    setCurrentPart(m_lokDocument->getPart());
 
-    m_document->initializeForRendering();
+    m_lokDocument->initializeForRendering();
     qDebug() << "Document loaded successfully !";
 
     return;
@@ -148,31 +148,31 @@ LODocument::DocumentType LODocument::documentType() const
 
 int LODocument::documentPart() const
 {
-    return m_document->getPart();
+    return m_lokDocument->getPart();
 }
 
 void LODocument::setDocumentPart(int p)
 {
     if (documentPart() != p)
-        m_document->setPart(p);
+        m_lokDocument->setPart(p);
 }
 
 // Return the size of the document, in TWIPs
 QSize LODocument::documentSize() const
 {
-    if (!m_document)
+    if (!m_lokDocument)
         return QSize(0, 0);
 
     long pWidth(0);
     long pHeight(0);
-    m_document->getDocumentSize(&pWidth, &pHeight);
+    m_lokDocument->getDocumentSize(&pWidth, &pHeight);
 
     return QSize(pWidth, pHeight);
 }
 
 QImage LODocument::paintTile(const QSize& canvasSize, const QRect& tileSize, const qreal &zoom)
 {
-    if (!m_document)
+    if (!m_lokDocument)
         return QImage();
 
     QImage result = QImage(canvasSize.width(), canvasSize.height(),  QImage::Format_RGB32);
@@ -182,7 +182,7 @@ QImage LODocument::paintTile(const QSize& canvasSize, const QRect& tileSize, con
     renderTimer.start();
 #endif
 
-    m_document->paintTile(result.bits(),
+    m_lokDocument->paintTile(result.bits(),
                           canvasSize.width(), canvasSize.height(),
                           Twips::convertPixelsToTwips(tileSize.x(), zoom),
                           Twips::convertPixelsToTwips(tileSize.y(), zoom),
@@ -198,7 +198,7 @@ QImage LODocument::paintTile(const QSize& canvasSize, const QRect& tileSize, con
 
 QImage LODocument::paintThumbnail(qreal size)
 {
-    if (!m_document)
+    if (!m_lokDocument)
         return QImage();
 
 #ifdef DEBUG_TILE_BENCHMARK
@@ -220,7 +220,7 @@ QImage LODocument::paintThumbnail(qreal size)
     }
 
     QImage result = QImage(resultSize.width(), resultSize.height(), QImage::Format_RGB32);
-    m_document->paintTile(result.bits(), resultSize.width(), resultSize.height(),
+    m_lokDocument->paintTile(result.bits(), resultSize.width(), resultSize.height(),
                           0, 0, tWidth, tHeight);
 
 #ifdef DEBUG_TILE_BENCHMARK
@@ -232,18 +232,18 @@ QImage LODocument::paintThumbnail(qreal size)
 
 int LODocument::partsCount()
 {
-    if (!m_document)
+    if (!m_lokDocument)
         return int(0);
  
-    return m_document->getParts();
+    return m_lokDocument->getParts();
 }
  
 QString LODocument::getPartName(int index) const
 {
-    if (!m_document)
+    if (!m_lokDocument)
         return QString();
  
-    return QString::fromUtf8(m_document->getPartName(index));
+    return QString::fromUtf8(m_lokDocument->getPartName(index));
 }
 
 LibreOfficeError::Error LODocument::error() const
@@ -255,19 +255,19 @@ LibreOfficeError::Error LODocument::error() const
 // be used?
 bool LODocument::saveAs(QString url, QString format = QString(), QString filterOptions = QString())
 {
-    if (!m_document) {
+    if (!m_lokDocument) {
         qDebug() << "No loaded document. It's not possible to save this file.";
         return false;
     }
 
-    return m_document->saveAs(url.toLatin1().constData(),
+    return m_lokDocument->saveAs(url.toLatin1().constData(),
                               format.toLatin1().constData(),
                               filterOptions.toLatin1().constData());
 }
 
 LODocument::~LODocument()
 {
-    delete m_document;
+    delete m_lokDocument;
 #ifdef DEBUG_VERBOSE
     qDebug() << " ---- ~LODocument";
 #endif
