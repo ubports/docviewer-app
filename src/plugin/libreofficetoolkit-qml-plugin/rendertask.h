@@ -10,17 +10,19 @@
 
 #include "lodocument.h"
 
+/* Required for super-fast type detection.
+ * NOTE: only leaf nodes in inheritance tree have correct types.
+ */
 enum RenderTaskType
 {
     RttUnknown = 0x0,
     RttTile = 0x1,
     RttImpressThumbnail = 0x2,
-    RttPdfPage = 0x3 // TODO
+    RttPdfPage = 0x3
 };
 
 class AbstractRenderTask
 {
-
 public:
     virtual RenderTaskType type() { return RttUnknown; }
     virtual QImage doWork() = 0 ;
@@ -39,25 +41,11 @@ Q_DECLARE_METATYPE(AbstractRenderTask*)
 class LoRenderTask : public AbstractRenderTask
 {
 public:
-    virtual bool canBeRunInParallel(AbstractRenderTask* prevTask)
-    {
-        Q_ASSERT(prevTask != nullptr);
-        if (prevTask->type() == RttTile || prevTask->type() == RttImpressThumbnail) {
-            LoRenderTask* loTask = static_cast<LoRenderTask*>(prevTask);
-
-            // Another document or the same part in the same document can be run parallel.
-            return (loTask->document() != m_document ||
-                    loTask->part() == m_part);
-        }
-
-        return true;
-    }
-
+    virtual bool canBeRunInParallel(AbstractRenderTask* prevTask);
     virtual void prepare() { m_document->setDocumentPart(m_part); }
 
     int part() { return m_part; }
     void setPart(int p) { m_part = p; }
-
     QSharedPointer<LODocument> document() { return m_document; }
     void setDocument(QSharedPointer<LODocument> d) { m_document = d; }
 protected:
@@ -69,10 +57,8 @@ class TileRenderTask : public LoRenderTask
 {
 public:
     virtual RenderTaskType type() { return RttTile; }
-    virtual QImage doWork()
-    {
-        return m_document->paintTile(m_area.size(), m_area, m_zoom);
-    }
+    virtual QImage doWork();
+
     QRect area() { return m_area; }
     void setArea(const QRect& a) { m_area = a; }
     qreal zoom() { return m_zoom; }
@@ -86,10 +72,8 @@ class ThumbnailRenderTask : public LoRenderTask
 {
 public:
     virtual RenderTaskType type() { return RttImpressThumbnail; }
-    virtual QImage doWork()
-    {
-        return m_document->paintThumbnail(m_size);
-    }
+    virtual QImage doWork();
+
     qreal size() { return m_size; }
     void setSize(qreal s) { m_size = s; }
 protected:
