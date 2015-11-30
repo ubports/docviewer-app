@@ -25,6 +25,8 @@ Dialog {
     id: goToPageDialog
     objectName: "LOViewGotoDialog"
 
+    property var view
+
     title: i18n.tr("Go to position")
     text: i18n.tr("Choose a position between 1% and 100%")
 
@@ -67,9 +69,9 @@ Dialog {
     }
 
     function goToPage() {
-        var pos = loView.contentHeight * parseInt(goToPageTextField.text) / 100
+        var pos = view.contentHeight * parseInt(goToPageTextField.text) / 100
 
-        loView.contentY = Math.min(pos, (loView.contentHeight - loView.height))
+        view.contentY = Math.min(pos, (view.contentHeight - view.height))
         PopupUtils.close(goToPageDialog)
     }
 }
