@@ -46,7 +46,7 @@ Item {
         // This does not include any argument which is not expected: they are
         // just skipped.
         if (args.error) {
-            var errorString = i18n.tr("Some of the provided arguments is not valid.")
+            var errorString = i18n.tr("Some of the provided arguments are not valid.")
             args.quitWithError(errorString)
         }
     }
@@ -55,7 +55,7 @@ Item {
         id: args
 
         defaultArgument {
-            help: i18n.tr("Opens ubuntu-docviewer-app displaying the selected file")
+            help: i18n.tr("Open ubuntu-docviewer-app displaying the selected file")
             valueNames: ["file_path"]
             required: false
         }
@@ -68,13 +68,13 @@ Item {
 
         Argument {
             name: "pickMode"
-            help: i18n.tr("Open ubuntu-docviewer-app in pick mode. Use it for tests only.")
+            help: i18n.tr("Open ubuntu-docviewer-app in pick mode. Used for tests only.")
             required: false
         }
 
         Argument {
             name: "documentsDir"
-            help: i18n.tr("Load the list of documents from the given folder, instead of default ~/Documents.\nThe path must exist prior to running ubuntu-docviewer-app")
+            help: i18n.tr("Show documents from the given folder, instead of ~/Documents.\nThe path must exist prior to running ubuntu-docviewer-app")
             valueNames: ["PATH"]
             required: false
         }
