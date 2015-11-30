@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-11-27 17:38+0100\n"
+"POT-Creation-Date: 2015-11-29 01:09+0300\n"
 "PO-Revision-Date: 2015-11-28 11:59+0000\n"
 "Last-Translator: Ivo Xavier <ivofernandes12@gmail.com>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-11-29 05:34+0000\n"
+"X-Launchpad-Export-Date: 2015-11-30 05:36+0000\n"
 "X-Generator: Launchpad (build 17850)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
@@ -46,7 +46,7 @@ msgstr ""
 "Esse diretório já deve existir antes de executar o ubuntu-docviewer-app"
 
 #: ../src/app/qml/common/DetailsPage.qml:25
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:107
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:108
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:83
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:69
 msgid "Details"
@@ -172,12 +172,12 @@ msgstr[0] "Tem a certeza que quer eliminar este ficheiro?"
 msgstr[1] "Tem a certeza que quer eliminar estes ficheiros?"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:61
-#: ../src/app/qml/documentPage/DocumentDelegateActions.qml:27
+#: ../src/app/qml/documentPage/DocumentDelegateActions.qml:25
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:53
 msgid "Delete"
 msgstr "Apagar"
 
-#: ../src/app/qml/documentPage/DocumentDelegateActions.qml:46
+#: ../src/app/qml/documentPage/DocumentDelegateActions.qml:44
 msgid "Share"
 msgstr "Partilhar"
 
@@ -195,28 +195,28 @@ msgstr ""
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:95
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:100
 #, qt-format
 msgid "Today, %1"
 msgstr "Hoje, %1"
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:100
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:105
 #, qt-format
 msgid "Yesterday, %1"
 msgstr "Ontem, %1"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:107
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:126
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:112
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:131
 msgid "yyyy/MM/dd hh:mm"
 msgstr "yyyy/MM/dd hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:120
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:125
 msgid "dddd, hh:mm"
 msgstr "dddd, hh:mm"
 
@@ -344,17 +344,17 @@ msgstr "Documento LibreOffice desconhecido"
 msgid "Unknown type document"
 msgstr "Tipo de documento desconhecido"
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:94
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:95
 msgid "Go to position..."
 msgstr "Ir para posição..."
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:101
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:102
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:77
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Disable night mode"
 msgstr "Desativar modo noturno"
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:101
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:102
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:77
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Enable night mode"
@@ -373,15 +373,15 @@ msgstr "Escolha uma posição entre 1% e 100%"
 msgid "GO!"
 msgstr "IR!"
 
-#: ../src/app/qml/loView/LOViewPage.qml:175
+#: ../src/app/qml/loView/LOViewPage.qml:149
 msgid "LibreOffice binaries not found."
 msgstr "Binários do LibreOffice não encontrados."
 
-#: ../src/app/qml/loView/LOViewPage.qml:178
+#: ../src/app/qml/loView/LOViewPage.qml:152
 msgid "Error while loading LibreOffice."
 msgstr "Erro ao carregar LibreOffice."
 
-#: ../src/app/qml/loView/LOViewPage.qml:181
+#: ../src/app/qml/loView/LOViewPage.qml:155
 msgid ""
 "Document not loaded.\n"
 "The requested document may be corrupt."
@@ -441,11 +441,11 @@ msgstr "Ficheiro não existe."
 msgid "copy %1"
 msgstr "cópia %1"
 
-#: /tmp/build-reboot-uitk13-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/qtros/dev/ubuntu-docviewer-app-cpp-optimizations-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Documentos"
 
-#: /tmp/build-reboot-uitk13-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/qtros/dev/ubuntu-docviewer-app-cpp-optimizations-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "visualizador;documentos;leitor;pdf"
 

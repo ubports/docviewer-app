@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-11-27 17:38+0100\n"
+"POT-Creation-Date: 2015-11-29 01:09+0300\n"
 "PO-Revision-Date: 2015-11-19 18:20+0000\n"
 "Last-Translator: Arda Ünlü <aarda.uunlu@gmail.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-11-28 05:04+0000\n"
+"X-Launchpad-Export-Date: 2015-11-30 05:36+0000\n"
 "X-Generator: Launchpad (build 17850)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
@@ -42,7 +42,7 @@ msgid ""
 msgstr ""
 
 #: ../src/app/qml/common/DetailsPage.qml:25
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:107
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:108
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:83
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:69
 msgid "Details"
@@ -166,12 +166,12 @@ msgstr[0] "Bu dosyayı kalıcı olarak silmek istediğinizden emin misiniz?"
 msgstr[1] "Bu dosyaları kalıcı olarak silmek istediğinizden emin misiniz?"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:61
-#: ../src/app/qml/documentPage/DocumentDelegateActions.qml:27
+#: ../src/app/qml/documentPage/DocumentDelegateActions.qml:25
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:53
 msgid "Delete"
 msgstr "Sil"
 
-#: ../src/app/qml/documentPage/DocumentDelegateActions.qml:46
+#: ../src/app/qml/documentPage/DocumentDelegateActions.qml:44
 msgid "Share"
 msgstr ""
 
@@ -187,28 +187,28 @@ msgstr ""
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:95
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:100
 #, qt-format
 msgid "Today, %1"
 msgstr "Bugün, %1"
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:100
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:105
 #, qt-format
 msgid "Yesterday, %1"
 msgstr "Dün, %1"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:107
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:126
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:112
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:131
 msgid "yyyy/MM/dd hh:mm"
 msgstr ""
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:120
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:125
 msgid "dddd, hh:mm"
 msgstr "hh:mm dddd"
 
@@ -334,17 +334,17 @@ msgstr ""
 msgid "Unknown type document"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:94
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:95
 msgid "Go to position..."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:101
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:102
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:77
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Disable night mode"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:101
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:102
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:77
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Enable night mode"
@@ -363,15 +363,15 @@ msgstr ""
 msgid "GO!"
 msgstr "GİT!"
 
-#: ../src/app/qml/loView/LOViewPage.qml:175
+#: ../src/app/qml/loView/LOViewPage.qml:149
 msgid "LibreOffice binaries not found."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewPage.qml:178
+#: ../src/app/qml/loView/LOViewPage.qml:152
 msgid "Error while loading LibreOffice."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewPage.qml:181
+#: ../src/app/qml/loView/LOViewPage.qml:155
 msgid ""
 "Document not loaded.\n"
 "The requested document may be corrupt."
@@ -429,11 +429,11 @@ msgstr ""
 msgid "copy %1"
 msgstr ""
 
-#: /tmp/build-reboot-uitk13-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/qtros/dev/ubuntu-docviewer-app-cpp-optimizations-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Belge Görüntüleyici"
 
-#: /tmp/build-reboot-uitk13-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/qtros/dev/ubuntu-docviewer-app-cpp-optimizations-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "belgeler;görüntüleyici;pdf;okuyucu;gösterici;"
 
