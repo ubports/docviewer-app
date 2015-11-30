@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-01 00:22+0100\n"
+"POT-Creation-Date: 2015-12-01 00:30+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -105,8 +105,7 @@ msgstr ""
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:28
 msgid ""
-"Sorry but we can't find a way to display this file.\n"
-"\n"
+"This file is not supported.\n"
 "Do you want to open it as a plain text?"
 msgstr ""
 
