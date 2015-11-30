@@ -58,7 +58,7 @@ ViewerPage {
                             id: leftSidebar
                             anchors.left: parent.left
                             anchors.bottom: parent.bottom
-                            visible: loDocument.documentType == LibreOffice.Document.PresentationDocument
+                            visible: loPage.isPresentation
 
                             width: visible ? units.gu(40) : 0
 
@@ -158,7 +158,7 @@ ViewerPage {
                     bottom: parent.bottom
                 }
                 height: visible ? units.gu(12) : 0
-                visible: loDocument.documentType == LibreOffice.Document.PresentationDocument
+                visible: loPage.isPresentation
 
                 model: loView.partsModel
                 orientation: ListView.Horizontal
