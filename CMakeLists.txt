@@ -18,7 +18,7 @@ option(CLICK_MODE       "Installs to a contained location" on)
 set(APP_NAME            ubuntu-docviewer-app)
 set(DESKTOP_FILE        "${PROJECT_NAME}.desktop")
 set(LP_PROJECT          ubuntu-docviewer-app)
-set(ICON_FILE           docviewer@30.png)
+set(ICON_FILE           docviewer-app.png)
 set(AUTOPILOT_DIR       ubuntu_docviewer_app)
 
 # Sets BZR_REVNO
