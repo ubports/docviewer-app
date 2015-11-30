@@ -30,6 +30,9 @@ MainView {
 
     property bool pickMode: commandLineProxy.pickMode
     property bool fullscreen: commandLineProxy.fullscreen
+
+    readonly property bool wideWindow: width > units.gu(80)
+    readonly property bool veryWideWindow: width > units.gu(120)
     readonly property bool isLandscape: Screen.orientation == Qt.LandscapeOrientation ||
                                         Screen.orientation == Qt.InvertedLandscapeOrientation
 
