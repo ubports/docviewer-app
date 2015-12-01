@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-11-29 01:09+0300\n"
+"POT-Creation-Date: 2015-11-30 13:11+0100\n"
 "PO-Revision-Date: 2015-11-29 12:38+0000\n"
 "Last-Translator: Richard Somlói <ricsipontaz@gmail.com>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-11-30 05:36+0000\n"
+"X-Launchpad-Export-Date: 2015-12-01 05:47+0000\n"
 "X-Generator: Launchpad (build 17850)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
@@ -49,7 +49,7 @@ msgstr ""
 "A megadott helynek létezni kell."
 
 #: ../src/app/qml/common/DetailsPage.qml:25
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:108
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:107
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:83
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:69
 msgid "Details"
@@ -124,7 +124,7 @@ msgstr ""
 #: ../src/app/qml/common/UnknownTypeDialog.qml:38
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:55
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:28
-#: ../src/app/qml/loView/LOViewGotoDialog.qml:53
+#: ../src/app/qml/loView/LOViewGotoDialog.qml:55
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:51
 msgid "Cancel"
 msgstr "Mégse"
@@ -349,44 +349,44 @@ msgstr "Ismeretlen LibreOffice dokumentum"
 msgid "Unknown type document"
 msgstr "Ismeretlen típusú dokumentum"
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:95
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:85
 msgid "Go to position..."
 msgstr "Ugrás pozícióhoz…"
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:102
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:77
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Disable night mode"
 msgstr "Éjjeli mód letiltása"
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:102
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:77
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Enable night mode"
 msgstr "Éjjeli mód"
 
-#: ../src/app/qml/loView/LOViewGotoDialog.qml:28
+#: ../src/app/qml/loView/LOViewGotoDialog.qml:30
 msgid "Go to position"
 msgstr "Ugrás pozícióhoz"
 
-#: ../src/app/qml/loView/LOViewGotoDialog.qml:29
+#: ../src/app/qml/loView/LOViewGotoDialog.qml:31
 msgid "Choose a position between 1% and 100%"
 msgstr "Válasszon egy pozíciót 1% és 100% között"
 
-#: ../src/app/qml/loView/LOViewGotoDialog.qml:60
+#: ../src/app/qml/loView/LOViewGotoDialog.qml:62
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:58
 msgid "GO!"
 msgstr "Mehet!"
 
-#: ../src/app/qml/loView/LOViewPage.qml:149
+#: ../src/app/qml/loView/LOViewPage.qml:128
 msgid "LibreOffice binaries not found."
 msgstr "Nem találhatóak LibreOffice binárisok."
 
-#: ../src/app/qml/loView/LOViewPage.qml:152
+#: ../src/app/qml/loView/LOViewPage.qml:131
 msgid "Error while loading LibreOffice."
 msgstr "Hiba a LibreOffice betöltése közben."
 
-#: ../src/app/qml/loView/LOViewPage.qml:155
+#: ../src/app/qml/loView/LOViewPage.qml:134
 msgid ""
 "Document not loaded.\n"
 "The requested document may be corrupt."
@@ -394,7 +394,14 @@ msgstr ""
 "A dokumentum betöltése sikertelen.\n"
 "A kért dokumentum sérült lehet."
 
-#: ../src/app/qml/loView/ZoomSelector.qml:116
+#. TRANSLATORS: 'LibreOfficeKit' is the name of the library used by
+#. Document Viewer for rendering LibreOffice/MS-Office documents.
+#. Ref. https://docs.libreoffice.org/libreofficekit.html
+#: ../src/app/qml/loView/Splashscreen.qml:45
+msgid "Powered by LibreOfficeKit"
+msgstr ""
+
+#: ../src/app/qml/loView/ZoomSelector.qml:110
 msgid "Fit width"
 msgstr "Teljes szélesség"
 
@@ -428,7 +435,7 @@ msgstr "Ugrás megadott oldalhoz"
 msgid "Choose a page between 1 and %1"
 msgstr "Válasszon egy oldalt 1 és %1 között"
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:115
+#: ../src/app/qml/ubuntu-docviewer-app.qml:118
 msgid "File does not exist."
 msgstr "A fájl nem létezik."
 
@@ -446,11 +453,11 @@ msgstr "A fájl nem létezik."
 msgid "copy %1"
 msgstr "másolat %1"
 
-#: /home/qtros/dev/ubuntu-docviewer-app-cpp-optimizations-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/build-ubuntu-docviewer-app-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Dokumentummegjelenítő"
 
-#: /home/qtros/dev/ubuntu-docviewer-app-cpp-optimizations-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/build-ubuntu-docviewer-app-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "dokumentumok;megtekintő;pdf;olvasó;"
 

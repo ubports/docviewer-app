@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-11-29 01:09+0300\n"
+"POT-Creation-Date: 2015-11-30 13:11+0100\n"
 "PO-Revision-Date: 2015-11-27 14:10+0000\n"
 "Last-Translator: Piotr Strębski <strebski@o2.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-11-30 05:36+0000\n"
+"X-Launchpad-Export-Date: 2015-12-01 05:47+0000\n"
 "X-Generator: Launchpad (build 17850)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
@@ -43,7 +43,7 @@ msgid ""
 msgstr ""
 
 #: ../src/app/qml/common/DetailsPage.qml:25
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:108
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:107
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:83
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:69
 msgid "Details"
@@ -117,7 +117,7 @@ msgstr ""
 #: ../src/app/qml/common/UnknownTypeDialog.qml:38
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:55
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:28
-#: ../src/app/qml/loView/LOViewGotoDialog.qml:53
+#: ../src/app/qml/loView/LOViewGotoDialog.qml:55
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:51
 msgid "Cancel"
 msgstr "Anuluj"
@@ -340,50 +340,57 @@ msgstr ""
 msgid "Unknown type document"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:95
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:85
 msgid "Go to position..."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:102
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:77
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Disable night mode"
 msgstr "Wyłącz tryb nocny"
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:102
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:77
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Enable night mode"
 msgstr "Włącz tryb nocny"
 
-#: ../src/app/qml/loView/LOViewGotoDialog.qml:28
+#: ../src/app/qml/loView/LOViewGotoDialog.qml:30
 msgid "Go to position"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewGotoDialog.qml:29
+#: ../src/app/qml/loView/LOViewGotoDialog.qml:31
 msgid "Choose a position between 1% and 100%"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewGotoDialog.qml:60
+#: ../src/app/qml/loView/LOViewGotoDialog.qml:62
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:58
 msgid "GO!"
 msgstr "IDŹ!"
 
-#: ../src/app/qml/loView/LOViewPage.qml:149
+#: ../src/app/qml/loView/LOViewPage.qml:128
 msgid "LibreOffice binaries not found."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewPage.qml:152
+#: ../src/app/qml/loView/LOViewPage.qml:131
 msgid "Error while loading LibreOffice."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewPage.qml:155
+#: ../src/app/qml/loView/LOViewPage.qml:134
 msgid ""
 "Document not loaded.\n"
 "The requested document may be corrupt."
 msgstr ""
 
-#: ../src/app/qml/loView/ZoomSelector.qml:116
+#. TRANSLATORS: 'LibreOfficeKit' is the name of the library used by
+#. Document Viewer for rendering LibreOffice/MS-Office documents.
+#. Ref. https://docs.libreoffice.org/libreofficekit.html
+#: ../src/app/qml/loView/Splashscreen.qml:45
+msgid "Powered by LibreOfficeKit"
+msgstr ""
+
+#: ../src/app/qml/loView/ZoomSelector.qml:110
 msgid "Fit width"
 msgstr ""
 
@@ -417,7 +424,7 @@ msgstr "Przejdź do strony"
 msgid "Choose a page between 1 and %1"
 msgstr "Wybór strony pomiędzy 1 a %1"
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:115
+#: ../src/app/qml/ubuntu-docviewer-app.qml:118
 msgid "File does not exist."
 msgstr "Plik nie istnieje."
 
@@ -435,11 +442,11 @@ msgstr "Plik nie istnieje."
 msgid "copy %1"
 msgstr "kopia %1"
 
-#: /home/qtros/dev/ubuntu-docviewer-app-cpp-optimizations-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/build-ubuntu-docviewer-app-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Przeglądarka dokumentów"
 
-#: /home/qtros/dev/ubuntu-docviewer-app-cpp-optimizations-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/build-ubuntu-docviewer-app-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "dokumenty;przeglądarka;pdf;czytnik"
 
