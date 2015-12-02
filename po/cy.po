@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-11-27 17:38+0100\n"
+"POT-Creation-Date: 2015-12-01 00:30+0100\n"
 "PO-Revision-Date: 2015-11-19 18:20+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Welsh <cy@li.org>\n"
@@ -16,15 +16,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 0 : n==2 ? 1 : (n != 8 && n != 11) ? "
 "2 : 3;\n"
-"X-Launchpad-Export-Date: 2015-11-28 05:04+0000\n"
-"X-Generator: Launchpad (build 17850)\n"
+"X-Launchpad-Export-Date: 2015-12-02 05:53+0000\n"
+"X-Generator: Launchpad (build 17856)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
-msgid "Some of the provided arguments is not valid."
+msgid "Some of the provided arguments are not valid."
 msgstr ""
 
 #: ../src/app/qml/common/CommandLineProxy.qml:58
-msgid "Opens ubuntu-docviewer-app displaying the selected file"
+msgid "Open ubuntu-docviewer-app displaying the selected file"
 msgstr ""
 
 #: ../src/app/qml/common/CommandLineProxy.qml:65
@@ -32,13 +32,12 @@ msgid "Run fullscreen"
 msgstr ""
 
 #: ../src/app/qml/common/CommandLineProxy.qml:71
-msgid "Open ubuntu-docviewer-app in pick mode. Use it for tests only."
+msgid "Open ubuntu-docviewer-app in pick mode. Used for tests only."
 msgstr ""
 
 #: ../src/app/qml/common/CommandLineProxy.qml:77
 msgid ""
-"Load the list of documents from the given folder, instead of default "
-"~/Documents.\n"
+"Show documents from the given folder, instead of ~/Documents.\n"
 "The path must exist prior to running ubuntu-docviewer-app"
 msgstr ""
 
@@ -111,15 +110,14 @@ msgstr "Math anhysbys o ffeil"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:28
 msgid ""
-"Sorry but we can't find a way to display this file.\n"
-"\n"
+"This file is not supported.\n"
 "Do you want to open it as a plain text?"
 msgstr ""
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:38
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:55
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:28
-#: ../src/app/qml/loView/LOViewGotoDialog.qml:53
+#: ../src/app/qml/loView/LOViewGotoDialog.qml:55
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:51
 msgid "Cancel"
 msgstr "Diddymu"
@@ -175,12 +173,12 @@ msgstr[2] "Ydych chi'n sicr eich bod am ddileu’r ffeiliau hyn yn barhaol?"
 msgstr[3] "Ydych chi'n sicr eich bod am ddileu’r ffeiliau hyn yn barhaol?"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:61
-#: ../src/app/qml/documentPage/DocumentDelegateActions.qml:27
+#: ../src/app/qml/documentPage/DocumentDelegateActions.qml:25
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:53
 msgid "Delete"
 msgstr "Dileu"
 
-#: ../src/app/qml/documentPage/DocumentDelegateActions.qml:46
+#: ../src/app/qml/documentPage/DocumentDelegateActions.qml:44
 msgid "Share"
 msgstr ""
 
@@ -196,28 +194,28 @@ msgstr ""
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:95
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:100
 #, qt-format
 msgid "Today, %1"
 msgstr "Heddiw, %1"
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:100
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:105
 #, qt-format
 msgid "Yesterday, %1"
 msgstr "Ddoe, %1"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:107
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:126
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:112
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:131
 msgid "yyyy/MM/dd hh:mm"
 msgstr ""
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:120
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:125
 msgid "dddd, hh:mm"
 msgstr "dddd, hh:mm"
 
@@ -345,50 +343,57 @@ msgstr ""
 msgid "Unknown type document"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:94
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:85
 msgid "Go to position..."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:101
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:77
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Disable night mode"
 msgstr "Analluogi modd nos"
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:101
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:77
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Enable night mode"
 msgstr "Galluogi modd nos"
 
-#: ../src/app/qml/loView/LOViewGotoDialog.qml:28
+#: ../src/app/qml/loView/LOViewGotoDialog.qml:30
 msgid "Go to position"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewGotoDialog.qml:29
+#: ../src/app/qml/loView/LOViewGotoDialog.qml:31
 msgid "Choose a position between 1% and 100%"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewGotoDialog.qml:60
+#: ../src/app/qml/loView/LOViewGotoDialog.qml:62
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:58
 msgid "GO!"
 msgstr "MYND!"
 
-#: ../src/app/qml/loView/LOViewPage.qml:175
+#: ../src/app/qml/loView/LOViewPage.qml:128
 msgid "LibreOffice binaries not found."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewPage.qml:178
+#: ../src/app/qml/loView/LOViewPage.qml:131
 msgid "Error while loading LibreOffice."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewPage.qml:181
+#: ../src/app/qml/loView/LOViewPage.qml:134
 msgid ""
 "Document not loaded.\n"
 "The requested document may be corrupt."
 msgstr ""
 
-#: ../src/app/qml/loView/ZoomSelector.qml:116
+#. TRANSLATORS: 'LibreOfficeKit' is the name of the library used by
+#. Document Viewer for rendering LibreOffice/MS-Office documents.
+#. Ref. https://docs.libreoffice.org/libreofficekit.html
+#: ../src/app/qml/loView/Splashscreen.qml:45
+msgid "Powered by LibreOfficeKit"
+msgstr ""
+
+#: ../src/app/qml/loView/ZoomSelector.qml:110
 msgid "Fit width"
 msgstr ""
 
@@ -422,7 +427,7 @@ msgstr "Mynd i dudalen"
 msgid "Choose a page between 1 and %1"
 msgstr "Dewiswch dudalen rhwng 1 a %1"
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:115
+#: ../src/app/qml/ubuntu-docviewer-app.qml:118
 msgid "File does not exist."
 msgstr ""
 
@@ -440,11 +445,11 @@ msgstr ""
 msgid "copy %1"
 msgstr "copi %1"
 
-#: /tmp/build-reboot-uitk13-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Syllwr Dogfen"
 
-#: /tmp/build-reboot-uitk13-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "dogfennau;syllwr;pdf;darllenydd;"
 

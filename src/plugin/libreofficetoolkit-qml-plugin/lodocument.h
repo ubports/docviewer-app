@@ -71,8 +71,6 @@ public:
 
     int partsCount();
     QString getPartName(int index) const;
-    void setPart(int index);
-
     LibreOfficeError::Error error() const;
 
     Q_INVOKABLE bool saveAs(QString url, QString format, QString filterOptions);
@@ -89,14 +87,13 @@ private:
     int m_currentPart;
     DocumentType m_docType;
     LibreOfficeError::Error m_error;
+    lok::Document *m_lokDocument;
+    static lok::Office *s_office;
 
+private:
     void loadDocument(const QString &pathNAme);
-
     void setError(const LibreOfficeError::Error &error);
 
-    lok::Document *m_document;
-
-    static lok::Office *s_office;
 };
 
 #endif // LODOCUMENT_H

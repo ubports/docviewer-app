@@ -17,7 +17,7 @@
 function parseEvent(event) {
     var pixelDiff = 5;
 
-    var view = loPageContentLoader.item.loView
+    var view = loPage.contentItem.loView
     var isPresentation = view.document.documentType === LibreOffice.Document.PresentationDocument
 
     if (event.key == Qt.Key_PageUp) {

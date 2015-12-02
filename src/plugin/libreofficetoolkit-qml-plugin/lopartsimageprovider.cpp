@@ -43,7 +43,7 @@ QImage LOPartsImageProvider::requestImage(const QString & id, QSize * size, cons
 
     const int defaultSize = 256;
 
-    RenderEngine::instance()->enqueueThumbnailTask(m_document, partNumber, defaultSize, itemId);
+    RenderEngine::instance()->enqueueTask(createTask(partNumber, defaultSize, itemId));
 
     // Return default image (empty).
     static QImage defaultImage;
@@ -51,4 +51,14 @@ QImage LOPartsImageProvider::requestImage(const QString & id, QSize * size, cons
         defaultImage = QImage(defaultSize, defaultSize, QImage::Format_ARGB32);
 
     return defaultImage;
+}
+
+ThumbnailRenderTask *LOPartsImageProvider::createTask(int part, qreal size, int id) const
+{
+    ThumbnailRenderTask* task = new ThumbnailRenderTask();
+    task->setId(id);
+    task->setPart(part);
+    task->setDocument(m_document);
+    task->setSize(size);
+    return task;
 }

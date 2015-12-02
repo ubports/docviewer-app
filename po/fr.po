@@ -7,44 +7,38 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-11-27 17:38+0100\n"
-"PO-Revision-Date: 2015-11-25 22:22+0000\n"
-"Last-Translator: Jean-Marc <Unknown>\n"
+"POT-Creation-Date: 2015-12-01 00:30+0100\n"
+"PO-Revision-Date: 2015-11-29 18:36+0000\n"
+"Last-Translator: Anne <anneonyme017@gmail.com>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2015-11-28 05:04+0000\n"
-"X-Generator: Launchpad (build 17850)\n"
+"X-Launchpad-Export-Date: 2015-12-02 05:53+0000\n"
+"X-Generator: Launchpad (build 17856)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
-msgid "Some of the provided arguments is not valid."
-msgstr "Certains des arguments fournis ne sont pas valides."
+msgid "Some of the provided arguments are not valid."
+msgstr ""
 
 #: ../src/app/qml/common/CommandLineProxy.qml:58
-msgid "Opens ubuntu-docviewer-app displaying the selected file"
-msgstr "Ouvre ubuntu-docviewer-app en affichant le fichier sélectionné"
+msgid "Open ubuntu-docviewer-app displaying the selected file"
+msgstr ""
 
 #: ../src/app/qml/common/CommandLineProxy.qml:65
 msgid "Run fullscreen"
 msgstr "Lancer en plein écran"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:71
-msgid "Open ubuntu-docviewer-app in pick mode. Use it for tests only."
+msgid "Open ubuntu-docviewer-app in pick mode. Used for tests only."
 msgstr ""
-"Ouvrir ubuntu-docviewer-app en mode sélection. Utilisez-le uniquement pour "
-"des tests."
 
 #: ../src/app/qml/common/CommandLineProxy.qml:77
 msgid ""
-"Load the list of documents from the given folder, instead of default "
-"~/Documents.\n"
+"Show documents from the given folder, instead of ~/Documents.\n"
 "The path must exist prior to running ubuntu-docviewer-app"
 msgstr ""
-"Charger la liste de documents à partir du dossier donné, au lieu de "
-"~/Documents par défaut.\n"
-"Le chemin doit exister avant de lancer ubuntu-docviewer-app"
 
 #: ../src/app/qml/common/DetailsPage.qml:25
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:107
@@ -111,18 +105,14 @@ msgstr "Type de fichier inconnu"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:28
 msgid ""
-"Sorry but we can't find a way to display this file.\n"
-"\n"
+"This file is not supported.\n"
 "Do you want to open it as a plain text?"
 msgstr ""
-"Désolé, mais nous ne trouvons pas de moyen pour afficher ce fichier.\n"
-"\n"
-"Voulez-vous l'ouvrir en texte brut ?"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:38
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:55
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:28
-#: ../src/app/qml/loView/LOViewGotoDialog.qml:53
+#: ../src/app/qml/loView/LOViewGotoDialog.qml:55
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:51
 msgid "Cancel"
 msgstr "Annuler"
@@ -174,12 +164,12 @@ msgstr[0] "Êtes-vous sûr de vouloir supprimer définitivement ce fichier ?"
 msgstr[1] "Êtes-vous sûr de vouloir supprimer définitivement ces fichiers ?"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:61
-#: ../src/app/qml/documentPage/DocumentDelegateActions.qml:27
+#: ../src/app/qml/documentPage/DocumentDelegateActions.qml:25
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:53
 msgid "Delete"
 msgstr "Supprimer"
 
-#: ../src/app/qml/documentPage/DocumentDelegateActions.qml:46
+#: ../src/app/qml/documentPage/DocumentDelegateActions.qml:44
 msgid "Share"
 msgstr "Partager"
 
@@ -198,28 +188,28 @@ msgstr ""
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:95
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:100
 #, qt-format
 msgid "Today, %1"
 msgstr "Aujourd'hui, %1"
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:100
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:105
 #, qt-format
 msgid "Yesterday, %1"
 msgstr "Hier, %1"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:107
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:126
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:112
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:131
 msgid "yyyy/MM/dd hh:mm"
 msgstr "dd/MM/yyyy hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:120
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:125
 msgid "dddd, hh:mm"
 msgstr "dddd, hh:mm"
 
@@ -347,44 +337,44 @@ msgstr "Document LibreOffice inconnu"
 msgid "Unknown type document"
 msgstr "Document de type inconnu"
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:94
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:85
 msgid "Go to position..."
 msgstr "Aller à la position..."
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:101
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:77
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Disable night mode"
 msgstr "Désactiver le mode nuit"
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:101
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:77
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Enable night mode"
 msgstr "Activer le mode nuit"
 
-#: ../src/app/qml/loView/LOViewGotoDialog.qml:28
+#: ../src/app/qml/loView/LOViewGotoDialog.qml:30
 msgid "Go to position"
 msgstr "Aller à la position"
 
-#: ../src/app/qml/loView/LOViewGotoDialog.qml:29
+#: ../src/app/qml/loView/LOViewGotoDialog.qml:31
 msgid "Choose a position between 1% and 100%"
 msgstr "Sélectionner une position entre 1 % et 100 %"
 
-#: ../src/app/qml/loView/LOViewGotoDialog.qml:60
+#: ../src/app/qml/loView/LOViewGotoDialog.qml:62
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:58
 msgid "GO!"
 msgstr "ALLEZ !"
 
-#: ../src/app/qml/loView/LOViewPage.qml:175
+#: ../src/app/qml/loView/LOViewPage.qml:128
 msgid "LibreOffice binaries not found."
 msgstr "Binaires de LibreOffice introuvables."
 
-#: ../src/app/qml/loView/LOViewPage.qml:178
+#: ../src/app/qml/loView/LOViewPage.qml:131
 msgid "Error while loading LibreOffice."
 msgstr "Erreur lors du chargement de LibreOffice."
 
-#: ../src/app/qml/loView/LOViewPage.qml:181
+#: ../src/app/qml/loView/LOViewPage.qml:134
 msgid ""
 "Document not loaded.\n"
 "The requested document may be corrupt."
@@ -392,9 +382,16 @@ msgstr ""
 "Document non chargé.\n"
 "Le document demandé est peut-être corrompu."
 
-#: ../src/app/qml/loView/ZoomSelector.qml:116
-msgid "Fit width"
+#. TRANSLATORS: 'LibreOfficeKit' is the name of the library used by
+#. Document Viewer for rendering LibreOffice/MS-Office documents.
+#. Ref. https://docs.libreoffice.org/libreofficekit.html
+#: ../src/app/qml/loView/Splashscreen.qml:45
+msgid "Powered by LibreOfficeKit"
 msgstr ""
+
+#: ../src/app/qml/loView/ZoomSelector.qml:110
+msgid "Fit width"
+msgstr "Ajuster à la largeur"
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:30
@@ -426,7 +423,7 @@ msgstr "Aller à la page"
 msgid "Choose a page between 1 and %1"
 msgstr "Choisissez une page entre 1 et %1"
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:115
+#: ../src/app/qml/ubuntu-docviewer-app.qml:118
 msgid "File does not exist."
 msgstr "Le fichier n’existe pas."
 
@@ -444,11 +441,11 @@ msgstr "Le fichier n’existe pas."
 msgid "copy %1"
 msgstr "copie %1"
 
-#: /tmp/build-reboot-uitk13-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Visionneuse de document"
 
-#: /tmp/build-reboot-uitk13-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "documents;visionneuse;pdf;lecteur;"
 

@@ -26,27 +26,27 @@ TextFieldWithButton {
     anchors.verticalCenter: parent.verticalCenter
     width: units.gu(12)
 
-    property var view: loPageContentLoader.item.loView
+    property var view
 
     hasClearButton: true
     inputMethodHints: Qt.ImhFormattedNumbersOnly
     validator: IntValidator { bottom: 50; top: 400 }
 
     onAccepted: {
-        view.setZoom(parseInt(text) / 100)
+        textField.view.setZoom(parseInt(text) / 100)
         focus = false
     }
 
     onHighlightedChanged: {
         if (highlighted) {
-            text = parseInt(view.zoomFactor * 100)
+            text = parseInt(textField.view.zoomFactor * 100)
         } else text = ""
     }
 
     Label {
         anchors.centerIn: parent
         visible: !textField.highlighted
-        text: "%1%".arg(parseInt(view.zoomFactor*100))
+        text: "%1%".arg(parseInt(textField.view.zoomFactor*100))
     }
 
     popover: TextFieldButtonPopover {
@@ -62,10 +62,7 @@ TextFieldWithButton {
                 Layout.fillHeight: true
                 Layout.fillWidth: true
 
-                onClicked: {
-                    var view = loPageContentLoader.item.loView
-                    view.setZoom(view.zoomFactor + 0.1)
-                }
+                onClicked: textField.view.setZoom(textField.view.zoomFactor + 0.1)
 
                 Icon {
                     width: units.gu(2); height: width
@@ -84,10 +81,7 @@ TextFieldWithButton {
                 Layout.fillHeight: true
                 Layout.fillWidth: true
 
-                onClicked: {
-                    var view = loPageContentLoader.item.loView
-                    view.setZoom(view.zoomFactor - 0.1)
-                }
+                onClicked: textField.view.setZoom(textField.view.zoomFactor - 0.1)
 
                 Icon {
                     width: units.gu(2); height: width
@@ -104,7 +98,7 @@ TextFieldWithButton {
             divider.visible: false
 
             onClicked: {
-                view.adjustZoomToWidth()
+                textField.view.adjustZoomToWidth()
                 zoomSelectorDialogue.close()
             }
 
@@ -121,7 +115,7 @@ TextFieldWithButton {
                     width: units.gu(2); height: width
                     name: "tick"
                     color: UbuntuColors.green
-                    visible: view.zoomMode == LibreOffice.View.FitToWidth
+                    visible: textField.view.zoomMode == LibreOffice.View.FitToWidth
                 }
             }
         }   // ListItem
@@ -147,7 +141,7 @@ TextFieldWithButton {
                 height: units.gu(4)
 
                 onClicked: {
-                    view.setZoom(modelData.value)
+                    textField.view.setZoom(modelData.value)
                     zoomSelectorDialogue.close()
                 }
 

@@ -23,9 +23,7 @@ class RenderEngine : public QObject
     const int DefaultIdealThreadCount = 2;
 
 public:
-    void enqueueTileTask(const QSharedPointer<LODocument>& doc, int part, const QRect& area, qreal zoom, int id);
-    void enqueueThumbnailTask(const QSharedPointer<LODocument>& doc, int part, qreal size, int id);
-    void enqueueTask(AbstractRenderTask* task);
+    void enqueueTask(AbstractRenderTask* task);     // Takes ownership.
     void dequeueTask(int id);
 
     static RenderEngine* instance() {
@@ -40,9 +38,7 @@ public:
     }
 
 Q_SIGNALS:
-    void tileRenderFinished(int id, QImage img);
-    void thumbnailRenderFinished(int id, QImage img);
-    void enabledChanged();
+    void taskRenderFinished(AbstractRenderTask* task, QImage img);
 
 private:
     Q_INVOKABLE void internalRenderCallback(AbstractRenderTask* task, QImage img);

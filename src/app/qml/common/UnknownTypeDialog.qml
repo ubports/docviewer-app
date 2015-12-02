@@ -25,7 +25,7 @@ Dialog {
     id: unknownDialog
     objectName: "unknownDialog"
     title: i18n.tr("Unknown file type")
-    text: i18n.tr("Sorry but we can't find a way to display this file.\n\nDo you want to open it as a plain text?")
+    text: i18n.tr("This file is not supported.\nDo you want to open it as a plain text?")
 
     RowLayout {
         anchors {

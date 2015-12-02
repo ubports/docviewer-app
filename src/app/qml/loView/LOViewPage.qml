@@ -24,172 +24,150 @@ import "../common/utils.js" as Utils
 import "../common"
 import "KeybHelper.js" as KeybHelper
 
-Page {
+ViewerPage {
     id: loPage
-    title: Utils.getNameOfFile(file.path)
-    flickable: null
 
-    readonly property bool wideWindow: width > units.gu(120)
+    property bool isPresentation: loPage.contentItem && (loPage.contentItem.loDocument.documentType === LibreOffice.Document.PresentationDocument)
+    property bool isTextDocument: loPage.contentItem && (loPage.contentItem.loDocument.documentType === LibreOffice.Document.TextDocument)
 
-    Loader {
-        id: loPageContentLoader
+    title: Utils.getNameOfFile(file.path);
+    flickable: isTextDocument ? loPage.contentItem.loView : null
 
-        asynchronous: true
+    splashScreen: Splashscreen { }
+
+    content: FocusScope {
+        id: loPageContent
         anchors.fill: parent
-        sourceComponent: loPageContentComponent
 
-        onLoaded: {
-            if (loaded) {
-                // FIXME: At the moment don't hide header if the document is a presentation
-                var isPresentation = (item.loDocument.documentType === LibreOffice.Document.PresentationDocument)
-                loPage.flickable = isPresentation ? null : item.loView
-            } else loPage.flickable = null
-        }
-    }
+        property alias loDocument: loView.document
+        property alias loView: loView
 
-    ActivityIndicator {
-        running: loPageContentLoader.status != Loader.Ready
-        visible: running
-        anchors.centerIn: parent
-    }
-
-    Component {
-        id: loPageContentComponent
-
-        FocusScope {
-            id: loPageContent
+        Layouts {
+            id: layouts
             anchors.fill: parent
 
-            property alias loDocument: loView.document
-            property alias loView: loView
+            layouts: [
+                ConditionalLayout {
+                    when: mainView.veryWideWindow
+                    name: "wideWindowLayout"
 
-            Layouts {
-                id: layouts
-                anchors.fill: parent
-
-                layouts: [
-                    ConditionalLayout {
-                        when: wideWindow
-                        name: "wideWindowLayout"
-
-                        Item {
-                            anchors.fill: parent
-
-                            ResizeableSidebar {
-                                id: leftSidebar
-                                anchors.left: parent.left
-                                anchors.bottom: parent.bottom
-                                visible: loDocument.documentType == LibreOffice.Document.PresentationDocument
-
-                                width: visible ? units.gu(40) : 0
-
-                                PartsView {
-                                    id: partsView
-                                    anchors.fill: parent
-                                    model: loView.partsModel
-                                }
-                            }
-
-                            ItemLayout {
-                                item: "pinchArea"
-                                anchors {
-                                    left: leftSidebar.right
-                                    right: parent.right
-                                    top: parent.top
-                                    bottom: parent.bottom
-                                }
-                            }
-                        }
-                    }
-                ]
-
-                ScalingPinchArea {
-                    id: pinchArea
-                    objectName: "pinchArea"
-                    Layouts.item: "pinchArea"
-
-                    targetFlickable: loView
-                    onTotalScaleChanged: targetFlickable.updateContentSize(totalScale)
-
-                    anchors {
-                        top: parent.top
-                        left: parent.left
-                        right: parent.right
-                        bottom: bottomBar.top
-                    }
-
-                    LibreOffice.Viewer {
-                        id: loView
-                        objectName: "loView"
+                    Item {
                         anchors.fill: parent
 
-                        clip: true
-                        documentPath: file.path
+                        ResizeableSidebar {
+                            id: leftSidebar
+                            anchors.left: parent.left
+                            anchors.bottom: parent.bottom
+                            visible: loPage.isPresentation
 
-                        function updateContentSize(tgtScale) {
-                            zoomFactor = tgtScale
-                        }
+                            width: visible ? units.gu(40) : 0
 
-                        // Keyboard events
-                        focus: true
-                        Keys.onPressed: KeybHelper.parseEvent(event)
-
-                        Component.onCompleted: {
-                            // WORKAROUND: Fix for wrong grid unit size
-                            flickDeceleration = 1500 * units.gridUnit / 8
-                            maximumFlickVelocity = 2500 * units.gridUnit / 8
-                            loPageContent.forceActiveFocus()
-                        }
-
-                        onErrorChanged: {
-                            var errorString;
-
-                            switch(error) {
-                            case LibreOffice.Error.LibreOfficeNotFound:
-                                errorString = i18n.tr("LibreOffice binaries not found.")
-                                break;
-                            case LibreOffice.Error.LibreOfficeNotInitialized:
-                                errorString = i18n.tr("Error while loading LibreOffice.")
-                                break;
-                            case LibreOffice.Error.DocumentNotLoaded:
-                                errorString = i18n.tr("Document not loaded.\nThe requested document may be corrupt.")
-                                break;
-                            }
-
-                            if (errorString) {
-                                loPage.pageStack.pop()
-
-                                // We create the dialog in the MainView, so that it isn't
-                                // initialized by 'loPage' and keep on working after the
-                                // page is destroyed.
-                                mainView.showErrorDialog(errorString);
+                            PartsView {
+                                id: partsView
+                                anchors.fill: parent
+                                model: loView.partsModel
                             }
                         }
 
-                        Scrollbar { flickableItem: loView; parent: loView.parent }
-                        Scrollbar { flickableItem: loView; parent: loView.parent; align: Qt.AlignBottom }
+                        ItemLayout {
+                            item: "pinchArea"
+                            anchors {
+                                left: leftSidebar.right
+                                right: parent.right
+                                top: parent.top
+                                bottom: parent.bottom
+                            }
+                        }
                     }
                 }
+            ]
 
-                PartsView {
-                    id: bottomBar
+            ScalingPinchArea {
+                id: pinchArea
+                objectName: "pinchArea"
+                Layouts.item: "pinchArea"
+
+                targetFlickable: loView
+                onTotalScaleChanged: targetFlickable.updateContentSize(totalScale)
+
+                anchors {
+                    top: parent.top
+                    left: parent.left
+                    right: parent.right
+                    bottom: bottomBar.top
+                }
+
+                LibreOffice.Viewer {
+                    id: loView
+                    objectName: "loView"
+                    anchors.fill: parent
+
+                    clip: true
+                    documentPath: file.path
+
+                    function updateContentSize(tgtScale) {
+                        zoomFactor = tgtScale
+                    }
+
+                    // Keyboard events
+                    focus: true
+                    Keys.onPressed: KeybHelper.parseEvent(event)
+
+                    Component.onCompleted: {
+                        // WORKAROUND: Fix for wrong grid unit size
+                        flickDeceleration = 1500 * units.gridUnit / 8
+                        maximumFlickVelocity = 2500 * units.gridUnit / 8
+                        loPageContent.forceActiveFocus()
+                    }
+
+                    onErrorChanged: {
+                        var errorString;
+
+                        switch(error) {
+                        case LibreOffice.Error.LibreOfficeNotFound:
+                            errorString = i18n.tr("LibreOffice binaries not found.")
+                            break;
+                        case LibreOffice.Error.LibreOfficeNotInitialized:
+                            errorString = i18n.tr("Error while loading LibreOffice.")
+                            break;
+                        case LibreOffice.Error.DocumentNotLoaded:
+                            errorString = i18n.tr("Document not loaded.\nThe requested document may be corrupt.")
+                            break;
+                        }
+
+                        if (errorString) {
+                            loPage.pageStack.pop()
+
+                            // We create the dialog in the MainView, so that it isn't
+                            // initialized by 'loPage' and keep on working after the
+                            // page is destroyed.
+                            mainView.showErrorDialog(errorString);
+                        }
+                    }
+
+                    Scrollbar { flickableItem: loView; parent: loView.parent }
+                    Scrollbar { flickableItem: loView; parent: loView.parent; align: Qt.AlignBottom }
+                }
+            }
+
+            PartsView {
+                id: bottomBar
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    bottom: parent.bottom
+                }
+                height: visible ? units.gu(12) : 0
+                visible: loPage.isPresentation
+
+                model: loView.partsModel
+                orientation: ListView.Horizontal
+
+                HorizontalDivider {
                     anchors {
                         left: parent.left
                         right: parent.right
-                        bottom: parent.bottom
-                    }
-                    height: visible ? units.gu(12) : 0
-                    visible: loDocument.documentType == LibreOffice.Document.PresentationDocument
-
-                    model: loView.partsModel
-                    orientation: ListView.Horizontal
-
-                    HorizontalDivider {
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                            top: parent.top
-                        }
+                        top: parent.top
                     }
                 }
             }

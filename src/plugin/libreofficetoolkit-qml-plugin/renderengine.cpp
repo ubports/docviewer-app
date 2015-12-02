@@ -16,33 +16,6 @@ RenderEngine::RenderEngine():
     qRegisterMetaType<AbstractRenderTask*>();
 }
 
-void RenderEngine::enqueueTileTask(const QSharedPointer<LODocument>& doc, int part, const QRect& area, qreal zoom, int id)
-{
-    Q_ASSERT(doc != nullptr);
-
-    TileRenderTask* task = new TileRenderTask();
-    task->setId(id);
-    task->setPart(part);
-    task->setDocument(doc);
-    task->setArea(area);
-    task->setZoom(zoom);
-
-    enqueueTask(task);
-}
-
-void RenderEngine::enqueueThumbnailTask(const QSharedPointer<LODocument> &doc, int part, qreal size, int id)
-{
-    Q_ASSERT(doc != nullptr);
-
-    ThumbnailRenderTask* task = new ThumbnailRenderTask();
-    task->setId(id);
-    task->setPart(part);
-    task->setDocument(doc);
-    task->setSize(size);
-
-    enqueueTask(task);
-}
-
 void RenderEngine::enqueueTask(AbstractRenderTask *task)
 {
     m_queue.enqueue(task);
@@ -70,22 +43,10 @@ void RenderEngine::internalRenderCallback(AbstractRenderTask* task, QImage img)
         doDispose();
     }
 
-    switch (task->type())
-    {
-    case RttTile:
-        Q_EMIT tileRenderFinished(task->id(), img);
-        break;
-    case RttImpressThumbnail:
-        Q_EMIT thumbnailRenderFinished(task->id(), img);
-        break;
-    case RttPdfPage:
-    case RttUnknown:
-    default:
-        break;
-    }
+    // Notify about result.
+    emit taskRenderFinished(task, img);
 
     doNextTask();
-
     disposeLater(task);
 }
 

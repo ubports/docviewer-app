@@ -23,6 +23,8 @@
 #include <QHash>
 #include <QDebug>
 
+#include "rendertask.h"
+
 class LODocument;
 
 class LOPartsImageProvider : public QQuickImageProvider
@@ -35,6 +37,9 @@ public:
 
 private:
     QSharedPointer<LODocument> m_document;
+
+private:
+    ThumbnailRenderTask* createTask(int part, qreal size, int id) const;
 };
 
 #endif // LOPARTSIMAGEPROVIDER_H
