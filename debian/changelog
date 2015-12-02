@@ -1,45 +1,19 @@
 ubuntu-docviewer-app (2.0) vivid; urgency=medium
 
-  [ Alan Pope ]
-  * Use a confined template when running on phones
-
-  [ Roman Shchekin ]
-  * Performance improvements in LibreOffice viewer
-  * Multithreading support in LibreOffice viewer
-  * Get screen DPIs at runtime.
-  * Asynchronous LibreOffice viewer loading
-  * LibreOffice viewer render engine
-  * Support for LibreOffice documents
-  * LibreOffice viewer: added pinch-to-zoom gesture (LP: #1514460)
-
-  [ Nicholas Skaggs ]
-  * Fix internet check for 'get-click-deps' script when running on jenkins.
-
-  [ Stefano Verzegnassi ]
-  * Don't import a second copy of a document using ContentHub (LP: #1432394)
-  * Use ContentHub QML APIs (LP: #1469422)
-  * Updated to Qt 5.4 and Ubuntu.Components 1.2 (LP: #1470897)
-  * Added share option (LP: #1494818)
-  * UI updates
-  * Removed GridView from documents page
+  * Updated application icon (LP: #1476659 and LP: #1432392)
+  * Updated translations
+  * Added support to Office documents through libreofficekit
+  * General performance improvements
+  * UX more consistent with the design guidelines
+  * Updated to ubuntu-sdk-14.04.1 (QtQuick 2.4 and Ubuntu.Components 1.3) (LP: #1508363)
+  * A more intuitive UI when importing a new document
+  * Added a 'share' action for exporting a document to another app/web service (LP: #1494818)
+  * Removed GridView from documents page (will be reintroduced in future)
   * Refactored app initialization
-  * Refactored project folders
-  * Automatically fetch LibreOffice dependencies when building a .click package
-  * Updated app icons (LP: #1476659)
-  * Performance improvements in LibreOffice viewer
-  * Zoom implementation in LibreOffice viewer
-  * Support for LibreOffice documents
-  * Improved support for LibreOffice Presentation documents
-  * Disable file locking in LibreOffice (LP: #1517074)
-  * Added error detection in LibreOfficeViewer (LP: #1514458)
-  * Fixed broken SHOW_TILE_BORDER mode (LP: #1515037)
-  * LibreOffice viewer: Fix wrong size for last tile in a row/column (LP: #1516239)
-  * LibreOffice viewer: Don't create tiles outside the visible/buffer grid (LP: #1516241)
-  * Refactored project structure
-  * Updated to Ubuntu.Components 1.3 (ubuntu-sdk-14.04.1) (LP: #1508363)
   * Better zoom support on desktop
+  * Switched to QML Ubuntu.ContentHub APIs (LP: #1469422)
+  * Switched to QML Ubuntu.Components.Arguments APIs
   * Changed header behaviour in the PDF viewer (LP: #1453403)
-  * LibreOffice viewer: Fix for slide navigation buttons obscured by bottom edge tab (LP: #1513843)
 
  -- Stefano Verzegnassi <verzegnassi.stefano@gmail.com>  Sat, 28 Nov 2015 13:30:55 +0100
 
