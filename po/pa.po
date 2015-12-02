@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-11-30 13:11+0100\n"
+"POT-Creation-Date: 2015-12-01 00:30+0100\n"
 "PO-Revision-Date: 2015-11-19 18:20+0000\n"
 "Last-Translator: Gursharnjit_Singh <ubuntuser13@gmail.com>\n"
 "Language-Team: Punjabi <pa@li.org>\n"
@@ -15,15 +15,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-12-01 05:47+0000\n"
-"X-Generator: Launchpad (build 17850)\n"
+"X-Launchpad-Export-Date: 2015-12-02 05:53+0000\n"
+"X-Generator: Launchpad (build 17856)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
-msgid "Some of the provided arguments is not valid."
+msgid "Some of the provided arguments are not valid."
 msgstr ""
 
 #: ../src/app/qml/common/CommandLineProxy.qml:58
-msgid "Opens ubuntu-docviewer-app displaying the selected file"
+msgid "Open ubuntu-docviewer-app displaying the selected file"
 msgstr ""
 
 #: ../src/app/qml/common/CommandLineProxy.qml:65
@@ -31,13 +31,12 @@ msgid "Run fullscreen"
 msgstr ""
 
 #: ../src/app/qml/common/CommandLineProxy.qml:71
-msgid "Open ubuntu-docviewer-app in pick mode. Use it for tests only."
+msgid "Open ubuntu-docviewer-app in pick mode. Used for tests only."
 msgstr ""
 
 #: ../src/app/qml/common/CommandLineProxy.qml:77
 msgid ""
-"Load the list of documents from the given folder, instead of default "
-"~/Documents.\n"
+"Show documents from the given folder, instead of ~/Documents.\n"
 "The path must exist prior to running ubuntu-docviewer-app"
 msgstr ""
 
@@ -106,8 +105,7 @@ msgstr "ਅਣਜਾਣ ਫ਼ਾਈਲ ਕਿਸਮ"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:28
 msgid ""
-"Sorry but we can't find a way to display this file.\n"
-"\n"
+"This file is not supported.\n"
 "Do you want to open it as a plain text?"
 msgstr ""
 
@@ -438,11 +436,11 @@ msgstr ""
 msgid "copy %1"
 msgstr "ਕਾਪੀ %1"
 
-#: /tmp/build-ubuntu-docviewer-app-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "ਦਸਤਾਵੇਜ ਦਰਸ਼ਕ"
 
-#: /tmp/build-ubuntu-docviewer-app-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "ਦਸਤਾਵੇਜ;ਦਰਸਕ;pdf;ਰੀਡਰ;"
 

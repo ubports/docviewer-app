@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-11-30 13:11+0100\n"
+"POT-Creation-Date: 2015-12-01 00:30+0100\n"
 "PO-Revision-Date: 2015-11-21 10:20+0000\n"
 "Last-Translator: Bojan Bogdanović <Unknown>\n"
 "Language-Team: Serbian <sr@li.org>\n"
@@ -16,35 +16,30 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-12-01 05:47+0000\n"
-"X-Generator: Launchpad (build 17850)\n"
+"X-Launchpad-Export-Date: 2015-12-02 05:53+0000\n"
+"X-Generator: Launchpad (build 17856)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
-msgid "Some of the provided arguments is not valid."
-msgstr "Неки од датих аргумената нису валидни."
+msgid "Some of the provided arguments are not valid."
+msgstr ""
 
 #: ../src/app/qml/common/CommandLineProxy.qml:58
-msgid "Opens ubuntu-docviewer-app displaying the selected file"
-msgstr "Отварање ubuntu-docviewer-app приказује одабрани документ"
+msgid "Open ubuntu-docviewer-app displaying the selected file"
+msgstr ""
 
 #: ../src/app/qml/common/CommandLineProxy.qml:65
 msgid "Run fullscreen"
 msgstr "Покрени на целом екрану"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:71
-msgid "Open ubuntu-docviewer-app in pick mode. Use it for tests only."
+msgid "Open ubuntu-docviewer-app in pick mode. Used for tests only."
 msgstr ""
-"Отвори ubuntu-docviewer-app у одабери режиму. Користи само за тестирање."
 
 #: ../src/app/qml/common/CommandLineProxy.qml:77
 msgid ""
-"Load the list of documents from the given folder, instead of default "
-"~/Documents.\n"
+"Show documents from the given folder, instead of ~/Documents.\n"
 "The path must exist prior to running ubuntu-docviewer-app"
 msgstr ""
-"Учитај листу докумената из задатог директоријума, уместо подразумеваног "
-"~/Documents.\n"
-"Путања мора постојати како би покренули ubuntu-docviewer-app"
 
 #: ../src/app/qml/common/DetailsPage.qml:25
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:107
@@ -113,13 +108,9 @@ msgstr "Непознат тип датотеке"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:28
 msgid ""
-"Sorry but we can't find a way to display this file.\n"
-"\n"
+"This file is not supported.\n"
 "Do you want to open it as a plain text?"
 msgstr ""
-"Жао нам је, али не можемо наћи начин да прикажемо овај документ.\n"
-"\n"
-"Да ли желите да га отворите као обичан текст?"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:38
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:55
@@ -451,11 +442,11 @@ msgstr ""
 msgid "copy %1"
 msgstr "умножавам %1"
 
-#: /tmp/build-ubuntu-docviewer-app-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Прегледач докумената"
 
-#: /tmp/build-ubuntu-docviewer-app-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "документа;прегледач;пдф;читач:"
 

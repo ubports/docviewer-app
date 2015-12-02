@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-11-30 13:11+0100\n"
+"POT-Creation-Date: 2015-12-01 00:30+0100\n"
 "PO-Revision-Date: 2015-11-29 18:36+0000\n"
 "Last-Translator: Anne <anneonyme017@gmail.com>\n"
 "Language-Team: French <fr@li.org>\n"
@@ -15,36 +15,30 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2015-12-01 05:47+0000\n"
-"X-Generator: Launchpad (build 17850)\n"
+"X-Launchpad-Export-Date: 2015-12-02 05:53+0000\n"
+"X-Generator: Launchpad (build 17856)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
-msgid "Some of the provided arguments is not valid."
-msgstr "Certains des arguments fournis ne sont pas valides."
+msgid "Some of the provided arguments are not valid."
+msgstr ""
 
 #: ../src/app/qml/common/CommandLineProxy.qml:58
-msgid "Opens ubuntu-docviewer-app displaying the selected file"
-msgstr "Ouvre ubuntu-docviewer-app en affichant le fichier sélectionné"
+msgid "Open ubuntu-docviewer-app displaying the selected file"
+msgstr ""
 
 #: ../src/app/qml/common/CommandLineProxy.qml:65
 msgid "Run fullscreen"
 msgstr "Lancer en plein écran"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:71
-msgid "Open ubuntu-docviewer-app in pick mode. Use it for tests only."
+msgid "Open ubuntu-docviewer-app in pick mode. Used for tests only."
 msgstr ""
-"Ouvrir ubuntu-docviewer-app en mode sélection. Utilisez-le uniquement pour "
-"des tests."
 
 #: ../src/app/qml/common/CommandLineProxy.qml:77
 msgid ""
-"Load the list of documents from the given folder, instead of default "
-"~/Documents.\n"
+"Show documents from the given folder, instead of ~/Documents.\n"
 "The path must exist prior to running ubuntu-docviewer-app"
 msgstr ""
-"Charger la liste de documents à partir du dossier donné, au lieu de "
-"~/Documents par défaut.\n"
-"Le chemin doit exister avant de lancer ubuntu-docviewer-app"
 
 #: ../src/app/qml/common/DetailsPage.qml:25
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:107
@@ -111,13 +105,9 @@ msgstr "Type de fichier inconnu"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:28
 msgid ""
-"Sorry but we can't find a way to display this file.\n"
-"\n"
+"This file is not supported.\n"
 "Do you want to open it as a plain text?"
 msgstr ""
-"Désolé, mais nous ne trouvons pas de moyen pour afficher ce fichier.\n"
-"\n"
-"Voulez-vous l'ouvrir en texte brut ?"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:38
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:55
@@ -451,11 +441,11 @@ msgstr "Le fichier n’existe pas."
 msgid "copy %1"
 msgstr "copie %1"
 
-#: /tmp/build-ubuntu-docviewer-app-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Visionneuse de document"
 
-#: /tmp/build-ubuntu-docviewer-app-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "documents;visionneuse;pdf;lecteur;"
 
