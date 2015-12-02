@@ -14,8 +14,9 @@ ubuntu-docviewer-app (2.0) vivid; urgency=medium
   * Switched to QML Ubuntu.ContentHub APIs (LP: #1469422)
   * Switched to QML Ubuntu.Components.Arguments APIs
   * Changed header behaviour in the PDF viewer (LP: #1453403)
+  * Fix for stage mode being forced on Nexus 10 (LP: #1479483)
 
- -- Stefano Verzegnassi <verzegnassi.stefano@gmail.com>  Sat, 28 Nov 2015 13:30:55 +0100
+ -- Stefano Verzegnassi <verzegnassi.stefano@gmail.com>  Wed, 02 Dec 2015 16:08:55 +0100
 
 ubuntu-docviewer-app (0.3.181) vivid; urgency=medium
 
