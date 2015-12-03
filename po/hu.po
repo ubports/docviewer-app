@@ -7,24 +7,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-12-01 00:30+0100\n"
-"PO-Revision-Date: 2015-12-01 09:07+0000\n"
+"POT-Creation-Date: 2015-12-02 16:11+0100\n"
+"PO-Revision-Date: 2015-12-02 07:13+0000\n"
 "Last-Translator: Richard Somlói <ricsipontaz@gmail.com>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-12-02 05:53+0000\n"
+"X-Launchpad-Export-Date: 2015-12-03 06:19+0000\n"
 "X-Generator: Launchpad (build 17856)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
 msgid "Some of the provided arguments are not valid."
-msgstr ""
+msgstr "Néhány argumentum nem érvényes."
 
 #: ../src/app/qml/common/CommandLineProxy.qml:58
 msgid "Open ubuntu-docviewer-app displaying the selected file"
 msgstr ""
+"Az ubuntu-docviewer-app megnyitása és a kiválasztott fájl megjelenítése"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:65
 msgid "Run fullscreen"
@@ -33,12 +34,17 @@ msgstr "Teljes képernyős futás"
 #: ../src/app/qml/common/CommandLineProxy.qml:71
 msgid "Open ubuntu-docviewer-app in pick mode. Used for tests only."
 msgstr ""
+"Az ubuntu-docviewer-app megnyitása „összeszedő módban”. Csak teszteléshez."
 
 #: ../src/app/qml/common/CommandLineProxy.qml:77
 msgid ""
 "Show documents from the given folder, instead of ~/Documents.\n"
 "The path must exist prior to running ubuntu-docviewer-app"
 msgstr ""
+"A ~/Dokumentumok mappában található dokumentumok helyett a megadott mappa "
+"dokumentumai jelennek meg.\n"
+"Az elérési útvonalnak léteznie kell, csak úgy futtathat az ubuntu-docviewer-"
+"app"
 
 #: ../src/app/qml/common/DetailsPage.qml:25
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:107
@@ -108,6 +114,8 @@ msgid ""
 "This file is not supported.\n"
 "Do you want to open it as a plain text?"
 msgstr ""
+"Ez a fájl nem támogatott.\n"
+"Meg szeretné nyitni egyszerű szövegként?"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:38
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:55
@@ -214,6 +222,7 @@ msgid "dddd, hh:mm"
 msgstr "dddd, hh.mm"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
+#: /tmp/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:3
 msgid "Documents"
 msgstr "Dokumentumok"
 
