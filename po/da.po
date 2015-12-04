@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-12-02 16:11+0100\n"
-"PO-Revision-Date: 2015-11-19 18:20+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2015-12-03 10:10+0000\n"
+"Last-Translator: Folmer Fredslund <Unknown>\n"
 "Language-Team: Danish <da@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-12-03 06:19+0000\n"
-"X-Generator: Launchpad (build 17856)\n"
+"X-Launchpad-Export-Date: 2015-12-04 05:53+0000\n"
+"X-Generator: Launchpad (build 17862)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
 msgid "Some of the provided arguments are not valid."
@@ -28,7 +28,7 @@ msgstr ""
 
 #: ../src/app/qml/common/CommandLineProxy.qml:65
 msgid "Run fullscreen"
-msgstr ""
+msgstr "Fuldskærmsvisning"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:71
 msgid "Open ubuntu-docviewer-app in pick mode. Used for tests only."
@@ -45,31 +45,31 @@ msgstr ""
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:83
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:69
 msgid "Details"
-msgstr ""
+msgstr "Detaljer:"
 
 #: ../src/app/qml/common/DetailsPage.qml:36
 msgid "Location"
-msgstr ""
+msgstr "Placering"
 
 #: ../src/app/qml/common/DetailsPage.qml:41
 msgid "Size"
-msgstr ""
+msgstr "Størrelse"
 
 #: ../src/app/qml/common/DetailsPage.qml:46
 msgid "Created"
-msgstr ""
+msgstr "Oprettet"
 
 #: ../src/app/qml/common/DetailsPage.qml:51
 msgid "Last modified"
-msgstr ""
+msgstr "Sidst ændret"
 
 #: ../src/app/qml/common/DetailsPage.qml:58
 msgid "MIME type"
-msgstr ""
+msgstr "MIME-type"
 
 #: ../src/app/qml/common/ErrorDialog.qml:23
 msgid "Error"
-msgstr ""
+msgstr "Fejl"
 
 #: ../src/app/qml/common/ErrorDialog.qml:26
 #: ../src/app/qml/common/PickImportedDialog.qml:53
@@ -77,7 +77,7 @@ msgstr ""
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:31
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:53
 msgid "Close"
-msgstr ""
+msgstr "Luk"
 
 #: ../src/app/qml/common/PickImportedDialog.qml:28
 msgid "Multiple documents imported"
@@ -90,24 +90,26 @@ msgstr ""
 #: ../src/app/qml/common/RejectedImportDialog.qml:28
 msgid "File not supported"
 msgid_plural "Files not supported"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Fil ikke understøttet"
+msgstr[1] "Filer ikke understøttet"
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:29
 msgid "Following document has not been imported:"
 msgid_plural "Following documents have not been imported:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Følgende dokument blev ikke importeret"
+msgstr[1] "Følgende dokumenter blev ikke importeret"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:27
 msgid "Unknown file type"
-msgstr ""
+msgstr "Ukendt filtype"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:28
 msgid ""
 "This file is not supported.\n"
 "Do you want to open it as a plain text?"
 msgstr ""
+"Denne fil  er ikke understøttet.\n"
+"Vil du åbne den som  ren tekst?"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:38
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:55
@@ -115,141 +117,143 @@ msgstr ""
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:55
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:51
 msgid "Cancel"
-msgstr ""
+msgstr "Annullér"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:44
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in GB
 #: ../src/app/qml/common/utils.js:22
 #, qt-format
 msgid "%1 GB"
-msgstr ""
+msgstr "%1 GB"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in MB
 #: ../src/app/qml/common/utils.js:26
 #, qt-format
 msgid "%1 MB"
-msgstr ""
+msgstr "%1 MB"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in kB
 #: ../src/app/qml/common/utils.js:30
 #, qt-format
 msgid "%1 kB"
-msgstr ""
+msgstr "%1 kB"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in byte
 #: ../src/app/qml/common/utils.js:33
 #, qt-format
 msgid "%1 byte"
-msgstr ""
+msgstr "%1 byte"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:39
 msgid "Delete file"
-msgstr ""
+msgstr "Slet fil"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:40
 #, qt-format
 msgid "Delete %1 file"
 msgid_plural "Delete %1 files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Slet %1 fil"
+msgstr[1] "Slet %1 filer"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:41
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:42
 msgid "Are you sure you want to permanently delete this file?"
 msgid_plural "Are you sure you want to permanently delete these files?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Er du sikker på at du vil slette denne fil permanent?"
+msgstr[1] "Er du sikker på at du vil slette disse filer permanent?"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:61
 #: ../src/app/qml/documentPage/DocumentDelegateActions.qml:25
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:53
 msgid "Delete"
-msgstr ""
+msgstr "Slet"
 
 #: ../src/app/qml/documentPage/DocumentDelegateActions.qml:44
 msgid "Share"
-msgstr ""
+msgstr "Del"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:24
 msgid "No document found"
-msgstr ""
+msgstr "Intet dokument fundet"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:25
 msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
 "folder or insert removable media with documents."
 msgstr ""
+"Forbind din enhed til en computer og træk-og-slip filer til Dokumentmappen "
+"eller indsæt et flytbart medie med dokumenter."
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:100
 #, qt-format
 msgid "Today, %1"
-msgstr ""
+msgstr "I dag, %1"
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:105
 #, qt-format
 msgid "Yesterday, %1"
-msgstr ""
+msgstr "I går, %1"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:112
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:131
 msgid "yyyy/MM/dd hh:mm"
-msgstr ""
+msgstr "yyyy/MM/dd hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:125
 msgid "dddd, hh:mm"
-msgstr ""
+msgstr "dddd, hh:mm"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
 #: /tmp/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:3
 msgid "Documents"
-msgstr ""
+msgstr "Dokumenter"
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:29
 msgid "Search..."
-msgstr ""
+msgstr "Søg..."
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:36
 msgid "Sorting settings..."
-msgstr ""
+msgstr "Sorteringsindstillinger"
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:41
 msgid "Switch to single column list"
-msgstr ""
+msgstr "Skift til enkeltkolonneliste"
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:41
 msgid "Switch to grid"
-msgstr ""
+msgstr "Skift til gitter"
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:49
 msgid "Pick"
-msgstr ""
+msgstr "Vælg"
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:27
 msgid "Back"
-msgstr ""
+msgstr "Tilbage"
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:47
 msgid "search in documents..."
-msgstr ""
+msgstr "søg i dokumenter"
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:40
 msgid "Select None"
-msgstr ""
+msgstr "Vælg ingen"
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:40
 msgid "Select All"
-msgstr ""
+msgstr "Vælg alle"
 
 #: ../src/app/qml/documentPage/SearchEmptyState.qml:24
 msgid "No matching document found"
@@ -270,15 +274,15 @@ msgstr ""
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:19
 msgid "Earlier this week"
-msgstr ""
+msgstr "Tidligere denne uge"
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:22
 msgid "Earlier this month"
-msgstr ""
+msgstr "Tidligere denne måned"
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:24
 msgid "Even earlier..."
-msgstr ""
+msgstr "Endnu tidligere..."
 
 #: ../src/app/qml/documentPage/SharePage.qml:23
 msgid "Share to"
@@ -290,19 +294,19 @@ msgstr ""
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:31
 msgid "Sort by date (Latest first)"
-msgstr ""
+msgstr "Sorter efter dato (seneste først)"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:32
 msgid "Sort by name (A-Z)"
-msgstr ""
+msgstr "Sorter efter navn (A-Å)"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:33
 msgid "Sort by size (Smaller first)"
-msgstr ""
+msgstr "Sorter efter størrelse (mindst først)"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:47
 msgid "Reverse order"
-msgstr ""
+msgstr "Omvendt rækkefølge"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:51
 #: ../src/app/qml/textView/TextView.qml:42
@@ -341,13 +345,13 @@ msgstr ""
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:77
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Disable night mode"
-msgstr ""
+msgstr "Deaktiver nattilstand"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:77
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Enable night mode"
-msgstr ""
+msgstr "Aktiver nattilstand"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:30
 msgid "Go to position"
@@ -360,7 +364,7 @@ msgstr ""
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:62
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:58
 msgid "GO!"
-msgstr ""
+msgstr "Gå!"
 
 #: ../src/app/qml/loView/LOViewPage.qml:128
 msgid "LibreOffice binaries not found."
@@ -406,11 +410,11 @@ msgstr ""
 
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:71
 msgid "Go to page..."
-msgstr ""
+msgstr "Gå til side..."
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
 msgid "Go to page"
-msgstr ""
+msgstr "Gå til side"
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:27
 #, qt-format
