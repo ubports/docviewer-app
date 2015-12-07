@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-12-02 16:11+0100\n"
-"PO-Revision-Date: 2015-11-19 18:20+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2015-12-06 15:21+0000\n"
+"Last-Translator: Ibrahim Saed <ibraheem5000@gmail.com>\n"
 "Language-Team: Arabic <ar@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n % 100 >= "
 "3 && n % 100 <= 10 ? 3 : n % 100 >= 11 && n % 100 <= 99 ? 4 : 5;\n"
-"X-Launchpad-Export-Date: 2015-12-03 06:19+0000\n"
-"X-Generator: Launchpad (build 17856)\n"
+"X-Launchpad-Export-Date: 2015-12-07 05:41+0000\n"
+"X-Generator: Launchpad (build 17862)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
 msgid "Some of the provided arguments are not valid."
@@ -29,7 +29,7 @@ msgstr ""
 
 #: ../src/app/qml/common/CommandLineProxy.qml:65
 msgid "Run fullscreen"
-msgstr ""
+msgstr "تشغيل ملء الشاشة"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:71
 msgid "Open ubuntu-docviewer-app in pick mode. Used for tests only."
@@ -117,6 +117,8 @@ msgid ""
 "This file is not supported.\n"
 "Do you want to open it as a plain text?"
 msgstr ""
+"هذا الملف غير مدعوم.\n"
+"هل ترغب بفتحه كنص عادي؟"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:38
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:55
@@ -188,7 +190,7 @@ msgstr "حذف"
 
 #: ../src/app/qml/documentPage/DocumentDelegateActions.qml:44
 msgid "Share"
-msgstr ""
+msgstr "مشاركة"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:24
 msgid "No document found"
@@ -199,6 +201,8 @@ msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
 "folder or insert removable media with documents."
 msgstr ""
+"قم بتوصيل جهازك بأي حاسوب ثم اسحب الملفات ببساطة إلى مجلد المستندات على "
+"جهازك أو أدخِل وسيط قابل للإزالة يحتوي مستندات."
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
@@ -219,7 +223,7 @@ msgstr "أمس، %1"
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:112
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:131
 msgid "yyyy/MM/dd hh:mm"
-msgstr ""
+msgstr "dd/MM/yyyy hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
@@ -301,7 +305,7 @@ msgstr "حتى وقت سابق..."
 
 #: ../src/app/qml/documentPage/SharePage.qml:23
 msgid "Share to"
-msgstr ""
+msgstr "مشاركة إلى"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:26
 msgid "Sorting settings"
