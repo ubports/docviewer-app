@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-12-02 16:11+0100\n"
-"PO-Revision-Date: 2015-12-03 10:10+0000\n"
+"PO-Revision-Date: 2015-12-07 20:01+0000\n"
 "Last-Translator: Folmer Fredslund <Unknown>\n"
 "Language-Team: Danish <da@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-12-04 05:53+0000\n"
+"X-Launchpad-Export-Date: 2015-12-08 05:53+0000\n"
 "X-Generator: Launchpad (build 17862)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
@@ -311,7 +311,7 @@ msgstr "Omvendt rækkefølge"
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:51
 #: ../src/app/qml/textView/TextView.qml:42
 msgid "Loading..."
-msgstr ""
+msgstr "Indlæser..."
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:55
 msgid "LibreOffice text document"
@@ -406,7 +406,7 @@ msgstr ""
 #: ../src/app/qml/pdfView/PdfView.qml:34
 #, qt-format
 msgid "Page %1 of %2"
-msgstr ""
+msgstr "Side %1 af %2"
 
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:71
 msgid "Go to page..."
@@ -419,7 +419,7 @@ msgstr "Gå til side"
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:27
 #, qt-format
 msgid "Choose a page between 1 and %1"
-msgstr ""
+msgstr "Vælg en side mellem 1 og %1"
 
 #: ../src/app/qml/ubuntu-docviewer-app.qml:118
 msgid "File does not exist."
@@ -445,4 +445,4 @@ msgstr ""
 
 #: /tmp/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
-msgstr ""
+msgstr "dokumenter;fremviser;pdf;læser;"
