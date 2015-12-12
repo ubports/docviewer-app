@@ -9,7 +9,7 @@
 #include <QAtomicInt>
 #include <QList>
 
-#include "lodocument.h"
+//#include "lodocument.h"
 #include "rendertask.h"
 
 class RenderEngine : public QObject

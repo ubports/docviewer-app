@@ -22,6 +22,8 @@ include_directories(
 
 set(docviewer_SRCS
     main.cpp
+    renderengine.cpp
+    rendertask.cpp
     ${QML_SRCS}
 )
 

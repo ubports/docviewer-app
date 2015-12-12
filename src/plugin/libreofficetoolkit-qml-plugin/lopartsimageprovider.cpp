@@ -16,7 +16,7 @@
 
 #include "lopartsimageprovider.h"
 #include "lodocument.h"
-#include "renderengine.h"
+#include "../../app/renderengine.h"
 
 LOPartsImageProvider::LOPartsImageProvider(const QSharedPointer<LODocument>& d)
     : QQuickImageProvider(QQuickImageProvider::Image),
