@@ -48,6 +48,11 @@ LOPartsImageResponse::LOPartsImageResponse(const QSharedPointer<LODocument>& doc
     }
 }
 
+LOPartsImageResponse::~LOPartsImageResponse()
+{
+    this->cancel();
+}
+
 QString LOPartsImageResponse::errorString() const
 {
     return m_errorString;
@@ -58,6 +63,15 @@ QQuickTextureFactory * LOPartsImageResponse::textureFactory() const
     return QQuickTextureFactory::textureFactoryForImage(m_image);
 }
 
+void LOPartsImageResponse::cancel()
+{
+    disconnect(this);
+
+    // Remove task from the queue, if it's still waiting for being rendered.
+    if (m_renderEngineRequestedId) {
+        RenderEngine::instance()->dequeueTask(m_renderEngineRequestedId);
+    }
+}
 
 void LOPartsImageResponse::slotTaskRenderFinished(AbstractRenderTask* task, QImage img)
 {

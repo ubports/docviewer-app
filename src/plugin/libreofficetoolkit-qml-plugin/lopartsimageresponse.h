@@ -29,10 +29,11 @@ class LOPartsImageResponse : public QQuickImageResponse
 {
 public:
     LOPartsImageResponse(const QSharedPointer<LODocument>& document, const QString & id, const QSize & requestedSize);
+    ~LOPartsImageResponse();
 
     QString errorString() const override;
     QQuickTextureFactory * textureFactory() const override;
-    // TODO: void cancel() override;
+    void cancel() override;
 
 private Q_SLOTS:
     void slotTaskRenderFinished(AbstractRenderTask* task, QImage img);
