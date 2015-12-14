@@ -25,5 +25,10 @@ LOPartsImageProvider::LOPartsImageProvider(const QSharedPointer<LODocument>& d)
 
 QQuickImageResponse *LOPartsImageProvider::requestImageResponse(const QString & id, const QSize & requestedSize)
 {
-    return new LOPartsImageResponse(m_document, id, requestedSize);
+    QString type = id.section("/", 0, 0);
+
+    bool isValid = bool(!requestedSize.isNull() || type == "part" ||
+            m_document.data()->documentType() == LODocument::PresentationDocument);
+
+    return new LOPartsImageResponse(m_document, id, requestedSize, isValid);
 }

@@ -28,7 +28,7 @@ class AbstractRenderTask;
 class LOPartsImageResponse : public QQuickImageResponse
 {
 public:
-    LOPartsImageResponse(const QSharedPointer<LODocument>& document, const QString & id, const QSize & requestedSize);
+    LOPartsImageResponse(const QSharedPointer<LODocument>& document, const QString & id, const QSize & requestedSize, bool requestIsValid);
     ~LOPartsImageResponse();
 
     QString errorString() const override;
@@ -43,7 +43,7 @@ private:
     QString m_requestedId;
     QSize m_requestedSize;
 
-    int m_renderEngineRequestedId;
+    int m_taskId;
     QString m_errorString;
     QImage m_image;
 };

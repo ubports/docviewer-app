@@ -20,32 +20,32 @@
 #include "renderengine.h"
 #include "rendertask.h"
 
-LOPartsImageResponse::LOPartsImageResponse(const QSharedPointer<LODocument>& document, const QString & id, const QSize & requestedSize) :
+LOPartsImageResponse::LOPartsImageResponse(const QSharedPointer<LODocument>& document, const QString & id, const QSize & requestedSize, bool requestIsValid) :
     m_document(document),
     m_requestedId(id),
     m_requestedSize(requestedSize)
 {
-    QString type = m_requestedId.section("/", 0, 0);
-
-    if (m_requestedSize.isNull() || type != "part" ||
-            m_document->documentType() != LODocument::PresentationDocument) {
+    if (!requestIsValid) {
         m_errorString = "Requested size or id are not valid.";
-    } else {
-        m_renderEngineRequestedId = RenderEngine::getNextId();
 
-        auto task = new ThumbnailRenderTask();
-        task->setId(m_renderEngineRequestedId);
-        task->setPart(m_requestedId.section("/", 1, 1).toInt());
-        task->setDocument(m_document);
-
-        // TODO: use QSize
-        task->setSize(qreal(256.0));
-
-        connect(RenderEngine::instance(), &RenderEngine::taskRenderFinished,
-                this, &LOPartsImageResponse::slotTaskRenderFinished);
-
-        RenderEngine::instance()->enqueueTask(task);
+        QMetaObject::invokeMethod(this, "finished", Qt::QueuedConnection);
+        return;
     }
+
+    m_taskId = RenderEngine::getNextId();
+
+    auto task = new ThumbnailRenderTask();
+    task->setId(m_taskId);
+    task->setPart(m_requestedId.section("/", 1, 1).toInt());
+    task->setDocument(m_document);
+
+    // TODO: use QSize
+    task->setSize(qreal(256.0));
+
+    connect(RenderEngine::instance(), &RenderEngine::taskRenderFinished,
+            this, &LOPartsImageResponse::slotTaskRenderFinished);
+
+    RenderEngine::instance()->enqueueTask(task);
 }
 
 LOPartsImageResponse::~LOPartsImageResponse()
@@ -68,17 +68,14 @@ void LOPartsImageResponse::cancel()
     disconnect(this);
 
     // Remove task from the queue, if it's still waiting for being rendered.
-    if (m_renderEngineRequestedId) {
-        RenderEngine::instance()->dequeueTask(m_renderEngineRequestedId);
+    if (m_taskId) {
+        RenderEngine::instance()->dequeueTask(m_taskId);
     }
 }
 
 void LOPartsImageResponse::slotTaskRenderFinished(AbstractRenderTask* task, QImage img)
 {
-    int id = task->id();
-
-    if (m_renderEngineRequestedId == id &&
-            task->type() == RttImpressThumbnail) {
+    if (task->id() == m_taskId && task->type() == RttImpressThumbnail) {
         m_image = img;
         Q_EMIT finished();
     }
