@@ -63,7 +63,7 @@ public:
     QSize documentSize() const;
 
     QImage paintTile(int part, const QSize& canvasSize, const QRect& tileSize, const qreal& zoom = 1.0);
-    QImage paintThumbnail(int part, qreal size);
+    QImage paintThumbnail(int part, const QSize &size);
 
     int partsCount();
     QString getPartName(int index) const;

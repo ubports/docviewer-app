@@ -63,13 +63,18 @@ ListView {
 
                 /* UITK 1.3 specs: Slot B */
                 Image {
+                    id: thumb
                     SlotsLayout.position: SlotsLayout.Leading
-                    height: parent.height; width: height
+                    height: parent.height; width: units.gu(12)
                     fillMode: Image.PreserveAspectFit
                     // Do not store a cache of the thumbnail, so that we don't show
                     // thumbnails of a previously loaded document.
                     cache: true // TODO PLAY WITH IT
                     source: "image://lok/part/%1".arg(model.index)
+                    sourceSize {
+                        width: thumb.height
+                        height: thumb.width
+                    }
                 }
 
                 /* UITK 1.3 specs: Slot A */
@@ -115,8 +120,9 @@ ListView {
                 spacing: units.gu(0.5)
 
                 Image {
+                    id: thumb
                     Layout.fillWidth: true
-                    Layout.preferredHeight: width
+                    Layout.fillHeight: true
                     fillMode: Image.PreserveAspectFit
                     // Do not store a cache of the thumbnail, so that we don't show
                     // thumbnails of a previously loaded document.

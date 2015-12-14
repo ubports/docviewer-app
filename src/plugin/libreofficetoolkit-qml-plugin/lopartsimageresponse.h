@@ -40,8 +40,6 @@ private Q_SLOTS:
 
 private:
     QSharedPointer<LODocument> m_document;
-    QString m_requestedId;
-    QSize m_requestedSize;
 
     int m_taskId;
     QString m_errorString;

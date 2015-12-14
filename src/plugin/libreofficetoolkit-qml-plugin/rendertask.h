@@ -42,7 +42,7 @@ class LoRenderTask : public AbstractRenderTask
 {
 public:
     virtual bool canBeRunInParallel(AbstractRenderTask* prevTask);
-    virtual void prepare() { }
+    virtual void prepare() { /* do nothing */ }
 
     int part() { return m_part; }
     void setPart(int p) { m_part = p; }
@@ -74,10 +74,10 @@ public:
     virtual RenderTaskType type() { return RttImpressThumbnail; }
     virtual QImage doWork();
 
-    qreal size() { return m_size; }
-    void setSize(qreal s) { m_size = s; }
+    QSize size() const { return m_size; }
+    void setSize(const QSize & s) { m_size = s; }
 protected:
-    qreal m_size;
+    QSize m_size;
 };
 
 #endif // RENDERTASK_H

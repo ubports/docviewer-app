@@ -21,13 +21,12 @@
 #include "rendertask.h"
 
 LOPartsImageResponse::LOPartsImageResponse(const QSharedPointer<LODocument>& document, const QString & id, const QSize & requestedSize, bool requestIsValid) :
-    m_document(document),
-    m_requestedId(id),
-    m_requestedSize(requestedSize)
+    m_document(document)
 {
     if (!requestIsValid) {
         m_errorString = "Requested size or id are not valid.";
 
+        // Emit 'finished' signal and return an empty image.
         QMetaObject::invokeMethod(this, "finished", Qt::QueuedConnection);
         return;
     }
@@ -36,11 +35,14 @@ LOPartsImageResponse::LOPartsImageResponse(const QSharedPointer<LODocument>& doc
 
     auto task = new ThumbnailRenderTask();
     task->setId(m_taskId);
-    task->setPart(m_requestedId.section("/", 1, 1).toInt());
+    task->setPart(id.section("/", 1, 1).toInt());
     task->setDocument(m_document);
 
-    // TODO: use QSize
-    task->setSize(qreal(256.0));
+    if (!requestedSize.isEmpty()) {
+        task->setSize(requestedSize);
+    } else {
+        task->setSize(QSize(256, 256));
+    }
 
     connect(RenderEngine::instance(), &RenderEngine::taskRenderFinished,
             this, &LOPartsImageResponse::slotTaskRenderFinished);
