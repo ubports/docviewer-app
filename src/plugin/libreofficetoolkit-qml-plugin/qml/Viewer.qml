@@ -26,6 +26,7 @@ Flickable {
     property alias partsModel:  view.partsModel
     property alias zoomMode:    view.zoomMode
     property alias error:       view.error
+    property alias currentPart: view.currentPart
 
     property string documentPath: ""
 
@@ -61,22 +62,22 @@ Flickable {
 
     function goNextPart()
     {
-        document.currentPart = Math.min(document.currentPart + 1, document.partsCount - 1)
+        currentPart = Math.min(currentPart + 1, document.partsCount - 1)
     }
 
     function goPreviousPart()
     {
-        document.currentPart = Math.max(0, document.currentPart - 1)
+        currentPart = Math.max(0, currentPart - 1)
     }
 
     function goFirstPart()
     {
-        document.currentPart = 0
+        currentPart = 0
     }
 
     function goLastPart()
     {
-        document.currentPart = document.partsCount - 1
+        currentPart = document.partsCount - 1
     }
 
     onDocumentPathChanged: {
@@ -97,10 +98,6 @@ Flickable {
         id: view
 
         parentFlickable: rootFlickable
-    }
-
-    Connections {
-        target: view.document
 
         onCurrentPartChanged: {
             // Position view at top-left corner

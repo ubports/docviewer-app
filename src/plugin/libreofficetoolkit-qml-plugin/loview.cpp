@@ -36,6 +36,7 @@ LOView::LOView(QQuickItem *parent)
     , m_parentFlickable(nullptr)
     , m_document(nullptr)
     , m_partsModel(nullptr)
+    , m_currentPart(0)
     , m_zoomFactor(1.0)
     , m_cacheBuffer(TILE_SIZE * 3)
     , m_visibleArea(0, 0, 0, 0)
@@ -114,7 +115,8 @@ void LOView::initializeDocument(const QString &path)
     engine->addImageProvider("lok", m_imageProvider);
     // --------------------------------------------------
 
-    connect(m_document.data(), SIGNAL(currentPartChanged()), this, SLOT(invalidateAllTiles()));
+    setCurrentPart(0);
+    connect(this, SIGNAL(currentPartChanged()), this, SLOT(invalidateAllTiles()));
 
     Q_EMIT documentChanged();
 }
@@ -128,6 +130,22 @@ LODocument* LOView::document() const
 LOPartsModel *LOView::partsModel() const
 {
     return m_partsModel;
+}
+
+int LOView::currentPart() {
+    return m_currentPart;
+}
+
+void LOView::setCurrentPart(int index)
+{
+    if (!m_document)
+        return;
+
+    if (m_currentPart == index || index < 0 || index > (m_document.data()->partsCount() - 1))
+        return;
+
+    m_currentPart = index;
+    Q_EMIT currentPartChanged();
 }
 
 qreal LOView::zoomFactor() const
@@ -399,7 +417,7 @@ TileRenderTask* LOView::createTask(const QRect &rect, int id) const
 {
     TileRenderTask* task = new TileRenderTask();
     task->setId(id);
-    task->setPart(m_document->currentPart());
+    task->setPart(m_currentPart);
     task->setDocument(m_document);
     task->setArea(rect);
     task->setZoom(m_zoomFactor);
