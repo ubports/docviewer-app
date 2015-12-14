@@ -69,7 +69,7 @@ ListView {
                     // Do not store a cache of the thumbnail, so that we don't show
                     // thumbnails of a previously loaded document.
                     cache: true // TODO PLAY WITH IT
-                    source: model.thumbnail
+                    source: "image://lok/part/%1".arg(model.index)
                 }
 
                 /* UITK 1.3 specs: Slot A */
@@ -121,7 +121,7 @@ ListView {
                     // Do not store a cache of the thumbnail, so that we don't show
                     // thumbnails of a previously loaded document.
                     cache: true // TODO PLAY WITH IT
-                    source: model.thumbnail
+                    source: "image://lok/part/%1".arg(model.index)
                 }
 
                 Label {

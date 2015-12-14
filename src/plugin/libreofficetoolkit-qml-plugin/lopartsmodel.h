@@ -30,14 +30,11 @@ class LOPartEntry
 {
 public:
     LOPartEntry():
-        id(0),
         index(0)
     { }
 
-    int id;
     int index;
     QString name;
-    QString thumbnail;
 };
 
 class LOPartsModel : public QAbstractListModel
@@ -50,8 +47,6 @@ public:
     enum Roles {
         NameRole = Qt::UserRole + 1,
         IndexRole,
-        IdRole,
-        ThumbnailRole
     };
 
     explicit LOPartsModel(const QSharedPointer<LODocument>& document, QAbstractListModel *parent = 0);

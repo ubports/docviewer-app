@@ -33,8 +33,6 @@ QHash<int, QByteArray> LOPartsModel::roleNames() const
     QHash<int, QByteArray> roles;
     roles[IndexRole] = "index";
     roles[NameRole] = "name";
-    roles[IdRole] = "id";
-    roles[ThumbnailRole] = "thumbnail";
 
     return roles;
 }
@@ -57,10 +55,6 @@ QVariant LOPartsModel::data(const QModelIndex & index, int role) const
         return part.index;
     case NameRole:
         return part.name;
-    case IdRole:
-        return part.id;
-    case ThumbnailRole:
-        return part.thumbnail;
 
     default:
         return 0;
@@ -79,8 +73,6 @@ QVariantMap LOPartsModel::get(int index) const
     QVariantMap map;
     map["name"] = part.name;
     map["index"] = part.index;
-    map["id"] = part.id;
-    map["thumbnail"] = part.thumbnail;
 
     return map;
 }
@@ -102,8 +94,6 @@ void LOPartsModel::fillModel() {
 
         part.index = i;
         part.name = m_document->getPartName(i);
-        part.id = RenderEngine::getNextId();
-        part.thumbnail = QString("image://lok/part/%1/%2").arg(QString::number(part.index)).arg(QString::number(part.id));
 
         m_entries.append(part);
     }
