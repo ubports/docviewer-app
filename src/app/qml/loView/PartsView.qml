@@ -120,7 +120,6 @@ ListView {
                 spacing: units.gu(0.5)
 
                 Image {
-                    id: thumb
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                     fillMode: Image.PreserveAspectFit

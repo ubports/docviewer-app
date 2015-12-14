@@ -196,8 +196,6 @@ QImage LODocument::paintThumbnail(int part, const QSize &size)
 
     QSize resultSize;
 
-    // TODO: use requestedSize
-
     if (tWidth > tHeight) {
         resultSize.setWidth(size.width());
         resultSize.setHeight(size.width() * tHeight / tWidth);
