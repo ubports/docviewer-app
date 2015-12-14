@@ -85,16 +85,6 @@ QVariantMap LOPartsModel::get(int index) const
     return map;
 }
 
-void LOPartsModel::notifyAboutChanges(int id)
-{
-    for (int i = 0; i < m_entries.size(); i++)
-        if (m_entries[i].id == id) {
-            m_entries[i].thumbnail += "/cached";
-            Q_EMIT dataChanged(createIndex(i, 0), createIndex(i + 1, 0));
-            break;
-        }
-}
-
 void LOPartsModel::fillModel() {
     if (!m_document)
         return;

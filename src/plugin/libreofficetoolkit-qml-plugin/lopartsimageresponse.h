@@ -15,23 +15,37 @@
  *
  */
 
-#ifndef LOPARTSIMAGEPROVIDER_H
+#ifndef LOPARTSIMAGERESPONSE_H
 #define LOPARTSIMAGEPROVIDER_H
 
-// For QQuickAsyncImageProvider
+// For QQuickImageResponse
 #include <qquickimageprovider.h>
 #include <QSharedPointer>
 
 class LODocument;
+class AbstractRenderTask;
 
-class LOPartsImageProvider : public QQuickAsyncImageProvider
+class LOPartsImageResponse : public QQuickImageResponse
 {
 public:
-    LOPartsImageProvider(const QSharedPointer<LODocument>& d);
-    QQuickImageResponse* requestImageResponse(const QString & id, const QSize & requestedSize);
+    LOPartsImageResponse(const QSharedPointer<LODocument>& document, const QString & id, const QSize & requestedSize);
+
+    QString errorString() const override;
+    QQuickTextureFactory * textureFactory() const override;
+    // TODO: void cancel() override;
+
+private Q_SLOTS:
+    void slotTaskRenderFinished(AbstractRenderTask* task, QImage img);
 
 private:
     QSharedPointer<LODocument> m_document;
+    QString m_requestedId;
+    QSize m_requestedSize;
+
+    int m_renderEngineRequestedId;
+    QString m_errorString;
+    QImage m_image;
 };
 
-#endif // LOPARTSIMAGEPROVIDER_H
+
+#endif // LOPARTSIMAGERESPONSE_H

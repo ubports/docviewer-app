@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 Canonical, Ltd.
+ * Copyright (C) 2015 Stefano Verzegnassi
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License version 3, as published
@@ -15,50 +15,15 @@
  */
 
 #include "lopartsimageprovider.h"
+#include "lopartsimageresponse.h"
 #include "lodocument.h"
-#include "renderengine.h"
 
 LOPartsImageProvider::LOPartsImageProvider(const QSharedPointer<LODocument>& d)
-    : QQuickImageProvider(QQuickImageProvider::Image),
+    : QQuickAsyncImageProvider(),
       m_document(d)
 { }
 
-QImage LOPartsImageProvider::requestImage(const QString & id, QSize * size, const QSize & requestedSize)
+QQuickImageResponse *LOPartsImageProvider::requestImageResponse(const QString & id, const QSize & requestedSize)
 {
-    Q_UNUSED(size)
-
-    QString type = id.section("/", 0, 0);
-
-    if (requestedSize.isNull() || type != "part" ||
-            m_document->documentType() != LODocument::PresentationDocument)
-        return QImage();
-
-    // Get info from "id".
-    int partNumber = id.section("/", 1, 1).toInt();
-    int itemId = id.section("/", 2, 2).toInt();
-
-    // Once rendered images can be found in hash.
-    if (m_images.contains(itemId))
-        return m_images[itemId];
-
-    const int defaultSize = 256;
-
-    RenderEngine::instance()->enqueueTask(createTask(partNumber, defaultSize, itemId));
-
-    // Return default image (empty).
-    static QImage defaultImage;
-    if (defaultImage.isNull())
-        defaultImage = QImage(defaultSize, defaultSize, QImage::Format_ARGB32);
-
-    return defaultImage;
-}
-
-ThumbnailRenderTask *LOPartsImageProvider::createTask(int part, qreal size, int id) const
-{
-    ThumbnailRenderTask* task = new ThumbnailRenderTask();
-    task->setId(id);
-    task->setPart(part);
-    task->setDocument(m_document);
-    task->setSize(size);
-    return task;
+    return new LOPartsImageResponse(m_document, id, requestedSize);
 }

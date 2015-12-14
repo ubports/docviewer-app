@@ -64,8 +64,6 @@ public:
 
     Q_INVOKABLE QVariantMap get(int index) const;
 
-    void notifyAboutChanges(int id);
-
 Q_SIGNALS:
     void countChanged();
 

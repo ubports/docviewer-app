@@ -120,8 +120,6 @@ private:
     void setZoomMode(const ZoomMode zoomMode);
     void clearView();
     TileRenderTask* createTask(const QRect& rect, int id) const;
-    void updateTileData(AbstractRenderTask* task, QImage img);
-    void updateThumbnailModel(AbstractRenderTask* task, QImage img);
 
     void setError(const LibreOfficeError::Error &error);
 };
