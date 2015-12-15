@@ -21,9 +21,7 @@ import DocumentViewer.PDF 1.0 as PDF
 import "../common"
 import "../common/utils.js" as Utils
 
-// TODO: Use UITK 1.3 BottomEdge component when available
-
-PageWithBottomEdge {
+Page {
     id: pdfPage
     title: Utils.getNameOfFile(file.path)
 
@@ -33,10 +31,32 @@ PageWithBottomEdge {
     // while the second one (%2) refers to the total pages count.
     property string currentPage: i18n.tr("Page %1 of %2").arg(pdfView.currentPageIndex + 1).arg(pdfView.count)
 
-    // TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
-    bottomEdgeTitle: i18n.tr("Contents")
-    bottomEdgePageComponent: PdfContentsPage { }
-    bottomEdgeEnabled: poppler.tocModel.count > 0
+    BottomEdge {
+        id: bottomEdge
+
+        hint {
+            action: Action {
+                // TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
+                text: i18n.tr("Contents")
+                iconName: "view-list-symbolic"  // FIXME: Needs ToC icon.
+                onTriggered: bottomEdge.commit()
+            }
+            flickable: pdfPage.flickable
+        }
+
+        contentComponent: bottomEdgeContent
+        onCommitCompleted: {
+            pdfPage.pageStack.push(bottomEdgeContent)
+            collapse();
+        }
+        enabled: poppler.tocModel.count > 0
+
+        Component {
+            id: bottomEdgeContent
+            PdfContentsPage { width: bottomEdge.width; height: bottomEdge.height }
+        }
+    }
+
 
     // Reset night mode shader settings when closing the page
     // Component.onDestruction: mainView.nightModeEnabled = false

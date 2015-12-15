@@ -29,9 +29,6 @@ Page {
     // TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
     title: i18n.tr("Contents")
 
-    // Avoid a binding loop when using ListView.positionViewAtIndex()
-    flickable: null
-
     head.backAction: Action {
         text: i18n.tr("Hide table of contents")
         iconName: "down"
