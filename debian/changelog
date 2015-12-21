@@ -1,3 +1,9 @@
+ubuntu-docviewer-app (2.0ubuntu1) UNRELEASED; urgency=medium
+
+  * Updated and expanded READMEs
+
+ -- Girish Rawat <emailgirishrawat@gmail.com>  Sun, 20 Dec 2015 01:23:18 +0530
+
 ubuntu-docviewer-app (2.0) vivid; urgency=medium
 
   * Updated application icon (LP: #1476659 and LP: #1432392)
