@@ -1,6 +1,6 @@
 Dependencies
 ============
-**DEPENDENCIES ARE NEEDED TO BE INSTALLED TO BUILD AND RUN THE APP**.
+**DEPENDENCIES ARE NEEDED TO BE INSTALLED TO BUILD AND RUN THE APP**
 
 A complete list of dependencies for the project can be found in ubuntu-docviewer-app/debian/control
 
@@ -10,6 +10,8 @@ The following essential packages are also required to develop this app:
 
 Compiling
 =========
+
+**A working internet connection is required in order to build the project. A number of Debian packages are downloaded when the project is loaded the first times**
 
 * Install poppler's development files:
     sudo apt install libpoppler-qt5-dev
@@ -27,13 +29,11 @@ LibreOffice viewer support
 ==========================
 
 * If you want to enable the LibreOffice viewer feature, you'll need to have a
-  LibreOffice 5.0 installation on your development environment. At the time of
-  writing, LibreOffice 5.0 is not yet in the archive, but you can easily install
-  it from the pre-releases PPA. To do so, type the following commands on a
-  terminal:
+  LibreOffice 5.0 installation on your development environment. 
+  To do so, type the following commands on a terminal:
 
     sudo apt-get purge libreoffice-core
-    sudo add-apt-repository ppa:libreoffice/libreoffice-prereleases
+    sudo add-apt-repository ppa:libreoffice/libreoffice-5-0
     sudo apt-get update
     sudo apt-get install libreoffice
 

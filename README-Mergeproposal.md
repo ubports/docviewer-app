@@ -9,7 +9,8 @@ Checklist
 *   Does the MP add/remove user visible strings? If Yes, has the pot file been
     updated?
 
-*   Does the MP change the UI? If Yes, has it been approved by design?
+*   Does the MP change the UI? If Yes, has it been approved by design, or 
+    discussed with some of the DocViewer developers?
 
 *   Did you perform an exploratory manual test run of your code change and any
     related functionality?
@@ -25,4 +26,7 @@ Checklist
 
 The above checklist is more of a guideline to help doc viewer app trunk stay buildable,
 stable and up to date.
+
+Note: As of wily 15.10, some autopilot tests are broken in trunk. As such autopilot failures
+can be excused until they are fixed in trunk.
 

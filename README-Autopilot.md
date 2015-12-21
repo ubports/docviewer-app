@@ -1,6 +1,9 @@
 Running Autopilot tests
 =======================
 
+As of wily 15.10, some autopilot tests are broken in trunk. As such autopilot failures
+can be excused until they are fixed in trunk.
+
 The Doc Viewer app follows a test driven development where autopilot tests are run before every merge into trunk. If you are submitting your bugfix/patch to the Doc Viewer app, please follow the following steps below to ensure that all tests pass before proposing a merge request.
 
 If you are looking for more info about Autopilot or writing AP tests for the doc viewer app, here are some useful links to help you:
