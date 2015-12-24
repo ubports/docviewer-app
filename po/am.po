@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-12-02 16:11+0100\n"
+"POT-Creation-Date: 2015-12-12 13:04+0300\n"
 "PO-Revision-Date: 2015-12-17 21:30+0000\n"
 "Last-Translator: samson <Unknown>\n"
 "Language-Team: Amharic <am@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2015-12-18 05:58+0000\n"
+"X-Launchpad-Export-Date: 2015-12-24 05:42+0000\n"
 "X-Generator: Launchpad (build 17865)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
@@ -217,7 +217,7 @@ msgid "dddd, hh:mm"
 msgstr "dddd, hh:mm"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
-#: /tmp/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:3
+#: /home/qtros/dev/ubuntu-docviewer-app-uitk-13-ethalone-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
 msgid "Documents"
 msgstr "ሰነዶች"
 
@@ -443,11 +443,11 @@ msgstr "ፋይሉ አልነበረም"
 msgid "copy %1"
 msgstr "ኮፒ %1"
 
-#: /tmp/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/qtros/dev/ubuntu-docviewer-app-uitk-13-ethalone-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "ሰነድ መመልከቻ"
 
-#: /tmp/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/qtros/dev/ubuntu-docviewer-app-uitk-13-ethalone-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "ሰነዶች: መመልከቻ: pdf: ማንበቢያ:"
 

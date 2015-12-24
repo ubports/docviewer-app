@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-12-02 16:11+0100\n"
+"POT-Creation-Date: 2015-12-12 13:04+0300\n"
 "PO-Revision-Date: 2015-12-20 12:49+0000\n"
 "Last-Translator: Kenan Gutić <Unknown>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-12-21 05:38+0000\n"
+"X-Launchpad-Export-Date: 2015-12-24 05:42+0000\n"
 "X-Generator: Launchpad (build 17865)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
@@ -223,7 +223,7 @@ msgid "dddd, hh:mm"
 msgstr "dddd, hh:mm"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
-#: /tmp/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:3
+#: /home/qtros/dev/ubuntu-docviewer-app-uitk-13-ethalone-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
 msgid "Documents"
 msgstr "Dokumenti"
 
@@ -451,11 +451,11 @@ msgstr "Datoteka ne postoji."
 msgid "copy %1"
 msgstr "kopija %1"
 
-#: /tmp/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/qtros/dev/ubuntu-docviewer-app-uitk-13-ethalone-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Preglednik dokumenta"
 
-#: /tmp/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/qtros/dev/ubuntu-docviewer-app-uitk-13-ethalone-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "dokumenti;preglednik;pdf;čitač;"
 
