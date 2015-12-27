@@ -172,3 +172,13 @@ QString DocviewerUtils::getFileBaseNameFromPath(const QString &filePath)
 {
     return QFileInfo(filePath).completeBaseName();
 }
+
+QString DocviewerUtils::getFileNameFromPath(const QString &filePath)
+{
+    return QFileInfo(filePath).fileName();
+}
+
+QString DocviewerUtils::getCanonicalPath(const QString &filePath)
+{
+    return QFileInfo(filePath).canonicalPath();
+}
