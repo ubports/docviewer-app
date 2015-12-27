@@ -43,6 +43,7 @@ class LOView : public QQuickItem
     Q_PROPERTY(ZoomMode                 zoomMode        READ zoomMode                                 NOTIFY zoomModeChanged)
     Q_PROPERTY(int                      cacheBuffer     READ cacheBuffer     WRITE setCacheBuffer     NOTIFY cacheBufferChanged)
     Q_PROPERTY(LibreOfficeError::Error  error           READ error                                    NOTIFY errorChanged)
+    Q_PROPERTY(bool                     fitToWidthZoomAvailable READ fitToWidthZoomAvailable NOTIFY fitToWidthZoomAvailableChanged)
 
 public:
     LOView(QQuickItem *parent = 0);
@@ -66,6 +67,8 @@ public:
 
     ZoomMode    zoomMode() const;
 
+    bool        fitToWidthZoomAvailable() const;
+
     int         cacheBuffer() const;
     void        setCacheBuffer(int cacheBuffer);
 
@@ -81,6 +84,7 @@ Q_SIGNALS:
     void zoomModeChanged();
     void cacheBufferChanged();
     void errorChanged();
+    void fitToWidthZoomAvailableChanged();
 
 private Q_SLOTS:
     void updateViewSize();
@@ -98,6 +102,7 @@ private:
 
     qreal                       m_zoomFactor;
     ZoomMode                    m_zoomMode;
+    bool                        m_fitToWidthZoomAvailable;
     int                         m_cacheBuffer;
 
     QRect                       m_visibleArea;
@@ -109,6 +114,7 @@ private:
 
     QMap<int, SGTileItem*>      m_tiles;
 
+private:
     void generateTiles(int x1, int y1, int x2, int y2, int tilesPerWidth, int tilesPerHeight);
     void createTile(int index, const QRect& rect);
     void setZoomMode(const ZoomMode zoomMode);
@@ -118,6 +124,7 @@ private:
     void updateThumbnailModel(AbstractRenderTask* task, QImage img);
 
     void setError(const LibreOfficeError::Error &error);
+    void setZoomModesAvailability();
 };
 
 #endif // LOVIEW_H

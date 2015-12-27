@@ -97,6 +97,8 @@ TextFieldWithButton {
             height: units.gu(4)
             divider.visible: false
 
+            visible: view.fitToWidthZoomAvailable
+
             onClicked: {
                 textField.view.adjustZoomToWidth()
                 zoomSelectorDialogue.close()
@@ -120,7 +122,12 @@ TextFieldWithButton {
             }
         }   // ListItem
 
-        HorizontalDivider { anchors { left: parent.left; right: parent.right } }
+        HorizontalDivider {
+            anchors { left: parent.left; right: parent.right }
+
+            // Do not show a second divider if no zoom mode is available.
+            visible: view.fitToWidthZoomAvailable
+        }
 
         Repeater {
             model: [

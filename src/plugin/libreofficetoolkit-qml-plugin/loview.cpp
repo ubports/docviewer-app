@@ -37,6 +37,7 @@ LOView::LOView(QQuickItem *parent)
     , m_document(nullptr)
     , m_partsModel(nullptr)
     , m_zoomFactor(1.0)
+    , m_fitToWidthZoomAvailable(false)
     , m_cacheBuffer(TILE_SIZE * 3)
     , m_visibleArea(0, 0, 0, 0)
     , m_bufferArea(0, 0, 0, 0)
@@ -119,6 +120,8 @@ void LOView::initializeDocument(const QString &path)
     Q_EMIT documentChanged();
 
     // Set the proper zoom mode, according to the type of the loaded document.
+    setZoomModesAvailability();
+
     switch (m_document.data()->documentType()) {
     case LODocument::DocumentType::SpreadsheetDocument:
         setZoomMode(ZoomMode::Manual);
@@ -162,6 +165,11 @@ void LOView::setZoomFactor(const qreal zoom)
 LOView::ZoomMode LOView::zoomMode() const
 {
     return m_zoomMode;
+}
+
+bool LOView::fitToWidthZoomAvailable() const
+{
+    return m_fitToWidthZoomAvailable;
 }
 
 void LOView::setZoomMode(const ZoomMode zoomMode)
@@ -444,6 +452,20 @@ void LOView::setError(const LibreOfficeError::Error &error)
 
     m_error = error;
     Q_EMIT errorChanged();
+}
+
+void LOView::setZoomModesAvailability()
+{
+    if (!m_document)
+        return;
+
+    // 'ftw' = Fit to width mode
+    bool ftwAvailable = bool(m_document.data()->documentType() != LODocument::DocumentType::SpreadsheetDocument);
+
+    if (m_fitToWidthZoomAvailable != ftwAvailable) {
+        m_fitToWidthZoomAvailable = ftwAvailable;
+        Q_EMIT fitToWidthZoomAvailableChanged();
+    }
 }
 
 LOView::~LOView()

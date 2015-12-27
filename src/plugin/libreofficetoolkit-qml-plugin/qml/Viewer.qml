@@ -27,6 +27,8 @@ Flickable {
     property alias zoomMode:    view.zoomMode
     property alias error:       view.error
 
+    property alias fitToWidthZoomAvailable: view.fitToWidthZoomAvailable
+
     property string documentPath: ""
 
     function adjustZoomToWidth()
