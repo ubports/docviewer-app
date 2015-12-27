@@ -117,6 +117,17 @@ void LOView::initializeDocument(const QString &path)
     connect(m_document.data(), SIGNAL(currentPartChanged()), this, SLOT(invalidateAllTiles()));
 
     Q_EMIT documentChanged();
+
+    // Set the proper zoom mode, according to the type of the loaded document.
+    switch (m_document.data()->documentType()) {
+    case LODocument::DocumentType::SpreadsheetDocument:
+        setZoomMode(ZoomMode::Manual);
+        setZoomFactor(1.0);
+        break;
+    default:
+        setZoomMode(ZoomMode::FitToWidth);
+        break;
+    }
 }
 
 // Return the LODocument rendered by this class

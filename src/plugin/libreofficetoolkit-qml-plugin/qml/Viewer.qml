@@ -91,7 +91,7 @@ Flickable {
 
     boundsBehavior: Flickable.StopAtBounds
 
-    Component.onCompleted: adjustZoomToWidth()
+    //Component.onCompleted: adjustZoomToWidth()
 
     LibreOffice.View {
         id: view
