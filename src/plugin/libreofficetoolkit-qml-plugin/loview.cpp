@@ -43,9 +43,7 @@ LOView::LOView(QQuickItem *parent)
     , m_document(nullptr)
     , m_partsModel(nullptr)
     , m_zoomFactor(1.0)
-    , m_fitToWidthZoomAvailable(false)
-    , m_fitToHeightZoomAvailable(false)
-    , m_automaticZoomAvailable(false)
+    , m_zoomModesAvailable(ZoomMode::Manual)
     , m_cacheBuffer(TILE_SIZE * 3)
     , m_visibleArea(0, 0, 0, 0)
     , m_bufferArea(0, 0, 0, 0)
@@ -178,19 +176,9 @@ LOView::ZoomMode LOView::zoomMode() const
     return m_zoomMode;
 }
 
-bool LOView::fitToWidthZoomAvailable() const
+LOView::ZoomModes LOView::zoomModesAvailable() const
 {
-    return m_fitToWidthZoomAvailable;
-}
-
-bool LOView::fitToHeightZoomAvailable() const
-{
-    return m_fitToHeightZoomAvailable;
-}
-
-bool LOView::automaticZoomAvailable() const
-{
-    return m_automaticZoomAvailable;
+    return m_zoomModesAvailable;
 }
 
 void LOView::setZoomMode(const ZoomMode zoomMode)
@@ -557,41 +545,25 @@ void LOView::setZoomModesAvailability()
     if (!m_document)
         return;
 
-    // 'ftw' = Fit to width mode, 'fth' = Fit to height mode
-    bool ftwAvailable;
-    bool fthAvailable;
-    bool autoAvailable;
+    ZoomModes newZoomModesAvailable;
+    newZoomModesAvailable |= ZoomMode::Manual;
 
     switch (m_document.data()->documentType()) {
     case LODocument::DocumentType::TextDocument:
-        ftwAvailable = true;
-        fthAvailable = false;
+        newZoomModesAvailable |= ZoomMode::FitToWidth;
         break;
     case LODocument::DocumentType::SpreadsheetDocument:
-        ftwAvailable = false;
-        fthAvailable = false;
         break;
     default:
-        ftwAvailable = true;
-        fthAvailable = true;
+        newZoomModesAvailable |= ZoomMode::FitToWidth;
+        newZoomModesAvailable |= ZoomMode::FitToHeight;
+        newZoomModesAvailable |= ZoomMode::Automatic;
         break;
     }
 
-    autoAvailable = bool(ftwAvailable && fthAvailable);
-
-    if (m_fitToWidthZoomAvailable != ftwAvailable) {
-        m_fitToWidthZoomAvailable = ftwAvailable;
-        Q_EMIT fitToWidthZoomAvailableChanged();
-    }
-
-    if (m_fitToHeightZoomAvailable != fthAvailable) {
-        m_fitToHeightZoomAvailable = fthAvailable;
-        Q_EMIT fitToHeightZoomAvailableChanged();
-    }
-
-    if (m_automaticZoomAvailable != autoAvailable) {
-        m_automaticZoomAvailable = autoAvailable;
-        Q_EMIT automaticZoomAvailableChanged();
+    if (m_zoomModesAvailable != newZoomModesAvailable) {
+        m_zoomModesAvailable = newZoomModesAvailable;
+        Q_EMIT zoomModesAvailableChanged();
     }
 }
 

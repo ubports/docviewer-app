@@ -104,8 +104,8 @@ TextFieldWithButton {
         Repeater {
             id: zoomModesRepeater
 
-            // Keep this in sync with the modes available in the model
-            visible: view.fitToWidthZoomAvailable || view.fitToHeightZoomAvailable || view.automaticZoomAvailable
+            // Used for hiding the HorizontalDivider below.
+            visible: view.zoomModesAvailable > LibreOffice.View.Manual
 
             function delegateClickedCallback(mode) {
                 if (mode == "fitWidth")
@@ -121,21 +121,21 @@ TextFieldWithButton {
             model: [
                 {
                     text: i18n.tr("Fit width"),
-                    visible: view.fitToWidthZoomAvailable,
+                    visible: view.zoomModesAvailable & LibreOffice.View.FitToWidth,
                     mode: "fitWidth",
                     selected: textField.view.zoomMode == LibreOffice.View.FitToWidth
                 },
 
                 {
                     text: i18n.tr("Fit height"),
-                    visible: view.fitToHeightZoomAvailable,
+                    visible: view.zoomModesAvailable & LibreOffice.View.FitToHeight,
                     mode: "fitHeight",
                     selected: textField.view.zoomMode == LibreOffice.View.FitToHeight
                 },
 
                 {
                     text: i18n.tr("Automatic"),
-                    visible: view.automaticZoomAvailable,
+                    visible: view.zoomModesAvailable & LibreOffice.View.Automatic,
                     mode: "automatic",
                     selected: textField.view.zoomMode == LibreOffice.View.Automatic
                 }
