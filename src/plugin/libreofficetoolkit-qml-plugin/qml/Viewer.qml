@@ -43,6 +43,16 @@ Flickable {
         rootFlickable.contentY *= zoomScale
     }
 
+    function adjustZoomToHeight()
+    {
+        var oldZoom = view.zoomFactor
+        view.adjustZoomToHeight()
+
+        var zoomScale = view.zoomFactor / oldZoom
+        rootFlickable.contentX *= zoomScale
+        rootFlickable.contentY *= zoomScale
+    }
+
     function setZoom(newValue)
     {
         var zoomScale = newValue / view.zoomFactor;

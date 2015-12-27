@@ -25,10 +25,16 @@
 #include <QtCore/qmath.h>
 
 static qreal zoomValueToFitWidth;
+static qreal zoomValueToFitHeight;
 
 static qreal getZoomToFitWidth(const qreal &width, int documentWidth)
 {
     return qreal(width / Twips::convertTwipsToPixels(documentWidth, 1.0));
+}
+
+static qreal getZoomToFitHeight(const qreal &height, int documentHeight)
+{
+    return qreal(height / Twips::convertTwipsToPixels(documentHeight, 1.0));
 }
 
 LOView::LOView(QQuickItem *parent)
@@ -226,6 +232,20 @@ void LOView::adjustZoomToWidth()
     qDebug() << "Adjust zoom to width - value:" << zoomValueToFitWidth;
 }
 
+void LOView::adjustZoomToHeight()
+{
+    if (!m_document)
+        return;
+
+    setZoomMode(LOView::FitToHeight);
+
+    zoomValueToFitHeight = getZoomToFitHeight(m_parentFlickable->height(),
+                                              m_document->documentSize().height());
+
+    setZoomFactor(zoomValueToFitHeight);
+    qDebug() << "Adjust zoom to height - value:" << zoomValueToFitHeight;
+}
+
 void LOView::updateViewSize()
 {
     if (!m_document)
@@ -261,6 +281,19 @@ void LOView::updateVisibleRect()
             setZoomFactor(zoomValueToFitWidth);
 
             qDebug() << "Adjust automatic zoom to width - value:" << zoomValueToFitWidth;
+            return;
+        }
+    }
+
+    // Same as above for LOView::FitToHeight
+    if (m_zoomMode == LOView::FitToHeight) {
+        zoomValueToFitHeight = getZoomToFitHeight(m_parentFlickable->height(),
+                                                  m_document->documentSize().height());
+
+        if (m_zoomFactor != zoomValueToFitHeight) {
+            setZoomFactor(zoomValueToFitHeight);
+
+            qDebug() << "Adjust automatic zoom to height - value:" << zoomValueToFitHeight;
             return;
         }
     }
@@ -322,7 +355,7 @@ void LOView::updateVisibleRect()
 
     // Number of tiles per row
     int tilesPerWidth           = qCeil(this->width() / TILE_SIZE);
-    int tilesPerHeight           = qCeil(this->height() / TILE_SIZE);
+    int tilesPerHeight          = qCeil(this->height() / TILE_SIZE);
 
     // Get indexes for visible tiles
     int visiblesFromWidth       = int(m_visibleArea.left() / TILE_SIZE);

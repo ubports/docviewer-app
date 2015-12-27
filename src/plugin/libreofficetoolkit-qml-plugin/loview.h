@@ -82,6 +82,7 @@ public:
     LibreOfficeError::Error error() const;
 
     Q_INVOKABLE void adjustZoomToWidth();
+    Q_INVOKABLE void adjustZoomToHeight();
 
 Q_SIGNALS:
     void parentFlickableChanged();
