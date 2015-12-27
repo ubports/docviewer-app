@@ -135,6 +135,9 @@ void LOView::initializeDocument(const QString &path)
         setZoomMode(ZoomMode::Manual);
         setZoomFactor(1.0);
         break;
+    case LODocument::DocumentType::PresentationDocument:
+        setZoomMode(ZoomMode::Automatic);
+        break;
     default:
         setZoomMode(ZoomMode::FitToWidth);
         break;
