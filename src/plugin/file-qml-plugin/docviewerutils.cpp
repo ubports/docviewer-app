@@ -167,3 +167,8 @@ QString DocviewerUtils::checkIfFileAlreadyImported(const QString &filePath, cons
 
     return QString();
 }
+
+QString DocviewerUtils::getFileBaseNameFromPath(const QString &filePath)
+{
+    return QFileInfo(filePath).completeBaseName();
+}
