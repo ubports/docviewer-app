@@ -83,6 +83,7 @@ public:
 
     Q_INVOKABLE void adjustZoomToWidth();
     Q_INVOKABLE void adjustZoomToHeight();
+    Q_INVOKABLE void adjustAutomaticZoom();
 
 Q_SIGNALS:
     void parentFlickableChanged();

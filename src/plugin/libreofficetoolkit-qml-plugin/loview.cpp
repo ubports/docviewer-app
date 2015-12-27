@@ -246,6 +246,35 @@ void LOView::adjustZoomToHeight()
     qDebug() << "Adjust zoom to height - value:" << zoomValueToFitHeight;
 }
 
+void LOView::adjustAutomaticZoom()
+{
+    if (!m_document)
+        return;
+
+    setZoomMode(LOView::Automatic);
+
+    QSize docSize = m_document.data()->documentSize();
+
+    bool isDocumentVertical = bool(docSize.width() < docSize.height());
+    bool isFlickableVertical = bool(m_parentFlickable->width() < m_parentFlickable->height());
+
+    if ((isDocumentVertical && !isFlickableVertical) || (isDocumentVertical && isFlickableVertical)) {
+        zoomValueToFitHeight = getZoomToFitHeight(m_parentFlickable->height(),
+                                                  m_document->documentSize().height());
+
+        setZoomFactor(zoomValueToFitHeight);
+        qDebug() << "Adjust zoom to automatic - value:" << zoomValueToFitHeight;
+    }
+
+    else if ((!isDocumentVertical && isFlickableVertical) || (!isDocumentVertical && !isFlickableVertical)) {
+        zoomValueToFitWidth = getZoomToFitWidth(m_parentFlickable->width(),
+                                                m_document->documentSize().width());
+
+        setZoomFactor(zoomValueToFitWidth);
+        qDebug() << "Adjust zoom to automatic - value:" << zoomValueToFitWidth;
+    }
+}
+
 void LOView::updateViewSize()
 {
     if (!m_document)
@@ -273,10 +302,13 @@ void LOView::updateVisibleRect()
     // If that happens, stop the execution of this function, since the change of
     // zoomFactor will trigger the updateViewSize() function, which triggers this
     // function again.
-    if (m_zoomMode == LOView::FitToWidth) {
-        zoomValueToFitWidth = getZoomToFitWidth(m_parentFlickable->width(),
-                                                m_document->documentSize().width());
+    zoomValueToFitWidth = getZoomToFitWidth(m_parentFlickable->width(),
+                                            m_document->documentSize().width());
 
+    zoomValueToFitHeight = getZoomToFitHeight(m_parentFlickable->height(),
+                                              m_document->documentSize().height());
+
+    if (m_zoomMode == LOView::FitToWidth) {
         if (m_zoomFactor != zoomValueToFitWidth) {
             setZoomFactor(zoomValueToFitWidth);
 
@@ -287,13 +319,31 @@ void LOView::updateVisibleRect()
 
     // Same as above for LOView::FitToHeight
     if (m_zoomMode == LOView::FitToHeight) {
-        zoomValueToFitHeight = getZoomToFitHeight(m_parentFlickable->height(),
-                                                  m_document->documentSize().height());
-
         if (m_zoomFactor != zoomValueToFitHeight) {
             setZoomFactor(zoomValueToFitHeight);
 
             qDebug() << "Adjust automatic zoom to height - value:" << zoomValueToFitHeight;
+            return;
+        }
+    }
+
+    if (m_zoomMode == LOView::Automatic) {
+        QSize docSize = m_document.data()->documentSize();
+
+        bool isDocumentVertical = bool(docSize.width() < docSize.height());
+        bool isFlickableVertical = bool(m_parentFlickable->width() < m_parentFlickable->height());
+
+        if ((isDocumentVertical && !isFlickableVertical) || (isDocumentVertical && isFlickableVertical)) {
+            setZoomFactor(zoomValueToFitWidth);
+
+            qDebug() << "Adjust automatic zoom to automatic - value:" << zoomValueToFitWidth;
+            return;
+        }
+
+        else if ((!isDocumentVertical && isFlickableVertical) || (!isDocumentVertical && !isFlickableVertical)) {
+            setZoomFactor(zoomValueToFitHeight);
+
+            qDebug() << "Adjust automatic zoom to automatic - value:" << zoomValueToFitHeight;
             return;
         }
     }

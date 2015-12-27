@@ -53,6 +53,16 @@ Flickable {
         rootFlickable.contentY *= zoomScale
     }
 
+    function adjustAutomaticZoom()
+    {
+        var oldZoom = view.zoomFactor
+        view.adjustAutomaticZoom()
+
+        var zoomScale = view.zoomFactor / oldZoom
+        rootFlickable.contentX *= zoomScale
+        rootFlickable.contentY *= zoomScale
+    }
+
     function setZoom(newValue)
     {
         var zoomScale = newValue / view.zoomFactor;
