@@ -104,52 +104,35 @@ TextFieldWithButton {
         Repeater {
             id: zoomModesRepeater
 
+            function delegate_onClicked(mode) {
+                if (mode === LibreOffice.View.FitToWidth)
+                    textField.view.adjustZoomToWidth()
+
+                if (mode === LibreOffice.View.FitToHeight)
+                    textField.view.adjustZoomToHeight()
+
+                if (mode === LibreOffice.View.Automatic)
+                    textField.view.adjustAutomaticZoom()
+            }
+
             // Used for hiding the HorizontalDivider below.
             visible: view.zoomModesAvailable > LibreOffice.View.Manual
 
-            function delegateClickedCallback(mode) {
-                if (mode == "fitWidth")
-                    textField.view.adjustZoomToWidth();
-
-                if (mode == "fitHeight")
-                    textField.view.adjustZoomToHeight();
-
-                if (mode == "automatic")
-                    textField.view.adjustAutomaticZoom();
-            }
-
             model: [
-                {
-                    text: i18n.tr("Fit width"),
-                    visible: view.zoomModesAvailable & LibreOffice.View.FitToWidth,
-                    mode: "fitWidth",
-                    selected: textField.view.zoomMode == LibreOffice.View.FitToWidth
-                },
-
-                {
-                    text: i18n.tr("Fit height"),
-                    visible: view.zoomModesAvailable & LibreOffice.View.FitToHeight,
-                    mode: "fitHeight",
-                    selected: textField.view.zoomMode == LibreOffice.View.FitToHeight
-                },
-
-                {
-                    text: i18n.tr("Automatic"),
-                    visible: view.zoomModesAvailable & LibreOffice.View.Automatic,
-                    mode: "automatic",
-                    selected: textField.view.zoomMode == LibreOffice.View.Automatic
-                }
+                { text: i18n.tr("Fit width"),  mode: LibreOffice.View.FitToWidth  },
+                { text: i18n.tr("Fit height"), mode: LibreOffice.View.FitToHeight },
+                { text: i18n.tr("Automatic"),  mode: LibreOffice.View.Automatic   }
             ]
 
             ListItem {
                 height: units.gu(4)
                 divider.visible: false
 
-                visible: modelData.visible
+                visible: view.zoomModesAvailable & modelData.mode
 
                 onClicked: {
                     zoomSelectorDialogue.close()
-                    zoomModesRepeater.delegateClickedCallback(modelData.mode)
+                    zoomModesRepeater.delegate_onClicked(modelData.mode)
                 }
 
                 /* UITK 1.3 specs: Two slot layout (A-B) */
@@ -165,7 +148,7 @@ TextFieldWithButton {
                         width: units.gu(2); height: width
                         name: "tick"
                         color: UbuntuColors.green
-                        visible: modelData.selected
+                        visible: textField.view.zoomMode == modelData.mode
                     }
                 }
             }   // ListItem
