@@ -24,39 +24,47 @@ Page {
     objectName: "detailsPage"
     title: i18n.tr("Details")
 
-    Column {
-        width: Math.min(units.gu(80), parent.width)
-        anchors {
-            top: parent.top
-            bottom: parent.bottom
-            horizontalCenter: parent.horizontalCenter
-        }
+    Flickable {
+        id: flick
+        anchors.fill: parent
+        interactive: true
 
-        SubtitledListItem {
-            text: i18n.tr("Location")
-            subText: file.path
-        }
+        contentWidth: parent.width
+        contentHeight: layout.height
 
-        SubtitledListItem {
-            text: i18n.tr("Size")
-            subText: Utils.printSize(i18n, file.info.size)
-        }
+        Column {
+            id: layout
+            width: Math.min(units.gu(80), parent.width)
+            anchors.horizontalCenter: parent.horizontalCenter
 
-        SubtitledListItem {
-            text: i18n.tr("Created")
-            subText: file.info.creationTime.toLocaleString(Qt.locale())
-        }
+            SubtitledListItem {
+                text: i18n.tr("Location")
+                subText: file.path
+            }
 
-        SubtitledListItem {
-            text: i18n.tr("Last modified")
-            subText: file.info.lastModified.toLocaleString(Qt.locale())
-        }
+            SubtitledListItem {
+                text: i18n.tr("Size")
+                subText: Utils.printSize(i18n, file.info.size)
+            }
 
-        SubtitledListItem {
-            // Used by Autopilot tests
-            objectName: "mimetypeItem"
-            text: i18n.tr("MIME type")
-            subText: file.mimetype.name
+            SubtitledListItem {
+                text: i18n.tr("Created")
+                subText: file.info.creationTime.toLocaleString(Qt.locale())
+            }
+
+            SubtitledListItem {
+                text: i18n.tr("Last modified")
+                subText: file.info.lastModified.toLocaleString(Qt.locale())
+            }
+
+            SubtitledListItem {
+                // Used by Autopilot tests
+                objectName: "mimetypeItem"
+                text: i18n.tr("MIME type")
+                subText: file.mimetype.name
+            }
         }
     }
+
+    Scrollbar { flickableItem: flick }
 }
