@@ -52,6 +52,10 @@ TextFieldWithButton {
     popover: TextFieldButtonPopover {
         id: zoomSelectorDialogue
 
+        /************************************
+        *    Zoom in - Zoom out controls    *
+        ************************************/
+
         RowLayout {
             anchors { left: parent.left; right: parent.right }
             height: units.gu(4)
@@ -93,41 +97,85 @@ TextFieldWithButton {
 
         HorizontalDivider { anchors { left: parent.left; right: parent.right } }
 
-        ListItem {
-            height: units.gu(4)
-            divider.visible: false
+        /************************************
+        *       Zoom modes controls         *
+        ************************************/
 
-            visible: view.fitToWidthZoomAvailable
+        Repeater {
+            id: zoomModesRepeater
 
-            onClicked: {
-                textField.view.adjustZoomToWidth()
-                zoomSelectorDialogue.close()
+            // Keep this in sync with the modes available in the model
+            visible: view.fitToWidthZoomAvailable || view.fitToHeightZoomAvailable || view.automaticZoomAvailable
+
+            function delegateClickedCallback(mode) {
+                if (mode == "fitWidth")
+                    textField.view.adjustZoomToWidth();
+
+                if (mode == "fitHeight")
+                    textField.view.adjustZoomToHeight();
+
+                if (mode == "automatic")
+                    textField.view.adjustAutomaticZoom();
             }
 
-            /* UITK 1.3 specs: Two slot layout (A-B) */
-            ListItemLayout {
-                anchors.centerIn: parent
+            model: [
+                {
+                    text: i18n.tr("Fit width"),
+                    visible: view.fitToWidthZoomAvailable,
+                    mode: "fitWidth",
+                    selected: textField.view.zoomMode == LibreOffice.View.FitToWidth
+                },
 
-                /* UITK 1.3 specs: Slot A */
-                title.text: i18n.tr("Fit width")
+                {
+                    text: i18n.tr("Fit height"),
+                    visible: view.fitToHeightZoomAvailable,
+                    mode: "fitHeight",
+                    selected: textField.view.zoomMode == LibreOffice.View.FitToHeight
+                },
 
-                /* UITK 1.3 specs: Slot B */
-                Icon {
-                    SlotsLayout.position: SlotsLayout.Last
-                    width: units.gu(2); height: width
-                    name: "tick"
-                    color: UbuntuColors.green
-                    visible: textField.view.zoomMode == LibreOffice.View.FitToWidth
+                {
+                    text: i18n.tr("Automatic"),
+                    visible: view.automaticZoomAvailable,
+                    mode: "automatic",
+                    selected: textField.view.zoomMode == LibreOffice.View.Automatic
                 }
-            }
-        }   // ListItem
+            ]
 
-        HorizontalDivider {
-            anchors { left: parent.left; right: parent.right }
+            ListItem {
+                height: units.gu(4)
+                divider.visible: false
 
-            // Do not show a second divider if no zoom mode is available.
-            visible: view.fitToWidthZoomAvailable
+                visible: modelData.visible
+
+                onClicked: {
+                    zoomSelectorDialogue.close()
+                    zoomModesRepeater.delegateClickedCallback(modelData.mode)
+                }
+
+                /* UITK 1.3 specs: Two slot layout (A-B) */
+                ListItemLayout {
+                    anchors.centerIn: parent
+
+                    /* UITK 1.3 specs: Slot A */
+                    title.text: modelData.text
+
+                    /* UITK 1.3 specs: Slot B */
+                    Icon {
+                        SlotsLayout.position: SlotsLayout.Last
+                        width: units.gu(2); height: width
+                        name: "tick"
+                        color: UbuntuColors.green
+                        visible: modelData.selected
+                    }
+                }
+            }   // ListItem
         }
+
+        HorizontalDivider { visible: zoomModesRepeater.visible; anchors { left: parent.left; right: parent.right } }
+
+        /************************************
+        *   Default zoom values controls    *
+        ************************************/
 
         Repeater {
             model: [

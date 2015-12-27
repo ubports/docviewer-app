@@ -44,6 +44,8 @@ class LOView : public QQuickItem
     Q_PROPERTY(int                      cacheBuffer     READ cacheBuffer     WRITE setCacheBuffer     NOTIFY cacheBufferChanged)
     Q_PROPERTY(LibreOfficeError::Error  error           READ error                                    NOTIFY errorChanged)
     Q_PROPERTY(bool                     fitToWidthZoomAvailable READ fitToWidthZoomAvailable NOTIFY fitToWidthZoomAvailableChanged)
+    Q_PROPERTY(bool                     fitToHeightZoomAvailable READ fitToHeightZoomAvailable NOTIFY fitToHeightZoomAvailableChanged)
+    Q_PROPERTY(bool                     automaticZoomAvailable READ automaticZoomAvailable NOTIFY automaticZoomAvailableChanged)
 
 public:
     LOView(QQuickItem *parent = 0);
@@ -51,7 +53,9 @@ public:
 
     enum ZoomMode {
         FitToWidth,
-        Manual
+        FitToHeight,
+        Manual,
+        Automatic
     };
 
     QQuickItem* parentFlickable() const;
@@ -68,6 +72,9 @@ public:
     ZoomMode    zoomMode() const;
 
     bool        fitToWidthZoomAvailable() const;
+    bool        fitToHeightZoomAvailable() const;
+    bool        automaticZoomAvailable() const;
+
 
     int         cacheBuffer() const;
     void        setCacheBuffer(int cacheBuffer);
@@ -85,6 +92,8 @@ Q_SIGNALS:
     void cacheBufferChanged();
     void errorChanged();
     void fitToWidthZoomAvailableChanged();
+    void fitToHeightZoomAvailableChanged();
+    void automaticZoomAvailableChanged();
 
 private Q_SLOTS:
     void updateViewSize();
@@ -103,6 +112,8 @@ private:
     qreal                       m_zoomFactor;
     ZoomMode                    m_zoomMode;
     bool                        m_fitToWidthZoomAvailable;
+    bool                        m_fitToHeightZoomAvailable;
+    bool                        m_automaticZoomAvailable;
     int                         m_cacheBuffer;
 
     QRect                       m_visibleArea;

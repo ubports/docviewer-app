@@ -28,6 +28,8 @@ Flickable {
     property alias error:       view.error
 
     property alias fitToWidthZoomAvailable: view.fitToWidthZoomAvailable
+    property alias fitToHeightZoomAvailable: view.fitToHeightZoomAvailable
+    property alias automaticZoomAvailable: view.automaticZoomAvailable
 
     property string documentPath: ""
 
