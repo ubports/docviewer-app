@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-12-12 13:04+0300\n"
+"POT-Creation-Date: 2015-12-26 19:31+0100\n"
 "PO-Revision-Date: 2015-12-02 19:21+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-12-24 05:42+0000\n"
+"X-Launchpad-Export-Date: 2015-12-28 05:33+0000\n"
 "X-Generator: Launchpad (build 17865)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
@@ -175,11 +175,11 @@ msgstr "Poista"
 msgid "Share"
 msgstr "Jaa"
 
-#: ../src/app/qml/documentPage/DocumentEmptyState.qml:24
+#: ../src/app/qml/documentPage/DocumentEmptyState.qml:75
 msgid "No document found"
 msgstr "Asiakirjaa ei löytynyt"
 
-#: ../src/app/qml/documentPage/DocumentEmptyState.qml:25
+#: ../src/app/qml/documentPage/DocumentEmptyState.qml:84
 msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
 "folder or insert removable media with documents."
@@ -215,7 +215,7 @@ msgid "dddd, hh:mm"
 msgstr "dddd, hh.mm"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
-#: /home/qtros/dev/ubuntu-docviewer-app-uitk-13-ethalone-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
+#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
 msgid "Documents"
 msgstr "Asiakirjat"
 
@@ -379,10 +379,8 @@ msgstr "Virhe LibreOfficea ladatessa."
 #: ../src/app/qml/loView/LOViewPage.qml:134
 msgid ""
 "Document not loaded.\n"
-"The requested document may be corrupt."
+"The requested document may be corrupt or protected by a password."
 msgstr ""
-"Asiakirjaa ei ladattu.\n"
-"Asiakirja saattaa olla rikkoutunut."
 
 #. TRANSLATORS: 'LibreOfficeKit' is the name of the library used by
 #. Document Viewer for rendering LibreOffice/MS-Office documents.
@@ -443,11 +441,11 @@ msgstr "Tiedostoa ei ole olemassa."
 msgid "copy %1"
 msgstr "kopio %1"
 
-#: /home/qtros/dev/ubuntu-docviewer-app-uitk-13-ethalone-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Asiakirjakatselin"
 
-#: /home/qtros/dev/ubuntu-docviewer-app-uitk-13-ethalone-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "documents;viewer;pdf;reader;asiakirjat;dokumentit;katselin;lukija;"
 

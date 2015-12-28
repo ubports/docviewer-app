@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-12-12 13:04+0300\n"
+"POT-Creation-Date: 2015-12-26 19:31+0100\n"
 "PO-Revision-Date: 2015-12-04 18:32+0000\n"
 "Last-Translator: Danial Behzadi <dani.behzi@gmail.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2015-12-24 05:42+0000\n"
+"X-Launchpad-Export-Date: 2015-12-28 05:33+0000\n"
 "X-Generator: Launchpad (build 17865)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
@@ -174,11 +174,11 @@ msgstr "حذف"
 msgid "Share"
 msgstr "هم‌رسانی"
 
-#: ../src/app/qml/documentPage/DocumentEmptyState.qml:24
+#: ../src/app/qml/documentPage/DocumentEmptyState.qml:75
 msgid "No document found"
 msgstr "هیچ سندی یافت نشد"
 
-#: ../src/app/qml/documentPage/DocumentEmptyState.qml:25
+#: ../src/app/qml/documentPage/DocumentEmptyState.qml:84
 msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
 "folder or insert removable media with documents."
@@ -214,7 +214,7 @@ msgid "dddd, hh:mm"
 msgstr "‫dddd، hh:mm"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
-#: /home/qtros/dev/ubuntu-docviewer-app-uitk-13-ethalone-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
+#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
 msgid "Documents"
 msgstr "مستندات"
 
@@ -378,10 +378,8 @@ msgstr "خطا هنگام بار کردن لیبره آفیس"
 #: ../src/app/qml/loView/LOViewPage.qml:134
 msgid ""
 "Document not loaded.\n"
-"The requested document may be corrupt."
+"The requested document may be corrupt or protected by a password."
 msgstr ""
-"سند بار نشد.\n"
-"ممکن است سند درخواستی خراب باشد."
 
 #. TRANSLATORS: 'LibreOfficeKit' is the name of the library used by
 #. Document Viewer for rendering LibreOffice/MS-Office documents.
@@ -442,11 +440,11 @@ msgstr "پرونده وجود ندارد"
 msgid "copy %1"
 msgstr "رونوشت %1"
 
-#: /home/qtros/dev/ubuntu-docviewer-app-uitk-13-ethalone-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "نمایشگر سند"
 
-#: /home/qtros/dev/ubuntu-docviewer-app-uitk-13-ethalone-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "documents;viewer;pdf;reader;"
 
