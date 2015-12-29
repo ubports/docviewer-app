@@ -86,8 +86,8 @@ Flickable {
 
     // zoomFactor is not used here to set contentSize, since it's all managed
     // internally, in the LibreOffice.View component.
-    contentHeight: view.height
-    contentWidth: view.width
+    contentHeight: Math.max(rootFlickable.height, view.height)
+    contentWidth: Math.max(rootFlickable.width, view.width)
 
     boundsBehavior: Flickable.StopAtBounds
 
@@ -95,6 +95,8 @@ Flickable {
 
     LibreOffice.View {
         id: view
+        x: !internal.isSpreadSheet ? Math.max(0, (rootFlickable.width - view.width) * 0.5) : 0
+        y: !internal.isSpreadSheet ? Math.max(0, (rootFlickable.height - view.height) * 0.5) : 0
 
         parentFlickable: rootFlickable
     }
@@ -107,5 +109,11 @@ Flickable {
             rootFlickable.contentX = 0
             rootFlickable.contentY = 0
         }
+    }
+
+    QtObject {
+        id: internal
+
+        property bool isSpreadSheet: document.documentType == LibreOffice.Document.SpreadsheetDocument
     }
 }
