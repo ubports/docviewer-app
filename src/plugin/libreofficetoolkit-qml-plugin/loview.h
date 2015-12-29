@@ -78,9 +78,9 @@ public:
 
     LibreOfficeError::Error error() const;
 
-    Q_INVOKABLE void adjustZoomToWidth();
-    Q_INVOKABLE void adjustZoomToHeight();
-    Q_INVOKABLE void adjustAutomaticZoom();
+    Q_INVOKABLE bool adjustZoomToWidth(bool changeMode = true);
+    Q_INVOKABLE bool adjustZoomToHeight(bool changeMode = true);
+    Q_INVOKABLE bool adjustAutomaticZoom(bool changeMode = true);
 
 Q_SIGNALS:
     void parentFlickableChanged();
