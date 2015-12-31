@@ -8,39 +8,43 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-12-26 19:31+0100\n"
-"PO-Revision-Date: 2015-11-20 05:19+0000\n"
-"Last-Translator: Stefano Verzegnassi <stefano92.100@gmail.com>\n"
+"PO-Revision-Date: 2015-12-30 20:01+0000\n"
+"Last-Translator: GunChleoc <Unknown>\n"
 "Language-Team: Fòram na Gàidhlig\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : "
 "(n > 2 && n < 20) ? 2 : 3;\n"
-"X-Launchpad-Export-Date: 2015-12-28 05:33+0000\n"
+"X-Launchpad-Export-Date: 2015-12-31 05:39+0000\n"
 "X-Generator: Launchpad (build 17865)\n"
 "Language: gd\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
 msgid "Some of the provided arguments are not valid."
-msgstr ""
+msgstr "Chan eil a h-uile argamaid a chaidh a chur seachad dligheach."
 
 #: ../src/app/qml/common/CommandLineProxy.qml:58
 msgid "Open ubuntu-docviewer-app displaying the selected file"
-msgstr ""
+msgstr "Fosgail ubuntu-docviewer-app, a' sealltainn an fhaidhle a thagh thu"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:65
 msgid "Run fullscreen"
-msgstr ""
+msgstr "Ruith sa mhodh làn-sgrìn"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:71
 msgid "Open ubuntu-docviewer-app in pick mode. Used for tests only."
 msgstr ""
+"Fosgail ubuntu-docviewer-app sa mhodh taghaidh. 'Ga chleachdadh airson "
+"deuchainnean a-mhàin."
 
 #: ../src/app/qml/common/CommandLineProxy.qml:77
 msgid ""
 "Show documents from the given folder, instead of ~/Documents.\n"
 "The path must exist prior to running ubuntu-docviewer-app"
 msgstr ""
+"Seall na sgrìobhainnean sa phasgan shònraichte seach ~/Sgrìobhainnean.\n"
+"Feumaidh an t-slighe a bhith ann mus ruith thu ubuntu-docviewer-app"
 
 #: ../src/app/qml/common/DetailsPage.qml:25
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:107
@@ -114,6 +118,8 @@ msgid ""
 "This file is not supported.\n"
 "Do you want to open it as a plain text?"
 msgstr ""
+"Cha chuir sinn taic ris an fhaidhle seo.\n"
+"A bheil thu airson fhosgladh 'na theacsa lom?"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:38
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:55
@@ -189,7 +195,7 @@ msgstr "Sguab às"
 
 #: ../src/app/qml/documentPage/DocumentDelegateActions.qml:44
 msgid "Share"
-msgstr ""
+msgstr "Co-roinn"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:75
 msgid "No document found"
@@ -200,6 +206,9 @@ msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
 "folder or insert removable media with documents."
 msgstr ""
+"Ceangail an t-uidheam agad le coimpiutair sam bith agus slaod faidhlichean "
+"gu pasgan nan Sgrìobhainnean gu simplidh no cuir meadhanan so-ghluasad a-"
+"steach le sgrìobhainnean orra."
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
@@ -220,7 +229,7 @@ msgstr "An-dè %1"
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:112
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:131
 msgid "yyyy/MM/dd hh:mm"
-msgstr ""
+msgstr "dd/MM/yyyy hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
@@ -302,7 +311,7 @@ msgstr "Fiù 's nas tràithe..."
 
 #: ../src/app/qml/documentPage/SharePage.qml:23
 msgid "Share to"
-msgstr ""
+msgstr "Co-roinn air"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:26
 msgid "Sorting settings"
@@ -331,31 +340,31 @@ msgstr "'Ga luchdadh..."
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:55
 msgid "LibreOffice text document"
-msgstr ""
+msgstr "Sgrìobhainn teacsa LibreOffice"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:57
 msgid "LibreOffice spread sheet"
-msgstr ""
+msgstr "Cliath-dhuilleag LibreOffice"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:59
 msgid "LibreOffice presentation"
-msgstr ""
+msgstr "Taisbeanadh LibreOffice"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:61
 msgid "LibreOffice Draw document"
-msgstr ""
+msgstr "Sgrìobhainn LibreOffice Draw"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:63
 msgid "Unknown LibreOffice document"
-msgstr ""
+msgstr "Sgrìobhainn LibreOffice nach aithne dhuinn"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:65
 msgid "Unknown type document"
-msgstr ""
+msgstr "Seòrsa de sgrìobhainn nach aithne dhuinn"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:85
 msgid "Go to position..."
-msgstr ""
+msgstr "Rach dhan ionad..."
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:77
@@ -371,11 +380,11 @@ msgstr "Cuir am modh oidhche an comas"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:30
 msgid "Go to position"
-msgstr ""
+msgstr "Rach dhan ionad"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:31
 msgid "Choose a position between 1% and 100%"
-msgstr ""
+msgstr "Tagh ionad eadar 1% is 100%"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:62
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:58
@@ -384,28 +393,31 @@ msgstr "SIUTHAD!"
 
 #: ../src/app/qml/loView/LOViewPage.qml:128
 msgid "LibreOffice binaries not found."
-msgstr ""
+msgstr "Cha deach na faidhlichean bìnearaidh aig LibreOffice a lorg."
 
 #: ../src/app/qml/loView/LOViewPage.qml:131
 msgid "Error while loading LibreOffice."
-msgstr ""
+msgstr "Mearachd a' luchdadh LibreOffice."
 
 #: ../src/app/qml/loView/LOViewPage.qml:134
 msgid ""
 "Document not loaded.\n"
 "The requested document may be corrupt or protected by a password."
 msgstr ""
+"Cha deach an sgrìobhainn a luchdadh.\n"
+"Dh'fhaoidte gu bheil an sgrìobhainn a dh'iarr thu coirbte no fo dhìon facail-"
+"fhaire."
 
 #. TRANSLATORS: 'LibreOfficeKit' is the name of the library used by
 #. Document Viewer for rendering LibreOffice/MS-Office documents.
 #. Ref. https://docs.libreoffice.org/libreofficekit.html
 #: ../src/app/qml/loView/Splashscreen.qml:45
 msgid "Powered by LibreOfficeKit"
-msgstr ""
+msgstr "Le cumhachd LibreOfficeKit"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:110
 msgid "Fit width"
-msgstr ""
+msgstr "Co-fhreagair ris an leud"
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:30
@@ -439,7 +451,7 @@ msgstr "Tagh duilleag eadar 1 agus %1"
 
 #: ../src/app/qml/ubuntu-docviewer-app.qml:118
 msgid "File does not exist."
-msgstr ""
+msgstr "Chan eil am faidhle ann."
 
 #. TRANSLATORS: This string is used for renaming a copied file,
 #. when a file with the same name already exists in user's
