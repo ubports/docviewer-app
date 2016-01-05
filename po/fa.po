@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-12-26 19:31+0100\n"
+"POT-Creation-Date: 2015-12-27 13:06+0100\n"
 "PO-Revision-Date: 2015-12-04 18:32+0000\n"
 "Last-Translator: Danial Behzadi <dani.behzi@gmail.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2015-12-28 05:33+0000\n"
-"X-Generator: Launchpad (build 17865)\n"
+"X-Launchpad-Export-Date: 2016-01-05 05:47+0000\n"
+"X-Generator: Launchpad (build 17876)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
 msgid "Some of the provided arguments are not valid."
@@ -43,30 +43,34 @@ msgstr ""
 "نمایش سندها از شاخهٔ داده‌شده به جای Documents/~.\n"
 "مسیر باید پیش از اجرای ubuntu-docviewer-app وجود داشته باشد"
 
-#: ../src/app/qml/common/DetailsPage.qml:25
+#: ../src/app/qml/common/DetailsPage.qml:26
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:107
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:83
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:69
 msgid "Details"
 msgstr "جزئیات ‌"
 
-#: ../src/app/qml/common/DetailsPage.qml:36
+#: ../src/app/qml/common/DetailsPage.qml:42
+msgid "File"
+msgstr ""
+
+#: ../src/app/qml/common/DetailsPage.qml:47
 msgid "Location"
 msgstr "موقعیّت"
 
-#: ../src/app/qml/common/DetailsPage.qml:41
+#: ../src/app/qml/common/DetailsPage.qml:52
 msgid "Size"
 msgstr "اندازه"
 
-#: ../src/app/qml/common/DetailsPage.qml:46
+#: ../src/app/qml/common/DetailsPage.qml:57
 msgid "Created"
 msgstr "ایجاد شده"
 
-#: ../src/app/qml/common/DetailsPage.qml:51
+#: ../src/app/qml/common/DetailsPage.qml:62
 msgid "Last modified"
 msgstr "آخرین تغییر"
 
-#: ../src/app/qml/common/DetailsPage.qml:58
+#: ../src/app/qml/common/DetailsPage.qml:69
 msgid "MIME type"
 msgstr "نوع MIME"
 
@@ -75,18 +79,18 @@ msgid "Error"
 msgstr "خطا"
 
 #: ../src/app/qml/common/ErrorDialog.qml:26
-#: ../src/app/qml/common/PickImportedDialog.qml:53
+#: ../src/app/qml/common/PickImportedDialog.qml:54
 #: ../src/app/qml/common/RejectedImportDialog.qml:38
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:31
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:53
 msgid "Close"
 msgstr "بستن"
 
-#: ../src/app/qml/common/PickImportedDialog.qml:28
+#: ../src/app/qml/common/PickImportedDialog.qml:29
 msgid "Multiple documents imported"
 msgstr "جندین سند وارد شدند"
 
-#: ../src/app/qml/common/PickImportedDialog.qml:29
+#: ../src/app/qml/common/PickImportedDialog.qml:30
 msgid "Choose which one to open:"
 msgstr "انتخاب کنید کدام‌یک گشوده شود:"
 
@@ -310,7 +314,7 @@ msgid "Reverse order"
 msgstr "ترتیب معکوس"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:51
-#: ../src/app/qml/textView/TextView.qml:42
+#: ../src/app/qml/textView/TextView.qml:43
 msgid "Loading..."
 msgstr "در حال بار کردن…"
 
@@ -367,15 +371,15 @@ msgstr "گزینش موقعیّتی بین ۱٪ و ۱۰۰٪"
 msgid "GO!"
 msgstr "برو!"
 
-#: ../src/app/qml/loView/LOViewPage.qml:128
+#: ../src/app/qml/loView/LOViewPage.qml:129
 msgid "LibreOffice binaries not found."
 msgstr "دودویی‌های لیبره‌آفیس پیدا نشدند."
 
-#: ../src/app/qml/loView/LOViewPage.qml:131
+#: ../src/app/qml/loView/LOViewPage.qml:132
 msgid "Error while loading LibreOffice."
 msgstr "خطا هنگام بار کردن لیبره آفیس"
 
-#: ../src/app/qml/loView/LOViewPage.qml:134
+#: ../src/app/qml/loView/LOViewPage.qml:135
 msgid ""
 "Document not loaded.\n"
 "The requested document may be corrupt or protected by a password."
@@ -394,7 +398,7 @@ msgstr "برازش پهنا"
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:30
-#: ../src/app/qml/pdfView/PdfView.qml:37
+#: ../src/app/qml/pdfView/PdfView.qml:38
 msgid "Contents"
 msgstr "فهرست"
 
@@ -404,7 +408,7 @@ msgstr "پنهان کردن فهرست مطالب"
 
 #. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
 #. while the second one (%2) refers to the total pages count.
-#: ../src/app/qml/pdfView/PdfView.qml:34
+#: ../src/app/qml/pdfView/PdfView.qml:35
 #, qt-format
 msgid "Page %1 of %2"
 msgstr "صفحه‌ی %1 از %2"
