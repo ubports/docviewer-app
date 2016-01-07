@@ -1,4 +1,4 @@
-#include "rendertask.h"
+#include "lorendertask.h"
 
 bool LoRenderTask::canBeRunInParallel(AbstractRenderTask* prevTask)
 {

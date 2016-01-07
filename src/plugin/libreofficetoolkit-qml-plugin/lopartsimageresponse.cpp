@@ -17,8 +17,8 @@
 
 #include "lopartsimageresponse.h"
 #include "lodocument.h"
-#include "renderengine.h"
-#include "rendertask.h"
+#include "../../app/renderengine.h"
+#include "lorendertask.h"
 
 LOPartsImageResponse::LOPartsImageResponse(const QSharedPointer<LODocument>& document, const QString & id, const QSize & requestedSize, bool requestIsValid) :
     m_document(document)

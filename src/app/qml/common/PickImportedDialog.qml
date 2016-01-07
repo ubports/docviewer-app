@@ -17,6 +17,7 @@
 import QtQuick 2.4
 import Ubuntu.Components 1.3
 import Ubuntu.Components.Popups 1.3
+import DocumentViewer 1.0
 
 import "utils.js" as Utils
 
@@ -39,7 +40,7 @@ Dialog {
             }
 
             Label {
-                text: Utils.getNameOfFile(model.path)
+                text: DocumentViewer.getFileBaseNameFromPath(model.path)
                 anchors {
                     left: parent.left; right: parent.right
                     margins: units.gu(2)

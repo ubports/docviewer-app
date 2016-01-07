@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-12-02 16:11+0100\n"
+"POT-Creation-Date: 2015-12-27 13:06+0100\n"
 "PO-Revision-Date: 2015-11-19 18:20+0000\n"
 "Last-Translator: enolp <enolp@softastur.org>\n"
 "Language-Team: Asturian <ast@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-12-03 06:19+0000\n"
-"X-Generator: Launchpad (build 17856)\n"
+"X-Launchpad-Export-Date: 2016-01-05 05:47+0000\n"
+"X-Generator: Launchpad (build 17876)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
 msgid "Some of the provided arguments are not valid."
@@ -40,30 +40,34 @@ msgid ""
 "The path must exist prior to running ubuntu-docviewer-app"
 msgstr ""
 
-#: ../src/app/qml/common/DetailsPage.qml:25
+#: ../src/app/qml/common/DetailsPage.qml:26
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:107
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:83
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:69
 msgid "Details"
 msgstr "Detalles"
 
-#: ../src/app/qml/common/DetailsPage.qml:36
+#: ../src/app/qml/common/DetailsPage.qml:42
+msgid "File"
+msgstr ""
+
+#: ../src/app/qml/common/DetailsPage.qml:47
 msgid "Location"
 msgstr "Allugamientu"
 
-#: ../src/app/qml/common/DetailsPage.qml:41
+#: ../src/app/qml/common/DetailsPage.qml:52
 msgid "Size"
 msgstr "Tamañu"
 
-#: ../src/app/qml/common/DetailsPage.qml:46
+#: ../src/app/qml/common/DetailsPage.qml:57
 msgid "Created"
 msgstr "Creáu"
 
-#: ../src/app/qml/common/DetailsPage.qml:51
+#: ../src/app/qml/common/DetailsPage.qml:62
 msgid "Last modified"
 msgstr "Cabera modificación"
 
-#: ../src/app/qml/common/DetailsPage.qml:58
+#: ../src/app/qml/common/DetailsPage.qml:69
 msgid "MIME type"
 msgstr "Triba MIME"
 
@@ -72,18 +76,18 @@ msgid "Error"
 msgstr "Fallu"
 
 #: ../src/app/qml/common/ErrorDialog.qml:26
-#: ../src/app/qml/common/PickImportedDialog.qml:53
+#: ../src/app/qml/common/PickImportedDialog.qml:54
 #: ../src/app/qml/common/RejectedImportDialog.qml:38
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:31
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:53
 msgid "Close"
 msgstr "Zarrar"
 
-#: ../src/app/qml/common/PickImportedDialog.qml:28
+#: ../src/app/qml/common/PickImportedDialog.qml:29
 msgid "Multiple documents imported"
 msgstr "Importáronse múltiples documentos"
 
-#: ../src/app/qml/common/PickImportedDialog.qml:29
+#: ../src/app/qml/common/PickImportedDialog.qml:30
 msgid "Choose which one to open:"
 msgstr "Escueyi cual abrir:"
 
@@ -173,11 +177,11 @@ msgstr "Desaniciar"
 msgid "Share"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentEmptyState.qml:24
+#: ../src/app/qml/documentPage/DocumentEmptyState.qml:75
 msgid "No document found"
 msgstr "Nun s'alcontró'l documentu"
 
-#: ../src/app/qml/documentPage/DocumentEmptyState.qml:25
+#: ../src/app/qml/documentPage/DocumentEmptyState.qml:84
 msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
 "folder or insert removable media with documents."
@@ -211,7 +215,7 @@ msgid "dddd, hh:mm"
 msgstr "dddd, hh:mm"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
-#: /tmp/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:3
+#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
 msgid "Documents"
 msgstr "Documentos"
 
@@ -307,7 +311,7 @@ msgid "Reverse order"
 msgstr "Orde inversu"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:51
-#: ../src/app/qml/textView/TextView.qml:42
+#: ../src/app/qml/textView/TextView.qml:43
 msgid "Loading..."
 msgstr "Cargando..."
 
@@ -364,18 +368,18 @@ msgstr ""
 msgid "GO!"
 msgstr "¡DIR!"
 
-#: ../src/app/qml/loView/LOViewPage.qml:128
+#: ../src/app/qml/loView/LOViewPage.qml:129
 msgid "LibreOffice binaries not found."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewPage.qml:131
+#: ../src/app/qml/loView/LOViewPage.qml:132
 msgid "Error while loading LibreOffice."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewPage.qml:134
+#: ../src/app/qml/loView/LOViewPage.qml:135
 msgid ""
 "Document not loaded.\n"
-"The requested document may be corrupt."
+"The requested document may be corrupt or protected by a password."
 msgstr ""
 
 #. TRANSLATORS: 'LibreOfficeKit' is the name of the library used by
@@ -391,7 +395,7 @@ msgstr ""
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:30
-#: ../src/app/qml/pdfView/PdfView.qml:37
+#: ../src/app/qml/pdfView/PdfView.qml:38
 msgid "Contents"
 msgstr "Conteníos"
 
@@ -401,7 +405,7 @@ msgstr "Anubrir tabla de conteníos"
 
 #. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
 #. while the second one (%2) refers to the total pages count.
-#: ../src/app/qml/pdfView/PdfView.qml:34
+#: ../src/app/qml/pdfView/PdfView.qml:35
 #, qt-format
 msgid "Page %1 of %2"
 msgstr "Páxina %1 de %2"
@@ -437,11 +441,11 @@ msgstr ""
 msgid "copy %1"
 msgstr "copiar %1"
 
-#: /tmp/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Visor de documentos"
 
-#: /tmp/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "documentos;visor;pdf;llector;"
 

@@ -22,7 +22,7 @@
 #include <QHash>
 #include <QSharedPointer>
 
-#include "renderengine.h"
+#include "../../app/renderengine.h"
 
 class LODocument;
 
