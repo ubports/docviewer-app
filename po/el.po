@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-12-02 16:11+0100\n"
+"POT-Creation-Date: 2015-12-27 13:06+0100\n"
 "PO-Revision-Date: 2015-12-08 17:44+0000\n"
 "Last-Translator: Aggelos Arnaoutis <angelosarn@hotmail.com>\n"
 "Language-Team: Greek <el@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2015-12-09 05:54+0000\n"
-"X-Generator: Launchpad (build 17862)\n"
+"X-Launchpad-Export-Date: 2016-01-05 05:47+0000\n"
+"X-Generator: Launchpad (build 17876)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
 msgid "Some of the provided arguments are not valid."
@@ -42,30 +42,34 @@ msgstr ""
 "Εμφάνιση αρχείων από το δοσμένο φάκελο, αντί για τον  ~/Documents\n"
 "Το διαδρομή πρέπει να υπάρχει πριν την εκτέλεση της ubuntu-docviewer-app"
 
-#: ../src/app/qml/common/DetailsPage.qml:25
+#: ../src/app/qml/common/DetailsPage.qml:26
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:107
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:83
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:69
 msgid "Details"
 msgstr "Λεπτομέρειες"
 
-#: ../src/app/qml/common/DetailsPage.qml:36
+#: ../src/app/qml/common/DetailsPage.qml:42
+msgid "File"
+msgstr ""
+
+#: ../src/app/qml/common/DetailsPage.qml:47
 msgid "Location"
 msgstr "Τοποθεσία"
 
-#: ../src/app/qml/common/DetailsPage.qml:41
+#: ../src/app/qml/common/DetailsPage.qml:52
 msgid "Size"
 msgstr "Μέγεθος"
 
-#: ../src/app/qml/common/DetailsPage.qml:46
+#: ../src/app/qml/common/DetailsPage.qml:57
 msgid "Created"
 msgstr "Δημιουργήθηκε"
 
-#: ../src/app/qml/common/DetailsPage.qml:51
+#: ../src/app/qml/common/DetailsPage.qml:62
 msgid "Last modified"
 msgstr "Τελευταία τροποποίηση"
 
-#: ../src/app/qml/common/DetailsPage.qml:58
+#: ../src/app/qml/common/DetailsPage.qml:69
 msgid "MIME type"
 msgstr "τύπος MIME"
 
@@ -74,18 +78,18 @@ msgid "Error"
 msgstr "Σφάλμα"
 
 #: ../src/app/qml/common/ErrorDialog.qml:26
-#: ../src/app/qml/common/PickImportedDialog.qml:53
+#: ../src/app/qml/common/PickImportedDialog.qml:54
 #: ../src/app/qml/common/RejectedImportDialog.qml:38
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:31
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:53
 msgid "Close"
 msgstr "Κλείσιμο"
 
-#: ../src/app/qml/common/PickImportedDialog.qml:28
+#: ../src/app/qml/common/PickImportedDialog.qml:29
 msgid "Multiple documents imported"
 msgstr "Εισήχθησαν πολλαπλά έγγραφα"
 
-#: ../src/app/qml/common/PickImportedDialog.qml:29
+#: ../src/app/qml/common/PickImportedDialog.qml:30
 msgid "Choose which one to open:"
 msgstr "Επιλέξτε ποιο να ανοίξετε:"
 
@@ -177,11 +181,11 @@ msgstr "Διαγραφή"
 msgid "Share"
 msgstr "Κοινή χρήση"
 
-#: ../src/app/qml/documentPage/DocumentEmptyState.qml:24
+#: ../src/app/qml/documentPage/DocumentEmptyState.qml:75
 msgid "No document found"
 msgstr "Δεν βρέθηκαν έγγραφα"
 
-#: ../src/app/qml/documentPage/DocumentEmptyState.qml:25
+#: ../src/app/qml/documentPage/DocumentEmptyState.qml:84
 msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
 "folder or insert removable media with documents."
@@ -217,7 +221,7 @@ msgid "dddd, hh:mm"
 msgstr "dddd, hh:mm"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
-#: /tmp/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:3
+#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
 msgid "Documents"
 msgstr "Έγγραφα"
 
@@ -313,7 +317,7 @@ msgid "Reverse order"
 msgstr "Αντίστροφη σειρά"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:51
-#: ../src/app/qml/textView/TextView.qml:42
+#: ../src/app/qml/textView/TextView.qml:43
 msgid "Loading..."
 msgstr "Φόρτωση..."
 
@@ -370,21 +374,19 @@ msgstr "Διάλεξε μια θέση μεταξύ 1% και 100%"
 msgid "GO!"
 msgstr "ΠΑΜΕ!"
 
-#: ../src/app/qml/loView/LOViewPage.qml:128
+#: ../src/app/qml/loView/LOViewPage.qml:129
 msgid "LibreOffice binaries not found."
 msgstr "Το εκτελέσιμο LibreOffice δεν βρέθηκε."
 
-#: ../src/app/qml/loView/LOViewPage.qml:131
+#: ../src/app/qml/loView/LOViewPage.qml:132
 msgid "Error while loading LibreOffice."
 msgstr "Σφάλμα κατά την φόρτωση του LibreOffice."
 
-#: ../src/app/qml/loView/LOViewPage.qml:134
+#: ../src/app/qml/loView/LOViewPage.qml:135
 msgid ""
 "Document not loaded.\n"
-"The requested document may be corrupt."
+"The requested document may be corrupt or protected by a password."
 msgstr ""
-"Μη φόρτωση εγγράφου.\n"
-"Το ζητούμενο έγγραφο ενδέχεται να είναι κατεστραμμένο"
 
 #. TRANSLATORS: 'LibreOfficeKit' is the name of the library used by
 #. Document Viewer for rendering LibreOffice/MS-Office documents.
@@ -399,7 +401,7 @@ msgstr "Προσαρμογή στο πλάτος"
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:30
-#: ../src/app/qml/pdfView/PdfView.qml:37
+#: ../src/app/qml/pdfView/PdfView.qml:38
 msgid "Contents"
 msgstr "Περιεχόμενα"
 
@@ -409,7 +411,7 @@ msgstr "Απόκρυψη του πίνακα περιεχομένων"
 
 #. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
 #. while the second one (%2) refers to the total pages count.
-#: ../src/app/qml/pdfView/PdfView.qml:34
+#: ../src/app/qml/pdfView/PdfView.qml:35
 #, qt-format
 msgid "Page %1 of %2"
 msgstr "Σελίδα %1 από %2"
@@ -445,11 +447,11 @@ msgstr "Το αρχείο δεν υπάρχει."
 msgid "copy %1"
 msgstr "αντίγραφο %1"
 
-#: /tmp/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Προβολή εγγράφων"
 
-#: /tmp/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "documents;viewer;pdf;reader;έγγραφα;προβολή;πδφ;αναγνώστης;διάβασμα;"
 

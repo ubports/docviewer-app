@@ -1,7 +1,7 @@
-# Updating translations
+Updating translations
+=====================
 
-Translations for the Document Viewer app happen in [Launchpad Translations] and
-are automatically committed daily on the trunk branch in the po/ folder.
+Translations for the Document Viewer app happen in [Launchpad Translations](https://translations.launchpad.net/ubuntu-docviewer-app) and are automatically committed daily on the trunk branch in the po/ folder.
 
 They are then built and installed as part of the package build, so that
 developers don't really need to worry about them.
@@ -17,7 +17,8 @@ messages in the code, make sure to follow these steps:
 
 And that's it, once the branch lands Launchpad should take care of all the rest!
 
-# Behind the scenes
+Behind the scenes
+=================
 
 Behind the scenes, whenever the po/*.pot file (also known as translations template)
 is committed to trunk Launchpad reads it and updates the translatable strings
@@ -30,7 +31,7 @@ in the form of textual po/*.po files to trunk. The PO files are also usually
 referred to as the translations files. You'll find a translation file for each
 language the app has got at least a translated message available for.
 
-Translations for core apps follow the standard [gettext format].
+Translations for core apps follow the standard [gettext format](https://www.gnu.org/software/gettext/).
 
- [Launchpad Translations]: https://translations.launchpad.net/ubuntu-docviewer-app
- [gettext format]: https://www.gnu.org/software/gettext/
+ [Launchpad Translations](https://translations.launchpad.net/ubuntu-docviewer-app)
+ [gettext format](https://www.gnu.org/software/gettext/)

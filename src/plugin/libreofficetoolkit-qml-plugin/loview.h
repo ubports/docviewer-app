@@ -24,8 +24,8 @@
 #include <QQmlEngine>
 
 #include "loerror.h"
-#include "rendertask.h"
-#include "renderengine.h"
+#include "lorendertask.h"
+#include "../../app/renderengine.h"
 #include "lopartsmodel.h"
 #include "lopartsimageprovider.h"
 

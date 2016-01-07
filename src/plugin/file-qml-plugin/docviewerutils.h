@@ -18,7 +18,6 @@
 #define DOCVIEWERUTILS_H
 
 #include <QObject>
-#include <QThread>
 
 class DocviewerUtils : public QObject
 {
@@ -37,6 +36,10 @@ public:
     Q_INVOKABLE static QString buildDestinationPath(const QString &destinationDir, const QString &sourcePath);
 
     Q_INVOKABLE static QString checkIfFileAlreadyImported(const QString &filePath, const QStringList &storageLocationList);
+
+    Q_INVOKABLE static QString getFileBaseNameFromPath(const QString &filePath);
+    Q_INVOKABLE static QString getFileNameFromPath(const QString &filePath);
+    Q_INVOKABLE static QString getCanonicalPath(const QString &filePath);
 };
 
 #endif // DOCVIEWERUTILS_H

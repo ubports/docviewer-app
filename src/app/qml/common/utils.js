@@ -33,10 +33,6 @@ function printSize(i18n, size) {
     return i18n.tr("%1 byte").arg(size);
 }
 
-function getNameOfFile(path) {
-    return path.toString().substring(path.lastIndexOf('/') + 1);
-}
-
 function getIconNameFromMimetype(mimetype) {
     if (mimetype.substring(0, 5) === "text/")
         return "text-x-generic-symbolic"

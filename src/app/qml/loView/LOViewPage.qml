@@ -17,6 +17,7 @@
 import QtQuick 2.4
 import Ubuntu.Components 1.3
 import Ubuntu.Layouts 1.0
+import DocumentViewer 1.0
 import DocumentViewer.LibreOffice 1.0 as LibreOffice
 
 import "../common"
@@ -30,7 +31,7 @@ ViewerPage {
     property bool isPresentation: loPage.contentItem && (loPage.contentItem.loDocument.documentType === LibreOffice.Document.PresentationDocument)
     property bool isTextDocument: loPage.contentItem && (loPage.contentItem.loDocument.documentType === LibreOffice.Document.TextDocument)
 
-    title: Utils.getNameOfFile(file.path);
+    title: DocumentViewer.getFileBaseNameFromPath(file.path);
     flickable: isTextDocument ? loPage.contentItem.loView : null
 
     splashScreen: Splashscreen { }
@@ -131,7 +132,7 @@ ViewerPage {
                             errorString = i18n.tr("Error while loading LibreOffice.")
                             break;
                         case LibreOffice.Error.DocumentNotLoaded:
-                            errorString = i18n.tr("Document not loaded.\nThe requested document may be corrupt.")
+                            errorString = i18n.tr("Document not loaded.\nThe requested document may be corrupt or protected by a password.")
                             break;
                         }
 

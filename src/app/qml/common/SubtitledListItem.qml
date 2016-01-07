@@ -27,8 +27,16 @@ ListItem {
     ListItemLayout {
         id: listItemLayout
 
-        title.text: listItemSubtitled.text
-        title.color: UbuntuColors.midAubergine
-        subtitle.text: listItemSubtitled.subText
+        title {
+            text: listItemSubtitled.text
+            color: UbuntuColors.midAubergine
+        }
+
+        subtitle {
+            text: listItemSubtitled.subText
+            wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+            elide: Text.ElideRight
+            maximumLineCount: 20
+        }
     }
 }
