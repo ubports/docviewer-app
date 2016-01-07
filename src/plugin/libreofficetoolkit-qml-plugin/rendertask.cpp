@@ -21,5 +21,5 @@ QImage TileRenderTask::doWork()
 
 QImage ThumbnailRenderTask::doWork()
 {
-    return m_document->paintThumbnail(m_part, m_size);
+    return m_document->paintPart(m_part, m_size);
 }

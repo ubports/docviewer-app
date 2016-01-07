@@ -179,7 +179,7 @@ QImage LODocument::paintTile(int part, const QSize& canvasSize, const QRect& til
     return result.rgbSwapped();
 }
 
-QImage LODocument::paintThumbnail(int part, const QSize &size)
+QImage LODocument::paintPart(int part, const QSize &size)
 {
     if (!m_lokDocument)
         return QImage();
