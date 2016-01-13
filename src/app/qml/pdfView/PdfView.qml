@@ -30,7 +30,7 @@ Page {
     header: PageHeader {
         flickable: pdfView
 
-        trailingActionBar.actions: [ fileDetails, nightModeToggle, goToPage, searchText ]
+        trailingActionBar.actions: [ searchText, goToPage, nightModeToggle, fileDetails ]
 
         contents: ListItemLayout {
             anchors.centerIn: parent
@@ -160,6 +160,7 @@ Page {
     Action {
         id: searchText
         iconName: "search"
+        text: i18n.tr("Search")
         // onTriggered: pageMain.state = "search"
         //Disable it until we provide search in Poppler plugin.
         enabled: false
