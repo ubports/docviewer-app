@@ -24,15 +24,12 @@ Page {
     objectName: "pdfcontents"
 
     // this property will have to be removed when bug #1341671 will be fixed.
-    property string testProperty: "for page name issue"
+    property string testProperty: "for page name issue"  
 
-    // TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
-    title: i18n.tr("Contents")
-
-    head.backAction: Action {
-        text: i18n.tr("Hide table of contents")
-        iconName: "down"
-        onTriggered: pageStack.pop()
+    header: PageHeader {
+        // TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
+        title: i18n.tr("Contents")
+        flickable: view
     }
 
     onActiveChanged: {
@@ -73,7 +70,7 @@ Page {
 
             onClicked: {
                 pdfView.positionAtIndex(model.pageIndex);
-                pageStack.pop();
+                contentsBottomEdge.collapse();
             }
 
             // Highlighted property of ListItem is read-only. In order to

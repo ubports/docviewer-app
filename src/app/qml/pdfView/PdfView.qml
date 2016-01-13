@@ -16,6 +16,8 @@
 
 import QtQuick 2.4
 import Ubuntu.Components 1.3
+import Ubuntu.Components.Popups 1.3
+import QtQuick.Layouts 1.1
 import DocumentViewer.PDF 1.0 as PDF
 
 import "../common"
@@ -25,38 +27,57 @@ Page {
     id: pdfPage
     title: Utils.getNameOfFile(file.path)
 
-    flickable: pdfView
+    header: PageHeader {
+        flickable: pdfView
 
-    // TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
-    // while the second one (%2) refers to the total pages count.
-    property string currentPage: i18n.tr("Page %1 of %2").arg(pdfView.currentPageIndex + 1).arg(pdfView.count)
+        trailingActionBar.actions: [ fileDetails, nightModeToggle, goToPage, searchText ]
+
+        contents: ListItemLayout {
+            anchors.centerIn: parent
+
+            ActivityIndicator {
+                SlotsLayout.position: SlotsLayout.Leading
+                SlotsLayout.overrideVerticalPositioning: true
+                y: (parent.height - height) * 0.5
+                running: pdfView.currentPageItem.status == Image.Loading || poppler.isLoading
+                visible: running
+            }
+
+            title {
+                font.weight: Font.DemiBold
+                text: pdfPage.title
+            }
+
+            subtitle {
+                textSize: Label.Small
+                // TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
+                // while the second one (%2) refers to the total pages count.
+                text: i18n.tr("Page %1 of %2").arg(pdfView.currentPageIndex + 1).arg(pdfView.count)
+            }
+        }
+    }
 
     BottomEdge {
-        id: bottomEdge
+        id: contentsBottomEdge
 
         hint {
             action: Action {
                 // TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
                 text: i18n.tr("Contents")
                 iconName: "view-list-symbolic"  // FIXME: Needs ToC icon.
-                onTriggered: bottomEdge.commit()
+                onTriggered: contentsBottomEdge.commit()
             }
             flickable: pdfPage.flickable
         }
 
         contentComponent: bottomEdgeContent
-        onCommitCompleted: {
-            pdfPage.pageStack.push(bottomEdgeContent)
-            collapse();
-        }
         enabled: poppler.tocModel.count > 0
 
         Component {
             id: bottomEdgeContent
-            PdfContentsPage { width: bottomEdge.width; height: bottomEdge.height }
+            PdfContentsPage { width: pdfPage.width; height: pdfPage.height }
         }
     }
-
 
     // Reset night mode shader settings when closing the page
     // Component.onDestruction: mainView.nightModeEnabled = false
@@ -73,17 +94,8 @@ Page {
         id: pdfView
         objectName: "pdfView"
 
-        anchors {
-            fill: parent
-
-            // WORKAROUND: If we set 'pdfPage.flickable' property, 'pdfView' is not
-            // longer aligned to the bottom of the header, but to the top instead.
-            // This is deprecated code though, and it's not worth to spend more time
-            // for a proper fix here.
-            // (This is likely a bug in the VerticalView class.)
-            topMargin: units.gu(6)
-        }
-
+        anchors.fill: parent
+        topMargin: pdfPage.header.height
         spacing: units.gu(2)
 
         boundsBehavior: Flickable.StopAtBounds
@@ -142,11 +154,37 @@ Page {
         }
     }
 
-    // *** HEADER ***
-    state: "default"
-    states: PdfViewDefaultHeader {
-        name: "default"
-        targetPage: pdfPage
-        activityRunning: pdfView.currentPageItem.status == Image.Loading || poppler.isLoading
+
+    /*** ACTIONS ***/
+
+    Action {
+        id: searchText
+        iconName: "search"
+        // onTriggered: pageMain.state = "search"
+        //Disable it until we provide search in Poppler plugin.
+        enabled: false
+    }
+
+    Action {
+        id: goToPage
+        objectName:"gotopage"
+        iconName: "browser-tabs"
+        text: i18n.tr("Go to page...")
+        onTriggered: PopupUtils.open(Qt.resolvedUrl("PdfViewGotoDialog.qml"), targetPage)
+    }
+
+    Action {
+        id: nightModeToggle
+        iconName: "night-mode"
+        text: mainView.nightModeEnabled ? i18n.tr("Disable night mode") : i18n.tr("Enable night mode")
+        onTriggered: mainView.nightModeEnabled = !mainView.nightModeEnabled
+    }
+
+    Action {
+        id: fileDetails
+        objectName: "detailsAction"
+        text: i18n.tr("Details")
+        iconName: "info"
+        onTriggered: pageStack.push(Qt.resolvedUrl("../common/DetailsPage.qml"))
     }
 }
