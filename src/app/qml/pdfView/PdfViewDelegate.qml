@@ -47,6 +47,7 @@ Rectangle {
 
         source: "image://poppler" + (index % poppler.providersNumber) + "/page/" + index;
         sourceSize.width: pdfPage.width
+        fillMode: Image.PreserveAspectFit
 
         onStatusChanged: {
             // This is supposed to run the first time PdfViewDelegate gets the page rendering.

@@ -23,10 +23,34 @@ Page {
     id: pdfPage
     property var poppler
     anchors.fill: parent
+    title: DocumentViewer.getFileBaseNameFromPath(poppler.path)
     focus: true
 
     head.locked: true
     head.visible: false
+    clip: !head.visible
+
+    head.contents: Item {
+        anchors.fill: parent
+        anchors.left: pdfPage.left
+        Rectangle {
+            anchors.fill: parent
+            anchors.leftMargin: -units.gu(5)
+            color: "white"
+            opacity: 0.8
+        }
+        Label {
+            width: parent.width
+            anchors.verticalCenter: parent.verticalCenter
+            elide: Text.ElideMiddle
+
+            font.weight: Font.DemiBold
+            fontSize: "large"
+            text: pdfPage.title
+            opacity: 1
+        }
+
+    }
 
     ListView {
         id: pdfView
@@ -48,6 +72,12 @@ Page {
             Component.onDestruction: window.releaseResources()
         }
         Component.onCompleted: pdfPage.forceActiveFocus()
+
+        MouseArea {
+            anchors.fill: parent
+            onDoubleClicked: pdfPage.head.visible = !pdfPage.head.visible
+        }
+
     }
 
     Keys.onPressed: {
