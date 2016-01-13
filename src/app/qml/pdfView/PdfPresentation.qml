@@ -35,9 +35,9 @@ Page {
         anchors.left: pdfPage.left
         Rectangle {
             anchors.fill: parent
-            anchors.leftMargin: -units.gu(5)
+            anchors.leftMargin: -units.gu(6)
             color: "white"
-            opacity: 0.8
+            opacity: 0.7
         }
         Label {
             width: parent.width
