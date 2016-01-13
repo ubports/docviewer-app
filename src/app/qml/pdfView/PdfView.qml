@@ -57,28 +57,6 @@ Page {
         }
     }
 
-    BottomEdge {
-        id: contentsBottomEdge
-
-        hint {
-            action: Action {
-                // TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
-                text: i18n.tr("Contents")
-                iconName: "view-list-symbolic"  // FIXME: Needs ToC icon.
-                onTriggered: contentsBottomEdge.commit()
-            }
-            flickable: pdfPage.flickable
-        }
-
-        contentComponent: bottomEdgeContent
-        enabled: poppler.tocModel.count > 0
-
-        Component {
-            id: bottomEdgeContent
-            PdfContentsPage { width: pdfPage.width; height: pdfPage.height }
-        }
-    }
-
     // Reset night mode shader settings when closing the page
     // Component.onDestruction: mainView.nightModeEnabled = false
 
@@ -154,6 +132,64 @@ Page {
         }
     }
 
+
+    BottomEdge {
+        id: contentsBottomEdge
+
+        // WORKAROUND: BottomEdge component loads the page async while draging it
+        // this cause a very bad visual.
+        // To avoid that we create it as soon as the component is ready and keep
+        // it invisible until the user start to drag it.
+        // Fix from: http://bazaar.launchpad.net/~phablet-team/address-book-app/trunk/revision/528
+        property var _realPage: null
+
+        hint {
+            action: Action {
+                // TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
+                text: i18n.tr("Contents")
+                iconName: "view-list-symbolic"  // FIXME: Needs ToC icon.
+                onTriggered: contentsBottomEdge.commit()
+            }
+            flickable: pdfPage.flickable
+        }
+
+        contentComponent: Item {
+            implicitWidth: contentsBottomEdge.width
+            implicitHeight: contentsBottomEdge.height
+            children: contentsBottomEdge._realPage
+        }
+
+        enabled: poppler.tocModel.count > 0
+
+        onCollapseCompleted: {
+            _realPage = contentsPage.createObject(null)
+            _realPage.header.leadingActionBar.actions = collapseAction
+        }
+
+        Component.onCompleted:  {
+            _realPage = contentsPage.createObject(null)
+            _realPage.header.leadingActionBar.actions = collapseAction
+        }
+
+        Action {
+            id: collapseAction
+            text: i18n.tr("Cancel")
+            iconName: "down"
+            onTriggered: contentsBottomEdge.collapse()
+        }
+
+        Component {
+            id: contentsPage
+
+            PdfContentsPage {
+                width: contentsBottomEdge.width
+                height: contentsBottomEdge.height
+                enabled: contentsBottomEdge.status === BottomEdge.Committed
+                active: contentsBottomEdge.status === BottomEdge.Committed
+                visible: contentsBottomEdge.status !== BottomEdge.Hidden
+            }
+        }
+    }
 
     /*** ACTIONS ***/
 
