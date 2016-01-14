@@ -21,6 +21,7 @@ Rectangle {
 
     property int index: model.index
     property bool _previewFetched: false
+    property bool presentationMode: false
 
     property alias status: pageImg.status
 
@@ -50,6 +51,9 @@ Rectangle {
         fillMode: Image.PreserveAspectFit
 
         onStatusChanged: {
+            if (presentationMode)
+                return;
+
             // This is supposed to run the first time PdfViewDelegate gets the page rendering.
             if (!_previewFetched) {
                 if (status == Image.Ready) {
@@ -83,7 +87,7 @@ Rectangle {
     // Because of this, we have multiple callings to ImageProvider while zooming.
     // Just avoid it.
     Connections {
-        target: pinchy
+        target: !presentationMode ? pinchy : null
 
         onPinchStarted: _zoomTimer.stop();
         onPinchUpdated: {

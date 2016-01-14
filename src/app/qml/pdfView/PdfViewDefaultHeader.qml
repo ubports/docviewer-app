@@ -74,7 +74,7 @@ PageHeadState {
 
         Action {
             objectName:"presentationmode"
-            iconName: "media-playback-start"
+            iconName: "slideshow"
             text: i18n.tr("Presentation")
             onTriggered: pageStack.push(Qt.resolvedUrl("./PdfPresentation.qml"), {'poppler': poppler})
         },
