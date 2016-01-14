@@ -22,34 +22,41 @@ import DocumentViewer.PDF 1.0 as PDF
 Page {
     id: pdfPage
     property var poppler
+    property bool isPresentation: true
     anchors.fill: parent
     title: DocumentViewer.getFileBaseNameFromPath(poppler.path)
     focus: true
 
-    head.locked: true
-    head.visible: false
-    clip: !head.visible
-
-    head.contents: Item {
-        anchors.fill: parent
-        anchors.left: pdfPage.left
-        Rectangle {
-            anchors.fill: parent
-            anchors.leftMargin: -units.gu(6)
-            color: "white"
-            opacity: 0.7
+    header: PageHeader {
+        visible: false
+        leadingActionBar.actions: [
+            Action {
+                iconName: "back"
+                text: "Back"
+                onTriggered: pageStack.pop()
+            }
+        ]
+        contents: ListItemLayout {
+            anchors.centerIn: parent
+            title {
+                font.weight: Font.DemiBold
+                textSize: Label.Large
+                text: pdfPage.title
+                color: pdfPage.header.__styleInstance.foregroundColor
+            }
+            subtitle {
+                textSize: Label.Medium
+                // TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
+                // while the second one (%2) refers to the total pages count.
+                text: i18n.tr("Page %1 of %2").arg(pdfView.currentIndex + 1).arg(pdfView.count)
+                color: pdfPage.header.__styleInstance.foregroundColor
+            }
         }
-        Label {
-            width: parent.width
-            anchors.verticalCenter: parent.verticalCenter
-            elide: Text.ElideMiddle
 
-            font.weight: Font.DemiBold
-            fontSize: "large"
-            text: pdfPage.title
-            opacity: 1
+        StyleHints {
+            backgroundColor: "#BF000000"
+            foregroundColor: "white"
         }
-
     }
 
     ListView {
@@ -67,17 +74,18 @@ Page {
 
         model: poppler
         delegate: PdfViewDelegate {
+            presentationMode: true
             width: pdfPage.width
             height: pdfPage.height
+            color: "black"
             Component.onDestruction: window.releaseResources()
         }
         Component.onCompleted: pdfPage.forceActiveFocus()
 
         MouseArea {
             anchors.fill: parent
-            onDoubleClicked: pdfPage.head.visible = !pdfPage.head.visible
+            onDoubleClicked: pdfPage.header.visible = !pdfPage.header.visible
         }
-
     }
 
     Keys.onPressed: {
@@ -93,8 +101,6 @@ Page {
             pdfView.decrementCurrentIndex();
             return;
         }
-
     }
-
 }
 
