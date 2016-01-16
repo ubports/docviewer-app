@@ -73,6 +73,13 @@ PageHeadState {
         },
 
         Action {
+            objectName:"presentationmode"
+            iconName: "slideshow"
+            text: i18n.tr("Presentation")
+            onTriggered: pageStack.push(Qt.resolvedUrl("./PdfPresentation.qml"), {'poppler': poppler})
+        },
+
+        Action {
             iconName: "night-mode"
             text: mainView.nightModeEnabled ? i18n.tr("Disable night mode") : i18n.tr("Enable night mode")
             onTriggered: mainView.nightModeEnabled = !mainView.nightModeEnabled

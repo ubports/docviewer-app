@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-12-27 13:06+0100\n"
+"POT-Creation-Date: 2016-01-14 08:46-0500\n"
 "PO-Revision-Date: 2015-11-20 05:28+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@gmail.com>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2016-01-05 05:47+0000\n"
-"X-Generator: Launchpad (build 17876)\n"
+"X-Launchpad-Export-Date: 2016-01-16 05:53+0000\n"
+"X-Generator: Launchpad (build 17886)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
 msgid "Some of the provided arguments are not valid."
@@ -43,7 +43,7 @@ msgstr ""
 
 #: ../src/app/qml/common/DetailsPage.qml:26
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:107
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:83
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:90
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:69
 msgid "Details"
 msgstr "Подробиці"
@@ -194,33 +194,33 @@ msgstr ""
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:100
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:103
 #, qt-format
 msgid "Today, %1"
 msgstr "Сьогодні, %1"
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:105
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:108
 #, qt-format
 msgid "Yesterday, %1"
 msgstr "Вчора, %1"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:112
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:131
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:115
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:134
 msgid "yyyy/MM/dd hh:mm"
 msgstr ""
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:125
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:128
 msgid "dddd, hh:mm"
 msgstr "dddd, hh:mm"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
-#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
+#: /home/mhall/projects/Ubuntu/coreapps/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
 msgid "Documents"
 msgstr "Документи"
 
@@ -349,13 +349,13 @@ msgid "Go to position..."
 msgstr ""
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:77
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:84
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Disable night mode"
 msgstr "Вимкнути нічний режим"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:77
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:84
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Enable night mode"
 msgstr "Увімкнути нічний режим"
@@ -410,6 +410,7 @@ msgstr "Приховати «Зміст»"
 
 #. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
 #. while the second one (%2) refers to the total pages count.
+#: ../src/app/qml/pdfView/PdfPresentation.qml:51
 #: ../src/app/qml/pdfView/PdfView.qml:35
 #, qt-format
 msgid "Page %1 of %2"
@@ -418,6 +419,10 @@ msgstr "Сторінка %1 з %2"
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:71
 msgid "Go to page..."
 msgstr "Перейти до сторінки…"
+
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:78
+msgid "Presentation"
+msgstr ""
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
 msgid "Go to page"
@@ -446,11 +451,11 @@ msgstr ""
 msgid "copy %1"
 msgstr "копія %1"
 
-#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/mhall/projects/Ubuntu/coreapps/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Перегляд документів"
 
-#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/mhall/projects/Ubuntu/coreapps/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "documents;viewer;pdf;reader;документи;перегляд;пдф;читання;"
 
