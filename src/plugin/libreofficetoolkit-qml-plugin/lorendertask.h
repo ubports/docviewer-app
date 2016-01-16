@@ -16,7 +16,7 @@ class LoRenderTask : public AbstractRenderTask
 {
 public:
     virtual bool canBeRunInParallel(AbstractRenderTask* prevTask);
-    virtual void prepare() { m_document->setDocumentPart(m_part); }
+    virtual void prepare() { /* do nothing */ }
 
     int part() { return m_part; }
     void setPart(int p) { m_part = p; }
