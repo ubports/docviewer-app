@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-16 13:11+0100\n"
+"POT-Creation-Date: 2016-01-16 13:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -366,15 +366,15 @@ msgstr ""
 msgid "GO!"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewPage.qml:129
+#: ../src/app/qml/loView/LOViewPage.qml:137
 msgid "LibreOffice binaries not found."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewPage.qml:132
+#: ../src/app/qml/loView/LOViewPage.qml:140
 msgid "Error while loading LibreOffice."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewPage.qml:135
+#: ../src/app/qml/loView/LOViewPage.qml:143
 msgid ""
 "Document not loaded.\n"
 "The requested document may be corrupt or protected by a password."
@@ -385,6 +385,13 @@ msgstr ""
 #. Ref. https://docs.libreoffice.org/libreofficekit.html
 #: ../src/app/qml/loView/Splashscreen.qml:45
 msgid "Powered by LibreOfficeKit"
+msgstr ""
+
+#. TRANSLATORS: Please don't add any space between "Sheet" and "%1".
+#. This is the default name for a sheet in LibreOffice.
+#: ../src/app/qml/loView/SpreadsheetSelector.qml:64
+#, qt-format
+msgid "Sheet%1"
 msgstr ""
 
 #: ../src/app/qml/loView/ZoomSelector.qml:110
