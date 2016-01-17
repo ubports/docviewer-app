@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-01-14 08:46-0500\n"
+"POT-Creation-Date: 2016-01-16 13:11+0100\n"
 "PO-Revision-Date: 2015-12-30 20:01+0000\n"
 "Last-Translator: GunChleoc <Unknown>\n"
 "Language-Team: Fòram na Gàidhlig\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : "
 "(n > 2 && n < 20) ? 2 : 3;\n"
-"X-Launchpad-Export-Date: 2016-01-16 05:53+0000\n"
+"X-Launchpad-Export-Date: 2016-01-17 05:33+0000\n"
 "X-Generator: Launchpad (build 17886)\n"
 "Language: gd\n"
 
@@ -242,7 +242,7 @@ msgid "dddd, hh:mm"
 msgstr "dddd hh:mm"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
-#: /home/mhall/projects/Ubuntu/coreapps/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
+#: /tmp/lok-qml-currentpart-moved-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
 msgid "Documents"
 msgstr "Sgrìobhainnean"
 
@@ -476,11 +476,11 @@ msgstr "Chan eil am faidhle ann."
 msgid "copy %1"
 msgstr "lethbhreac %1"
 
-#: /home/mhall/projects/Ubuntu/coreapps/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/lok-qml-currentpart-moved-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Sealladair sgrìobhainnean"
 
-#: /home/mhall/projects/Ubuntu/coreapps/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/lok-qml-currentpart-moved-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr ""
 "documents;viewer;pdf;reader;sgrìobhainnean;sealladair;leughadair;inneal-"
