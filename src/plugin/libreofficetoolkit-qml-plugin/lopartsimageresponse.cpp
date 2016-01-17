@@ -32,7 +32,7 @@ LOPartsImageResponse::LOPartsImageResponse(const QSharedPointer<LODocument>& doc
     }
 
     m_task = new ThumbnailRenderTask();
-    m_task->setIsOwnedByCaller(true);
+    m_task->setIsOwnedByCaller(true);   // Take the ownership of the task, for now.
     m_task->setId(RenderEngine::getNextId());
     m_task->setPart(id.section("/", 1, 1).toInt());
     m_task->setDocument(m_document);
@@ -46,7 +46,8 @@ LOPartsImageResponse::LOPartsImageResponse(const QSharedPointer<LODocument>& doc
     connect(RenderEngine::instance(), &RenderEngine::taskRenderFinished,
             this, &LOPartsImageResponse::slotTaskRenderFinished);
 
-    QMetaObject::invokeMethod(RenderEngine::instance(), "enqueueTask", Qt::QueuedConnection,
+    QMetaObject::invokeMethod(RenderEngine::instance(), "enqueueTask",
+                              Qt::QueuedConnection,
                               Q_ARG(AbstractRenderTask*, m_task));
 }
 
@@ -67,12 +68,16 @@ QQuickTextureFactory * LOPartsImageResponse::textureFactory() const
 
 void LOPartsImageResponse::cancel()
 {
-    disconnect(this);
+    disconnect(RenderEngine::instance(), &RenderEngine::taskRenderFinished,
+               this, &LOPartsImageResponse::slotTaskRenderFinished);
 
     if (m_task) {
-        // RenderEngine::dequeueTask() also delete the task.
-        // FIXME: RenderEngine has no ownership on the task :/
-        QMetaObject::invokeMethod(RenderEngine::instance(), "dequeueTask", Qt::QueuedConnection,
+        // Give to the RenderEngine the ownership of the task, so that it can
+        // be dequeued and deleted.
+        m_task->setIsOwnedByCaller(false);
+
+        QMetaObject::invokeMethod(RenderEngine::instance(), "dequeueTask",
+                                  Qt::QueuedConnection,
                                   Q_ARG(int, m_task->id()));
     }
 }
