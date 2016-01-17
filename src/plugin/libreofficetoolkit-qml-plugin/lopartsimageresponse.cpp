@@ -44,8 +44,11 @@ LOPartsImageResponse::LOPartsImageResponse(const QSharedPointer<LODocument>& doc
         task->setSize(QSize(256, 256));
     }
 
+    // Use Qt::BlockingQueuedConnection type in order to avoid that the returned
+    // AbstractRenderTask* pointer is deleted by RenderEngine before we
+    // finished to handle it.
     connect(RenderEngine::instance(), &RenderEngine::taskRenderFinished,
-            this, &LOPartsImageResponse::slotTaskRenderFinished);
+            this, &LOPartsImageResponse::slotTaskRenderFinished, Qt::BlockingQueuedConnection);
 
     RenderEngine::instance()->enqueueTask(task);
 }
