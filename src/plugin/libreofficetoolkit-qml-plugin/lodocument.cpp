@@ -34,7 +34,6 @@ lok::Office *LODocument::s_office = nullptr;
 
 LODocument::LODocument()
   : m_path("")
-  , m_currentPart(-1)
   , m_error(LibreOfficeError::NoError)
   , m_lokDocument(nullptr)
 {
@@ -58,22 +57,6 @@ void LODocument::setPath(const QString& pathName)
 
     // Load the new document
     loadDocument(m_path);
-}
-
-int LODocument::currentPart() {
-    return m_currentPart;
-}
-
-void LODocument::setCurrentPart(int index)
-{
-    if (!m_lokDocument)
-        return;
-
-    if (m_currentPart == index || index < 0 || index > partsCount() - 1)
-        return;
-
-    m_currentPart = index;
-    Q_EMIT currentPartChanged();
 }
 
 // Load the document
@@ -122,8 +105,6 @@ void LODocument::loadDocument(const QString &pathName)
     m_docType = DocumentType(m_lokDocument->getDocumentType());
     Q_EMIT documentTypeChanged();
 
-    setCurrentPart(m_lokDocument->getPart());
-
     m_lokDocument->initializeForRendering();
     qDebug() << "Document loaded successfully !";
 
@@ -170,10 +151,12 @@ QSize LODocument::documentSize() const
     return QSize(pWidth, pHeight);
 }
 
-QImage LODocument::paintTile(const QSize& canvasSize, const QRect& tileSize, const qreal &zoom)
+QImage LODocument::paintTile(int part, const QSize& canvasSize, const QRect& tileSize, const qreal &zoom)
 {
     if (!m_lokDocument)
         return QImage();
+
+    m_lokDocument->setPart(part);
 
     QImage result = QImage(canvasSize.width(), canvasSize.height(),  QImage::Format_RGB32);
 
@@ -196,10 +179,12 @@ QImage LODocument::paintTile(const QSize& canvasSize, const QRect& tileSize, con
     return result.rgbSwapped();
 }
 
-QImage LODocument::paintThumbnail(qreal size)
+QImage LODocument::paintThumbnail(int part, qreal size)
 {
     if (!m_lokDocument)
         return QImage();
+
+    m_lokDocument->setPart(part);
 
 #ifdef DEBUG_TILE_BENCHMARK
     QElapsedTimer renderTimer;

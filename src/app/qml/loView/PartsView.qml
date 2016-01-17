@@ -19,6 +19,9 @@ import Ubuntu.Components 1.3
 import QtQuick.Layouts 1.1
 import DocumentViewer.LibreOffice 1.0 as LibreOffice
 
+// TODO: If we'll be planning to reorganise QML components, consider to provide
+// delegates in some separate documents.
+
 ListView {
     id: view
     objectName: "view"
@@ -31,21 +34,40 @@ ListView {
     // used in vertical mode
     property bool isWide: width > units.gu(24)
 
-    currentIndex: view.model ? loView.document.currentPart : -1
-    highlightMoveDuration: UbuntuAnimation.SnapDuration
+    currentIndex: view.model ? loView.currentPart : -1
+    
+    // Ensure that items next to current item are always visible (and then
+    // clickable) without the need of extra interaction from the user.
+    // FIXME: If the current item is out the visible area, the 'highlightMove'
+    // animation shouldn't be fully performed, but applied from the first visible
+    // item instead. This actually seems to be a limitation of ListView itself.
+    highlightRangeMode: ListView.ApplyRange
+    highlightMoveDuration: UbuntuAnimation.FastDuration
+    preferredHighlightBegin: internal.isVerticalView ? (view.height - internal.verticalItemHeight) * 0.5
+                                                     : (view.width - internal.horizontalItemWidth) * 0.5
+    preferredHighlightEnd: internal.isVerticalView ? (view.height - internal.verticalItemHeight) * 0.5
+                                                   : (view.width - internal.horizontalItemWidth) * 0.5
 
-    delegate: (orientation == ListView.Vertical) ? verticalDelegate : horizontalDelegate
+    delegate: internal.isVerticalView ? verticalDelegate : horizontalDelegate
+
+    Component.onCompleted: {
+        // WORKAROUND: Fix for wrong grid unit size
+        flickDeceleration = 1500 * units.gridUnit / 8
+        maximumFlickVelocity = 2500 * units.gridUnit / 8
+    }
 
     Component {
         id: verticalDelegate
 
         ListItem {
             id: delegate
-            width: parent.width
-            height: units.gu(16)
 
-            color: (loView.document.currentPart === model.index) ? theme.palette.selected.background
-                                                                 : "transparent"
+            // Defined at the end of this document
+            width: internal.verticalItemWidth
+            height: internal.verticalItemHeight
+
+            color: (loView.currentPart === model.index) ? theme.palette.selected.background
+                                                        : "transparent"
 
             onClicked: internal.delegate_onClicked(model.index)
 
@@ -77,8 +99,8 @@ ListView {
                     wrapMode: Text.WordWrap
                     text: model.name
                     visible: view.isWide
-                    color: (loView.document.currentPart === model.index) ? UbuntuColors.orange
-                                                                         : theme.palette.selected.backgroundText
+                    color: (loView.currentPart === model.index) ? UbuntuColors.orange
+                                                                : theme.palette.selected.backgroundText
                 }
 
                 /* UITK 1.3 specs: Slot C */
@@ -86,8 +108,8 @@ ListView {
                     SlotsLayout.position: SlotsLayout.Trailing
 
                     text: model.index + 1
-                    color: (loView.document.currentPart === model.index) ? UbuntuColors.orange
-                                                                         : theme.palette.selected.backgroundText
+                    color: (loView.currentPart === model.index) ? UbuntuColors.orange
+                                                                : theme.palette.selected.backgroundText
                 }
             }
         }
@@ -98,10 +120,13 @@ ListView {
 
         ListItem {
             id: delegate
-            height: parent.height; width: height
 
-            color: (loView.document.currentPart === model.index) ? theme.palette.selected.background
-                                                                 : "transparent"
+            // Defined at the end of this document
+            width: internal.horizontalItemWidth
+            height: internal.horizontalItemHeight
+
+            color: (loView.currentPart === model.index) ? theme.palette.selected.background
+                                                        : "transparent"
 
             onClicked: internal.delegate_onClicked(model.index)
 
@@ -127,8 +152,8 @@ ListView {
                 Label {
                     Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
                     text: model.index + 1
-                    color: (loView.document.currentPart === model.index) ? UbuntuColors.orange
-                                                                         : theme.palette.selected.backgroundText
+                    color: (loView.currentPart === model.index) ? UbuntuColors.orange
+                                                                : theme.palette.selected.backgroundText
                 }
             }
         }
@@ -137,8 +162,18 @@ ListView {
     QtObject {
         id: internal
 
+        readonly property bool isVerticalView: view.orientation == ListView.Vertical
+
+        // Vertical delegate size
+        readonly property int verticalItemWidth: view.width
+        readonly property int verticalItemHeight: units.gu(16)
+
+        // Horizontal delegate size
+        readonly property int horizontalItemWidth: horizontalItemHeight
+        readonly property int horizontalItemHeight: view.height
+
         function delegate_onClicked(index) {
-            loView.document.currentPart = index
+            loView.currentPart = index
 
             // Check if the view has been included in a nested page (e.g.
             // bottomEdge). If so, close that page and return to the
@@ -147,7 +182,6 @@ ListView {
                 pageStack.pop();
         }
     }
-
 
     Scrollbar { flickableItem: view; parent: view.parent }
 }

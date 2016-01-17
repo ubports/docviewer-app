@@ -22,7 +22,7 @@ function parseEvent(event) {
 
     if (event.key == Qt.Key_PageUp) {
         if (isPresentation)
-            view.document.currentPart -= 1
+            view.currentPart -= 1
         else
             view.moveView("vertical", -view.height)
  
@@ -31,7 +31,7 @@ function parseEvent(event) {
  
     if (event.key == Qt.Key_PageDown) {
         if (isPresentation)
-            view.document.currentPart += 1
+            view.currentPart += 1
         else
             view.moveView("vertical", view.height)
  
@@ -42,7 +42,7 @@ function parseEvent(event) {
         if (event.modifiers & Qt.ControlModifier) {
             view.contentX = 0
             view.contentY = 0
-            view.document.currentPart = 0
+            view.currentPart = 0
         } else {
             view.contentX = 0
             view.contentY = 0
@@ -53,8 +53,8 @@ function parseEvent(event) {
         if (event.modifiers & Qt.ControlModifier) {
             view.contentX = view.contentWidth - view.width
             view.contentY = view.contentHeight - view.height
-            console.log(view.document.currentPart, view.document.partsCount - 1)
-            view.document.currentPart = view.document.partsCount - 1
+            console.log(view.currentPart, view.document.partsCount - 1)
+            view.currentPart = view.document.partsCount - 1
         } else {
             view.contentX = view.contentWidth - view.width
             view.contentY = view.contentHeight - view.height

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-12-12 13:04+0300\n"
+"POT-Creation-Date: 2016-01-16 13:11+0100\n"
 "PO-Revision-Date: 2015-11-19 18:20+0000\n"
 "Last-Translator: Sasa Batistic <Unknown>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
 "n%100==4 ? 3 : 0);\n"
-"X-Launchpad-Export-Date: 2015-12-24 05:42+0000\n"
-"X-Generator: Launchpad (build 17865)\n"
+"X-Launchpad-Export-Date: 2016-01-17 05:33+0000\n"
+"X-Generator: Launchpad (build 17886)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
 msgid "Some of the provided arguments are not valid."
@@ -41,30 +41,34 @@ msgid ""
 "The path must exist prior to running ubuntu-docviewer-app"
 msgstr ""
 
-#: ../src/app/qml/common/DetailsPage.qml:25
+#: ../src/app/qml/common/DetailsPage.qml:26
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:107
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:83
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:90
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:69
 msgid "Details"
 msgstr "Podrobnosti"
 
-#: ../src/app/qml/common/DetailsPage.qml:36
+#: ../src/app/qml/common/DetailsPage.qml:42
+msgid "File"
+msgstr ""
+
+#: ../src/app/qml/common/DetailsPage.qml:47
 msgid "Location"
 msgstr "Položaj"
 
-#: ../src/app/qml/common/DetailsPage.qml:41
+#: ../src/app/qml/common/DetailsPage.qml:52
 msgid "Size"
 msgstr "Velikost"
 
-#: ../src/app/qml/common/DetailsPage.qml:46
+#: ../src/app/qml/common/DetailsPage.qml:57
 msgid "Created"
 msgstr "Ustvarjeno"
 
-#: ../src/app/qml/common/DetailsPage.qml:51
+#: ../src/app/qml/common/DetailsPage.qml:62
 msgid "Last modified"
 msgstr "Nazadnje spremenjeno"
 
-#: ../src/app/qml/common/DetailsPage.qml:58
+#: ../src/app/qml/common/DetailsPage.qml:69
 msgid "MIME type"
 msgstr "Vrsta MIME"
 
@@ -73,18 +77,18 @@ msgid "Error"
 msgstr "Napaka"
 
 #: ../src/app/qml/common/ErrorDialog.qml:26
-#: ../src/app/qml/common/PickImportedDialog.qml:53
+#: ../src/app/qml/common/PickImportedDialog.qml:54
 #: ../src/app/qml/common/RejectedImportDialog.qml:38
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:31
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:53
 msgid "Close"
 msgstr "Zapri"
 
-#: ../src/app/qml/common/PickImportedDialog.qml:28
+#: ../src/app/qml/common/PickImportedDialog.qml:29
 msgid "Multiple documents imported"
 msgstr "Več dokumentov je uvoženih"
 
-#: ../src/app/qml/common/PickImportedDialog.qml:29
+#: ../src/app/qml/common/PickImportedDialog.qml:30
 msgid "Choose which one to open:"
 msgstr "Izberite, katerega boste odprli:"
 
@@ -182,11 +186,11 @@ msgstr "Izbriši"
 msgid "Share"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentEmptyState.qml:24
+#: ../src/app/qml/documentPage/DocumentEmptyState.qml:75
 msgid "No document found"
 msgstr "Ni najdenih dokumentov"
 
-#: ../src/app/qml/documentPage/DocumentEmptyState.qml:25
+#: ../src/app/qml/documentPage/DocumentEmptyState.qml:84
 msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
 "folder or insert removable media with documents."
@@ -194,33 +198,33 @@ msgstr ""
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:100
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:103
 #, qt-format
 msgid "Today, %1"
 msgstr "Danes, %1"
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:105
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:108
 #, qt-format
 msgid "Yesterday, %1"
 msgstr "Včeraj, %1"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:112
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:131
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:115
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:134
 msgid "yyyy/MM/dd hh:mm"
 msgstr ""
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:125
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:128
 msgid "dddd, hh:mm"
 msgstr "dddd, hh:mm"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
-#: /home/qtros/dev/ubuntu-docviewer-app-uitk-13-ethalone-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
+#: /tmp/lok-qml-currentpart-moved-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
 msgid "Documents"
 msgstr "Dokumenti"
 
@@ -316,7 +320,7 @@ msgid "Reverse order"
 msgstr "Preobrni red"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:51
-#: ../src/app/qml/textView/TextView.qml:42
+#: ../src/app/qml/textView/TextView.qml:43
 msgid "Loading..."
 msgstr "Nalaganje …"
 
@@ -349,13 +353,13 @@ msgid "Go to position..."
 msgstr ""
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:77
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:84
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Disable night mode"
 msgstr "Onemogoči nočni način"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:77
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:84
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Enable night mode"
 msgstr "Omogoči nočni način"
@@ -373,18 +377,18 @@ msgstr ""
 msgid "GO!"
 msgstr "POJDI!"
 
-#: ../src/app/qml/loView/LOViewPage.qml:128
+#: ../src/app/qml/loView/LOViewPage.qml:129
 msgid "LibreOffice binaries not found."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewPage.qml:131
+#: ../src/app/qml/loView/LOViewPage.qml:132
 msgid "Error while loading LibreOffice."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewPage.qml:134
+#: ../src/app/qml/loView/LOViewPage.qml:135
 msgid ""
 "Document not loaded.\n"
-"The requested document may be corrupt."
+"The requested document may be corrupt or protected by a password."
 msgstr ""
 
 #. TRANSLATORS: 'LibreOfficeKit' is the name of the library used by
@@ -400,7 +404,7 @@ msgstr ""
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:30
-#: ../src/app/qml/pdfView/PdfView.qml:37
+#: ../src/app/qml/pdfView/PdfView.qml:38
 msgid "Contents"
 msgstr "Vsebina"
 
@@ -410,7 +414,8 @@ msgstr "Skrij kazalo vsebine"
 
 #. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
 #. while the second one (%2) refers to the total pages count.
-#: ../src/app/qml/pdfView/PdfView.qml:34
+#: ../src/app/qml/pdfView/PdfPresentation.qml:51
+#: ../src/app/qml/pdfView/PdfView.qml:35
 #, qt-format
 msgid "Page %1 of %2"
 msgstr "Stran %1 od %2"
@@ -418,6 +423,10 @@ msgstr "Stran %1 od %2"
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:71
 msgid "Go to page..."
 msgstr "Pojdi na stran ..."
+
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:78
+msgid "Presentation"
+msgstr ""
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
 msgid "Go to page"
@@ -446,11 +455,11 @@ msgstr ""
 msgid "copy %1"
 msgstr "kopija %1"
 
-#: /home/qtros/dev/ubuntu-docviewer-app-uitk-13-ethalone-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/lok-qml-currentpart-moved-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Pregledovalnik dokumentov"
 
-#: /home/qtros/dev/ubuntu-docviewer-app-uitk-13-ethalone-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/lok-qml-currentpart-moved-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "dokumenti;pregledovalnik;pdf;bralnik;"
 

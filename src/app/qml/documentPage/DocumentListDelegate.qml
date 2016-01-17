@@ -48,8 +48,11 @@ ListItem {
 
         /* UITK 1.3 specs: Slot A */
         title {
+            // FIXME: We may want to reserve 2 lines for displaying the title.
+            // 2015.12.29: that's not possible because of bug lp:1529909
             text: model.name
             elide: Text.ElideRight
+            wrapMode: Text.WrapAnywhere
             color: UbuntuColors.midAubergine
         }
 

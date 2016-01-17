@@ -39,6 +39,7 @@ class LOView : public QQuickItem
     Q_FLAGS(ZoomModes)
     Q_PROPERTY(QQuickItem*              parentFlickable    READ parentFlickable WRITE setParentFlickable NOTIFY parentFlickableChanged)
     Q_PROPERTY(LODocument*              document           READ document        /*WRITE setDocument*/    NOTIFY documentChanged)
+    Q_PROPERTY(int                      currentPart        READ currentPart     WRITE setCurrentPart     NOTIFY currentPartChanged)
     Q_PROPERTY(LOPartsModel*            partsModel         READ partsModel                               NOTIFY partsModelChanged)
     Q_PROPERTY(qreal                    zoomFactor         READ zoomFactor      WRITE setZoomFactor      NOTIFY zoomFactorChanged)
     Q_PROPERTY(ZoomMode                 zoomMode           READ zoomMode                                 NOTIFY zoomModeChanged)
@@ -66,6 +67,9 @@ public:
     LODocument* document() const;
     LOPartsModel* partsModel() const;
 
+    int currentPart();
+    void setCurrentPart(int index);
+
     qreal       zoomFactor() const;
     void        setZoomFactor(const qreal zoom);
 
@@ -86,6 +90,7 @@ Q_SIGNALS:
     void parentFlickableChanged();
     void documentChanged();
     void partsModelChanged();
+    void currentPartChanged();
     void zoomFactorChanged();
     void zoomModeChanged();
     void cacheBufferChanged();
@@ -106,6 +111,7 @@ private:
     LOPartsModel*               m_partsModel; // TODO MB move to document.
     LOPartsImageProvider*       m_imageProvider; // The QQmlEngine takes ownership of provider.
 
+    int                         m_currentPart;
     qreal                       m_zoomFactor;
     ZoomMode                    m_zoomMode;
     ZoomModes                   m_zoomModesAvailable;
