@@ -22,9 +22,11 @@ class RenderEngine : public QObject
 
     const int DefaultIdealThreadCount = 2;
 
-public:
+public Q_SLOTS:
     void enqueueTask(AbstractRenderTask* task);     // Takes ownership.
     void dequeueTask(int id);
+
+public:
 
     static RenderEngine* instance() {
         if(!s_instance)
@@ -33,7 +35,7 @@ public:
     }
 
     static int getNextId() {
-        static int idCounter = 0xDEAD0000;
+        static QAtomicInt idCounter(0xDEAD0000);
         return idCounter++;
     }
 

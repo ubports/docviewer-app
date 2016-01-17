@@ -38,16 +38,18 @@ void RenderEngine::internalRenderCallback(AbstractRenderTask* task, QImage img)
 {
     m_activeTaskCount--;
 
-    if (!m_activeTaskCount) {
-        m_lastTask = nullptr;
-        doDispose();
-    }
+    if (!task->isOwnedByCaller())
+        disposeLater(task);
 
     // Notify about result.
     emit taskRenderFinished(task, img);
 
     doNextTask();
-    disposeLater(task);
+
+    if (!m_activeTaskCount) {
+        m_lastTask = nullptr;
+        doDispose();
+    }
 }
 
 void RenderEngine::disposeLater(AbstractRenderTask *task)
