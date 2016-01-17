@@ -42,6 +42,9 @@ PageWithBottomEdge {
     // Reset night mode shader settings when closing the page
     // Component.onDestruction: mainView.nightModeEnabled = false
 
+    Keys.onPressed: {
+        if (event.key == Qt.Key_F5) { pageStack.push(Qt.resolvedUrl("./PdfPresentation.qml"), {'poppler': poppler}); }
+    }
     Rectangle {
         // Since UITK 1.3, the MainView background is white.
         // We need to set a different color, otherwise pages

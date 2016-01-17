@@ -19,6 +19,9 @@ import Ubuntu.Components 1.3
 import QtQuick.Layouts 1.1
 import DocumentViewer.LibreOffice 1.0 as LibreOffice
 
+// TODO: If we'll be planning to reorganise QML components, consider to provide
+// delegates in some separate documents.
+
 ListView {
     id: view
     objectName: "view"
@@ -32,17 +35,36 @@ ListView {
     property bool isWide: width > units.gu(24)
 
     currentIndex: view.model ? loView.currentPart : -1
-    highlightMoveDuration: UbuntuAnimation.SnapDuration
+    
+    // Ensure that items next to current item are always visible (and then
+    // clickable) without the need of extra interaction from the user.
+    // FIXME: If the current item is out the visible area, the 'highlightMove'
+    // animation shouldn't be fully performed, but applied from the first visible
+    // item instead. This actually seems to be a limitation of ListView itself.
+    highlightRangeMode: ListView.ApplyRange
+    highlightMoveDuration: UbuntuAnimation.FastDuration
+    preferredHighlightBegin: internal.isVerticalView ? (view.height - internal.verticalItemHeight) * 0.5
+                                                     : (view.width - internal.horizontalItemWidth) * 0.5
+    preferredHighlightEnd: internal.isVerticalView ? (view.height - internal.verticalItemHeight) * 0.5
+                                                   : (view.width - internal.horizontalItemWidth) * 0.5
 
-    delegate: (orientation == ListView.Vertical) ? verticalDelegate : horizontalDelegate
+    delegate: internal.isVerticalView ? verticalDelegate : horizontalDelegate
+
+    Component.onCompleted: {
+        // WORKAROUND: Fix for wrong grid unit size
+        flickDeceleration = 1500 * units.gridUnit / 8
+        maximumFlickVelocity = 2500 * units.gridUnit / 8
+    }
 
     Component {
         id: verticalDelegate
 
         ListItem {
             id: delegate
-            width: parent.width
-            height: units.gu(16)
+
+            // Defined at the end of this document
+            width: internal.verticalItemWidth
+            height: internal.verticalItemHeight
 
             color: (loView.currentPart === model.index) ? theme.palette.selected.background
                                                         : "transparent"
@@ -103,7 +125,10 @@ ListView {
 
         ListItem {
             id: delegate
-            height: parent.height; width: height
+
+            // Defined at the end of this document
+            width: internal.horizontalItemWidth
+            height: internal.horizontalItemHeight
 
             color: (loView.currentPart === model.index) ? theme.palette.selected.background
                                                         : "transparent"
@@ -142,6 +167,16 @@ ListView {
     QtObject {
         id: internal
 
+        readonly property bool isVerticalView: view.orientation == ListView.Vertical
+
+        // Vertical delegate size
+        readonly property int verticalItemWidth: view.width
+        readonly property int verticalItemHeight: units.gu(16)
+
+        // Horizontal delegate size
+        readonly property int horizontalItemWidth: horizontalItemHeight
+        readonly property int horizontalItemHeight: view.height
+
         function delegate_onClicked(index) {
             loView.currentPart = index
 
@@ -152,7 +187,6 @@ ListView {
                 pageStack.pop();
         }
     }
-
 
     Scrollbar { flickableItem: view; parent: view.parent }
 }
