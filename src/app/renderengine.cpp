@@ -28,7 +28,10 @@ void RenderEngine::dequeueTask(int id)
         auto task = m_queue.at(i);
         if (task->id() == id) {
             m_queue.removeAt(i);
-            disposeLater(task);
+
+            if (!task->isOwnedByCaller())
+                disposeLater(task);
+
             break;
         }
     }
