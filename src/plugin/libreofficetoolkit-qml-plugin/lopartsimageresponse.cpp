@@ -31,26 +31,23 @@ LOPartsImageResponse::LOPartsImageResponse(const QSharedPointer<LODocument>& doc
         return;
     }
 
-    m_taskId = RenderEngine::getNextId();
-
-    auto task = new ThumbnailRenderTask();
-    task->setId(m_taskId);
-    task->setPart(id.section("/", 1, 1).toInt());
-    task->setDocument(m_document);
+    m_task = new ThumbnailRenderTask();
+    m_task->setIsOwnedByCaller(true);
+    m_task->setId(RenderEngine::getNextId());
+    m_task->setPart(id.section("/", 1, 1).toInt());
+    m_task->setDocument(m_document);
 
     if (!requestedSize.isEmpty()) {
-        task->setSize(requestedSize);
+        m_task->setSize(requestedSize);
     } else {
-        task->setSize(QSize(256, 256));
+        m_task->setSize(QSize(256, 256));
     }
 
-    // Use Qt::BlockingQueuedConnection type in order to avoid that the returned
-    // AbstractRenderTask* pointer is deleted by RenderEngine before we
-    // finished to handle it.
     connect(RenderEngine::instance(), &RenderEngine::taskRenderFinished,
-            this, &LOPartsImageResponse::slotTaskRenderFinished, Qt::BlockingQueuedConnection);
+            this, &LOPartsImageResponse::slotTaskRenderFinished);
 
-    RenderEngine::instance()->enqueueTask(task);
+    QMetaObject::invokeMethod(RenderEngine::instance(), "enqueueTask", Qt::QueuedConnection,
+                              Q_ARG(AbstractRenderTask*, m_task));
 }
 
 LOPartsImageResponse::~LOPartsImageResponse()
@@ -72,15 +69,17 @@ void LOPartsImageResponse::cancel()
 {
     disconnect(this);
 
-    // Remove task from the queue, if it's still waiting for being rendered.
-    if (m_taskId) {
-        RenderEngine::instance()->dequeueTask(m_taskId);
+    if (m_task) {
+        // RenderEngine::dequeueTask() also delete the task.
+        // FIXME: RenderEngine has no ownership on the task :/
+        QMetaObject::invokeMethod(RenderEngine::instance(), "dequeueTask", Qt::QueuedConnection,
+                                  Q_ARG(int, m_task->id()));
     }
 }
 
 void LOPartsImageResponse::slotTaskRenderFinished(AbstractRenderTask* task, QImage img)
 {
-    if (task->id() == m_taskId && task->type() == RttImpressThumbnail) {
+    if (task->id() == m_task->id() && task->type() == RttImpressThumbnail) {
         m_image = img;
         Q_EMIT finished();
     }

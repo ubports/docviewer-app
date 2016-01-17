@@ -24,6 +24,7 @@
 
 class LODocument;
 class AbstractRenderTask;
+class ThumbnailRenderTask;
 
 class LOPartsImageResponse : public QQuickImageResponse
 {
@@ -40,8 +41,8 @@ private Q_SLOTS:
 
 private:
     QSharedPointer<LODocument> m_document;
+    ThumbnailRenderTask* m_task;
 
-    int m_taskId;
     QString m_errorString;
     QImage m_image;
 };
