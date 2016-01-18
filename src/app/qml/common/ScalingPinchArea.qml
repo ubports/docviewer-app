@@ -6,10 +6,15 @@ PinchArea {
     property var targetFlickable: null
     property real totalScale: 1
 
+    onPinchStarted: {
+        targetFlickable.interactive = false
+    }
+
     onPinchUpdated: {
         pinchUpdatedHandler(pinch)
     }
     onPinchFinished: {
+        targetFlickable.interactive = true
         pinchFinishedHandler()
     }
 
@@ -46,10 +51,21 @@ PinchArea {
     function pinchFinishedHandler() {
         var pt = pinchArea.mapFromItem(targetFlickable, -targetFlickable.contentX , -targetFlickable.contentY )
         // console.log("pinchFinishedHandler", -myItem.contentX, -myItem.contentY, Math.round(pt.x), Math.round(pt.y))
-        targetFlickable.contentX = -pt.x
-        targetFlickable.contentY = -pt.y
 
         totalScale = targetFlickable.scale * totalScale
         targetFlickable.scale = 1
+
+        // Overwrite contentX and contentY values.
+        // This is required since a change in contentWidth or contentHeight causes
+        // the Flickable to reset the position of the its content.
+
+        if (targetFlickable.contentWidth > targetFlickable.width)
+            targetFlickable.contentX = -pt.x
+
+        if (targetFlickable.contentHeight > targetFlickable.height)
+            targetFlickable.contentY = -pt.y
+
+        // Return to the legal bounds
+        targetFlickable.returnToBounds()
     }
 }

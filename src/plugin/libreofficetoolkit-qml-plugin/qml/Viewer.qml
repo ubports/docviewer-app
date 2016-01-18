@@ -86,8 +86,11 @@ Flickable {
 
     // zoomFactor is not used here to set contentSize, since it's all managed
     // internally, in the LibreOffice.View component.
-    contentHeight: Math.max(rootFlickable.height, view.height)
-    contentWidth: Math.max(rootFlickable.width, view.width)
+    contentHeight: view.height
+    contentWidth: view.width
+
+    topMargin: internal.isSpreadSheet ? 0 : Math.max((rootFlickable.height - view.height) * 0.5, 0)
+    leftMargin: internal.isSpreadSheet ? 0 : Math.max((rootFlickable.width - view.width) * 0.5, 0)
 
     boundsBehavior: Flickable.StopAtBounds
 
@@ -95,9 +98,6 @@ Flickable {
 
     LibreOffice.View {
         id: view
-        x: !internal.isSpreadSheet ? Math.max(0, (rootFlickable.width - view.width) * 0.5) : 0
-        y: !internal.isSpreadSheet ? Math.max(0, (rootFlickable.height - view.height) * 0.5) : 0
-
         parentFlickable: rootFlickable
     }
 
