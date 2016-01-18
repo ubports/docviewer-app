@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-27 15:50+0100\n"
+"POT-Creation-Date: 2016-01-18 00:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,30 +40,34 @@ msgid ""
 "The path must exist prior to running ubuntu-docviewer-app"
 msgstr ""
 
-#: ../src/app/qml/common/DetailsPage.qml:25
+#: ../src/app/qml/common/DetailsPage.qml:26
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:107
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:83
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:90
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:69
 msgid "Details"
 msgstr ""
 
-#: ../src/app/qml/common/DetailsPage.qml:41
+#: ../src/app/qml/common/DetailsPage.qml:42
+msgid "File"
+msgstr ""
+
+#: ../src/app/qml/common/DetailsPage.qml:47
 msgid "Location"
 msgstr ""
 
-#: ../src/app/qml/common/DetailsPage.qml:46
+#: ../src/app/qml/common/DetailsPage.qml:52
 msgid "Size"
 msgstr ""
 
-#: ../src/app/qml/common/DetailsPage.qml:51
+#: ../src/app/qml/common/DetailsPage.qml:57
 msgid "Created"
 msgstr ""
 
-#: ../src/app/qml/common/DetailsPage.qml:56
+#: ../src/app/qml/common/DetailsPage.qml:62
 msgid "Last modified"
 msgstr ""
 
-#: ../src/app/qml/common/DetailsPage.qml:63
+#: ../src/app/qml/common/DetailsPage.qml:69
 msgid "MIME type"
 msgstr ""
 
@@ -185,33 +189,33 @@ msgstr ""
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:100
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:103
 #, qt-format
 msgid "Today, %1"
 msgstr ""
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:105
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:108
 #, qt-format
 msgid "Yesterday, %1"
 msgstr ""
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:112
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:131
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:115
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:134
 msgid "yyyy/MM/dd hh:mm"
 msgstr ""
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:125
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:128
 msgid "dddd, hh:mm"
 msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
-#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
+#: /tmp/build-lok-new-zoom-modes+spreadsheet-zoom-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid_8e2ec5-Default/po/com.ubuntu.docviewer.desktop.in.in.h:3
 msgid "Documents"
 msgstr ""
 
@@ -338,13 +342,13 @@ msgid "Go to position..."
 msgstr ""
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:77
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:84
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Disable night mode"
 msgstr ""
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:77
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:84
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Enable night mode"
 msgstr ""
@@ -383,15 +387,15 @@ msgstr ""
 msgid "Powered by LibreOfficeKit"
 msgstr ""
 
-#: ../src/app/qml/loView/ZoomSelector.qml:123
+#: ../src/app/qml/loView/ZoomSelector.qml:122
 msgid "Fit width"
 msgstr ""
 
-#: ../src/app/qml/loView/ZoomSelector.qml:130
+#: ../src/app/qml/loView/ZoomSelector.qml:123
 msgid "Fit height"
 msgstr ""
 
-#: ../src/app/qml/loView/ZoomSelector.qml:137
+#: ../src/app/qml/loView/ZoomSelector.qml:124
 msgid "Automatic"
 msgstr ""
 
@@ -407,6 +411,7 @@ msgstr ""
 
 #. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
 #. while the second one (%2) refers to the total pages count.
+#: ../src/app/qml/pdfView/PdfPresentation.qml:51
 #: ../src/app/qml/pdfView/PdfView.qml:35
 #, qt-format
 msgid "Page %1 of %2"
@@ -414,6 +419,10 @@ msgstr ""
 
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:71
 msgid "Go to page..."
+msgstr ""
+
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:78
+msgid "Presentation"
 msgstr ""
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
@@ -443,10 +452,10 @@ msgstr ""
 msgid "copy %1"
 msgstr ""
 
-#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/build-lok-new-zoom-modes+spreadsheet-zoom-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid_8e2ec5-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr ""
 
-#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/build-lok-new-zoom-modes+spreadsheet-zoom-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid_8e2ec5-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr ""
