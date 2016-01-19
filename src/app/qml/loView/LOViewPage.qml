@@ -87,7 +87,9 @@ ViewerPage {
                 id: pinchArea
                 objectName: "pinchArea"
                 Layouts.item: "pinchArea"
+                clip: true
 
+                // FIXME: TODO: Check if in desktopMode, and use automaticZoom as minimum value
                 targetFlickable: loView
                 onTotalScaleChanged: targetFlickable.updateContentSize(totalScale)
 
@@ -98,12 +100,18 @@ ViewerPage {
                     bottom: bottomBar.top
                 }
 
+                Binding {
+                    when: !pinchArea.pinch.active
+                    target: pinchArea
+                    property: "zoomValue"
+                    value: loView.zoomFactor
+                }
+
                 LibreOffice.Viewer {
                     id: loView
                     objectName: "loView"
                     anchors.fill: parent
 
-                    clip: true
                     documentPath: file.path
 
                     function updateContentSize(tgtScale) {
@@ -143,6 +151,24 @@ ViewerPage {
                             // initialized by 'loPage' and keep on working after the
                             // page is destroyed.
                             mainView.showErrorDialog(errorString);
+                        }
+                    }
+
+                    ScalingMouseArea {
+                        id: mouseArea
+                        anchors.fill: parent
+                        targetFlickable: loView
+                        onTotalScaleChanged: targetFlickable.updateContentSize(totalScale)
+
+                        // FIXME: TODO: Check if in desktopMode, and use automaticZoom as minimum value
+                        thresholdZoom: 2.0
+                        maximumZoom: 3.0
+                        minimumZoom: 1.0
+
+                        Binding {
+                            target: mouseArea
+                            property: "zoomValue"
+                            value: loView.zoomFactor
                         }
                     }
 
