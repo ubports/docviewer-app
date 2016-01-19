@@ -93,6 +93,9 @@ ViewerPage {
                 targetFlickable: loView
                 onTotalScaleChanged: targetFlickable.updateContentSize(totalScale)
 
+                maximumZoom: 4.0
+                minimumZoom: 0.25   // FIXME: On BQ E5 the fitToWidth zoom is smaller than LO minimumZoom (0.5)
+
                 anchors {
                     top: parent.top
                     left: parent.left
@@ -162,8 +165,8 @@ ViewerPage {
 
                         // FIXME: TODO: Check if in desktopMode, and use automaticZoom as minimum value
                         thresholdZoom: 2.0
-                        maximumZoom: 3.0
-                        minimumZoom: 1.0
+                        maximumZoom: 4.0
+                        minimumZoom: 0.25
 
                         Binding {
                             target: mouseArea
