@@ -20,52 +20,49 @@ import DocumentViewer.LibreOffice 1.0 as LibreOffice
 Flickable {
     id: rootFlickable
 
-    property alias document:    view.document
-    property alias zoomFactor:  view.zoomFactor
-    property alias cacheBuffer: view.cacheBuffer
-    property alias partsModel:  view.partsModel
-    property alias zoomMode:    view.zoomMode
-    property alias error:       view.error
-    property alias currentPart: view.currentPart
-
-    property alias zoomModesAvailable: view.zoomModesAvailable
+    property alias document:     view.document
+    property alias zoomSettings: view.zoomSettings
+    property alias cacheBuffer:  view.cacheBuffer
+    property alias partsModel:   view.partsModel
+    property alias error:        view.error
+    property alias currentPart:  view.currentPart
 
     property string documentPath: ""
 
     function adjustZoomToWidth()
     {
-        var oldZoom = view.zoomFactor
+        var oldZoom = view.zoomSettings.zoomFactor
         view.adjustZoomToWidth()
 
-        var zoomScale = view.zoomFactor / oldZoom
+        var zoomScale = view.zoomSettings.zoomFactor / oldZoom
         rootFlickable.contentX *= zoomScale
         rootFlickable.contentY *= zoomScale
     }
 
     function adjustZoomToHeight()
     {
-        var oldZoom = view.zoomFactor
+        var oldZoom = view.zoomSettings.zoomFactor
         view.adjustZoomToHeight()
 
-        var zoomScale = view.zoomFactor / oldZoom
+        var zoomScale = view.zoomSettings.zoomFactor / oldZoom
         rootFlickable.contentX *= zoomScale
         rootFlickable.contentY *= zoomScale
     }
 
     function adjustAutomaticZoom()
     {
-        var oldZoom = view.zoomFactor
+        var oldZoom = view.zoomSettings.zoomFactor
         view.adjustAutomaticZoom()
 
-        var zoomScale = view.zoomFactor / oldZoom
+        var zoomScale = view.zoomSettings.zoomFactor / oldZoom
         rootFlickable.contentX *= zoomScale
         rootFlickable.contentY *= zoomScale
     }
 
     function setZoom(newValue)
     {
-        var zoomScale = newValue / view.zoomFactor;
-        view.zoomFactor = newValue;
+        var zoomScale = newValue / view.zoomSettings.zoomFactor;
+        view.zoomSettings.zoomFactor = newValue;
 
         rootFlickable.contentX *= zoomScale;
         rootFlickable.contentY *= zoomScale;
@@ -113,8 +110,6 @@ Flickable {
     contentWidth: view.width
 
     boundsBehavior: Flickable.StopAtBounds
-
-    //Component.onCompleted: adjustZoomToWidth()
 
     LibreOffice.View {
         id: view
