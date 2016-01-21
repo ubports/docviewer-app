@@ -106,6 +106,8 @@ private:
 
     QMap<int, SGTileItem*>      m_tiles;
 
+    bool                        m_zoomValueHasChanged;
+
 private:
     void generateTiles(int x1, int y1, int x2, int y2, int tilesPerWidth, int tilesPerHeight);
     void createTile(int index, const QRect& rect);

@@ -36,17 +36,22 @@ LOView::LOView(QQuickItem *parent)
     , m_visibleArea(0, 0, 0, 0)
     , m_bufferArea(0, 0, 0, 0)
     , m_error(LibreOfficeError::NoError)
+    , m_zoomValueHasChanged(false)
 {
     Q_UNUSED(parent)   
 
     connect(this, &LOView::documentChanged, this, &LOView::updateViewSize);
     connect(this, &LOView::parentFlickableChanged, this, &LOView::updateVisibleRect);
     connect(this, &LOView::cacheBufferChanged, this, &LOView::updateVisibleRect);
-    connect(m_zoomSettings, &LOZoom::zoomFactorChanged, this, &LOView::updateViewSize);
     connect(&m_updateTimer, &QTimer::timeout, this, &LOView::updateVisibleRect);
 
     connect(RenderEngine::instance(), &RenderEngine::taskRenderFinished,
             this, &LOView::slotTaskRenderFinished);
+
+    connect(m_zoomSettings, &LOZoom::zoomFactorChanged, [&]() {
+        m_zoomValueHasChanged = true;
+        updateViewSize();
+    });
 }
 
 // Returns the parent QML Flickable
@@ -278,16 +283,13 @@ void LOView::updateVisibleRect()
     }
 
     // Check if current tiles have a different zoom value
-    if (!m_tiles.isEmpty()) {
-        SGTileItem* tile = m_tiles.first();
-
-        if (tile->zoomFactor() != m_zoomSettings->zoomFactor()) {
-            clearView();
-
+    if (m_zoomValueHasChanged && !m_tiles.isEmpty()) {
+        m_zoomValueHasChanged = false;
 #ifdef DEBUG_VERBOSE
-            qDebug() << "Zoom value of tiles is different than the current zoom value. Erasing cache...";
+        qDebug() << "Zoom value of tiles is different than the current zoom value. Erasing cache...";
 #endif
-        }
+
+        clearView();
     }
 
     // Just for convenience.
@@ -403,7 +405,7 @@ void LOView::createTile(int index, const QRect &rect)
         qDebug() << "Creating tile indexed as" << index << "- Rect:" << rect;
 #endif
 
-        auto tile = new SGTileItem(rect, m_zoomSettings->zoomFactor(), RenderEngine::getNextId(), this);
+        auto tile = new SGTileItem(rect, RenderEngine::getNextId(), this);
         m_tiles.insert(index, tile);
         RenderEngine::instance()->enqueueTask(createTask(rect, tile->id()));
     }
