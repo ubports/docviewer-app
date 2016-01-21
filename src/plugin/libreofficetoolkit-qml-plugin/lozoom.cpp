@@ -94,7 +94,7 @@ qreal LOZoom::zoomFactor() const
 
 void LOZoom::setZoomFactor(const qreal zoom)
 {
-    if (m_zoomFactor == zoom)
+    if (m_zoomFactor == zoom || zoom < m_minimumZoom || zoom > m_maximumZoom)
         return;
 
     m_zoomFactor = zoom;
