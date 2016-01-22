@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-01-16 13:11+0100\n"
+"POT-Creation-Date: 2016-01-18 00:54+0100\n"
 "PO-Revision-Date: 2016-01-17 20:36+0000\n"
 "Last-Translator: Gaël Rousseau <Rodney78310@gmail.com>\n"
 "Language-Team: French <fr@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2016-01-18 05:56+0000\n"
-"X-Generator: Launchpad (build 17886)\n"
+"X-Launchpad-Export-Date: 2016-01-22 06:05+0000\n"
+"X-Generator: Launchpad (build 17902)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
 msgid "Some of the provided arguments are not valid."
@@ -224,7 +224,7 @@ msgid "dddd, hh:mm"
 msgstr "dddd, hh:mm"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
-#: /tmp/lok-qml-currentpart-moved-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
+#: /tmp/build-lok-new-zoom-modes+spreadsheet-zoom-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid_8e2ec5-Default/po/com.ubuntu.docviewer.desktop.in.in.h:3
 msgid "Documents"
 msgstr "Documents"
 
@@ -400,9 +400,17 @@ msgstr ""
 msgid "Powered by LibreOfficeKit"
 msgstr "Propulsé par LibreOfficeKit"
 
-#: ../src/app/qml/loView/ZoomSelector.qml:110
+#: ../src/app/qml/loView/ZoomSelector.qml:122
 msgid "Fit width"
 msgstr "Ajuster à la largeur"
+
+#: ../src/app/qml/loView/ZoomSelector.qml:123
+msgid "Fit height"
+msgstr ""
+
+#: ../src/app/qml/loView/ZoomSelector.qml:124
+msgid "Automatic"
+msgstr ""
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:30
@@ -457,11 +465,11 @@ msgstr "Le fichier n’existe pas."
 msgid "copy %1"
 msgstr "copie %1"
 
-#: /tmp/lok-qml-currentpart-moved-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/build-lok-new-zoom-modes+spreadsheet-zoom-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid_8e2ec5-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Visionneuse de document"
 
-#: /tmp/lok-qml-currentpart-moved-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/build-lok-new-zoom-modes+spreadsheet-zoom-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid_8e2ec5-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "documents;visionneuse;pdf;lecteur;"
 
