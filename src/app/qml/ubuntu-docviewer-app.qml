@@ -29,10 +29,18 @@ MainView {
     objectName: "mainView"
 
     property bool pickMode: commandLineProxy.pickMode
-    property bool fullscreen: commandLineProxy.fullscreen
 
-    readonly property bool wideWindow: width > units.gu(80)
-    readonly property bool veryWideWindow: width > units.gu(120)
+    // If device orientation is landscape and screen width is limited,
+    // force hiding Unity 8 indicators panel.
+    property bool fullscreen: commandLineProxy.fullscreen ||
+                              (!desktopMode && isLandscape && narrowWindow) ||
+                              pageStack.currentPage.hasOwnProperty("isPresentation")
+
+    readonly property bool desktopMode: DocumentViewer.desktopMode
+
+    readonly property bool narrowWindow: width < units.gu(51)
+    readonly property bool wideWindow: width >= units.gu(80) && width < units.gu(120)
+    readonly property bool veryWideWindow: width >= units.gu(120)
     readonly property bool isLandscape: Screen.orientation == Qt.LandscapeOrientation ||
                                         Screen.orientation == Qt.InvertedLandscapeOrientation
 
@@ -75,18 +83,6 @@ MainView {
 
     function switchToPickMode() {
         mainView.pickMode = true
-    }
-
-    onIsLandscapeChanged: {
-        // If device orientation is landscape and screen width is limited,
-        // force hiding Unity 8 indicators panel.
-        if (!DocumentViewer.desktopMode && mainView.isLandscape &&
-                mainView.width < units.gu(51)) {
-            mainView.fullscreen = true
-            return;
-        } else {
-            mainView.fullscreen = false
-        }
     }
 
     function showErrorDialog(message) {
