@@ -14,7 +14,7 @@ if(CLICK_MODE)
   # If running in CLICK_MODE, include binary dependencies of docviewer
   set(GET_CLICK_DEPS_TOOL ${CMAKE_SOURCE_DIR}/tools/get-click-deps)
   set(DEPS_MANIFEST ${CMAKE_CURRENT_SOURCE_DIR}/click/docviewer-libs.json)
-  set(CUSTOM_SCRIPT ${CMAKE_CURRENT_SOURCE_DIR}/click/disable-file-locking.sh)
+  set(CUSTOM_SCRIPT ${CMAKE_CURRENT_SOURCE_DIR}/click/disable-lo-features.sh)
   set(UPSTREAM_LIBS_DIR ${CMAKE_BINARY_DIR}/upstream-libs)
 
   MESSAGE("Grabbing upstream libs to ${UPSTREAM_LIBS_DIR}") 
