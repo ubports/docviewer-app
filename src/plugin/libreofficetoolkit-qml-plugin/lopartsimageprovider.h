@@ -23,12 +23,16 @@
 #include <QSharedPointer>
 
 class LODocument;
+class ThumbnailRenderTask;
 
 class LOPartsImageProvider : public QQuickAsyncImageProvider
 {
 public:
     LOPartsImageProvider(const QSharedPointer<LODocument>& d);
     QQuickImageResponse* requestImageResponse(const QString & id, const QSize & requestedSize);
+
+private:
+    ThumbnailRenderTask* createTask(int part, const QSize &size, int id) const;
 
 private:
     QSharedPointer<LODocument> m_document;

@@ -20,31 +20,21 @@
 
 // For QQuickImageResponse
 #include <qquickimageprovider.h>
-#include <QSharedPointer>
-
-class LODocument;
-class AbstractRenderTask;
-class ThumbnailRenderTask;
 
 class LOPartsImageResponse : public QQuickImageResponse
 {
 public:
-    LOPartsImageResponse(const QSharedPointer<LODocument>& document, const QString & id, const QSize & requestedSize, bool requestIsValid);
+    LOPartsImageResponse(bool isRequestValid);
     ~LOPartsImageResponse();
 
-    QString errorString() const override;
+    void setTaskId(const int id) { m_taskId = id; }
+    QString errorString() const override { return m_errorString; }
     QQuickTextureFactory * textureFactory() const override;
-    void cancel() override;
-
-private Q_SLOTS:
-    void slotTaskRenderFinished(AbstractRenderTask* task, QImage img);
 
 private:
-    QSharedPointer<LODocument> m_document;
-    ThumbnailRenderTask* m_task;
-
     QString m_errorString;
     QImage m_image;
+    int m_taskId;
 };
 
 
