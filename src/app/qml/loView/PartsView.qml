@@ -84,18 +84,27 @@ ListView {
                 anchors.fill: parent
 
                 /* UITK 1.3 specs: Slot B */
-                Image {
-                    id: thumb
+                Item {
                     SlotsLayout.position: SlotsLayout.Leading
-                    height: parent.height; width: units.gu(12)
-                    fillMode: Image.PreserveAspectFit
-                    // Do not store a cache of the thumbnail, so that we don't show
-                    // thumbnails of a previously loaded document.
-                    cache: true // TODO PLAY WITH IT
-                    source: "image://lok/part/%1".arg(model.index)
-                    sourceSize {
-                        width: thumb.height
-                        height: thumb.width
+                    height: parent.height; width: height
+                    BorderImage {
+                        anchors {
+                            centerIn: parent
+                            verticalCenterOffset: units.gu(0.25)
+                            horizontalCenterOffset: units.gu(0.25)
+                        }
+                        width: vThumbnail.paintedWidth + units.gu(1.5)
+                        height: vThumbnail.paintedHeight + units.gu(1.5)
+                        source: "graphics/dropshadow.sci"
+                    }
+                    Image {
+                        id: vThumbnail
+                        anchors.fill: parent
+                        fillMode: Image.PreserveAspectFit
+                        // Do not store a cache of the thumbnail, so that we don't show
+                        // thumbnails of a previously loaded document.
+                        cache: true // TODO PLAY WITH IT
+                        source: "image://lok/part/%1".arg(model.index)
                     }
                 }
 
@@ -144,14 +153,28 @@ ListView {
                 }
                 spacing: units.gu(0.5)
 
-                Image {
+                Item {
                     Layout.fillWidth: true
-                    Layout.fillHeight: true
-                    fillMode: Image.PreserveAspectFit
-                    // Do not store a cache of the thumbnail, so that we don't show
-                    // thumbnails of a previously loaded document.
-                    cache: true // TODO PLAY WITH IT
-                    source: "image://lok/part/%1".arg(model.index)
+                    Layout.preferredHeight: width
+                    BorderImage {
+                        anchors {
+                            centerIn: parent
+                            verticalCenterOffset: units.gu(0.25)
+                            horizontalCenterOffset: units.gu(0.25)
+                        }
+                        width: hThumbnail.paintedWidth + units.gu(1.5)
+                        height: hThumbnail.paintedHeight + units.gu(1.5)
+                        source: "graphics/dropshadow.sci"
+                    }
+                    Image {
+                        id: hThumbnail
+                        anchors.fill: parent
+                        fillMode: Image.PreserveAspectFit
+                        // Do not store a cache of the thumbnail, so that we don't show
+                        // thumbnails of a previously loaded document.
+                        cache: true // TODO PLAY WITH IT
+                        source: "image://lok/part/%1".arg(model.index)
+                    }
                 }
 
                 Label {

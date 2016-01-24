@@ -52,6 +52,10 @@ TextFieldWithButton {
     popover: TextFieldButtonPopover {
         id: zoomSelectorDialogue
 
+        /************************************
+        *    Zoom in - Zoom out controls    *
+        ************************************/
+
         RowLayout {
             anchors { left: parent.left; right: parent.right }
             height: units.gu(4)
@@ -93,34 +97,68 @@ TextFieldWithButton {
 
         HorizontalDivider { anchors { left: parent.left; right: parent.right } }
 
-        ListItem {
-            height: units.gu(4)
-            divider.visible: false
+        /************************************
+        *       Zoom modes controls         *
+        ************************************/
 
-            onClicked: {
-                textField.view.adjustZoomToWidth()
-                zoomSelectorDialogue.close()
+        Repeater {
+            id: zoomModesRepeater
+
+            function delegate_onClicked(mode) {
+                if (mode === LibreOffice.View.FitToWidth)
+                    textField.view.adjustZoomToWidth()
+
+                if (mode === LibreOffice.View.FitToHeight)
+                    textField.view.adjustZoomToHeight()
+
+                if (mode === LibreOffice.View.Automatic)
+                    textField.view.adjustAutomaticZoom()
             }
 
-            /* UITK 1.3 specs: Two slot layout (A-B) */
-            ListItemLayout {
-                anchors.centerIn: parent
+            // Used for hiding the HorizontalDivider below.
+            visible: view.zoomModesAvailable > LibreOffice.View.Manual
 
-                /* UITK 1.3 specs: Slot A */
-                title.text: i18n.tr("Fit width")
+            model: [
+                { text: i18n.tr("Fit width"),  mode: LibreOffice.View.FitToWidth  },
+                { text: i18n.tr("Fit height"), mode: LibreOffice.View.FitToHeight },
+                { text: i18n.tr("Automatic"),  mode: LibreOffice.View.Automatic   }
+            ]
 
-                /* UITK 1.3 specs: Slot B */
-                Icon {
-                    SlotsLayout.position: SlotsLayout.Last
-                    width: units.gu(2); height: width
-                    name: "tick"
-                    color: UbuntuColors.green
-                    visible: textField.view.zoomMode == LibreOffice.View.FitToWidth
+            ListItem {
+                height: units.gu(4)
+                divider.visible: false
+
+                visible: view.zoomModesAvailable & modelData.mode
+
+                onClicked: {
+                    zoomSelectorDialogue.close()
+                    zoomModesRepeater.delegate_onClicked(modelData.mode)
                 }
-            }
-        }   // ListItem
 
-        HorizontalDivider { anchors { left: parent.left; right: parent.right } }
+                /* UITK 1.3 specs: Two slot layout (A-B) */
+                ListItemLayout {
+                    anchors.centerIn: parent
+
+                    /* UITK 1.3 specs: Slot A */
+                    title.text: modelData.text
+
+                    /* UITK 1.3 specs: Slot B */
+                    Icon {
+                        SlotsLayout.position: SlotsLayout.Last
+                        width: units.gu(2); height: width
+                        name: "tick"
+                        color: UbuntuColors.green
+                        visible: textField.view.zoomMode == modelData.mode
+                    }
+                }
+            }   // ListItem
+        }
+
+        HorizontalDivider { visible: zoomModesRepeater.visible; anchors { left: parent.left; right: parent.right } }
+
+        /************************************
+        *   Default zoom values controls    *
+        ************************************/
 
         Repeater {
             model: [

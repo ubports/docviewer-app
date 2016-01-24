@@ -36,23 +36,28 @@ class LOView : public QQuickItem
 {
     Q_OBJECT
     Q_ENUMS(ZoomMode)
-    Q_PROPERTY(QQuickItem*              parentFlickable READ parentFlickable WRITE setParentFlickable NOTIFY parentFlickableChanged)
-    Q_PROPERTY(LODocument*              document        READ document        /*WRITE setDocument*/    NOTIFY documentChanged)
-    Q_PROPERTY(LOPartsModel*            partsModel      READ partsModel                               NOTIFY partsModelChanged)
-    Q_PROPERTY(int                      currentPart     READ currentPart     WRITE setCurrentPart     NOTIFY currentPartChanged)
-    Q_PROPERTY(qreal                    zoomFactor      READ zoomFactor      WRITE setZoomFactor      NOTIFY zoomFactorChanged)
-    Q_PROPERTY(ZoomMode                 zoomMode        READ zoomMode                                 NOTIFY zoomModeChanged)
-    Q_PROPERTY(int                      cacheBuffer     READ cacheBuffer     WRITE setCacheBuffer     NOTIFY cacheBufferChanged)
-    Q_PROPERTY(LibreOfficeError::Error  error           READ error                                    NOTIFY errorChanged)
+    Q_FLAGS(ZoomModes)
+    Q_PROPERTY(QQuickItem*              parentFlickable    READ parentFlickable WRITE setParentFlickable NOTIFY parentFlickableChanged)
+    Q_PROPERTY(LODocument*              document           READ document        /*WRITE setDocument*/    NOTIFY documentChanged)
+    Q_PROPERTY(int                      currentPart        READ currentPart     WRITE setCurrentPart     NOTIFY currentPartChanged)
+    Q_PROPERTY(LOPartsModel*            partsModel         READ partsModel                               NOTIFY partsModelChanged)
+    Q_PROPERTY(qreal                    zoomFactor         READ zoomFactor      WRITE setZoomFactor      NOTIFY zoomFactorChanged)
+    Q_PROPERTY(ZoomMode                 zoomMode           READ zoomMode                                 NOTIFY zoomModeChanged)
+    Q_PROPERTY(int                      cacheBuffer        READ cacheBuffer     WRITE setCacheBuffer     NOTIFY cacheBufferChanged)
+    Q_PROPERTY(LibreOfficeError::Error  error              READ error                                    NOTIFY errorChanged)
+    Q_PROPERTY(ZoomModes                zoomModesAvailable READ zoomModesAvailable                       NOTIFY zoomModesAvailableChanged)
 
 public:
     LOView(QQuickItem *parent = 0);
     ~LOView();
 
     enum ZoomMode {
-        FitToWidth,
-        Manual
+        Manual = 0x0,
+        FitToWidth = 0x1,
+        FitToHeight = 0x2,
+        Automatic = 0x4
     };
+    Q_DECLARE_FLAGS(ZoomModes, ZoomMode)
 
     QQuickItem* parentFlickable() const;
     void        setParentFlickable(QQuickItem* flickable);
@@ -70,12 +75,16 @@ public:
 
     ZoomMode    zoomMode() const;
 
+    ZoomModes   zoomModesAvailable() const;
+
     int         cacheBuffer() const;
     void        setCacheBuffer(int cacheBuffer);
 
     LibreOfficeError::Error error() const;
 
-    Q_INVOKABLE void adjustZoomToWidth();
+    Q_INVOKABLE bool adjustZoomToWidth(bool changeMode = true);
+    Q_INVOKABLE bool adjustZoomToHeight(bool changeMode = true);
+    Q_INVOKABLE bool adjustAutomaticZoom(bool changeMode = true);
 
 Q_SIGNALS:
     void parentFlickableChanged();
@@ -86,6 +95,7 @@ Q_SIGNALS:
     void zoomModeChanged();
     void cacheBufferChanged();
     void errorChanged();
+    void zoomModesAvailableChanged();
 
 private Q_SLOTS:
     void updateViewSize();
@@ -104,6 +114,7 @@ private:
     int                         m_currentPart;
     qreal                       m_zoomFactor;
     ZoomMode                    m_zoomMode;
+    ZoomModes                   m_zoomModesAvailable;
     int                         m_cacheBuffer;
 
     QRect                       m_visibleArea;
@@ -115,6 +126,7 @@ private:
 
     QMap<int, SGTileItem*>      m_tiles;
 
+private:
     void generateTiles(int x1, int y1, int x2, int y2, int tilesPerWidth, int tilesPerHeight);
     void createTile(int index, const QRect& rect);
     void setZoomMode(const ZoomMode zoomMode);
@@ -122,6 +134,7 @@ private:
     TileRenderTask* createTask(const QRect& rect, int id) const;
 
     void setError(const LibreOfficeError::Error &error);
+    void setZoomModesAvailability();
 };
 
 #endif // LOVIEW_H

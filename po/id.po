@@ -7,38 +7,42 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-01-16 13:11+0100\n"
-"PO-Revision-Date: 2015-11-19 18:20+0000\n"
-"Last-Translator: Dirgita <Unknown>\n"
+"POT-Creation-Date: 2016-01-18 00:54+0100\n"
+"PO-Revision-Date: 2016-01-20 03:03+0000\n"
+"Last-Translator: Gema Aji Wardian <gema_wardian@hotmail.com>\n"
 "Language-Team: Indonesian <id@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2016-01-17 05:33+0000\n"
-"X-Generator: Launchpad (build 17886)\n"
+"X-Launchpad-Export-Date: 2016-01-22 06:05+0000\n"
+"X-Generator: Launchpad (build 17902)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
 msgid "Some of the provided arguments are not valid."
-msgstr ""
+msgstr "Beberapa argumen yang diberikan tidak sah."
 
 #: ../src/app/qml/common/CommandLineProxy.qml:58
 msgid "Open ubuntu-docviewer-app displaying the selected file"
-msgstr ""
+msgstr "Buka ubuntu-docviewer-app untuk memunculkan file yang dipilih"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:65
 msgid "Run fullscreen"
-msgstr ""
+msgstr "Jalankan layar penuh"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:71
 msgid "Open ubuntu-docviewer-app in pick mode. Used for tests only."
 msgstr ""
+"Buka ubuntu-docviewer-app dalam posisi memilih. Gunakan hanya untuk "
+"percobaan."
 
 #: ../src/app/qml/common/CommandLineProxy.qml:77
 msgid ""
 "Show documents from the given folder, instead of ~/Documents.\n"
 "The path must exist prior to running ubuntu-docviewer-app"
 msgstr ""
+"Tampilkan dokumen dalam folder yang ditentukan, selain di ~/Documents.\n"
+"Lokasi tersebut harus ada sebelum menjalankan ubuntu-docviewer-app"
 
 #: ../src/app/qml/common/DetailsPage.qml:26
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:107
@@ -49,7 +53,7 @@ msgstr "Detail"
 
 #: ../src/app/qml/common/DetailsPage.qml:42
 msgid "File"
-msgstr ""
+msgstr "Berkas"
 
 #: ../src/app/qml/common/DetailsPage.qml:47
 msgid "Location"
@@ -110,6 +114,8 @@ msgid ""
 "This file is not supported.\n"
 "Do you want to open it as a plain text?"
 msgstr ""
+"Jenis berkas ini tidak didukung.\n"
+"Apakah anda ingin membukanya sebagai teks biasa?"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:38
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:55
@@ -171,7 +177,7 @@ msgstr "Hapus"
 
 #: ../src/app/qml/documentPage/DocumentDelegateActions.qml:44
 msgid "Share"
-msgstr ""
+msgstr "Berbagi"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:75
 msgid "No document found"
@@ -182,6 +188,8 @@ msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
 "folder or insert removable media with documents."
 msgstr ""
+"Hubungkan perangkat anda ke komputer mana saja dan tarik berkas ke folder "
+"Dokumen atau masukan perangkat media dengan dokumen."
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
@@ -202,7 +210,7 @@ msgstr "Kemarin, %1"
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:115
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:134
 msgid "yyyy/MM/dd hh:mm"
-msgstr ""
+msgstr "yyyy/MM/dd hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
@@ -211,17 +219,17 @@ msgid "dddd, hh:mm"
 msgstr "dddd, HH:mm"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
-#: /tmp/lok-qml-currentpart-moved-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
+#: /tmp/build-lok-new-zoom-modes+spreadsheet-zoom-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid_8e2ec5-Default/po/com.ubuntu.docviewer.desktop.in.in.h:3
 msgid "Documents"
-msgstr ""
+msgstr "Dokumen"
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:29
 msgid "Search..."
-msgstr ""
+msgstr "Cari..."
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:36
 msgid "Sorting settings..."
-msgstr ""
+msgstr "Pengaturan sortir..."
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:41
 msgid "Switch to single column list"
@@ -241,7 +249,7 @@ msgstr "Kembali"
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:47
 msgid "search in documents..."
-msgstr ""
+msgstr "cari di dokumen..."
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:40
 msgid "Select None"
@@ -253,12 +261,14 @@ msgstr "Pilih Semua"
 
 #: ../src/app/qml/documentPage/SearchEmptyState.qml:24
 msgid "No matching document found"
-msgstr ""
+msgstr "Tidak ada dokumen yang sama ditemukan"
 
 #: ../src/app/qml/documentPage/SearchEmptyState.qml:26
 msgid ""
 "Please ensure that your query is not misspelled and/or try a different query."
 msgstr ""
+"Tolong pastikan bahwa perintah yang anda masukan benar dan/atau coba dengan "
+"perintah lain."
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:13
 msgid "Today"
@@ -282,27 +292,27 @@ msgstr "Lebih awal lagi..."
 
 #: ../src/app/qml/documentPage/SharePage.qml:23
 msgid "Share to"
-msgstr ""
+msgstr "Bagikan ke"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:26
 msgid "Sorting settings"
-msgstr ""
+msgstr "Pengaturan sortiran"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:31
 msgid "Sort by date (Latest first)"
-msgstr ""
+msgstr "Sortir bedasarkan tanggal (Terbaru dahulu)"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:32
 msgid "Sort by name (A-Z)"
-msgstr ""
+msgstr "Sortir bedasarkan nama (A-Z)"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:33
 msgid "Sort by size (Smaller first)"
-msgstr ""
+msgstr "Sortir bedasarkan ukuran (Terkecil dahulu)"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:47
 msgid "Reverse order"
-msgstr ""
+msgstr "Urutan terbalik"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:51
 #: ../src/app/qml/textView/TextView.qml:43
@@ -311,31 +321,31 @@ msgstr "Memuat..."
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:55
 msgid "LibreOffice text document"
-msgstr ""
+msgstr "Teks dokumen LibreOffice"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:57
 msgid "LibreOffice spread sheet"
-msgstr ""
+msgstr "Spread sheet LibreOffice"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:59
 msgid "LibreOffice presentation"
-msgstr ""
+msgstr "Presentasi LibreOffice"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:61
 msgid "LibreOffice Draw document"
-msgstr ""
+msgstr "Dokumen LibreOffice Draw"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:63
 msgid "Unknown LibreOffice document"
-msgstr ""
+msgstr "Dokumen LibreOffice tidak dikenali"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:65
 msgid "Unknown type document"
-msgstr ""
+msgstr "Jenis dokumen tidak dikenali"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:85
 msgid "Go to position..."
-msgstr ""
+msgstr "Lompat ke posisi..."
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:84
@@ -351,11 +361,11 @@ msgstr "Aktifkan mode malam"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:30
 msgid "Go to position"
-msgstr ""
+msgstr "Lompat ke posisi"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:31
 msgid "Choose a position between 1% and 100%"
-msgstr ""
+msgstr "Pilih posisi diantara 1% dan 100%"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:62
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:58
@@ -364,27 +374,37 @@ msgstr "PERGI!"
 
 #: ../src/app/qml/loView/LOViewPage.qml:129
 msgid "LibreOffice binaries not found."
-msgstr ""
+msgstr "Binary LibreOffice tidak ditemukan."
 
 #: ../src/app/qml/loView/LOViewPage.qml:132
 msgid "Error while loading LibreOffice."
-msgstr ""
+msgstr "Ralat saat membuka LibreOffice."
 
 #: ../src/app/qml/loView/LOViewPage.qml:135
 msgid ""
 "Document not loaded.\n"
 "The requested document may be corrupt or protected by a password."
 msgstr ""
+"Dokumen gagal dimuat.\n"
+"Dokumen yang diminta mungkin korup atau terlindung oleh password."
 
 #. TRANSLATORS: 'LibreOfficeKit' is the name of the library used by
 #. Document Viewer for rendering LibreOffice/MS-Office documents.
 #. Ref. https://docs.libreoffice.org/libreofficekit.html
 #: ../src/app/qml/loView/Splashscreen.qml:45
 msgid "Powered by LibreOfficeKit"
+msgstr "Didukung oleh LibreOfficeKit"
+
+#: ../src/app/qml/loView/ZoomSelector.qml:122
+msgid "Fit width"
+msgstr "Sesuaikan lebar"
+
+#: ../src/app/qml/loView/ZoomSelector.qml:123
+msgid "Fit height"
 msgstr ""
 
-#: ../src/app/qml/loView/ZoomSelector.qml:110
-msgid "Fit width"
+#: ../src/app/qml/loView/ZoomSelector.qml:124
+msgid "Automatic"
 msgstr ""
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
@@ -411,7 +431,7 @@ msgstr "Ke halaman..."
 
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:78
 msgid "Presentation"
-msgstr ""
+msgstr "Presentasi"
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
 msgid "Go to page"
@@ -424,7 +444,7 @@ msgstr "Pilih halaman antara 1 dan %1"
 
 #: ../src/app/qml/ubuntu-docviewer-app.qml:118
 msgid "File does not exist."
-msgstr ""
+msgstr "Berkas tidak ada."
 
 #. TRANSLATORS: This string is used for renaming a copied file,
 #. when a file with the same name already exists in user's
@@ -440,11 +460,11 @@ msgstr ""
 msgid "copy %1"
 msgstr "kopi %1"
 
-#: /tmp/lok-qml-currentpart-moved-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/build-lok-new-zoom-modes+spreadsheet-zoom-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid_8e2ec5-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Penampil Dokumen"
 
-#: /tmp/lok-qml-currentpart-moved-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/build-lok-new-zoom-modes+spreadsheet-zoom-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid_8e2ec5-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "documents;viewer;pdf;reader;dokumen;penampil;pembaca"
 
