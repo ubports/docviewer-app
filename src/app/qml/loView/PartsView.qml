@@ -103,7 +103,7 @@ ListView {
                         fillMode: Image.PreserveAspectFit
                         // Do not store a cache of the thumbnail, so that we don't show
                         // thumbnails of a previously loaded document.
-                        cache: true // TODO PLAY WITH IT
+                        cache: false
                         source: "image://lok/part/%1".arg(model.index)
                     }
                 }
@@ -172,7 +172,7 @@ ListView {
                         fillMode: Image.PreserveAspectFit
                         // Do not store a cache of the thumbnail, so that we don't show
                         // thumbnails of a previously loaded document.
-                        cache: true // TODO PLAY WITH IT
+                        cache: false
                         source: "image://lok/part/%1".arg(model.index)
                     }
                 }
