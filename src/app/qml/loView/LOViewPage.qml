@@ -154,8 +154,21 @@ ViewerPage {
                         }
                     }
 
+                    onContentWidthChanged: console.log(contentWidth, contentHeight)
+
                     Scrollbar { flickableItem: loView; parent: loView.parent }
                     Scrollbar { flickableItem: loView; parent: loView.parent; align: Qt.AlignBottom }
+
+                    EmptyState {
+                        title: i18n.tr("This sheet has no content")
+                        iconName: "x-office-spreadsheet-symbolic"
+
+                        visible: loPage.isSpreadsheet && loView.contentWidth <= 0 && loView.contentHeight <= 0
+                        anchors.centerIn: parent
+                        parent: loPage
+                        z: Number.MAX_VALUE
+                        width: parent.width
+                    }
                 }
             }
 

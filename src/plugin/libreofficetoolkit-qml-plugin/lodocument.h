@@ -35,7 +35,6 @@ class LODocument : public QObject
     Q_PROPERTY(QString                 path         READ path         WRITE setPath         NOTIFY pathChanged)
     // Declare partsCount as constant at the moment, since LOK-plugin is just a viewer for now.
     Q_PROPERTY(int                     partsCount   READ partsCount                                                    CONSTANT)
-    Q_PROPERTY(int                     documentPart READ documentPart WRITE setDocumentPart NOTIFY documentPartChanged)
     Q_PROPERTY(DocumentType            documentType READ documentType                       NOTIFY documentTypeChanged)
     Q_PROPERTY(LibreOfficeError::Error error        READ error                              NOTIFY errorChanged)
     Q_ENUMS(DocumentType)
@@ -57,10 +56,7 @@ public:
 
     DocumentType documentType() const;
 
-    int documentPart() const;
-    void setDocumentPart(int p);
-
-    QSize documentSize() const;
+    QSize documentSize(int part) const;
 
     QImage paintTile(int part, const QSize& canvasSize, const QRect& tileSize, const qreal& zoom = 1.0);
     QImage paintThumbnail(int part, qreal size);

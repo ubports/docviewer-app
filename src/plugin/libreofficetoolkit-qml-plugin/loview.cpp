@@ -49,6 +49,7 @@ LOView::LOView(QQuickItem *parent)
     connect(this, SIGNAL(zoomFactorChanged()), this, SLOT(updateViewSize()));
     connect(this, SIGNAL(parentFlickableChanged()), this, SLOT(updateVisibleRect()));
     connect(this, SIGNAL(cacheBufferChanged()), this, SLOT(updateVisibleRect()));
+    connect(this, SIGNAL(currentPartChanged()), this, SLOT(invalidateAllTiles()));
     connect(&m_updateTimer, SIGNAL(timeout()), this, SLOT(updateVisibleRect()));
 
     connect(RenderEngine::instance(), &RenderEngine::taskRenderFinished,
@@ -114,9 +115,6 @@ void LOView::initializeDocument(const QString &path)
     m_imageProvider = new LOPartsImageProvider(m_document);
     engine->addImageProvider("lok", m_imageProvider);
     // --------------------------------------------------
-
-    setCurrentPart(0);
-    connect(this, SIGNAL(currentPartChanged()), this, SLOT(invalidateAllTiles()));
 
     Q_EMIT documentChanged();
 }
@@ -207,7 +205,7 @@ void LOView::adjustZoomToWidth()
     setZoomMode(LOView::FitToWidth);
 
     zoomValueToFitWidth = getZoomToFitWidth(m_parentFlickable->width(),
-                                            m_document->documentSize().width());
+                                            m_document->documentSize(m_currentPart).width());
 
     setZoomFactor(zoomValueToFitWidth);
     qDebug() << "Adjust zoom to width - value:" << zoomValueToFitWidth;
@@ -218,7 +216,7 @@ void LOView::updateViewSize()
     if (!m_document)
         return;
 
-    QSize docSize = m_document->documentSize();
+    QSize docSize = m_document->documentSize(m_currentPart);
 
     this->setWidth(Twips::convertTwipsToPixels(docSize.width(), m_zoomFactor));
     this->setHeight(Twips::convertTwipsToPixels(docSize.height(), m_zoomFactor));
@@ -242,7 +240,7 @@ void LOView::updateVisibleRect()
     // function again.
     if (m_zoomMode == LOView::FitToWidth) {
         zoomValueToFitWidth = getZoomToFitWidth(m_parentFlickable->width(),
-                                                m_document->documentSize().width());
+                                                m_document->documentSize(m_currentPart).width());
 
         if (m_zoomFactor != zoomValueToFitWidth) {
             setZoomFactor(zoomValueToFitWidth);
