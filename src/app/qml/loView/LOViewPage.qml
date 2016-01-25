@@ -154,8 +154,6 @@ ViewerPage {
                         }
                     }
 
-                    onContentWidthChanged: console.log(contentWidth, contentHeight)
-
                     Scrollbar { flickableItem: loView; parent: loView.parent }
                     Scrollbar { flickableItem: loView; parent: loView.parent; align: Qt.AlignBottom }
 
