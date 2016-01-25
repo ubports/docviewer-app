@@ -28,12 +28,34 @@ Flickable {
     property alias error:       view.error
     property alias currentPart: view.currentPart
 
+    property alias zoomModesAvailable: view.zoomModesAvailable
+
     property string documentPath: ""
 
     function adjustZoomToWidth()
     {
         var oldZoom = view.zoomFactor
         view.adjustZoomToWidth()
+
+        var zoomScale = view.zoomFactor / oldZoom
+        rootFlickable.contentX *= zoomScale
+        rootFlickable.contentY *= zoomScale
+    }
+
+    function adjustZoomToHeight()
+    {
+        var oldZoom = view.zoomFactor
+        view.adjustZoomToHeight()
+
+        var zoomScale = view.zoomFactor / oldZoom
+        rootFlickable.contentX *= zoomScale
+        rootFlickable.contentY *= zoomScale
+    }
+
+    function adjustAutomaticZoom()
+    {
+        var oldZoom = view.zoomFactor
+        view.adjustAutomaticZoom()
 
         var zoomScale = view.zoomFactor / oldZoom
         rootFlickable.contentX *= zoomScale
@@ -92,7 +114,7 @@ Flickable {
 
     boundsBehavior: Flickable.StopAtBounds
 
-    Component.onCompleted: adjustZoomToWidth()
+    //Component.onCompleted: adjustZoomToWidth()
 
     LibreOffice.View {
         id: view

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-01-14 08:46-0500\n"
+"POT-Creation-Date: 2016-01-18 00:54+0100\n"
 "PO-Revision-Date: 2015-11-19 18:20+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Welsh <cy@li.org>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 0 : n==2 ? 1 : (n != 8 && n != 11) ? "
 "2 : 3;\n"
-"X-Launchpad-Export-Date: 2016-01-16 05:53+0000\n"
-"X-Generator: Launchpad (build 17886)\n"
+"X-Launchpad-Export-Date: 2016-01-22 06:05+0000\n"
+"X-Generator: Launchpad (build 17902)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
 msgid "Some of the provided arguments are not valid."
@@ -224,7 +224,7 @@ msgid "dddd, hh:mm"
 msgstr "dddd, hh:mm"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
-#: /home/mhall/projects/Ubuntu/coreapps/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
+#: /tmp/build-lok-new-zoom-modes+spreadsheet-zoom-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid_8e2ec5-Default/po/com.ubuntu.docviewer.desktop.in.in.h:3
 msgid "Documents"
 msgstr "Dogfennau"
 
@@ -398,8 +398,16 @@ msgstr ""
 msgid "Powered by LibreOfficeKit"
 msgstr ""
 
-#: ../src/app/qml/loView/ZoomSelector.qml:110
+#: ../src/app/qml/loView/ZoomSelector.qml:122
 msgid "Fit width"
+msgstr ""
+
+#: ../src/app/qml/loView/ZoomSelector.qml:123
+msgid "Fit height"
+msgstr ""
+
+#: ../src/app/qml/loView/ZoomSelector.qml:124
+msgid "Automatic"
 msgstr ""
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
@@ -455,11 +463,11 @@ msgstr ""
 msgid "copy %1"
 msgstr "copi %1"
 
-#: /home/mhall/projects/Ubuntu/coreapps/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/build-lok-new-zoom-modes+spreadsheet-zoom-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid_8e2ec5-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Syllwr Dogfen"
 
-#: /home/mhall/projects/Ubuntu/coreapps/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/build-lok-new-zoom-modes+spreadsheet-zoom-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid_8e2ec5-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "dogfennau;syllwr;pdf;darllenydd;"
 

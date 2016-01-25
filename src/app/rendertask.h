@@ -21,6 +21,7 @@ enum RenderTaskType
 class AbstractRenderTask
 {
 public:
+    AbstractRenderTask(): m_id(0), m_isOwnedByCaller(false) { }
     virtual RenderTaskType type() { return RttUnknown; }
     virtual QImage doWork() = 0 ;
     virtual ~AbstractRenderTask() { }
@@ -29,8 +30,11 @@ public:
 
     int id() { return m_id; }
     void setId(int i) { m_id = i; }
+    bool isOwnedByCaller() { return m_isOwnedByCaller; }
+    void setIsOwnedByCaller(bool v) { m_isOwnedByCaller = v; }
 protected:
     int m_id;
+    bool m_isOwnedByCaller;
 };
 
 Q_DECLARE_METATYPE(AbstractRenderTask*)

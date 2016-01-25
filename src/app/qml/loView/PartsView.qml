@@ -84,14 +84,28 @@ ListView {
                 anchors.fill: parent
 
                 /* UITK 1.3 specs: Slot B */
-                Image {
+                Item {
                     SlotsLayout.position: SlotsLayout.Leading
                     height: parent.height; width: height
-                    fillMode: Image.PreserveAspectFit
-                    // Do not store a cache of the thumbnail, so that we don't show
-                    // thumbnails of a previously loaded document.
-                    cache: true // TODO PLAY WITH IT
-                    source: model.thumbnail
+                    BorderImage {
+                        anchors {
+                            centerIn: parent
+                            verticalCenterOffset: units.gu(0.25)
+                            horizontalCenterOffset: units.gu(0.25)
+                        }
+                        width: vThumbnail.paintedWidth + units.gu(1.5)
+                        height: vThumbnail.paintedHeight + units.gu(1.5)
+                        source: "graphics/dropshadow.sci"
+                    }
+                    Image {
+                        id: vThumbnail
+                        anchors.fill: parent
+                        fillMode: Image.PreserveAspectFit
+                        // Do not store a cache of the thumbnail, so that we don't show
+                        // thumbnails of a previously loaded document.
+                        cache: true // TODO PLAY WITH IT
+                        source: model.thumbnail
+                    }
                 }
 
                 /* UITK 1.3 specs: Slot A */
@@ -139,14 +153,28 @@ ListView {
                 }
                 spacing: units.gu(0.5)
 
-                Image {
+                Item {
                     Layout.fillWidth: true
                     Layout.preferredHeight: width
-                    fillMode: Image.PreserveAspectFit
-                    // Do not store a cache of the thumbnail, so that we don't show
-                    // thumbnails of a previously loaded document.
-                    cache: true // TODO PLAY WITH IT
-                    source: model.thumbnail
+                    BorderImage {
+                        anchors {
+                            centerIn: parent
+                            verticalCenterOffset: units.gu(0.25)
+                            horizontalCenterOffset: units.gu(0.25)
+                        }
+                        width: hThumbnail.paintedWidth + units.gu(1.5)
+                        height: hThumbnail.paintedHeight + units.gu(1.5)
+                        source: "graphics/dropshadow.sci"
+                    }
+                    Image {
+                        id: hThumbnail
+                        anchors.fill: parent
+                        fillMode: Image.PreserveAspectFit
+                        // Do not store a cache of the thumbnail, so that we don't show
+                        // thumbnails of a previously loaded document.
+                        cache: true // TODO PLAY WITH IT
+                        source: model.thumbnail
+                    }
                 }
 
                 Label {
