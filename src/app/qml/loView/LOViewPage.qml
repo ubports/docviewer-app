@@ -159,15 +159,12 @@ ViewerPage {
                     Scrollbar { flickableItem: loView; parent: loView.parent }
                     Scrollbar { flickableItem: loView; parent: loView.parent; align: Qt.AlignBottom }
 
-                    EmptyState {
-                        title: i18n.tr("This sheet has no content")
-                        iconName: "x-office-spreadsheet-symbolic"
-
-                        visible: loPage.isSpreadsheet && loView.contentWidth <= 0 && loView.contentHeight <= 0
+                    Label {
                         anchors.centerIn: parent
                         parent: loPage
-                        z: Number.MAX_VALUE
-                        width: parent.width
+                        textSize: Label.Large
+                        text: i18n.tr("This sheet has no content.")
+                        visible: loPage.isSpreadsheet && loView.contentWidth <= 0 && loView.contentHeight <= 0
                     }
                 }
             }
