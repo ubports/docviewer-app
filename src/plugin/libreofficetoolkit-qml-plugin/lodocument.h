@@ -70,7 +70,6 @@ public:
 Q_SIGNALS:
     void pathChanged();
     void documentTypeChanged();
-    void documentPartChanged();
     void errorChanged();
 
 private:
