@@ -9,10 +9,9 @@
 #include <QSGFlatColorMaterial>
 #endif
 
-SGTileItem::SGTileItem(const QRect& area, qreal zoom, int id, QQuickItem *parent)
+SGTileItem::SGTileItem(const QRect& area, int id, QQuickItem *parent)
     : QQuickItem(parent)
     , m_area(area)
-    , m_zoomFactor(zoom)
     , m_id (id)
 {
     setFlag(ItemHasContents, true);
