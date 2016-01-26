@@ -217,56 +217,10 @@ void LOView::updateVisibleRect()
     if (!m_parentFlickable || !m_document)
         return;
 
-    /*
-     * Following code requires a bit of explanation:
-     *
-     * updateVisibleRect() is called when several events occures:
-     *   - cacheBuffer value changes;
-     *   - parentFlickable changes;
-     *   - parentFlickable size changes;
-     *   - parentFlickable is scrolled;
-     *   - A new document is loaded (through LOView::updateViewSize())
-     *   - The zoom value changes (through LOView::updateViewSize())
-     *
-     * We are interested to the last case.
-     * We have two different zoom behaviour: manual or automatic.
-     *
-     * When manual zoom is active, and a new zoom value is set, there is no
-     * other change/signal emission involved.
-     * The schema is:
-     *   zoomFactorChanged -> updateViewSize() -> updateVisibleRect()
-     *
-     * When automatic zoom is active, things are a bit different.
-     * updateVisibleRect() could be triggered for two reasons:
-     *   - User explicitely set the new zoom behaviour (e.g. through
-     *     LOView::adjustZoomToWidth())
-     *   - The parent flickable has been resized.
-     *
-     * For the former case, the schema is:
-     *   adjustZoomToWidth() -> zoomFactorChanged -> updateViewSize() ->
-     *     -> updateVisibleRect()
-     *
-     * For the latter, the code below is involved.
-     * At first we have:
-     *   parentFlickableSizeChanged -> updateVisibleRect()
-     *
-     * When this function is called, we need to check if the zoom value is still
-     * valid. If not, we need to adjust the zoom (e.g. calling
-     * LOView::adjustZoomToWidth(false)).
-     *
-     * If the zoom value changes (i.e. required an adjustment), we have a
-     * zoomFactorChanged signal emission, which would call this function twice
-     * (see manual zoom, explained above).
-     * We want to avoid updateVisibleRect() to be called for nothing, so we stop
-     * the first execution of the function when this happens, and wait for the
-     * second one (via updateViewSize()).
-     *
-     * A full schema is:
-     *   parentFlickableSizeChanged -> updateVisibleRect() ->
-     *     -> adjustZoomToWidth(false) -> STOP THIS EXECUTION, returns
-     *                                 L-> zoomFactorChanged() -> updateViewSize() -> updateVisibleRect()
-     */
-
+    // When we adjust the zoom value of an automatic zoom
+    // mode, the view has to update the document size first.
+    // updateVisibleRect() will be automatically triggered
+    // later.
     if (m_zoomSettings->zoomMode() == LOZoom::FitToWidth) {
         if (m_zoomSettings->adjustZoomToWidth(false))
             return;
