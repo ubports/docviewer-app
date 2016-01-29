@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-18 00:54+0100\n"
+"POT-Creation-Date: 2016-01-29 14:34+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -177,14 +177,14 @@ msgstr ""
 msgid "Share"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentEmptyState.qml:75
-msgid "No document found"
+#: ../src/app/qml/documentPage/DocumentEmptyState.qml:27
+msgid "No documents found"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentEmptyState.qml:84
+#: ../src/app/qml/documentPage/DocumentEmptyState.qml:28
 msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
-"folder or insert removable media with documents."
+"folder or insert removable media containing documents."
 msgstr ""
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
@@ -215,7 +215,7 @@ msgid "dddd, hh:mm"
 msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
-#: /tmp/build-lok-new-zoom-modes+spreadsheet-zoom-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid_8e2ec5-Default/po/com.ubuntu.docviewer.desktop.in.in.h:3
+#: /tmp/new-empty-state-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
 msgid "Documents"
 msgstr ""
 
@@ -452,10 +452,10 @@ msgstr ""
 msgid "copy %1"
 msgstr ""
 
-#: /tmp/build-lok-new-zoom-modes+spreadsheet-zoom-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid_8e2ec5-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/new-empty-state-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr ""
 
-#: /tmp/build-lok-new-zoom-modes+spreadsheet-zoom-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid_8e2ec5-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/new-empty-state-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr ""

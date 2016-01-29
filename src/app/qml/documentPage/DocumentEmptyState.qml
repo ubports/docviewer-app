@@ -24,8 +24,8 @@ Item {
 
     EmptyState {
         anchors.centerIn: parent
-        title: i18n.tr("No document found")
-        subTitle: i18n.tr("Connect your device to any computer and simply drag files to the Documents folder or insert removable media with documents.")
+        title: i18n.tr("No documents found")
+        subTitle: i18n.tr("Connect your device to any computer and simply drag files to the Documents folder or insert removable media containing documents.")
 
         Item {
             height: parent.height
