@@ -10,7 +10,8 @@
         "/dev/disk/by-label/"
     ],
     "write_path": [
-        "@{HOME}/Documents/"
+        "@{HOME}/Documents/",
+        "/media/*/*/[Dd][Oo][Cc][Uu][Mm][Ee][Nn][Tt][Ss]/"
     ],
     "policy_version": 1.3
 }

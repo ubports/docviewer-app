@@ -23,7 +23,7 @@
 #include <QHash>
 #include <QDebug>
 
-#include "rendertask.h"
+#include "lorendertask.h"
 
 class LODocument;
 

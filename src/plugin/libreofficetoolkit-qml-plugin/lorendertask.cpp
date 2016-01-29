@@ -1,4 +1,4 @@
-#include "rendertask.h"
+#include "lorendertask.h"
 
 bool LoRenderTask::canBeRunInParallel(AbstractRenderTask* prevTask)
 {
@@ -16,10 +16,10 @@ bool LoRenderTask::canBeRunInParallel(AbstractRenderTask* prevTask)
 
 QImage TileRenderTask::doWork()
 {
-    return m_document->paintTile(m_area.size(), m_area, m_zoom);
+    return m_document->paintTile(m_part, m_area.size(), m_area, m_zoom);
 }
 
 QImage ThumbnailRenderTask::doWork()
 {
-    return m_document->paintThumbnail(m_size);
+    return m_document->paintThumbnail(m_part, m_size);
 }

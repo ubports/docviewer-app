@@ -18,6 +18,7 @@ import QtQuick 2.4
 import Ubuntu.Components 1.3
 import Ubuntu.Components.Popups 1.3
 import QtQuick.Layouts 1.1
+import DocumentViewer 1.0
 import DocumentViewer.PDF 1.0 as PDF
 
 import "../common"
@@ -25,7 +26,7 @@ import "../common/utils.js" as Utils
 
 Page {
     id: pdfPage
-    title: Utils.getNameOfFile(file.path)
+    title: DocumentViewer.getFileBaseNameFromPath(file.path)
 
     header: PageHeader {
         flickable: pdfView
@@ -60,6 +61,9 @@ Page {
     // Reset night mode shader settings when closing the page
     // Component.onDestruction: mainView.nightModeEnabled = false
 
+    Keys.onPressed: {
+        if (event.key == Qt.Key_F5) { pageStack.push(Qt.resolvedUrl("./PdfPresentation.qml"), {'poppler': poppler}); }
+    }
     Rectangle {
         // Since UITK 1.3, the MainView background is white.
         // We need to set a different color, otherwise pages
@@ -73,7 +77,7 @@ Page {
         objectName: "pdfView"
 
         anchors.fill: parent
-        topMargin: pdfPage.header.height
+        anchors.topMargin: pdfPage.header.height
         spacing: units.gu(2)
 
         boundsBehavior: Flickable.StopAtBounds

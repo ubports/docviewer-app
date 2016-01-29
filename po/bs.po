@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-12-02 16:11+0100\n"
-"PO-Revision-Date: 2015-11-19 20:46+0000\n"
+"POT-Creation-Date: 2016-01-18 00:54+0100\n"
+"PO-Revision-Date: 2015-12-20 12:49+0000\n"
 "Last-Translator: Kenan Gutić <Unknown>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,16 +16,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2015-12-03 06:19+0000\n"
-"X-Generator: Launchpad (build 17856)\n"
+"X-Launchpad-Export-Date: 2016-01-22 06:04+0000\n"
+"X-Generator: Launchpad (build 17902)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
 msgid "Some of the provided arguments are not valid."
-msgstr ""
+msgstr "Neki od datih argumenata nisu validni."
 
 #: ../src/app/qml/common/CommandLineProxy.qml:58
 msgid "Open ubuntu-docviewer-app displaying the selected file"
-msgstr ""
+msgstr "Otvori ubuntu-docviewer-app prikazujući odabrani dokument"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:65
 msgid "Run fullscreen"
@@ -34,37 +34,44 @@ msgstr "Pokreni u punom prikazu"
 #: ../src/app/qml/common/CommandLineProxy.qml:71
 msgid "Open ubuntu-docviewer-app in pick mode. Used for tests only."
 msgstr ""
+"Otvori ubuntu-docviewer-app u modu za odabir. Koristiti samo za testiranje."
 
 #: ../src/app/qml/common/CommandLineProxy.qml:77
 msgid ""
 "Show documents from the given folder, instead of ~/Documents.\n"
 "The path must exist prior to running ubuntu-docviewer-app"
 msgstr ""
+"Pokaži dokumente iz datog direktorija, umjesto iz ~/Documents.\n"
+"Putanja mora postojati prije pokretanja ubuntu-docviewer-app"
 
-#: ../src/app/qml/common/DetailsPage.qml:25
+#: ../src/app/qml/common/DetailsPage.qml:26
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:107
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:83
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:90
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:69
 msgid "Details"
 msgstr "Detalji"
 
-#: ../src/app/qml/common/DetailsPage.qml:36
+#: ../src/app/qml/common/DetailsPage.qml:42
+msgid "File"
+msgstr ""
+
+#: ../src/app/qml/common/DetailsPage.qml:47
 msgid "Location"
 msgstr "Lokacija"
 
-#: ../src/app/qml/common/DetailsPage.qml:41
+#: ../src/app/qml/common/DetailsPage.qml:52
 msgid "Size"
 msgstr "Veličina"
 
-#: ../src/app/qml/common/DetailsPage.qml:46
+#: ../src/app/qml/common/DetailsPage.qml:57
 msgid "Created"
 msgstr "Kreirano"
 
-#: ../src/app/qml/common/DetailsPage.qml:51
+#: ../src/app/qml/common/DetailsPage.qml:62
 msgid "Last modified"
 msgstr "Zadnja izmjena"
 
-#: ../src/app/qml/common/DetailsPage.qml:58
+#: ../src/app/qml/common/DetailsPage.qml:69
 msgid "MIME type"
 msgstr "MIME vrsta"
 
@@ -73,18 +80,18 @@ msgid "Error"
 msgstr "Greška"
 
 #: ../src/app/qml/common/ErrorDialog.qml:26
-#: ../src/app/qml/common/PickImportedDialog.qml:53
+#: ../src/app/qml/common/PickImportedDialog.qml:54
 #: ../src/app/qml/common/RejectedImportDialog.qml:38
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:31
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:53
 msgid "Close"
 msgstr "Zatvori"
 
-#: ../src/app/qml/common/PickImportedDialog.qml:28
+#: ../src/app/qml/common/PickImportedDialog.qml:29
 msgid "Multiple documents imported"
 msgstr "Višestruki dokumenti ubačeni"
 
-#: ../src/app/qml/common/PickImportedDialog.qml:29
+#: ../src/app/qml/common/PickImportedDialog.qml:30
 msgid "Choose which one to open:"
 msgstr "Izaberite koji ćete otvoriti:"
 
@@ -111,6 +118,8 @@ msgid ""
 "This file is not supported.\n"
 "Do you want to open it as a plain text?"
 msgstr ""
+"Ovaj dokument nije podržan.\n"
+"Da li ga želite otvoriti kao obični tekst?"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:38
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:55
@@ -178,11 +187,11 @@ msgstr "Obriši"
 msgid "Share"
 msgstr "Podijeli"
 
-#: ../src/app/qml/documentPage/DocumentEmptyState.qml:24
+#: ../src/app/qml/documentPage/DocumentEmptyState.qml:75
 msgid "No document found"
 msgstr "Dokumen nije pronađen"
 
-#: ../src/app/qml/documentPage/DocumentEmptyState.qml:25
+#: ../src/app/qml/documentPage/DocumentEmptyState.qml:84
 msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
 "folder or insert removable media with documents."
@@ -192,33 +201,33 @@ msgstr ""
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:100
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:103
 #, qt-format
 msgid "Today, %1"
 msgstr "Danas, %1"
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:105
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:108
 #, qt-format
 msgid "Yesterday, %1"
 msgstr "Jučer, %1"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:112
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:131
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:115
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:134
 msgid "yyyy/MM/dd hh:mm"
 msgstr "dd.MM.yyyy hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:125
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:128
 msgid "dddd, hh:mm"
 msgstr "dddd, hh:mm"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
-#: /tmp/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:3
+#: /tmp/build-lok-new-zoom-modes+spreadsheet-zoom-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid_8e2ec5-Default/po/com.ubuntu.docviewer.desktop.in.in.h:3
 msgid "Documents"
 msgstr "Dokumenti"
 
@@ -314,7 +323,7 @@ msgid "Reverse order"
 msgstr "Okreni red"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:51
-#: ../src/app/qml/textView/TextView.qml:42
+#: ../src/app/qml/textView/TextView.qml:43
 msgid "Loading..."
 msgstr "Učitavanje..."
 
@@ -347,13 +356,13 @@ msgid "Go to position..."
 msgstr "Idi na poziciju..."
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:77
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:84
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Disable night mode"
 msgstr "Isključni noćni režim"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:77
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:84
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Enable night mode"
 msgstr "Uključi noćni režim"
@@ -371,18 +380,18 @@ msgstr "Izaberite poziciju između 1% i 100%"
 msgid "GO!"
 msgstr "IDI!"
 
-#: ../src/app/qml/loView/LOViewPage.qml:128
+#: ../src/app/qml/loView/LOViewPage.qml:129
 msgid "LibreOffice binaries not found."
-msgstr ""
+msgstr "Nisu pronađeni LibreOffice binaries."
 
-#: ../src/app/qml/loView/LOViewPage.qml:131
+#: ../src/app/qml/loView/LOViewPage.qml:132
 msgid "Error while loading LibreOffice."
-msgstr ""
+msgstr "Greška pri učitavanja LibreOffice."
 
-#: ../src/app/qml/loView/LOViewPage.qml:134
+#: ../src/app/qml/loView/LOViewPage.qml:135
 msgid ""
 "Document not loaded.\n"
-"The requested document may be corrupt."
+"The requested document may be corrupt or protected by a password."
 msgstr ""
 
 #. TRANSLATORS: 'LibreOfficeKit' is the name of the library used by
@@ -390,15 +399,23 @@ msgstr ""
 #. Ref. https://docs.libreoffice.org/libreofficekit.html
 #: ../src/app/qml/loView/Splashscreen.qml:45
 msgid "Powered by LibreOfficeKit"
+msgstr "Pokreće LibreOfficeKit"
+
+#: ../src/app/qml/loView/ZoomSelector.qml:122
+msgid "Fit width"
+msgstr "Uklopi širinu"
+
+#: ../src/app/qml/loView/ZoomSelector.qml:123
+msgid "Fit height"
 msgstr ""
 
-#: ../src/app/qml/loView/ZoomSelector.qml:110
-msgid "Fit width"
+#: ../src/app/qml/loView/ZoomSelector.qml:124
+msgid "Automatic"
 msgstr ""
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:30
-#: ../src/app/qml/pdfView/PdfView.qml:37
+#: ../src/app/qml/pdfView/PdfView.qml:38
 msgid "Contents"
 msgstr "Sadržaji"
 
@@ -408,7 +425,8 @@ msgstr "Sakrij tabelu sadržaja"
 
 #. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
 #. while the second one (%2) refers to the total pages count.
-#: ../src/app/qml/pdfView/PdfView.qml:34
+#: ../src/app/qml/pdfView/PdfPresentation.qml:51
+#: ../src/app/qml/pdfView/PdfView.qml:35
 #, qt-format
 msgid "Page %1 of %2"
 msgstr "Stranica %1 od %2"
@@ -416,6 +434,10 @@ msgstr "Stranica %1 od %2"
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:71
 msgid "Go to page..."
 msgstr "Idi na stranicu..."
+
+#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:78
+msgid "Presentation"
+msgstr ""
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
 msgid "Go to page"
@@ -428,7 +450,7 @@ msgstr "Izaberi stranicu između 1 i %1"
 
 #: ../src/app/qml/ubuntu-docviewer-app.qml:118
 msgid "File does not exist."
-msgstr ""
+msgstr "Datoteka ne postoji."
 
 #. TRANSLATORS: This string is used for renaming a copied file,
 #. when a file with the same name already exists in user's
@@ -444,11 +466,11 @@ msgstr ""
 msgid "copy %1"
 msgstr "kopija %1"
 
-#: /tmp/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/build-lok-new-zoom-modes+spreadsheet-zoom-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid_8e2ec5-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Preglednik dokumenta"
 
-#: /tmp/build-ubuntu-docviewer-app-Desktop-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/build-lok-new-zoom-modes+spreadsheet-zoom-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid_8e2ec5-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "dokumenti;preglednik;pdf;čitač;"
 

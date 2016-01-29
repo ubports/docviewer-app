@@ -9,3 +9,6 @@ THIS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 echo "Disable file locking in LibreOffice"
 cp $THIS_DIR/disable-file-locking.xcd $LO_REGISTRY
+
+echo "Disable spell checking in LibreOffice"
+cp $THIS_DIR/disable-spell-check.xcd $LO_REGISTRY

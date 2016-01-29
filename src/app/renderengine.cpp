@@ -28,7 +28,10 @@ void RenderEngine::dequeueTask(int id)
         auto task = m_queue.at(i);
         if (task->id() == id) {
             m_queue.removeAt(i);
-            disposeLater(task);
+
+            if (!task->isOwnedByCaller())
+                disposeLater(task);
+
             break;
         }
     }
@@ -38,16 +41,18 @@ void RenderEngine::internalRenderCallback(AbstractRenderTask* task, QImage img)
 {
     m_activeTaskCount--;
 
-    if (!m_activeTaskCount) {
-        m_lastTask = nullptr;
-        doDispose();
-    }
+    if (!task->isOwnedByCaller())
+        disposeLater(task);
 
     // Notify about result.
     emit taskRenderFinished(task, img);
 
     doNextTask();
-    disposeLater(task);
+
+    if (!m_activeTaskCount) {
+        m_lastTask = nullptr;
+        doDispose();
+    }
 }
 
 void RenderEngine::disposeLater(AbstractRenderTask *task)
