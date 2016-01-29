@@ -23,6 +23,7 @@
 #include "loview.h"
 #include "lopartsmodel.h"
 #include "loerror.h"
+#include "lozoom.h"
 
 void LOPlugin::registerTypes(const char *uri)
 {
@@ -31,6 +32,7 @@ void LOPlugin::registerTypes(const char *uri)
     //@uri DocumentViewer.LibreOffice
     qmlRegisterType<LODocument>(uri, 1, 0, "Document");
     qmlRegisterType<LOView>(uri, 1, 0, "View");
+    qmlRegisterUncreatableType<LOZoom>(uri, 1, 0, "Zoom", "Not creatable as an object, use only to retrieve error enums (e.g. LibreOffice.Zoom.Manual)");
     qmlRegisterUncreatableType<LOPartsModel>(uri, 1, 0, "PartsModel", "You shouldn't create LOPartsModel in QML");
     qmlRegisterUncreatableType<LibreOfficeError>(uri, 1, 0, "Error", "Not creatable as an object, use only to retrieve error enums (e.g. LibreOffice.Error.DocumentNotFound)");
 }

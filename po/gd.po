@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-01-18 00:54+0100\n"
-"PO-Revision-Date: 2015-12-30 20:01+0000\n"
-"Last-Translator: GunChleoc <Unknown>\n"
+"PO-Revision-Date: 2016-01-26 22:29+0000\n"
+"Last-Translator: Akerbeltz <fios@akerbeltz.org>\n"
 "Language-Team: Fòram na Gàidhlig\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : "
 "(n > 2 && n < 20) ? 2 : 3;\n"
-"X-Launchpad-Export-Date: 2016-01-22 06:05+0000\n"
+"X-Launchpad-Export-Date: 2016-01-27 05:37+0000\n"
 "X-Generator: Launchpad (build 17902)\n"
 "Language: gd\n"
 
@@ -55,7 +55,7 @@ msgstr "Mion-fhiosrachadh"
 
 #: ../src/app/qml/common/DetailsPage.qml:42
 msgid "File"
-msgstr ""
+msgstr "Faidhle"
 
 #: ../src/app/qml/common/DetailsPage.qml:47
 msgid "Location"
@@ -425,11 +425,11 @@ msgstr "Co-fhreagair ris an leud"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:123
 msgid "Fit height"
-msgstr ""
+msgstr "Co-fhreagair an àirde"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:124
 msgid "Automatic"
-msgstr ""
+msgstr "Fèin-obrachail"
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:30
@@ -455,7 +455,7 @@ msgstr "Rach gu duilleag..."
 
 #: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:78
 msgid "Presentation"
-msgstr ""
+msgstr "Taisbeanadh"
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
 msgid "Go to page"

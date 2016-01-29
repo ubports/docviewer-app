@@ -115,7 +115,7 @@ ViewerPage {
                     documentPath: file.path
 
                     function updateContentSize(tgtScale) {
-                        zoomFactor = tgtScale
+                        zoomSettings.zoomFactor = tgtScale
                     }
 
                     // Keyboard events
