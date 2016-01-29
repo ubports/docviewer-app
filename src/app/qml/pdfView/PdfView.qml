@@ -16,28 +16,47 @@
 
 import QtQuick 2.4
 import Ubuntu.Components 1.3
+import Ubuntu.Components.Popups 1.3
+import QtQuick.Layouts 1.1
 import DocumentViewer 1.0
 import DocumentViewer.PDF 1.0 as PDF
 
 import "../common"
 import "../common/utils.js" as Utils
 
-// TODO: Use UITK 1.3 BottomEdge component when available
-
-PageWithBottomEdge {
+Page {
     id: pdfPage
     title: DocumentViewer.getFileBaseNameFromPath(file.path)
 
-    flickable: pdfView
+    header: PageHeader {
+        flickable: pdfView
 
-    // TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
-    // while the second one (%2) refers to the total pages count.
-    property string currentPage: i18n.tr("Page %1 of %2").arg(pdfView.currentPageIndex + 1).arg(pdfView.count)
+        trailingActionBar.actions: [ searchText, goToPage, nightModeToggle, fileDetails ]
 
-    // TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
-    bottomEdgeTitle: i18n.tr("Contents")
-    bottomEdgePageComponent: PdfContentsPage { }
-    bottomEdgeEnabled: poppler.tocModel.count > 0
+        contents: ListItemLayout {
+            anchors.centerIn: parent
+
+            ActivityIndicator {
+                SlotsLayout.position: SlotsLayout.Leading
+                SlotsLayout.overrideVerticalPositioning: true
+                y: (parent.height - height) * 0.5
+                running: pdfView.currentPageItem.status == Image.Loading || poppler.isLoading
+                visible: running
+            }
+
+            title {
+                font.weight: Font.DemiBold
+                text: pdfPage.title
+            }
+
+            subtitle {
+                textSize: Label.Small
+                // TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
+                // while the second one (%2) refers to the total pages count.
+                text: i18n.tr("Page %1 of %2").arg(pdfView.currentPageIndex + 1).arg(pdfView.count)
+            }
+        }
+    }
 
     // Reset night mode shader settings when closing the page
     // Component.onDestruction: mainView.nightModeEnabled = false
@@ -57,17 +76,8 @@ PageWithBottomEdge {
         id: pdfView
         objectName: "pdfView"
 
-        anchors {
-            fill: parent
-
-            // WORKAROUND: If we set 'pdfPage.flickable' property, 'pdfView' is not
-            // longer aligned to the bottom of the header, but to the top instead.
-            // This is deprecated code though, and it's not worth to spend more time
-            // for a proper fix here.
-            // (This is likely a bug in the VerticalView class.)
-            topMargin: units.gu(6)
-        }
-
+        anchors.fill: parent
+        anchors.topMargin: pdfPage.header.height
         spacing: units.gu(2)
 
         boundsBehavior: Flickable.StopAtBounds
@@ -126,11 +136,96 @@ PageWithBottomEdge {
         }
     }
 
-    // *** HEADER ***
-    state: "default"
-    states: PdfViewDefaultHeader {
-        name: "default"
-        targetPage: pdfPage
-        activityRunning: pdfView.currentPageItem.status == Image.Loading || poppler.isLoading
+
+    BottomEdge {
+        id: contentsBottomEdge
+
+        // WORKAROUND: BottomEdge component loads the page async while draging it
+        // this cause a very bad visual.
+        // To avoid that we create it as soon as the component is ready and keep
+        // it invisible until the user start to drag it.
+        // Fix from: http://bazaar.launchpad.net/~phablet-team/address-book-app/trunk/revision/528
+        property var _realPage: null
+
+        hint {
+            action: Action {
+                // TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
+                text: i18n.tr("Contents")
+                iconName: "view-list-symbolic"  // FIXME: Needs ToC icon.
+                onTriggered: contentsBottomEdge.commit()
+            }
+            flickable: pdfPage.flickable
+        }
+
+        contentComponent: Item {
+            implicitWidth: contentsBottomEdge.width
+            implicitHeight: contentsBottomEdge.height
+            children: contentsBottomEdge._realPage
+        }
+
+        enabled: poppler.tocModel.count > 0
+
+        onCollapseCompleted: {
+            _realPage = contentsPage.createObject(null)
+            _realPage.header.leadingActionBar.actions = collapseAction
+        }
+
+        Component.onCompleted:  {
+            _realPage = contentsPage.createObject(null)
+            _realPage.header.leadingActionBar.actions = collapseAction
+        }
+
+        Action {
+            id: collapseAction
+            text: i18n.tr("Cancel")
+            iconName: "down"
+            onTriggered: contentsBottomEdge.collapse()
+        }
+
+        Component {
+            id: contentsPage
+
+            PdfContentsPage {
+                width: contentsBottomEdge.width
+                height: contentsBottomEdge.height
+                enabled: contentsBottomEdge.status === BottomEdge.Committed
+                active: contentsBottomEdge.status === BottomEdge.Committed
+                visible: contentsBottomEdge.status !== BottomEdge.Hidden
+            }
+        }
+    }
+
+    /*** ACTIONS ***/
+
+    Action {
+        id: searchText
+        iconName: "search"
+        text: i18n.tr("Search")
+        // onTriggered: pageMain.state = "search"
+        //Disable it until we provide search in Poppler plugin.
+        enabled: false
+    }
+
+    Action {
+        id: goToPage
+        objectName:"gotopage"
+        iconName: "browser-tabs"
+        text: i18n.tr("Go to page...")
+        onTriggered: PopupUtils.open(Qt.resolvedUrl("PdfViewGotoDialog.qml"), targetPage)
+    }
+
+    Action {
+        id: nightModeToggle
+        iconName: "night-mode"
+        text: mainView.nightModeEnabled ? i18n.tr("Disable night mode") : i18n.tr("Enable night mode")
+        onTriggered: mainView.nightModeEnabled = !mainView.nightModeEnabled
+    }
+
+    Action {
+        id: fileDetails
+        objectName: "detailsAction"
+        text: i18n.tr("Details")
+        iconName: "info"
+        onTriggered: pageStack.push(Qt.resolvedUrl("../common/DetailsPage.qml"))
     }
 }
