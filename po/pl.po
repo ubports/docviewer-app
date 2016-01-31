@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-01-29 13:22+0100\n"
-"PO-Revision-Date: 2015-12-05 17:08+0000\n"
+"PO-Revision-Date: 2016-01-30 11:23+0000\n"
 "Last-Translator: GTriderXC <gtriderxc@yahoo.com>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2016-01-30 05:51+0000\n"
+"X-Launchpad-Export-Date: 2016-01-31 06:06+0000\n"
 "X-Generator: Launchpad (build 17908)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
@@ -52,7 +52,7 @@ msgstr "Szczegóły"
 
 #: ../src/app/qml/common/DetailsPage.qml:42
 msgid "File"
-msgstr ""
+msgstr "Plik"
 
 #: ../src/app/qml/common/DetailsPage.qml:47
 msgid "Location"
@@ -406,11 +406,11 @@ msgstr "Dopasuj szerokość"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:123
 msgid "Fit height"
-msgstr ""
+msgstr "Dopasuj do wysokości"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:124
 msgid "Automatic"
-msgstr ""
+msgstr "Automatycznie"
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:31
@@ -428,7 +428,7 @@ msgstr "Strona %1 z %2"
 
 #: ../src/app/qml/pdfView/PdfView.qml:203
 msgid "Search"
-msgstr ""
+msgstr "Szukaj"
 
 #: ../src/app/qml/pdfView/PdfView.qml:213
 msgid "Go to page..."

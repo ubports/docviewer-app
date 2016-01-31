@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-01-29 13:22+0100\n"
-"PO-Revision-Date: 2016-01-22 09:12+0000\n"
+"PO-Revision-Date: 2016-01-30 19:46+0000\n"
 "Last-Translator: Richard Somlói <ricsipontaz@gmail.com>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-01-30 05:51+0000\n"
+"X-Launchpad-Export-Date: 2016-01-31 06:06+0000\n"
 "X-Generator: Launchpad (build 17908)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
@@ -431,7 +431,7 @@ msgstr "%1. oldal (összesen: %2)"
 
 #: ../src/app/qml/pdfView/PdfView.qml:203
 msgid "Search"
-msgstr ""
+msgstr "Keresés"
 
 #: ../src/app/qml/pdfView/PdfView.qml:213
 msgid "Go to page..."
