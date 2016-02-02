@@ -27,6 +27,5 @@ Item {
         iconName: "search"
 
         anchors.centerIn: parent
-        width: parent.width
     }
 }
