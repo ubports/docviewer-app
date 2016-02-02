@@ -39,14 +39,14 @@ TextFieldWithButton {
 
     onHighlightedChanged: {
         if (highlighted) {
-            text = parseInt(textField.view.zoomFactor * 100)
+            text = parseInt(textField.view.zoomSettings.zoomFactor * 100)
         } else text = ""
     }
 
     Label {
         anchors.centerIn: parent
         visible: !textField.highlighted
-        text: "%1%".arg(parseInt(textField.view.zoomFactor*100))
+        text: "%1%".arg(parseInt(textField.view.zoomSettings.zoomFactor*100))
     }
 
     popover: TextFieldButtonPopover {
@@ -66,7 +66,7 @@ TextFieldWithButton {
                 Layout.fillHeight: true
                 Layout.fillWidth: true
 
-                onClicked: textField.view.setZoom(textField.view.zoomFactor + 0.1)
+                onClicked: textField.view.setZoom(textField.view.zoomSettings.zoomFactor + 0.1)
 
                 Icon {
                     width: units.gu(2); height: width
@@ -85,7 +85,7 @@ TextFieldWithButton {
                 Layout.fillHeight: true
                 Layout.fillWidth: true
 
-                onClicked: textField.view.setZoom(textField.view.zoomFactor - 0.1)
+                onClicked: textField.view.setZoom(textField.view.zoomSettings.zoomFactor - 0.1)
 
                 Icon {
                     width: units.gu(2); height: width
@@ -105,30 +105,30 @@ TextFieldWithButton {
             id: zoomModesRepeater
 
             function delegate_onClicked(mode) {
-                if (mode === LibreOffice.View.FitToWidth)
+                if (mode === LibreOffice.Zoom.FitToWidth)
                     textField.view.adjustZoomToWidth()
 
-                if (mode === LibreOffice.View.FitToHeight)
+                if (mode === LibreOffice.Zoom.FitToHeight)
                     textField.view.adjustZoomToHeight()
 
-                if (mode === LibreOffice.View.Automatic)
+                if (mode === LibreOffice.Zoom.Automatic)
                     textField.view.adjustAutomaticZoom()
             }
 
             // Used for hiding the HorizontalDivider below.
-            visible: view.zoomModesAvailable > LibreOffice.View.Manual
+            visible: view.zoomSettings.zoomModesAvailable > LibreOffice.Zoom.Manual
 
             model: [
-                { text: i18n.tr("Fit width"),  mode: LibreOffice.View.FitToWidth  },
-                { text: i18n.tr("Fit height"), mode: LibreOffice.View.FitToHeight },
-                { text: i18n.tr("Automatic"),  mode: LibreOffice.View.Automatic   }
+                { text: i18n.tr("Fit width"),  mode: LibreOffice.Zoom.FitToWidth  },
+                { text: i18n.tr("Fit height"), mode: LibreOffice.Zoom.FitToHeight },
+                { text: i18n.tr("Automatic"),  mode: LibreOffice.Zoom.Automatic   }
             ]
 
             ListItem {
                 height: units.gu(4)
                 divider.visible: false
 
-                visible: view.zoomModesAvailable & modelData.mode
+                visible: view.zoomSettings.zoomModesAvailable & modelData.mode
 
                 onClicked: {
                     zoomSelectorDialogue.close()
@@ -148,7 +148,7 @@ TextFieldWithButton {
                         width: units.gu(2); height: width
                         name: "tick"
                         color: UbuntuColors.green
-                        visible: textField.view.zoomMode == modelData.mode
+                        visible: textField.view.zoomSettings.zoomMode == modelData.mode
                     }
                 }
             }   // ListItem
