@@ -32,9 +32,6 @@ QSGNode *SGTileItem::updatePaintNode(QSGNode *oldNode, QQuickItem::UpdatePaintNo
         node->setOwnsTexture(true);
         node->setRect(m_area);
 
-        // We don't need anymore QImage's data
-        m_data = QImage();
-
 #ifdef DEBUG_SHOW_TILE_BORDER
         drawTileBorders(node);
 #endif

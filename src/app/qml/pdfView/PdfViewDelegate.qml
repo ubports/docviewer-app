@@ -46,6 +46,7 @@ Rectangle {
         id: pageImg
         anchors.fill: parent
 
+        cache: false
         source: "image://poppler" + (index % poppler.providersNumber) + "/page/" + index;
         sourceSize.width: pdfPage.width
         fillMode: Image.PreserveAspectFit
