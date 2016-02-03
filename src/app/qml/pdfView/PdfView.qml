@@ -31,7 +31,7 @@ Page {
     header: PageHeader {
         flickable: pdfView
 
-        trailingActionBar.actions: [ searchText, goToPage, nightModeToggle, fileDetails ]
+        trailingActionBar.actions: [ searchText, goToPage, startPresentation, nightModeToggle, fileDetails ]
 
         contents: ListItemLayout {
             anchors.centerIn: parent
@@ -212,6 +212,14 @@ Page {
         iconName: "browser-tabs"
         text: i18n.tr("Go to page...")
         onTriggered: PopupUtils.open(Qt.resolvedUrl("PdfViewGotoDialog.qml"), targetPage)
+    }
+
+    Action {
+        id: startPresentation
+        objectName:"presentationmode"
+        iconName: "slideshow"
+        text: i18n.tr("Presentation")
+        onTriggered: pageStack.push(Qt.resolvedUrl("./PdfPresentation.qml"), {'poppler': poppler})
     }
 
     Action {
