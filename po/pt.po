@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-01-29 13:22+0100\n"
+"POT-Creation-Date: 2016-02-03 00:58+0100\n"
 "PO-Revision-Date: 2016-02-01 20:52+0000\n"
 "Last-Translator: Ivo Xavier <ivofernandes12@gmail.com>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-02-02 05:52+0000\n"
+"X-Launchpad-Export-Date: 2016-02-03 06:09+0000\n"
 "X-Generator: Launchpad (build 17908)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
@@ -183,17 +183,15 @@ msgstr "Apagar"
 msgid "Share"
 msgstr "Partilhar"
 
-#: ../src/app/qml/documentPage/DocumentEmptyState.qml:75
-msgid "No document found"
-msgstr "Sem documentos encontrados"
+#: ../src/app/qml/documentPage/DocumentEmptyState.qml:27
+msgid "No documents found"
+msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentEmptyState.qml:84
+#: ../src/app/qml/documentPage/DocumentEmptyState.qml:28
 msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
-"folder or insert removable media with documents."
+"folder or insert removable media containing documents."
 msgstr ""
-"Ligue o seu dispositivo a qualquer computador e arraste os ficheiros para a "
-"pasta Documentos ou insira um armazenamento externo com documentos."
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
@@ -223,7 +221,7 @@ msgid "dddd, hh:mm"
 msgstr "dddd, hh:mm"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
-#: /tmp/uitk-bottom-edge-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
+#: /tmp/spreadsheet-part-selector-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
 msgid "Documents"
 msgstr "Documentos"
 
@@ -376,15 +374,15 @@ msgstr "Escolha uma posição entre 1% e 100%"
 msgid "GO!"
 msgstr "IR!"
 
-#: ../src/app/qml/loView/LOViewPage.qml:129
+#: ../src/app/qml/loView/LOViewPage.qml:137
 msgid "LibreOffice binaries not found."
 msgstr "Binários do LibreOffice não encontrados."
 
-#: ../src/app/qml/loView/LOViewPage.qml:132
+#: ../src/app/qml/loView/LOViewPage.qml:140
 msgid "Error while loading LibreOffice."
 msgstr "Erro ao carregar LibreOffice."
 
-#: ../src/app/qml/loView/LOViewPage.qml:135
+#: ../src/app/qml/loView/LOViewPage.qml:143
 msgid ""
 "Document not loaded.\n"
 "The requested document may be corrupt or protected by a password."
@@ -392,12 +390,23 @@ msgstr ""
 "Documento não carregado.\n"
 "O documento pedido pode estar corrompido ou protegido com palavra-passe."
 
+#: ../src/app/qml/loView/LOViewPage.qml:164
+msgid "This sheet has no content."
+msgstr ""
+
 #. TRANSLATORS: 'LibreOfficeKit' is the name of the library used by
 #. Document Viewer for rendering LibreOffice/MS-Office documents.
 #. Ref. https://docs.libreoffice.org/libreofficekit.html
 #: ../src/app/qml/loView/Splashscreen.qml:45
 msgid "Powered by LibreOfficeKit"
 msgstr "Fornecido por LibreOfficeKit"
+
+#. TRANSLATORS: Please don't add any space between "Sheet" and "%1".
+#. This is the default name for a sheet in LibreOffice.
+#: ../src/app/qml/loView/SpreadsheetSelector.qml:64
+#, qt-format
+msgid "Sheet%1"
+msgstr ""
 
 #: ../src/app/qml/loView/ZoomSelector.qml:122
 msgid "Fit width"
@@ -460,11 +469,11 @@ msgstr "Ficheiro não existe."
 msgid "copy %1"
 msgstr "cópia %1"
 
-#: /tmp/uitk-bottom-edge-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/spreadsheet-part-selector-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Documentos"
 
-#: /tmp/uitk-bottom-edge-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/spreadsheet-part-selector-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "visualizador;documentos;leitor;pdf"
 
@@ -473,3 +482,6 @@ msgstr "visualizador;documentos;leitor;pdf"
 
 #~ msgid "Hide table of contents"
 #~ msgstr "Esconder tabela de conteúdos"
+
+#~ msgid "No document found"
+#~ msgstr "Sem documentos encontrados"

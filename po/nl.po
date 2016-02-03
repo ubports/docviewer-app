@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-01-29 13:22+0100\n"
+"POT-Creation-Date: 2016-02-03 00:58+0100\n"
 "PO-Revision-Date: 2015-12-03 17:06+0000\n"
 "Last-Translator: Hannie Dumoleyn <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-01-30 05:51+0000\n"
+"X-Launchpad-Export-Date: 2016-02-03 06:09+0000\n"
 "X-Generator: Launchpad (build 17908)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
@@ -184,17 +184,15 @@ msgstr "Verwijderen"
 msgid "Share"
 msgstr "Delen"
 
-#: ../src/app/qml/documentPage/DocumentEmptyState.qml:75
-msgid "No document found"
-msgstr "Geen document gevonden"
+#: ../src/app/qml/documentPage/DocumentEmptyState.qml:27
+msgid "No documents found"
+msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentEmptyState.qml:84
+#: ../src/app/qml/documentPage/DocumentEmptyState.qml:28
 msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
-"folder or insert removable media with documents."
+"folder or insert removable media containing documents."
 msgstr ""
-"Sluit uw apparaat aan op een computer en sleep bestanden eenvoudigweg naar "
-"de documentenmap, of sluit verwijderbare media met documenten aan."
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
@@ -224,7 +222,7 @@ msgid "dddd, hh:mm"
 msgstr "dddd, hh:mm"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
-#: /tmp/uitk-bottom-edge-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
+#: /tmp/spreadsheet-part-selector-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
 msgid "Documents"
 msgstr "Documenten"
 
@@ -377,18 +375,22 @@ msgstr "Kies een positie tussen 1% en 100%"
 msgid "GO!"
 msgstr "GA!"
 
-#: ../src/app/qml/loView/LOViewPage.qml:129
+#: ../src/app/qml/loView/LOViewPage.qml:137
 msgid "LibreOffice binaries not found."
 msgstr "LibreOffice binaire bestanden niet gevonden."
 
-#: ../src/app/qml/loView/LOViewPage.qml:132
+#: ../src/app/qml/loView/LOViewPage.qml:140
 msgid "Error while loading LibreOffice."
 msgstr "Fout bij het laden van LibreOffice."
 
-#: ../src/app/qml/loView/LOViewPage.qml:135
+#: ../src/app/qml/loView/LOViewPage.qml:143
 msgid ""
 "Document not loaded.\n"
 "The requested document may be corrupt or protected by a password."
+msgstr ""
+
+#: ../src/app/qml/loView/LOViewPage.qml:164
+msgid "This sheet has no content."
 msgstr ""
 
 #. TRANSLATORS: 'LibreOfficeKit' is the name of the library used by
@@ -397,6 +399,13 @@ msgstr ""
 #: ../src/app/qml/loView/Splashscreen.qml:45
 msgid "Powered by LibreOfficeKit"
 msgstr "Ondersteund door LibreOfficeKit"
+
+#. TRANSLATORS: Please don't add any space between "Sheet" and "%1".
+#. This is the default name for a sheet in LibreOffice.
+#: ../src/app/qml/loView/SpreadsheetSelector.qml:64
+#, qt-format
+msgid "Sheet%1"
+msgstr ""
 
 #: ../src/app/qml/loView/ZoomSelector.qml:122
 msgid "Fit width"
@@ -459,16 +468,19 @@ msgstr "Bestand bestaat niet."
 msgid "copy %1"
 msgstr "kopie %1"
 
-#: /tmp/uitk-bottom-edge-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/spreadsheet-part-selector-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Documentenviewer"
 
-#: /tmp/uitk-bottom-edge-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/spreadsheet-part-selector-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "documenten;viewer;pdf;lezer;"
 
 #~ msgid "File does not exist"
 #~ msgstr "Bestand bestaat niet"
+
+#~ msgid "No document found"
+#~ msgstr "Geen document gevonden"
 
 #~ msgid "Hide table of contents"
 #~ msgstr "Inhoudsopgave verbergen"
