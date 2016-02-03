@@ -97,12 +97,23 @@ ViewerPage {
                 Layouts.item: "pinchArea"
                 clip: true
 
-                // FIXME: TODO: Check if in desktopMode, and use automaticZoom as minimum value
                 targetFlickable: loView
                 onTotalScaleChanged: targetFlickable.updateContentSize(totalScale)
 
-                maximumZoom: 4.0
-                minimumZoom: 0.25   // FIXME: On BQ E5 the fitToWidth zoom is smaller than LO minimumZoom (0.5)
+                maximumZoom: loView.zoomSettings.maximumZoom
+                minimumZoom: {
+                    if (DocumentViewer.desktopMode || mainView.wideWindow)
+                        return loView.zoomSettings.minimumZoom
+
+                    switch(loView.document.documentType) {
+                    case LibreOffice.Document.TextDocument:
+                        return loView.zoomSettings.valueFitToWidthZoom
+                    case LibreOffice.Document.PresentationDocument:
+                        return loView.zoomSettings.valueAutomaticZoom
+                    default:
+                        return loView.zoomSettings.minimumZoom
+                    }
+                }
 
                 anchors {
                     top: parent.top
@@ -115,7 +126,7 @@ ViewerPage {
                     when: !pinchArea.pinch.active
                     target: pinchArea
                     property: "zoomValue"
-                    value: loView.zoomFactor
+                    value: loView.zoomSettings.zoomFactor
                 }
 
                 Rectangle {
@@ -179,15 +190,31 @@ ViewerPage {
                         targetFlickable: loView
                         onTotalScaleChanged: targetFlickable.updateContentSize(totalScale)
 
-                        // FIXME: TODO: Check if in desktopMode, and use automaticZoom as minimum value
-                        thresholdZoom: 2.0
-                        maximumZoom: 4.0
-                        minimumZoom: 0.25
+                        thresholdZoom: minimumZoom + (maximumZoom - minimumZoom) * 0.75
+                        maximumZoom: {
+                            if (DocumentViewer.desktopMode || mainView.wideWindow)
+                                return 3.0
+
+                            return minimumZoom * 3
+                        }
+                        minimumZoom: {
+                            if (DocumentViewer.desktopMode || mainView.wideWindow)
+                                return loView.zoomSettings.minimumZoom
+
+                            switch(loView.document.documentType) {
+                            case LibreOffice.Document.TextDocument:
+                                return loView.zoomSettings.valueFitToWidthZoom
+                            case LibreOffice.Document.PresentationDocument:
+                                return loView.zoomSettings.valueAutomaticZoom
+                            default:
+                                return loView.zoomSettings.minimumZoom
+                            }
+                        }
 
                         Binding {
                             target: mouseArea
                             property: "zoomValue"
-                            value: loView.zoomFactor
+                            value: loView.zoomSettings.zoomFactor
                         }
                     }
 
