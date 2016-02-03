@@ -161,8 +161,10 @@ bool LOZoom::adjustZoomToWidth(bool changeMode)
     if (changeMode)
         setZoomMode(LOZoom::FitToWidth);
 
+    int currentPart = m_view->currentPart();
+
     m_valueFitToWidthZoom = getZoomToFitWidth(m_view->parentFlickable()->width(),
-                                              m_view->document()->documentSize().width());
+                                              m_view->document()->documentSize(currentPart).width());
 
     if (m_zoomFactor != m_valueFitToWidthZoom) {
         setZoomFactor(m_valueFitToWidthZoom);
@@ -182,8 +184,10 @@ bool LOZoom::adjustZoomToHeight(bool changeMode)
     if (changeMode)
         setZoomMode(LOZoom::FitToHeight);
 
+    int currentPart = m_view->currentPart();
+
     m_valueFitToHeightZoom = getZoomToFitHeight(m_view->parentFlickable()->height(),
-                                                m_view->document()->documentSize().height());
+                                                m_view->document()->documentSize(currentPart).height());
 
     if (m_zoomFactor != m_valueFitToHeightZoom) {
         setZoomFactor(m_valueFitToHeightZoom);
@@ -203,11 +207,13 @@ bool LOZoom::adjustAutomaticZoom(bool changeMode)
     if (changeMode)
         setZoomMode(LOZoom::Automatic);
 
+    int currentPart = m_view->currentPart();
+
     m_valueFitToWidthZoom = getZoomToFitWidth(m_view->parentFlickable()->width(),
-                                              m_view->document()->documentSize().width());
+                                              m_view->document()->documentSize(currentPart).width());
 
     m_valueFitToHeightZoom = getZoomToFitHeight(m_view->parentFlickable()->height(),
-                                                m_view->document()->documentSize().height());
+                                                m_view->document()->documentSize(currentPart).height());
 
     m_valueAutomaticZoom = qMin(m_valueFitToWidthZoom, m_valueFitToHeightZoom);
 

@@ -42,6 +42,7 @@ LOView::LOView(QQuickItem *parent)
 
     connect(this, &LOView::documentChanged, this, &LOView::updateViewSize);
     connect(this, &LOView::parentFlickableChanged, this, &LOView::updateVisibleRect);
+    connect(this, &LOView::currentPartChanged, this, &LOView::invalidateAllTiles);
     connect(this, &LOView::cacheBufferChanged, this, &LOView::updateVisibleRect);
     connect(&m_updateTimer, &QTimer::timeout, this, &LOView::updateVisibleRect);
 
@@ -113,9 +114,6 @@ void LOView::initializeDocument(const QString &path)
     m_imageProvider = new LOPartsImageProvider(m_document);
     engine->addImageProvider("lok", m_imageProvider);
     // --------------------------------------------------
-
-    setCurrentPart(0);
-    connect(this, SIGNAL(currentPartChanged()), this, SLOT(invalidateAllTiles()));
 
     Q_EMIT documentChanged();
 
@@ -203,7 +201,7 @@ void LOView::updateViewSize()
     if (!m_document)
         return;
 
-    QSize docSize = m_document->documentSize();
+    QSize docSize = m_document->documentSize(m_currentPart);
     qreal zoomFactor = m_zoomSettings->zoomFactor();
 
     this->setWidth(Twips::convertTwipsToPixels(docSize.width(), zoomFactor));

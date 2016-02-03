@@ -30,6 +30,7 @@ ViewerPage {
 
     property bool isPresentation: loPage.contentItem && (loPage.contentItem.loDocument.documentType === LibreOffice.Document.PresentationDocument)
     property bool isTextDocument: loPage.contentItem && (loPage.contentItem.loDocument.documentType === LibreOffice.Document.TextDocument)
+    property bool isSpreadsheet: loPage.contentItem && (loPage.contentItem.loDocument.documentType === LibreOffice.Document.SpreadsheetDocument)
 
     title: DocumentViewer.getFileBaseNameFromPath(file.path);
     flickable: isTextDocument ? loPage.contentItem.loView : null
@@ -76,8 +77,15 @@ ViewerPage {
                                 left: leftSidebar.right
                                 right: parent.right
                                 top: parent.top
-                                bottom: parent.bottom
+                                bottom: sSelector.top
                             }
+                        }
+
+                        SpreadsheetSelector {
+                            id: sSelector
+                            anchors.bottom: parent.bottom
+                            visible: loPage.isSpreadsheet
+                            view: loView
                         }
                     }
                 }
@@ -148,28 +156,46 @@ ViewerPage {
 
                     Scrollbar { flickableItem: loView; parent: loView.parent }
                     Scrollbar { flickableItem: loView; parent: loView.parent; align: Qt.AlignBottom }
+
+                    Label {
+                        anchors.centerIn: parent
+                        parent: loPage
+                        textSize: Label.Large
+                        text: i18n.tr("This sheet has no content.")
+                        visible: loPage.isSpreadsheet && loView.contentWidth <= 0 && loView.contentHeight <= 0
+                    }
                 }
             }
 
-            PartsView {
+            Item {
                 id: bottomBar
                 anchors {
                     left: parent.left
                     right: parent.right
                     bottom: parent.bottom
                 }
-                height: visible ? units.gu(12) : 0
-                visible: loPage.isPresentation
+                height: childrenRect.height
 
-                model: loView.partsModel
-                orientation: ListView.Horizontal
+                PartsView {
+                    anchors { left: parent.left; right: parent.right }
+                    height: visible ? units.gu(12) : 0
+                    visible: loPage.isPresentation
 
-                HorizontalDivider {
-                    anchors {
-                        left: parent.left
-                        right: parent.right
-                        top: parent.top
+                    model: loView.partsModel
+                    orientation: ListView.Horizontal
+
+                    HorizontalDivider {
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                            top: parent.top
+                        }
                     }
+                }
+
+                SpreadsheetSelector {
+                    visible: loPage.isSpreadsheet
+                    view: loView
                 }
             }
         }
