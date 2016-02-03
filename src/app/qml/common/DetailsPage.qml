@@ -16,6 +16,7 @@
 
 import QtQuick 2.4
 import Ubuntu.Components 1.3
+import DocumentViewer 1.0
 
 import "utils.js" as Utils
 
@@ -38,8 +39,13 @@ Page {
             anchors.horizontalCenter: parent.horizontalCenter
 
             SubtitledListItem {
+                text: i18n.tr("File")
+                subText: DocumentViewer.getFileNameFromPath(file.path)
+            }
+
+            SubtitledListItem {
                 text: i18n.tr("Location")
-                subText: file.path
+                subText: DocumentViewer.getCanonicalPath(file.path)
             }
 
             SubtitledListItem {

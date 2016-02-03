@@ -204,5 +204,5 @@ MainView {
 
     property bool nightModeEnabled: false
     layer.effect: NightModeShader {}
-    layer.enabled: nightModeEnabled && (pageStack.depth > 1)
+    layer.enabled: nightModeEnabled && (pageStack.depth > 1) && !pageStack.currentPage.isPresentation
 }

@@ -33,10 +33,8 @@ class LODocument : public QObject
     Q_DISABLE_COPY(LODocument)
 
     Q_PROPERTY(QString                 path         READ path         WRITE setPath         NOTIFY pathChanged)
-    Q_PROPERTY(int                     currentPart  READ currentPart  WRITE setCurrentPart  NOTIFY currentPartChanged)
     // Declare partsCount as constant at the moment, since LOK-plugin is just a viewer for now.
     Q_PROPERTY(int                     partsCount   READ partsCount                                                    CONSTANT)
-    Q_PROPERTY(int                     documentPart READ documentPart WRITE setDocumentPart NOTIFY documentPartChanged)
     Q_PROPERTY(DocumentType            documentType READ documentType                       NOTIFY documentTypeChanged)
     Q_PROPERTY(LibreOfficeError::Error error        READ error                              NOTIFY errorChanged)
     Q_ENUMS(DocumentType)
@@ -56,18 +54,12 @@ public:
     QString path() const;
     void setPath(const QString& pathName);
 
-    int currentPart();
-    void setCurrentPart(int index);
-
     DocumentType documentType() const;
 
-    int documentPart() const;
-    void setDocumentPart(int p);
+    QSize documentSize(int part) const;
 
-    QSize documentSize() const;
-
-    QImage paintTile(const QSize& canvasSize, const QRect& tileSize, const qreal& zoom = 1.0);
-    QImage paintThumbnail(qreal size);
+    QImage paintTile(int part, const QSize& canvasSize, const QRect& tileSize, const qreal& zoom = 1.0);
+    QImage paintThumbnail(int part, qreal size);
 
     int partsCount();
     QString getPartName(int index) const;
@@ -77,14 +69,11 @@ public:
 
 Q_SIGNALS:
     void pathChanged();
-    void currentPartChanged();
     void documentTypeChanged();
-    void documentPartChanged();
     void errorChanged();
 
 private:
     QString m_path;
-    int m_currentPart;
     DocumentType m_docType;
     LibreOfficeError::Error m_error;
     lok::Document *m_lokDocument;

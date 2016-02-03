@@ -16,6 +16,7 @@
 
 #include "loview.h"
 #include "lodocument.h"
+#include "lozoom.h"
 #include "sgtileitem.h"
 #include "twips.h"
 #include "config.h"
@@ -24,34 +25,34 @@
 #include <QTimer>
 #include <QtCore/qmath.h>
 
-static qreal zoomValueToFitWidth;
-
-static qreal getZoomToFitWidth(const qreal &width, int documentWidth)
-{
-    return qreal(width / Twips::convertTwipsToPixels(documentWidth, 1.0));
-}
-
 LOView::LOView(QQuickItem *parent)
     : QQuickItem(parent)
     , m_parentFlickable(nullptr)
     , m_document(nullptr)
+    , m_zoomSettings(new LOZoom(this))
     , m_partsModel(nullptr)
-    , m_zoomFactor(1.0)
+    , m_currentPart(0)
     , m_cacheBuffer(TILE_SIZE * 3)
     , m_visibleArea(0, 0, 0, 0)
     , m_bufferArea(0, 0, 0, 0)
     , m_error(LibreOfficeError::NoError)
+    , m_zoomValueHasChanged(false)
 {
     Q_UNUSED(parent)   
 
-    connect(this, SIGNAL(documentChanged()), this, SLOT(updateViewSize()));
-    connect(this, SIGNAL(zoomFactorChanged()), this, SLOT(updateViewSize()));
-    connect(this, SIGNAL(parentFlickableChanged()), this, SLOT(updateVisibleRect()));
-    connect(this, SIGNAL(cacheBufferChanged()), this, SLOT(updateVisibleRect()));
-    connect(&m_updateTimer, SIGNAL(timeout()), this, SLOT(updateVisibleRect()));
+    connect(this, &LOView::documentChanged, this, &LOView::updateViewSize);
+    connect(this, &LOView::parentFlickableChanged, this, &LOView::updateVisibleRect);
+    connect(this, &LOView::currentPartChanged, this, &LOView::invalidateAllTiles);
+    connect(this, &LOView::cacheBufferChanged, this, &LOView::updateVisibleRect);
+    connect(&m_updateTimer, &QTimer::timeout, this, &LOView::updateVisibleRect);
 
     connect(RenderEngine::instance(), &RenderEngine::taskRenderFinished,
             this, &LOView::slotTaskRenderFinished);
+
+    connect(m_zoomSettings, &LOZoom::zoomFactorChanged, [&]() {
+        m_zoomValueHasChanged = true;
+        updateViewSize();
+    });
 }
 
 // Returns the parent QML Flickable
@@ -114,9 +115,34 @@ void LOView::initializeDocument(const QString &path)
     engine->addImageProvider("lok", m_imageProvider);
     // --------------------------------------------------
 
-    connect(m_document.data(), SIGNAL(currentPartChanged()), this, SLOT(invalidateAllTiles()));
-
     Q_EMIT documentChanged();
+
+    // Init zoom settings
+    m_zoomSettings->init();
+}
+
+bool LOView::adjustZoomToWidth()
+{
+    if (!m_zoomSettings)
+        return false;
+
+    return m_zoomSettings->adjustZoomToWidth();
+}
+
+bool LOView::adjustZoomToHeight()
+{
+    if (!m_zoomSettings)
+        return false;
+
+    return m_zoomSettings->adjustZoomToHeight();
+}
+
+bool LOView::adjustAutomaticZoom()
+{
+    if (!m_zoomSettings)
+        return false;
+
+    return m_zoomSettings->adjustAutomaticZoom();
 }
 
 // Return the LODocument rendered by this class
@@ -130,36 +156,25 @@ LOPartsModel *LOView::partsModel() const
     return m_partsModel;
 }
 
-qreal LOView::zoomFactor() const
+LOZoom *LOView::zoomSettings() const
 {
-    return m_zoomFactor;
+    return m_zoomSettings;
 }
 
-void LOView::setZoomFactor(const qreal zoom)
+int LOView::currentPart() {
+    return m_currentPart;
+}
+
+void LOView::setCurrentPart(int index)
 {
-    if (m_zoomFactor == zoom)
+    if (!m_document)
         return;
 
-    m_zoomFactor = zoom;
-
-   if (m_zoomFactor != zoomValueToFitWidth)
-        setZoomMode(LOView::Manual);
-
-    Q_EMIT zoomFactorChanged();
-}
-
-LOView::ZoomMode LOView::zoomMode() const
-{
-    return m_zoomMode;
-}
-
-void LOView::setZoomMode(const ZoomMode zoomMode)
-{
-    if (m_zoomMode == zoomMode)
+    if (m_currentPart == index || index < 0 || index > (m_document.data()->partsCount() - 1))
         return;
 
-    m_zoomMode = zoomMode;
-    Q_EMIT zoomModeChanged();
+    m_currentPart = index;
+    Q_EMIT currentPartChanged();
 }
 
 int LOView::cacheBuffer() const
@@ -181,29 +196,16 @@ LibreOfficeError::Error LOView::error() const
     return m_error;
 }
 
-void LOView::adjustZoomToWidth()
-{
-    if (!m_document)
-        return;
-
-    setZoomMode(LOView::FitToWidth);
-
-    zoomValueToFitWidth = getZoomToFitWidth(m_parentFlickable->width(),
-                                            m_document->documentSize().width());
-
-    setZoomFactor(zoomValueToFitWidth);
-    qDebug() << "Adjust zoom to width - value:" << zoomValueToFitWidth;
-}
-
 void LOView::updateViewSize()
 {
     if (!m_document)
         return;
 
-    QSize docSize = m_document->documentSize();
+    QSize docSize = m_document->documentSize(m_currentPart);
+    qreal zoomFactor = m_zoomSettings->zoomFactor();
 
-    this->setWidth(Twips::convertTwipsToPixels(docSize.width(), m_zoomFactor));
-    this->setHeight(Twips::convertTwipsToPixels(docSize.height(), m_zoomFactor));
+    this->setWidth(Twips::convertTwipsToPixels(docSize.width(), zoomFactor));
+    this->setHeight(Twips::convertTwipsToPixels(docSize.height(), zoomFactor));
 
     updateVisibleRect();
 }
@@ -213,38 +215,33 @@ void LOView::updateVisibleRect()
     if (!m_parentFlickable || !m_document)
         return;
 
-    // Changes in parentFlickable width/height trigger directly LOView::updateVisibleRect(),
-    // since they don't imply a change in the zoom factor - i.e. LOView::updateViewSize().
-    // Anyway, this class also handle an automatic zoom when the parentFlickable has been
-    // resized, so we need to take care of it.
-    // updateZoomIfAutomatic() returns a bool, which is true when the zoomFactor is
-    // set to a new value.
-    // If that happens, stop the execution of this function, since the change of
-    // zoomFactor will trigger the updateViewSize() function, which triggers this
-    // function again.
-    if (m_zoomMode == LOView::FitToWidth) {
-        zoomValueToFitWidth = getZoomToFitWidth(m_parentFlickable->width(),
-                                                m_document->documentSize().width());
-
-        if (m_zoomFactor != zoomValueToFitWidth) {
-            setZoomFactor(zoomValueToFitWidth);
-
-            qDebug() << "Adjust automatic zoom to width - value:" << zoomValueToFitWidth;
+    // When we adjust the zoom value of an automatic zoom
+    // mode, the view has to update the document size first.
+    // updateVisibleRect() will be automatically triggered
+    // later.
+    if (m_zoomSettings->zoomMode() == LOZoom::FitToWidth) {
+        if (m_zoomSettings->adjustZoomToWidth(false))
             return;
-        }
+    }
+
+    else if (m_zoomSettings->zoomMode() == LOZoom::FitToHeight) {
+        if (m_zoomSettings->adjustZoomToHeight(false))
+            return;
+    }
+
+    else if (m_zoomSettings->zoomMode() == LOZoom::Automatic) {
+        if (m_zoomSettings->adjustAutomaticZoom(false))
+            return;
     }
 
     // Check if current tiles have a different zoom value
-    if (!m_tiles.isEmpty()) {
-        SGTileItem* tile = m_tiles.first();
-
-        if (tile->zoomFactor() != m_zoomFactor) {
-            clearView();
-
+    if (m_zoomValueHasChanged && !m_tiles.isEmpty()) {
+        m_zoomValueHasChanged = false;
 #ifdef DEBUG_VERBOSE
-            qDebug() << "Zoom value of tiles is different than the current zoom value. Erasing cache...";
+        qDebug() << "Zoom value of tiles is different than the current zoom value. Erasing cache...";
 #endif
-        }
+
+        clearView();
     }
 
     // Just for convenience.
@@ -291,7 +288,7 @@ void LOView::updateVisibleRect()
 
     // Number of tiles per row
     int tilesPerWidth           = qCeil(this->width() / TILE_SIZE);
-    int tilesPerHeight           = qCeil(this->height() / TILE_SIZE);
+    int tilesPerHeight          = qCeil(this->height() / TILE_SIZE);
 
     // Get indexes for visible tiles
     int visiblesFromWidth       = int(m_visibleArea.left() / TILE_SIZE);
@@ -360,7 +357,7 @@ void LOView::createTile(int index, const QRect &rect)
         qDebug() << "Creating tile indexed as" << index << "- Rect:" << rect;
 #endif
 
-        auto tile = new SGTileItem(rect, m_zoomFactor, RenderEngine::getNextId(), this);
+        auto tile = new SGTileItem(rect, RenderEngine::getNextId(), this);
         m_tiles.insert(index, tile);
         RenderEngine::instance()->enqueueTask(createTask(rect, tile->id()));
     }
@@ -380,8 +377,6 @@ void LOView::scheduleVisibleRectUpdate()
     m_updateTimer.start(20);
 }
 
-
-
 void LOView::clearView()
 {
     for (auto i = m_tiles.begin(); i != m_tiles.end(); ++i)
@@ -399,10 +394,10 @@ TileRenderTask* LOView::createTask(const QRect &rect, int id) const
 {
     TileRenderTask* task = new TileRenderTask();
     task->setId(id);
-    task->setPart(m_document->currentPart());
+    task->setPart(m_currentPart);
     task->setDocument(m_document);
     task->setArea(rect);
-    task->setZoom(m_zoomFactor);
+    task->setZoom(m_zoomSettings->zoomFactor());
     return task;
 }
 
@@ -437,12 +432,13 @@ void LOView::setError(const LibreOfficeError::Error &error)
 
 LOView::~LOView()
 {
-    delete m_partsModel;
-
     disconnect(RenderEngine::instance(), &RenderEngine::taskRenderFinished,
             this, &LOView::slotTaskRenderFinished);
 
     // Remove all tasks from rendering queue.
     for (auto i = m_tiles.begin(); i != m_tiles.end(); ++i)
         RenderEngine::instance()->dequeueTask(i.value()->id());
+
+    delete m_partsModel;
+    delete m_zoomSettings;
 }

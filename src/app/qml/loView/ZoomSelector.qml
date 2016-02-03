@@ -39,18 +39,22 @@ TextFieldWithButton {
 
     onHighlightedChanged: {
         if (highlighted) {
-            text = parseInt(textField.view.zoomFactor * 100)
+            text = parseInt(textField.view.zoomSettings.zoomFactor * 100)
         } else text = ""
     }
 
     Label {
         anchors.centerIn: parent
         visible: !textField.highlighted
-        text: "%1%".arg(parseInt(textField.view.zoomFactor*100))
+        text: "%1%".arg(parseInt(textField.view.zoomSettings.zoomFactor*100))
     }
 
     popover: TextFieldButtonPopover {
         id: zoomSelectorDialogue
+
+        /************************************
+        *    Zoom in - Zoom out controls    *
+        ************************************/
 
         RowLayout {
             anchors { left: parent.left; right: parent.right }
@@ -62,7 +66,7 @@ TextFieldWithButton {
                 Layout.fillHeight: true
                 Layout.fillWidth: true
 
-                onClicked: textField.view.setZoom(textField.view.zoomFactor + 0.1)
+                onClicked: textField.view.setZoom(textField.view.zoomSettings.zoomFactor + 0.1)
 
                 Icon {
                     width: units.gu(2); height: width
@@ -81,7 +85,7 @@ TextFieldWithButton {
                 Layout.fillHeight: true
                 Layout.fillWidth: true
 
-                onClicked: textField.view.setZoom(textField.view.zoomFactor - 0.1)
+                onClicked: textField.view.setZoom(textField.view.zoomSettings.zoomFactor - 0.1)
 
                 Icon {
                     width: units.gu(2); height: width
@@ -93,34 +97,68 @@ TextFieldWithButton {
 
         HorizontalDivider { anchors { left: parent.left; right: parent.right } }
 
-        ListItem {
-            height: units.gu(4)
-            divider.visible: false
+        /************************************
+        *       Zoom modes controls         *
+        ************************************/
 
-            onClicked: {
-                textField.view.adjustZoomToWidth()
-                zoomSelectorDialogue.close()
+        Repeater {
+            id: zoomModesRepeater
+
+            function delegate_onClicked(mode) {
+                if (mode === LibreOffice.Zoom.FitToWidth)
+                    textField.view.adjustZoomToWidth()
+
+                if (mode === LibreOffice.Zoom.FitToHeight)
+                    textField.view.adjustZoomToHeight()
+
+                if (mode === LibreOffice.Zoom.Automatic)
+                    textField.view.adjustAutomaticZoom()
             }
 
-            /* UITK 1.3 specs: Two slot layout (A-B) */
-            ListItemLayout {
-                anchors.centerIn: parent
+            // Used for hiding the HorizontalDivider below.
+            visible: view.zoomSettings.zoomModesAvailable > LibreOffice.Zoom.Manual
 
-                /* UITK 1.3 specs: Slot A */
-                title.text: i18n.tr("Fit width")
+            model: [
+                { text: i18n.tr("Fit width"),  mode: LibreOffice.Zoom.FitToWidth  },
+                { text: i18n.tr("Fit height"), mode: LibreOffice.Zoom.FitToHeight },
+                { text: i18n.tr("Automatic"),  mode: LibreOffice.Zoom.Automatic   }
+            ]
 
-                /* UITK 1.3 specs: Slot B */
-                Icon {
-                    SlotsLayout.position: SlotsLayout.Last
-                    width: units.gu(2); height: width
-                    name: "tick"
-                    color: UbuntuColors.green
-                    visible: textField.view.zoomMode == LibreOffice.View.FitToWidth
+            ListItem {
+                height: units.gu(4)
+                divider.visible: false
+
+                visible: view.zoomSettings.zoomModesAvailable & modelData.mode
+
+                onClicked: {
+                    zoomSelectorDialogue.close()
+                    zoomModesRepeater.delegate_onClicked(modelData.mode)
                 }
-            }
-        }   // ListItem
 
-        HorizontalDivider { anchors { left: parent.left; right: parent.right } }
+                /* UITK 1.3 specs: Two slot layout (A-B) */
+                ListItemLayout {
+                    anchors.centerIn: parent
+
+                    /* UITK 1.3 specs: Slot A */
+                    title.text: modelData.text
+
+                    /* UITK 1.3 specs: Slot B */
+                    Icon {
+                        SlotsLayout.position: SlotsLayout.Last
+                        width: units.gu(2); height: width
+                        name: "tick"
+                        color: UbuntuColors.green
+                        visible: textField.view.zoomSettings.zoomMode == modelData.mode
+                    }
+                }
+            }   // ListItem
+        }
+
+        HorizontalDivider { visible: zoomModesRepeater.visible; anchors { left: parent.left; right: parent.right } }
+
+        /************************************
+        *   Default zoom values controls    *
+        ************************************/
 
         Repeater {
             model: [

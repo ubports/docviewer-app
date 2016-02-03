@@ -9,10 +9,9 @@
 #include <QSGFlatColorMaterial>
 #endif
 
-SGTileItem::SGTileItem(const QRect& area, qreal zoom, int id, QQuickItem *parent)
+SGTileItem::SGTileItem(const QRect& area, int id, QQuickItem *parent)
     : QQuickItem(parent)
     , m_area(area)
-    , m_zoomFactor(zoom)
     , m_id (id)
 {
     setFlag(ItemHasContents, true);
@@ -32,9 +31,6 @@ QSGNode *SGTileItem::updatePaintNode(QSGNode *oldNode, QQuickItem::UpdatePaintNo
         node->setTexture(texture);
         node->setOwnsTexture(true);
         node->setRect(m_area);
-
-        // We don't need anymore QImage's data
-        m_data = QImage();
 
 #ifdef DEBUG_SHOW_TILE_BORDER
         drawTileBorders(node);

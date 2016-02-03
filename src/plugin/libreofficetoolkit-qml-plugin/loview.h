@@ -31,54 +31,51 @@
 
 class LODocument;
 class SGTileItem;
+class LOZoom;
 
 class LOView : public QQuickItem
 {
     Q_OBJECT
-    Q_ENUMS(ZoomMode)
-    Q_PROPERTY(QQuickItem*              parentFlickable READ parentFlickable WRITE setParentFlickable NOTIFY parentFlickableChanged)
-    Q_PROPERTY(LODocument*              document        READ document        /*WRITE setDocument*/    NOTIFY documentChanged)
-    Q_PROPERTY(LOPartsModel*            partsModel      READ partsModel                               NOTIFY partsModelChanged)
-    Q_PROPERTY(qreal                    zoomFactor      READ zoomFactor      WRITE setZoomFactor      NOTIFY zoomFactorChanged)
-    Q_PROPERTY(ZoomMode                 zoomMode        READ zoomMode                                 NOTIFY zoomModeChanged)
-    Q_PROPERTY(int                      cacheBuffer     READ cacheBuffer     WRITE setCacheBuffer     NOTIFY cacheBufferChanged)
-    Q_PROPERTY(LibreOfficeError::Error  error           READ error                                    NOTIFY errorChanged)
+    Q_PROPERTY(QQuickItem*              parentFlickable    READ parentFlickable WRITE setParentFlickable NOTIFY parentFlickableChanged)
+    Q_PROPERTY(LODocument*              document           READ document        /*WRITE setDocument*/    NOTIFY documentChanged)
+    Q_PROPERTY(int                      currentPart        READ currentPart     WRITE setCurrentPart     NOTIFY currentPartChanged)
+    Q_PROPERTY(LOPartsModel*            partsModel         READ partsModel                               NOTIFY partsModelChanged)
+    Q_PROPERTY(LOZoom*                  zoomSettings       READ zoomSettings)
+    Q_PROPERTY(int                      cacheBuffer        READ cacheBuffer     WRITE setCacheBuffer     NOTIFY cacheBufferChanged)
+    Q_PROPERTY(LibreOfficeError::Error  error              READ error                                    NOTIFY errorChanged)
 
 public:
     LOView(QQuickItem *parent = 0);
     ~LOView();
 
-    enum ZoomMode {
-        FitToWidth,
-        Manual
-    };
-
     QQuickItem* parentFlickable() const;
-    void        setParentFlickable(QQuickItem* flickable);
-
-    Q_INVOKABLE void initializeDocument(const QString& path);
+    void setParentFlickable(QQuickItem* flickable);
 
     LODocument* document() const;
+
     LOPartsModel* partsModel() const;
 
-    qreal       zoomFactor() const;
-    void        setZoomFactor(const qreal zoom);
+    LOZoom* zoomSettings() const;
 
-    ZoomMode    zoomMode() const;
+    int currentPart();
+    void setCurrentPart(int index);
 
-    int         cacheBuffer() const;
-    void        setCacheBuffer(int cacheBuffer);
+    int cacheBuffer() const;
+    void setCacheBuffer(int cacheBuffer);
 
     LibreOfficeError::Error error() const;
 
-    Q_INVOKABLE void adjustZoomToWidth();
+    Q_INVOKABLE void initializeDocument(const QString& path);
+
+    Q_INVOKABLE bool adjustZoomToWidth();
+    Q_INVOKABLE bool adjustZoomToHeight();
+    Q_INVOKABLE bool adjustAutomaticZoom();
 
 Q_SIGNALS:
     void parentFlickableChanged();
     void documentChanged();
     void partsModelChanged();
-    void zoomFactorChanged();
-    void zoomModeChanged();
+    void currentPartChanged();
     void cacheBufferChanged();
     void errorChanged();
 
@@ -93,11 +90,11 @@ private:
 
     QQuickItem*                 m_parentFlickable;
     QSharedPointer<LODocument>  m_document;
+    LOZoom*                     m_zoomSettings;
     LOPartsModel*               m_partsModel; // TODO MB move to document.
     LOPartsImageProvider*       m_imageProvider; // The QQmlEngine takes ownership of provider.
 
-    qreal                       m_zoomFactor;
-    ZoomMode                    m_zoomMode;
+    int                         m_currentPart;
     int                         m_cacheBuffer;
 
     QRect                       m_visibleArea;
@@ -109,9 +106,11 @@ private:
 
     QMap<int, SGTileItem*>      m_tiles;
 
+    bool                        m_zoomValueHasChanged;
+
+private:
     void generateTiles(int x1, int y1, int x2, int y2, int tilesPerWidth, int tilesPerHeight);
     void createTile(int index, const QRect& rect);
-    void setZoomMode(const ZoomMode zoomMode);
     void clearView();
     TileRenderTask* createTask(const QRect& rect, int id) const;
     void updateTileData(AbstractRenderTask* task, QImage img);
