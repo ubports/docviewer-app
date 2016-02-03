@@ -118,6 +118,14 @@ ViewerPage {
                     value: loView.zoomFactor
                 }
 
+                Rectangle {
+                    // Since UITK 1.3, the MainView background is white.
+                    // We need to set a different color, otherwise pages
+                    // boundaries are not visible.
+                    anchors.fill: parent
+                    color: "#f5f5f5"
+                }
+
                 LibreOffice.Viewer {
                     id: loView
                     objectName: "loView"
