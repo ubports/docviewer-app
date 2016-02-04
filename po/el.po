@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-02-03 00:58+0100\n"
+"POT-Creation-Date: 2016-02-03 14:48+0100\n"
 "PO-Revision-Date: 2015-12-08 17:44+0000\n"
 "Last-Translator: Aggelos Arnaoutis <angelosarn@hotmail.com>\n"
 "Language-Team: Greek <el@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-02-03 06:09+0000\n"
+"X-Launchpad-Export-Date: 2016-02-04 06:23+0000\n"
 "X-Generator: Launchpad (build 17908)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
@@ -44,7 +44,7 @@ msgstr ""
 
 #: ../src/app/qml/common/DetailsPage.qml:26
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:107
-#: ../src/app/qml/pdfView/PdfView.qml:227
+#: ../src/app/qml/pdfView/PdfView.qml:235
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:69
 msgid "Details"
 msgstr "Λεπτομέρειες"
@@ -220,7 +220,7 @@ msgid "dddd, hh:mm"
 msgstr "dddd, hh:mm"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
-#: /tmp/spreadsheet-part-selector-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
+#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
 msgid "Documents"
 msgstr "Έγγραφα"
 
@@ -349,13 +349,13 @@ msgid "Go to position..."
 msgstr "Πήγαινε στη θέση..."
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
-#: ../src/app/qml/pdfView/PdfView.qml:220
+#: ../src/app/qml/pdfView/PdfView.qml:228
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Disable night mode"
 msgstr "Απενεργοποίηση της ρύθμισης νύχτας"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
-#: ../src/app/qml/pdfView/PdfView.qml:220
+#: ../src/app/qml/pdfView/PdfView.qml:228
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Enable night mode"
 msgstr "Ενεργοποίηση της ρύθμισης νύχτας"
@@ -439,6 +439,10 @@ msgstr ""
 msgid "Go to page..."
 msgstr "Μετάβαση στη σελίδα..."
 
+#: ../src/app/qml/pdfView/PdfView.qml:221
+msgid "Presentation"
+msgstr ""
+
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
 msgid "Go to page"
 msgstr "Μετάβαση στη σελίδα"
@@ -466,11 +470,11 @@ msgstr "Το αρχείο δεν υπάρχει."
 msgid "copy %1"
 msgstr "αντίγραφο %1"
 
-#: /tmp/spreadsheet-part-selector-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Προβολή εγγράφων"
 
-#: /tmp/spreadsheet-part-selector-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "documents;viewer;pdf;reader;έγγραφα;προβολή;πδφ;αναγνώστης;διάβασμα;"
 

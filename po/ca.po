@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-02-03 00:58+0100\n"
+"POT-Creation-Date: 2016-02-03 14:48+0100\n"
 "PO-Revision-Date: 2015-11-20 05:07+0000\n"
 "Last-Translator: David Planella <david.planella@ubuntu.com>\n"
 "Language-Team: Catalan <ca@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-02-03 06:09+0000\n"
+"X-Launchpad-Export-Date: 2016-02-04 06:23+0000\n"
 "X-Generator: Launchpad (build 17908)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
@@ -42,7 +42,7 @@ msgstr ""
 
 #: ../src/app/qml/common/DetailsPage.qml:26
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:107
-#: ../src/app/qml/pdfView/PdfView.qml:227
+#: ../src/app/qml/pdfView/PdfView.qml:235
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:69
 msgid "Details"
 msgstr "Detalls"
@@ -216,7 +216,7 @@ msgid "dddd, hh:mm"
 msgstr "dddd, H.mm"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
-#: /tmp/spreadsheet-part-selector-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
+#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
 msgid "Documents"
 msgstr "Documents"
 
@@ -343,13 +343,13 @@ msgid "Go to position..."
 msgstr ""
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
-#: ../src/app/qml/pdfView/PdfView.qml:220
+#: ../src/app/qml/pdfView/PdfView.qml:228
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Disable night mode"
 msgstr "Inhabilita el mode nocturn"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
-#: ../src/app/qml/pdfView/PdfView.qml:220
+#: ../src/app/qml/pdfView/PdfView.qml:228
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Enable night mode"
 msgstr "Habilita el mode nocturn"
@@ -433,6 +433,10 @@ msgstr ""
 msgid "Go to page..."
 msgstr "Vés a la pàgina..."
 
+#: ../src/app/qml/pdfView/PdfView.qml:221
+msgid "Presentation"
+msgstr ""
+
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
 msgid "Go to page"
 msgstr "Vés a la pàgina"
@@ -460,11 +464,11 @@ msgstr ""
 msgid "copy %1"
 msgstr "còpia %1"
 
-#: /tmp/spreadsheet-part-selector-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Visualitzador de documents"
 
-#: /tmp/spreadsheet-part-selector-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "documents;visualitzador;pdf;lector;"
 
