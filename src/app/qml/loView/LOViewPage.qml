@@ -95,9 +95,25 @@ ViewerPage {
                 id: pinchArea
                 objectName: "pinchArea"
                 Layouts.item: "pinchArea"
+                clip: true
 
                 targetFlickable: loView
                 onTotalScaleChanged: targetFlickable.updateContentSize(totalScale)
+
+                maximumZoom: loView.zoomSettings.maximumZoom
+                minimumZoom: {
+                    if (DocumentViewer.desktopMode || mainView.wideWindow)
+                        return loView.zoomSettings.minimumZoom
+
+                    switch(loView.document.documentType) {
+                    case LibreOffice.Document.TextDocument:
+                        return loView.zoomSettings.valueFitToWidthZoom
+                    case LibreOffice.Document.PresentationDocument:
+                        return loView.zoomSettings.valueAutomaticZoom
+                    default:
+                        return loView.zoomSettings.minimumZoom
+                    }
+                }
 
                 anchors {
                     top: parent.top
@@ -106,12 +122,26 @@ ViewerPage {
                     bottom: bottomBar.top
                 }
 
+                Binding {
+                    when: !pinchArea.pinch.active
+                    target: pinchArea
+                    property: "zoomValue"
+                    value: loView.zoomSettings.zoomFactor
+                }
+
+                Rectangle {
+                    // Since UITK 1.3, the MainView background is white.
+                    // We need to set a different color, otherwise pages
+                    // boundaries are not visible.
+                    anchors.fill: parent
+                    color: "#f5f5f5"
+                }
+
                 LibreOffice.Viewer {
                     id: loView
                     objectName: "loView"
                     anchors.fill: parent
 
-                    clip: true
                     documentPath: file.path
 
                     function updateContentSize(tgtScale) {
@@ -151,6 +181,40 @@ ViewerPage {
                             // initialized by 'loPage' and keep on working after the
                             // page is destroyed.
                             mainView.showErrorDialog(errorString);
+                        }
+                    }
+
+                    ScalingMouseArea {
+                        id: mouseArea
+                        anchors.fill: parent
+                        targetFlickable: loView
+                        onTotalScaleChanged: targetFlickable.updateContentSize(totalScale)
+
+                        thresholdZoom: minimumZoom + (maximumZoom - minimumZoom) * 0.75
+                        maximumZoom: {
+                            if (DocumentViewer.desktopMode || mainView.wideWindow)
+                                return 3.0
+
+                            return minimumZoom * 3
+                        }
+                        minimumZoom: {
+                            if (DocumentViewer.desktopMode || mainView.wideWindow)
+                                return loView.zoomSettings.minimumZoom
+
+                            switch(loView.document.documentType) {
+                            case LibreOffice.Document.TextDocument:
+                                return loView.zoomSettings.valueFitToWidthZoom
+                            case LibreOffice.Document.PresentationDocument:
+                                return loView.zoomSettings.valueAutomaticZoom
+                            default:
+                                return loView.zoomSettings.minimumZoom
+                            }
+                        }
+
+                        Binding {
+                            target: mouseArea
+                            property: "zoomValue"
+                            value: loView.zoomSettings.zoomFactor
                         }
                     }
 
