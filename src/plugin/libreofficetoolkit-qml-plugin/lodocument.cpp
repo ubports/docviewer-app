@@ -127,25 +127,16 @@ LODocument::DocumentType LODocument::documentType() const
     return m_docType;
 }
 
-int LODocument::documentPart() const
-{
-    return m_lokDocument->getPart();
-}
-
-void LODocument::setDocumentPart(int p)
-{
-    if (documentPart() != p)
-        m_lokDocument->setPart(p);
-}
-
 // Return the size of the document, in TWIPs
-QSize LODocument::documentSize() const
+QSize LODocument::documentSize(int part) const
 {
     if (!m_lokDocument)
         return QSize(0, 0);
 
     long pWidth(0);
     long pHeight(0);
+
+    m_lokDocument->setPart(part);
     m_lokDocument->getDocumentSize(&pWidth, &pHeight);
 
     return QSize(pWidth, pHeight);
@@ -184,15 +175,16 @@ QImage LODocument::paintPart(int part, const QSize &size)
     if (!m_lokDocument)
         return QImage();
 
-    m_lokDocument->setPart(part);
-
 #ifdef DEBUG_TILE_BENCHMARK
     QElapsedTimer renderTimer;
     renderTimer.start();
 #endif
 
-    qreal tWidth = this->documentSize().width();
-    qreal tHeight = this->documentSize().height();
+    long tWidth(0);
+    long tHeight(0);
+
+    m_lokDocument->setPart(part);
+    m_lokDocument->getDocumentSize(&tWidth, &tHeight);
 
     QSize resultSize;
 

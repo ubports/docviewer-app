@@ -161,8 +161,12 @@ bool LOZoom::adjustZoomToWidth(bool changeMode)
     if (changeMode)
         setZoomMode(LOZoom::FitToWidth);
 
+    int currentPart = m_view->currentPart();
+
     m_valueFitToWidthZoom = getZoomToFitWidth(m_view->parentFlickable()->width(),
-                                              m_view->document()->documentSize().width());
+                                              m_view->document()->documentSize(currentPart).width());
+
+    Q_EMIT valueFitToWidthZoomChanged();
 
     if (m_zoomFactor != m_valueFitToWidthZoom) {
         setZoomFactor(m_valueFitToWidthZoom);
@@ -182,8 +186,12 @@ bool LOZoom::adjustZoomToHeight(bool changeMode)
     if (changeMode)
         setZoomMode(LOZoom::FitToHeight);
 
+    int currentPart = m_view->currentPart();
+
     m_valueFitToHeightZoom = getZoomToFitHeight(m_view->parentFlickable()->height(),
-                                                m_view->document()->documentSize().height());
+                                                m_view->document()->documentSize(currentPart).height());
+
+    Q_EMIT valueFitToHeightZoomChanged();
 
     if (m_zoomFactor != m_valueFitToHeightZoom) {
         setZoomFactor(m_valueFitToHeightZoom);
@@ -203,13 +211,19 @@ bool LOZoom::adjustAutomaticZoom(bool changeMode)
     if (changeMode)
         setZoomMode(LOZoom::Automatic);
 
+    int currentPart = m_view->currentPart();
+
     m_valueFitToWidthZoom = getZoomToFitWidth(m_view->parentFlickable()->width(),
-                                              m_view->document()->documentSize().width());
+                                              m_view->document()->documentSize(currentPart).width());
 
     m_valueFitToHeightZoom = getZoomToFitHeight(m_view->parentFlickable()->height(),
-                                                m_view->document()->documentSize().height());
+                                                m_view->document()->documentSize(currentPart).height());
 
     m_valueAutomaticZoom = qMin(m_valueFitToWidthZoom, m_valueFitToHeightZoom);
+
+    Q_EMIT valueFitToWidthZoomChanged();
+    Q_EMIT valueFitToHeightZoomChanged();
+    Q_EMIT valueAutomaticZoomChanged();
 
     if (m_zoomFactor != m_valueAutomaticZoom) {
         setZoomFactor(m_valueAutomaticZoom);

@@ -109,17 +109,41 @@ Flickable {
     contentHeight: view.height
     contentWidth: view.width
 
+    topMargin: internal.isSpreadSheet ? 0 : Math.max((rootFlickable.height - view.height) * 0.5, 0)
+    leftMargin: internal.isSpreadSheet ? 0 : Math.max((rootFlickable.width - view.width) * 0.5, 0)
+
     boundsBehavior: Flickable.StopAtBounds
+
+    // WORKAROUND: By default, the rebound transition is active only
+    // when returnToBounds() is called (since 'boundsBehavior' is set to
+    // StopAtBounds - see above).
+    // The default transition is not so aesthetic when we call returnToBounds()
+    // (i.e. while switching current part, or after a zoom gesture), for that
+    // reason we completely disable the transition.
+    // FIXME: This is completely broken if a different transition is set by an Item
+    // that uses the Viewer. Should we perhaps store the default transition somewhere,
+    // apply the "fake" transition only when required, and then restore the default
+    // transition?
+    rebound: Transition {
+        NumberAnimation { properties: "x,y"; duration: 0 }
+    }
 
     LibreOffice.View {
         id: view
-
         parentFlickable: rootFlickable
 
         onCurrentPartChanged: {
             // Position view at top-left corner
             rootFlickable.contentX = 0
             rootFlickable.contentY = 0
+
+            rootFlickable.returnToBounds()
         }
+    }
+
+    QtObject {
+        id: internal
+
+        property bool isSpreadSheet: document.documentType == LibreOffice.Document.SpreadsheetDocument
     }
 }

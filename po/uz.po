@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-01-29 13:22+0100\n"
+"POT-Creation-Date: 2016-02-03 14:48+0100\n"
 "PO-Revision-Date: 2015-11-20 05:28+0000\n"
 "Last-Translator: Learner <muzaffar.habibullayev@yandex.ru>\n"
 "Language-Team: Uzbek <uz@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2016-01-30 05:51+0000\n"
+"X-Launchpad-Export-Date: 2016-02-04 06:23+0000\n"
 "X-Generator: Launchpad (build 17908)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
@@ -42,7 +42,7 @@ msgstr ""
 
 #: ../src/app/qml/common/DetailsPage.qml:26
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:107
-#: ../src/app/qml/pdfView/PdfView.qml:227
+#: ../src/app/qml/pdfView/PdfView.qml:235
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:69
 msgid "Details"
 msgstr "Tafsilotlar"
@@ -182,14 +182,14 @@ msgstr "O‘chirish"
 msgid "Share"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentEmptyState.qml:75
-msgid "No document found"
-msgstr "Hujjat topilmadi"
+#: ../src/app/qml/documentPage/DocumentEmptyState.qml:27
+msgid "No documents found"
+msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentEmptyState.qml:84
+#: ../src/app/qml/documentPage/DocumentEmptyState.qml:28
 msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
-"folder or insert removable media with documents."
+"folder or insert removable media containing documents."
 msgstr ""
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
@@ -220,7 +220,7 @@ msgid "dddd, hh:mm"
 msgstr "dddd, hh:mm"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
-#: /tmp/uitk-bottom-edge-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
+#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
 msgid "Documents"
 msgstr "Hujjatlar"
 
@@ -349,13 +349,13 @@ msgid "Go to position..."
 msgstr ""
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
-#: ../src/app/qml/pdfView/PdfView.qml:220
+#: ../src/app/qml/pdfView/PdfView.qml:228
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Disable night mode"
 msgstr "Tungi rejimni o'chirish"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
-#: ../src/app/qml/pdfView/PdfView.qml:220
+#: ../src/app/qml/pdfView/PdfView.qml:228
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Enable night mode"
 msgstr "Tungi rejimni yoqish"
@@ -373,18 +373,22 @@ msgstr ""
 msgid "GO!"
 msgstr "Ketdik!"
 
-#: ../src/app/qml/loView/LOViewPage.qml:129
+#: ../src/app/qml/loView/LOViewPage.qml:137
 msgid "LibreOffice binaries not found."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewPage.qml:132
+#: ../src/app/qml/loView/LOViewPage.qml:140
 msgid "Error while loading LibreOffice."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewPage.qml:135
+#: ../src/app/qml/loView/LOViewPage.qml:143
 msgid ""
 "Document not loaded.\n"
 "The requested document may be corrupt or protected by a password."
+msgstr ""
+
+#: ../src/app/qml/loView/LOViewPage.qml:164
+msgid "This sheet has no content."
 msgstr ""
 
 #. TRANSLATORS: 'LibreOfficeKit' is the name of the library used by
@@ -392,6 +396,13 @@ msgstr ""
 #. Ref. https://docs.libreoffice.org/libreofficekit.html
 #: ../src/app/qml/loView/Splashscreen.qml:45
 msgid "Powered by LibreOfficeKit"
+msgstr ""
+
+#. TRANSLATORS: Please don't add any space between "Sheet" and "%1".
+#. This is the default name for a sheet in LibreOffice.
+#: ../src/app/qml/loView/SpreadsheetSelector.qml:64
+#, qt-format
+msgid "Sheet%1"
 msgstr ""
 
 #: ../src/app/qml/loView/ZoomSelector.qml:122
@@ -428,6 +439,10 @@ msgstr ""
 msgid "Go to page..."
 msgstr "Sahifaga o'tish ..."
 
+#: ../src/app/qml/pdfView/PdfView.qml:221
+msgid "Presentation"
+msgstr ""
+
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
 msgid "Go to page"
 msgstr "Sahifaga o'tish"
@@ -455,16 +470,19 @@ msgstr ""
 msgid "copy %1"
 msgstr "nusxasi %1"
 
-#: /tmp/uitk-bottom-edge-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Hujjat ko'ruvchi"
 
-#: /tmp/uitk-bottom-edge-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "hujjatlar;ko'ruvchi;pdf;o'quvchi;"
 
 #~ msgid "File does not exist"
 #~ msgstr "Fayl mavjud emas"
+
+#~ msgid "No document found"
+#~ msgstr "Hujjat topilmadi"
 
 #~ msgid "Hide table of contents"
 #~ msgstr "Mundarijani yashirish"
