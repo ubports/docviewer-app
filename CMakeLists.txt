@@ -28,13 +28,6 @@ execute_process(
     OUTPUT_STRIP_TRAILING_WHITESPACE
 )
 
-execute_process(
-    COMMAND dpkg -l
-    COMMAND grep qtdeclarative5-dev
-    OUTPUT_VARIABLE QT5VER
-)
-message(STATUS ${QT5VER})
-
 # Find out the architecture for package building
 # to determine the plugin's installation path
 execute_process(
