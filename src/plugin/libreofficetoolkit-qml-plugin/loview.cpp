@@ -344,9 +344,15 @@ void LOView::invalidateAllTiles()
 void LOView::slotTaskRenderFinished(AbstractRenderTask* task, QImage img)
 {
     if (task->type() == RttTile) {
-        updateTileData(task, img);
-    } else if (task->type() == RttImpressThumbnail) {
-        updateThumbnailModel(task, img);
+        int id = task->id();
+
+        for (auto i = m_tiles.begin(); i != m_tiles.end(); ++i) {
+            SGTileItem* sgtile = i.value();
+            if (sgtile->id() == id) {
+                sgtile->setData(img);
+                break;
+            }
+        }
     }
 }
 
@@ -401,25 +407,6 @@ TileRenderTask* LOView::createTask(const QRect &rect, int id) const
     return task;
 }
 
-void LOView::updateTileData(AbstractRenderTask* task, QImage img)
-{
-    int id = task->id();
-    for (auto i = m_tiles.begin(); i != m_tiles.end(); ++i) {
-        SGTileItem* sgtile = i.value();
-        if (sgtile->id() == id) {
-            sgtile->setData(img);
-            break;
-        }
-    }
-}
-
-void LOView::updateThumbnailModel(AbstractRenderTask* task, QImage img)
-{
-    int id = task->id();
-    if (!m_imageProvider->m_images.contains(id))
-        m_imageProvider->m_images.insert(id, img);
-    m_partsModel->notifyAboutChanges(id);
-}
 
 void LOView::setError(const LibreOfficeError::Error &error)
 {

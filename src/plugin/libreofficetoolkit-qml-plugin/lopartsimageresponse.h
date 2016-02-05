@@ -15,27 +15,27 @@
  *
  */
 
-#ifndef LOPARTSIMAGEPROVIDER_H
+#ifndef LOPARTSIMAGERESPONSE_H
 #define LOPARTSIMAGEPROVIDER_H
 
-// For QQuickAsyncImageProvider
+// For QQuickImageResponse
 #include <qquickimageprovider.h>
-#include <QSharedPointer>
 
-class LODocument;
-class ThumbnailRenderTask;
-
-class LOPartsImageProvider : public QQuickAsyncImageProvider
+class LOPartsImageResponse : public QQuickImageResponse
 {
 public:
-    LOPartsImageProvider(const QSharedPointer<LODocument>& d);
-    QQuickImageResponse* requestImageResponse(const QString & id, const QSize & requestedSize);
+    LOPartsImageResponse(bool isRequestValid);
+    ~LOPartsImageResponse();
+
+    void setTaskId(const int id) { m_taskId = id; }
+    QString errorString() const override { return m_errorString; }
+    QQuickTextureFactory * textureFactory() const override;
 
 private:
-    ThumbnailRenderTask* createTask(int part, const QSize &size, int id) const;
-
-private:
-    QSharedPointer<LODocument> m_document;
+    QString m_errorString;
+    QImage m_image;
+    int m_taskId;
 };
 
-#endif // LOPARTSIMAGEPROVIDER_H
+
+#endif // LOPARTSIMAGERESPONSE_H

@@ -113,8 +113,6 @@ private:
     void createTile(int index, const QRect& rect);
     void clearView();
     TileRenderTask* createTask(const QRect& rect, int id) const;
-    void updateTileData(AbstractRenderTask* task, QImage img);
-    void updateThumbnailModel(AbstractRenderTask* task, QImage img);
 
     void setError(const LibreOfficeError::Error &error);
 };

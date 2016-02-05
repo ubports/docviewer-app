@@ -170,7 +170,7 @@ QImage LODocument::paintTile(int part, const QSize& canvasSize, const QRect& til
     return result.rgbSwapped();
 }
 
-QImage LODocument::paintThumbnail(int part, qreal size)
+QImage LODocument::paintPart(int part, const QSize &size)
 {
     if (!m_lokDocument)
         return QImage();
@@ -189,11 +189,11 @@ QImage LODocument::paintThumbnail(int part, qreal size)
     QSize resultSize;
 
     if (tWidth > tHeight) {
-        resultSize.setWidth(size);
-        resultSize.setHeight(size * tHeight / tWidth);
+        resultSize.setWidth(size.width());
+        resultSize.setHeight(size.width() * tHeight / tWidth);
     } else {
-        resultSize.setHeight(size);
-        resultSize.setWidth(size * tWidth / tHeight);
+        resultSize.setHeight(size.height());
+        resultSize.setWidth(size.height() * tWidth / tHeight);
     }
 
     QImage result = QImage(resultSize.width(), resultSize.height(), QImage::Format_RGB32);

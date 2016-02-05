@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 Canonical, Ltd.
+ * Copyright (C) 2015 Stefano Verzegnassi
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License version 3, as published
@@ -15,50 +15,42 @@
  */
 
 #include "lopartsimageprovider.h"
+#include "lopartsimageresponse.h"
+
 #include "lodocument.h"
+
 #include "../../app/renderengine.h"
+#include "lorendertask.h"
 
 LOPartsImageProvider::LOPartsImageProvider(const QSharedPointer<LODocument>& d)
-    : QQuickImageProvider(QQuickImageProvider::Image),
-      m_document(d)
+    : QQuickAsyncImageProvider()
+    , m_document(d)
 { }
 
-QImage LOPartsImageProvider::requestImage(const QString & id, QSize * size, const QSize & requestedSize)
+QQuickImageResponse *LOPartsImageProvider::requestImageResponse(const QString & id, const QSize & requestedSize)
 {
-    Q_UNUSED(size)
-
     QString type = id.section("/", 0, 0);
+    int part = id.section("/", 1, 1).toInt();
+    bool isValid = bool(!requestedSize.isNull() || type == "part");
 
-    if (requestedSize.isNull() || type != "part" ||
-            m_document->documentType() != LODocument::PresentationDocument)
-        return QImage();
+    auto response = new LOPartsImageResponse(isValid);
 
-    // Get info from "id".
-    int partNumber = id.section("/", 1, 1).toInt();
-    int itemId = id.section("/", 2, 2).toInt();
+    if (isValid) {
+        int taskId = RenderEngine::getNextId();
+        response->setTaskId(taskId);
+        RenderEngine::instance()->enqueueTask(createTask(part, requestedSize, taskId));
+    }
 
-    // Once rendered images can be found in hash.
-    if (m_images.contains(itemId))
-        return m_images[itemId];
-
-    const int defaultSize = 256;
-
-    RenderEngine::instance()->enqueueTask(createTask(partNumber, defaultSize, itemId));
-
-    // Return default image (empty).
-    static QImage defaultImage;
-    if (defaultImage.isNull())
-        defaultImage = QImage(defaultSize, defaultSize, QImage::Format_ARGB32);
-
-    return defaultImage;
+    return response;
 }
 
-ThumbnailRenderTask *LOPartsImageProvider::createTask(int part, qreal size, int id) const
+ThumbnailRenderTask* LOPartsImageProvider::createTask(int part, const QSize &size, int id) const
 {
     ThumbnailRenderTask* task = new ThumbnailRenderTask();
     task->setId(id);
     task->setPart(part);
     task->setDocument(m_document);
-    task->setSize(size);
+    task->setSize(size.isEmpty() ? QSize(256, 256) : size);
+
     return task;
 }

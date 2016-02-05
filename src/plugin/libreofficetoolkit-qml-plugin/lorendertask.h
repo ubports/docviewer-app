@@ -48,10 +48,10 @@ public:
     virtual RenderTaskType type() { return RttImpressThumbnail; }
     virtual QImage doWork();
 
-    qreal size() { return m_size; }
-    void setSize(qreal s) { m_size = s; }
+    QSize size() const { return m_size; }
+    void setSize(const QSize & s) { m_size = s; }
 protected:
-    qreal m_size;
+    QSize m_size;
 };
 
 #endif // LORENDERTASK_H

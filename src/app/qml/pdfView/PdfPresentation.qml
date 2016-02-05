@@ -22,7 +22,7 @@ import DocumentViewer.PDF 1.0 as PDF
 Page {
     id: pdfPage
     property var poppler
-    property bool isPresentation: true
+    property bool isPresentationMode: true
     anchors.fill: parent
     title: DocumentViewer.getFileBaseNameFromPath(poppler.path)
     focus: true

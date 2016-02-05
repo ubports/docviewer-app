@@ -23,6 +23,7 @@ set(libreofficetoolkitqmlplugin_SRCS
     loview.cpp
     sgtileitem.cpp
     lopartsimageprovider.cpp
+    lopartsimageresponse.cpp
     lopartsmodel.cpp
     lorendertask.cpp
     ucunits.cpp

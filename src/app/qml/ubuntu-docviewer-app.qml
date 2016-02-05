@@ -34,7 +34,7 @@ MainView {
     // force hiding Unity 8 indicators panel.
     property bool fullscreen: commandLineProxy.fullscreen ||
                               (!desktopMode && isLandscape && narrowWindow) ||
-                              pageStack.currentPage.hasOwnProperty("isPresentation")
+                              pageStack.currentPage.hasOwnProperty("isPresentationMode")
 
     readonly property bool desktopMode: DocumentViewer.desktopMode
 
@@ -200,5 +200,5 @@ MainView {
 
     property bool nightModeEnabled: false
     layer.effect: NightModeShader {}
-    layer.enabled: nightModeEnabled && (pageStack.depth > 1) && !pageStack.currentPage.isPresentation
+    layer.enabled: nightModeEnabled && (pageStack.depth > 1) && !pageStack.currentPage.isPresentationMode
 }
