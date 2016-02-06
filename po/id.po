@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-02-03 14:48+0100\n"
+"POT-Creation-Date: 2016-02-05 23:40+0100\n"
 "PO-Revision-Date: 2016-01-20 03:03+0000\n"
 "Last-Translator: Gema Aji Wardian <gema_wardian@hotmail.com>\n"
 "Language-Team: Indonesian <id@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2016-02-04 06:23+0000\n"
+"X-Launchpad-Export-Date: 2016-02-06 06:14+0000\n"
 "X-Generator: Launchpad (build 17908)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
@@ -218,7 +218,7 @@ msgid "dddd, hh:mm"
 msgstr "dddd, HH:mm"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
-#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
+#: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
 msgid "Documents"
 msgstr "Dokumen"
 
@@ -371,15 +371,15 @@ msgstr "Pilih posisi diantara 1% dan 100%"
 msgid "GO!"
 msgstr "PERGI!"
 
-#: ../src/app/qml/loView/LOViewPage.qml:137
+#: ../src/app/qml/loView/LOViewPage.qml:167
 msgid "LibreOffice binaries not found."
 msgstr "Binary LibreOffice tidak ditemukan."
 
-#: ../src/app/qml/loView/LOViewPage.qml:140
+#: ../src/app/qml/loView/LOViewPage.qml:170
 msgid "Error while loading LibreOffice."
 msgstr "Ralat saat membuka LibreOffice."
 
-#: ../src/app/qml/loView/LOViewPage.qml:143
+#: ../src/app/qml/loView/LOViewPage.qml:173
 msgid ""
 "Document not loaded.\n"
 "The requested document may be corrupt or protected by a password."
@@ -387,7 +387,7 @@ msgstr ""
 "Dokumen gagal dimuat.\n"
 "Dokumen yang diminta mungkin korup atau terlindung oleh password."
 
-#: ../src/app/qml/loView/LOViewPage.qml:164
+#: ../src/app/qml/loView/LOViewPage.qml:228
 msgid "This sheet has no content."
 msgstr ""
 
@@ -452,7 +452,7 @@ msgstr "Ke halaman"
 msgid "Choose a page between 1 and %1"
 msgstr "Pilih halaman antara 1 dan %1"
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:118
+#: ../src/app/qml/ubuntu-docviewer-app.qml:114
 msgid "File does not exist."
 msgstr "Berkas tidak ada."
 
@@ -470,11 +470,11 @@ msgstr "Berkas tidak ada."
 msgid "copy %1"
 msgstr "kopi %1"
 
-#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Penampil Dokumen"
 
-#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "documents;viewer;pdf;reader;dokumen;penampil;pembaca"
 

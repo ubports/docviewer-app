@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-02-03 14:48+0100\n"
+"POT-Creation-Date: 2016-02-05 23:40+0100\n"
 "PO-Revision-Date: 2016-02-04 10:50+0000\n"
 "Last-Translator: Richard Somlói <ricsipontaz@gmail.com>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-02-05 06:54+0000\n"
+"X-Launchpad-Export-Date: 2016-02-06 06:14+0000\n"
 "X-Generator: Launchpad (build 17908)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
@@ -226,7 +226,7 @@ msgid "dddd, hh:mm"
 msgstr "dddd, hh.mm"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
-#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
+#: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
 msgid "Documents"
 msgstr "Dokumentumok"
 
@@ -379,15 +379,15 @@ msgstr "Válasszon egy pozíciót 1% és 100% között"
 msgid "GO!"
 msgstr "Mehet!"
 
-#: ../src/app/qml/loView/LOViewPage.qml:137
+#: ../src/app/qml/loView/LOViewPage.qml:167
 msgid "LibreOffice binaries not found."
 msgstr "Nem találhatóak LibreOffice binárisok."
 
-#: ../src/app/qml/loView/LOViewPage.qml:140
+#: ../src/app/qml/loView/LOViewPage.qml:170
 msgid "Error while loading LibreOffice."
 msgstr "Hiba a LibreOffice betöltése közben."
 
-#: ../src/app/qml/loView/LOViewPage.qml:143
+#: ../src/app/qml/loView/LOViewPage.qml:173
 msgid ""
 "Document not loaded.\n"
 "The requested document may be corrupt or protected by a password."
@@ -395,7 +395,7 @@ msgstr ""
 "A dokumentum betöltése nem sikerült.\n"
 "A kért dokumentum korrupt vagy jelszóval védett."
 
-#: ../src/app/qml/loView/LOViewPage.qml:164
+#: ../src/app/qml/loView/LOViewPage.qml:228
 msgid "This sheet has no content."
 msgstr "Ez a munkalap nem tartalmaz semmit."
 
@@ -460,7 +460,7 @@ msgstr "Ugrás megadott oldalhoz"
 msgid "Choose a page between 1 and %1"
 msgstr "Válasszon egy oldalt 1 és %1 között"
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:118
+#: ../src/app/qml/ubuntu-docviewer-app.qml:114
 msgid "File does not exist."
 msgstr "A fájl nem létezik."
 
@@ -478,11 +478,11 @@ msgstr "A fájl nem létezik."
 msgid "copy %1"
 msgstr "másolat %1"
 
-#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Dokumentum-megjelenítő"
 
-#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "dokumentumok;megtekintő;pdf;olvasó;"
 

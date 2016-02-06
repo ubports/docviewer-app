@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-02-03 14:48+0100\n"
-"PO-Revision-Date: 2016-02-01 20:52+0000\n"
+"POT-Creation-Date: 2016-02-05 23:40+0100\n"
+"PO-Revision-Date: 2016-02-05 10:22+0000\n"
 "Last-Translator: Ivo Xavier <ivofernandes12@gmail.com>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-02-04 06:23+0000\n"
+"X-Launchpad-Export-Date: 2016-02-06 06:14+0000\n"
 "X-Generator: Launchpad (build 17908)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
@@ -185,13 +185,15 @@ msgstr "Partilhar"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:27
 msgid "No documents found"
-msgstr ""
+msgstr "Sem documentos encontrados"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:28
 msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
 "folder or insert removable media containing documents."
 msgstr ""
+"Ligue o dispositivo a qualquer computador copie ficheiros para dentro da "
+"pasta Documentos ou introduzia um dispositivo removível."
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
@@ -221,7 +223,7 @@ msgid "dddd, hh:mm"
 msgstr "dddd, hh:mm"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
-#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
+#: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
 msgid "Documents"
 msgstr "Documentos"
 
@@ -374,15 +376,15 @@ msgstr "Escolha uma posição entre 1% e 100%"
 msgid "GO!"
 msgstr "IR!"
 
-#: ../src/app/qml/loView/LOViewPage.qml:137
+#: ../src/app/qml/loView/LOViewPage.qml:167
 msgid "LibreOffice binaries not found."
 msgstr "Binários do LibreOffice não encontrados."
 
-#: ../src/app/qml/loView/LOViewPage.qml:140
+#: ../src/app/qml/loView/LOViewPage.qml:170
 msgid "Error while loading LibreOffice."
 msgstr "Erro ao carregar LibreOffice."
 
-#: ../src/app/qml/loView/LOViewPage.qml:143
+#: ../src/app/qml/loView/LOViewPage.qml:173
 msgid ""
 "Document not loaded.\n"
 "The requested document may be corrupt or protected by a password."
@@ -390,9 +392,9 @@ msgstr ""
 "Documento não carregado.\n"
 "O documento pedido pode estar corrompido ou protegido com palavra-passe."
 
-#: ../src/app/qml/loView/LOViewPage.qml:164
+#: ../src/app/qml/loView/LOViewPage.qml:228
 msgid "This sheet has no content."
-msgstr ""
+msgstr "Esta folha não tem conteúdo."
 
 #. TRANSLATORS: 'LibreOfficeKit' is the name of the library used by
 #. Document Viewer for rendering LibreOffice/MS-Office documents.
@@ -406,7 +408,7 @@ msgstr "Fornecido por LibreOfficeKit"
 #: ../src/app/qml/loView/SpreadsheetSelector.qml:64
 #, qt-format
 msgid "Sheet%1"
-msgstr ""
+msgstr "Folha%1"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:122
 msgid "Fit width"
@@ -444,7 +446,7 @@ msgstr "Ir para a página..."
 
 #: ../src/app/qml/pdfView/PdfView.qml:221
 msgid "Presentation"
-msgstr ""
+msgstr "Apresentação"
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
 msgid "Go to page"
@@ -455,7 +457,7 @@ msgstr "Ir para a página"
 msgid "Choose a page between 1 and %1"
 msgstr "Escolha uma página entre 1 e %1"
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:118
+#: ../src/app/qml/ubuntu-docviewer-app.qml:114
 msgid "File does not exist."
 msgstr "Ficheiro não existe."
 
@@ -473,11 +475,11 @@ msgstr "Ficheiro não existe."
 msgid "copy %1"
 msgstr "cópia %1"
 
-#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Documentos"
 
-#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "visualizador;documentos;leitor;pdf"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-02-03 14:48+0100\n"
+"POT-Creation-Date: 2016-02-05 23:40+0100\n"
 "PO-Revision-Date: 2015-12-03 05:41+0000\n"
 "Last-Translator: ☠Jay ZDLin☠ <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2016-02-04 06:23+0000\n"
+"X-Launchpad-Export-Date: 2016-02-06 06:14+0000\n"
 "X-Generator: Launchpad (build 17908)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
@@ -223,7 +223,7 @@ msgid "dddd, hh:mm"
 msgstr "dddd, hh:mm"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
-#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
+#: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
 msgid "Documents"
 msgstr "Документы"
 
@@ -375,21 +375,21 @@ msgstr "Выберите место перехода между 1% и 100%"
 msgid "GO!"
 msgstr "Перейти!"
 
-#: ../src/app/qml/loView/LOViewPage.qml:137
+#: ../src/app/qml/loView/LOViewPage.qml:167
 msgid "LibreOffice binaries not found."
 msgstr "Файлы LibreOffice не найдены."
 
-#: ../src/app/qml/loView/LOViewPage.qml:140
+#: ../src/app/qml/loView/LOViewPage.qml:170
 msgid "Error while loading LibreOffice."
 msgstr "Ошибка при загрузке LibreOffice."
 
-#: ../src/app/qml/loView/LOViewPage.qml:143
+#: ../src/app/qml/loView/LOViewPage.qml:173
 msgid ""
 "Document not loaded.\n"
 "The requested document may be corrupt or protected by a password."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewPage.qml:164
+#: ../src/app/qml/loView/LOViewPage.qml:228
 msgid "This sheet has no content."
 msgstr ""
 
@@ -454,7 +454,7 @@ msgstr "Перейти на страницу"
 msgid "Choose a page between 1 and %1"
 msgstr "Выберите страницу между 1 и %1"
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:118
+#: ../src/app/qml/ubuntu-docviewer-app.qml:114
 msgid "File does not exist."
 msgstr "Файл не существует."
 
@@ -472,11 +472,11 @@ msgstr "Файл не существует."
 msgid "copy %1"
 msgstr "копия %1"
 
-#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Программа просмотра документов"
 
-#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "документы;просмотр;pdf;чтение;"
 

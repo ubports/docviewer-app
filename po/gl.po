@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-02-03 14:48+0100\n"
+"POT-Creation-Date: 2016-02-05 23:40+0100\n"
 "PO-Revision-Date: 2016-02-04 05:10+0000\n"
 "Last-Translator: Marcos Lans <Unknown>\n"
 "Language-Team: Galician <gl@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-02-05 06:54+0000\n"
+"X-Launchpad-Export-Date: 2016-02-06 06:14+0000\n"
 "X-Generator: Launchpad (build 17908)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
@@ -222,7 +222,7 @@ msgid "dddd, hh:mm"
 msgstr "dddd, hh:mm"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
-#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
+#: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
 msgid "Documents"
 msgstr "Documentos"
 
@@ -375,15 +375,15 @@ msgstr "Seleccionar posición entre 1% e 100%"
 msgid "GO!"
 msgstr "IR!"
 
-#: ../src/app/qml/loView/LOViewPage.qml:137
+#: ../src/app/qml/loView/LOViewPage.qml:167
 msgid "LibreOffice binaries not found."
 msgstr "Non se atoparon os binarios de LibreOffice."
 
-#: ../src/app/qml/loView/LOViewPage.qml:140
+#: ../src/app/qml/loView/LOViewPage.qml:170
 msgid "Error while loading LibreOffice."
 msgstr "Produciuse un erro cargando LibreOffice."
 
-#: ../src/app/qml/loView/LOViewPage.qml:143
+#: ../src/app/qml/loView/LOViewPage.qml:173
 msgid ""
 "Document not loaded.\n"
 "The requested document may be corrupt or protected by a password."
@@ -391,7 +391,7 @@ msgstr ""
 "Non foi posíbel cargar o documento.\n"
 "Quizais estea corrompido ou protexido por contrasinal."
 
-#: ../src/app/qml/loView/LOViewPage.qml:164
+#: ../src/app/qml/loView/LOViewPage.qml:228
 msgid "This sheet has no content."
 msgstr "Esta folla non ten contido."
 
@@ -456,7 +456,7 @@ msgstr "Ir á páxina"
 msgid "Choose a page between 1 and %1"
 msgstr "Seleccionar unha páxina entre 1 e %1"
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:118
+#: ../src/app/qml/ubuntu-docviewer-app.qml:114
 msgid "File does not exist."
 msgstr "O ficheiro non existe."
 
@@ -474,11 +474,11 @@ msgstr "O ficheiro non existe."
 msgid "copy %1"
 msgstr "copia %1"
 
-#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Visor de documentos"
 
-#: /tmp/ubuntu-docviewer-app-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "documentos;visor;pdf;lector;"
 
