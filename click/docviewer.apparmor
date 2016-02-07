@@ -1,7 +1,8 @@
 {
     "policy_groups": [
         "content_exchange_source",
-        "content_exchange"
+        "content_exchange",
+        "keep-display-on"
     ],
     "read_path": [
         "@{HOME}/Documents/",
