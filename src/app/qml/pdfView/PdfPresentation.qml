@@ -18,12 +18,11 @@ import QtQuick 2.4
 import Ubuntu.Components 1.3
 import DocumentViewer 1.0
 import DocumentViewer.PDF 1.0 as PDF
-import QtSystemInfo 5.0
 
 Page {
     id: pdfPage
     property var poppler
-    property bool isPresentation: true
+    property bool isPresentationMode: true
     anchors.fill: parent
     title: DocumentViewer.getFileBaseNameFromPath(poppler.path)
     focus: true
@@ -87,12 +86,6 @@ Page {
             anchors.fill: parent
             onDoubleClicked: pdfPage.header.visible = !pdfPage.header.visible
         }
-    }
-
-    ScreenSaver {
-        // Turn off screen saver during a full-screen presentation when the app is focused.
-        // Screen saver is automatically re-activated when this page is closed.
-        screenSaverEnabled: !Qt.application.active
     }
 
     Keys.onPressed: {
