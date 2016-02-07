@@ -30,6 +30,7 @@ ViewerPage {
 
     property bool isPresentation: loPage.contentItem && (loPage.contentItem.loDocument.documentType === LibreOffice.Document.PresentationDocument)
     property bool isTextDocument: loPage.contentItem && (loPage.contentItem.loDocument.documentType === LibreOffice.Document.TextDocument)
+    property bool isSpreadsheet: loPage.contentItem && (loPage.contentItem.loDocument.documentType === LibreOffice.Document.SpreadsheetDocument)
 
     title: DocumentViewer.getFileBaseNameFromPath(file.path);
     flickable: isTextDocument ? loPage.contentItem.loView : null
@@ -76,8 +77,15 @@ ViewerPage {
                                 left: leftSidebar.right
                                 right: parent.right
                                 top: parent.top
-                                bottom: parent.bottom
+                                bottom: sSelector.top
                             }
+                        }
+
+                        SpreadsheetSelector {
+                            id: sSelector
+                            anchors.bottom: parent.bottom
+                            visible: loPage.isSpreadsheet
+                            view: loView
                         }
                     }
                 }
@@ -87,9 +95,25 @@ ViewerPage {
                 id: pinchArea
                 objectName: "pinchArea"
                 Layouts.item: "pinchArea"
+                clip: true
 
                 targetFlickable: loView
                 onTotalScaleChanged: targetFlickable.updateContentSize(totalScale)
+
+                maximumZoom: loView.zoomSettings.maximumZoom
+                minimumZoom: {
+                    if (DocumentViewer.desktopMode || mainView.wideWindow)
+                        return loView.zoomSettings.minimumZoom
+
+                    switch(loView.document.documentType) {
+                    case LibreOffice.Document.TextDocument:
+                        return loView.zoomSettings.valueFitToWidthZoom
+                    case LibreOffice.Document.PresentationDocument:
+                        return loView.zoomSettings.valueAutomaticZoom
+                    default:
+                        return loView.zoomSettings.minimumZoom
+                    }
+                }
 
                 anchors {
                     top: parent.top
@@ -98,16 +122,30 @@ ViewerPage {
                     bottom: bottomBar.top
                 }
 
+                Binding {
+                    when: !pinchArea.pinch.active
+                    target: pinchArea
+                    property: "zoomValue"
+                    value: loView.zoomSettings.zoomFactor
+                }
+
+                Rectangle {
+                    // Since UITK 1.3, the MainView background is white.
+                    // We need to set a different color, otherwise pages
+                    // boundaries are not visible.
+                    anchors.fill: parent
+                    color: "#f5f5f5"
+                }
+
                 LibreOffice.Viewer {
                     id: loView
                     objectName: "loView"
                     anchors.fill: parent
 
-                    clip: true
                     documentPath: file.path
 
                     function updateContentSize(tgtScale) {
-                        zoomFactor = tgtScale
+                        zoomSettings.zoomFactor = tgtScale
                     }
 
                     // Keyboard events
@@ -146,30 +184,82 @@ ViewerPage {
                         }
                     }
 
+                    ScalingMouseArea {
+                        id: mouseArea
+                        anchors.fill: parent
+                        targetFlickable: loView
+                        onTotalScaleChanged: targetFlickable.updateContentSize(totalScale)
+
+                        thresholdZoom: minimumZoom + (maximumZoom - minimumZoom) * 0.75
+                        maximumZoom: {
+                            if (DocumentViewer.desktopMode || mainView.wideWindow)
+                                return 3.0
+
+                            return minimumZoom * 3
+                        }
+                        minimumZoom: {
+                            if (DocumentViewer.desktopMode || mainView.wideWindow)
+                                return loView.zoomSettings.minimumZoom
+
+                            switch(loView.document.documentType) {
+                            case LibreOffice.Document.TextDocument:
+                                return loView.zoomSettings.valueFitToWidthZoom
+                            case LibreOffice.Document.PresentationDocument:
+                                return loView.zoomSettings.valueAutomaticZoom
+                            default:
+                                return loView.zoomSettings.minimumZoom
+                            }
+                        }
+
+                        Binding {
+                            target: mouseArea
+                            property: "zoomValue"
+                            value: loView.zoomSettings.zoomFactor
+                        }
+                    }
+
                     Scrollbar { flickableItem: loView; parent: loView.parent }
                     Scrollbar { flickableItem: loView; parent: loView.parent; align: Qt.AlignBottom }
+
+                    Label {
+                        anchors.centerIn: parent
+                        parent: loPage
+                        textSize: Label.Large
+                        text: i18n.tr("This sheet has no content.")
+                        visible: loPage.isSpreadsheet && loView.contentWidth <= 0 && loView.contentHeight <= 0
+                    }
                 }
             }
 
-            PartsView {
+            Item {
                 id: bottomBar
                 anchors {
                     left: parent.left
                     right: parent.right
                     bottom: parent.bottom
                 }
-                height: visible ? units.gu(12) : 0
-                visible: loPage.isPresentation
+                height: childrenRect.height
 
-                model: loView.partsModel
-                orientation: ListView.Horizontal
+                PartsView {
+                    anchors { left: parent.left; right: parent.right }
+                    height: visible ? units.gu(12) : 0
+                    visible: loPage.isPresentation
 
-                HorizontalDivider {
-                    anchors {
-                        left: parent.left
-                        right: parent.right
-                        top: parent.top
+                    model: loView.partsModel
+                    orientation: ListView.Horizontal
+
+                    HorizontalDivider {
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                            top: parent.top
+                        }
                     }
+                }
+
+                SpreadsheetSelector {
+                    visible: loPage.isSpreadsheet
+                    view: loView
                 }
             }
         }

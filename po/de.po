@@ -7,24 +7,24 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-01-18 00:54+0100\n"
-"PO-Revision-Date: 2016-01-20 17:24+0000\n"
-"Last-Translator: Mister Q <misterq@misterqmusic.com>\n"
+"POT-Creation-Date: 2016-02-05 23:40+0100\n"
+"PO-Revision-Date: 2016-01-30 17:43+0000\n"
+"Last-Translator: Tobias Bannert <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-01-22 06:05+0000\n"
-"X-Generator: Launchpad (build 17902)\n"
+"X-Launchpad-Export-Date: 2016-02-06 06:14+0000\n"
+"X-Generator: Launchpad (build 17908)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
 msgid "Some of the provided arguments are not valid."
-msgstr ""
+msgstr "Einge der übermittelten Argumente sind ungültig."
 
 #: ../src/app/qml/common/CommandLineProxy.qml:58
 msgid "Open ubuntu-docviewer-app displaying the selected file"
-msgstr ""
+msgstr "Dokumentenbetrachter zum Darstellen der ausgewählten Datei öffnen"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:65
 msgid "Run fullscreen"
@@ -32,17 +32,19 @@ msgstr "Vollbild starten"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:71
 msgid "Open ubuntu-docviewer-app in pick mode. Used for tests only."
-msgstr ""
+msgstr "Dokumentenbetrachter im Auswahlmodus öffnen. Nur für Testzwecke."
 
 #: ../src/app/qml/common/CommandLineProxy.qml:77
 msgid ""
 "Show documents from the given folder, instead of ~/Documents.\n"
 "The path must exist prior to running ubuntu-docviewer-app"
 msgstr ""
+"Dokumente des ausgewählten Ordners anzeigen, anstelle von ~/Dokumente.\n"
+"Der Pfad muss vorhanden sein, um den Dokumentenbetrachter auszuführen."
 
 #: ../src/app/qml/common/DetailsPage.qml:26
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:107
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:90
+#: ../src/app/qml/pdfView/PdfView.qml:235
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:69
 msgid "Details"
 msgstr "Details"
@@ -112,11 +114,14 @@ msgid ""
 "This file is not supported.\n"
 "Do you want to open it as a plain text?"
 msgstr ""
+"Dieses Format wird nicht unterstützt.\n"
+"Möchten Sie es in Klartext öffnen?"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:38
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:55
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:28
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:55
+#: ../src/app/qml/pdfView/PdfView.qml:180
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:51
 msgid "Cancel"
 msgstr "Abbrechen"
@@ -178,17 +183,15 @@ msgstr "Löschen"
 msgid "Share"
 msgstr "Teilen"
 
-#: ../src/app/qml/documentPage/DocumentEmptyState.qml:75
-msgid "No document found"
-msgstr "Kein Dokument gefunden"
+#: ../src/app/qml/documentPage/DocumentEmptyState.qml:27
+msgid "No documents found"
+msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentEmptyState.qml:84
+#: ../src/app/qml/documentPage/DocumentEmptyState.qml:28
 msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
-"folder or insert removable media with documents."
+"folder or insert removable media containing documents."
 msgstr ""
-"Verbinde dein Gerät mit einem Computer und ziehe Dateien in den Dokumenten-"
-"Ordner oder lege ein Medium mit Dokumenten ein."
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
@@ -218,7 +221,7 @@ msgid "dddd, hh:mm"
 msgstr "dddd, hh:mm"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
-#: /tmp/build-lok-new-zoom-modes+spreadsheet-zoom-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid_8e2ec5-Default/po/com.ubuntu.docviewer.desktop.in.in.h:3
+#: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
 msgid "Documents"
 msgstr "Dokumente"
 
@@ -320,23 +323,23 @@ msgstr "Wird geladen …"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:55
 msgid "LibreOffice text document"
-msgstr "LIbreOffice Writer Dokument"
+msgstr "LIbreOffice-Textdokument"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:57
 msgid "LibreOffice spread sheet"
-msgstr "LibreOffice Tabellendokument"
+msgstr "LibreOffice-Tabellendokument"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:59
 msgid "LibreOffice presentation"
-msgstr "LibreOffice Präsentation"
+msgstr "LibreOffice-Präsentation"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:61
 msgid "LibreOffice Draw document"
-msgstr "LibreOffice Zeichnung"
+msgstr "LibreOffice-Zeichnung"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:63
 msgid "Unknown LibreOffice document"
-msgstr "Unbekanntes LibreOffice Dokument"
+msgstr "Unbekanntes LibreOffice-Dokument"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:65
 msgid "Unknown type document"
@@ -344,45 +347,52 @@ msgstr "Unbekannter Dokumententyp"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:85
 msgid "Go to position..."
-msgstr "Gehe zur Stelle ..."
+msgstr "Zu Position gehen …"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:84
+#: ../src/app/qml/pdfView/PdfView.qml:228
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Disable night mode"
 msgstr "Nachtmodus deaktivieren"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:84
+#: ../src/app/qml/pdfView/PdfView.qml:228
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Enable night mode"
 msgstr "Nachtmodus aktivieren"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:30
 msgid "Go to position"
-msgstr "Gehe zur Stelle"
+msgstr "Zu Position gehen"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:31
 msgid "Choose a position between 1% and 100%"
-msgstr "Wählen Sie eine Position zwischen 1% und 100%"
+msgstr "Bitte eine Position zwischen 1% und 100% auswählen"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:62
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:58
 msgid "GO!"
 msgstr "Los!"
 
-#: ../src/app/qml/loView/LOViewPage.qml:129
+#: ../src/app/qml/loView/LOViewPage.qml:167
 msgid "LibreOffice binaries not found."
-msgstr ""
+msgstr "LibreOffice-Binärdateien konnten nicht gefunden werden."
 
-#: ../src/app/qml/loView/LOViewPage.qml:132
+#: ../src/app/qml/loView/LOViewPage.qml:170
 msgid "Error while loading LibreOffice."
-msgstr ""
+msgstr "Beim Laden von LibreOffice trat ein Fehler auf."
 
-#: ../src/app/qml/loView/LOViewPage.qml:135
+#: ../src/app/qml/loView/LOViewPage.qml:173
 msgid ""
 "Document not loaded.\n"
 "The requested document may be corrupt or protected by a password."
+msgstr ""
+"Dokument nicht geladen.\n"
+"Das angeforderte Dokument könnte beschädigt oder durch ein Passwort "
+"geschützt sein."
+
+#: ../src/app/qml/loView/LOViewPage.qml:228
+msgid "This sheet has no content."
 msgstr ""
 
 #. TRANSLATORS: 'LibreOfficeKit' is the name of the library used by
@@ -390,43 +400,50 @@ msgstr ""
 #. Ref. https://docs.libreoffice.org/libreofficekit.html
 #: ../src/app/qml/loView/Splashscreen.qml:45
 msgid "Powered by LibreOfficeKit"
+msgstr "Unterstützt durch LibreOfficeKit"
+
+#. TRANSLATORS: Please don't add any space between "Sheet" and "%1".
+#. This is the default name for a sheet in LibreOffice.
+#: ../src/app/qml/loView/SpreadsheetSelector.qml:64
+#, qt-format
+msgid "Sheet%1"
 msgstr ""
 
 #: ../src/app/qml/loView/ZoomSelector.qml:122
 msgid "Fit width"
-msgstr ""
+msgstr "Breite anpassen"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:123
 msgid "Fit height"
-msgstr ""
+msgstr "Seitenhöhe anpassen"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:124
 msgid "Automatic"
-msgstr ""
+msgstr "Automatisch"
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
-#: ../src/app/qml/pdfView/PdfContentsPage.qml:30
-#: ../src/app/qml/pdfView/PdfView.qml:38
+#: ../src/app/qml/pdfView/PdfContentsPage.qml:31
+#: ../src/app/qml/pdfView/PdfView.qml:153
 msgid "Contents"
 msgstr "Inhalte"
-
-#: ../src/app/qml/pdfView/PdfContentsPage.qml:36
-msgid "Hide table of contents"
-msgstr "Inhaltsverzeichnis ausblenden"
 
 #. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
 #. while the second one (%2) refers to the total pages count.
 #: ../src/app/qml/pdfView/PdfPresentation.qml:51
-#: ../src/app/qml/pdfView/PdfView.qml:35
+#: ../src/app/qml/pdfView/PdfView.qml:56
 #, qt-format
 msgid "Page %1 of %2"
 msgstr "Seite %1 von %2"
 
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:71
+#: ../src/app/qml/pdfView/PdfView.qml:203
+msgid "Search"
+msgstr "Suchen"
+
+#: ../src/app/qml/pdfView/PdfView.qml:213
 msgid "Go to page..."
 msgstr "Zu Seite gehen …"
 
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:78
+#: ../src/app/qml/pdfView/PdfView.qml:221
 msgid "Presentation"
 msgstr ""
 
@@ -439,7 +456,7 @@ msgstr "Zu Seite gehen"
 msgid "Choose a page between 1 and %1"
 msgstr "Bitte eine Seite zwischen 1 und %1 auswählen"
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:118
+#: ../src/app/qml/ubuntu-docviewer-app.qml:114
 msgid "File does not exist."
 msgstr "Datei ist nicht vorhanden!"
 
@@ -457,13 +474,19 @@ msgstr "Datei ist nicht vorhanden!"
 msgid "copy %1"
 msgstr "Kopie %1"
 
-#: /tmp/build-lok-new-zoom-modes+spreadsheet-zoom-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid_8e2ec5-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Dokumentenbetrachter"
 
-#: /tmp/build-lok-new-zoom-modes+spreadsheet-zoom-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid_8e2ec5-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr "Dokumente;Betrachter;PDF;Leser;Dokumentenbetrachter;PDF-Betrachter"
 
 #~ msgid "File does not exist"
 #~ msgstr "Datei existiert nicht"
+
+#~ msgid "No document found"
+#~ msgstr "Kein Dokument gefunden"
+
+#~ msgid "Hide table of contents"
+#~ msgstr "Inhaltsverzeichnis ausblenden"

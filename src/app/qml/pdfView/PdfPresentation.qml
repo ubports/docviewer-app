@@ -85,6 +85,19 @@ Page {
         MouseArea {
             anchors.fill: parent
             onDoubleClicked: pdfPage.header.visible = !pdfPage.header.visible
+
+            // Hide mouse curson when there's no on-going mouse event
+            hoverEnabled: true
+            // Flickable can steal mouse handling from MouseArea,
+            // so check for any on-going dragging too
+            cursorShape: (showCursorTimer.running || pdfView.dragging) ? Qt.ArrowCursor : Qt.BlankCursor
+            onPositionChanged: {
+                showCursorTimer.restart()
+            }
+            Timer {
+                id: showCursorTimer
+                interval: 500
+            }
         }
     }
 

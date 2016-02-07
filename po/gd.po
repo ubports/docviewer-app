@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-01-18 00:54+0100\n"
-"PO-Revision-Date: 2015-12-30 20:01+0000\n"
-"Last-Translator: GunChleoc <Unknown>\n"
+"POT-Creation-Date: 2016-02-05 23:40+0100\n"
+"PO-Revision-Date: 2016-01-26 22:29+0000\n"
+"Last-Translator: Akerbeltz <fios@akerbeltz.org>\n"
 "Language-Team: Fòram na Gàidhlig\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : "
 "(n > 2 && n < 20) ? 2 : 3;\n"
-"X-Launchpad-Export-Date: 2016-01-22 06:05+0000\n"
-"X-Generator: Launchpad (build 17902)\n"
+"X-Launchpad-Export-Date: 2016-02-06 06:14+0000\n"
+"X-Generator: Launchpad (build 17908)\n"
 "Language: gd\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
@@ -48,14 +48,14 @@ msgstr ""
 
 #: ../src/app/qml/common/DetailsPage.qml:26
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:107
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:90
+#: ../src/app/qml/pdfView/PdfView.qml:235
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:69
 msgid "Details"
 msgstr "Mion-fhiosrachadh"
 
 #: ../src/app/qml/common/DetailsPage.qml:42
 msgid "File"
-msgstr ""
+msgstr "Faidhle"
 
 #: ../src/app/qml/common/DetailsPage.qml:47
 msgid "Location"
@@ -129,6 +129,7 @@ msgstr ""
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:55
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:28
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:55
+#: ../src/app/qml/pdfView/PdfView.qml:180
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:51
 msgid "Cancel"
 msgstr "Sguir dheth"
@@ -201,18 +202,15 @@ msgstr "Sguab às"
 msgid "Share"
 msgstr "Co-roinn"
 
-#: ../src/app/qml/documentPage/DocumentEmptyState.qml:75
-msgid "No document found"
-msgstr "Cha deach sgrìobhainn a lorg"
+#: ../src/app/qml/documentPage/DocumentEmptyState.qml:27
+msgid "No documents found"
+msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentEmptyState.qml:84
+#: ../src/app/qml/documentPage/DocumentEmptyState.qml:28
 msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
-"folder or insert removable media with documents."
+"folder or insert removable media containing documents."
 msgstr ""
-"Ceangail an t-uidheam agad le coimpiutair sam bith agus slaod faidhlichean "
-"gu pasgan nan Sgrìobhainnean gu simplidh no cuir meadhanan so-ghluasad a-"
-"steach le sgrìobhainnean orra."
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
@@ -242,7 +240,7 @@ msgid "dddd, hh:mm"
 msgstr "dddd hh:mm"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
-#: /tmp/build-lok-new-zoom-modes+spreadsheet-zoom-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid_8e2ec5-Default/po/com.ubuntu.docviewer.desktop.in.in.h:3
+#: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
 msgid "Documents"
 msgstr "Sgrìobhainnean"
 
@@ -371,13 +369,13 @@ msgid "Go to position..."
 msgstr "Rach dhan ionad..."
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:84
+#: ../src/app/qml/pdfView/PdfView.qml:228
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Disable night mode"
 msgstr "Cuir am modh oidhche à comas"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:84
+#: ../src/app/qml/pdfView/PdfView.qml:228
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Enable night mode"
 msgstr "Cuir am modh oidhche an comas"
@@ -395,15 +393,15 @@ msgstr "Tagh ionad eadar 1% is 100%"
 msgid "GO!"
 msgstr "SIUTHAD!"
 
-#: ../src/app/qml/loView/LOViewPage.qml:129
+#: ../src/app/qml/loView/LOViewPage.qml:167
 msgid "LibreOffice binaries not found."
 msgstr "Cha deach na faidhlichean bìnearaidh aig LibreOffice a lorg."
 
-#: ../src/app/qml/loView/LOViewPage.qml:132
+#: ../src/app/qml/loView/LOViewPage.qml:170
 msgid "Error while loading LibreOffice."
 msgstr "Mearachd a' luchdadh LibreOffice."
 
-#: ../src/app/qml/loView/LOViewPage.qml:135
+#: ../src/app/qml/loView/LOViewPage.qml:173
 msgid ""
 "Document not loaded.\n"
 "The requested document may be corrupt or protected by a password."
@@ -412,6 +410,10 @@ msgstr ""
 "Dh'fhaoidte gu bheil an sgrìobhainn a dh'iarr thu coirbte no fo dhìon facail-"
 "fhaire."
 
+#: ../src/app/qml/loView/LOViewPage.qml:228
+msgid "This sheet has no content."
+msgstr ""
+
 #. TRANSLATORS: 'LibreOfficeKit' is the name of the library used by
 #. Document Viewer for rendering LibreOffice/MS-Office documents.
 #. Ref. https://docs.libreoffice.org/libreofficekit.html
@@ -419,41 +421,48 @@ msgstr ""
 msgid "Powered by LibreOfficeKit"
 msgstr "Le cumhachd LibreOfficeKit"
 
+#. TRANSLATORS: Please don't add any space between "Sheet" and "%1".
+#. This is the default name for a sheet in LibreOffice.
+#: ../src/app/qml/loView/SpreadsheetSelector.qml:64
+#, qt-format
+msgid "Sheet%1"
+msgstr ""
+
 #: ../src/app/qml/loView/ZoomSelector.qml:122
 msgid "Fit width"
 msgstr "Co-fhreagair ris an leud"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:123
 msgid "Fit height"
-msgstr ""
+msgstr "Co-fhreagair an àirde"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:124
 msgid "Automatic"
-msgstr ""
+msgstr "Fèin-obrachail"
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
-#: ../src/app/qml/pdfView/PdfContentsPage.qml:30
-#: ../src/app/qml/pdfView/PdfView.qml:38
+#: ../src/app/qml/pdfView/PdfContentsPage.qml:31
+#: ../src/app/qml/pdfView/PdfView.qml:153
 msgid "Contents"
 msgstr "Clàr-innse"
-
-#: ../src/app/qml/pdfView/PdfContentsPage.qml:36
-msgid "Hide table of contents"
-msgstr "Falaich an clàr-innse"
 
 #. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
 #. while the second one (%2) refers to the total pages count.
 #: ../src/app/qml/pdfView/PdfPresentation.qml:51
-#: ../src/app/qml/pdfView/PdfView.qml:35
+#: ../src/app/qml/pdfView/PdfView.qml:56
 #, qt-format
 msgid "Page %1 of %2"
 msgstr "Duilleag %1 à %2"
 
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:71
+#: ../src/app/qml/pdfView/PdfView.qml:203
+msgid "Search"
+msgstr ""
+
+#: ../src/app/qml/pdfView/PdfView.qml:213
 msgid "Go to page..."
 msgstr "Rach gu duilleag..."
 
-#: ../src/app/qml/pdfView/PdfViewDefaultHeader.qml:78
+#: ../src/app/qml/pdfView/PdfView.qml:221
 msgid "Presentation"
 msgstr ""
 
@@ -466,7 +475,7 @@ msgstr "Rach gu duilleag"
 msgid "Choose a page between 1 and %1"
 msgstr "Tagh duilleag eadar 1 agus %1"
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:118
+#: ../src/app/qml/ubuntu-docviewer-app.qml:114
 msgid "File does not exist."
 msgstr "Chan eil am faidhle ann."
 
@@ -484,11 +493,11 @@ msgstr "Chan eil am faidhle ann."
 msgid "copy %1"
 msgstr "lethbhreac %1"
 
-#: /tmp/build-lok-new-zoom-modes+spreadsheet-zoom-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid_8e2ec5-Default/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr "Sealladair sgrìobhainnean"
 
-#: /tmp/build-lok-new-zoom-modes+spreadsheet-zoom-UbuntuSDK_for_armhf_GCC_ubuntu_sdk_15_04_vivid_8e2ec5-Default/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr ""
 "documents;viewer;pdf;reader;sgrìobhainnean;sealladair;leughadair;inneal-"
@@ -496,3 +505,9 @@ msgstr ""
 
 #~ msgid "File does not exist"
 #~ msgstr "Chan eil am faidhle ann"
+
+#~ msgid "No document found"
+#~ msgstr "Cha deach sgrìobhainn a lorg"
+
+#~ msgid "Hide table of contents"
+#~ msgstr "Falaich an clàr-innse"
