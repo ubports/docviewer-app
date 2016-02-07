@@ -90,7 +90,9 @@ Page {
     }
 
     ScreenSaver {
-        screenSaverEnabled: false
+        // Turn off screen saver during a full-screen presentation when the app is focused.
+        // Screen saver is automatically re-activated when this page is closed.
+        screenSaverEnabled: !Qt.application.active
     }
 
     Keys.onPressed: {
