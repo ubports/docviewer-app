@@ -29,10 +29,10 @@ PageHeadState {
         objectName: "cancelButton"
         iconName: "close"
         onTriggered: {
-            if (!contentHubProxy.activeTransfer)
+            if (!contentHubProxy.activeExportTransfer)
                 return;
 
-            contentHubProxy.activeTransfer.state = ContentTransfer.Aborted;
+            contentHubProxy.activeExportTransfer.state = ContentTransfer.Aborted;
         }
     }
 
@@ -51,7 +51,7 @@ PageHeadState {
             enabled: viewLoader.item.selectedItems.count > 0
             iconName: "ok"
             onTriggered: {
-                if (!enabled || !contentHubProxy.activeTransfer)
+                if (!enabled || !contentHubProxy.activeExportTransfer)
                     return;
 
                 var urlList = []
@@ -61,8 +61,8 @@ PageHeadState {
                     urlList.push("file://" + folderModel.get(i).path);
                 }
 
-                contentHubProxy.activeTransfer.items = urlList
-                contentHubProxy.activeTransfer.state = ContentTransfer.Charged
+                contentHubProxy.activeExportTransfer.items = urlList
+                contentHubProxy.activeExportTransfer.state = ContentTransfer.Charged
             }
         }
     ]

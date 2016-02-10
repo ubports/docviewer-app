@@ -23,11 +23,12 @@ import DocumentViewer 1.0
 Item {
     id: contentHubProxy
 
-    property var activeTransfer
+    property var activeImportTransfer
+    property var activeExportTransfer
 
     // This property is used in ../documentPage/Document(Grid|List)View.qml
     // so that we avoid to import Ubuntu.Content module outside this proxy.
-    property bool multipleSelectionType: !activeTransfer || activeTransfer.selectionType == ContentTransfer.Multiple
+    property bool multipleSelectionType: !activeExportTransfer || activeExportTransfer.selectionType == ContentTransfer.Multiple
 
     property alias rejectedDocuments: rejectedDocsModel
     property alias importedDocuments: importedDocsModel
@@ -36,22 +37,22 @@ Item {
     ListModel { id: importedDocsModel }
 
     ContentTransferHint {
-        activeTransfer: contentHubProxy.activeTransfer
+        activeTransfer: contentHubProxy.activeImportTransfer
     }
 
     Connections {
         target: ContentHub
 
         onImportRequested: {
-             activeTransfer = transfer
+             activeImportTransfer = transfer
 
-            if (activeTransfer.state === ContentTransfer.Charged) {
+            if (activeImportTransfer.state === ContentTransfer.Charged) {
                 mainView.switchToBrowseMode()
 
                 internal.clearModels()
 
-                for (var i=0; i<activeTransfer.items.length; i++) {
-                    var sourcePath = internal.getPathFromUrl(activeTransfer.items[i].url)
+                for (var i=0; i<activeImportTransfer.items.length; i++) {
+                    var sourcePath = internal.getPathFromUrl(activeImportTransfer.items[i].url)
 
                     if (DocumentViewer.isFileSupported(sourcePath)) {
                         var documentsLocation = DocumentViewer.getXdgDocumentsLocation()
@@ -84,7 +85,7 @@ Item {
         }
 
         onExportRequested: {
-            activeTransfer = transfer
+            activeExportTransfer = transfer
             mainView.switchToPickMode()
         }
     }
@@ -125,7 +126,7 @@ Item {
         }
 
         function finalizeImport() {
-            activeTransfer.finalize()
+            activeImportTransfer.finalize()
         }
 
         function handleNotifications() {
