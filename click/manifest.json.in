@@ -13,7 +13,7 @@
             "urls": "com.ubuntu.docviewer.url-dispatcher"
         }
     },
-    "version": "2.0.@BZR_REVNO@",
+    "version": "2.1.@BZR_REVNO@",
     "maintainer": "Ubuntu App Cats <ubuntu-touch-coreapps@lists.launchpad.net>",
     "x-source": {
         "vcs-bzr": "@BZR_SOURCE@",

@@ -1,8 +1,21 @@
-ubuntu-docviewer-app (2.0ubuntu1) UNRELEASED; urgency=medium
+ubuntu-docviewer-app (2.1) vivid; urgency=medium
 
+  * LibreOffice viewer: added support for spreadsheet documents with multiple sheets (LP: #1537755)
+  * LibreOffice viewer: limited zoom value to a minimum/maximum value (LP: #1501424)
+  * LibreOffice viewer: added a double-tap-to-zoom gesture (LP: #1541582)
+  * LibreOffice viewer: use QQuickAsyncImageProvider for thumbnails
+  * LibreOffice viewer: show content at the center of the window (LP: #1515655)
+  * LibreOffice viewer: better support for HiDPI screens (LP: #1535264)
+  * More zoom options for LibreOffice presentations (LP: #1515649)
+  * A manual zoom (1.0x) is now default for Libreoffice spreadsheets (LP: #1513960)
+  * Resolved a content-hub issue that prevents users to export a document to another app (LP: #1544149)
+  * Resolved an issue occurring when the user tries to delete a document stored in a external media (LP: #1524293)
+  * Full-screen presentation mode for PDF documents (LP: #1534761)
+  * Updated night mode shader
   * Updated and expanded READMEs
+  * UI improvements
 
- -- Girish Rawat <emailgirishrawat@gmail.com>  Sun, 20 Dec 2015 01:23:18 +0530
+ -- Stefano Verzegnassi <verzegnassi.stefano@gmail.com>  Thu, 11 Feb 2016 18:36:48 +0100
 
 ubuntu-docviewer-app (2.0) vivid; urgency=medium
 
