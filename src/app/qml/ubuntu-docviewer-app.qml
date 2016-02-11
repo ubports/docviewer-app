@@ -20,6 +20,7 @@ import Ubuntu.Components.Popups 1.3
 import DocumentViewer 1.0
 import QtQuick.Window 2.0
 import Qt.labs.settings 1.0
+import QtSystemInfo 5.0
 
 import "common"
 import "common/loadComponent.js" as LoadComponent
@@ -196,6 +197,11 @@ MainView {
                 pageStack.pop()
             }
         }
+    }
+
+    ScreenSaver {
+        // Turn off screen saver during a full-screen presentation when the app is focused.
+        screenSaverEnabled: !(Qt.application.active && pageStack.currentPage.isPresentationMode)
     }
 
     property bool nightModeEnabled: false
