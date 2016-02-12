@@ -34,6 +34,8 @@ PageHeadState {
 
             contentHubProxy.activeExportTransfer.items = []
             contentHubProxy.activeExportTransfer.state = ContentTransfer.Aborted
+
+            mainView.switchToBrowseMode()
         }
     }
 
@@ -69,6 +71,8 @@ PageHeadState {
 
                 contentHubProxy.activeExportTransfer.items = contentList
                 contentHubProxy.activeExportTransfer.state = ContentTransfer.Charged
+
+                mainView.switchToBrowseMode()
             }
         }
     ]
