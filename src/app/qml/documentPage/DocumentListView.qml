@@ -24,7 +24,7 @@ ListView {
 
     function isMultipleSelection() {
         // No active transfer, then we're in selection mode.
-        if (!contentHubProxy.activeTransfer)
+        if (!contentHubProxy.activeExportTransfer)
             return true
 
         // We have an active transfer, get the value from the content hub proxy

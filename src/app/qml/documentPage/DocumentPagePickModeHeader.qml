@@ -29,10 +29,13 @@ PageHeadState {
         objectName: "cancelButton"
         iconName: "close"
         onTriggered: {
-            if (!contentHubProxy.activeTransfer)
-                return;
+            if (!contentHubProxy.activeExportTransfer)
+                return
 
-            contentHubProxy.activeTransfer.state = ContentTransfer.Aborted;
+            contentHubProxy.activeExportTransfer.items = []
+            contentHubProxy.activeExportTransfer.state = ContentTransfer.Aborted
+
+            mainView.switchToBrowseMode()
         }
     }
 
@@ -48,23 +51,32 @@ PageHeadState {
         Action {
             text: i18n.tr("Pick")
             objectName: "pickButton"
-            enabled: viewLoader.item.selectedItems.count > 0
+            enabled: viewLoader.item.ViewItems.selectedIndices.length > 0
             iconName: "ok"
             onTriggered: {
-                if (!enabled || !contentHubProxy.activeTransfer)
+                if (!enabled || !contentHubProxy.activeExportTransfer)
                     return;
 
-                var urlList = []
-                var indices = documentPage.view.item.selectedIndices;
+                var contentList = []
+                var indices = viewLoader.item.ViewItems.selectedIndices
+
+                console.log("[content-hub] Following files will be exported:")
 
                 for (var i=0; i < indices.length; i++) {
-                    urlList.push("file://" + folderModel.get(i).path);
+                    var filePath = "file://" + folderModel.get(i).path
+                    console.log(filePath)
+
+                    contentList.push(contentItem.createObject(rootItem, { "url": filePath }))
                 }
 
-                contentHubProxy.activeTransfer.items = urlList
-                contentHubProxy.activeTransfer.state = ContentTransfer.Charged
+                contentHubProxy.activeExportTransfer.items = contentList
+                contentHubProxy.activeExportTransfer.state = ContentTransfer.Charged
+
+                mainView.switchToBrowseMode()
             }
         }
     ]
+
+    property Component contentItem: Component { ContentItem {} }
 }
 
