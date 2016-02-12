@@ -30,9 +30,10 @@ PageHeadState {
         iconName: "close"
         onTriggered: {
             if (!contentHubProxy.activeExportTransfer)
-                return;
+                return
 
-            contentHubProxy.activeExportTransfer.state = ContentTransfer.Aborted;
+            contentHubProxy.activeExportTransfer.items = []
+            contentHubProxy.activeExportTransfer.state = ContentTransfer.Aborted
         }
     }
 
@@ -48,23 +49,30 @@ PageHeadState {
         Action {
             text: i18n.tr("Pick")
             objectName: "pickButton"
-            enabled: viewLoader.item.selectedItems.count > 0
+            enabled: viewLoader.item.ViewItems.selectedIndices.length > 0
             iconName: "ok"
             onTriggered: {
                 if (!enabled || !contentHubProxy.activeExportTransfer)
                     return;
 
-                var urlList = []
-                var indices = documentPage.view.item.selectedIndices;
+                var contentList = []
+                var indices = viewLoader.item.ViewItems.selectedIndices
+
+                console.log("[content-hub] Following files will be exported:")
 
                 for (var i=0; i < indices.length; i++) {
-                    urlList.push("file://" + folderModel.get(i).path);
+                    var filePath = "file://" + folderModel.get(i).path
+                    console.log(filePath)
+
+                    contentList.push(contentItem.createObject(rootItem, { "url": filePath }))
                 }
 
-                contentHubProxy.activeExportTransfer.items = urlList
+                contentHubProxy.activeExportTransfer.items = contentList
                 contentHubProxy.activeExportTransfer.state = ContentTransfer.Charged
             }
         }
     ]
+
+    property Component contentItem: Component { ContentItem {} }
 }
 
