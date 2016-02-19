@@ -155,6 +155,9 @@ Page {
                 onTriggered: contentsBottomEdge.commit()
             }
             flickable: pdfPage.flickable
+
+            visible: contentsBottomEdge.visible
+            enabled: contentsBottomEdge.enabled
         }
 
         contentComponent: Item {
@@ -164,6 +167,7 @@ Page {
         }
 
         enabled: poppler.tocModel.count > 0
+        visible: enabled
 
         onCollapseCompleted: {
             _realPage = contentsPage.createObject(null)
