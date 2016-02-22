@@ -19,22 +19,33 @@ if(CLICK_MODE)
 
   MESSAGE("Grabbing upstream libs to ${UPSTREAM_LIBS_DIR}") 
 
-  get_filename_component(BLD_CONFIGURATION_NAME ${CMAKE_BINARY_DIR} NAME)
-  set(UPSTREAM_CACHE $ENV{HOME}/dev/upstream-libs-docviewer/${BLD_CONFIGURATION_NAME})
-  MESSAGE("Upstream libs cache path: ${UPSTREAM_CACHE}")  
-
-  if(EXISTS "${UPSTREAM_CACHE}")
-    MESSAGE("Upstream libs cache exists.") 
-    file(COPY ${UPSTREAM_CACHE}/upstream-libs/ DESTINATION ${UPSTREAM_LIBS_DIR} PATTERN * )
-  else()
-    MESSAGE("Cache miss, downloading from network.") 
+  if(NO_CACHE)
+    # It has been specified not to cache .click dependencies on the machine.
+    # This is meant to be used for automatic builds (e.g. Jenkins Bot).
     execute_process(
       COMMAND mkdir ${UPSTREAM_LIBS_DIR}
       COMMAND ${GET_CLICK_DEPS_TOOL} -d ${DEPS_MANIFEST} -c ${CUSTOM_SCRIPT} ${CLICK_ARCH} ${UPSTREAM_LIBS_DIR}
     )
-    # Cache for next usage.
-    file(COPY ${UPSTREAM_LIBS_DIR} DESTINATION ${UPSTREAM_CACHE} )
-  endif()
+  else(NO_CACHE)
+    # Cache the .click dependencies for next usage. (Default)
+    # Useful on developer machine.
+    get_filename_component(BLD_CONFIGURATION_NAME ${CMAKE_BINARY_DIR} NAME)
+    set(UPSTREAM_CACHE $ENV{HOME}/dev/upstream-libs-docviewer/${BLD_CONFIGURATION_NAME})
+    MESSAGE("Upstream libs cache path: ${UPSTREAM_CACHE}")
+
+    if(EXISTS "${UPSTREAM_CACHE}")
+      MESSAGE("Upstream libs cache exists.")
+      file(COPY ${UPSTREAM_CACHE}/upstream-libs/ DESTINATION ${UPSTREAM_LIBS_DIR} PATTERN * )
+    else()
+      MESSAGE("Cache miss, downloading from network.")
+      execute_process(
+        COMMAND mkdir ${UPSTREAM_LIBS_DIR}
+        COMMAND ${GET_CLICK_DEPS_TOOL} -d ${DEPS_MANIFEST} -c ${CUSTOM_SCRIPT} ${CLICK_ARCH} ${UPSTREAM_LIBS_DIR}
+      )
+      # Cache for next usage.
+      file(COPY ${UPSTREAM_LIBS_DIR} DESTINATION ${UPSTREAM_CACHE} )
+    endif() #EXISTS "${UPSTREAM_CACHE}"
+  endif() #NO_CACHE
 
   MESSAGE("Installing upstream libs from ${UPSTREAM_LIBS_DIR}/usr/lib/${ARCH_TRIPLET}/ to ${DATA_DIR}lib/${ARCH_TRIPLET}")
   file(GLOB_RECURSE UPSTREAM_LIBS "${UPSTREAM_LIBS_DIR}/usr/lib/${ARCH_TRIPLET}/*")
