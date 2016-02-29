@@ -40,7 +40,7 @@ MainView {
     readonly property bool desktopMode: DocumentViewer.desktopMode
 
     readonly property bool narrowWindow: width < units.gu(51)
-    readonly property bool wideWindow: width >= units.gu(80) && width < units.gu(120)
+    readonly property bool wideWindow: width >= units.gu(80)
     readonly property bool veryWideWindow: width >= units.gu(120)
     readonly property bool isLandscape: Screen.orientation == Qt.LandscapeOrientation ||
                                         Screen.orientation == Qt.InvertedLandscapeOrientation
