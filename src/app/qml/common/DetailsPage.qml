@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013-2014 Canonical, Ltd.
+ * Copyright (C) 2013-2016 Canonical, Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,60 +17,59 @@
 import QtQuick 2.4
 import Ubuntu.Components 1.3
 import DocumentViewer 1.0
+import QtQml.Models 2.1
 
 import "utils.js" as Utils
 
 Page {
     id: detailsPage
     objectName: "detailsPage"
-    title: i18n.tr("Details")
 
-    Flickable {
-        id: flick
+    header: PageHeader {
+        title: i18n.tr("Details")
+        flickable: view
+    }
+
+    ScrollView {
         anchors.fill: parent
-        interactive: true
 
-        contentWidth: parent.width
-        contentHeight: layout.height
+        ListView {
+            id: view
+            anchors.fill: parent
 
-        Column {
-            id: layout
-            width: Math.min(units.gu(80), parent.width)
-            anchors.horizontalCenter: parent.horizontalCenter
+            model: ObjectModel {
+                SubtitledListItem {
+                    text: i18n.tr("File")
+                    subText: DocumentViewer.getFileNameFromPath(file.path)
+                }
 
-            SubtitledListItem {
-                text: i18n.tr("File")
-                subText: DocumentViewer.getFileNameFromPath(file.path)
-            }
+                SubtitledListItem {
+                    text: i18n.tr("Location")
+                    subText: DocumentViewer.getCanonicalPath(file.path)
+                }
 
-            SubtitledListItem {
-                text: i18n.tr("Location")
-                subText: DocumentViewer.getCanonicalPath(file.path)
-            }
+                SubtitledListItem {
+                    text: i18n.tr("Size")
+                    subText: Utils.printSize(i18n, file.info.size)
+                }
 
-            SubtitledListItem {
-                text: i18n.tr("Size")
-                subText: Utils.printSize(i18n, file.info.size)
-            }
+                SubtitledListItem {
+                    text: i18n.tr("Created")
+                    subText: file.info.creationTime.toLocaleString(Qt.locale())
+                }
 
-            SubtitledListItem {
-                text: i18n.tr("Created")
-                subText: file.info.creationTime.toLocaleString(Qt.locale())
-            }
+                SubtitledListItem {
+                    text: i18n.tr("Last modified")
+                    subText: file.info.lastModified.toLocaleString(Qt.locale())
+                }
 
-            SubtitledListItem {
-                text: i18n.tr("Last modified")
-                subText: file.info.lastModified.toLocaleString(Qt.locale())
-            }
-
-            SubtitledListItem {
-                // Used by Autopilot tests
-                objectName: "mimetypeItem"
-                text: i18n.tr("MIME type")
-                subText: file.mimetype.name
+                SubtitledListItem {
+                    // Used by Autopilot tests
+                    objectName: "mimetypeItem"
+                    text: i18n.tr("MIME type")
+                    subText: file.mimetype.name
+                }
             }
         }
     }
-
-    Scrollbar { flickableItem: flick }
 }
