@@ -114,7 +114,7 @@ ListView {
                     text: model.name
                     visible: view.isWide
                     color: (loView.currentPart === model.index) ? UbuntuColors.orange
-                                                                : theme.palette.selected.backgroundText
+                                                                : theme.palette.normal.backgroundText
                 }
 
                 /* UITK 1.3 specs: Slot C */
@@ -123,7 +123,7 @@ ListView {
 
                     text: model.index + 1
                     color: (loView.currentPart === model.index) ? UbuntuColors.orange
-                                                                : theme.palette.selected.backgroundText
+                                                                : theme.palette.normal.backgroundText
                 }
             }
         }
@@ -181,7 +181,7 @@ ListView {
                     Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
                     text: model.index + 1
                     color: (loView.currentPart === model.index) ? UbuntuColors.orange
-                                                                : theme.palette.selected.backgroundText
+                                                                : theme.palette.normal.backgroundText
                 }
             }
         }

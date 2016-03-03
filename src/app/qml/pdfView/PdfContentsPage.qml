@@ -99,7 +99,7 @@ Page {
                     elide: Text.ElideRight
                     font.weight: model.level == 0 ? Font.DemiBold : Font.Normal
                     color: (model.level == 0) ? UbuntuColors.midAubergine
-                                              : theme.palette.selected.backgroundText
+                                              : theme.palette.normal.backgroundText
                 }
 
                 /* UITK 1.3 specs: Slot B */
@@ -118,7 +118,7 @@ Page {
                     text: model.pageIndex + 1
                     font.weight: model.level == 0 ? Font.DemiBold : Font.Normal
                     color: (model.level == 0) ? UbuntuColors.midAubergine
-                                              : theme.palette.selected.backgroundText
+                                              : theme.palette.normal.backgroundText
                 }
             }
         }
