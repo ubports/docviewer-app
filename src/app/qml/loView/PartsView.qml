@@ -113,7 +113,7 @@ ListView {
                     wrapMode: Text.WordWrap
                     text: model.name
                     visible: view.isWide
-                    color: (loView.currentPart === model.index) ? UbuntuColors.orange
+                    color: (loView.currentPart === model.index) ? theme.palette.selected.backgroundText
                                                                 : theme.palette.normal.backgroundText
                 }
 
@@ -122,7 +122,7 @@ ListView {
                     SlotsLayout.position: SlotsLayout.Trailing
 
                     text: model.index + 1
-                    color: (loView.currentPart === model.index) ? UbuntuColors.orange
+                    color: (loView.currentPart === model.index) ? theme.palette.selected.backgroundText
                                                                 : theme.palette.normal.backgroundText
                 }
             }
@@ -180,7 +180,7 @@ ListView {
                 Label {
                     Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
                     text: model.index + 1
-                    color: (loView.currentPart === model.index) ? UbuntuColors.orange
+                    color: (loView.currentPart === model.index) ? theme.palette.selected.backgroundText
                                                                 : theme.palette.normal.backgroundText
                 }
             }

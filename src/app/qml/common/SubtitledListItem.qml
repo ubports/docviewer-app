@@ -26,12 +26,7 @@ ListItem {
 
     ListItemLayout {
         id: listItemLayout
-
-        title {
-            text: listItemSubtitled.text
-            color: UbuntuColors.midAubergine
-        }
-
+        title.text: listItemSubtitled.text
         subtitle {
             text: listItemSubtitled.subText
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
