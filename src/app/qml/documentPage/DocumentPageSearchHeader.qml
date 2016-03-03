@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014-2015 Canonical, Ltd.
+ * Copyright (C) 2014-2016 Canonical, Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,30 +17,33 @@
 import QtQuick 2.4
 import Ubuntu.Components 1.3
 
-PageHeadState {
-    id: rootItem
+PageHeader {
+    id: searchHeader
 
-    property Page targetPage
-    head: targetPage.head
+    property var view: parent.view
+    property Page parentPage: parent
 
-    backAction: Action {
+    leadingActionBar.actions: Action {
         text: i18n.tr("Back")
         iconName: "back"
 
         onTriggered: {
             // Clear the search
             searchField.text = ""
-            targetPage.searchMode = false
+            parentPage.searchMode = false
         }
     }
 
     contents: TextField {
         id: searchField
-        width: parent.width - units.gu(4)
+        anchors {
+            left: parent.left
+            right: parent.right
+            verticalCenter: parent.verticalCenter
+        }
 
         primaryItem: Icon {
-            height: parent.height - units.gu(2)
-            width: height
+            height: units.gu(2); width: height
             name: "search"
         }
 

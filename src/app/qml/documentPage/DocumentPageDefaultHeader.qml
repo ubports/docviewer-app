@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014-2015 Canonical, Ltd.
+ * Copyright (C) 2014-2016 Canonical, Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,17 +18,23 @@ import QtQuick 2.4
 import Ubuntu.Components 1.3
 import Ubuntu.Components.Popups 1.3
 
-PageHeadState {
-    id: rootItem
+PageHeader {
+    id: defaultHeader
 
-    property Page targetPage
-    head: targetPage.head
+    property var view: parent.view
+    property Page parentPage: parent
 
-    actions: [
+    title: i18n.tr("Documents")
+   // flickable: view
+
+    // FIXME: Why need this?!
+    leadingActionBar.actions: null
+
+    trailingActionBar.actions: [
         Action {
             text: i18n.tr("Search...")
             iconName: "search"
-            onTriggered: targetPage.searchMode = true
+            onTriggered: parentPage.searchMode = true
             visible: folderModel.count !== 0
         },
 
@@ -38,14 +44,5 @@ PageHeadState {
             onTriggered: PopupUtils.open(Qt.resolvedUrl("SortSettingsDialog.qml"))
             visible: folderModel.count !== 0
         }
-
-        /*
-        Action {
-            text: targetPage.useGridView ? i18n.tr("Switch to single column list") : i18n.tr("Switch to grid")
-            iconName: targetPage.useGridView ? "view-list-symbolic" : "view-grid-symbolic"
-            onTriggered: targetPage.useGridView = !targetPage.useGridView
-            visible: folderModel.count !== 0
-        }
-        */
     ]
 }

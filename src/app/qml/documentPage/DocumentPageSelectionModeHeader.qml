@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014-2015 Canonical, Ltd.
+ * Copyright (C) 2014-2016 Canonical, Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,55 +18,77 @@ import QtQuick 2.4
 import Ubuntu.Components 1.3
 import Ubuntu.Components.Popups 1.3
 
-PageHeadState {
-    id: rootItem
+PageHeader {
+    id: selectionHeader
 
-    property Page targetPage
-    head: targetPage.head
+    property var view: parent.view
+    property Page parentPage: parent
 
-    property bool selectedAll: viewLoader.item.ViewItems.selectedIndices.length == viewLoader.item.count
+    property bool selectedAll: view.ViewItems.selectedIndices.length == view.count
 
-    backAction: Action {
+    leadingActionBar.actions: Action {
         iconName: "close"
         text: i18n.tr("Close")
         onTriggered: {
-            viewLoader.item.cancelSelection()
+            view.cancelSelection()
         }
     }
 
-    actions: [
-        Action {
-            iconName: selectedAll ? "select-none" :  "select"
-            text: selectedAll ? i18n.tr("Select None") : i18n.tr("Select All")
+    trailingActionBar {
+        anchors.rightMargin: 0
+        delegate: textualButtonWithIcon
 
-            onTriggered: {
-                if (selectedAll) {
-                    viewLoader.item.clearSelection()
-                } else {
-                    viewLoader.item.selectAll()
+        actions: [
+            Action {
+                iconName: selectedAll ? "select-none" :  "select"
+                text: selectedAll ? i18n.tr("Select None") : i18n.tr("Select All")
+
+                onTriggered: {
+                    if (selectedAll)
+                        view.clearSelection()
+                    else
+                        view.selectAll()
                 }
+            },
+
+            Action {
+                iconName: "delete"
+                text: i18n.tr("Delete")
+                enabled: view.ViewItems.selectedIndices.length !== 0
+
+                onTriggered: PopupUtils.open(Qt.resolvedUrl("DeleteFileDialog.qml"), documentPage)
             }
-        },
+        ]
+    }
 
-        Action {
-            iconName: "delete"
-            text: i18n.tr("Delete")
-            enabled: viewLoader.item.ViewItems.selectedIndices.length !== 0
-
-            onTriggered: PopupUtils.open(Qt.resolvedUrl("DeleteFileDialog.qml"), documentPage)
-        }
-    ]
-
-    // WORKAROUND: "preset" property of PageHeadConfiguration is still not
-    // exposed in PageHeadState.
-    contents: Item {
-        Connections {
-            target: targetPage
-            onStateChanged: {
-                if (targetPage.state === "selection")
-                    head.preset = "select"
-                else
-                    head.preset = ""
+    Component {
+        id: textualButtonWithIcon
+        AbstractButton {
+            id: button
+            action: modelData
+            width: layout.width + units.gu(4)
+            height: parent.height
+            Rectangle {
+                color: UbuntuColors.slate
+                opacity: 0.1
+                anchors.fill: parent
+                visible: button.pressed
+            }
+            Row {
+                id: layout
+                anchors.centerIn: parent
+                spacing: units.gu(1)
+                Icon {
+                    anchors.verticalCenter: parent.verticalCenter
+                    width: units.gu(2); height: width
+                    name: action.iconName
+                    source: action.iconSource
+                }
+                Label {
+                    anchors.verticalCenter: parent.verticalCenter
+                    text: action.text
+                    font.weight: text === i18n.tr("Pick") ? Font.Normal : Font.Light
+                }
             }
         }
     }

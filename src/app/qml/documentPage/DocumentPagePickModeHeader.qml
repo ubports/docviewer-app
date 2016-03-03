@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014-2015 Canonical, Ltd.
+ * Copyright (C) 2014-2016 Canonical, Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,47 +18,47 @@ import QtQuick 2.4
 import Ubuntu.Components 1.3
 import Ubuntu.Content 1.1
 
-PageHeadState {
-    id: rootItem
+PageHeader {
+    id: pickModeHeader
 
-    property Page targetPage
-    head: targetPage.head
+    property var view: parent.view
+    property Page parentPage: parent
 
-    backAction: Action {
-        text: i18n.tr("Cancel")
-        objectName: "cancelButton"
-        iconName: "close"
-        onTriggered: {
-            if (!contentHubProxy.activeExportTransfer)
-                return
+    leadingActionBar {
+        anchors.leftMargin: 0
+        delegate: textualButton
 
-            contentHubProxy.activeExportTransfer.items = []
-            contentHubProxy.activeExportTransfer.state = ContentTransfer.Aborted
+        actions: Action {
+            text: i18n.tr("Cancel")
+            objectName: "cancelButton"
+            iconName: "close"
+            onTriggered: {
+                if (!contentHubProxy.activeExportTransfer)
+                    return
 
-            mainView.switchToBrowseMode()
+                contentHubProxy.activeExportTransfer.items = []
+                contentHubProxy.activeExportTransfer.state = ContentTransfer.Aborted
+
+                mainView.switchToBrowseMode()
+            }
         }
     }
 
-    actions: [
-        Action {
-            text: targetPage.useGridView ? i18n.tr("Switch to single column list") : i18n.tr("Switch to grid")
-            iconName: targetPage.useGridView ? "view-list-symbolic" : "view-grid-symbolic"
-            onTriggered: targetPage.useGridView = !targetPage.useGridView
+    trailingActionBar {
+        anchors.rightMargin: 0
+        delegate: textualButton
 
-            visible: folderModel.count !== 0
-        },
-
-        Action {
+        actions: Action {
             text: i18n.tr("Pick")
             objectName: "pickButton"
-            enabled: viewLoader.item.ViewItems.selectedIndices.length > 0
+            enabled: view.ViewItems.selectedIndices.length > 0
             iconName: "ok"
             onTriggered: {
                 if (!enabled || !contentHubProxy.activeExportTransfer)
                     return;
 
                 var contentList = []
-                var indices = viewLoader.item.ViewItems.selectedIndices
+                var indices = view.ViewItems.selectedIndices
 
                 console.log("[content-hub] Following files will be exported:")
 
@@ -75,8 +75,32 @@ PageHeadState {
                 mainView.switchToBrowseMode()
             }
         }
-    ]
+    }
 
-    property Component contentItem: Component { ContentItem {} }
+    Component {
+        id: textualButton
+        AbstractButton {
+            id: button
+            action: modelData
+            width: label.width + units.gu(4)
+            height: parent.height
+            Rectangle {
+                color: UbuntuColors.slate
+                opacity: 0.1
+                anchors.fill: parent
+                visible: button.pressed
+            }
+            Label {
+                anchors.centerIn: parent
+                id: label
+                text: action.text
+                font.weight: text === i18n.tr("Pick") ? Font.Normal : Font.Light
+            }
+        }
+    }
+
+    Component {
+        id: contentItem
+        ContentItem {}
+    }
 }
-
