@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013-2015 Canonical, Ltd.
+ * Copyright (C) 2013-2016 Canonical, Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,6 +30,8 @@ MainView {
     objectName: "mainView"
 
     property bool pickMode: commandLineProxy.pickMode
+    property alias contentHubProxy: contentHubLoader.item
+    property bool nightModeEnabled: false
 
     // If device orientation is landscape and screen width is limited,
     // force hiding Unity 8 indicators panel.
@@ -44,12 +46,6 @@ MainView {
     readonly property bool veryWideWindow: width >= units.gu(120)
     readonly property bool isLandscape: Screen.orientation == Qt.LandscapeOrientation ||
                                         Screen.orientation == Qt.InvertedLandscapeOrientation
-
-    applicationName: "com.ubuntu.docviewer"
-    automaticOrientation: true
-
-    width: units.gu(150)
-    height: units.gu(75)
 
     function openDocument(path)  {
         if (path !== "") {
@@ -91,11 +87,31 @@ MainView {
                         mainView, { parent: mainView, text: message });
     }
 
+    applicationName: "com.ubuntu.docviewer"
+    automaticOrientation: true
+
+    width: units.gu(150)
+    height: units.gu(75)
+
+    layer.effect: NightModeShader {}
+    layer.enabled: nightModeEnabled &&
+                   (pageStack.depth > 1) &&
+                   !pageStack.currentPage.isPresentationMode
+
     onFullscreenChanged: {
         if (mainView.fullscreen)
             window.visibility = Window.FullScreen
         else
             window.visibility = Window.Windowed
+    }
+
+    onPickModeChanged: {
+        if (mainView.pickMode) {
+            // If a document is loaded, pop() its page.
+            while (pageStack.depth > 1) {
+                pageStack.pop()
+            }
+        }
     }
 
     Component.onCompleted: {
@@ -161,11 +177,12 @@ MainView {
         filter.property: "name"
     }
 
-    PageStack { id: pageStack }
+    PageStack {
+        id: pageStack
+    }
 
     Settings {
         id: sortSettings
-
         property int sortMode: 0    // 0 = by date, 1 = by name, 2 = by size
         property bool reverseOrder: false
     }
@@ -176,10 +193,8 @@ MainView {
     }
 
     // Content Hub support
-    property alias contentHubProxy: contentHubLoader.item
     Loader {
         id: contentHubLoader
-
         asynchronous: true
         source: Qt.resolvedUrl("common/ContentHubProxy.qml")
     }
@@ -190,21 +205,9 @@ MainView {
         onOpened: openDocument(uris[0])
     }
 
-    onPickModeChanged: {
-        if (mainView.pickMode) {
-            // If a document is loaded, pop() its page.
-            while (pageStack.depth > 1) {
-                pageStack.pop()
-            }
-        }
-    }
-
+    // Screen saver controller
     ScreenSaver {
         // Turn off screen saver during a full-screen presentation when the app is focused.
         screenSaverEnabled: !(Qt.application.active && pageStack.currentPage.isPresentationMode)
     }
-
-    property bool nightModeEnabled: false
-    layer.effect: NightModeShader {}
-    layer.enabled: nightModeEnabled && (pageStack.depth > 1) && !pageStack.currentPage.isPresentationMode
 }

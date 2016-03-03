@@ -10,25 +10,6 @@ PinchArea {
     property real maximumZoom: 4.0
     property alias zoomValue: zoomHelper.scale
 
-    pinch {
-        target: Item { id: zoomHelper }
-        minimumScale: pinchArea.minimumZoom
-        maximumScale: pinchArea.maximumZoom
-    }
-
-    onPinchStarted: {
-        targetFlickable.interactive = false
-    }
-
-    onPinchUpdated: {
-        pinchUpdatedHandler(pinch)
-    }
-
-    onPinchFinished: {
-        targetFlickable.interactive = true
-        pinchFinishedHandler()
-    }
-
     function pinchUpdatedHandler(pinch) {
         if (zoomHelper.scale < pinchArea.maximumZoom &&
                 zoomHelper.scale > pinchArea.minimumZoom) {
@@ -55,5 +36,24 @@ PinchArea {
 
         // Return to the legal bounds
         targetFlickable.returnToBounds()
+    }
+
+    pinch {
+        target: Item { id: zoomHelper }
+        minimumScale: pinchArea.minimumZoom
+        maximumScale: pinchArea.maximumZoom
+    }
+
+    onPinchStarted: {
+        targetFlickable.interactive = false
+    }
+
+    onPinchUpdated: {
+        pinchUpdatedHandler(pinch)
+    }
+
+    onPinchFinished: {
+        targetFlickable.interactive = true
+        pinchFinishedHandler()
     }
 }
