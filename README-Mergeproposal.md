@@ -9,7 +9,7 @@ Checklist
 *   Does the MP add/remove user visible strings? If Yes, has the pot file been
     updated?
 
-*   Does the MP change the UI? If Yes, has it been approved by design, or 
+*   Does the MP change the UI? If Yes, has it been approved by design, or
     discussed with some of the DocViewer developers?
 
 *   Did you perform an exploratory manual test run of your code change and any
@@ -29,4 +29,8 @@ stable and up to date.
 
 Note: As of wily 15.10, some autopilot tests are broken in trunk. As such autopilot failures
 can be excused until they are fixed in trunk.
+
+Jenkins
+=======
+In addition to manual reviews, merge proposals are subject to being run in jenkins to ensure the application builds and any unit tests are successful. For more information on jenkins and how it works, see the [Core Apps Jenkins Wiki](https://wiki.ubuntu.com/Touch/CoreApps/Jenkins)
 
