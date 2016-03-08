@@ -38,22 +38,25 @@ class BaseTestCaseWithPatchedHome(AutopilotTestCase):
 
     """
 
-    binary = 'ubuntu-docviewer-app'
-    qml = 'ubuntu_docviewer_app.qml'
-    sample_dir = os.path.join('usr', 'lib', 'python3',
-                            'dist-packages')
-    source_dir = os.path.dirname(s.path.dirname(os.path.abspath('.')))
-    build_dir = self._get_build_dir()
 
-    local_location = self.build_dir
-    local_location_qml = os.path.join(self.build_dir, 'src', 'app', 'qml',
-                                      self.qml)
-    local_location_binary = os.path.join(self.build_dir, 'src', 'app',
-                                         self.binary)
-    installed_location_binary = os.path.join('usr', 'bin', self.binary)
+    local_build_location = os.path.dirname(os.path.dirname(os.getcwd()))
+    sdk_build_location = os.path.join(os.path.dirname(local_build_location),
+                                      os.path.basename(local_build_location)
+                                      + '-build')
+
+    local_build_location_qml = os.path.join(local_build_location, 'src', 'app',
+                                            'qml', 'ubuntu-docviewer-app.qml')
+    local_build_location_binary = os.path.join(local_build_location, 'src',
+                                               'app', 'ubuntu-docviewer-app')
+    sdk_build_location_qml = os.path.join(sdk_build_location, 'src', 'app',
+                                          'qml', 'ubuntu-docviewer-app.qml')
+    sdk_build_location_binary = os.path.join(sdk_build_location, 'src',
+                                             'app', 'ubuntu-docviewer-app')
+    installed_location_binary = os.path.join('usr', 'bin',
+                                             'ubuntu-docviewer-app')
     installed_location_qml = os.path.join('usr', 'share',
-                                          'ubuntu-docviewer-app',
-                                          'qml', self.qml)
+                                          'ubuntu-docviewer-app', 'qml',
+                                          'ubuntu-docviewer-app.qml')
 
     def get_launcher_method_and_type(self):
         if os.path.exists(self.local_build_location_binary):
@@ -72,7 +75,7 @@ class BaseTestCaseWithPatchedHome(AutopilotTestCase):
 
     def setUp(self):
         super(BaseTestCaseWithPatchedHome, self).setUp()
-        self.launcher, self.test_type = self.get_launcher_and_type()
+        self.launcher, self.test_type = self.get_launcher_method_and_type()
         self.real_home_dir = os.getenv('HOME')
         self.home_dir = self._patch_home()
 
@@ -84,15 +87,15 @@ class BaseTestCaseWithPatchedHome(AutopilotTestCase):
     @autopilot_logging.log_action(logger.info)
     def launch_test_local(self):
         return self.launch_test_application(
-            self.local_location_binary,
+            self.local_build_location_binary,
             self.filepath,
             app_type='qt',
             emulator_base=ubuntuuitoolkit.UbuntuUIToolkitCustomProxyObjectBase)
 
     @autopilot_logging.log_action(logger.info)
-    def launch_test_local(self):
+    def launch_test_sdk(self):
         return self.launch_test_application(
-            self.local_location_binary,
+            self.sdk_build_location_binary,
             self.filepath,
             app_type='qt',
             emulator_base=ubuntuuitoolkit.UbuntuUIToolkitCustomProxyObjectBase)
@@ -101,7 +104,8 @@ class BaseTestCaseWithPatchedHome(AutopilotTestCase):
     def launch_test_installed(self):
         return self.launch_test_application(
             self.installed_location_binary,
-            os.path.join(self.sample_dir, self.filepath),
+            os.path.join(os.path.join('usr', 'lib', 'python3',
+                                      'dist-packages'), self.filepath),
             app_type='qt',
             emulator_base=ubuntuuitoolkit.UbuntuUIToolkitCustomProxyObjectBase)
 
@@ -125,7 +129,6 @@ class BaseTestCaseWithPatchedHome(AutopilotTestCase):
             temp_dir = temp_dir_fixture.path
 
             # before we set fixture, copy xauthority if needed
-            self._copy_xauthority_file(temp_dir)
             self.useFixture(fixtures.EnvironmentVariable('HOME',
                                                          newvalue=temp_dir))
 
@@ -138,4 +141,6 @@ class DocviewerAppTestCase(BaseTestCaseWithPatchedHome):
 
     def setUp(self):
         super(DocviewerAppTestCase, self).setUp()
+
+    def launch_app(self):
         self.app = ubuntu_docviewer_app.DocviewerApp(self.launcher())

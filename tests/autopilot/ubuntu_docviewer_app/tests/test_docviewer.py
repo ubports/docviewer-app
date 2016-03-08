@@ -13,5 +13,8 @@ from ubuntu_docviewer_app.tests import DocviewerAppTestCase
 class TestMainWindow(DocviewerAppTestCase):
     def test_example_test(self):
         """Just launch app, assert on main view"""
+        self.filepath = 'ubuntu_docviewer_app/files/plaintext.txt'
+        self.launch_app()
+
         main_view = self.app.main_view
         self.assertTrue(main_view)
