@@ -17,7 +17,6 @@
 """docviewer app autopilot tests."""
 
 import os
-import shutil
 import logging
 
 import fixtures
