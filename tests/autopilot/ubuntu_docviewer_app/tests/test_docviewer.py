@@ -1,18 +1,17 @@
 # -*- Mode: Python; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
-# Copyright 2013 Canonical
+# Copyright 2016 Canonical
 #
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License version 3, as published
 # by the Free Software Foundation.
 
-"""docviewer app autopilot tests."""
+"""Docviewer app autopilot tests."""
 
-from autopilot.testcase import AutopilotTestCase
-
-# TODO Insert new tests here.
+from ubuntu_docviewer_app.tests import DocviewerAppTestCase
 
 
-class DummyTest(AutopilotTestCase):
-    """This is just a placeholder test"""
-    def test_dummy_true(self):
-        self.assertTrue(True)
+class TestMainWindow(DocviewerAppTestCase):
+    def test_example_test(self):
+        """Just launch app, assert on main view"""
+        main_view = self.app.main_view
+        self.assertTrue(main_view)
