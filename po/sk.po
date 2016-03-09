@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-02-05 23:40+0100\n"
-"PO-Revision-Date: 2016-02-29 17:46+0000\n"
+"PO-Revision-Date: 2016-03-08 10:27+0000\n"
 "Last-Translator: P_E_T_O <Unknown>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Launchpad-Export-Date: 2016-03-01 06:00+0000\n"
-"X-Generator: Launchpad (build 17925)\n"
+"X-Launchpad-Export-Date: 2016-03-09 06:06+0000\n"
+"X-Generator: Launchpad (build 17936)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
 msgid "Some of the provided arguments are not valid."
@@ -65,15 +65,15 @@ msgstr "Vytvorené"
 
 #: ../src/app/qml/common/DetailsPage.qml:62
 msgid "Last modified"
-msgstr ""
+msgstr "Naposledy zmenené"
 
 #: ../src/app/qml/common/DetailsPage.qml:69
 msgid "MIME type"
-msgstr ""
+msgstr "Typ MIME"
 
 #: ../src/app/qml/common/ErrorDialog.qml:23
 msgid "Error"
-msgstr ""
+msgstr "Chyba"
 
 #: ../src/app/qml/common/ErrorDialog.qml:26
 #: ../src/app/qml/common/PickImportedDialog.qml:54
@@ -81,7 +81,7 @@ msgstr ""
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:31
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:53
 msgid "Close"
-msgstr ""
+msgstr "Zavrieť"
 
 #: ../src/app/qml/common/PickImportedDialog.qml:29
 msgid "Multiple documents imported"
@@ -105,7 +105,7 @@ msgstr[1] ""
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:27
 msgid "Unknown file type"
-msgstr ""
+msgstr "Neznámy typ súboru"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:28
 msgid ""
@@ -120,39 +120,39 @@ msgstr ""
 #: ../src/app/qml/pdfView/PdfView.qml:180
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:51
 msgid "Cancel"
-msgstr ""
+msgstr "Zrušiť"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:44
 msgid "Yes"
-msgstr ""
+msgstr "Áno"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in GB
 #: ../src/app/qml/common/utils.js:22
 #, qt-format
 msgid "%1 GB"
-msgstr ""
+msgstr "%1 GB"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in MB
 #: ../src/app/qml/common/utils.js:26
 #, qt-format
 msgid "%1 MB"
-msgstr ""
+msgstr "%1 MB"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in kB
 #: ../src/app/qml/common/utils.js:30
 #, qt-format
 msgid "%1 kB"
-msgstr ""
+msgstr "%1 kB"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in byte
 #: ../src/app/qml/common/utils.js:33
 #, qt-format
 msgid "%1 byte"
-msgstr ""
+msgstr "%1 byte"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:39
 msgid "Delete file"
-msgstr ""
+msgstr "Zmazať súbor"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:40
 #, qt-format
@@ -172,11 +172,11 @@ msgstr[1] ""
 #: ../src/app/qml/documentPage/DocumentDelegateActions.qml:25
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:53
 msgid "Delete"
-msgstr ""
+msgstr "Vymazať"
 
 #: ../src/app/qml/documentPage/DocumentDelegateActions.qml:44
 msgid "Share"
-msgstr ""
+msgstr "Zdieľať"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:27
 msgid "No documents found"
@@ -207,22 +207,22 @@ msgstr ""
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:115
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:134
 msgid "yyyy/MM/dd hh:mm"
-msgstr ""
+msgstr "dd/MM/yyyy hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:128
 msgid "dddd, hh:mm"
-msgstr ""
+msgstr "dddd, hh:mm"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
 #: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
 msgid "Documents"
-msgstr ""
+msgstr "Dokumenty"
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:29
 msgid "Search..."
-msgstr ""
+msgstr "Hľadať..."
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:36
 msgid "Sorting settings..."
@@ -238,11 +238,11 @@ msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:49
 msgid "Pick"
-msgstr ""
+msgstr "Vybrať"
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:27
 msgid "Back"
-msgstr ""
+msgstr "Naspäť"
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:47
 msgid "search in documents..."
@@ -250,11 +250,11 @@ msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:40
 msgid "Select None"
-msgstr ""
+msgstr "Zrušiť výber"
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:40
 msgid "Select All"
-msgstr ""
+msgstr "Vybrať všetko"
 
 #: ../src/app/qml/documentPage/SearchEmptyState.qml:24
 msgid "No matching document found"
@@ -267,11 +267,11 @@ msgstr ""
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:13
 msgid "Today"
-msgstr ""
+msgstr "Dnes"
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:16
 msgid "Yesterday"
-msgstr ""
+msgstr "Včera"
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:19
 msgid "Earlier this week"
@@ -287,7 +287,7 @@ msgstr ""
 
 #: ../src/app/qml/documentPage/SharePage.qml:23
 msgid "Share to"
-msgstr ""
+msgstr "Zdieľať"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:26
 msgid "Sorting settings"
@@ -312,7 +312,7 @@ msgstr ""
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:51
 #: ../src/app/qml/textView/TextView.qml:43
 msgid "Loading..."
-msgstr ""
+msgstr "Načítavam..."
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:55
 msgid "LibreOffice text document"
@@ -397,25 +397,25 @@ msgstr ""
 #: ../src/app/qml/loView/SpreadsheetSelector.qml:64
 #, qt-format
 msgid "Sheet%1"
-msgstr ""
+msgstr "List%1"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:122
 msgid "Fit width"
-msgstr ""
+msgstr "Prispôsobiť šírke"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:123
 msgid "Fit height"
-msgstr ""
+msgstr "Prispôsobiť výške"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:124
 msgid "Automatic"
-msgstr ""
+msgstr "Automaticky"
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:31
 #: ../src/app/qml/pdfView/PdfView.qml:153
 msgid "Contents"
-msgstr ""
+msgstr "Obsah"
 
 #. TRANSLATORS: the first argument (%1) refers to the page currently shown on the screen,
 #. while the second one (%2) refers to the total pages count.
@@ -423,23 +423,23 @@ msgstr ""
 #: ../src/app/qml/pdfView/PdfView.qml:56
 #, qt-format
 msgid "Page %1 of %2"
-msgstr ""
+msgstr "Strana %1 z %2"
 
 #: ../src/app/qml/pdfView/PdfView.qml:203
 msgid "Search"
-msgstr ""
+msgstr "Hľadať"
 
 #: ../src/app/qml/pdfView/PdfView.qml:213
 msgid "Go to page..."
-msgstr ""
+msgstr "Prejsť na stranu..."
 
 #: ../src/app/qml/pdfView/PdfView.qml:221
 msgid "Presentation"
-msgstr ""
+msgstr "Prezentácia"
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
 msgid "Go to page"
-msgstr ""
+msgstr "Prejsť na stranu"
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:27
 #, qt-format
@@ -462,12 +462,12 @@ msgstr ""
 #: ../src/plugin/file-qml-plugin/docviewerutils.cpp:111
 #, qt-format
 msgid "copy %1"
-msgstr ""
+msgstr "kópia %1"
 
 #: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
-msgstr ""
+msgstr "Prehliadač dokumentov"
 
 #: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
-msgstr ""
+msgstr "dokumenty;prehliadač ;pdf;reader;"
