@@ -74,14 +74,15 @@ ListItem {
                    + listItemLayout.title.baselineOffset - baselineOffset
             }
 
-            Icon {
+            Label {
                 id: externalStorageLabel
-                anchors.right: parent.right
-                width: units.gu(2); height: width
-                name: "sdcard-symbolic"
+                text: i18n.tr("SD card")
+                textSize: Label.Small
+                color:  theme.palette.normal.backgroundSecondaryText
                 visible: model.isFromExternalStorage
                 y: listItemLayout.mainSlot.y + listItemLayout.subtitle.y
                    + listItemLayout.subtitle.baselineOffset - baselineOffset
+                anchors.right: parent.right
             }
         }
     }
