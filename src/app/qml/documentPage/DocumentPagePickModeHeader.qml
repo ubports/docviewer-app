@@ -66,7 +66,7 @@ PageHeader {
                     var filePath = "file://" + folderModel.get(i).path
                     console.log(filePath)
 
-                    contentList.push(contentItem.createObject(rootItem, { "url": filePath }))
+                    contentList.push(contentItem.createObject(pickModeHeader, { "url": filePath }))
                 }
 
                 contentHubProxy.activeExportTransfer.items = contentList
@@ -95,6 +95,12 @@ PageHeader {
                 id: label
                 text: action.text
                 font.weight: text === i18n.tr("Pick") ? Font.Normal : Font.Light
+                color: {
+                    if (button.enabled)
+                        return text === i18n.tr("Pick") ? theme.palette.selected.backgroundText : theme.palette.normal.backgroundText
+
+                    return theme.palette.disabled.backgroundText
+                }
             }
         }
     }
