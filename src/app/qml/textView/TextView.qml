@@ -23,10 +23,11 @@ import "../common/utils.js" as Utils
 
 Page {
     id: textPage
-    title: DocumentViewer.getFileBaseNameFromPath(file.path)
 
-    // Reset night mode shader settings when closing the page
-    // Component.onDestruction: mainView.nightModeEnabled = false
+    header: TextViewDefaultHeader {
+        title: DocumentViewer.getFileBaseNameFromPath(file.path)
+        activityRunning: textAreaMain.isLoading
+    }
 
     TextArea {
         id: textAreaMain
@@ -34,7 +35,12 @@ Page {
 
         property bool isLoading: true
 
-        anchors.fill: parent
+        anchors {
+            top: textPage.header.bottom
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
 
         // FIXME: If set to true, some of the keyboard hooks are disabled
         // And it's not possible to move the cursor with arrow keys.
@@ -61,14 +67,4 @@ Page {
             background: Rectangle { color: "white" }
         }
     }
-
-    // *** HEADER ***
-    state: "default"
-    states: [
-        TextViewDefaultHeader {
-            name: "default"
-            targetPage: textPage
-            activityRunning: textAreaMain.isLoading
-        }
-    ]
 }

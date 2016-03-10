@@ -20,44 +20,30 @@ import QtQuick.Layouts 1.1
 import Ubuntu.Components.Popups 1.3
 import DocumentViewer 1.0
 
-PageHeadState {
+PageHeader {
     id: rootItem
 
-    property Page targetPage
     property alias activityRunning: activity.running
 
-    head: targetPage.head
+    contents: ListItemLayout {
+        anchors.centerIn: parent
 
-    contents: RowLayout {
-        anchors.fill: parent
-        spacing: units.gu(1)
-
-        ActivityIndicator { id: activity; visible: running }
-
-        Column {
-            id: layout
-            Layout.fillWidth: true
-
-            Label {
-                width: parent.width
-                //horizontalAlignment: Text.AlignHCenter
-                elide: Text.ElideMiddle
-
-                font.weight: Font.DemiBold
-                text: targetPage.title
-            }
-            Label {
-                width: parent.width
-                //horizontalAlignment: Text.AlignHCenter
-                elide: Text.ElideMiddle
-
-                textSize: Label.Small
-                text: file.mimetype.description
-            }
+        ActivityIndicator {
+            id: activity
+            SlotsLayout.position: SlotsLayout.Leading
+            visible: running
         }
+
+        title {
+            font.weight: Font.DemiBold
+            elide: Text.ElideMiddle
+            text: rootItem.title
+        }
+
+        subtitle.text: file.mimetype.description
     }
 
-    actions: [
+    trailingActionBar.actions: [
         Action {
             iconName: "night-mode"
             text: mainView.nightModeEnabled ? i18n.tr("Disable night mode") : i18n.tr("Enable night mode")
