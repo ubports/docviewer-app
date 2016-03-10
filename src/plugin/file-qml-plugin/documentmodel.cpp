@@ -65,6 +65,7 @@ void DocumentModel::q_fileModified(const QString & path)
     for (int i=0; i<m_docs.length(); i++) {
         if (m_docs.at(i).path == path) {
             m_docs[i] = createEntry(path);
+            Q_EMIT dataChanged(index(i, 0), index(i, 0));
 
             break;
         }
