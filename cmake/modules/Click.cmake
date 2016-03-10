@@ -38,9 +38,9 @@ if(CLICK_MODE)
       file(COPY ${UPSTREAM_CACHE}/upstream-libs/ DESTINATION ${UPSTREAM_LIBS_DIR} PATTERN * )
     else()
       MESSAGE("Cache miss, downloading from network.")
+      file(MAKE_DIRECTORY ${UPSTREAM_LIBS_DIR})
+      file(MAKE_DIRECTORY ${UPSTREAM_CACHE})
       execute_process(
-        COMMAND mkdir ${UPSTREAM_CACHE}
-        COMMAND mkdir ${UPSTREAM_LIBS_DIR}
         COMMAND ${GET_CLICK_DEPS_TOOL} -d ${DEPS_MANIFEST} -c ${CUSTOM_SCRIPT} ${CLICK_ARCH} ${UPSTREAM_LIBS_DIR}
       )
       # Cache for next usage.
