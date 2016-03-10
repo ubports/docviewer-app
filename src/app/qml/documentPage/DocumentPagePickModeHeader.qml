@@ -63,7 +63,7 @@ PageHeader {
                 console.log("[content-hub] Following files will be exported:")
 
                 for (var i=0; i < indices.length; i++) {
-                    var filePath = "file://" + folderModel.get(i).path
+                    var filePath = "file://" + folderModel.get(indices[i]).path
                     console.log(filePath)
 
                     contentList.push(contentItem.createObject(pickModeHeader, { "url": filePath }))
