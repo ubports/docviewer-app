@@ -23,28 +23,25 @@ MouseArea {
 
         scaleInfo.fromZoom = zoomValue
 
-        if (zoomValue <= thresholdZoom) {
+        if (zoomValue <= thresholdZoom)
             scaleInfo.toZoom = maximumZoom
-        } else {
+        else
             scaleInfo.toZoom = minimumZoom
-        }
 
         scaleInfo.tempContentX = tpt.x * scaleInfo.effectiveZoom - (flick.width * 0.5)
         scaleInfo.tempContentY = tpt.y * scaleInfo.effectiveZoom - (flick.height * 0.5)
 
         scaleInfo.finalContentX = Math.max(0, Math.min(pt.x * scaleInfo.effectiveZoom - (flick.width * 0.5),
-                                                            (flick.contentWidth * scaleInfo.effectiveZoom) - flick.width))
+                                                       (flick.contentWidth * scaleInfo.effectiveZoom) - flick.width))
 
         scaleInfo.finalContentY = Math.max(0, Math.min(pt.y * scaleInfo.effectiveZoom - (flick.height * 0.5),
-                                                            (flick.contentHeight * scaleInfo.effectiveZoom) - flick.height))
+                                                       (flick.contentHeight * scaleInfo.effectiveZoom) - flick.height))
 
-        if (zoomValue <= thresholdZoom) {
+        if (zoomValue <= thresholdZoom)
             zoomInAnimation.start()
-        } else {
+        else
             zoomOutAnimation.start()
-        }
     }
-
 
     QtObject {
         id: scaleInfo
@@ -62,7 +59,6 @@ MouseArea {
 
     SequentialAnimation {
         id: zoomInAnimation
-
         ScriptAction { script: targetFlickable.interactive = false; }
 
         // Fake zooming
@@ -73,14 +69,12 @@ MouseArea {
                 duration: mouseArea.zoomDuration
                 to: scaleInfo.effectiveZoom
             }
-
             NumberAnimation {
                 target: targetFlickable
                 property: "contentX"
                 duration: mouseArea.zoomDuration
                 to: scaleInfo.tempContentX
             }
-
             NumberAnimation {
                 target: targetFlickable
                 property: "contentY"
@@ -90,13 +84,10 @@ MouseArea {
         }
 
         ScriptAction { script: targetFlickable.contentItem.scale = 1; }
-
         ScriptAction { script: totalScale = scaleInfo.toZoom; }
         ScriptAction { script: targetFlickable.contentX = scaleInfo.finalContentX; }
         ScriptAction { script: targetFlickable.contentY = scaleInfo.finalContentY; }
-
         ScriptAction { script: targetFlickable.returnToBounds(); }
-
         ScriptAction { script: targetFlickable.interactive = true; }
     }
 
@@ -104,13 +95,10 @@ MouseArea {
         id: zoomOutAnimation
 
         ScriptAction { script: targetFlickable.interactive = false; }
-
         ScriptAction { script: totalScale = scaleInfo.toZoom; }
         ScriptAction { script: targetFlickable.contentX = scaleInfo.finalContentX; }
         ScriptAction { script: targetFlickable.contentY = scaleInfo.finalContentY; }
-
         ScriptAction { script: targetFlickable.returnToBounds(); }
-
         ScriptAction { script: targetFlickable.interactive = true; }
     }
 }

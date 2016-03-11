@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 Canonical, Ltd.
+ * Copyright (C) 2015, 2016 Canonical, Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,9 +20,9 @@ import Ubuntu.Components 1.3
 Rectangle {
     height: units.dp(2)
     gradient: Gradient {
-        GradientStop { position: 0.0; color: Qt.rgba(0, 0, 0, 0.1)  }
-        GradientStop { position: 0.49; color:  Qt.rgba(0, 0, 0, 0.1)  }
-        GradientStop { position: 0.5; color: Qt.rgba(1, 1, 1, 0.4) }
-        GradientStop { position: 1.0; color:  Qt.rgba(1, 1, 1, 0.4)  }
+        GradientStop { position: 0.0;  color: Qt.rgba(0, 0, 0, 0.1) }
+        GradientStop { position: 0.49; color: Qt.rgba(0, 0, 0, 0.1) }
+        GradientStop { position: 0.5;  color: Qt.rgba(1, 1, 1, 0.4) }
+        GradientStop { position: 1.0;  color: Qt.rgba(1, 1, 1, 0.4) }
     }
 }
