@@ -8,37 +8,40 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-02-05 23:40+0100\n"
-"PO-Revision-Date: 2016-03-08 10:27+0000\n"
+"PO-Revision-Date: 2016-03-11 09:43+0000\n"
 "Last-Translator: P_E_T_O <Unknown>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Launchpad-Export-Date: 2016-03-09 06:06+0000\n"
-"X-Generator: Launchpad (build 17936)\n"
+"X-Launchpad-Export-Date: 2016-03-12 06:20+0000\n"
+"X-Generator: Launchpad (build 17939)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
 msgid "Some of the provided arguments are not valid."
-msgstr ""
+msgstr "Niektoré z uvedených argumentov sú neplatné."
 
 #: ../src/app/qml/common/CommandLineProxy.qml:58
 msgid "Open ubuntu-docviewer-app displaying the selected file"
-msgstr ""
+msgstr "Otvoriť ubuntu-docviewer-app pre zobrazenie vybraného súboru"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:65
 msgid "Run fullscreen"
-msgstr ""
+msgstr "Celá obrazovka"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:71
 msgid "Open ubuntu-docviewer-app in pick mode. Used for tests only."
 msgstr ""
+"Otvoriť ubuntu-docviewer-app v režime pick. Používa sa iba pre testy."
 
 #: ../src/app/qml/common/CommandLineProxy.qml:77
 msgid ""
 "Show documents from the given folder, instead of ~/Documents.\n"
 "The path must exist prior to running ubuntu-docviewer-app"
 msgstr ""
+"Ukázať dokumenty z priečinka, miesto ~/Dokumenty.\n"
+"Cesta musí existovať pred spustením ubuntu-docviewer-app"
 
 #: ../src/app/qml/common/DetailsPage.qml:26
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:107
@@ -85,23 +88,25 @@ msgstr "Zavrieť"
 
 #: ../src/app/qml/common/PickImportedDialog.qml:29
 msgid "Multiple documents imported"
-msgstr ""
+msgstr "Importovaných viac dokumentov"
 
 #: ../src/app/qml/common/PickImportedDialog.qml:30
 msgid "Choose which one to open:"
-msgstr ""
+msgstr "Vybrať, ktorý otvoriť:"
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:28
 msgid "File not supported"
 msgid_plural "Files not supported"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Nepodporovaný súbor"
+msgstr[1] "Nepodporovaný súbor"
+msgstr[2] "Nepodporované súbory"
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:29
 msgid "Following document has not been imported:"
 msgid_plural "Following documents have not been imported:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Nasledujúci dokument nebol importovaný:"
+msgstr[1] "Nasledujúci dokument nebol importovaný:"
+msgstr[2] "Nasledujúce dokumenty neboli importované:"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:27
 msgid "Unknown file type"
@@ -112,6 +117,8 @@ msgid ""
 "This file is not supported.\n"
 "Do you want to open it as a plain text?"
 msgstr ""
+"Tento súbor nie je podporovaný.\n"
+"Chcete ho otvoriť ako obyčajný text?"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:38
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:55
@@ -158,15 +165,17 @@ msgstr "Zmazať súbor"
 #, qt-format
 msgid "Delete %1 file"
 msgid_plural "Delete %1 files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Vymazať %1 súborov"
+msgstr[1] "Vymazať %1 súbor"
+msgstr[2] "Vymazať %1 súbory"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:41
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:42
 msgid "Are you sure you want to permanently delete this file?"
 msgid_plural "Are you sure you want to permanently delete these files?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ste si istý, že chcete natrvalo vymazať tento súbor?"
+msgstr[1] "Ste si istý, že chcete natrvalo vymazať tento súbor?"
+msgstr[2] "Ste si istý, že chcete natrvalo vymazať tieto súbory?"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:61
 #: ../src/app/qml/documentPage/DocumentDelegateActions.qml:25
@@ -180,27 +189,29 @@ msgstr "Zdieľať"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:27
 msgid "No documents found"
-msgstr ""
+msgstr "Žiadne nájdené dokumenty"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:28
 msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
 "folder or insert removable media containing documents."
 msgstr ""
+"Pripojte zariadenie k počítaču a jednoducho pretiahnite súbory do priečinka "
+"Dokumenty alebo vložte vymeniteľné médium s dokumentami."
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:103
 #, qt-format
 msgid "Today, %1"
-msgstr ""
+msgstr "Dnes, %1"
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:108
 #, qt-format
 msgid "Yesterday, %1"
-msgstr ""
+msgstr "Včera, %1"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
@@ -226,15 +237,15 @@ msgstr "Hľadať..."
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:36
 msgid "Sorting settings..."
-msgstr ""
+msgstr "Nastavenie triedenia..."
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:41
 msgid "Switch to single column list"
-msgstr ""
+msgstr "Prepnúť do zoznamu jedného stĺpca"
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:41
 msgid "Switch to grid"
-msgstr ""
+msgstr "Prepnúť do mriežky"
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:49
 msgid "Pick"
@@ -246,7 +257,7 @@ msgstr "Naspäť"
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:47
 msgid "search in documents..."
-msgstr ""
+msgstr "hľadať v dokumentoch..."
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:40
 msgid "Select None"
@@ -258,12 +269,12 @@ msgstr "Vybrať všetko"
 
 #: ../src/app/qml/documentPage/SearchEmptyState.qml:24
 msgid "No matching document found"
-msgstr ""
+msgstr "Žiadne nájdené dokumenty"
 
 #: ../src/app/qml/documentPage/SearchEmptyState.qml:26
 msgid ""
 "Please ensure that your query is not misspelled and/or try a different query."
-msgstr ""
+msgstr "Uistite sa, že váš dotaz nie je chybný a/alebo skúste iný."
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:13
 msgid "Today"
@@ -275,15 +286,15 @@ msgstr "Včera"
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:19
 msgid "Earlier this week"
-msgstr ""
+msgstr "Začiatkom tohto týždňa"
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:22
 msgid "Earlier this month"
-msgstr ""
+msgstr "Začiatkom tohto mesiaca"
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:24
 msgid "Even earlier..."
-msgstr ""
+msgstr "Dokonca skoršie..."
 
 #: ../src/app/qml/documentPage/SharePage.qml:23
 msgid "Share to"
@@ -291,23 +302,23 @@ msgstr "Zdieľať"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:26
 msgid "Sorting settings"
-msgstr ""
+msgstr "Nastavenie triedenia"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:31
 msgid "Sort by date (Latest first)"
-msgstr ""
+msgstr "Zoradiť podľa dátumu (posledný najskôr)"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:32
 msgid "Sort by name (A-Z)"
-msgstr ""
+msgstr "Zoradiť podľa mena (A-Z)"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:33
 msgid "Sort by size (Smaller first)"
-msgstr ""
+msgstr "Zoradiť podľa veľkosti (najmenšie najskôr)"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:47
 msgid "Reverse order"
-msgstr ""
+msgstr "Opačné poradie"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:51
 #: ../src/app/qml/textView/TextView.qml:43
@@ -316,81 +327,83 @@ msgstr "Načítavam..."
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:55
 msgid "LibreOffice text document"
-msgstr ""
+msgstr "LibreOffice textový dokument"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:57
 msgid "LibreOffice spread sheet"
-msgstr ""
+msgstr "LibreOffice pracovný hárok"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:59
 msgid "LibreOffice presentation"
-msgstr ""
+msgstr "LibreOffice prezentácia"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:61
 msgid "LibreOffice Draw document"
-msgstr ""
+msgstr "LibreOffice Draw dokument"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:63
 msgid "Unknown LibreOffice document"
-msgstr ""
+msgstr "Neznámy LibreOffice dokument"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:65
 msgid "Unknown type document"
-msgstr ""
+msgstr "Neznámy typ dokumentu"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:85
 msgid "Go to position..."
-msgstr ""
+msgstr "Na pozíciu..."
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
 #: ../src/app/qml/pdfView/PdfView.qml:228
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Disable night mode"
-msgstr ""
+msgstr "Vypnúť nočný režim"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
 #: ../src/app/qml/pdfView/PdfView.qml:228
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Enable night mode"
-msgstr ""
+msgstr "Zapnúť nočný režim"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:30
 msgid "Go to position"
-msgstr ""
+msgstr "Na pozíciu"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:31
 msgid "Choose a position between 1% and 100%"
-msgstr ""
+msgstr "Vybrať pozíciu medzi 1% a 100%"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:62
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:58
 msgid "GO!"
-msgstr ""
+msgstr "CHOĎ!"
 
 #: ../src/app/qml/loView/LOViewPage.qml:167
 msgid "LibreOffice binaries not found."
-msgstr ""
+msgstr "Binárne súbory LibreOffice neboli nájdený."
 
 #: ../src/app/qml/loView/LOViewPage.qml:170
 msgid "Error while loading LibreOffice."
-msgstr ""
+msgstr "Chyba pri načítaní LibreOffice."
 
 #: ../src/app/qml/loView/LOViewPage.qml:173
 msgid ""
 "Document not loaded.\n"
 "The requested document may be corrupt or protected by a password."
 msgstr ""
+"Dokument nenačítaný.\n"
+"Požadovaný dokument môže byť poškodený alebo chránený heslom."
 
 #: ../src/app/qml/loView/LOViewPage.qml:228
 msgid "This sheet has no content."
-msgstr ""
+msgstr "Tento hárok nemá žiadny obsah."
 
 #. TRANSLATORS: 'LibreOfficeKit' is the name of the library used by
 #. Document Viewer for rendering LibreOffice/MS-Office documents.
 #. Ref. https://docs.libreoffice.org/libreofficekit.html
 #: ../src/app/qml/loView/Splashscreen.qml:45
 msgid "Powered by LibreOfficeKit"
-msgstr ""
+msgstr "Poháňaná LibreOfficeKit-om"
 
 #. TRANSLATORS: Please don't add any space between "Sheet" and "%1".
 #. This is the default name for a sheet in LibreOffice.
@@ -444,11 +457,11 @@ msgstr "Prejsť na stranu"
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:27
 #, qt-format
 msgid "Choose a page between 1 and %1"
-msgstr ""
+msgstr "Vybrať stranu medzi 1 a %1"
 
 #: ../src/app/qml/ubuntu-docviewer-app.qml:114
 msgid "File does not exist."
-msgstr ""
+msgstr "Súbor neexistuje."
 
 #. TRANSLATORS: This string is used for renaming a copied file,
 #. when a file with the same name already exists in user's
