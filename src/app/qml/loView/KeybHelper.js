@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 Stefano Verzegnassi
+ * Copyright (C) 2015, 2016 Stefano Verzegnassi
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@ function parseEvent(event) {
         if (isPresentation)
             view.currentPart -= 1
         else
-            view.moveView("vertical", -view.height)
+            event.accepted = false
  
         return;
     }
@@ -33,34 +33,37 @@ function parseEvent(event) {
         if (isPresentation)
             view.currentPart += 1
         else
-            view.moveView("vertical", view.height)
+            event.accepted = false
  
         return;
     }
  
     if (event.key == Qt.Key_Home) {
         if (event.modifiers & Qt.ControlModifier) {
-            view.contentX = 0
-            view.contentY = 0
+            //view.contentX = 0
+            //view.contentY = 0
             view.currentPart = 0
-        } else {
-            view.contentX = 0
-            view.contentY = 0
-        }
+        } //else {
+          //  view.contentX = 0
+          //  view.contentY = 0
+        //}
+        event.accepted = false
     }
 
     if (event.key == Qt.Key_End) {
         if (event.modifiers & Qt.ControlModifier) {
-            view.contentX = view.contentWidth - view.width
-            view.contentY = view.contentHeight - view.height
-            console.log(view.currentPart, view.document.partsCount - 1)
+        //    view.contentX = view.contentWidth - view.width
+        //    view.contentY = view.contentHeight - view.height
+         //   console.log(view.currentPart, view.document.partsCount - 1)
             view.currentPart = view.document.partsCount - 1
-        } else {
-            view.contentX = view.contentWidth - view.width
-            view.contentY = view.contentHeight - view.height
-        }
+        } //else {
+          //  view.contentX = view.contentWidth - view.width
+          //  view.contentY = view.contentHeight - view.height
+        //}
+        event.accepted = false
     }
 
+    /*
     if (event.key == Qt.Key_Up) {
         view.moveView("vertical", -pixelDiff)
         return;
@@ -79,7 +82,7 @@ function parseEvent(event) {
     if (event.key == Qt.Key_Right) {
         view.moveView("horizontal", pixelDiff)
         return;
-    }
+    }*/
 
     if (event.key == Qt.Key_Plus) {
         if (event.modifiers & Qt.ControlModifier) {

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014-2015 Canonical, Ltd.
+ * Copyright (C) 2014-2016 Canonical, Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,68 +16,55 @@
 
 import QtQuick 2.4
 import Ubuntu.Components 1.3
-import QtQuick.Layouts 1.1
 import Ubuntu.Components.Popups 1.3
 import DocumentViewer.LibreOffice 1.0 as LibreOffice
 import DocumentViewer 1.0
 
-PageHeadState {
-    id: rootItem
+PageHeader {
+    id: defaultHeader
 
-    property Page targetPage
-    head: targetPage.head
+    property var targetPage
 
-    contents: RowLayout {
-        anchors.fill: parent
-        anchors.rightMargin: units.gu(2)
-        spacing: units.gu(1)
+    contents: ListItemLayout {
+        anchors.centerIn: parent
 
-        Column {
-            id: layout
-            Layout.fillWidth: true
+        title {
+            elide: Text.ElideMiddle
+            font.weight: Font.DemiBold
+            text: defaultHeader.title
+        }
 
-            Label {
-                anchors { left: parent.left; right: parent.right }
-                elide: Text.ElideMiddle
-                font.weight: Font.DemiBold
-                text: targetPage.title
-            }
-            Label {
-                anchors { left: parent.left; right: parent.right }
-                elide: Text.ElideMiddle
-                textSize: Label.Small
-                text: {
-                    if (!targetPage.contentItem)
-                        return i18n.tr("Loading...")
+        subtitle {
+            textSize: Label.Small
+            text: {
+                if (!targetPage.contentItem)
+                    return i18n.tr("Loading...")
 
-                    switch(targetPage.contentItem.loDocument.documentType) {
-                    case 0:
-                        return i18n.tr("LibreOffice text document")
-                    case 1:
-                        return i18n.tr("LibreOffice spread sheet")
-                    case 2:
-                        return i18n.tr("LibreOffice presentation")
-                    case 3:
-                        return i18n.tr("LibreOffice Draw document")
-                    case 4:
-                        return i18n.tr("Unknown LibreOffice document")
-                    default:
-                        return i18n.tr("Unknown type document")
-                    }
+                switch(targetPage.contentItem.loDocument.documentType) {
+                case LibreOffice.Document.TextDocument:
+                    return i18n.tr("LibreOffice text document")
+                case LibreOffice.Document.SpreadsheetDocument:
+                    return i18n.tr("LibreOffice spread sheet")
+                case LibreOffice.Document.PresentationDocument:
+                    return i18n.tr("LibreOffice presentation")
+                case LibreOffice.Document.DrawingDocument:
+                    return i18n.tr("LibreOffice Draw document")
+                case LibreOffice.Document.OtherDocument:
+                    return i18n.tr("Unknown LibreOffice document")
+                default:
+                    return i18n.tr("Unknown type document")
                 }
             }
         }
 
         ZoomSelector {
-            Layout.preferredWidth: units.gu(12)
-            Layout.preferredHeight: units.gu(4)
-
+            SlotsLayout.position: SlotsLayout.Trailing
             view: targetPage.contentItem.loView
             visible: targetPage.contentItem && (DocumentViewer.desktopMode || mainView.wideWindow)
         }
     }
 
-    actions: [
+    trailingActionBar.actions: [
         Action {
             // FIXME: Autopilot test broken... seems not to detect we're now using an ActionBar since the switch to UITK 1.3
             objectName: "gotopage"
@@ -86,12 +73,11 @@ PageHeadState {
             visible: targetPage.contentItem.loDocument.documentType == LibreOffice.Document.TextDocument
 
             onTriggered: {
-                PopupUtils.open(
-                            Qt.resolvedUrl("LOViewGotoDialog.qml"),
-                            targetPage,
-                            {
-                                view: targetPage.contentItem.loView
-                            })
+                var popupSettings = {
+                    view: targetPage.contentItem.loView
+                }
+
+                PopupUtils.open(Qt.resolvedUrl("LOViewGotoDialog.qml"), targetPage, popupSettings)
             }
         },
 
