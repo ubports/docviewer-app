@@ -138,8 +138,12 @@ ViewerPage {
                 ScrollView {
                     anchors.fill: parent
 
-                    // Keyboard events
-                    Keys.onPressed: KeybHelper.parseEvent(event)
+                    // We need to set some custom event handler.
+                    // Forward the key events to the Viewer and
+                    // fallback to the ScrollView handlers if the
+                    // event hasn't been accepted.
+                    Keys.forwardTo: loView
+                    Keys.priority: Keys.AfterItem
 
                     LibreOffice.Viewer {
                         id: loView
@@ -147,6 +151,8 @@ ViewerPage {
                         anchors.fill: parent
 
                         documentPath: file.path
+
+                        Keys.onPressed: KeybHelper.parseEvent(event)
 
                         function updateContentSize(tgtScale) {
                             zoomSettings.zoomFactor = tgtScale
@@ -270,7 +276,8 @@ ViewerPage {
         id: defaultHeader
         visible: loPage.loaded
         title: DocumentViewer.getFileBaseNameFromPath(file.path);
-        flickable: isTextDocument ? loPage.contentItem.loView : null
+        // FIXME: re-enable
+        //flickable: isTextDocument ? loPage.contentItem.loView : null
         targetPage: loPage
     }
 

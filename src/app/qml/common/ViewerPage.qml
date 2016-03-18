@@ -35,19 +35,7 @@ Page {
 
     Loader {
         id: contentLoader
-        anchors {
-            top: {
-                if (viewerPage.header && !viewerPage.header.flickable)
-                    return viewerPage.header.bottom
-                else
-                    return parent.top
-            }
-
-            bottom: parent.bottom
-            left: parent.left
-            right: parent.right
-        }
-
+        anchors.fill: parent
         asynchronous: true
         sourceComponent: viewerPage.contents
 
@@ -56,19 +44,7 @@ Page {
 
     Item {
         id: splashScreenItem
-        anchors {
-            top: {
-                if (viewerPage.header && !viewerPage.header.flickable)
-                    return viewerPage.header.bottom
-                else
-                    return parent.top
-            }
-
-            bottom: parent.bottom
-            left: parent.left
-            right: parent.right
-        }
-
+        anchors.fill: parent
         visible: contentLoader.status != Loader.Ready
         enabled: visible
     }

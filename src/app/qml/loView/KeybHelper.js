@@ -14,86 +14,59 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
  
-function parseEvent(event) {
-    var pixelDiff = 5;
+// Here we handle all the key events that are not
+// recognised by UITK ScrollView
 
+function parseEvent(event) {
     var view = loPage.contentItem.loView
     var isPresentation = view.document.documentType === LibreOffice.Document.PresentationDocument
 
     if (event.key == Qt.Key_PageUp) {
-        if (isPresentation)
+        if (isPresentation) {
             view.currentPart -= 1
-        else
-            event.accepted = false
- 
+            event.accepted = true
+        }
         return;
     }
  
     if (event.key == Qt.Key_PageDown) {
-        if (isPresentation)
+        if (isPresentation) {
             view.currentPart += 1
-        else
-            event.accepted = false
- 
+            event.accepted = true
+        }
         return;
     }
  
     if (event.key == Qt.Key_Home) {
-        if (event.modifiers & Qt.ControlModifier) {
-            //view.contentX = 0
-            //view.contentY = 0
+        if (event.modifiers & Qt.ControlModifier)
             view.currentPart = 0
-        } //else {
-          //  view.contentX = 0
-          //  view.contentY = 0
-        //}
+
         event.accepted = false
+        return
     }
 
     if (event.key == Qt.Key_End) {
-        if (event.modifiers & Qt.ControlModifier) {
-        //    view.contentX = view.contentWidth - view.width
-        //    view.contentY = view.contentHeight - view.height
-         //   console.log(view.currentPart, view.document.partsCount - 1)
+        if (event.modifiers & Qt.ControlModifier)
             view.currentPart = view.document.partsCount - 1
-        } //else {
-          //  view.contentX = view.contentWidth - view.width
-          //  view.contentY = view.contentHeight - view.height
-        //}
-        event.accepted = false
-    }
 
-    /*
-    if (event.key == Qt.Key_Up) {
-        view.moveView("vertical", -pixelDiff)
-        return;
+        event.accepted = false
+        return
     }
- 
-    if (event.key == Qt.Key_Down) {
-        view.moveView("vertical", pixelDiff)
-        return;
-    }
- 
-    if (event.key == Qt.Key_Left) {
-        view.moveView("horizontal", -pixelDiff)
-        return;
-    }
- 
-    if (event.key == Qt.Key_Right) {
-        view.moveView("horizontal", pixelDiff)
-        return;
-    }*/
 
     if (event.key == Qt.Key_Plus) {
         if (event.modifiers & Qt.ControlModifier) {
-            view.zoomFactor = Math.max(4.0, view.zoomFactor + 0.25)
+            view.setZoom(Math.min(view.zoomSettings.maximumZoom, view.zoomSettings.zoomFactor + 0.25))
         }
+
+        return
     }
 
     if (event.key == Qt.Key_Minus) {
         if (event.modifiers & Qt.ControlModifier) {
-            view.zoomFactor = Math.min(0.5, view.zoomFactor - 0.25)
+            view.setZoom(Math.max(view.zoomSettings.minimumZoom, view.zoomSettings.zoomFactor - 0.25))
         }
+
+        return
     }
 
 
