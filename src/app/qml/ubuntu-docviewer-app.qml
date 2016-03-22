@@ -99,6 +99,9 @@ MainView {
     }
 
     Component.onCompleted: {
+        // WORKAROUND: Mouse detection is not included in the SDK yet
+        QuickUtils.mouseAttached = true
+
         pageStack.push(Qt.resolvedUrl("documentPage/DocumentPage.qml"));
 
         // Open the document, if one has been specified.

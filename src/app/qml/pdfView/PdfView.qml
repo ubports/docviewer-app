@@ -72,54 +72,54 @@ Page {
         color: "#f5f5f5"
     }
 
-    PDF.VerticalView {
-        id: pdfView
-        objectName: "pdfView"
-
+    ScrollView {
         anchors.fill: parent
-        anchors.topMargin: pdfPage.header.height
-        spacing: units.gu(2)
 
-        boundsBehavior: Flickable.StopAtBounds
-        flickDeceleration: 1500 * units.gridUnit / 8
-        maximumFlickVelocity: 2500 * units.gridUnit / 8
+        PDF.VerticalView {
+            id: pdfView
+            objectName: "pdfView"
 
-        contentWidth: parent.width * _zoomHelper.scale
-        cacheBuffer: height * poppler.providersNumber * _zoomHelper.scale * 0.5
-        interactive: !pinchy.pinch.active
-
-        model: poppler
-        delegate: PdfViewDelegate {
-            Component.onDestruction: window.releaseResources()
-        }
-
-        // FIXME: On zooming, keep the same content position.
-        PinchArea {
-            id: pinchy
             anchors.fill: parent
+            anchors.topMargin: pdfPage.header.height
+            spacing: units.gu(2)
 
-            pinch {
-                target: _zoomHelper
-                minimumScale: 1.0
-                maximumScale: 2.5
+            boundsBehavior: Flickable.StopAtBounds
+            flickDeceleration: 1500 * units.gridUnit / 8
+            maximumFlickVelocity: 2500 * units.gridUnit / 8
+
+            contentWidth: parent.width * _zoomHelper.scale
+            cacheBuffer: height * poppler.providersNumber * _zoomHelper.scale * 0.5
+            interactive: !pinchy.pinch.active
+
+            model: poppler
+            delegate: PdfViewDelegate {
+                Component.onDestruction: window.releaseResources()
             }
 
-            onPinchFinished: {
-                pdfView.returnToBounds();
+            // FIXME: On zooming, keep the same content position.
+            PinchArea {
+                id: pinchy
+                anchors.fill: parent
 
-                // This is a bit expensive, so it's safer to put it here.
-                // It won't be called on desktop (where PinchArea is not used),
-                // but it's not a problem at the moment (our target is phone).
-                window.releaseResources();
+                pinch {
+                    target: _zoomHelper
+                    minimumScale: 1.0
+                    maximumScale: 2.5
+                }
+
+                onPinchFinished: {
+                    pdfView.returnToBounds();
+
+                    // This is a bit expensive, so it's safer to put it here.
+                    // It won't be called on desktop (where PinchArea is not used),
+                    // but it's not a problem at the moment (our target is phone).
+                    window.releaseResources();
+                }
             }
+
+            Item { id: _zoomHelper }
         }
-
-        Item { id: _zoomHelper }
     }
-
-
-    Scrollbar { flickableItem: pdfView }
-    Scrollbar { flickableItem: pdfView; align: Qt.AlignBottom }
 
     PDF.Document {
         id: poppler
@@ -215,7 +215,7 @@ Page {
         objectName:"gotopage"
         iconName: "browser-tabs"
         text: i18n.tr("Go to page...")
-        onTriggered: PopupUtils.open(Qt.resolvedUrl("PdfViewGotoDialog.qml"), targetPage)
+        onTriggered: PopupUtils.open(Qt.resolvedUrl("PdfViewGotoDialog.qml"), pdfPage)
     }
 
     Action {
