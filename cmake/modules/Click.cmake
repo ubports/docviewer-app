@@ -17,7 +17,7 @@ if(CLICK_MODE)
   set(CUSTOM_SCRIPT ${CMAKE_CURRENT_SOURCE_DIR}/click/disable-lo-features.sh)
   set(UPSTREAM_LIBS_DIR ${CMAKE_BINARY_DIR}/upstream-libs)
 
-  MESSAGE("Grabbing upstream libs to ${UPSTREAM_LIBS_DIR}") 
+  MESSAGE("Grabbing upstream libs to ${UPSTREAM_LIBS_DIR}")
 
   if(NO_CACHE)
     # It has been specified not to cache .click dependencies on the machine.
@@ -38,8 +38,9 @@ if(CLICK_MODE)
       file(COPY ${UPSTREAM_CACHE}/upstream-libs/ DESTINATION ${UPSTREAM_LIBS_DIR} PATTERN * )
     else()
       MESSAGE("Cache miss, downloading from network.")
+      file(MAKE_DIRECTORY ${UPSTREAM_LIBS_DIR})
+      file(MAKE_DIRECTORY ${UPSTREAM_CACHE})
       execute_process(
-        COMMAND mkdir ${UPSTREAM_LIBS_DIR}
         COMMAND ${GET_CLICK_DEPS_TOOL} -d ${DEPS_MANIFEST} -c ${CUSTOM_SCRIPT} ${CLICK_ARCH} ${UPSTREAM_LIBS_DIR}
       )
       # Cache for next usage.
