@@ -23,14 +23,18 @@ PageHeader {
     property var view: parent.view
     property Page parentPage: parent
 
-    leadingActionBar.actions: Action {
-        text: i18n.tr("Back")
-        iconName: "back"
+    trailingActionBar {
+        anchors.rightMargin: 0
+        delegate: textualButton
 
-        onTriggered: {
-            // Clear the search
-            searchField.text = ""
-            parentPage.searchMode = false
+        actions: Action {
+            text: i18n.tr("Cancel")
+
+            onTriggered: {
+                // Clear the search
+                searchField.text = ""
+                parentPage.searchMode = false
+            }
         }
     }
 
@@ -57,4 +61,33 @@ PageHeader {
         // show OSK if appropriate.
         onVisibleChanged: forceActiveFocus()
     }
+
+    Component {
+        id: textualButton
+        AbstractButton {
+            id: button
+            action: modelData
+            width: label.width + units.gu(4)
+            height: parent.height
+            Rectangle {
+                color: UbuntuColors.slate
+                opacity: 0.1
+                anchors.fill: parent
+                visible: button.pressed
+            }
+            Label {
+                anchors.centerIn: parent
+                id: label
+                text: action.text
+                font.weight: text === i18n.tr("Pick") ? Font.Normal : Font.Light
+                color: {
+                    if (button.enabled)
+                        return text === i18n.tr("Pick") ? theme.palette.selected.backgroundText : theme.palette.normal.backgroundText
+
+                    return theme.palette.disabled.backgroundText
+                }
+            }
+        }
+    }
+
 }

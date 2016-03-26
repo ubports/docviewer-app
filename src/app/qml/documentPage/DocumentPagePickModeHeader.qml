@@ -33,11 +33,12 @@ PageHeader {
             objectName: "cancelButton"
             iconName: "close"
             onTriggered: {
-                if (!contentHubProxy.activeExportTransfer)
-                    return
-
-                contentHubProxy.activeExportTransfer.items = []
-                contentHubProxy.activeExportTransfer.state = ContentTransfer.Aborted
+                if (!contentHubProxy.activeExportTransfer) {
+                    console.log("[content-hub] No active transfer.")
+                } else {
+                    contentHubProxy.activeExportTransfer.items = []
+                    contentHubProxy.activeExportTransfer.state = ContentTransfer.Aborted
+                }
 
                 mainView.switchToBrowseMode()
             }
@@ -54,8 +55,10 @@ PageHeader {
             enabled: view.ViewItems.selectedIndices.length > 0
             iconName: "ok"
             onTriggered: {
-                if (!enabled || !contentHubProxy.activeExportTransfer)
+                if (!enabled || !contentHubProxy.activeExportTransfer) {
+                    console.log("[content-hub] No active transfer.")
                     return;
+                }
 
                 var contentList = []
                 var indices = view.ViewItems.selectedIndices
