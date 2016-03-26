@@ -54,8 +54,9 @@ Page {
         }
 
         StyleHints {
-            backgroundColor: "#BF000000"
+            backgroundColor: Qt.rgba(0, 0, 0, 0.75)
             foregroundColor: "white"
+            dividerColor: "transparent"
         }
     }
 

@@ -36,7 +36,7 @@ Dialog {
         inputMethodHints: Qt.ImhFormattedNumbersOnly
         validator: IntValidator{ bottom: 1; top: pdfView.count }
 
-        Keys.onReturnPressed: goToPage()
+        onAccepted: goToPage()
         Component.onCompleted: forceActiveFocus()
     }
 
