@@ -16,7 +16,9 @@
 
 import QtQuick 2.4
 import Ubuntu.Components 1.3
-import Ubuntu.Content 1.1
+import Ubuntu.Content 1.3
+
+import "../common"
 
 PageHeader {
     id: pickModeHeader
@@ -26,12 +28,11 @@ PageHeader {
 
     leadingActionBar {
         anchors.leftMargin: 0
-        delegate: textualButton
+        delegate: TextualButtonStyle {}
 
         actions: Action {
             text: i18n.tr("Cancel")
             objectName: "cancelButton"
-            iconName: "close"
             onTriggered: {
                 if (!contentHubProxy.activeExportTransfer) {
                     console.log("[content-hub] No active transfer.")
@@ -47,13 +48,12 @@ PageHeader {
 
     trailingActionBar {
         anchors.rightMargin: 0
-        delegate: textualButton
+        delegate: TextualButtonStyle {}
 
         actions: Action {
             text: i18n.tr("Pick")
             objectName: "pickButton"
             enabled: view.ViewItems.selectedIndices.length > 0
-            iconName: "ok"
             onTriggered: {
                 if (!enabled || !contentHubProxy.activeExportTransfer) {
                     console.log("[content-hub] No active transfer.")
@@ -76,34 +76,6 @@ PageHeader {
                 contentHubProxy.activeExportTransfer.state = ContentTransfer.Charged
 
                 mainView.switchToBrowseMode()
-            }
-        }
-    }
-
-    Component {
-        id: textualButton
-        AbstractButton {
-            id: button
-            action: modelData
-            width: label.width + units.gu(4)
-            height: parent.height
-            Rectangle {
-                color: UbuntuColors.slate
-                opacity: 0.1
-                anchors.fill: parent
-                visible: button.pressed
-            }
-            Label {
-                anchors.centerIn: parent
-                id: label
-                text: action.text
-                font.weight: text === i18n.tr("Pick") ? Font.Normal : Font.Light
-                color: {
-                    if (button.enabled)
-                        return text === i18n.tr("Pick") ? theme.palette.selected.backgroundText : theme.palette.normal.backgroundText
-
-                    return theme.palette.disabled.backgroundText
-                }
             }
         }
     }

@@ -18,6 +18,8 @@ import QtQuick 2.4
 import Ubuntu.Components 1.3
 import Ubuntu.Components.Popups 1.3
 
+import "../common"
+
 PageHeader {
     id: selectionHeader
 
@@ -36,7 +38,7 @@ PageHeader {
 
     trailingActionBar {
         anchors.rightMargin: 0
-        delegate: textualButtonWithIcon
+        delegate: TextualButtonStyle {}
 
         actions: [
             Action {
@@ -59,37 +61,5 @@ PageHeader {
                 onTriggered: PopupUtils.open(Qt.resolvedUrl("DeleteFileDialog.qml"), documentPage)
             }
         ]
-    }
-
-    Component {
-        id: textualButtonWithIcon
-        AbstractButton {
-            id: button
-            action: modelData
-            width: layout.width + units.gu(4)
-            height: parent.height
-            Rectangle {
-                color: UbuntuColors.slate
-                opacity: 0.1
-                anchors.fill: parent
-                visible: button.pressed
-            }
-            Row {
-                id: layout
-                anchors.centerIn: parent
-                spacing: units.gu(1)
-                Icon {
-                    anchors.verticalCenter: parent.verticalCenter
-                    width: units.gu(2); height: width
-                    name: action.iconName
-                    source: action.iconSource
-                }
-                Label {
-                    anchors.verticalCenter: parent.verticalCenter
-                    text: action.text
-                    font.weight: text === i18n.tr("Pick") ? Font.Normal : Font.Light
-                }
-            }
-        }
     }
 }
