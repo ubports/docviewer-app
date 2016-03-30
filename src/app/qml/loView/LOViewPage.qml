@@ -276,8 +276,7 @@ ViewerPage {
         id: defaultHeader
         visible: loPage.loaded
         title: DocumentViewer.getFileBaseNameFromPath(file.path);
-        // FIXME: re-enable
-        //flickable: isTextDocument ? loPage.contentItem.loView : null
+        flickable: isTextDocument ? loPage.contentItem.loView : null
         targetPage: loPage
     }
 
