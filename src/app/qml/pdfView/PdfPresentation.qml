@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013-2015 Canonical, Ltd.
+ * Copyright (C) 2013-2016 Canonical, Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -54,8 +54,9 @@ Page {
         }
 
         StyleHints {
-            backgroundColor: "#BF000000"
+            backgroundColor: Qt.rgba(0, 0, 0, 0.75)
             foregroundColor: "white"
+            dividerColor: "transparent"
         }
     }
 

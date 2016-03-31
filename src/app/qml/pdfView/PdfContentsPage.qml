@@ -24,7 +24,7 @@ Page {
     objectName: "pdfcontents"
 
     // this property will have to be removed when bug #1341671 will be fixed.
-    property string testProperty: "for page name issue"  
+    property string testProperty: "for page name issue"
 
     header: PageHeader {
         // TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
@@ -50,74 +50,73 @@ Page {
         view.positionViewAtIndex(i, ListView.Center);
     }
 
-    ListView {
-        id: view
-        objectName: "view"
+    ScrollView {
         anchors.fill: parent
-        clip: true
 
-        model: poppler.tocModel
+        ListView {
+            id: view
+            objectName: "view"
+            anchors.fill: parent
+            clip: true
 
-        delegate: ListItem {
-            id: delegate
-            objectName: "delegate" + index
+            model: poppler.tocModel
 
-            onClicked: {
-                pdfView.positionAtIndex(model.pageIndex);
-                contentsBottomEdge.collapse();
-            }
+            delegate: ListItem {
+                id: delegate
+                objectName: "delegate" + index
 
-            // Highlighted property of ListItem is read-only. In order to
-            // provide an highlight for the current page, we need to duplicate
-            // the overlay.
-            Rectangle {
-                anchors.fill: parent
-                color: Qt.rgba(0, 0, 0, 0.05)
-                visible: view.currentIndex == model.index
-            }
+                property bool __isCurrentIndex: view.currentIndex == model.index
 
-            /* UITK 1.3 spec: Three slot layout (A-B-C)   */
-            //  ________________________________________
-            // |                              |     |   |
-            // |               A              |  B  | C |
-            // |______________________________|__ __|___|
-            //
-            ListItemLayout {
-                id: listItemLayout
-                objectName: "listItemLayout" + index
-                anchors.fill: parent
-                anchors.leftMargin: model.level * units.gu(4)
-
-                /* UITK 1.3 specs: Slot A */
-                title {
-                    text: model.title
-                    elide: Text.ElideRight
-//                    font.weight: model.level == 0 ? Font.DemiBold : Font.Normal
-//                    color: (model.level == 0) ? UbuntuColors.midAubergine
-//                                              : theme.palette.normal.backgroundText
+                onClicked: {
+                    pdfView.positionAtIndex(model.pageIndex);
+                    contentsBottomEdge.collapse();
                 }
 
-                /* UITK 1.3 specs: Slot B */
-                Icon {
-                    SlotsLayout.position: SlotsLayout.Trailing
-                    width: units.gu(2); height: width
-                    name: "tick"
-                    color: UbuntuColors.green
-                    visible: view.currentIndex == model.index
+                // Highlighted property of ListItem is read-only. In order to
+                // provide an highlight for the current page, we need to duplicate
+                // the overlay.
+                Rectangle {
+                    anchors.fill: parent
+                    color: Qt.rgba(0, 0, 0, 0.05)
+                    visible: __isCurrentIndex
                 }
 
-                /* UITK 1.3 specs: Slot C */
-                Label {
-                    objectName: "pageindex"
-                    SlotsLayout.position: SlotsLayout.Last
-                    text: model.pageIndex + 1
-//                    font.weight: model.level == 0 ? Font.DemiBold : Font.Normal
-//                    color: (model.level == 0) ? UbuntuColors.midAubergine
-//                                              : theme.palette.normal.backgroundText
+                /* UITK 1.3 spec: Three slot layout (A-B-C)   */
+                //  ________________________________________
+                // |                              |     |   |
+                // |               A              |  B  | C |
+                // |______________________________|__ __|___|
+                //
+                ListItemLayout {
+                    id: listItemLayout
+                    objectName: "listItemLayout" + index
+                    anchors.fill: parent
+                    anchors.leftMargin: model.level * units.gu(4)
+
+                    /* UITK 1.3 specs: Slot A */
+                    title.text: model.title
+                    title.color: __isCurrentIndex ? theme.palette.selected.backgroundText
+                                                  : theme.palette.normal.backgroundText
+
+                    /* UITK 1.3 specs: Slot B */
+                    Icon {
+                        SlotsLayout.position: SlotsLayout.Trailing
+                        width: units.gu(2); height: width
+                        name: "tick"
+                        color: UbuntuColors.green
+                        visible: view.currentIndex == model.index
+                    }
+
+                    /* UITK 1.3 specs: Slot C */
+                    Label {
+                        objectName: "pageindex"
+                        SlotsLayout.position: SlotsLayout.Last
+                        text: model.pageIndex + 1
+                        color: __isCurrentIndex ? theme.palette.selected.backgroundText
+                                                : theme.palette.normal.backgroundText
+                    }
                 }
             }
         }
     }
-
-    Scrollbar { flickableItem: view }
 }

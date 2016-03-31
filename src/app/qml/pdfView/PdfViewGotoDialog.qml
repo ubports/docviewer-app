@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014-2015 Canonical, Ltd.
+ * Copyright (C) 2014-2016 Canonical, Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,7 +36,7 @@ Dialog {
         inputMethodHints: Qt.ImhFormattedNumbersOnly
         validator: IntValidator{ bottom: 1; top: pdfView.count }
 
-        Keys.onReturnPressed: goToPage()
+        onAccepted: goToPage()
         Component.onCompleted: forceActiveFocus()
     }
 
