@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 Canonical, Ltd.
+ * Copyright (C) 2015, 2016 Canonical, Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,12 +20,11 @@ import Qt.labs.settings 1.0
 
 Page {
     id: documentPage
-    title: i18n.tr("Documents")
-    flickable: null
 
-    property bool useGridView: false
     property bool searchMode: false
-    property alias view: viewLoader
+    property alias view: view
+
+    header: defaultHeader
 
     onActiveChanged: {
         // When the page become visible, check if any new volume has been
@@ -34,66 +33,57 @@ Page {
             docModel.checkDefaultDirectories();
     }
 
-    Settings {
-        property alias useGridView: documentPage.useGridView
+    ScrollView {
+        id: scrollView
+        anchors.fill: parent
+        anchors.topMargin: documentPage.header.height
+
+        DocumentListView {
+            id: view
+            anchors.fill: parent
+        }
     }
 
     Loader {
-        id: viewLoader
-
-        width: Math.min(units.gu(80), parent.width)
-        anchors {
-            top: parent.top
-            bottom: parent.bottom
-            horizontalCenter: parent.horizontalCenter
-        }
-
-        source: {
-            if (folderModel.count === 0) {
-                return documentPage.state == "search"
-                        ? Qt.resolvedUrl("SearchEmptyState.qml")
-                        : Qt.resolvedUrl("DocumentEmptyState.qml")
-            }
-
-            return Qt.resolvedUrl("DocumentListView.qml")
-        }
+        id: emptyStateLoader
+        anchors.fill: parent
+        active: folderModel.count == 0
+        source: documentPage.searchMode
+                ? Qt.resolvedUrl("SearchEmptyState.qml")
+                : Qt.resolvedUrl("DocumentEmptyState.qml")
     }
 
-    // *** HEADER ***
-    states: [
-        DocumentPageDefaultHeader {
-            name: "default"
-            targetPage: documentPage
-            when: !mainView.pickMode && !viewLoader.item.ViewItems.selectMode && !documentPage.searchMode
-        },
 
-        DocumentPagePickModeHeader {
-            name: "pickMode"
-            targetPage: documentPage
-            when: mainView.pickMode
-        },
+    /*** Headers ***/
 
-        DocumentPageSelectionModeHeader {
-            name: "selection"
-            targetPage: documentPage
-            when: !mainView.pickMode && viewLoader.item.ViewItems.selectMode
-        },
+    DocumentPageDefaultHeader {
+        id: defaultHeader
+        visible: !mainView.pickMode && !view.ViewItems.selectMode && !documentPage.searchMode
+    }
 
-        DocumentPageSearchHeader {
-            name: "search"
-            targetPage: documentPage
-            when: !mainView.pickMode && !viewLoader.item.ViewItems.selectMode && documentPage.searchMode
-        }
-    ]
+    DocumentPagePickModeHeader {
+        id: pickModeHeader
+        visible: mainView.pickMode
+    }
+
+    DocumentPageSearchHeader {
+        id: searchHeader
+        visible: !mainView.pickMode && !view.ViewItems.selectMode && documentPage.searchMode
+    }
+
+    DocumentPageSelectionModeHeader {
+        id: selectionHeader
+        visible: !mainView.pickMode && view.ViewItems.selectMode
+    }
 
     Connections {
         target: mainView
 
         onPickModeChanged: {
             if (mainView.pickMode) {
-                viewLoader.item.startSelection()
+                view.startSelection()
             } else {
-                viewLoader.item.cancelSelection()
+                view.cancelSelection()
             }
 
             // Reset any previous search

@@ -1,5 +1,5 @@
 /*
-  Copyright (C) 2015 Stefano Verzegnassi
+  Copyright (C) 2015, 2016 Stefano Verzegnassi
 
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License 3 as published by
@@ -16,14 +16,17 @@
 
 import QtQuick 2.4
 import Ubuntu.Components 1.3
-import Ubuntu.Content 1.1
+import Ubuntu.Content 1.3
 
 Page {
     id: sharePage
-    title: i18n.tr("Share to")
 
     property url fileUrl
     property var activeTransfer
+
+    header: PageHeader {
+        title: i18n.tr("Share to")
+    }
 
     ContentPeerPicker {
         id: picker
