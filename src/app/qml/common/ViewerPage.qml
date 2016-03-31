@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 Stefano Verzegnassi <verzegnassi.stefano@gmail.com>
+ * Copyright (C) 2015, 2016 Stefano Verzegnassi <verzegnassi.stefano@gmail.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,7 +35,21 @@ Page {
 
     Loader {
         id: contentLoader
-        anchors.fill: parent
+        anchors {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+
+            top: {
+                if (!viewerPage.header)
+                    return parent.top
+
+                if (!viewerPage.header.flickable)
+                    return viewerPage.header.bottom
+                else
+                    return parent.top
+            }
+        }
 
         asynchronous: true
         sourceComponent: viewerPage.contents
@@ -45,7 +59,22 @@ Page {
 
     Item {
         id: splashScreenItem
-        anchors.fill: parent
+
+        anchors {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+
+            top: {
+                if (!viewerPage.header)
+                    return parent.top
+
+                if (!viewerPage.header.flickable)
+                    return viewerPage.header.bottom
+                else
+                    return parent.top
+            }
+        }
 
         visible: contentLoader.status != Loader.Ready
         enabled: visible

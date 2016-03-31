@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013-2015 Canonical, Ltd.
+ * Copyright (C) 2013-2016 Canonical, Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,9 +32,7 @@ ViewerPage {
     property bool isTextDocument: loPage.contentItem && (loPage.contentItem.loDocument.documentType === LibreOffice.Document.TextDocument)
     property bool isSpreadsheet: loPage.contentItem && (loPage.contentItem.loDocument.documentType === LibreOffice.Document.SpreadsheetDocument)
 
-    title: DocumentViewer.getFileBaseNameFromPath(file.path);
-    flickable: isTextDocument ? loPage.contentItem.loView : null
-
+    header: defaultHeader
     splashScreen: Splashscreen { }
 
     content: FocusScope {
@@ -137,96 +135,102 @@ ViewerPage {
                     color: "#f5f5f5"
                 }
 
-                LibreOffice.Viewer {
-                    id: loView
-                    objectName: "loView"
+                ScrollView {
                     anchors.fill: parent
 
-                    documentPath: file.path
+                    // We need to set some custom event handler.
+                    // Forward the key events to the Viewer and
+                    // fallback to the ScrollView handlers if the
+                    // event hasn't been accepted.
+                    Keys.forwardTo: loView
+                    Keys.priority: Keys.AfterItem
 
-                    function updateContentSize(tgtScale) {
-                        zoomSettings.zoomFactor = tgtScale
-                    }
-
-                    // Keyboard events
-                    focus: true
-                    Keys.onPressed: KeybHelper.parseEvent(event)
-
-                    Component.onCompleted: {
-                        // WORKAROUND: Fix for wrong grid unit size
-                        flickDeceleration = 1500 * units.gridUnit / 8
-                        maximumFlickVelocity = 2500 * units.gridUnit / 8
-                        loPageContent.forceActiveFocus()
-                    }
-
-                    onErrorChanged: {
-                        var errorString;
-
-                        switch(error) {
-                        case LibreOffice.Error.LibreOfficeNotFound:
-                            errorString = i18n.tr("LibreOffice binaries not found.")
-                            break;
-                        case LibreOffice.Error.LibreOfficeNotInitialized:
-                            errorString = i18n.tr("Error while loading LibreOffice.")
-                            break;
-                        case LibreOffice.Error.DocumentNotLoaded:
-                            errorString = i18n.tr("Document not loaded.\nThe requested document may be corrupt or protected by a password.")
-                            break;
-                        }
-
-                        if (errorString) {
-                            loPage.pageStack.pop()
-
-                            // We create the dialog in the MainView, so that it isn't
-                            // initialized by 'loPage' and keep on working after the
-                            // page is destroyed.
-                            mainView.showErrorDialog(errorString);
-                        }
-                    }
-
-                    ScalingMouseArea {
-                        id: mouseArea
+                    LibreOffice.Viewer {
+                        id: loView
+                        objectName: "loView"
                         anchors.fill: parent
-                        targetFlickable: loView
-                        onTotalScaleChanged: targetFlickable.updateContentSize(totalScale)
 
-                        thresholdZoom: minimumZoom + (maximumZoom - minimumZoom) * 0.75
-                        maximumZoom: {
-                            if (DocumentViewer.desktopMode || mainView.wideWindow)
-                                return 3.0
+                        documentPath: file.path
 
-                            return minimumZoom * 3
+                        Keys.onPressed: KeybHelper.parseEvent(event)
+
+                        function updateContentSize(tgtScale) {
+                            zoomSettings.zoomFactor = tgtScale
                         }
-                        minimumZoom: {
-                            if (DocumentViewer.desktopMode || mainView.wideWindow)
-                                return loView.zoomSettings.minimumZoom
 
-                            switch(loView.document.documentType) {
-                            case LibreOffice.Document.TextDocument:
-                                return loView.zoomSettings.valueFitToWidthZoom
-                            case LibreOffice.Document.PresentationDocument:
-                                return loView.zoomSettings.valueAutomaticZoom
-                            default:
-                                return loView.zoomSettings.minimumZoom
+                        Component.onCompleted: {
+                            // WORKAROUND: Fix for wrong grid unit size
+                            flickDeceleration = 1500 * units.gridUnit / 8
+                            maximumFlickVelocity = 2500 * units.gridUnit / 8
+                            loPageContent.forceActiveFocus()
+                        }
+
+                        onErrorChanged: {
+                            var errorString;
+
+                            switch(error) {
+                            case LibreOffice.Error.LibreOfficeNotFound:
+                                errorString = i18n.tr("LibreOffice binaries not found.")
+                                break;
+                            case LibreOffice.Error.LibreOfficeNotInitialized:
+                                errorString = i18n.tr("Error while loading LibreOffice.")
+                                break;
+                            case LibreOffice.Error.DocumentNotLoaded:
+                                errorString = i18n.tr("Document not loaded.\nThe requested document may be corrupt or protected by a password.")
+                                break;
+                            }
+
+                            if (errorString) {
+                                loPage.pageStack.pop()
+
+                                // We create the dialog in the MainView, so that it isn't
+                                // initialized by 'loPage' and keep on working after the
+                                // page is destroyed.
+                                mainView.showErrorDialog(errorString);
                             }
                         }
 
-                        Binding {
-                            target: mouseArea
-                            property: "zoomValue"
-                            value: loView.zoomSettings.zoomFactor
+                        ScalingMouseArea {
+                            id: mouseArea
+                            anchors.fill: parent
+                            targetFlickable: loView
+                            onTotalScaleChanged: targetFlickable.updateContentSize(totalScale)
+
+                            thresholdZoom: minimumZoom + (maximumZoom - minimumZoom) * 0.75
+                            maximumZoom: {
+                                if (DocumentViewer.desktopMode || mainView.wideWindow)
+                                    return 3.0
+
+                                return minimumZoom * 3
+                            }
+                            minimumZoom: {
+                                if (DocumentViewer.desktopMode || mainView.wideWindow)
+                                    return loView.zoomSettings.minimumZoom
+
+                                switch(loView.document.documentType) {
+                                case LibreOffice.Document.TextDocument:
+                                    return loView.zoomSettings.valueFitToWidthZoom
+                                case LibreOffice.Document.PresentationDocument:
+                                    return loView.zoomSettings.valueAutomaticZoom
+                                default:
+                                    return loView.zoomSettings.minimumZoom
+                                }
+                            }
+
+                            Binding {
+                                target: mouseArea
+                                property: "zoomValue"
+                                value: loView.zoomSettings.zoomFactor
+                            }
                         }
-                    }
 
-                    Scrollbar { flickableItem: loView; parent: loView.parent }
-                    Scrollbar { flickableItem: loView; parent: loView.parent; align: Qt.AlignBottom }
-
-                    Label {
-                        anchors.centerIn: parent
-                        parent: loPage
-                        textSize: Label.Large
-                        text: i18n.tr("This sheet has no content.")
-                        visible: loPage.isSpreadsheet && loView.contentWidth <= 0 && loView.contentHeight <= 0
+                        Label {
+                            anchors.centerIn: parent
+                            parent: loPage
+                            textSize: Label.Large
+                            text: i18n.tr("This sheet has no content.")
+                            visible: loPage.isSpreadsheet && loView.contentWidth <= 0 && loView.contentHeight <= 0
+                        }
                     }
                 }
             }
@@ -265,12 +269,20 @@ ViewerPage {
         }
     }
 
-    // *** HEADER ***
-    state: "default"
-    states: [
-        LOViewDefaultHeader {
-            name: "default"
-            targetPage: loPage
-        }
-    ]
+
+    /*** Headers ***/
+
+    LOViewDefaultHeader {
+        id: defaultHeader
+        visible: loPage.loaded
+        title: DocumentViewer.getFileBaseNameFromPath(file.path);
+        flickable: isTextDocument ? loPage.contentItem.loView : null
+        targetPage: loPage
+    }
+
+    PageHeader {
+        id: loadingHeader
+        visible: !loPage.loaded
+        // When we're still loading LibreOffice, show an empty header
+    }
 }
