@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 Canonical, Ltd.
+ * Copyright (C) 2015, 2016 Canonical, Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,12 +26,7 @@ ListItem {
 
     ListItemLayout {
         id: listItemLayout
-
-        title {
-            text: listItemSubtitled.text
-            color: UbuntuColors.midAubergine
-        }
-
+        title.text: listItemSubtitled.text
         subtitle {
             text: listItemSubtitled.subText
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere

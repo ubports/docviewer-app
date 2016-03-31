@@ -1,29 +1,55 @@
 import QtQuick 2.4
 import Ubuntu.Components 1.3
-import Ubuntu.Components.ListItems 1.3 as ListItems
 import DocumentViewer 1.0
 
-ListItems.Header {
-    text: {
-        if (sortSettings.sortMode === 1)    // sort by name
-            return section.toUpperCase()
+import "../common"
 
-        if (sortSettings.sortMode === 0) {    // sort by date
-            if (section == DocumentsModel.Today)
-                return i18n.tr("Today")
+Rectangle {
+    anchors { left: parent.left; right: parent.right }
+    height: units.gu(4)
 
-            if (section == DocumentsModel.Yesterday)
-                return i18n.tr("Yesterday")
+    color: theme.palette.normal.foreground
 
-            if (section == DocumentsModel.LastWeek)
-                return i18n.tr("Earlier this week")
+    property alias text: label.text
 
-            if (section == DocumentsModel.LastMonth)
-                return i18n.tr("Earlier this month")
-
-            return i18n.tr("Even earlier...")
+    Label {
+        id: label
+        anchors {
+            left: parent.left;
+            right: parent.right
+            margins: units.gu(2)
+            verticalCenter: parent.verticalCenter
         }
 
-        return ""
+        text: {
+            if (sortSettings.sortMode === 1)    // sort by name
+                return section.toUpperCase()
+
+            if (sortSettings.sortMode === 0) {    // sort by date
+                if (section == DocumentsModel.Today)
+                    return i18n.tr("Today")
+
+                if (section == DocumentsModel.Yesterday)
+                    return i18n.tr("Yesterday")
+
+                if (section == DocumentsModel.LastWeek)
+                    return i18n.tr("Earlier this week")
+
+                if (section == DocumentsModel.LastMonth)
+                    return i18n.tr("Earlier this month")
+
+                return i18n.tr("Even earlier...")
+            }
+
+            return ""
+        }
+    }
+
+    HorizontalDivider {
+        anchors {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
     }
 }

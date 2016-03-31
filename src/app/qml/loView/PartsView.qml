@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 Stefano Verzegnassi
+ * Copyright (C) 2015, 2016 Stefano Verzegnassi
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -113,8 +113,8 @@ ListView {
                     wrapMode: Text.WordWrap
                     text: model.name
                     visible: view.isWide
-                    color: (loView.currentPart === model.index) ? UbuntuColors.orange
-                                                                : theme.palette.selected.backgroundText
+                    color: (loView.currentPart === model.index) ? theme.palette.selected.backgroundText
+                                                                : theme.palette.normal.backgroundText
                 }
 
                 /* UITK 1.3 specs: Slot C */
@@ -122,8 +122,8 @@ ListView {
                     SlotsLayout.position: SlotsLayout.Trailing
 
                     text: model.index + 1
-                    color: (loView.currentPart === model.index) ? UbuntuColors.orange
-                                                                : theme.palette.selected.backgroundText
+                    color: (loView.currentPart === model.index) ? theme.palette.selected.backgroundText
+                                                                : theme.palette.normal.backgroundText
                 }
             }
         }
@@ -180,8 +180,8 @@ ListView {
                 Label {
                     Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
                     text: model.index + 1
-                    color: (loView.currentPart === model.index) ? UbuntuColors.orange
-                                                                : theme.palette.selected.backgroundText
+                    color: (loView.currentPart === model.index) ? theme.palette.selected.backgroundText
+                                                                : theme.palette.normal.backgroundText
                 }
             }
         }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 Canonical, Ltd.
+ * Copyright (C) 2015, 2016 Canonical, Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,11 +35,9 @@ Item {
             bottom: parent.bottom
             right: resizeableSidebar.anchors.left ? parent.right : undefined
             left: resizeableSidebar.anchors.left ? undefined : parent.left
-            leftMargin: units.dp(2)
-            rightMargin: units.dp(2)
         }
-        width: units.dp(2)
-        color: Theme.palette.selected.background
+        width: units.dp(1)
+        color: theme.palette.normal.base
 
         // Stay above the sidebar content
         z: 10
@@ -68,7 +66,7 @@ Item {
             when: resizerSensing.pressed || resizerSensing.containsMouse
             PropertyChanges {
                 target: verticalDivider
-                color: Qt.darker(Theme.palette.normal.background, 1.5)
+                color: Qt.darker(theme.palette.normal.background, 1.5)
             }
         }
         transitions: Transition {

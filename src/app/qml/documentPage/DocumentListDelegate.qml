@@ -1,5 +1,5 @@
 /*
-  Copyright (C) 2015 Stefano Verzegnassi
+  Copyright (C) 2015, 2016 Stefano Verzegnassi
 
     This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License 3 as published by
@@ -48,12 +48,8 @@ ListItem {
 
         /* UITK 1.3 specs: Slot A */
         title {
-            // FIXME: We may want to reserve 2 lines for displaying the title.
-            // 2015.12.29: that's not possible because of bug lp:1529909
+            // TODO: [UX] We may want to reserve 2 lines for displaying the title.
             text: model.name
-            elide: Text.ElideRight
-            wrapMode: Text.WrapAnywhere
-            color: UbuntuColors.midAubergine
         }
 
         subtitle.text: internal.formattedDateTime()

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014, 2015
+ * Copyright (C) 2014-2016
  *                  Stefano Verzegnassi <verzegnassi.stefano@gmail.com>
  *
  * This program is free software; you can redistribute it and/or modify
@@ -62,12 +62,6 @@ Page {
             id: delegate
             objectName: "delegate" + index
 
-            anchors {
-                left: parent.left; right: parent.right
-                leftMargin: units.gu(2) + (model.level * units.gu(2))
-                rightMargin: units.gu(2)
-            }
-
             onClicked: {
                 pdfView.positionAtIndex(model.pageIndex);
                 contentsBottomEdge.collapse();
@@ -92,14 +86,15 @@ Page {
                 id: listItemLayout
                 objectName: "listItemLayout" + index
                 anchors.fill: parent
+                anchors.leftMargin: model.level * units.gu(4)
 
                 /* UITK 1.3 specs: Slot A */
                 title {
                     text: model.title
                     elide: Text.ElideRight
-                    font.weight: model.level == 0 ? Font.DemiBold : Font.Normal
-                    color: (model.level == 0) ? UbuntuColors.midAubergine
-                                              : theme.palette.selected.backgroundText
+//                    font.weight: model.level == 0 ? Font.DemiBold : Font.Normal
+//                    color: (model.level == 0) ? UbuntuColors.midAubergine
+//                                              : theme.palette.normal.backgroundText
                 }
 
                 /* UITK 1.3 specs: Slot B */
@@ -116,9 +111,9 @@ Page {
                     objectName: "pageindex"
                     SlotsLayout.position: SlotsLayout.Last
                     text: model.pageIndex + 1
-                    font.weight: model.level == 0 ? Font.DemiBold : Font.Normal
-                    color: (model.level == 0) ? UbuntuColors.midAubergine
-                                              : theme.palette.selected.backgroundText
+//                    font.weight: model.level == 0 ? Font.DemiBold : Font.Normal
+//                    color: (model.level == 0) ? UbuntuColors.midAubergine
+//                                              : theme.palette.normal.backgroundText
                 }
             }
         }

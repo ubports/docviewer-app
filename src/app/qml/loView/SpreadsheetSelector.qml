@@ -62,7 +62,8 @@ Item {
                 // TRANSLATORS: Please don't add any space between "Sheet" and "%1".
                 // This is the default name for a sheet in LibreOffice.
                 text: model.name || i18n.tr("Sheet%1").arg(model.index + 1)
-                color: del.selected ? UbuntuColors.orange : theme.palette.normal.baseText
+                color: del.selected ? theme.palette.selected.backgroundText
+                                    : theme.palette.normal.backgroundTertiaryText
             }
 
             Rectangle {
@@ -72,7 +73,7 @@ Item {
                     bottom: parent.bottom
                 }
                 height: units.dp(2)
-                color: UbuntuColors.orange
+                color: theme.palette.selected.backgroundText
                 visible: del.selected
             }
         }
