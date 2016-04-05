@@ -1,5 +1,7 @@
 ubuntu-docviewer-app (2.1) vivid; urgency=medium
 
+  * Fixed an issue with the documents list not updating the model entries (LP: #1483218)
+  * New theming/UI components in OTA-10 fully supported (LP: #1551259)
   * LibreOffice viewer: added support for spreadsheet documents with multiple sheets (LP: #1537755)
   * LibreOffice viewer: limited zoom value to a minimum/maximum value (LP: #1501424)
   * LibreOffice viewer: added a double-tap-to-zoom gesture (LP: #1541582)
