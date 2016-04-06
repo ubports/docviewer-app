@@ -30,6 +30,7 @@ Page {
 
     ContentPeerPicker {
         id: picker
+        anchors.topMargin: sharePage.header.height
 
         contentType: ContentType.Documents
         handler: ContentHandler.Share
