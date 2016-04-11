@@ -33,17 +33,6 @@ Page {
             docModel.checkDefaultDirectories();
     }
 
-    Component.onCompleted: {
-        // WORKAROUND: We need to explicitely force the focus in order to avoid
-        // that the TextField in DocumentPageSearchHeader is focused even if that
-        // header is not visible.
-        // With the deprecated UITK 1.2 PageHeadState this was not required since
-        // the header content was "loaded" by demand.
-        // With the new UITK 1.3 PageHeader, all the headers are always initialized,
-        // so we need to put some extra care.
-        scrollView.forceActiveFocus()
-    }
-
     ScrollView {
         id: scrollView
         anchors.fill: parent
@@ -70,35 +59,25 @@ Page {
     DocumentPageDefaultHeader {
         id: defaultHeader
         visible: !mainView.pickMode && !view.ViewItems.selectMode && !documentPage.searchMode
+        enabled: visible
     }
 
     DocumentPagePickModeHeader {
         id: pickModeHeader
         visible: mainView.pickMode
+        enabled: visible
     }
 
     DocumentPageSearchHeader {
         id: searchHeader
         visible: !mainView.pickMode && !view.ViewItems.selectMode && documentPage.searchMode
-
-        onVisibleChanged: {
-            // WORKAROUND: We need to explicitely force the focus in order to avoid
-            // that the TextField in DocumentPageSearchHeader is focused even if that
-            // header is not visible.
-            // With the deprecated UITK 1.2 PageHeadState this was not required since
-            // the header content was "loaded" by demand.
-            // With the new UITK 1.3 PageHeader, all the headers are always initialized,
-            // so we need to put some extra care.
-            if (visible)
-                textField.forceActiveFocus()
-            else
-                scrollView.forceActiveFocus()
-        }
+        enabled: visible
     }
 
     DocumentPageSelectionModeHeader {
         id: selectionHeader
         visible: !mainView.pickMode && view.ViewItems.selectMode
+        enabled: visible
     }
 
     Connections {

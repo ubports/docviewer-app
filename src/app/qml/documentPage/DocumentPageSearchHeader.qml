@@ -25,8 +25,6 @@ PageHeader {
     property var view: parent.view
     property Page parentPage: parent
 
-    property alias textField: searchField
-
     trailingActionBar {
         anchors.rightMargin: 0
         delegate: TextualButtonStyle {}
