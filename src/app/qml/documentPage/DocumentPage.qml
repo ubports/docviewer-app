@@ -59,21 +59,25 @@ Page {
     DocumentPageDefaultHeader {
         id: defaultHeader
         visible: !mainView.pickMode && !view.ViewItems.selectMode && !documentPage.searchMode
+        enabled: visible
     }
 
     DocumentPagePickModeHeader {
         id: pickModeHeader
         visible: mainView.pickMode
+        enabled: visible
     }
 
     DocumentPageSearchHeader {
         id: searchHeader
         visible: !mainView.pickMode && !view.ViewItems.selectMode && documentPage.searchMode
+        enabled: visible
     }
 
     DocumentPageSelectionModeHeader {
         id: selectionHeader
         visible: !mainView.pickMode && view.ViewItems.selectMode
+        enabled: visible
     }
 
     Connections {
