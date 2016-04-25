@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-02-05 23:40+0100\n"
-"PO-Revision-Date: 2015-12-08 17:44+0000\n"
+"PO-Revision-Date: 2016-04-24 19:25+0000\n"
 "Last-Translator: Aggelos Arnaoutis <angelosarn@hotmail.com>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-04-07 06:03+0000\n"
-"X-Generator: Launchpad (build 17972)\n"
+"X-Launchpad-Export-Date: 2016-04-25 05:38+0000\n"
+"X-Generator: Launchpad (build 17995)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
 msgid "Some of the provided arguments are not valid."
@@ -51,7 +51,7 @@ msgstr "Λεπτομέρειες"
 
 #: ../src/app/qml/common/DetailsPage.qml:42
 msgid "File"
-msgstr ""
+msgstr "Αρχείο"
 
 #: ../src/app/qml/common/DetailsPage.qml:47
 msgid "Location"
@@ -184,7 +184,7 @@ msgstr "Κοινή χρήση"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:27
 msgid "No documents found"
-msgstr ""
+msgstr "Δεν βρέθηκε έγγραφο"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:28
 msgid ""
@@ -433,7 +433,7 @@ msgstr "Σελίδα %1 από %2"
 
 #: ../src/app/qml/pdfView/PdfView.qml:203
 msgid "Search"
-msgstr ""
+msgstr "Αναζήτηση"
 
 #: ../src/app/qml/pdfView/PdfView.qml:213
 msgid "Go to page..."
@@ -441,7 +441,7 @@ msgstr "Μετάβαση στη σελίδα..."
 
 #: ../src/app/qml/pdfView/PdfView.qml:221
 msgid "Presentation"
-msgstr ""
+msgstr "Παρουσίαση"
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
 msgid "Go to page"
