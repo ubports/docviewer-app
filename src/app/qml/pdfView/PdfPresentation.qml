@@ -85,7 +85,7 @@ Page {
 
         MouseArea {
             anchors.fill: parent
-            onDoubleClicked: pdfPage.header.visible = !pdfPage.header.visible
+            onClicked: pdfPage.header.visible = !pdfPage.header.visible
 
             // Hide mouse curson when there's no on-going mouse event
             hoverEnabled: true
