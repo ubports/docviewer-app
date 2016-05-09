@@ -207,7 +207,6 @@ MainView {
     // Content Hub support
     Loader {
         id: contentHubLoader
-        asynchronous: true
         source: Qt.resolvedUrl("common/ContentHubProxy.qml")
     }
 
