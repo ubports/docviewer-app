@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-02-05 23:40+0100\n"
-"PO-Revision-Date: 2015-11-19 18:20+0000\n"
-"Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
+"PO-Revision-Date: 2016-05-17 03:32+0000\n"
+"Last-Translator: Po-Hsu Lin <po-hsu.lin@canonical.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2016-05-15 05:38+0000\n"
+"X-Launchpad-Export-Date: 2016-05-17 06:06+0000\n"
 "X-Generator: Launchpad (build 18025)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
@@ -49,7 +49,7 @@ msgstr "詳細資訊"
 
 #: ../src/app/qml/common/DetailsPage.qml:42
 msgid "File"
-msgstr ""
+msgstr "檔案"
 
 #: ../src/app/qml/common/DetailsPage.qml:47
 msgid "Location"
@@ -94,8 +94,7 @@ msgstr ""
 #: ../src/app/qml/common/RejectedImportDialog.qml:28
 msgid "File not supported"
 msgid_plural "Files not supported"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "不支援的檔案"
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:29
 msgid "Following document has not been imported:"
@@ -130,19 +129,19 @@ msgstr "是"
 #: ../src/app/qml/common/utils.js:22
 #, qt-format
 msgid "%1 GB"
-msgstr ""
+msgstr "%1 GB"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in MB
 #: ../src/app/qml/common/utils.js:26
 #, qt-format
 msgid "%1 MB"
-msgstr ""
+msgstr "%1 MB"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in kB
 #: ../src/app/qml/common/utils.js:30
 #, qt-format
 msgid "%1 kB"
-msgstr ""
+msgstr "%1 kB"
 
 #. TRANSLATORS: %1 is the size of a file, expressed in byte
 #: ../src/app/qml/common/utils.js:33
@@ -152,7 +151,7 @@ msgstr ""
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:39
 msgid "Delete file"
-msgstr ""
+msgstr "刪除檔案"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:40
 #, qt-format
@@ -165,18 +164,17 @@ msgstr[1] ""
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:42
 msgid "Are you sure you want to permanently delete this file?"
 msgid_plural "Are you sure you want to permanently delete these files?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "你確定要永久移除這些檔案嗎?"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:61
 #: ../src/app/qml/documentPage/DocumentDelegateActions.qml:25
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:53
 msgid "Delete"
-msgstr ""
+msgstr "刪除"
 
 #: ../src/app/qml/documentPage/DocumentDelegateActions.qml:44
 msgid "Share"
-msgstr ""
+msgstr "分享"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:27
 msgid "No documents found"
@@ -207,13 +205,13 @@ msgstr ""
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:115
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:134
 msgid "yyyy/MM/dd hh:mm"
-msgstr ""
+msgstr "yyyy/MM/dd hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:128
 msgid "dddd, hh:mm"
-msgstr ""
+msgstr "dddd, hh:mm"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
 #: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
@@ -222,7 +220,7 @@ msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:29
 msgid "Search..."
-msgstr ""
+msgstr "搜尋..."
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:36
 msgid "Sorting settings..."
@@ -250,11 +248,11 @@ msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:40
 msgid "Select None"
-msgstr ""
+msgstr "全不選"
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:40
 msgid "Select All"
-msgstr ""
+msgstr "全選"
 
 #: ../src/app/qml/documentPage/SearchEmptyState.qml:24
 msgid "No matching document found"
@@ -267,19 +265,19 @@ msgstr ""
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:13
 msgid "Today"
-msgstr ""
+msgstr "今天"
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:16
 msgid "Yesterday"
-msgstr ""
+msgstr "昨天"
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:19
 msgid "Earlier this week"
-msgstr ""
+msgstr "本週稍早之前"
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:22
 msgid "Earlier this month"
-msgstr ""
+msgstr "本月稍早之前"
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:24
 msgid "Even earlier..."
@@ -291,7 +289,7 @@ msgstr ""
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:26
 msgid "Sorting settings"
-msgstr ""
+msgstr "排序設定"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:31
 msgid "Sort by date (Latest first)"
@@ -320,7 +318,7 @@ msgstr ""
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:57
 msgid "LibreOffice spread sheet"
-msgstr ""
+msgstr "LibreOffice 試算表"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:59
 msgid "LibreOffice presentation"
@@ -332,7 +330,7 @@ msgstr ""
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:63
 msgid "Unknown LibreOffice document"
-msgstr ""
+msgstr "未知的 LibreOffice 文件"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:65
 msgid "Unknown type document"
@@ -397,19 +395,19 @@ msgstr ""
 #: ../src/app/qml/loView/SpreadsheetSelector.qml:64
 #, qt-format
 msgid "Sheet%1"
-msgstr ""
+msgstr "工作表%1"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:122
 msgid "Fit width"
-msgstr ""
+msgstr "符合寬度"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:123
 msgid "Fit height"
-msgstr ""
+msgstr "符合高度"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:124
 msgid "Automatic"
-msgstr ""
+msgstr "自動"
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:31
@@ -427,7 +425,7 @@ msgstr "第 %1 頁，共 %2 頁"
 
 #: ../src/app/qml/pdfView/PdfView.qml:203
 msgid "Search"
-msgstr ""
+msgstr "搜尋"
 
 #: ../src/app/qml/pdfView/PdfView.qml:213
 msgid "Go to page..."
