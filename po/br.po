@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-02-05 23:40+0100\n"
-"PO-Revision-Date: 2016-08-29 06:45+0000\n"
+"PO-Revision-Date: 2016-08-29 06:59+0000\n"
 "Last-Translator: Fohanno Thierry <thierry.fohanno@ofis-bzh.org>\n"
 "Language-Team: Breton <br@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2016-08-29 06:46+0000\n"
+"X-Launchpad-Export-Date: 2016-08-31 06:44+0000\n"
 "X-Generator: Launchpad (build 18179)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
@@ -368,7 +368,7 @@ msgstr "Mont d'al lec'h"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:31
 msgid "Choose a position between 1% and 100%"
-msgstr ""
+msgstr "Choaz ul lec'h etre 1 % ha 100 %"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:62
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:58
@@ -381,43 +381,45 @@ msgstr ""
 
 #: ../src/app/qml/loView/LOViewPage.qml:170
 msgid "Error while loading LibreOffice."
-msgstr ""
+msgstr "Fazi pa oad o kargañ LibreOffice."
 
 #: ../src/app/qml/loView/LOViewPage.qml:173
 msgid ""
 "Document not loaded.\n"
 "The requested document may be corrupt or protected by a password."
 msgstr ""
+"N'eo ket bet karget an teul.\n"
+"Brein pe gwarezet gant ur ger-tremen eo an teul goulennet marteze."
 
 #: ../src/app/qml/loView/LOViewPage.qml:228
 msgid "This sheet has no content."
-msgstr ""
+msgstr "N'eus netra er follenn-mañ"
 
 #. TRANSLATORS: 'LibreOfficeKit' is the name of the library used by
 #. Document Viewer for rendering LibreOffice/MS-Office documents.
 #. Ref. https://docs.libreoffice.org/libreofficekit.html
 #: ../src/app/qml/loView/Splashscreen.qml:45
 msgid "Powered by LibreOfficeKit"
-msgstr ""
+msgstr "Kaset en-dro gant LibreOfficeKit"
 
 #. TRANSLATORS: Please don't add any space between "Sheet" and "%1".
 #. This is the default name for a sheet in LibreOffice.
 #: ../src/app/qml/loView/SpreadsheetSelector.qml:64
 #, qt-format
 msgid "Sheet%1"
-msgstr ""
+msgstr "Follenn%1"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:122
 msgid "Fit width"
-msgstr ""
+msgstr "Keidañ gant al ledander"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:123
 msgid "Fit height"
-msgstr ""
+msgstr "Keidañ gant an uhelder"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:124
 msgid "Automatic"
-msgstr ""
+msgstr "Emgefreek"
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:31
@@ -435,7 +437,7 @@ msgstr "Pajenn %1 diwar %2"
 
 #: ../src/app/qml/pdfView/PdfView.qml:203
 msgid "Search"
-msgstr ""
+msgstr "Klask"
 
 #: ../src/app/qml/pdfView/PdfView.qml:213
 msgid "Go to page..."
@@ -443,7 +445,7 @@ msgstr "Mont d'ar bajenn..."
 
 #: ../src/app/qml/pdfView/PdfView.qml:221
 msgid "Presentation"
-msgstr ""
+msgstr "Kinnigadur"
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
 msgid "Go to page"
@@ -456,7 +458,7 @@ msgstr "Choaz ur bajenn etre 1 ha %1"
 
 #: ../src/app/qml/ubuntu-docviewer-app.qml:114
 msgid "File does not exist."
-msgstr ""
+msgstr "N'eus ket eus ar restr"
 
 #. TRANSLATORS: This string is used for renaming a copied file,
 #. when a file with the same name already exists in user's
