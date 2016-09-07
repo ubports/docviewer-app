@@ -96,6 +96,10 @@ Page {
                 Component.onDestruction: window.releaseResources()
             }
 
+            Component.onDestruction: {
+                // workaround for bug #1577277
+                pdfPage.header.flickable = null;
+            }
             // FIXME: On zooming, keep the same content position.
             PinchArea {
                 id: pinchy
