@@ -8,37 +8,40 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-02-05 23:40+0100\n"
-"PO-Revision-Date: 2015-11-20 05:07+0000\n"
-"Last-Translator: David Planella <david.planella@ubuntu.com>\n"
+"PO-Revision-Date: 2016-11-29 17:19+0000\n"
+"Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-09-29 07:08+0000\n"
-"X-Generator: Launchpad (build 18204)\n"
+"X-Launchpad-Export-Date: 2016-11-30 05:44+0000\n"
+"X-Generator: Launchpad (build 18282)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
 msgid "Some of the provided arguments are not valid."
-msgstr ""
+msgstr "Alguns dels arguments proveïts no són vàlids."
 
 #: ../src/app/qml/common/CommandLineProxy.qml:58
 msgid "Open ubuntu-docviewer-app displaying the selected file"
-msgstr ""
+msgstr "Obre l'ubuntu-docviewer-app per mostrar el fitxer seleccionat"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:65
 msgid "Run fullscreen"
-msgstr ""
+msgstr "Executa-ho a pantalla completa"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:71
 msgid "Open ubuntu-docviewer-app in pick mode. Used for tests only."
 msgstr ""
+"Obre l'ubuntu-docviewer-app en mode de selecció. Sols s'usa per a proves."
 
 #: ../src/app/qml/common/CommandLineProxy.qml:77
 msgid ""
 "Show documents from the given folder, instead of ~/Documents.\n"
 "The path must exist prior to running ubuntu-docviewer-app"
 msgstr ""
+"Mostra els documents des de la carpeta donada, en comptes de ~/Documents.\n"
+"El camí ha d'existir abans d'executar l'ubuntu-docviewer-app"
 
 #: ../src/app/qml/common/DetailsPage.qml:26
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:107
@@ -49,7 +52,7 @@ msgstr "Detalls"
 
 #: ../src/app/qml/common/DetailsPage.qml:42
 msgid "File"
-msgstr ""
+msgstr "Fitxer"
 
 #: ../src/app/qml/common/DetailsPage.qml:47
 msgid "Location"
@@ -112,6 +115,8 @@ msgid ""
 "This file is not supported.\n"
 "Do you want to open it as a plain text?"
 msgstr ""
+"Aquest fitxer no té suport.\n"
+"Voleu obrir-lo com a text simple?"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:38
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:55
@@ -176,17 +181,20 @@ msgstr "Suprimeix"
 
 #: ../src/app/qml/documentPage/DocumentDelegateActions.qml:44
 msgid "Share"
-msgstr ""
+msgstr "Comparteix"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:27
 msgid "No documents found"
-msgstr ""
+msgstr "No s'ha trobat cap document"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:28
 msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
 "folder or insert removable media containing documents."
 msgstr ""
+"Connecteu el vostre dispositiu a qualsevol ordinador i simplement "
+"arrossegueu fitxers a la carpeta Documents o inseriu un mitjà removible que "
+"contingui documents."
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
@@ -207,7 +215,7 @@ msgstr "Ahir, a les %1"
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:115
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:134
 msgid "yyyy/MM/dd hh:mm"
-msgstr ""
+msgstr "dd/MM/yyyy hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
@@ -230,11 +238,11 @@ msgstr "Paràmetres d'ordenació..."
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:41
 msgid "Switch to single column list"
-msgstr ""
+msgstr "Canvia a llista de columna única"
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:41
 msgid "Switch to grid"
-msgstr ""
+msgstr "Canvia a graella"
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:49
 msgid "Pick"
@@ -258,12 +266,14 @@ msgstr "Selecciona-ho tot"
 
 #: ../src/app/qml/documentPage/SearchEmptyState.qml:24
 msgid "No matching document found"
-msgstr ""
+msgstr "No s'ha trobat cap document que concordi"
 
 #: ../src/app/qml/documentPage/SearchEmptyState.qml:26
 msgid ""
 "Please ensure that your query is not misspelled and/or try a different query."
 msgstr ""
+"Si us plau assegureu-vos que la vostra consulta no està mal escrita i/o "
+"proveu una consulta diferent."
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:13
 msgid "Today"
@@ -275,19 +285,19 @@ msgstr "Ahir"
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:19
 msgid "Earlier this week"
-msgstr ""
+msgstr "Fa uns dies"
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:22
 msgid "Earlier this month"
-msgstr ""
+msgstr "Fa unes setmanes"
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:24
 msgid "Even earlier..."
-msgstr ""
+msgstr "Fa molt de temps..."
 
 #: ../src/app/qml/documentPage/SharePage.qml:23
 msgid "Share to"
-msgstr ""
+msgstr "Comparteix a"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:26
 msgid "Sorting settings"
@@ -316,31 +326,31 @@ msgstr "S’està carregant…"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:55
 msgid "LibreOffice text document"
-msgstr ""
+msgstr "Document de text del LibreOffice"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:57
 msgid "LibreOffice spread sheet"
-msgstr ""
+msgstr "Full de càlcul del LibreOffice"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:59
 msgid "LibreOffice presentation"
-msgstr ""
+msgstr "Presentació del LibreOffice"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:61
 msgid "LibreOffice Draw document"
-msgstr ""
+msgstr "Dibuix del LibreOffice"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:63
 msgid "Unknown LibreOffice document"
-msgstr ""
+msgstr "Document desconegut del LibreOffice"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:65
 msgid "Unknown type document"
-msgstr ""
+msgstr "Tipus de document desconegut"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:85
 msgid "Go to position..."
-msgstr ""
+msgstr "Vés a la posició..."
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
 #: ../src/app/qml/pdfView/PdfView.qml:228
@@ -356,11 +366,11 @@ msgstr "Habilita el mode nocturn"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:30
 msgid "Go to position"
-msgstr ""
+msgstr "Vés a la posició"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:31
 msgid "Choose a position between 1% and 100%"
-msgstr ""
+msgstr "Escull una posició entre 1% i100&%"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:62
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:58
@@ -369,47 +379,49 @@ msgstr "Vés-hi"
 
 #: ../src/app/qml/loView/LOViewPage.qml:167
 msgid "LibreOffice binaries not found."
-msgstr ""
+msgstr "No s'han trobat els binaris del LibreOffice"
 
 #: ../src/app/qml/loView/LOViewPage.qml:170
 msgid "Error while loading LibreOffice."
-msgstr ""
+msgstr "S'ha produït un error quan es carregava el LibreOffice"
 
 #: ../src/app/qml/loView/LOViewPage.qml:173
 msgid ""
 "Document not loaded.\n"
 "The requested document may be corrupt or protected by a password."
 msgstr ""
+"Document no carregat.\n"
+"El document demanat pot estar corromput o protegit mitjançant contrasenya."
 
 #: ../src/app/qml/loView/LOViewPage.qml:228
 msgid "This sheet has no content."
-msgstr ""
+msgstr "Aquest full no té cap contingut."
 
 #. TRANSLATORS: 'LibreOfficeKit' is the name of the library used by
 #. Document Viewer for rendering LibreOffice/MS-Office documents.
 #. Ref. https://docs.libreoffice.org/libreofficekit.html
 #: ../src/app/qml/loView/Splashscreen.qml:45
 msgid "Powered by LibreOfficeKit"
-msgstr ""
+msgstr "Funciona amb el LibreOfficeKit"
 
 #. TRANSLATORS: Please don't add any space between "Sheet" and "%1".
 #. This is the default name for a sheet in LibreOffice.
 #: ../src/app/qml/loView/SpreadsheetSelector.qml:64
 #, qt-format
 msgid "Sheet%1"
-msgstr ""
+msgstr "Full%1"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:122
 msgid "Fit width"
-msgstr ""
+msgstr "Ajusta a l'amplada"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:123
 msgid "Fit height"
-msgstr ""
+msgstr "Ajusta l'alçada"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:124
 msgid "Automatic"
-msgstr ""
+msgstr "Automàtic"
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:31
@@ -427,7 +439,7 @@ msgstr "Pàgina %1 de %2"
 
 #: ../src/app/qml/pdfView/PdfView.qml:203
 msgid "Search"
-msgstr ""
+msgstr "Cerca"
 
 #: ../src/app/qml/pdfView/PdfView.qml:213
 msgid "Go to page..."
@@ -435,7 +447,7 @@ msgstr "Vés a la pàgina..."
 
 #: ../src/app/qml/pdfView/PdfView.qml:221
 msgid "Presentation"
-msgstr ""
+msgstr "Presentació"
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
 msgid "Go to page"
@@ -448,7 +460,7 @@ msgstr "Trieu una pàgina entre 1 i %1"
 
 #: ../src/app/qml/ubuntu-docviewer-app.qml:114
 msgid "File does not exist."
-msgstr ""
+msgstr "El fitxer no existeix."
 
 #. TRANSLATORS: This string is used for renaming a copied file,
 #. when a file with the same name already exists in user's
