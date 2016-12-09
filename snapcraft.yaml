@@ -37,6 +37,32 @@ parts:
         stage-packages:
             - qtdeclarative5-poppler1.0
             - xdg-user-dirs
+        snap:
+            # ubuntu-docviewer-app
+            - usr/bin/ubuntu-docviewer-app
+            - usr/share/applications
+            - usr/share/locale
+            - usr/share/ubuntu-docviewer-app
+
+            # qtdeclarative5-documentviewer-common
+            # qtdeclarative5-documentviewer-libreoffice
+            # qtdeclarative5-documentviewer-pdf
+            - usr/lib/*/qt5/qml/DocumentViewer
+
+            # qtdeclarative5-poppler1.0
+            - usr/lib/*/qt5/qml/org/docviewer
+            - usr/share/doc/qtdeclarative5-poppler1.0/copyright
+
+            # xdg-user-dirs
+            - usr/share/locale/*/LC_MESSAGES/xdg-user-dirs.mo
+            - usr/bin/xdg-user-dir
+            - usr/bin/xdg-user-dirs-update
+            - etc/xdg/user-dirs.conf
+            - etc/xdg/user-dirs.defaults
+            - etc/X11/Xsession.d/60xdg-user-dirs-update
+            - usr/share/doc/xdg-user-dirs/copyright
+            - usr/share/doc/xdg-user-dirs/AUTHORS
+
     platform:
         plugin: dump
         source: snap
