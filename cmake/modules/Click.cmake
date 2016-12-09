@@ -69,5 +69,12 @@ else(CLICK_MODE)
     OUTPUT_STRIP_TRAILING_WHITESPACE
   )
 
+  if (QT_IMPORTS_DIR STREQUAL "")
+     set(QT_IMPORTS_DIR "${CMAKE_INSTALL_FULL_LIBDIR}/qt5/qml")
+     message(STATUS "QT_IMPORTS_DIR is empty using default one: ${QT_IMPORTS_DIR}")
+  else()
+     message(STATUS "QT_IMPORTS_DIR set to ${QT_IMPORTS_DIR}")
+  endif()
+
   set(DATA_DIR ${CMAKE_INSTALL_DATADIR}/${APP_NAME})
 endif(CLICK_MODE)
