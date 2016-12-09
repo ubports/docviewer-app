@@ -21,6 +21,8 @@
 #include <QtCore/QDir>
 #include <QtCore/QString>
 
+static QString SNAP_ENV = qgetenv("SNAP");
+
 inline bool isClick() {
     static bool click = (QCoreApplication::applicationDirPath().contains("click.ubuntu.com"));
     return click;
@@ -34,7 +36,9 @@ inline bool isRunningInstalled()
 
 inline QString docviewerDirectory()
 {
-    if (isClick()) {
+    if (!SNAP_ENV.isEmpty()) {
+        return SNAP_ENV + QString("@CMAKE_INSTALL_PREFIX@/@DATA_DIR@");
+    } else if (isClick()) {
         return QString(".");
     } else if (isRunningInstalled()) {
         return QString("@CMAKE_INSTALL_PREFIX@/@DATA_DIR@");

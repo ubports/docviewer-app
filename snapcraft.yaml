@@ -1,0 +1,44 @@
+name: ubuntu-docviewer-app
+version: 2.1.350
+summary: Document Viewer
+description: Document Viewer application for Ubuntu devices
+confinement: strict
+grade: devel
+
+apps:
+    ubuntu-docviewer-app:
+        command: desktop-launch $SNAP/usr/bin/ubuntu-docviewer-app ---documentsDir=$(HOME=/home/$USER xdg-user-dir DOCUMENTS) -desktop_file_hint=unity8 "$@"
+        plugs:
+            - home
+            - opengl
+            - platform
+            - unity7
+            - unity8
+
+plugs:
+    platform:
+        interface: content
+        content: ubuntu-app-platform1
+        target: ubuntu-app-platform
+        default-provider: ubuntu-app-platform
+
+parts:
+    ubuntu-docviewer-app:
+        plugin: cmake
+        configflags: [-DCMAKE_INSTALL_PREFIX=/usr, -DCLICK_MODE=off]
+        source: .
+        build-packages:
+            - cmake
+            - intltool
+            - libpoppler-qt5-dev
+            - qtbase5-private-dev
+            - qtdeclarative5-private-dev
+            - qtdeclarative5-qtquick2-plugin
+        stage-packages:
+            - qtdeclarative5-poppler1.0
+            - xdg-user-dirs
+    platform:
+        plugin: dump
+        source: snap
+        after: [desktop-ubuntu-app-platform]
+        snap: [ubuntu-app-platform]
