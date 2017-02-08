@@ -7,13 +7,14 @@ grade: devel
 
 apps:
     ubuntu-docviewer-app:
-        command: desktop-launch $SNAP/usr/bin/ubuntu-docviewer-app ---documentsDir=$(HOME=/home/$USER xdg-user-dir DOCUMENTS) -desktop_file_hint=unity8 "$@"
+        command: desktop-launch $SNAP/usr/bin/ubuntu-docviewer-app ---documentsDir=$(HOME=/home/$USER xdg-user-dir DOCUMENTS) "$@"
         plugs:
             - home
             - opengl
             - platform
             - unity7
             - unity8
+            - mir
 
 plugs:
     platform:
