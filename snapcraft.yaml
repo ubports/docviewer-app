@@ -25,7 +25,7 @@ plugs:
         default-provider: ubuntu-app-platform
     mir-libs:
         interface: content
-        content: mir-libs0
+        content: mir0
         target: mir-libs
         default-provider: mir-libs
 
