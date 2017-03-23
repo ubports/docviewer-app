@@ -15,6 +15,7 @@ apps:
             - unity7
             - unity8
             - mir
+            - mir-libs
 
 plugs:
     platform:
@@ -22,6 +23,11 @@ plugs:
         content: ubuntu-app-platform1
         target: ubuntu-app-platform
         default-provider: ubuntu-app-platform
+    mir-libs:
+        interface: content
+        content: mir-libs0
+        target: mir-libs
+        default-provider: mir-libs
 
 parts:
     ubuntu-docviewer-app:
@@ -66,6 +72,5 @@ parts:
 
     platform:
         plugin: dump
-        source: snap
+        source: snap/
         after: [desktop-ubuntu-app-platform]
-        snap: [ubuntu-app-platform]
