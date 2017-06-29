@@ -91,7 +91,7 @@ QString DocviewerUtils::buildDestinationPath(const QString &destinationDir, cons
     if (suffix.isEmpty())
         suffix = mt.preferredSuffix();
 
-    QString dir = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + QDir::separator();
+    QString dir = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + QDir::separator() + "Imported" + QDir::separator();
     QString destination = QString("%1.%2").arg(dir + filenameWithoutSuffix, suffix);
 
     // If there's already a file of this name, reformat it to
