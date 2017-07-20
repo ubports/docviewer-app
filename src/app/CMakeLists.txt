@@ -30,6 +30,7 @@ set(docviewer_SRCS
 add_executable(ubuntu-docviewer-app ${docviewer_SRCS})
 
 qt5_use_modules(ubuntu-docviewer-app Gui Qml Quick)
+target_link_libraries(ubuntu-docviewer-app stdc++)
 
 if(NOT "${CMAKE_CURRENT_SOURCE_DIR}" STREQUAL "${CMAKE_CURRENT_BINARY_DIR}")
 add_custom_target(docviewer-qmlfiles ALL
