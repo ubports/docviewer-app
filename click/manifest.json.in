@@ -14,7 +14,7 @@
         }
     },
     "version": "2.1.@GIT_REVNO@",
-    "maintainer": "Ubuntu App Cats <ubuntu-touch-coreapps@lists.launchpad.net>",
+    "maintainer": "Stefano Verzegnassi <verzegnassi.stefano@gmail.com>",
     "x-test": {
         "autopilot": "@AUTOPILOT_DIR@"
     }
