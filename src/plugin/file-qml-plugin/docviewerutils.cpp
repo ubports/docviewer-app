@@ -24,6 +24,8 @@
 #include <QDateTime>
 #include <QtGui/QGuiApplication>
 
+#include <QDebug>
+
 bool DocviewerUtils::desktopMode() const
 {
     // Assume that platformName (QtUbuntu) with ubuntu
@@ -46,6 +48,8 @@ bool DocviewerUtils::exists(const QString &path)
 
 bool DocviewerUtils::copy(const QString &source, const QString &destination)
 {
+    qDebug() << Q_FUNC_INFO << "Copying" << source << "to" << destination;
+
     return QFile::copy(source, destination);
 }
 
@@ -92,6 +96,8 @@ QString DocviewerUtils::buildDestinationPath(const QString &destinationDir, cons
         suffix = mt.preferredSuffix();
 
     QString dir = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + QDir::separator() + "Imported" + QDir::separator();
+    QDir().mkpath(dir);
+
     QString destination = QString("%1.%2").arg(dir + filenameWithoutSuffix, suffix);
 
     // If there's already a file of this name, reformat it to
