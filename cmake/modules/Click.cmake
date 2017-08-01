@@ -1,9 +1,4 @@
 if(CLICK_MODE)
-  if(NOT DEFINED BZR_SOURCE)
-    set(BZR_SOURCE "lp:${LP_PROJECT}")
-    message("-- Setting BZR_SOURCE to ${BZR_SOURCE}")
-  endif(NOT DEFINED BZR_SOURCE)
-
   set(QT_IMPORTS_DIR "/lib/${ARCH_TRIPLET}")
   set(CMAKE_INSTALL_PREFIX /)
   set(DATA_DIR /)

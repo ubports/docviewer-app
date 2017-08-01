@@ -22,10 +22,11 @@ set(LP_PROJECT          ubuntu-docviewer-app)
 set(ICON_FILE           docviewer-app.png)
 set(AUTOPILOT_DIR       ubuntu_docviewer_app)
 
-# Sets BZR_REVNO
+# Sets GIT_REVNO
 execute_process(
-    COMMAND bzr revno ${CMAKE_SOURCE_DIR}
-    OUTPUT_VARIABLE BZR_REVNO
+    COMMAND git rev-list --first-parent --all --count
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    OUTPUT_VARIABLE GIT_REVNO
     OUTPUT_STRIP_TRAILING_WHITESPACE
 )
 
