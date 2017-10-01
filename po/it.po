@@ -6,17 +6,19 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-05 23:40+0100\n"
-"PO-Revision-Date: 2016-09-11 09:54+0000\n"
-"Last-Translator: Claudio Arseni <claudio.arseni@gmail.com>\n"
-"Language-Team: Italian <it@li.org>\n"
+"PO-Revision-Date: 2017-09-28 07:43+0000\n"
+"Last-Translator: Stefano Melchior <stefano.melchior@me.com>\n"
+"Language-Team: Italian <https://translate.ubports.com/projects/ubports"
+"/docviewer-app/it/>\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.15\n"
 "X-Launchpad-Export-Date: 2017-04-05 07:49+0000\n"
-"X-Generator: Launchpad (build 18335)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
 msgid "Some of the provided arguments are not valid."
@@ -60,7 +62,7 @@ msgstr "File"
 
 #: ../src/app/qml/common/DetailsPage.qml:47
 msgid "Location"
-msgstr "Posizione"
+msgstr "Ubicazione"
 
 #: ../src/app/qml/common/DetailsPage.qml:52
 msgid "Size"
@@ -197,7 +199,7 @@ msgid ""
 "folder or insert removable media containing documents."
 msgstr ""
 "Connettere il dispositivo a un computer e trascinare i file nella cartella "
-"Documenti o inserire un'unità rimovibile contenente i documenti"
+"Documenti o inserire un'unità rimovibile che contenga i documenti."
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
@@ -233,7 +235,7 @@ msgstr "Documenti"
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:29
 msgid "Search..."
-msgstr "Ricerca..."
+msgstr "Cerca..."
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:36
 msgid "Sorting settings..."
@@ -261,7 +263,7 @@ msgstr "Ricerca nei documenti..."
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:40
 msgid "Select None"
-msgstr "Deseleziona tutti"
+msgstr "Nessuna selezione"
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:40
 msgid "Select All"
@@ -378,7 +380,7 @@ msgstr "Scegliere una posizione tra 1% e 100%"
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:62
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:58
 msgid "GO!"
-msgstr "Vai"
+msgstr "Vai!"
 
 #: ../src/app/qml/loView/LOViewPage.qml:167
 msgid "LibreOffice binaries not found."
@@ -469,12 +471,12 @@ msgstr "Il file non esiste."
 #. TRANSLATORS: This string is used for renaming a copied file,
 #. when a file with the same name already exists in user's
 #. Documents folder.
-#. 
+#.
 #. e.g. "Manual_Aquaris_E4.5_ubuntu_EN.pdf" will become
 #. "Manual_Aquaris_E4.5_ubuntu_EN (copy 2).pdf"
-#. 
+#.
 #. where "2" is given by the argument "%1"
-#. 
+#.
 #: ../src/plugin/file-qml-plugin/docviewerutils.cpp:111
 #, qt-format
 msgid "copy %1"
