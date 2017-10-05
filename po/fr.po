@@ -6,21 +6,24 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-05 23:40+0100\n"
-"PO-Revision-Date: 2016-06-28 20:04+0000\n"
-"Last-Translator: Anne017 <anneonyme017@openmailbox.org>\n"
-"Language-Team: French <fr@li.org>\n"
+"PO-Revision-Date: 2017-10-05 08:36+0000\n"
+"Last-Translator: RedXXIII <adered7@gmail.com>\n"
+"Language-Team: French <https://translate.ubports.com/projects/ubports"
+"/docviewer-app/fr/>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 2.15\n"
 "X-Launchpad-Export-Date: 2017-04-05 07:48+0000\n"
-"X-Generator: Launchpad (build 18335)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
+#, fuzzy
 msgid "Some of the provided arguments are not valid."
-msgstr "Certains des arguments fournis ne sont pas valides"
+msgstr "Certains des arguments fournis ne sont pas valides."
 
 #: ../src/app/qml/common/CommandLineProxy.qml:58
 msgid "Open ubuntu-docviewer-app displaying the selected file"
@@ -259,7 +262,7 @@ msgstr "rechercher dans les documents..."
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:40
 msgid "Select None"
-msgstr "Tout désélectionner"
+msgstr "Annuler la sélection"
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:40
 msgid "Select All"
@@ -466,12 +469,12 @@ msgstr "Le fichier n’existe pas."
 #. TRANSLATORS: This string is used for renaming a copied file,
 #. when a file with the same name already exists in user's
 #. Documents folder.
-#. 
+#.
 #. e.g. "Manual_Aquaris_E4.5_ubuntu_EN.pdf" will become
 #. "Manual_Aquaris_E4.5_ubuntu_EN (copy 2).pdf"
-#. 
+#.
 #. where "2" is given by the argument "%1"
-#. 
+#.
 #: ../src/plugin/file-qml-plugin/docviewerutils.cpp:111
 #, qt-format
 msgid "copy %1"
