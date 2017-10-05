@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-05 23:40+0100\n"
-"PO-Revision-Date: 2017-10-05 07:00+0000\n"
-"Last-Translator: Twinkybot <me@twinkybot.org>\n"
+"PO-Revision-Date: 2017-10-05 19:54+0000\n"
+"Last-Translator: Florian Leeber <flori@bin.org.in>\n"
 "Language-Team: German <https://translate.ubports.com/projects/ubports"
 "/docviewer-app/de/>\n"
 "Language: de\n"
@@ -181,7 +181,6 @@ msgid "Delete"
 msgstr "Löschen"
 
 #: ../src/app/qml/documentPage/DocumentDelegateActions.qml:44
-#, fuzzy
 msgid "Share"
 msgstr "Teilen"
 
