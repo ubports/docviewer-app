@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-05 23:40+0100\n"
-"PO-Revision-Date: 2017-09-27 22:22+0000\n"
-"Last-Translator: Daniel Frańczak <danielfranczak5@wp.pl>\n"
+"PO-Revision-Date: 2017-10-05 18:02+0000\n"
+"Last-Translator: Jonasz Potoniec <joni311099@gmail.com>\n"
 "Language-Team: Polish <https://translate.ubports.com/projects/ubports"
 "/docviewer-app/pl/>\n"
 "Language: pl\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
 msgid "Some of the provided arguments are not valid."
-msgstr "Jeden z podanych argumentów jest niepoprawny"
+msgstr "Niektóre z podanych argumentów są niepoprawne."
 
 #: ../src/app/qml/common/CommandLineProxy.qml:58
 msgid "Open ubuntu-docviewer-app displaying the selected file"
@@ -34,6 +34,7 @@ msgid "Run fullscreen"
 msgstr "Tryb pełnoekranowy"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:71
+#, fuzzy
 msgid "Open ubuntu-docviewer-app in pick mode. Used for tests only."
 msgstr ""
 "Otwórz ubuntu-docviewer-app w trybie pick mode. Funkcja tylko na potrzeby "
@@ -408,7 +409,7 @@ msgstr "Ten arkusz jest pusty"
 #. Ref. https://docs.libreoffice.org/libreofficekit.html
 #: ../src/app/qml/loView/Splashscreen.qml:45
 msgid "Powered by LibreOfficeKit"
-msgstr "Powered by LibreOfficeKit"
+msgstr "W oparciu o LibreOfficeKit"
 
 #. TRANSLATORS: Please don't add any space between "Sheet" and "%1".
 #. This is the default name for a sheet in LibreOffice.
@@ -488,7 +489,7 @@ msgstr "Przeglądarka dokumentów"
 
 #: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
-msgstr "dokumenty;przeglądarka;pdf;czytnik"
+msgstr "dokumenty;przeglądarka;pdf;czytnik;"
 
 #~ msgid "File does not exist"
 #~ msgstr "Plik nie istnieje"
