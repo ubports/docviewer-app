@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-05 23:40+0100\n"
-"PO-Revision-Date: 2017-09-28 08:45+0000\n"
-"Last-Translator: Philipp Leibelt <dickerwels@gmail.com>\n"
+"PO-Revision-Date: 2017-10-06 06:24+0000\n"
+"Last-Translator: Twinkybot <me@twinkybot.org>\n"
 "Language-Team: German <https://translate.ubports.com/projects/ubports"
 "/docviewer-app/de/>\n"
 "Language: de\n"
@@ -37,13 +37,12 @@ msgid "Open ubuntu-docviewer-app in pick mode. Used for tests only."
 msgstr "Dokumentenbetrachter im Auswahlmodus öffnen. Nur für Testzwecke."
 
 #: ../src/app/qml/common/CommandLineProxy.qml:77
-#, fuzzy
 msgid ""
 "Show documents from the given folder, instead of ~/Documents.\n"
 "The path must exist prior to running ubuntu-docviewer-app"
 msgstr ""
 "Dokumente des ausgewählten Ordners anzeigen, anstelle von ~/Dokumente.\n"
-"Der Pfad muss vor dem Start von Dokumentenbetrachter vorhanden sein"
+"Der Pfad muss vor dem Start des Dokumentenbetrachters vorhanden sein"
 
 #: ../src/app/qml/common/DetailsPage.qml:26
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:107
@@ -58,7 +57,7 @@ msgstr "Datei"
 
 #: ../src/app/qml/common/DetailsPage.qml:47
 msgid "Location"
-msgstr "Ort"
+msgstr "Standort"
 
 #: ../src/app/qml/common/DetailsPage.qml:52
 msgid "Size"
@@ -85,9 +84,8 @@ msgstr "Fehler"
 #: ../src/app/qml/common/RejectedImportDialog.qml:38
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:31
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:53
-#, fuzzy
 msgid "Close"
-msgstr "Shließen"
+msgstr "Schließen"
 
 #: ../src/app/qml/common/PickImportedDialog.qml:29
 msgid "Multiple documents imported"
@@ -183,7 +181,6 @@ msgid "Delete"
 msgstr "Löschen"
 
 #: ../src/app/qml/documentPage/DocumentDelegateActions.qml:44
-#, fuzzy
 msgid "Share"
 msgstr "Teilen"
 
@@ -234,7 +231,7 @@ msgstr "Dokumente"
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:29
 msgid "Search..."
-msgstr "Suchen …"
+msgstr "Suchen..."
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:36
 msgid "Sorting settings..."
@@ -309,7 +306,7 @@ msgstr "Sortiereinstellungen"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:31
 msgid "Sort by date (Latest first)"
-msgstr "Sortiert nach Datum (Letztes zuerst)"
+msgstr "Sortiert nach Datum (Neuestes zuerst)"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:32
 msgid "Sort by name (A-Z)"
@@ -326,7 +323,7 @@ msgstr "Umgekehrte Reihenfolge"
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:51
 #: ../src/app/qml/textView/TextView.qml:43
 msgid "Loading..."
-msgstr "Wird geladen …"
+msgstr "Wird geladen..."
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:55
 msgid "LibreOffice text document"
@@ -370,7 +367,7 @@ msgstr "Nachtmodus aktivieren"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:30
 msgid "Go to position"
-msgstr "Zu Position gehen"
+msgstr "Zur Position gehen"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:31
 msgid "Choose a position between 1% and 100%"
@@ -383,7 +380,7 @@ msgstr "Los!"
 
 #: ../src/app/qml/loView/LOViewPage.qml:167
 msgid "LibreOffice binaries not found."
-msgstr "LibreOffice-Binärdateien konnten nicht gefunden werden."
+msgstr "LibreOffice-Binärdateien nicht gefunden."
 
 #: ../src/app/qml/loView/LOViewPage.qml:170
 msgid "Error while loading LibreOffice."
@@ -448,7 +445,7 @@ msgstr "Suchen"
 
 #: ../src/app/qml/pdfView/PdfView.qml:213
 msgid "Go to page..."
-msgstr "Zu Seite gehen …"
+msgstr "Zur Seite gehen …"
 
 #: ../src/app/qml/pdfView/PdfView.qml:221
 msgid "Presentation"
@@ -487,7 +484,7 @@ msgstr "Dokumentenbetrachter"
 
 #: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
-msgstr "Dokumente;Betrachter;PDF;Leser;Dokumentenbetrachter;PDF-Betrachter"
+msgstr "Dokumente;Betrachter;PDF;Leser;"
 
 #~ msgid "File does not exist"
 #~ msgstr "Datei existiert nicht"
