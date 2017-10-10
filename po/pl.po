@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-05 23:40+0100\n"
-"PO-Revision-Date: 2017-10-05 18:02+0000\n"
-"Last-Translator: Jonasz Potoniec <joni311099@gmail.com>\n"
+"PO-Revision-Date: 2017-10-10 11:13+0000\n"
+"Last-Translator: Daniel Frańczak <danielfranczak5@wp.pl>\n"
 "Language-Team: Polish <https://translate.ubports.com/projects/ubports"
 "/docviewer-app/pl/>\n"
 "Language: pl\n"
@@ -104,7 +104,7 @@ msgid "File not supported"
 msgid_plural "Files not supported"
 msgstr[0] "Plik nieobsługiwany"
 msgstr[1] "Pliki nieobsługiwane"
-msgstr[2] "Pliki nieobsługiwane"
+msgstr[2] "Pliki nieobsługiwanych"
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:29
 msgid "Following document has not been imported:"
@@ -402,7 +402,7 @@ msgstr ""
 
 #: ../src/app/qml/loView/LOViewPage.qml:228
 msgid "This sheet has no content."
-msgstr "Ten arkusz jest pusty"
+msgstr "Ten arkusz jest pusty."
 
 #. TRANSLATORS: 'LibreOfficeKit' is the name of the library used by
 #. Document Viewer for rendering LibreOffice/MS-Office documents.
