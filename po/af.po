@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-05 23:40+0100\n"
-"PO-Revision-Date: 2017-10-07 12:14+0000\n"
+"PO-Revision-Date: 2017-10-09 09:38+0000\n"
 "Last-Translator: Jean Joubert <developer-jsj@ourbillion.net>\n"
 "Language-Team: Afrikaans <https://translate.ubports.com/projects/ubports"
 "/docviewer-app/af/>\n"
@@ -55,7 +55,7 @@ msgstr "Leêr"
 
 #: ../src/app/qml/common/DetailsPage.qml:47
 msgid "Location"
-msgstr "Lokasie"
+msgstr "Ligging"
 
 #: ../src/app/qml/common/DetailsPage.qml:52
 msgid "Size"
@@ -122,7 +122,7 @@ msgstr ""
 #: ../src/app/qml/pdfView/PdfView.qml:180
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:51
 msgid "Cancel"
-msgstr ""
+msgstr "Kanselleer"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:44
 msgid "Yes"
@@ -174,7 +174,7 @@ msgstr[1] ""
 #: ../src/app/qml/documentPage/DocumentDelegateActions.qml:25
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:53
 msgid "Delete"
-msgstr ""
+msgstr "Verwyder"
 
 #: ../src/app/qml/documentPage/DocumentDelegateActions.qml:44
 msgid "Share"
@@ -244,7 +244,7 @@ msgstr ""
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:27
 msgid "Back"
-msgstr ""
+msgstr "Terug"
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:47
 msgid "search in documents..."
@@ -269,7 +269,7 @@ msgstr ""
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:13
 msgid "Today"
-msgstr ""
+msgstr "Vandag"
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:16
 msgid "Yesterday"
