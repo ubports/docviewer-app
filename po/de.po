@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-05 23:40+0100\n"
-"PO-Revision-Date: 2017-10-06 06:24+0000\n"
-"Last-Translator: Twinkybot <me@twinkybot.org>\n"
+"PO-Revision-Date: 2017-11-13 11:27+0000\n"
+"Last-Translator: Peter Nerlich <peter.nerlich+ubports@googlemail.com>\n"
 "Language-Team: German <https://translate.ubports.com/projects/ubports"
 "/docviewer-app/de/>\n"
 "Language: de\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
 msgid "Some of the provided arguments are not valid."
-msgstr "Einge der übermittelten Argumente sind ungültig."
+msgstr "Einige der übermittelten Argumente sind ungültig."
 
 #: ../src/app/qml/common/CommandLineProxy.qml:58
 msgid "Open ubuntu-docviewer-app displaying the selected file"
@@ -235,7 +235,7 @@ msgstr "Suchen..."
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:36
 msgid "Sorting settings..."
-msgstr "Sortiereinstellungen …"
+msgstr "Sortiereinstellungen…"
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:41
 msgid "Switch to single column list"
@@ -294,7 +294,7 @@ msgstr "Anfang des Monats"
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:24
 msgid "Even earlier..."
-msgstr "Noch früher …"
+msgstr "Noch früher…"
 
 #: ../src/app/qml/documentPage/SharePage.qml:23
 msgid "Share to"
