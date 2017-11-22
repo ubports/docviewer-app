@@ -6,39 +6,44 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-05 23:40+0100\n"
-"PO-Revision-Date: 2016-01-17 17:45+0000\n"
-"Last-Translator: Robin van der Vliet <info@robinvandervliet.com>\n"
-"Language-Team: Esperanto <eo@li.org>\n"
+"PO-Revision-Date: 2017-11-22 21:01+0000\n"
+"Last-Translator: Pablo Foche <pablo.foche@gmail.com>\n"
+"Language-Team: Esperanto <https://translate.ubports.com/projects/ubports"
+"/docviewer-app/eo/>\n"
+"Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.15\n"
 "X-Launchpad-Export-Date: 2017-04-05 07:48+0000\n"
-"X-Generator: Launchpad (build 18335)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
 msgid "Some of the provided arguments are not valid."
-msgstr ""
+msgstr "Kelkaj el la havigitaj argumentoj estas nevalidaj."
 
 #: ../src/app/qml/common/CommandLineProxy.qml:58
 msgid "Open ubuntu-docviewer-app displaying the selected file"
-msgstr ""
+msgstr "Malfermi ubuntu-dokumento-vidigilon montrante la elektitan dosieron"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:65
 msgid "Run fullscreen"
-msgstr ""
+msgstr "Plenekrane"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:71
 msgid "Open ubuntu-docviewer-app in pick mode. Used for tests only."
 msgstr ""
+"Malfermi ubuntu-dokumento-vidigilo en elekta reĝimo. Uzita nur por testoj."
 
 #: ../src/app/qml/common/CommandLineProxy.qml:77
 msgid ""
 "Show documents from the given folder, instead of ~/Documents.\n"
 "The path must exist prior to running ubuntu-docviewer-app"
 msgstr ""
+"Montri dokumentojn el la donita dosierujo anstataŭ ~/Dokumentoj.\n"
+"La dosiervojo devas ekzisti antaŭ ol plenumigi ubuntu-dokumento-vidigilon"
 
 #: ../src/app/qml/common/DetailsPage.qml:26
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:107
@@ -85,23 +90,23 @@ msgstr "Fermi"
 
 #: ../src/app/qml/common/PickImportedDialog.qml:29
 msgid "Multiple documents imported"
-msgstr ""
+msgstr "Pluraj dokumentoj importitaj"
 
 #: ../src/app/qml/common/PickImportedDialog.qml:30
 msgid "Choose which one to open:"
-msgstr ""
+msgstr "Elektu tiun malfermotan:"
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:28
 msgid "File not supported"
 msgid_plural "Files not supported"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Dosiero ne eltenita"
+msgstr[1] "Dosieroj ne eltenitaj"
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:29
 msgid "Following document has not been imported:"
 msgid_plural "Following documents have not been imported:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Jena dokumento ne estis importita:"
+msgstr[1] "Jenaj dokumentoj ne estis importitaj:"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:27
 msgid "Unknown file type"
@@ -112,6 +117,8 @@ msgid ""
 "This file is not supported.\n"
 "Do you want to open it as a plain text?"
 msgstr ""
+"Ĉi tiu dosiero ne estas eltenita.\n"
+"Ĉu vi volas malfermi ĝin kiel ebenan tekston?"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:38
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:55
@@ -148,7 +155,7 @@ msgstr "%1 kB"
 #: ../src/app/qml/common/utils.js:33
 #, qt-format
 msgid "%1 byte"
-msgstr "%1 bitoko"
+msgstr "%1 bajto"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:39
 msgid "Delete file"
@@ -165,8 +172,8 @@ msgstr[1] "Forigi %1 dosierojn"
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:42
 msgid "Are you sure you want to permanently delete this file?"
 msgid_plural "Are you sure you want to permanently delete these files?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ĉu vi volas permanente forigi ĉi tiun dosieron?"
+msgstr[1] "Ĉu vi volas permanente forigi ĉi tiujn dosierojn?"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:61
 #: ../src/app/qml/documentPage/DocumentDelegateActions.qml:25
@@ -176,17 +183,20 @@ msgstr "Forigi"
 
 #: ../src/app/qml/documentPage/DocumentDelegateActions.qml:44
 msgid "Share"
-msgstr "Konigi"
+msgstr "Diskonigi"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:27
 msgid "No documents found"
-msgstr ""
+msgstr "Neniu dokumento trovita"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:28
 msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
 "folder or insert removable media containing documents."
 msgstr ""
+"Konektu vian aparaton al iu komputilo kaj simple ŝovu dosierojn en la "
+"dosierujon 'Dokumentoj' aŭ enmetu demeteblan memorilon enhavantan "
+"dokumentojn."
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
@@ -207,13 +217,13 @@ msgstr "Hieraŭ, %1"
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:115
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:134
 msgid "yyyy/MM/dd hh:mm"
-msgstr ""
+msgstr "dd/MM/yyyy hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:128
 msgid "dddd, hh:mm"
-msgstr ""
+msgstr "dddd, hh:mm"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
 #: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
@@ -226,19 +236,19 @@ msgstr "Serĉi..."
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:36
 msgid "Sorting settings..."
-msgstr ""
+msgstr "Ordigo-agordoj..."
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:41
 msgid "Switch to single column list"
-msgstr ""
+msgstr "Ŝanĝi al unukolona listo"
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:41
 msgid "Switch to grid"
-msgstr ""
+msgstr "Ŝanĝi al krado"
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:49
 msgid "Pick"
-msgstr ""
+msgstr "Elekti"
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:27
 msgid "Back"
@@ -246,24 +256,26 @@ msgstr "Reen"
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:47
 msgid "search in documents..."
-msgstr ""
+msgstr "serĉi en dokumentoj..."
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:40
 msgid "Select None"
-msgstr "Elekti nenion"
+msgstr "Elekti neniun"
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:40
 msgid "Select All"
-msgstr "Elekti ĉion"
+msgstr "Elekti ĉiujn"
 
 #: ../src/app/qml/documentPage/SearchEmptyState.qml:24
 msgid "No matching document found"
-msgstr ""
+msgstr "Neniu dokumento koincidas"
 
 #: ../src/app/qml/documentPage/SearchEmptyState.qml:26
 msgid ""
 "Please ensure that your query is not misspelled and/or try a different query."
 msgstr ""
+"Bv. certiĝu pri tio ke via serĉo ne enhavas erarojn kaj/aŭ provu alian "
+"serĉon."
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:13
 msgid "Today"
@@ -275,141 +287,143 @@ msgstr "Hieraŭ"
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:19
 msgid "Earlier this week"
-msgstr ""
+msgstr "Plifrue ĉisemajne"
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:22
 msgid "Earlier this month"
-msgstr ""
+msgstr "Plifrue ĉimonate"
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:24
 msgid "Even earlier..."
-msgstr ""
+msgstr "Eĉ plifrue..."
 
 #: ../src/app/qml/documentPage/SharePage.qml:23
 msgid "Share to"
-msgstr ""
+msgstr "Kundividi kun"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:26
 msgid "Sorting settings"
-msgstr ""
+msgstr "Ordigo-agordoj"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:31
 msgid "Sort by date (Latest first)"
-msgstr ""
+msgstr "Montri laŭ dato (pli freŝdata unue)"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:32
 msgid "Sort by name (A-Z)"
-msgstr "Ordigi laŭ nomo (A-Z)"
+msgstr "Montri laŭ nomo (A-Z)"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:33
 msgid "Sort by size (Smaller first)"
-msgstr ""
+msgstr "Montri laŭ grando (pli malgranda unue)"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:47
 msgid "Reverse order"
-msgstr ""
+msgstr "Inversigi ordon"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:51
 #: ../src/app/qml/textView/TextView.qml:43
 msgid "Loading..."
-msgstr "Ŝargado..."
+msgstr "Ŝarĝante..."
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:55
 msgid "LibreOffice text document"
-msgstr ""
+msgstr "Tesktodokumento de LibreOffice"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:57
 msgid "LibreOffice spread sheet"
-msgstr ""
+msgstr "Kalkultabelo de LibreOffice"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:59
 msgid "LibreOffice presentation"
-msgstr ""
+msgstr "Prezento de LibreOffice"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:61
 msgid "LibreOffice Draw document"
-msgstr ""
+msgstr "Dokumento de LibreOffice Draw"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:63
 msgid "Unknown LibreOffice document"
-msgstr ""
+msgstr "Nekonata dokumento de LibreOffice"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:65
 msgid "Unknown type document"
-msgstr ""
+msgstr "Nekonata dokumento-speco"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:85
 msgid "Go to position..."
-msgstr ""
+msgstr "Iri al pozicio..."
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
 #: ../src/app/qml/pdfView/PdfView.qml:228
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Disable night mode"
-msgstr ""
+msgstr "Malŝalti nokto-reĝimon"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
 #: ../src/app/qml/pdfView/PdfView.qml:228
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Enable night mode"
-msgstr ""
+msgstr "Ŝalti nokto-reĝimon"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:30
 msgid "Go to position"
-msgstr ""
+msgstr "Iri al pozicio"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:31
 msgid "Choose a position between 1% and 100%"
-msgstr ""
+msgstr "Elektu pozicion inter 1% kaj 100%"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:62
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:58
 msgid "GO!"
-msgstr ""
+msgstr "Iru!"
 
 #: ../src/app/qml/loView/LOViewPage.qml:167
 msgid "LibreOffice binaries not found."
-msgstr ""
+msgstr "Binaraj dosieroj de LibreOffice ne trovitaj."
 
 #: ../src/app/qml/loView/LOViewPage.qml:170
 msgid "Error while loading LibreOffice."
-msgstr ""
+msgstr "Eraro dum la ŝarĝado de LibreOffice."
 
 #: ../src/app/qml/loView/LOViewPage.qml:173
 msgid ""
 "Document not loaded.\n"
 "The requested document may be corrupt or protected by a password."
 msgstr ""
+"Dokumento ne ŝarĝita.\n"
+"La petita dokumento eble estas difektita aŭ protektita de pasvorto."
 
 #: ../src/app/qml/loView/LOViewPage.qml:228
 msgid "This sheet has no content."
-msgstr ""
+msgstr "Ĉi tiu folio enhavas nenion."
 
 #. TRANSLATORS: 'LibreOfficeKit' is the name of the library used by
 #. Document Viewer for rendering LibreOffice/MS-Office documents.
 #. Ref. https://docs.libreoffice.org/libreofficekit.html
 #: ../src/app/qml/loView/Splashscreen.qml:45
 msgid "Powered by LibreOfficeKit"
-msgstr ""
+msgstr "Funkciigita de LibreOfficeKit"
 
 #. TRANSLATORS: Please don't add any space between "Sheet" and "%1".
 #. This is the default name for a sheet in LibreOffice.
 #: ../src/app/qml/loView/SpreadsheetSelector.qml:64
 #, qt-format
 msgid "Sheet%1"
-msgstr ""
+msgstr "Folio%1"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:122
 msgid "Fit width"
-msgstr ""
+msgstr "Adapti larĝecon"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:123
 msgid "Fit height"
-msgstr ""
+msgstr "Adapti altecon"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:124
 msgid "Automatic"
-msgstr ""
+msgstr "Aŭtomate"
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:31
@@ -427,24 +441,24 @@ msgstr "Paĝo %1 el %2"
 
 #: ../src/app/qml/pdfView/PdfView.qml:203
 msgid "Search"
-msgstr ""
+msgstr "Serĉi"
 
 #: ../src/app/qml/pdfView/PdfView.qml:213
 msgid "Go to page..."
-msgstr ""
+msgstr "Iri al la paĝo..."
 
 #: ../src/app/qml/pdfView/PdfView.qml:221
 msgid "Presentation"
-msgstr ""
+msgstr "Prezento"
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
 msgid "Go to page"
-msgstr ""
+msgstr "Iri al la paĝo"
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:27
 #, qt-format
 msgid "Choose a page between 1 and %1"
-msgstr ""
+msgstr "Elektu paĝon inter 1 kaj %1"
 
 #: ../src/app/qml/ubuntu-docviewer-app.qml:114
 msgid "File does not exist."
@@ -453,12 +467,12 @@ msgstr "Dosiero ne ekzistas."
 #. TRANSLATORS: This string is used for renaming a copied file,
 #. when a file with the same name already exists in user's
 #. Documents folder.
-#. 
+#.
 #. e.g. "Manual_Aquaris_E4.5_ubuntu_EN.pdf" will become
 #. "Manual_Aquaris_E4.5_ubuntu_EN (copy 2).pdf"
-#. 
+#.
 #. where "2" is given by the argument "%1"
-#. 
+#.
 #: ../src/plugin/file-qml-plugin/docviewerutils.cpp:111
 #, qt-format
 msgid "copy %1"
@@ -466,11 +480,11 @@ msgstr "%1-a kopio"
 
 #: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
-msgstr "Dokumentmontrilo"
+msgstr "Dokumentovidigilo"
 
 #: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
-msgstr ""
+msgstr "dokumentoj;vidigilo;pdf;legilo;"
 
 #~ msgid "File does not exist"
 #~ msgstr "La dosiero ne ekzistas"
