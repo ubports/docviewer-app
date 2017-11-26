@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-05 23:40+0100\n"
-"PO-Revision-Date: 2017-10-15 10:13+0000\n"
-"Last-Translator: Ivan Semkin <ivan@semkin.ru>\n"
+"PO-Revision-Date: 2017-11-22 01:04+0000\n"
+"Last-Translator: Alexey Balmashnov <a.balmashnov@gmail.com>\n"
 "Language-Team: Russian <https://translate.ubports.com/projects/ubports"
 "/docviewer-app/ru/>\n"
 "Language: ru\n"
@@ -27,7 +27,7 @@ msgstr "Некоторые аргументы являются некоррек�
 
 #: ../src/app/qml/common/CommandLineProxy.qml:58
 msgid "Open ubuntu-docviewer-app displaying the selected file"
-msgstr ""
+msgstr "Открыть выбранный файл в приложении для просмотра документов"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:65
 msgid "Run fullscreen"
@@ -36,19 +36,24 @@ msgstr "Запустить в полноэкранном режиме"
 #: ../src/app/qml/common/CommandLineProxy.qml:71
 msgid "Open ubuntu-docviewer-app in pick mode. Used for tests only."
 msgstr ""
+"Открыть приложение для просмотра документов в режиме выбора. Используется "
+"только для тестирования."
 
 #: ../src/app/qml/common/CommandLineProxy.qml:77
 msgid ""
 "Show documents from the given folder, instead of ~/Documents.\n"
 "The path must exist prior to running ubuntu-docviewer-app"
 msgstr ""
+"Отображать документы из выбранной папки, вместо ~/Documents.\n"
+"Выбранная папка должна быть создана до запуска приложения просмотра "
+"документов"
 
 #: ../src/app/qml/common/DetailsPage.qml:26
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:107
 #: ../src/app/qml/pdfView/PdfView.qml:235
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:69
 msgid "Details"
-msgstr "Подробная информация"
+msgstr "Сведения"
 
 #: ../src/app/qml/common/DetailsPage.qml:42
 msgid "File"
@@ -56,7 +61,7 @@ msgstr "Файл"
 
 #: ../src/app/qml/common/DetailsPage.qml:47
 msgid "Location"
-msgstr "Расположение"
+msgstr "Местоположение"
 
 #: ../src/app/qml/common/DetailsPage.qml:52
 msgid "Size"
@@ -98,8 +103,8 @@ msgstr "Выберите документ для открытия:"
 msgid "File not supported"
 msgid_plural "Files not supported"
 msgstr[0] "Файл не поддерживается"
-msgstr[1] "Файлы не поддерживаются"
-msgstr[2] "Файлы не поддерживаются"
+msgstr[1] "Файла не поддерживаются"
+msgstr[2] "Файлов не поддерживаются"
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:29
 msgid "Following document has not been imported:"
@@ -189,13 +194,15 @@ msgstr "Поделиться"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:27
 msgid "No documents found"
-msgstr ""
+msgstr "Не найдено документов"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:28
 msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
 "folder or insert removable media containing documents."
 msgstr ""
+"Подключите устройство к компьютеру и просто скопируйте файлы в папку "
+"Documents либо вставьте внешний носитель, содержащий файлы документов."
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
@@ -216,7 +223,7 @@ msgstr "Вчера, %1"
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:115
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:134
 msgid "yyyy/MM/dd hh:mm"
-msgstr "yyyy/MM/dd hh:mm"
+msgstr "dd/MM/yyyy hh:mm"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
@@ -231,7 +238,7 @@ msgstr "Документы"
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:29
 msgid "Search..."
-msgstr "Найти…"
+msgstr "Поиск..."
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:36
 msgid "Sorting settings..."
@@ -390,10 +397,12 @@ msgid ""
 "Document not loaded.\n"
 "The requested document may be corrupt or protected by a password."
 msgstr ""
+"Не удалось открыть документ.\n"
+"Запрошенный документ может быть повреждён или защищён паролем."
 
 #: ../src/app/qml/loView/LOViewPage.qml:228
 msgid "This sheet has no content."
-msgstr ""
+msgstr "На этом листе нет данных."
 
 #. TRANSLATORS: 'LibreOfficeKit' is the name of the library used by
 #. Document Viewer for rendering LibreOffice/MS-Office documents.
@@ -407,7 +416,7 @@ msgstr "На базе LibreOfficeKit"
 #: ../src/app/qml/loView/SpreadsheetSelector.qml:64
 #, qt-format
 msgid "Sheet%1"
-msgstr ""
+msgstr "Лист%1"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:122
 msgid "Fit width"
@@ -415,11 +424,11 @@ msgstr "По ширине"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:123
 msgid "Fit height"
-msgstr ""
+msgstr "Выровнять по высоте"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:124
 msgid "Automatic"
-msgstr ""
+msgstr "Автоматически"
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:31
@@ -445,7 +454,7 @@ msgstr "На страницу…"
 
 #: ../src/app/qml/pdfView/PdfView.qml:221
 msgid "Presentation"
-msgstr ""
+msgstr "Презентация"
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
 msgid "Go to page"
