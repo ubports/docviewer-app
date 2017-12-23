@@ -6,21 +6,23 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-05 23:40+0100\n"
-"PO-Revision-Date: 2016-03-10 20:13+0000\n"
-"Last-Translator: samson <Unknown>\n"
-"Language-Team: Amharic <am@li.org>\n"
+"PO-Revision-Date: 2017-12-23 23:28+0000\n"
+"Last-Translator: Samson <sambelet@yahoo.com>\n"
+"Language-Team: Amharic <https://translate.ubports.com/projects/ubports"
+"/docviewer-app/am/>\n"
+"Language: am\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 2.15\n"
 "X-Launchpad-Export-Date: 2017-04-05 07:48+0000\n"
-"X-Generator: Launchpad (build 18335)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
 msgid "Some of the provided arguments are not valid."
-msgstr "አንዳንድ የ ቀረቡት ክርክሮች ዋጋ የላቸውም"
+msgstr "አንዳንድ የ ቀረቡት ክርክሮች ዋጋ የላቸውም:"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:58
 msgid "Open ubuntu-docviewer-app displaying the selected file"
@@ -32,7 +34,7 @@ msgstr "በ ሙሉ መመልከቻ ዘዴ ማስኬጃ"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:71
 msgid "Open ubuntu-docviewer-app in pick mode. Used for tests only."
-msgstr "የ ኡቡንቱ-ሰነድ መመልከቻ-መተግበሪያ በ ስእል ዘዴ: ለሙከራ ብቻ"
+msgstr "የ ኡቡንቱ-ሰነድ መመልከቻ-መተግበሪያ በ ስእል ዘዴ: ለ ሙከራ ብቻ ነው:"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:77
 msgid ""
@@ -192,7 +194,7 @@ msgid ""
 "folder or insert removable media containing documents."
 msgstr ""
 "የ እርስዎን አካል ከ ኮምፒዩተር ጋር ያገናኙ እና ፋይሎች ይጎትቱ ወደ ሰነዶች ፎልደር ወይንም ያስገቡ የሚወልቅ አካል "
-"ሰነዱን የያዘውን"
+"ሰነዱን የያዘውን:"
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
@@ -461,12 +463,12 @@ msgstr "ፋይሉ አልነበረም"
 #. TRANSLATORS: This string is used for renaming a copied file,
 #. when a file with the same name already exists in user's
 #. Documents folder.
-#. 
+#.
 #. e.g. "Manual_Aquaris_E4.5_ubuntu_EN.pdf" will become
 #. "Manual_Aquaris_E4.5_ubuntu_EN (copy 2).pdf"
-#. 
+#.
 #. where "2" is given by the argument "%1"
-#. 
+#.
 #: ../src/plugin/file-qml-plugin/docviewerutils.cpp:111
 #, qt-format
 msgid "copy %1"
