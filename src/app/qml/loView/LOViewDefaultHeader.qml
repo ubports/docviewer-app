@@ -52,7 +52,7 @@ PageHeader {
                 case LibreOffice.Document.OtherDocument:
                     return i18n.tr("Unknown LibreOffice document")
                 default:
-                    return i18n.tr("Unknown type document")
+                    return i18n.tr("Unknown document type")
                 }
             }
         }
@@ -69,7 +69,7 @@ PageHeader {
             // FIXME: Autopilot test broken... seems not to detect we're now using an ActionBar since the switch to UITK 1.3
             objectName: "gotopage"
             iconName: "browser-tabs"
-            text: i18n.tr("Go to position...")
+            text: i18n.tr("Go to position…")
             visible: targetPage.contentItem.loDocument.documentType == LibreOffice.Document.TextDocument
 
             onTriggered: {
