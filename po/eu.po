@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-05 23:40+0100\n"
-"PO-Revision-Date: 2018-03-12 08:27+0000\n"
+"PO-Revision-Date: 2018-06-14 12:53+0000\n"
 "Last-Translator: Aitzol Berasategi <aitzol76@gmail.com>\n"
 "Language-Team: Basque <https://translate.ubports.com/projects/ubports"
 "/docviewer-app/eu/>\n"
@@ -122,7 +122,7 @@ msgstr ""
 #: ../src/app/qml/pdfView/PdfView.qml:180
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:51
 msgid "Cancel"
-msgstr "Utzi"
+msgstr "Ezeztatu"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:44
 msgid "Yes"
@@ -244,7 +244,7 @@ msgstr "Aukeratu"
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:27
 msgid "Back"
-msgstr "Atzera"
+msgstr "Itzuli"
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:47
 msgid "search in documents..."
