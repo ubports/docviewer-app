@@ -93,7 +93,11 @@ protected:
     void componentComplete() override;
     void viewportMoved(Qt::Orientations orient) override;
     qreal minYExtent() const override;
+    #if QT_VERSION < QT_VERSION_CHECK(5, 9, 0)
     void itemGeometryChanged(QQuickItem *item, const QRectF &newGeometry, const QRectF &oldGeometry) override;
+    #else
+    void itemGeometryChanged(QQuickItem *item, QQuickGeometryChange change, const QRectF &oldGeometry) override;
+    #endif
     void updatePolish() override;
 
 private Q_SLOTS:

@@ -2,40 +2,10 @@
     "armhf": [
         {
             "url": "http://ports.ubuntu.com/ubuntu-ports",
-            "dist": "vivid",
+            "dist": "xenial",
             "component": "main",
-            "packages": [
-                "libboost-date-time1.55.0",
-                "libgl1-mesa-glx",
-                "libxcb-dri3-0",
-                "libxcb-glx0",
-                "libxcb-present0",
-                "libxshmfence1",
-                "libxslt1.1",
-                "libxt6",
-                "libxxf86vm1",
-                "gconf-service",
-                "gconf-service-backend",
-                "gconf2-common",
-                "libgconf-2-4"
-            ]
-        },
-        {
-            "url": "http://ppa.launchpad.net/canonical-community/ppa/ubuntu",
-            "dist": "vivid",
-            "component": "main",
-            "packages": [
-                "libreoffice-vanilla"
-            ]
-        }
-    ],
-
-    "i386": [
-        {
-            "url": "http://archive.ubuntu.com/ubuntu",
-            "dist": "vivid",
-            "component": "main",
-            "packages": [
+            "packages" : [],
+            "packages_": [
                 "libboost-date-time1.55.0",
                 "libgl1-mesa-glx",
                 "libxcb-dri3-0",
@@ -64,9 +34,10 @@
     "amd64": [
         {
             "url": "http://archive.ubuntu.com/ubuntu",
-            "dist": "vivid",
+            "dist": "xenial",
             "component": "main",
-            "packages": [
+            "packages" : [],
+            "packages_": [
                 "libboost-date-time1.55.0",
                 "libgl1-mesa-glx",
                 "libxcb-dri3-0",
