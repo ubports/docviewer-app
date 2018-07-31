@@ -1,3 +1,9 @@
+ubuntu-docviewer-app (2.2) xenial; urgency=medium
+
+  * Import to UBports CI
+
+ -- Florian Leeber <florian@ubports.com>  Tue, 31 Jul 2018 18:36:48 +0100
+
 ubuntu-docviewer-app (2.1) vivid; urgency=medium
 
   * Fixed an issue with the documents list not updating the model entries (LP: #1483218)
