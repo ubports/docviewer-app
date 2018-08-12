@@ -44,4 +44,3 @@ class MainView(ubuntuuitoolkit.MainView):
     def __init__(self, *args):
         super(MainView, self).__init__(*args)
         self.visible.wait_for(True)
-

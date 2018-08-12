@@ -76,6 +76,8 @@ QString DocviewerUtils::getXdgDocumentsLocation()
 
 QString DocviewerUtils::buildDestinationPath(const QString &destinationDir, const QString &sourcePath)
 {
+    Q_UNUSED(destinationDir);
+    
     QFileInfo fi(sourcePath);
 
     /*

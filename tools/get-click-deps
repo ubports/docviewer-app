@@ -43,6 +43,7 @@
 #   -d, --delete-temp     delete temp files at the end of the process
 #   -e, --extract-only    only create temp directory and extract the content of
 #                         downloaded packages
+#   -t --temp-root        path for downloading temporary files (default is /tmp)
 #   -c SCRIPT_PATH, --custom-script SCRIPT_PATH
 #                         run a custom script after the extraction of Debian
 #                         packages and before copying their content to the
@@ -217,8 +218,8 @@ def get_URLs_for_arch(manifest_path, arch, destpath):
     return urls
 
 
-def check_if_temp_folder_already_exists(path):
-    return os.path.isdir(path)
+def check_if_download_was_completed(path):
+    return os.path.exists(os.path.join(path, 'download_complete'))
 
 
 def copy_directory_content(sourcepath, destpath):
@@ -310,7 +311,17 @@ parser.add_argument(
         the \'-e\' flag has been specified, the script will be anyway \
         executed. This option is useful when you need to automatically modify \
         the content of temp folder (e.g. when you need to fix some path \
-        before including the files in a click package).')
+        before including the files in a click package).'
+)
+        
+parser.add_argument(
+    '-t',
+    '--temp-root',
+    dest='temp_root',
+    type=str,
+    default='/tmp',
+    help='path uses for downloads, default is /tmp'
+)
 
 parser.add_argument(
     'manifest_path',
@@ -337,7 +348,7 @@ manifest_path = args.manifest_path
 target_path = args.target_path
 manifest_stat = os.stat(manifest_path)
 temp_folder = os.path.join(
-    '/tmp/',
+    args.temp_root,
     'tmp-click-deps-%s-%s-%s-%s' % (
         manifest_stat.st_dev,
         manifest_stat.st_ino,
@@ -368,14 +379,20 @@ if args.force_download:
         delete_folder(temp_folder, True)
 
 # Check if we already have run this script for the same target.
-if not check_if_temp_folder_already_exists(temp_arch_folder):
+if not check_if_download_was_completed(temp_folder):
     # Check internet connection
     if not check_internet_connection():
         sys.exit("\n\nERROR: An internet connection is required in order to \
             download packages from repositories.")
 
-    # Create temp folder in /tmp
+    if os.path.isdir(temp_folder):
+        print ("\nRemoving temp data of the previous run, because it was not completed.")
+        delete_folder(temp_folder, True)
+        
+    # Create temp folder in temp_path
     print ("\nCreating temp folder in {}".format(temp_folder))
+    if not os.path.exists(args.temp_root):
+        os.mkdir(args.temp_root)
     os.mkdir(temp_folder)
     os.mkdir(temp_arch_folder)
 
@@ -412,6 +429,8 @@ if not check_if_temp_folder_already_exists(temp_arch_folder):
             args.script_path,
             temp_arch_folder,
             get_arch_triplet(args.arch)])
+    
+    os.mknod(os.path.join(temp_folder, 'download_complete'))
 else:
     print ("\nPackages are already downloaded. Use them...")
 
@@ -425,7 +444,7 @@ if is_click_target:
     print ("\nExtracting target .click package")
     temp_click_folder = extract_click_package(
         args.target_path,
-        os.path.join('/tmp/', str(get_timestamp())))
+        os.path.join(args.temp_root, str(get_timestamp())))
 
     print ("\nAdding extracted binaries to the package")
     copy_directory_content(temp_arch_folder, temp_click_folder)

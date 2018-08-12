@@ -28,13 +28,43 @@ LibreOfficeKitDocumentType;
 
 typedef enum
 {
-    LOK_PARTMODE_DEFAULT,
-    LOK_PARTMODE_SLIDE,
-    LOK_PARTMODE_NOTES,
-    LOK_PARTMODE_SLIDENOTES,
-    LOK_PARTMODE_EMBEDDEDOBJ
+    LOK_PARTMODE_SLIDES,
+    LOK_PARTMODE_NOTES
 }
 LibreOfficeKitPartMode;
+
+typedef enum
+{
+    LOK_TILEMODE_RGBA,
+    LOK_TILEMODE_BGRA
+}
+LibreOfficeKitTileMode;
+
+/** Optional features of LibreOfficeKit, in particular callbacks that block
+ *  LibreOfficeKit until the corresponding reply is received, which would
+ *  deadlock if the client does not support the feature.
+ *
+ *  @see lok::Office::setOptionalFeatures().
+ */
+typedef enum
+{
+    /**
+     * Handle LOK_CALLBACK_DOCUMENT_PASSWORD by prompting the user
+     * for a password.
+     *
+     * @see lok::Office::setDocumentPassword().
+     */
+    LOK_FEATURE_DOCUMENT_PASSWORD = (1ULL << 0),
+
+    /**
+     * Handle LOK_CALLBACK_DOCUMENT_PASSWORD_TO_MODIFY by prompting the user
+     * for a password.
+     *
+     * @see lok::Office::setDocumentPassword().
+     */
+    LOK_FEATURE_DOCUMENT_PASSWORD_TO_MODIFY = (1ULL << 1),
+}
+LibreOfficeKitOptionalFeatures;
 
 typedef enum
 {
@@ -42,7 +72,7 @@ typedef enum
      * Any tiles which are over the rectangle described in the payload are no
      * longer valid.
      *
-     * Rectangle format: "width, height, x, y", where all numbers are document
+     * Rectangle format: "x, y, width, height", where all numbers are document
      * coordinates, in twips. When all tiles are supposed to be dropped, the
      * format is the "EMPTY" string.
      */
@@ -122,7 +152,7 @@ typedef enum
      * document, the status indicator callbacks will arrive to the callback
      * registered for the LibreOfficeKit (singleton) object, not a
      * LibreOfficeKitDocument one, because we are in the very progress of
-     * loading a docuemnt and then constructing a LibreOfficeKitDocument
+     * loading a document and then constructing a LibreOfficeKitDocument
      * object.
      */
     LOK_CALLBACK_STATUS_INDICATOR_START,
@@ -158,7 +188,83 @@ typedef enum
      *
      * Payload is a single 0-based integer.
      */
-    LOK_CALLBACK_SET_PART
+    LOK_CALLBACK_SET_PART,
+
+    /**
+     * Selection rectangles of the search result when find all is performed.
+     *
+     * Payload format example, in case of two matches:
+     *
+     * {
+     *     "searchString": "...",
+     *     "searchResultSelection": [
+     *         {
+     *             "part": "...",
+     *             "rectangles": "..."
+     *         },
+     *         {
+     *             "part": "...",
+     *             "rectangles": "..."
+     *         }
+     *     ]
+     * }
+     *
+     * - searchString is the search query
+     * - searchResultSelection is an array of part-number and rectangle list
+     *   pairs, in LOK_CALLBACK_SET_PART / LOK_CALLBACK_TEXT_SELECTION format.
+     */
+    LOK_CALLBACK_SEARCH_RESULT_SELECTION,
+
+    /**
+     * Result of the UNO command execution when bNotifyWhenFinished was set
+     * to 'true' during the postUnoCommand() call.
+     *
+     * The result returns a success / failure state, and potentially
+     * additional data:
+     *
+     * {
+     *     "commandName": "...",    // the command for which this is the result
+     *     "success": true/false,   // when the result is "don't know", this is missing
+     *     // TODO "result": "..."  // UNO Any converted to JSON (not implemented yet)
+     * }
+     */
+    LOK_CALLBACK_UNO_COMMAND_RESULT,
+
+    /**
+     * The size and/or the position of the cell cursor changed.
+     *
+     * Rectangle format is the same as LOK_CALLBACK_INVALIDATE_TILES.
+     */
+    LOK_CALLBACK_CELL_CURSOR,
+
+    /**
+     * The current mouse pointer style.
+     *
+     * Payload is a css mouse pointer style.
+     */
+    LOK_CALLBACK_MOUSE_POINTER,
+
+    /**
+     * The text content of the formula bar in Calc.
+     */
+    LOK_CALLBACK_CELL_FORMULA,
+
+    /**
+     * Loading a document requires a password.
+     *
+     * Loading the document is blocked until the password is provided via
+     * lok::Office::setDocumentPassword().  The document cannot be loaded
+     * without the password.
+     */
+    LOK_CALLBACK_DOCUMENT_PASSWORD,
+
+    /**
+     * Editing a document requires a password.
+     *
+     * Loading the document is blocked until the password is provided via
+     * lok::Office::setDocumentPassword().
+     */
+    LOK_CALLBACK_DOCUMENT_PASSWORD_TO_MODIFY,
 }
 LibreOfficeKitCallbackType;
 

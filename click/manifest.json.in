@@ -2,7 +2,7 @@
     "name": "com.ubuntu.docviewer",
     "title": "Document Viewer",
     "description": "Document Viewer application for Ubuntu devices",
-    "framework": "ubuntu-sdk-15.04.4",
+    "framework": "ubuntu-sdk-16.04",
     "architecture": "@CLICK_ARCH@",
     "icon": "@ICON@",
     "hooks": {
@@ -13,7 +13,7 @@
             "urls": "com.ubuntu.docviewer.url-dispatcher"
         }
     },
-    "version": "2.1.@GIT_REVNO@",
+    "version": "2.2.@GIT_REVNO@",
     "maintainer": "Stefano Verzegnassi <verzegnassi.stefano@gmail.com>",
     "x-test": {
         "autopilot": "@AUTOPILOT_DIR@"

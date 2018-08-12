@@ -37,11 +37,10 @@ class BaseTestCaseWithPatchedHome(AutopilotTestCase):
 
     """
 
-
     local_build_location = os.path.dirname(os.path.dirname(os.getcwd()))
     sdk_build_location = os.path.join(os.path.dirname(local_build_location),
-                                      os.path.basename(local_build_location)
-                                      + '-build')
+                                      os.path.basename(local_build_location) +
+                                      '-build')
 
     local_build_location_qml = os.path.join(local_build_location, 'src', 'app',
                                             'qml', 'ubuntu-docviewer-app.qml')

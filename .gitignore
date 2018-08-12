@@ -1,4 +1,9 @@
 Makefile
+/.clickable
+.directory
+/.tmp-click-deps-*
+/build
+/upstream-libs-*
 ubuntu-docviewer-app
 *.user
 *.user.*

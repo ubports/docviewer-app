@@ -12,6 +12,12 @@
 
 #include <stddef.h>
 
+#ifdef LOK_USE_UNSTABLE_API
+// the unstable API needs C99's bool
+#include <stdbool.h>
+#include <stdint.h>
+#endif
+
 #include <LibreOfficeKit/LibreOfficeKitTypes.h>
 
 #ifdef __cplusplus
@@ -54,6 +60,17 @@ struct _LibreOfficeKitClass
     void (*registerCallback) (LibreOfficeKit* pThis,
                               LibreOfficeKitCallback pCallback,
                               void* pData);
+
+    /// @see lok::Office::getFilterTypes().
+    char* (*getFilterTypes) (LibreOfficeKit* pThis);
+
+    /// @see lok::Office::setOptionalFeatures().
+    void (*setOptionalFeatures)(LibreOfficeKit* pThis, uint64_t features);
+
+    /// @see lok::Office::setDocumentPassword().
+    void (*setDocumentPassword) (LibreOfficeKit* pThis,
+            char const* pURL,
+            char const* pPassword);
 #endif
 };
 
@@ -82,6 +99,9 @@ struct _LibreOfficeKitDocumentClass
     /// @see lok::Document::getParts().
     int (*getParts) (LibreOfficeKitDocument* pThis);
 
+    /// @see lok::Document::getPartPageRectangles().
+    char* (*getPartPageRectangles) (LibreOfficeKitDocument* pThis);
+
     /// @see lok::Document::getPart().
     int (*getPart) (LibreOfficeKitDocument* pThis);
 
@@ -93,10 +113,7 @@ struct _LibreOfficeKitDocumentClass
     char* (*getPartName) (LibreOfficeKitDocument* pThis,
                           int nPart);
 
-    /** Sets mode of the current part.
-     *
-     * @param nMode - element from the LibreOfficeKitPartMode enum.
-     */
+    /// @see lok::Document::setPartMode().
     void (*setPartMode) (LibreOfficeKitDocument* pThis,
                          int nMode);
 
@@ -110,14 +127,19 @@ struct _LibreOfficeKitDocumentClass
                        const int nTileWidth,
                        const int nTileHeight);
 
+    /// @see lok::Document::getTileMode().
+    int (*getTileMode) (LibreOfficeKitDocument* pThis);
+
     /// @see lok::Document::getDocumentSize().
     void (*getDocumentSize) (LibreOfficeKitDocument* pThis,
                              long* pWidth,
                              long* pHeight);
 
     /// @see lok::Document::initializeForRendering().
-    void (*initializeForRendering) (LibreOfficeKitDocument* pThis);
+    void (*initializeForRendering) (LibreOfficeKitDocument* pThis,
+                                    const char* pArguments);
 
+    /// @see lok::Document::registerCallback().
     void (*registerCallback) (LibreOfficeKitDocument* pThis,
                               LibreOfficeKitCallback pCallback,
                               void* pData);
@@ -133,12 +155,15 @@ struct _LibreOfficeKitDocumentClass
                             int nType,
                             int nX,
                             int nY,
-                            int nCount);
+                            int nCount,
+                            int nButtons,
+                            int nModifier);
 
     /// @see lok::Document::postUnoCommand
     void (*postUnoCommand) (LibreOfficeKitDocument* pThis,
                             const char* pCommand,
-                            const char* pArguments);
+                            const char* pArguments,
+                            bool bNotifyWhenFinished);
 
     /// @see lok::Document::setTextSelection
     void (*setTextSelection) (LibreOfficeKitDocument* pThis,
@@ -151,6 +176,12 @@ struct _LibreOfficeKitDocumentClass
                                const char* pMimeType,
                                char** pUsedMimeType);
 
+    /// @see lok::Document::paste().
+    bool (*paste) (LibreOfficeKitDocument* pThis,
+                   const char* pMimeType,
+                   const char* pData,
+                   size_t nSize);
+
     /// @see lok::Document::setGraphicSelection
     void (*setGraphicSelection) (LibreOfficeKitDocument* pThis,
                                  int nType,
@@ -159,6 +190,27 @@ struct _LibreOfficeKitDocumentClass
 
     /// @see lok::Document::resetSelection
     void (*resetSelection) (LibreOfficeKitDocument* pThis);
+
+    /// @see lok::Document::getCommandValues().
+    char* (*getCommandValues) (LibreOfficeKitDocument* pThis, const char* pCommand);
+
+    /// @see lok::Document::setClientZoom().
+    void (*setClientZoom) (LibreOfficeKitDocument* pThis,
+            int nTilePixelWidth,
+            int nTilePixelHeight,
+            int nTileTwipWidth,
+            int nTileTwipHeight);
+
+    /// @see lok::Document::createView().
+    int (*createView) (LibreOfficeKitDocument* pThis);
+    /// @see lok::Document::destroyView().
+    void (*destroyView) (LibreOfficeKitDocument* pThis, int nId);
+    /// @see lok::Document::setView().
+    void (*setView) (LibreOfficeKitDocument* pThis, int nId);
+    /// @see lok::Document::getView().
+    int (*getView) (LibreOfficeKitDocument* pThis);
+    /// @see lok::Document::getViews().
+    int (*getViews) (LibreOfficeKitDocument* pThis);
 #endif // LOK_USE_UNSTABLE_API
 };
 
