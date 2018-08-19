@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-05 23:40+0100\n"
-"PO-Revision-Date: 2018-08-12 06:20+0000\n"
-"Last-Translator: joseph <joseph@liau.ca>\n"
+"PO-Revision-Date: 2018-09-01 19:36+0000\n"
+"Last-Translator: ArashiHino <hinoaras.hi82@gmail.com>\n"
 "Language-Team: Japanese <https://translate.ubports.com/projects/ubports/"
 "docviewer-app/ja/>\n"
 "Language: ja\n"
@@ -51,11 +51,11 @@ msgstr ""
 
 #: ../src/app/qml/common/DetailsPage.qml:42
 msgid "File"
-msgstr ""
+msgstr "ファイル"
 
 #: ../src/app/qml/common/DetailsPage.qml:47
 msgid "Location"
-msgstr ""
+msgstr "位置"
 
 #: ../src/app/qml/common/DetailsPage.qml:52
 msgid "Size"
@@ -71,7 +71,7 @@ msgstr ""
 
 #: ../src/app/qml/common/DetailsPage.qml:69
 msgid "MIME type"
-msgstr ""
+msgstr "MIME タイプ"
 
 #: ../src/app/qml/common/ErrorDialog.qml:23
 msgid "Error"
