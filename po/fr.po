@@ -59,7 +59,7 @@ msgstr "Fichier"
 
 #: ../src/app/qml/common/DetailsPage.qml:47
 msgid "Location"
-msgstr "Position"
+msgstr "Emplacement"
 
 #: ../src/app/qml/common/DetailsPage.qml:52
 msgid "Size"
