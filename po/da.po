@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-05 23:40+0100\n"
-"PO-Revision-Date: 2018-08-19 15:01+0000\n"
+"PO-Revision-Date: 2018-08-26 00:00+0000\n"
 "Last-Translator: Tom Rausner <tomrausner@gmail.com>\n"
 "Language-Team: Danish <https://translate.ubports.com/projects/ubports/"
 "docviewer-app/da/>\n"
@@ -104,8 +104,8 @@ msgstr[1] "Filer ikke understøttet"
 #: ../src/app/qml/common/RejectedImportDialog.qml:29
 msgid "Following document has not been imported:"
 msgid_plural "Following documents have not been imported:"
-msgstr[0] "Følgende dokument blev ikke importeret"
-msgstr[1] "Følgende dokumenter blev ikke importeret"
+msgstr[0] "Følgende dokument blev ikke importeret:"
+msgstr[1] "Følgende dokumenter blev ikke importeret:"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:27
 msgid "Unknown file type"
@@ -221,7 +221,7 @@ msgstr "dd/MM/yyyy hh:mm"
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:128
 msgid "dddd, hh:mm"
-msgstr "dddd, hh:mm"
+msgstr "dddd, tt:mm"
 
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
 #: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
