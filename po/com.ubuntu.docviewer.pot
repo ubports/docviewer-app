@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Canonical Ltd.
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the  package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
@@ -8,13 +8,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-05 23:40+0100\n"
+"POT-Creation-Date: 2018-08-20 18:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
@@ -40,10 +40,10 @@ msgid ""
 "The path must exist prior to running ubuntu-docviewer-app"
 msgstr ""
 
-#: ../src/app/qml/common/DetailsPage.qml:26
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:107
-#: ../src/app/qml/pdfView/PdfView.qml:235
-#: ../src/app/qml/textView/TextViewDefaultHeader.qml:69
+#: ../src/app/qml/common/DetailsPage.qml:29
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:93
+#: ../src/app/qml/pdfView/PdfView.qml:234
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:55
 msgid "Details"
 msgstr ""
 
@@ -78,7 +78,7 @@ msgstr ""
 #: ../src/app/qml/common/ErrorDialog.qml:26
 #: ../src/app/qml/common/PickImportedDialog.qml:54
 #: ../src/app/qml/common/RejectedImportDialog.qml:38
-#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:31
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:33
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:53
 msgid "Close"
 msgstr ""
@@ -103,6 +103,12 @@ msgid_plural "Following documents have not been imported:"
 msgstr[0] ""
 msgstr[1] ""
 
+#: ../src/app/qml/common/TextualButtonStyle.qml:48
+#: ../src/app/qml/common/TextualButtonStyle.qml:51
+#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:54
+msgid "Pick"
+msgstr ""
+
 #: ../src/app/qml/common/UnknownTypeDialog.qml:27
 msgid "Unknown file type"
 msgstr ""
@@ -115,9 +121,10 @@ msgstr ""
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:38
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:55
-#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:28
+#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:34
+#: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:33
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:55
-#: ../src/app/qml/pdfView/PdfView.qml:180
+#: ../src/app/qml/pdfView/PdfView.qml:188
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:51
 msgid "Cancel"
 msgstr ""
@@ -170,7 +177,7 @@ msgstr[1] ""
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:61
 #: ../src/app/qml/documentPage/DocumentDelegateActions.qml:25
-#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:53
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:58
 msgid "Delete"
 msgstr ""
 
@@ -188,71 +195,59 @@ msgid ""
 "folder or insert removable media containing documents."
 msgstr ""
 
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:75
+msgid "SD card"
+msgstr ""
+
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:103
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:100
 #, qt-format
 msgid "Today, %1"
 msgstr ""
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:108
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:105
 #, qt-format
 msgid "Yesterday, %1"
 msgstr ""
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:115
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:134
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:112
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:131
 msgid "yyyy/MM/dd hh:mm"
 msgstr ""
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
-#: ../src/app/qml/documentPage/DocumentListDelegate.qml:128
+#: ../src/app/qml/documentPage/DocumentListDelegate.qml:125
 msgid "dddd, hh:mm"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentPage.qml:23
-#: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
+#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:27
+#: /home/florian/UT-Apps/docviewer-app/build/po/com.ubuntu.docviewer.desktop.in.in.h:3
 msgid "Documents"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:29
+#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:35
 msgid "Search..."
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:36
+#: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:42
 msgid "Sorting settings..."
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:41
-msgid "Switch to single column list"
-msgstr ""
-
-#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:41
-msgid "Switch to grid"
-msgstr ""
-
-#: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:49
-msgid "Pick"
-msgstr ""
-
-#: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:27
-msgid "Back"
-msgstr ""
-
-#: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:47
+#: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:56
 msgid "search in documents..."
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:40
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:46
 msgid "Select None"
 msgstr ""
 
-#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:40
+#: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:46
 msgid "Select All"
 msgstr ""
 
@@ -265,27 +260,27 @@ msgid ""
 "Please ensure that your query is not misspelled and/or try a different query."
 msgstr ""
 
-#: ../src/app/qml/documentPage/SectionHeader.qml:13
+#: ../src/app/qml/documentPage/SectionHeader.qml:30
 msgid "Today"
 msgstr ""
 
-#: ../src/app/qml/documentPage/SectionHeader.qml:16
+#: ../src/app/qml/documentPage/SectionHeader.qml:33
 msgid "Yesterday"
 msgstr ""
 
-#: ../src/app/qml/documentPage/SectionHeader.qml:19
+#: ../src/app/qml/documentPage/SectionHeader.qml:36
 msgid "Earlier this week"
 msgstr ""
 
-#: ../src/app/qml/documentPage/SectionHeader.qml:22
+#: ../src/app/qml/documentPage/SectionHeader.qml:39
 msgid "Earlier this month"
 msgstr ""
 
-#: ../src/app/qml/documentPage/SectionHeader.qml:24
+#: ../src/app/qml/documentPage/SectionHeader.qml:41
 msgid "Even earlier..."
 msgstr ""
 
-#: ../src/app/qml/documentPage/SharePage.qml:23
+#: ../src/app/qml/documentPage/SharePage.qml:28
 msgid "Share to"
 msgstr ""
 
@@ -309,48 +304,48 @@ msgstr ""
 msgid "Reverse order"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:51
-#: ../src/app/qml/textView/TextView.qml:43
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:41
+#: ../src/app/qml/textView/TextView.qml:49
 msgid "Loading..."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:55
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:45
 msgid "LibreOffice text document"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:57
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:47
 msgid "LibreOffice spread sheet"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:59
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:49
 msgid "LibreOffice presentation"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:61
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:51
 msgid "LibreOffice Draw document"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:63
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:53
 msgid "Unknown LibreOffice document"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:65
-msgid "Unknown type document"
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:55
+msgid "Unknown document type"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:85
-msgid "Go to position..."
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:72
+msgid "Go to position…"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
-#: ../src/app/qml/pdfView/PdfView.qml:228
-#: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:86
+#: ../src/app/qml/pdfView/PdfView.qml:227
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:49
 msgid "Disable night mode"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
-#: ../src/app/qml/pdfView/PdfView.qml:228
-#: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
+#: ../src/app/qml/loView/LOViewDefaultHeader.qml:86
+#: ../src/app/qml/pdfView/PdfView.qml:227
+#: ../src/app/qml/textView/TextViewDefaultHeader.qml:49
 msgid "Enable night mode"
 msgstr ""
 
@@ -367,21 +362,21 @@ msgstr ""
 msgid "GO!"
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewPage.qml:167
+#: ../src/app/qml/loView/LOViewPage.qml:173
 msgid "LibreOffice binaries not found."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewPage.qml:170
+#: ../src/app/qml/loView/LOViewPage.qml:176
 msgid "Error while loading LibreOffice."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewPage.qml:173
+#: ../src/app/qml/loView/LOViewPage.qml:179
 msgid ""
 "Document not loaded.\n"
 "The requested document may be corrupt or protected by a password."
 msgstr ""
 
-#: ../src/app/qml/loView/LOViewPage.qml:228
+#: ../src/app/qml/loView/LOViewPage.qml:231
 msgid "This sheet has no content."
 msgstr ""
 
@@ -413,7 +408,7 @@ msgstr ""
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:31
-#: ../src/app/qml/pdfView/PdfView.qml:153
+#: ../src/app/qml/pdfView/PdfView.qml:157
 msgid "Contents"
 msgstr ""
 
@@ -425,15 +420,11 @@ msgstr ""
 msgid "Page %1 of %2"
 msgstr ""
 
-#: ../src/app/qml/pdfView/PdfView.qml:203
-msgid "Search"
-msgstr ""
-
-#: ../src/app/qml/pdfView/PdfView.qml:213
+#: ../src/app/qml/pdfView/PdfView.qml:212
 msgid "Go to page..."
 msgstr ""
 
-#: ../src/app/qml/pdfView/PdfView.qml:221
+#: ../src/app/qml/pdfView/PdfView.qml:220
 msgid "Presentation"
 msgstr ""
 
@@ -446,7 +437,7 @@ msgstr ""
 msgid "Choose a page between 1 and %1"
 msgstr ""
 
-#: ../src/app/qml/ubuntu-docviewer-app.qml:114
+#: ../src/app/qml/ubuntu-docviewer-app.qml:134
 msgid "File does not exist."
 msgstr ""
 
@@ -459,15 +450,15 @@ msgstr ""
 #.
 #. where "2" is given by the argument "%1"
 #.
-#: ../src/plugin/file-qml-plugin/docviewerutils.cpp:111
+#: ../src/plugin/file-qml-plugin/docviewerutils.cpp:119
 #, qt-format
 msgid "copy %1"
 msgstr ""
 
-#: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
+#: /home/florian/UT-Apps/docviewer-app/build/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
 msgstr ""
 
-#: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:2
+#: /home/florian/UT-Apps/docviewer-app/build/po/com.ubuntu.docviewer.desktop.in.in.h:2
 msgid "documents;viewer;pdf;reader;"
 msgstr ""
