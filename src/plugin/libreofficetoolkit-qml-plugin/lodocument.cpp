@@ -167,7 +167,7 @@ QImage LODocument::paintTile(int part, const QSize& canvasSize, const QRect& til
     qDebug() << "Time to render the tile:" << renderTimer.elapsed() << "ms";
 #endif
 
-    return result.rgbSwapped();
+    return result;
 }
 
 QImage LODocument::paintPart(int part, const QSize &size)
@@ -204,7 +204,7 @@ QImage LODocument::paintPart(int part, const QSize &size)
     qDebug() << "Time to render the thumbnail:" << renderTimer.elapsed() << "ms";
 #endif
 
-    return result.rgbSwapped();
+    return result;
 }
 
 int LODocument::partsCount()
