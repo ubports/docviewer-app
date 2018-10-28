@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-05 23:40+0100\n"
-"PO-Revision-Date: 2018-10-28 19:27+0000\n"
-"Last-Translator: Sergio Reyes <vincentshergio@gmail.com>\n"
+"PO-Revision-Date: 2018-11-04 00:02+0000\n"
+"Last-Translator: advocatux <advocatux@airpost.net>\n"
 "Language-Team: Spanish <https://translate.ubports.com/projects/ubports/"
 "docviewer-app/es/>\n"
 "Language: es\n"
@@ -247,7 +247,7 @@ msgstr "Ver cuadrícula"
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:49
 msgid "Pick"
-msgstr "Coger"
+msgstr "Escoger"
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:27
 msgid "Back"
@@ -263,7 +263,7 @@ msgstr "No seleccionar nada"
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:40
 msgid "Select All"
-msgstr "Seleccionar todos"
+msgstr "Seleccionar todo"
 
 #: ../src/app/qml/documentPage/SearchEmptyState.qml:24
 msgid "No matching document found"
