@@ -8,45 +8,48 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-05 23:40+0100\n"
-"PO-Revision-Date: 2016-05-17 03:32+0000\n"
-"Last-Translator: Po-Hsu Lin <po-hsu.lin@canonical.com>\n"
-"Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2018-10-28 00:00+0000\n"
+"Last-Translator: P.-H. Lin <cypressyew@gmail.com>\n"
+"Language-Team: Chinese (Traditional) <https://translate.ubports.com/projects/"
+"ubports/docviewer-app/zh_Hant/>\n"
+"Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-04-05 07:49+0000\n"
-"X-Generator: Launchpad (build 18335)\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
 msgid "Some of the provided arguments are not valid."
-msgstr ""
+msgstr "提供一些的參數無效。"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:58
 msgid "Open ubuntu-docviewer-app displaying the selected file"
-msgstr ""
+msgstr "打開 ubuntu-docviewer-app 顯示選取的文件"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:65
 msgid "Run fullscreen"
-msgstr ""
+msgstr "全螢幕執行"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:71
+#, fuzzy
 msgid "Open ubuntu-docviewer-app in pick mode. Used for tests only."
-msgstr ""
+msgstr "在選擇模式下打開 ubuntu-docviewer-app，僅用於測試。"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:77
+#, fuzzy
 msgid ""
 "Show documents from the given folder, instead of ~/Documents.\n"
 "The path must exist prior to running ubuntu-docviewer-app"
-msgstr ""
+msgstr "從指定的目錄中顯示文檔，而不是 ~/Documents 目錄。該目錄必須在運行 ubuntu-docviewer-app 之前存在"
 
 #: ../src/app/qml/common/DetailsPage.qml:26
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:107
 #: ../src/app/qml/pdfView/PdfView.qml:235
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:69
 msgid "Details"
-msgstr "詳細資訊"
+msgstr "詳情"
 
 #: ../src/app/qml/common/DetailsPage.qml:42
 msgid "File"
@@ -86,11 +89,11 @@ msgstr "關閉"
 
 #: ../src/app/qml/common/PickImportedDialog.qml:29
 msgid "Multiple documents imported"
-msgstr ""
+msgstr "導入多個文件"
 
 #: ../src/app/qml/common/PickImportedDialog.qml:30
 msgid "Choose which one to open:"
-msgstr ""
+msgstr "請選擇一個開啟："
 
 #: ../src/app/qml/common/RejectedImportDialog.qml:28
 msgid "File not supported"
@@ -100,8 +103,7 @@ msgstr[0] "不支援的檔案"
 #: ../src/app/qml/common/RejectedImportDialog.qml:29
 msgid "Following document has not been imported:"
 msgid_plural "Following documents have not been imported:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "以下文件尚未導入："
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:27
 msgid "Unknown file type"
@@ -112,6 +114,8 @@ msgid ""
 "This file is not supported.\n"
 "Do you want to open it as a plain text?"
 msgstr ""
+"不支持此文件。\n"
+"你想以純文字形式來打開它嗎？"
 
 #: ../src/app/qml/common/UnknownTypeDialog.qml:38
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:55
@@ -148,7 +152,7 @@ msgstr "%1 kB"
 #: ../src/app/qml/common/utils.js:33
 #, qt-format
 msgid "%1 byte"
-msgstr ""
+msgstr "%1 位元組"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:39
 msgid "Delete file"
@@ -158,8 +162,7 @@ msgstr "刪除檔案"
 #, qt-format
 msgid "Delete %1 file"
 msgid_plural "Delete %1 files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "刪除％1個文件"
 
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:41
 #: ../src/app/qml/documentPage/DeleteFileDialog.qml:42
@@ -179,27 +182,28 @@ msgstr "分享"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:27
 msgid "No documents found"
-msgstr ""
+msgstr "找不到文件"
 
 #: ../src/app/qml/documentPage/DocumentEmptyState.qml:28
+#, fuzzy
 msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
 "folder or insert removable media containing documents."
-msgstr ""
+msgstr "將您的設備連接到任何計算機，只需將文件拖到Documents文件夾或插入包含文檔的可移動媒體。"
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:103
-#, qt-format
+#, fuzzy, qt-format
 msgid "Today, %1"
-msgstr ""
+msgstr "今天，％1"
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
 #: ../src/app/qml/documentPage/DocumentListDelegate.qml:108
 #, qt-format
 msgid "Yesterday, %1"
-msgstr ""
+msgstr "昨天，％1"
 
 #. TRANSLATORS: this is a datetime formatting string,
 #. see http://qt-project.org/doc/qt-5/qml-qtqml-date.html#details for valid expressions.
@@ -217,7 +221,7 @@ msgstr "dddd, hh:mm"
 #: ../src/app/qml/documentPage/DocumentPage.qml:23
 #: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:3
 msgid "Documents"
-msgstr ""
+msgstr "文件"
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:29
 msgid "Search..."
@@ -225,19 +229,21 @@ msgstr "搜尋..."
 
 #: ../src/app/qml/documentPage/DocumentPageDefaultHeader.qml:36
 msgid "Sorting settings..."
-msgstr ""
+msgstr "排列設置......"
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:41
+#, fuzzy
 msgid "Switch to single column list"
-msgstr ""
+msgstr "切換到單列列表"
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:41
+#, fuzzy
 msgid "Switch to grid"
-msgstr ""
+msgstr "切換到網格"
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:49
 msgid "Pick"
-msgstr ""
+msgstr "挑選"
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:27
 msgid "Back"
@@ -245,7 +251,7 @@ msgstr "返回"
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:47
 msgid "search in documents..."
-msgstr ""
+msgstr "在文件中搜索......"
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:40
 msgid "Select None"
@@ -256,21 +262,23 @@ msgid "Select All"
 msgstr "全選"
 
 #: ../src/app/qml/documentPage/SearchEmptyState.qml:24
+#, fuzzy
 msgid "No matching document found"
-msgstr ""
+msgstr "找不到匹配的文檔"
 
 #: ../src/app/qml/documentPage/SearchEmptyState.qml:26
+#, fuzzy
 msgid ""
 "Please ensure that your query is not misspelled and/or try a different query."
-msgstr ""
+msgstr "請確保您的查詢沒有拼寫錯誤，或嘗試不同的查詢。"
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:13
 msgid "Today"
-msgstr "今天"
+msgstr "今日"
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:16
 msgid "Yesterday"
-msgstr "昨天"
+msgstr "昨日"
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:19
 msgid "Earlier this week"
@@ -282,11 +290,11 @@ msgstr "本月稍早之前"
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:24
 msgid "Even earlier..."
-msgstr ""
+msgstr "甚至更早......"
 
 #: ../src/app/qml/documentPage/SharePage.qml:23
 msgid "Share to"
-msgstr ""
+msgstr "分享到"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:26
 msgid "Sorting settings"
@@ -294,28 +302,28 @@ msgstr "排序設定"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:31
 msgid "Sort by date (Latest first)"
-msgstr ""
+msgstr "按日期排序（最新的第一個）"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:32
 msgid "Sort by name (A-Z)"
-msgstr ""
+msgstr "按名稱排序（A-Z）"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:33
 msgid "Sort by size (Smaller first)"
-msgstr ""
+msgstr "按大小排序（小一大）"
 
 #: ../src/app/qml/documentPage/SortSettingsDialog.qml:47
 msgid "Reverse order"
-msgstr ""
+msgstr "顛倒排序"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:51
 #: ../src/app/qml/textView/TextView.qml:43
 msgid "Loading..."
-msgstr "載入中..."
+msgstr "載入中…"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:55
 msgid "LibreOffice text document"
-msgstr ""
+msgstr "LibreOffice文字文檔"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:57
 msgid "LibreOffice spread sheet"
@@ -323,11 +331,12 @@ msgstr "LibreOffice 試算表"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:59
 msgid "LibreOffice presentation"
-msgstr ""
+msgstr "LibreOffice演示"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:61
+#, fuzzy
 msgid "LibreOffice Draw document"
-msgstr ""
+msgstr "LibreOffice Draw文件"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:63
 msgid "Unknown LibreOffice document"
@@ -335,31 +344,34 @@ msgstr "未知的 LibreOffice 文件"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:65
 msgid "Unknown type document"
-msgstr ""
+msgstr "未知類型的文件"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:85
+#, fuzzy
 msgid "Go to position..."
-msgstr ""
+msgstr "去位置......"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
 #: ../src/app/qml/pdfView/PdfView.qml:228
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Disable night mode"
-msgstr ""
+msgstr "禁用夜間模式"
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:100
 #: ../src/app/qml/pdfView/PdfView.qml:228
 #: ../src/app/qml/textView/TextViewDefaultHeader.qml:63
 msgid "Enable night mode"
-msgstr ""
+msgstr "啟用夜間模式"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:30
+#, fuzzy
 msgid "Go to position"
-msgstr ""
+msgstr "去位置"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:31
+#, fuzzy
 msgid "Choose a position between 1% and 100%"
-msgstr ""
+msgstr "選擇介於1％和100％之間的位置"
 
 #: ../src/app/qml/loView/LOViewGotoDialog.qml:62
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:58
@@ -368,28 +380,30 @@ msgstr "出發！"
 
 #: ../src/app/qml/loView/LOViewPage.qml:167
 msgid "LibreOffice binaries not found."
-msgstr ""
+msgstr "未找到LibreOffice二進位文件。"
 
 #: ../src/app/qml/loView/LOViewPage.qml:170
 msgid "Error while loading LibreOffice."
-msgstr ""
+msgstr "載入LibreOffice時出錯。"
 
 #: ../src/app/qml/loView/LOViewPage.qml:173
 msgid ""
 "Document not loaded.\n"
 "The requested document may be corrupt or protected by a password."
 msgstr ""
+"檔案未載入。\n"
+"請求的檔案可能已損壞或受密碼保護。"
 
 #: ../src/app/qml/loView/LOViewPage.qml:228
 msgid "This sheet has no content."
-msgstr ""
+msgstr "此頁面沒有內容。"
 
 #. TRANSLATORS: 'LibreOfficeKit' is the name of the library used by
 #. Document Viewer for rendering LibreOffice/MS-Office documents.
 #. Ref. https://docs.libreoffice.org/libreofficekit.html
 #: ../src/app/qml/loView/Splashscreen.qml:45
 msgid "Powered by LibreOfficeKit"
-msgstr ""
+msgstr "由LibreOfficeKit提供"
 
 #. TRANSLATORS: Please don't add any space between "Sheet" and "%1".
 #. This is the default name for a sheet in LibreOffice.
@@ -407,6 +421,7 @@ msgid "Fit height"
 msgstr "符合高度"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:124
+#, fuzzy
 msgid "Automatic"
 msgstr "自動"
 
@@ -430,11 +445,11 @@ msgstr "搜尋"
 
 #: ../src/app/qml/pdfView/PdfView.qml:213
 msgid "Go to page..."
-msgstr ""
+msgstr "轉到頁面..."
 
 #: ../src/app/qml/pdfView/PdfView.qml:221
 msgid "Presentation"
-msgstr ""
+msgstr "簡介"
 
 #: ../src/app/qml/pdfView/PdfViewGotoDialog.qml:26
 msgid "Go to page"
@@ -446,8 +461,9 @@ msgid "Choose a page between 1 and %1"
 msgstr "選擇 1 到 %1 之間的一頁"
 
 #: ../src/app/qml/ubuntu-docviewer-app.qml:114
+#, fuzzy
 msgid "File does not exist."
-msgstr ""
+msgstr "文件並不存在。"
 
 #. TRANSLATORS: This string is used for renaming a copied file,
 #. when a file with the same name already exists in user's
@@ -461,7 +477,7 @@ msgstr ""
 #: ../src/plugin/file-qml-plugin/docviewerutils.cpp:111
 #, qt-format
 msgid "copy %1"
-msgstr ""
+msgstr "複製％1"
 
 #: /tmp/lok-qml-async-imageprovider-build/po/com.ubuntu.docviewer.desktop.in.in.h:1
 msgid "Document Viewer"
