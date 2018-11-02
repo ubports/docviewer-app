@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-05 23:40+0100\n"
-"PO-Revision-Date: 2018-10-28 19:27+0000\n"
-"Last-Translator: Florian Leeber <flori@bin.org.in>\n"
+"PO-Revision-Date: 2018-11-04 00:01+0000\n"
+"Last-Translator: honigwald <sblanck@win.tu-berlin.de>\n"
 "Language-Team: German <https://translate.ubports.com/projects/ubports/"
 "docviewer-app/de/>\n"
 "Language: de\n"
@@ -441,7 +441,7 @@ msgstr "Seite %1 von %2"
 
 #: ../src/app/qml/pdfView/PdfView.qml:203
 msgid "Search"
-msgstr "Suchen"
+msgstr "Suche"
 
 #: ../src/app/qml/pdfView/PdfView.qml:213
 msgid "Go to page..."
