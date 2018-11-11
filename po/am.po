@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-05 23:40+0100\n"
-"PO-Revision-Date: 2017-12-23 23:28+0000\n"
+"PO-Revision-Date: 2018-11-18 17:34+0000\n"
 "Last-Translator: Samson <sambelet@yahoo.com>\n"
-"Language-Team: Amharic <https://translate.ubports.com/projects/ubports"
-"/docviewer-app/am/>\n"
+"Language-Team: Amharic <https://translate.ubports.com/projects/ubports/"
+"docviewer-app/am/>\n"
 "Language: am\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.15\n"
+"X-Generator: Weblate 3.1.1\n"
 "X-Launchpad-Export-Date: 2017-04-05 07:48+0000\n"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:49
@@ -246,7 +246,7 @@ msgstr "ወደ ስኴር መቀየሪያ"
 
 #: ../src/app/qml/documentPage/DocumentPagePickModeHeader.qml:49
 msgid "Pick"
-msgstr "መምረጫ"
+msgstr "ይምረጡ"
 
 #: ../src/app/qml/documentPage/DocumentPageSearchHeader.qml:27
 msgid "Back"
@@ -258,7 +258,7 @@ msgstr "በ ሰነድ ውስጥ መፈለጊያ..."
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:40
 msgid "Select None"
-msgstr "ምንም አይምረጡ"
+msgstr "ምንም አልተመረጠም"
 
 #: ../src/app/qml/documentPage/DocumentPageSelectionModeHeader.qml:40
 msgid "Select All"
@@ -320,7 +320,7 @@ msgstr "በ ተቃራኒ ደንብ"
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:51
 #: ../src/app/qml/textView/TextView.qml:43
 msgid "Loading..."
-msgstr "በመጫን ላይ..."
+msgstr "በ መጫን ላይ..."
 
 #: ../src/app/qml/loView/LOViewDefaultHeader.qml:55
 msgid "LibreOffice text document"
@@ -419,7 +419,7 @@ msgstr "በ እርዝመቱ ልክ"
 
 #: ../src/app/qml/loView/ZoomSelector.qml:124
 msgid "Automatic"
-msgstr "ራሱ በራሱ"
+msgstr "ራስ በራሱ"
 
 #. TRANSLATORS: "Contents" refers to the "Table of Contents" of a PDF document.
 #: ../src/app/qml/pdfView/PdfContentsPage.qml:31
