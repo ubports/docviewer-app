@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ubuntu-docviewer-app\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-05 23:40+0100\n"
-"PO-Revision-Date: 2018-11-11 00:02+0000\n"
+"PO-Revision-Date: 2018-11-18 17:34+0000\n"
 "Last-Translator: Louies <louies0623@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://translate.ubports.com/projects/"
 "ubports/docviewer-app/zh_Hant/>\n"
@@ -26,7 +26,7 @@ msgstr "提供一些的參數無效。"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:58
 msgid "Open ubuntu-docviewer-app displaying the selected file"
-msgstr "打開 ubuntu-docviewer-app 顯示選取的文件"
+msgstr "打開 ubuntu-docviewer-app 顯示選取的檔案"
 
 #: ../src/app/qml/common/CommandLineProxy.qml:65
 msgid "Run fullscreen"
@@ -188,7 +188,7 @@ msgstr "找不到文件"
 msgid ""
 "Connect your device to any computer and simply drag files to the Documents "
 "folder or insert removable media containing documents."
-msgstr "將設備連接到任何電腦，只需將文件拖到Documents文件夾或插入包含文檔的可移動式媒體。"
+msgstr "將設備連接到任何電腦，只需將檔案拖到Documents文件夾裡或者插入包含檔案的可移動式媒體。"
 
 #. TRANSLATORS: %1 refers to a time formatted as Locale.ShortFormat (e.g. hh:mm). It depends on system settings.
 #. http://qt-project.org/doc/qt-4.8/qlocale.html#FormatType-enum
@@ -269,11 +269,11 @@ msgstr "請確保您的查詢沒有拼寫錯誤，或者嘗試不同的查詢。
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:13
 msgid "Today"
-msgstr "今日"
+msgstr "今天"
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:16
 msgid "Yesterday"
-msgstr "昨日"
+msgstr "昨天"
 
 #: ../src/app/qml/documentPage/SectionHeader.qml:19
 msgid "Earlier this week"
